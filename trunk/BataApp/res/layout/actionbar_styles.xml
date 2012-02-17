@@ -1,34 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<com.ut.bataapp.DashboardLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_weight="1"
-    android:background="#f8f9fe" >
-    
-    <Button
-        android:id="@+id/dashboard_routes"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/menu_routes"
-        android:text="@string/dashboard_routes" />
-    
-    <Button
-        android:id="@+id/dashboard_teams"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/menu_teams"
-        android:text="@string/dashboard_teams" />
-    
-    <Button
-        android:id="@+id/dashboard_informatie"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/menu_information"
-        android:text="@string/dashboard_informatie" />
-    
-    <Button
-        android:id="@+id/dashboard_contact"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/menu_contact"
-        android:text="@string/dashboard_contact" />
-    
-</com.ut.bataapp.DashboardLayout>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	<com.ut.bataapp.DashboardLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dip"
+	    android:layout_weight="1"
+	    android:background="#f8f9fe" >
+	    
+	    <Button
+	        android:id="@+id/dashboard_routes"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu_routes"
+	        android:text="@string/dashboard_routes" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_teams"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu_teams"
+	        android:text="@string/dashboard_teams" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_informatie"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu_information"
+	        android:text="@string/dashboard_informatie" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_contact"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu_contact"
+	        android:text="@string/dashboard_contact" />
+	    
+	</com.ut.bataapp.DashboardLayout>
+	<LinearLayout
+	    android:layout_width="match_parent"
+    	android:layout_height="50dip"
+    	android:background="@drawable/batablauw"
+    	>
+	    <TextView 
+	        android:id="@+id/dashboard_time"
+	        android:textSize="20dip"
+	        android:gravity="center_vertical|center_horizontal"
+    		android:layout_width="match_parent"
+	        android:layout_height="match_parent" 
+	        android:text="Het duurt nog heeel lang"
+	        />
+	</LinearLayout>
+	    
+</LinearLayout>

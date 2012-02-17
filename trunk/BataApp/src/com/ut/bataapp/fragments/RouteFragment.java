@@ -5,11 +5,17 @@ import com.ut.bataapp.R;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.Menu;
+import android.support.v4.view.MenuItem;
+import android.support.v4.view.SubMenu;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -34,7 +40,7 @@ public class RouteFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	
+    	setHasOptionsMenu(true);
     	if (container == null) {
             // We have different layouts, and in one of them this
             // fragment's containing frame doesn't exist.  The fragment
@@ -46,22 +52,6 @@ public class RouteFragment extends Fragment {
             return null;
         }
 
-      /*LinearLayout layout = new LinearLayout(getActivity());
-        
-        TextView info_titel = new TextView(getActivity());
-        info_titel.setText("Informatie");
-        info_titel.setTextAppearance(getActivity(), R.style.titel);
-        layout.addView(info_titel);
-
-        TextView text = new TextView(getActivity());
-        
-       layout.addView(text);
-       int id = getArguments().getInt("index", 0) + 1;
-       int bla = api.getEtappesByID(i).getAfstand();
-     text.setText("BLAA " + Integer.toString(i) + Integer.toString(bla));
-      // text.setText(i);
-    
-       return layout;*/
     	int id = getArguments().getInt("index", 0) + 1;
     	Etappe etappe = api.getEtappesByID(id);
     	View view = inflater.inflate(R.layout.route_fragment, container, false);
@@ -75,4 +65,44 @@ public class RouteFragment extends Fragment {
     	return view;
     	
     }
+    
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {	
+    	SubMenu subMenu1 = menu.addSubMenu("Routes");
+    	
+    	subMenu1.add(1,0,Menu.NONE,"Lopersroute");
+    	subMenu1.add(1,1,Menu.NONE,"Autoroute");
+    	subMenu1.add(1,2,Menu.NONE,"Overslagroute");
+    	
+    	MenuItem subMenu1Item = subMenu1.getItem();
+    	subMenu1Item.setIcon(R.drawable.icon_maps);
+    	subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case 0:
+			Intent mapLopersroute = new Intent(Intent.ACTION_VIEW); 
+			Uri uri0 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
+			mapLopersroute.setData(uri0); 
+			startActivity(Intent.createChooser(mapLopersroute, "Sample"));
+			break;
+		
+			case 1:
+			Intent mapAutoroute = new Intent(Intent.ACTION_VIEW); 
+			Uri uri1 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
+			mapAutoroute.setData(uri1); 
+			startActivity(Intent.createChooser(mapAutoroute, "Sample"));
+			break;
+		
+			case 2:
+				Intent mapOverslagroute = new Intent(Intent.ACTION_VIEW); 
+				Uri uri2 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
+				mapOverslagroute.setData(uri2); 
+				startActivity(Intent.createChooser(mapOverslagroute, "Sample"));
+				break;
+		}
+		return false;
+   }
 }
