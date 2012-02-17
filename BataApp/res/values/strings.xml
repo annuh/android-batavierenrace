@@ -35,4 +35,14 @@
     <string name="etappe_recordtijd_team">Teamnaam:</string>
     <string name="etappe_recordtijd_tijd">Tijd:</string>
     
+    <string name="informatie_titel">Informatie</string>
+    <string name="informatie_eten_drinken_tijdens_de_race"></string>
+	<string name="informatie_eten_drinken_tijdens_de_race_text">
+         Het wordt zeer sterk aangeraden om eten en drinken mee te nemen voor tijdens de race. 
+         De mogelijkheden om tijdens de race ergens eten en drinken te kopen zijn zeer beperkt. 
+         Houd met de boodschappen ook rekening met het voorspelde weer, denk bijvoorbeeld aan
+          extra water bij warm weer. Op de herstarts is er voldoende mogelijkheid om eten en 
+          drinken te kopen en wordt door de organisatie het een en ander uitgedeeld.</string>
+    
+    
     </resources>

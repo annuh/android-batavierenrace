@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="Instellingen">
+        <EditTextPreference android:title="Naam" android:summary="Vul uw naam in" android:key="naam"/>
+        
+    </PreferenceCategory>
+    
+
+</PreferenceScreen>

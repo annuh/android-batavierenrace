@@ -26,6 +26,7 @@ public class RoutesActivity extends FragmentActivity  {
 	   setTitle("Routes");
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.routes_fragment);
+	   getSupportActionBar().setDisplayShowHomeEnabled(true);
    }
    
    

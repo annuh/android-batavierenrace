@@ -24,6 +24,7 @@
     android:versionCode="55"
     android:versionName="3.5.1">
 
+    <uses-library android:name="com.google.android.maps" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
@@ -46,6 +47,9 @@
         
         <activity
 			android:name="RouteActivity"
+		/>
+        <activity
+			android:name=".activities.PreferencesActivity"
 		/>
 
 
