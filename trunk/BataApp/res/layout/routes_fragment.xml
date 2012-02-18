@@ -19,7 +19,7 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <fragment class="com.ut.bataapp.fragments.TeamsFragment"
-            android:id="@+id/teams_fragment"
+    <fragment class="com.ut.bataapp.fragments.RoutesFragment"
+            android:id="@+id/routes_fragment"
             android:layout_width="match_parent" android:layout_height="match_parent" />
 </FrameLayout>
