@@ -25,7 +25,7 @@ public class TeamsActivity extends FragmentActivity  {
 	   setTheme(THEME);
 	   setTitle("Teams");
 	   super.onCreate(savedInstanceState);
-	   setContentView(R.layout.routes_fragment);
+	   setContentView(R.layout.teams_fragment);
 	   getSupportActionBar().setDisplayShowHomeEnabled(true);
    }
    
