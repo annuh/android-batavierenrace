@@ -43,6 +43,13 @@
          Houd met de boodschappen ook rekening met het voorspelde weer, denk bijvoorbeeld aan
           extra water bij warm weer. Op de herstarts is er voldoende mogelijkheid om eten en 
           drinken te kopen en wordt door de organisatie het een en ander uitgedeeld.</string>
+          
+	
+	<string name="contact_titel">Contact</string>
+	<string name="contact_alarmnummer">06123455678</string>
+	<string name="contact_bezoekadres_titel">Bezoekadres</string>
+	<string name="contact_bezoekadres_text">Batavierenrace Nijmegen
+							Heyendaalseweg 141
+							6525 AJ Nijmegen</string>
     
-    
-    </resources>
+</resources>

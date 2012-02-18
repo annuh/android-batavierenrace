@@ -8,19 +8,31 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dip"
 	    android:layout_weight="1"
-	    android:background="#f8f9fe" >
+	    android:background="@drawable/batavier" >
 	    
 	    <Button
-	        android:id="@+id/dashboard_routes"
+	        android:id="@+id/dashboard_etappes"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu_routes"
+	        android:drawableTop="@layout/button_etappes"
 	        android:text="@string/dashboard_routes" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_teams"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu_teams"
+	        android:drawableTop="@layout/button_teams"
 	        android:text="@string/dashboard_teams" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_klassement"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@layout/button_klassement"
+	        android:text="@string/dashboard_klassement" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_weer"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu_weer"
+	        android:text="@string/dashboard_weer" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_informatie"
@@ -35,6 +47,12 @@
 	        android:text="@string/dashboard_contact" />
 	    
 	</com.ut.bataapp.DashboardLayout>
+	<View
+android:background="#000"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+/>
+	
 	<LinearLayout
 	    android:layout_width="match_parent"
     	android:layout_height="50dip"

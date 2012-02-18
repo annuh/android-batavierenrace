@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.R;
 import com.ut.bataapp.activities.PreferencesActivity;
+import com.ut.bataapp.activities.WeerActivity;
 
 
 public class MainActivity extends FragmentActivity {
@@ -27,12 +28,32 @@ public class MainActivity extends FragmentActivity {
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.actionbar_styles);
        
-	   Button btn_routes = (Button) findViewById(R.id.dashboard_routes);
+	   Button btn_routes = (Button) findViewById(R.id.dashboard_etappes);
 	   btn_routes.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), RoutesActivity.class);
+               startActivity(i);
+           }
+       });
+	   
+	   Button btn_teams = (Button) findViewById(R.id.dashboard_teams);
+	   btn_teams.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               // Launching News Feed Screen
+               Intent i = new Intent(getApplicationContext(), TeamsActivity.class);
+               startActivity(i);
+           }
+       });
+	   
+	   Button btn_weer = (Button) findViewById(R.id.dashboard_weer);
+	   btn_weer.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               // Launching News Feed Screen
+               Intent i = new Intent(getApplicationContext(), WeerActivity.class);
                startActivity(i);
            }
        });

@@ -48,6 +48,16 @@
         <activity
 			android:name="RouteActivity"
 		/>
+        
+        <activity 
+            android:name="TeamsActivity" />
+        
+        <activity
+			android:name="TeamActivity" />
+        
+        <activity
+			android:name=".activities.WeerActivity" />
+        
         <activity
 			android:name=".activities.PreferencesActivity"
 		/>
