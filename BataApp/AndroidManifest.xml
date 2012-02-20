@@ -42,18 +42,18 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="RoutesActivity">
+        <activity android:name=".activities.RoutesActivity">
         </activity>
         
         <activity
-			android:name="RouteActivity"
+			android:name=".activities.RouteActivity"
 		/>
         
         <activity 
-            android:name="TeamsActivity" />
+            android:name=".activities.TeamsActivity" />
         
         <activity
-			android:name="TeamActivity" />
+			android:name=".activities.TeamActivity" />
         
         <activity
 			android:name=".activities.WeerActivity" />

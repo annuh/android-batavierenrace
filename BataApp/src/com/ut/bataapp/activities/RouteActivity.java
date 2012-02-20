@@ -1,4 +1,4 @@
-package com.ut.bataapp;
+package com.ut.bataapp.activities;
 
 import android.app.Activity;
 import android.content.Intent;

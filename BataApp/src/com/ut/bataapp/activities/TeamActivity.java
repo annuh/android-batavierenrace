@@ -1,4 +1,4 @@
-package com.ut.bataapp;
+package com.ut.bataapp.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,15 +13,15 @@ import android.view.ViewGroup;
 
 import com.actionbarsherlock.R;
 import com.ut.bataapp.fragments.RouteFragment;
+import com.ut.bataapp.fragments.TeamFragment;
+import com.ut.bataapp.MainActivity.OverridePendingTransition;
+
 
 public class TeamActivity extends FragmentActivity {
-	private static int THEME = R.style.Theme_BataApp;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        setTheme(THEME);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             // If the screen is now in landscape mode, we can show the
@@ -32,7 +32,7 @@ public class TeamActivity extends FragmentActivity {
 
         if (savedInstanceState == null) {
             // During initial setup, plug in the details fragment.
-        	RouteFragment details = new RouteFragment();
+        	TeamFragment details = new TeamFragment();
             details.setArguments(getIntent().getExtras());
             
             getSupportFragmentManager()
@@ -41,15 +41,13 @@ public class TeamActivity extends FragmentActivity {
             	.commit();
         }
         
-      //  setContentView(R.layout.route_fragment);
-        
     }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Intent intent = new Intent(this, RoutesActivity.class);
+				Intent intent = new Intent(this, TeamsActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
 				
@@ -64,9 +62,5 @@ public class TeamActivity extends FragmentActivity {
 
 
 	
-    private static final class OverridePendingTransition {
-        static void invoke(Activity activity) {
-            activity.overridePendingTransition(0, 0);
-        }
-    }
+
 }

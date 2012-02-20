@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.actionbarsherlock.R;
-import com.ut.bataapp.RouteActivity;
 import com.ut.bataapp.RouteArrayAdapter;
+import com.ut.bataapp.activities.RouteActivity;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
 

@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.Menu;
 import android.support.v4.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,23 +34,11 @@ public class WeerActivity extends FragmentActivity {
 	   setTheme(THEME);
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.weer_styles);
-	   URL myFileUrl = null;
-	   ImageView imageView =  (ImageView) findViewById(R.id.buienradar);
-	   try {
-	       myFileUrl= new URL("http://mijn.buienradar.nl/lokalebuienradar.aspx?voor=1&lat=51.9646995&x=1&y=1&lng=6.2937736&overname=2&zoom=8&naam=doetinchem&size=2&map=1");
-	  } catch (MalformedURLException e) {
-	       // TODO Auto-generated catch block
-	       e.printStackTrace();
-	  }
-	  try {
-		  Bitmap bmImg = BitmapFactory.decodeStream(myFileUrl.openConnection().getInputStream());
-		  imageView.setImageBitmap(bmImg);
-	  } catch (IOException e) {
-	       // TODO Auto-generated catch block
-	       e.printStackTrace();
-	  }
+	   WebView engine = (WebView) findViewById(R.id.weer_pagina);  
+	   engine.loadUrl("http://mijn.buienradar.nl/lokalebuienradar.aspx?voor=1&lat=51.9646995&x=1&y=1&lng=6.2937736&overname=2&zoom=8&naam=doetinchem&size=2&map=1");  
 	     
        //http://mijn.buienradar.nl/lokalebuienradar.aspx?voor=1&lat=51.9646995&x=1&y=1&lng=6.2937736&overname=2&zoom=8&naam=doetinchem&size=2&map=1
+	   //http://www.weeronline.nl/Go/ExternalWidgetsNew/RainWidgetContent?gid=4057346&sizeType=1&defaultSettings=False
 
    }
    
