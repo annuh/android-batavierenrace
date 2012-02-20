@@ -12,8 +12,28 @@
 	    <TextView
 	        android:id="@+id/label_info"
 	        android:text = "@string/etappe_informatie"
-	        style="@style/h1"
-	        />
+	        style="@style/h1" />
+	    
+    	<TableLayout
+    	    android:id="@+id/table_team_uitslag"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content" >
+		   <TableRow
+				android:layout_width="match_parent"
+		    	android:layout_height="wrap_content">
+		       <TextView
+					android:layout_width="50dip"
+		    		android:layout_height="wrap_content"
+		    		android:text="#" >
+		       </TextView>
+		       <TextView
+					android:layout_width="match_parent"
+		    		android:layout_height="wrap_content"
+		    		android:text="Tijd" >
+		       </TextView>
+		   </TableRow>
+		</TableLayout>
+	    
 	    
 	   
 	</LinearLayout>

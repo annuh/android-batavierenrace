@@ -1,10 +1,15 @@
 package com.ut.bataapp.fragments;
 
 //import com.actionbarsherlock.sample.shakespeare.Shakespeare;
+import java.util.ArrayList;
+
 import com.ut.bataapp.R;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
+import com.ut.bataapp.objects.Team;
+import com.ut.bataapp.objects.Uitslag;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,11 +23,17 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TeamFragment extends Fragment {
+	
+	private final int MENU_FOLLOW = Menu.FIRST;
     /**
      * Create a new instance of DetailsFragment, initialized to
      * show the text at 'index'.
@@ -51,57 +62,56 @@ public class TeamFragment extends Fragment {
             // the view hierarchy; it would just never be used.
             return null;
         }
-
+    	
+    	Uitslag uitslag1 = new Uitslag(null, new Etappe(1, 0, 'M', new String(""), new String("")), new String("0:12:12"));
+    	Uitslag uitslag2 = new Uitslag(null, new Etappe(2, 0, 'M', new String(""), new String("")), new String("0:12:23"));
+    	ArrayList<Uitslag> uitslagen = new ArrayList<Uitslag>();
+    	uitslagen.add(uitslag1);
+    	uitslagen.add(uitslag2);
+    	
     	int id = getArguments().getInt("index", 0) + 1;
-    	Etappe etappe = api.getEtappesByID(id);
-    	View view = inflater.inflate(R.layout.route_fragment, container, false);
-    	TextView routeafstand = (TextView) view.findViewById(R.id.text_routeafstand);
-    	routeafstand.setText(Integer.toString(etappe.getAfstand()));
     	
-    	TextView routegeslacht = (TextView) view.findViewById(R.id.text_routegeslacht);
-    	String geslacht = (etappe.getGeslacht() == 'M') ? "Man" : "Vrouw"; 	
     	
-    	routegeslacht.setText(geslacht);
+    	View view = inflater.inflate(R.layout.team_fragment, container, false);
+    	TableLayout table = (TableLayout)view.findViewById(R.id.table_team_uitslag);
+ 	    	for(Uitslag uitslag: uitslagen){
+	    		TableRow tr = new TableRow(this.getActivity());
+		    		TextView tv1 = new TextView(view.getContext());
+	    			tv1.setText(Integer.toString(uitslag.getEtappe().getId()));
+	    			tv1.setLayoutParams(new TableRow.LayoutParams(
+	                         50, LayoutParams.WRAP_CONTENT));
+	    			
+	    			TextView tv2 = new TextView(view.getContext());
+	    			tv2.setText(uitslag.getTijd());
+	    			tv2.setLayoutParams(new TableRow.LayoutParams(
+	                        LayoutParams.FILL_PARENT,
+	                        LayoutParams.WRAP_CONTENT));
+	    			tr.addView(tv1);
+	    			tr.addView(tv2);
+    			table.addView(tr, new TableLayout.LayoutParams(
+	    				LayoutParams.FILL_PARENT,
+	    				LayoutParams.WRAP_CONTENT));
+	    	}
     	return view;
-    	
     }
     
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {	
-    	SubMenu subMenu1 = menu.addSubMenu("Routes");
     	
-    	subMenu1.add(1,0,Menu.NONE,"Lopersroute");
-    	subMenu1.add(1,1,Menu.NONE,"Autoroute");
-    	subMenu1.add(1,2,Menu.NONE,"Overslagroute");
-    	
-    	MenuItem subMenu1Item = subMenu1.getItem();
-    	subMenu1Item.setIcon(R.drawable.icon_maps);
-    	subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    	menu.add(0,MENU_FOLLOW,Menu.NONE,"Volg dit team")
+    	.setIcon(R.drawable.ic_action_star)
+    	.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
     
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case 0:
-			Intent mapLopersroute = new Intent(Intent.ACTION_VIEW); 
-			Uri uri0 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
-			mapLopersroute.setData(uri0); 
-			startActivity(Intent.createChooser(mapLopersroute, "Sample"));
+			case MENU_FOLLOW:
+				Toast toast = Toast.makeText(this.getActivity(), "U volgt dit team nu.", Toast.LENGTH_SHORT);
+				toast.show();
 			break;
 		
-			case 1:
-			Intent mapAutoroute = new Intent(Intent.ACTION_VIEW); 
-			Uri uri1 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
-			mapAutoroute.setData(uri1); 
-			startActivity(Intent.createChooser(mapAutoroute, "Sample"));
-			break;
-		
-			case 2:
-				Intent mapOverslagroute = new Intent(Intent.ACTION_VIEW); 
-				Uri uri2 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
-				mapOverslagroute.setData(uri2); 
-				startActivity(Intent.createChooser(mapOverslagroute, "Sample"));
-				break;
+			
 		}
 		return false;
    }

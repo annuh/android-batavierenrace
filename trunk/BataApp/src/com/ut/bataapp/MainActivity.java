@@ -2,6 +2,7 @@ package com.ut.bataapp;
 
 import java.util.Calendar;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.R;
 import com.ut.bataapp.activities.PreferencesActivity;
+import com.ut.bataapp.activities.RoutesActivity;
+import com.ut.bataapp.activities.TeamsActivity;
 import com.ut.bataapp.activities.WeerActivity;
 
 
@@ -20,6 +23,7 @@ public class MainActivity extends FragmentActivity {
 	
 	private static int THEME = R.style.Theme_BataApp;
 	private final int MENU_SETTINGS = Menu.FIRST;
+	private final int MENU_MAIL = Menu.FIRST+1;
 	
    /** Called when the activity is first created. */
    @Override
@@ -69,10 +73,13 @@ public class MainActivity extends FragmentActivity {
    
    @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0,MENU_SETTINGS,Menu.NONE,"Settings")
-		    .setIcon(R.drawable.ic_action_edit)
+		menu.add(0,MENU_SETTINGS,Menu.NONE,"Instellingen")
+		    .setIcon(R.drawable.ic_action_settings)
 		    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		
+		menu.add(0,MENU_MAIL,Menu.NONE,"Berichten")
+	    .setIcon(R.drawable.ic_action_mail)
+	    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -89,5 +96,11 @@ public class MainActivity extends FragmentActivity {
 
    	}
    	return true;
+   }
+   
+   public static final class OverridePendingTransition {
+       public static void invoke(Activity activity) {
+           activity.overridePendingTransition(0, 0);
+       }
    }
 }

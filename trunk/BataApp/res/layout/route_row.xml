@@ -2,23 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content" >
-
+	
     <ImageView
         android:id="@+id/geslacht"
-        android:layout_width="32px"
-        android:layout_height="70px"
-        android:layout_marginLeft="4px"
-        android:layout_marginRight="10px"
-        android:layout_marginTop="4px"
-        android:src="@drawable/male" >
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/male"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:contentDescription="Geslacht" >
     </ImageView>
 
     <TextView
         android:id="@+id/etappe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@+id/label"
-        android:textSize="40dp" >
+        android:text="Etappe"
+        android:textSize="32dp"
+        android:layout_margin="5dp" >
+
     </TextView>
 
 </LinearLayout>
