@@ -19,7 +19,8 @@ public class Etappe {
 	 * @param record_tijd, snelste tijd
 	 * @param filename_hoogteverschil - Filename van afbeelding hoogteverschil
 	 */
-	public Etappe(int id, int afstand, char geslacht, String record_team, String record_tijd, String filename_hoogteverschil) {
+	public Etappe(int id, int afstand, char geslacht, String record_team, String record_tijd, String filename_hoogteverschil,
+			String url_routeKml, String url_autoKml, String url_overslagKml) {
 		this.id = id;
 		this.afstand = afstand;
 		this.geslacht = geslacht;

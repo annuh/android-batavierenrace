@@ -34,7 +34,7 @@ public class api {
 	 * @return
 	 */
 	public static Etappe getEtappesByID(int id) {
-		Etappe etappe = new Etappe(1, 2500, 'M', "Team-naam", "0:23:23", null);
+		Etappe etappe = new Etappe(1, 2500, 'M', "Team-naam", "0:23:23", null, "LOOPKML.kml","AUTOKML.kml","OVERSLAG.kml");
 		return etappe;
 	}
 	
@@ -120,6 +120,14 @@ public class api {
 	 */
 	public String getJaarkleur() {
 		return "#FFE13B";
+	}
+	
+	/**
+	 * Haal data van de volgende Bata op
+	 * @return dag/maand/jaar van volgende bata
+	 */
+	public String getDatum(){
+		return "28/04/2012";
 	}
 		
 }
