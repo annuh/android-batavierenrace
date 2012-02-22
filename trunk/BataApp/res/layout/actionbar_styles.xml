@@ -45,27 +45,21 @@
 	        style="@style/DashboardButton"
 	        android:drawableTop="@drawable/menu_contact"
 	        android:text="@string/dashboard_contact" />
-	    
 	</com.ut.bataapp.DashboardLayout>
 	<View
-android:background="#000"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-/>
+		android:background="#000"
+		android:layout_width="fill_parent"
+		android:layout_height="1dp" />
 	
 	<LinearLayout
 	    android:layout_width="match_parent"
     	android:layout_height="50dip"
-    	android:background="@drawable/batablauw"
-    	>
+    	android:background="@drawable/batablauw" >
 	    <TextView 
 	        android:id="@+id/dashboard_time"
 	        android:textSize="20dip"
 	        android:gravity="center_vertical|center_horizontal"
     		android:layout_width="match_parent"
-	        android:layout_height="match_parent" 
-	        android:text="Het duurt nog heeel lang"
-	        />
+	        android:layout_height="match_parent" />
 	</LinearLayout>
-	    
 </LinearLayout>

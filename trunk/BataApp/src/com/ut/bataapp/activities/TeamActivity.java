@@ -60,7 +60,4 @@ public class TeamActivity extends FragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-
-	
-
 }

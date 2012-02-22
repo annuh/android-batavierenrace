@@ -15,13 +15,10 @@ import com.actionbarsherlock.R;
 import com.ut.bataapp.fragments.RouteFragment;
 
 public class RouteActivity extends FragmentActivity {
-	private static int THEME = R.style.Theme_BataApp;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        setTheme(THEME);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             // If the screen is now in landscape mode, we can show the
@@ -40,9 +37,6 @@ public class RouteActivity extends FragmentActivity {
             	.add(android.R.id.content, details)
             	.commit();
         }
-        
-      //  setContentView(R.layout.route_fragment);
-        
     }
 
 	@Override

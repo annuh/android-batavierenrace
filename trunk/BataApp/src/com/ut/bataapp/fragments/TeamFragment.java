@@ -63,8 +63,8 @@ public class TeamFragment extends Fragment {
             return null;
         }
     	
-    	Uitslag uitslag1 = new Uitslag(null, new Etappe(1, 0, 'M', new String(""), new String("")), new String("0:12:12"));
-    	Uitslag uitslag2 = new Uitslag(null, new Etappe(2, 0, 'M', new String(""), new String("")), new String("0:12:23"));
+    	Uitslag uitslag1 = new Uitslag(new Team(1,1,"Bla"), new Etappe(1,'M'), "0:12:12", "");
+    	Uitslag uitslag2 = new Uitslag(new Team(1,1,"Bla"), new Etappe(1,'M'), "0:12:12", "");
     	ArrayList<Uitslag> uitslagen = new ArrayList<Uitslag>();
     	uitslagen.add(uitslag1);
     	uitslagen.add(uitslag2);

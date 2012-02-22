@@ -1,24 +1,53 @@
 package com.ut.bataapp.objects;
 
+import java.util.ArrayList;
+
 public class Team {
-	private int id;
+	private int startnummer;
+	private int startgroep;
 	private String naam;
-	private Object klassement;
+	private ArrayList<Uitslag> looptijden;
 	
-	public Team(int id, String naam) {
-		this.id = id;
+	/**
+	 * Kleine constructor
+	 * @param teamid - ID van dit team
+	 * @param naam - Naam van dit team
+	 */
+	public Team(int startnummer, int startgroep, String naam) {
+		this.startnummer = startnummer;
+		this.startgroep = startgroep;
 		this.naam = naam;
 	}
 	
-	public int getId(){
-		return id;
+	/**
+	 * 
+	 * @return ID van dit team
+	 */
+	public int getStartnummer(){
+		return startnummer;
 	}
 	
+	/**
+	 * 
+	 * @return Startgroep van deze groep
+	 */
+	public int getStartGroep(){
+		return startgroep;
+	}
+	
+	/**
+	 * Naam van dit team
+	 * @return
+	 */
 	public String getNaam() {
 		return naam;
 	}
 	
-	public Object getKlassement() {
-		return klassement;
+	public void addLooptijd(Uitslag looptijd) {
+		looptijden.add(looptijd);
+	}
+	
+	public ArrayList<Uitslag> getLooptijden(){
+		return looptijden;
 	}
 }

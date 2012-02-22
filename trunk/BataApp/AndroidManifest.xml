@@ -1,18 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 
 <!-- Declare the contents of this Android application.  The namespace
      attribute brings in the Android platform namespace, and the package
@@ -21,15 +7,15 @@
      to come from a domain that you own or have control over. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ut.bataapp"
-    android:versionCode="55"
-    android:versionName="3.5.1">
+    android:versionCode="1"
+    android:versionName="0.1">
 
     <uses-library android:name="com.google.android.maps" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
 
-    <application android:label="@string/activity_sample_code"
+    <application android:label="@string/app_titel"
             android:icon="@drawable/icon"
             android:hardwareAccelerated="true"
             android:theme="@style/Theme.BataApp"
@@ -54,13 +40,14 @@
         
         <activity
 			android:name=".activities.TeamActivity" />
+        <activity
+			android:name=".activities.KlassementenActivity"	/>
         
         <activity
 			android:name=".activities.WeerActivity" />
         
         <activity
-			android:name=".activities.PreferencesActivity"
-		/>
+			android:name=".activities.PreferencesActivity" />
 
 
         <!-- android:stopWithTask="true" /> THIS WAS PART OF THE SUPPORT DEMOS? -->
