@@ -7,14 +7,24 @@ import java.util.Map;
 
 public class Klassement {
 	
+	int id;
 	String naam;
 	HashMap<Integer, Team> uitslag;
 	
-	public Klassement(String naam, HashMap<Integer, Team> uitslag) {
+	/**
+	 * @param id - ID van dit klassement
+	 * @param naam - Naam dit klassement
+	 * @param uitslag - Uitslag van dit klassement
+	 */
+	public Klassement(int id, String naam, HashMap<Integer, Team> uitslag) {
+		this.id = id;
 		this.naam = naam;
 		this.uitslag = uitslag;
 	}
 	
+	/**
+	 * @return Naam van dit klassement
+	 */
 	public String getNaam() {
 		return naam;
 	}
@@ -35,6 +45,16 @@ public class Klassement {
 		    	return key;
 		}
 		return -1;
+	}
+	
+	/**
+	 * Voegt team toe aan dit klassement
+	 * @ensures team.getKlassement() == this
+	 * @param team
+	 * @param plaats
+	 */
+	public void addTeam(Team team, int plaats){
+		uitslag.put(plaats, team);
 	}
 	
 

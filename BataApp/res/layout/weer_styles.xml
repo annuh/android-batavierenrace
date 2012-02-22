@@ -10,10 +10,9 @@
         android:id="@+id/weer_titel"
 		style="@style/h1"
    		android:layout_width="match_parent"
-        android:layout_height="match_parent" 
-        android:text="Weer"
-        />
-    <WebView android:id="@+id/weer_pagina"  
+        android:layout_height="wrap_content" 
+        android:text="Weer" />
+    <ImageView android:id="@+id/weer_buienradar"  
              android:layout_width="fill_parent"  
              android:layout_height="fill_parent"  
             />

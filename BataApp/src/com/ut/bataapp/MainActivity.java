@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.R;
+import com.ut.bataapp.activities.KlassementenActivity;
 import com.ut.bataapp.activities.PreferencesActivity;
 import com.ut.bataapp.activities.RoutesActivity;
 import com.ut.bataapp.activities.TeamsActivity;
@@ -48,6 +49,16 @@ public class MainActivity extends FragmentActivity {
            public void onClick(View view) {
                // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), TeamsActivity.class);
+               startActivity(i);
+           }
+       });
+	   
+	   Button btn_klassement = (Button) findViewById(R.id.dashboard_klassement);
+	   btn_klassement.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               // Launching News Feed Screen
+               Intent i = new Intent(getApplicationContext(), KlassementenActivity.class);
                startActivity(i);
            }
        });

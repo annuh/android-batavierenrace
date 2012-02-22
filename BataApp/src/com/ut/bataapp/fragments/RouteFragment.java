@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -58,6 +59,9 @@ public class RouteFragment extends Fragment {
     	TextView routeafstand = (TextView) view.findViewById(R.id.text_routeafstand);
     	routeafstand.setText(Integer.toString(etappe.getAfstand()));
     	
+    	ImageView hoogte = (ImageView) view.findViewById(R.id.image_hoogteverschil);
+    	
+    	
     	TextView routegeslacht = (TextView) view.findViewById(R.id.text_routegeslacht);
     	String geslacht = (etappe.getGeslacht() == 'M') ? "Man" : "Vrouw"; 	
     	
@@ -84,21 +88,21 @@ public class RouteFragment extends Fragment {
 		switch (item.getItemId()) {
 			case 0:
 			Intent mapLopersroute = new Intent(Intent.ACTION_VIEW); 
-			Uri uri0 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
+			Uri uri0 = Uri.parse("geo:0,0?q=http://maps.google.com/maps?f=d&source=s_d&saddr=51.81998,+5.86776&daddr=51.8295,+5.9416&geocode=Fcy1FgMd8IhZAA%3BFfzaFgMdYKlaAA&aq=&sll=51.83294,5.898995&sspn=0.043758,0.111494&vpsrc=0&hl=nl&mra=ls&ie=UTF8&ll=51.832967,5.898886&spn=0.043758,0.111494&t=h&z=14&dirflg=d"); 
 			mapLopersroute.setData(uri0); 
 			startActivity(Intent.createChooser(mapLopersroute, "Sample"));
 			break;
 		
 			case 1:
 			Intent mapAutoroute = new Intent(Intent.ACTION_VIEW); 
-			Uri uri1 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
+			Uri uri1 = Uri.parse("geo:0,0?q=http://maps.google.com/maps?f=d&source=s_d&saddr=51.81998,+5.86776&daddr=51.8295,+5.9416&geocode=Fcy1FgMd8IhZAA%3BFfzaFgMdYKlaAA&aq=&sll=51.83294,5.898995&sspn=0.043758,0.111494&vpsrc=0&hl=nl&mra=ls&ie=UTF8&ll=51.832967,5.898886&spn=0.043758,0.111494&t=h&z=14&dirflg=d"); 
 			mapAutoroute.setData(uri1); 
 			startActivity(Intent.createChooser(mapAutoroute, "Sample"));
 			break;
 		
 			case 2:
 				Intent mapOverslagroute = new Intent(Intent.ACTION_VIEW); 
-				Uri uri2 = Uri.parse("geo:0,0?q=http://code.google.com/apis/kml/documentation/KML_Samples.kml"); 
+				Uri uri2 = Uri.parse("geo:0,0?q=http://maps.google.com/maps?f=d&source=s_d&saddr=51.81998,+5.86776&daddr=51.8295,+5.9416&geocode=Fcy1FgMd8IhZAA%3BFfzaFgMdYKlaAA&aq=&sll=51.83294,5.898995&sspn=0.043758,0.111494&vpsrc=0&hl=nl&mra=ls&ie=UTF8&ll=51.832967,5.898886&spn=0.043758,0.111494&t=h&z=14&dirflg=d"); 
 				mapOverslagroute.setData(uri2); 
 				startActivity(Intent.createChooser(mapOverslagroute, "Sample"));
 				break;

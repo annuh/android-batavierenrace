@@ -15,10 +15,10 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="activity_sample_code">Batavierenrace</string>
+    <string name="app_titel">Batavierenrace</string>
 
     <string name="alert_dialog_ok">OK</string>
-    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="alert_dialog_cancel">Annuleren</string>
     
     <string name="dashboard_routes">Routes</string>
     <string name="dashboard_teams">Teams</string>
