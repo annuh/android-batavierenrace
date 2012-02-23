@@ -3,10 +3,10 @@ package com.ut.bataapp.objects;
 import java.util.ArrayList;
 
 public class Team {
-	private int startnummer;
-	private int startgroep;
-	private String naam;
-	private ArrayList<Uitslag> looptijden;
+	private int startnummer = 0;
+	private int startgroep = 0;
+	private String naam = "";
+	private ArrayList<Uitslag> looptijden = new ArrayList<Uitslag>();
 	
 	/**
 	 * Kleine constructor

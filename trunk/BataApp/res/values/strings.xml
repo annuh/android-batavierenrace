@@ -35,6 +35,11 @@
     <string name="etappe_recordtijd_team">Teamnaam:</string>
     <string name="etappe_recordtijd_tijd">Tijd:</string>
     
+    <string name="team_informatie">Informatie:</string>
+    <string name="team_looptijden">Tijd:</string>
+    <string name="team_startnummer">Startnummer:</string>
+    <string name="team_startgroep">Startgroep:</string>
+    
     <string name="informatie_titel">Informatie</string>
     <string name="informatie_eten_drinken_tijdens_de_race"></string>
 	<string name="informatie_eten_drinken_tijdens_de_race_text">
