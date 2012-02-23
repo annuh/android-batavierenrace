@@ -13,19 +13,19 @@
 	    <Button
 	        android:id="@+id/dashboard_etappes"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@layout/button_etappes"
+	        android:drawableTop="@drawable/menu_etappes"
 	        android:text="@string/dashboard_routes" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_teams"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@layout/button_teams"
+	        android:drawableTop="@drawable/menu_teams"
 	        android:text="@string/dashboard_teams" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_klassement"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@layout/button_klassement"
+	        android:drawableTop="@drawable/menu_klassement"
 	        android:text="@string/dashboard_klassement" />
 	    
 	    <Button

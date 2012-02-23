@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.R;
+import com.ut.bataapp.activities.InformatieActivity;
 import com.ut.bataapp.activities.KlassementenActivity;
 import com.ut.bataapp.activities.PreferencesActivity;
 import com.ut.bataapp.activities.RoutesActivity;
@@ -69,6 +70,16 @@ public class MainActivity extends FragmentActivity {
            public void onClick(View view) {
                // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), WeerActivity.class);
+               startActivity(i);
+           }
+       });
+	   
+	   Button btn_informatie = (Button) findViewById(R.id.dashboard_informatie);
+	   btn_informatie.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               // Launching News Feed Screen
+               Intent i = new Intent(getApplicationContext(), InformatieActivity.class);
                startActivity(i);
            }
        });

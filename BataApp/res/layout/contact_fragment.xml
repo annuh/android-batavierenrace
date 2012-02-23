@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:padding="5dip" >
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	
+	    <TextView
+	        android:id="@+id/label_info"
+	        android:text = "Noodgevallen"
+	        style="@style/h1" />
+   
+	    <TextView
+	        android:id="@+id/label_hoogteverschil"
+	        android:text = "In geval van noodgevallen:"
+		 	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	        />
+      <View
+        style="@style/container"></View>
+      
+      <TextView
+	        android:id="@+id/titel_adresgegevens"
+	        android:text = "Adresgegevens"
+	        style="@style/h1" />
+   
+	    <TextView
+	        android:id="@+id/adresgegevens"
+	        android:text = "Adresgegevens:"
+		 	android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	        />
+      <View
+        style="@style/container"></View>
+	   
+	</LinearLayout>
+</ScrollView>

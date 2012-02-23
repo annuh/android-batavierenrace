@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <PreferenceCategory android:title="Instellingen">
-        <EditTextPreference android:title="Naam" android:summary="Vul uw naam in" android:key="naam"/>
-        
+        <EditTextPreference
+            android:title="Naam"
+            android:summary="Vul uw naam in" 
+            android:key="naam" />
+         <ListPreference
+             android:title="Update frequentie"
+			android:summary="Selecteer hoevaak nieuwe gegevens moeten worden opgehaald"
+			android:key="updatefrequentie"
+			android:defaultValue="5"
+			android:entries="@array/listArray"
+			android:entryValues="@array/listValues" />
+
     </PreferenceCategory>
     
 

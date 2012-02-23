@@ -11,5 +11,6 @@ public class PreferencesActivity extends PreferenceActivity {
 		setTheme(R.style.ThemeHolo);
 	    super.onCreate(savedInstanceState);
 	    addPreferencesFromResource(R.xml.preferences);
+	    setContentView(R.layout.preferences_styles);
 	}
 }

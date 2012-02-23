@@ -71,8 +71,17 @@ public class TeamFragment extends Fragment {
     	
     	int id = getArguments().getInt("index", 0) + 1;
     	
+    	Team team = api.getTeamByID(id);
     	
     	View view = inflater.inflate(R.layout.team_fragment, container, false);
+    	TextView label_info = (TextView)  view.findViewById(R.id.label_info);
+    	label_info.setText(team.getNaam());
+    	    
+    	TextView team_startnummer = (TextView)  view.findViewById(R.id.team_startnummer);
+    	team_startnummer.setText(Integer.toString(team.getStartnummer()));
+    	TextView team_startgroep = (TextView) view.findViewById(R.id.team_startgroep);
+    	team_startgroep.setText(Integer.toString(team.getStartGroep()));
+    	
     	TableLayout table = (TableLayout)view.findViewById(R.id.table_team_uitslag);
  	    	for(Uitslag uitslag: uitslagen){
 	    		TableRow tr = new TableRow(this.getActivity());

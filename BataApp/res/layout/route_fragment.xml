@@ -3,105 +3,96 @@
     android:id="@+id/scroller"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="true" >
+    android:fillViewport="true" 
+    android:padding="5dip" >
 	<LinearLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >
+	    android:orientation="vertical" >"
 	
 	    <TextView
 	        android:id="@+id/label_info"
 	        android:text = "@string/etappe_informatie"
-	        style="@style/h1"
-	        />
+	        style="@style/h1" />
 	    
 	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:stretchColumns="1">
+		    style="@style/table" >"
 		    <TableRow>
 		        <TextView
 		            android:id="@+id/label_routeafstand"
 		            android:text = "@string/etappe_informatie_afstand"
-		            android:padding="3dip"
-		            android:layout_width="match_parent"
-	        		android:layout_height="wrap_content" />
+		            style="@style/table_left" />
 		        <TextView
 		            android:id="@+id/text_routeafstand"
-		            android:gravity="right"
-		            android:padding="3dip"
-		            android:layout_width="match_parent"
-	       			android:layout_height="wrap_content" />
+		            style="@style/table_right" />
 		    </TableRow>
 		
 		    <TableRow>
 		        <TextView
 		            android:id="@+id/label_routegeslacht"
 		            android:text = "@string/etappe_informatie_geslacht"
-		            android:padding="3dip"
-		            android:layout_width="match_parent"
-	       			android:layout_height="wrap_content" />
+		            style="@style/table_left" />
 		        <TextView
 		            android:id="@+id/text_routegeslacht"
-		            android:gravity="right"
-		            android:padding="3dip"
-		            android:layout_width="match_parent"
-	        		android:layout_height="wrap_content" />
+		            style="@style/table_right" />
 		    </TableRow>
 		</TableLayout>
+	    
+	    <View
+	        style="@style/container"></View>
 	    
 	    <TextView
 	        android:id="@+id/label_hoogteverschil"
 	        android:text = "@string/etappe_hoogteverschil"
 		 	style="@style/h1"
 	        />
-	    <ImageView 
+	    <LinearLayout
+	        android:background="@drawable/container_background"
+	        android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="1dp" >		
+	      	 <ImageView 
 			android:id="@+id/image_hoogteverschil"
 			android:src="@drawable/grafiek"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-		/>
+				/>
+	     </LinearLayout>
+	    
+	    
+	    <View
+	        style="@style/container"></View>
+	    
 	    <TextView
 	        android:id="@+id/label_recordtijd"
 	        android:text = "@string/etappe_recordtijd"
 	        style="@style/h1"
 	        />
 	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:stretchColumns="1">
+		    style="@style/table" >
 		    <TableRow>
 			    <TextView
 			        android:id="@+id/label_recordtijd_team"
 			        android:text = "@string/etappe_recordtijd_team"
-				     android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-			        />
+				    style="@style/table_left" />
+			       
 			    <TextView
 			        android:id="@+id/text_recordtijd_team"
-			        android:text = "Bla"
-				     android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:gravity="right"
-			        />
+				    style="@style/table_right" />
 			</TableRow>
 		
 		    <TableRow>
 			    <TextView
 			        android:id="@+id/label_recordtijd_tijd"
 			        android:text = "@string/etappe_recordtijd_tijd"
-			        
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-			        />
+			        style="@style/table_left" />
 			     <TextView
 			        android:id="@+id/text_recordtijd_tijd"
-			        android:text = "0:23:24"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:gravity="right"
-			        />
+			        style="@style/table_right" />
 			</TableRow>
 		</TableLayout>
+		
+		<View
+	        style="@style/container"></View>
 	</LinearLayout>
 </ScrollView>

@@ -3,21 +3,58 @@
     android:id="@+id/scroller"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="true" >
+    android:fillViewport="true" 
+    android:padding="5dip">
 	<LinearLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
-	
+
 	    <TextView
 	        android:id="@+id/label_info"
-	        android:text = "@string/etappe_informatie"
+	        android:text = "@string/team_informatie"
+	        style="@style/h1" />
+	    
+	    <TableLayout
+    	    android:id="@+id/table_team_info"
+		    style="@style/table" >
+		   <TableRow
+				android:layout_width="match_parent"
+		    	android:layout_height="wrap_content">
+		       <TextView
+		    		android:text="@string/team_startnummer"
+		    		style="@style/table_left" />		       
+		       <TextView
+		    		android:id="@+id/team_startnummer"
+		    		style="@style/table_right" />
+		   </TableRow>
+		   
+		   <TableRow
+				android:layout_width="match_parent"
+		    	android:layout_height="wrap_content" >
+		       <TextView
+					android:text="@string/team_startgroep"
+					style="@style/table_left" />		       
+		       <TextView
+		           android:id="@+id/team_startgroep"
+		    		style="@style/table_right" />
+		   </TableRow>
+
+		</TableLayout>
+
+	    <View
+	        style="@style/container"></View>
+	    
+		<TextView
+	        android:id="@+id/label_looptijden"
+	        android:text = "@string/team_looptijden"
 	        style="@style/h1" />
 	    
     	<TableLayout
     	    android:id="@+id/table_team_uitslag"
 		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content" >
+		    android:layout_height="wrap_content"
+		    android:background="@drawable/container_background" >
 		   <TableRow
 				android:layout_width="match_parent"
 		    	android:layout_height="wrap_content">
@@ -34,7 +71,8 @@
 		   </TableRow>
 		</TableLayout>
 	    
-	    
+	    <View
+	        style="@style/container"></View>
 	   
 	</LinearLayout>
 </ScrollView>

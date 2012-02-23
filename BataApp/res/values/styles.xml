@@ -30,20 +30,41 @@
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#ff29549f</item>
-        <item name="android:background">@drawable/ad_selectable_background</item>
+        <item name="android:background">@drawable/dashboard_item_background</item>
     </style>  
     
     <style name="h1">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">30dip</item>
-        <item name="android:background">#AAA</item>
+        <item name="android:textSize">24dip</item>
+        <item name="android:background">@drawable/titel</item>
         <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingBottom">1dip</item>
     </style>
+    
     <style name="info">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">#FFF</item>
+    </style>
+    
+     <style name="table">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:stretchColumns">1</item>
+        <item name="android:background">@drawable/container_background</item>
+        <item name="android:padding">10dip</item>
+    </style>
+
+    <style name="table_left">
+        <item name="android:paddingLeft">5dip</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="table_right">
+        <item name="android:paddingRight">5dip</item>
+        <item name="android:gravity">right</item>
     </style>
     
     <style name="table_team_uitslagen_head_left">
@@ -69,6 +90,22 @@
 		<item name="android:shadowDx">1</item>
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowColor">#000</item>
+    </style>
+    
+    <style name="container">
+        <item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">5dp</item>
+        <item name="android:background">@drawable/under</item>
+        <item name="android:layout_marginBottom">10dip</item>
+    </style>
+    
+    <style name="container1">
+        <item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/container</item>
+        <item name="android:layout_marginBottom">10dip</item>
+        <item name="android:padding">5dip</item>
+        <item name="android:layout_margin">10dip</item>
     </style>
 
     
