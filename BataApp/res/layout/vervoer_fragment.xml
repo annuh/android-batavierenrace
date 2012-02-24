@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:padding="5dip" >
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	
+	    <TextView
+	        android:id="@+id/label_info"
+	        android:text = "Van wisselpunt naar wisselpunt"
+	        style="@style/h1" />
+
+		<TextView
+			android:id="@+id/label_hoogteverschil"
+			android:background="@drawable/container_background"
+			android:text = "Loper en fietser\n\n
+Elke etappe wordt gelopen door een loper, die verrplicht wordt begeleid door een fietser van het team. De fietser is vaak ook een loper, die een andere etappe uit dat blok loopt. De loper en de fietser zijn beide verplicht om een hesje te dragen, respectievelijk het lopershesje en het fietsershesje. Om zoveel mogelijk drukte bij de wisselpunten te voorkomen, wordt aangeraden om gebruik te maken van de overslagroute. Dit betekent dat na een etappe de loper en de fietser wisselen en het busje dit wisselpunt over kan slaan. Bij het volgende wisselpunt worden de loper en fietser vervangen door mensen uit het personenbusje. Hierdoor heeft het personenbusje meer tijd om, via de overslagroute, van wisselpunt naar wisselpunt te rijden en wordt het risico om te laat op een wisselpunt te komen beperkt.
+\nPersonenbusje\n\n
+In het personenbusje worden de verschillende ploegen (nachtploeg, ochtendploeg en middagploeg) vervoerd van wisselpunt naar wisselpunt. Om je te verplaatsen van wisselpunt naar wisselpunt wordt aangeraden om een busje voor 9 personen te huren. Hierdoor hoeft een team maar één enkel busje te huren, dit is uit duurzame overwegingen gewenst. Deelnemers zijn verplicht om de autoroute of de overslagroute te volgen. De route is opgenomen in het deelnemersboekje, wat de ploegleider zal ontvangen. Het team is zelf verantwoordelijk voor het huren van een busje."
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+	   
+      <View
+        style="@style/container"></View>
+      
+	<TextView
+        android:id="@+id/titel_adresgegevens"
+        android:text = "Van en naar de herstarts"
+        style="@style/h1" />
+		
+     <TextView
+		android:id="@+id/adresgegevens"
+		android:background="@drawable/container_background"
+		android:text = "Voor het vervoer van en naar de herstarts zijn er voor de deelnemers bussen geregeld. Deze rijden van Enschede en Nijmegen naar Ulft en Barchem en van deze herstarts terug naar Enschede. Door gebruik te maken van de bussen worden de autoroute en de wisselpunten ontlast en het scheelt voor de deelnemer in de kosten. De organisatiecommissie raadt het ten zeerste aan hier gebruik van te maken! 
+Om van de bussen gebruik te kunnen maken, heb je bonnen nodig. De ploegleider is verantwoordelijk voor het bestellen van bonnen."
+					android:layout_width="match_parent"
+			    	android:layout_height="wrap_content" />
+	    	
+	   
+      <View
+        style="@style/container"></View>
+	   
+	</LinearLayout>
+</ScrollView>

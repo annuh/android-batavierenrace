@@ -66,11 +66,16 @@ public class RouteFragment extends Fragment {
     	
     	ImageView hoogte = (ImageView) view.findViewById(R.id.image_hoogteverschil);
     	
-    	
     	TextView routegeslacht = (TextView) view.findViewById(R.id.text_routegeslacht);
     	String geslacht = (etappe.getGeslacht() == 'M') ? "Man" : "Vrouw"; 	
-    	
     	routegeslacht.setText(geslacht);
+    	
+    	TextView recordtijd_team = (TextView) view.findViewById(R.id.recordtijd_team);
+    	recordtijd_team.setText(etappe.getRecordTeam());
+    	
+    	TextView recordtijd_tijd = (TextView) view.findViewById(R.id.recordtijd_tijd);
+    	recordtijd_tijd.setText(etappe.getRecordTijd());
+    	
     	return view;
     	
     }

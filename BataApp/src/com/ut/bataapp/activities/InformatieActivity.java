@@ -18,10 +18,15 @@ package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
 
+import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.R;
+import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.fragments.ContactFragment;
+import com.ut.bataapp.fragments.VervoerFragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBar;
 import android.support.v4.app.ActionBar.Tab;
@@ -30,6 +35,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItem;
 import android.support.v4.view.ViewPager;
 
 public class InformatieActivity extends FragmentActivity {
@@ -40,9 +46,9 @@ public class InformatieActivity extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.informatie_styles);
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         
         ActionBar.Tab tab1 = getSupportActionBar().newTab().setText("Contact");
         ActionBar.Tab tab2 = getSupportActionBar().newTab().setText("Vervoer");
@@ -52,13 +58,30 @@ public class InformatieActivity extends FragmentActivity {
         mTabsAdapter = new TabsAdapter(this, getSupportActionBar(), mViewPager);
         
         mTabsAdapter.addTab(tab1, ContactFragment.class);
-        mTabsAdapter.addTab(tab2, ContactFragment.class);
+        mTabsAdapter.addTab(tab2, VervoerFragment.class);
         mTabsAdapter.addTab(tab3, ContactFragment.class);
         
         if (savedInstanceState != null) {
         	getSupportActionBar().setSelectedNavigationItem(savedInstanceState.getInt("index"));
         }
     }
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Intent intent = new Intent(this, MainActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				
+				//Get rid of the slide-in animation, if possible
+	            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
+	                OverridePendingTransition.invoke(this);
+	            }
+		}
+		
+		return super.onOptionsItemSelected(item);
+	}
     
 
     /**

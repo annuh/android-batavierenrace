@@ -77,7 +77,7 @@
 				    style="@style/table_left" />
 			       
 			    <TextView
-			        android:id="@+id/text_recordtijd_team"
+			        android:id="@+id/recordtijd_team"
 				    style="@style/table_right" />
 			</TableRow>
 		
@@ -87,7 +87,7 @@
 			        android:text = "@string/etappe_recordtijd_tijd"
 			        style="@style/table_left" />
 			     <TextView
-			        android:id="@+id/text_recordtijd_tijd"
+			        android:id="@+id/recordtijd_tijd"
 			        style="@style/table_right" />
 			</TableRow>
 		</TableLayout>
