@@ -41,10 +41,10 @@
 	        android:text="@string/dashboard_informatie" />
 	    
 	    <Button
-	        android:id="@+id/dashboard_contact"
+	        android:id="@+id/dashboard_sponsor"
 	        style="@style/DashboardButton"
 	        android:drawableTop="@drawable/menu_contact"
-	        android:text="@string/dashboard_contact" />
+	        android:text="@string/dashboard_sponsor" />
 	</com.ut.bataapp.DashboardLayout>
 	<View
 		android:background="#000"

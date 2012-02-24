@@ -15,26 +15,55 @@
 	        android:text = "Noodgevallen"
 	        style="@style/h1" />
    
-	    <TextView
-	        android:id="@+id/label_hoogteverschil"
-	        android:text = "In geval van noodgevallen:"
-		 	android:layout_width="match_parent"
-	    	android:layout_height="wrap_content"
-	        />
+	    <LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="@drawable/container_background" >
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/icon_phone"
+				android:layout_margin="5dp" />
+
+			<TextView
+				android:id="@+id/label_hoogteverschil"
+				android:text = "112"
+				android:textSize="40dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" />
+		</LinearLayout>
+	   
       <View
         style="@style/container"></View>
       
-      <TextView
+		<TextView
 	        android:id="@+id/titel_adresgegevens"
 	        android:text = "Adresgegevens"
 	        style="@style/h1" />
-   
-	    <TextView
-	        android:id="@+id/adresgegevens"
-	        android:text = "Adresgegevens:"
-		 	android:layout_width="match_parent"
-	    	android:layout_height="wrap_content"
-	        />
+		<LinearLayout
+		    android:background="@drawable/container_background"
+		    android:orientation="vertical"
+		    android:layout_width="match_parent"
+			android:layout_height="wrap_content" >"
+		     <TextView
+				android:id="@+id/adresgegevens"
+				android:text = "Universitair Sportcentrum Nijmegen \n
+							Kamer N-1.260 \n
+							Heyendaalseweg 141 \n
+							6525 AJ Nijmegen \n"
+							android:layout_width="match_parent"
+					    	android:layout_height="wrap_content" />
+	    	    <TextView
+			        android:id="@+id/adresgegevens2"
+			        android:text = "Universiteit Twente \n
+									Bastille, kamer 334 \n
+									Drienerlolaan 5 \n
+									7522 NB Enschede \n"
+				 	android:layout_width="match_parent"
+			    	android:layout_height="wrap_content" />
+		</LinearLayout>
+	   
       <View
         style="@style/container"></View>
 	   
