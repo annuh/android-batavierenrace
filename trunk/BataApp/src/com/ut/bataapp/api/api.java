@@ -7,6 +7,7 @@ import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Uitslag;
+import com.ut.bataapp.parser.Parsing;
 
 public class api {
 	
@@ -14,9 +15,12 @@ public class api {
 	 * Haal van alle etappes basis informatie op.
 	 * @return 
 	 */
-	public static ArrayList<Etappe> getEtappes() {
-		ArrayList<Etappe> etappes = new ArrayList<Etappe>();
+	public ArrayList<Etappe> getEtappes() {
+
+		ArrayList<Etappe> etappes =new Parsing().parseEtappe();
+		/**
 		Etappe etappe1 = new Etappe(1, 'M');
+		
 		Etappe etappe2 = new Etappe(1, 'V');
 		Etappe etappe3 = new Etappe(1, 'M');
 		Etappe etappe4 = new Etappe(1, 'M');
@@ -24,7 +28,7 @@ public class api {
 		etappes.add(etappe2);
 		etappes.add(etappe3);
 		etappes.add(etappe4);
-		
+		*/
 		return etappes;
 	}
 	
