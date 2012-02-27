@@ -87,7 +87,7 @@ public class MainActivity extends FragmentActivity {
 	   // Aantal dagen
 	   Calendar nu = Calendar.getInstance();
 	   Calendar batadag = Calendar.getInstance();
-	   batadag.set(2012, 4, 28);
+	   batadag.set(2012, 4-1, 28);
 	   long dagenVerschil = (batadag.getTimeInMillis() - nu.getTimeInMillis())/ (24 * 60 * 60 * 1000);
 	   TextView viewDagen = (TextView) findViewById(R.id.dashboard_time);
 	   viewDagen.setText("Het duurt nog "+dagenVerschil+" dagen!");
