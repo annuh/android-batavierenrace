@@ -39,28 +39,22 @@ public class Etappe {
 	}
 	
 	
+	/*Setters*/
+	public void setAfstand(int afstand){ this.afstand = afstand;}
+	public void setGeslacht(char geslacht){ this.geslacht = geslacht;}
+	public void setRecordTeam(String recordTeam){ this.record_team = recordTeam;}
+	public void setRecordTijd(String recordTijd){ this.record_tijd = recordTijd;}
 	
-	public int getId(){
-		return id;
-	}
-
-	public int getAfstand(){
-		return afstand;
-	}
+	/*Getters*/
+	public int getId(){ return id;}
+	public int getAfstand(){ return afstand;}
+	public char getGeslacht(){ return geslacht;}
+	public String getRecordTeam(){ return record_team;}
+	public String getRecordTijd() { return record_tijd;}
+	public String getFilenameHoogteverschil(){ return filename_hoogteverschil;}
 	
-	public char getGeslacht(){
-		return geslacht;
-	}
-	
-	public String getRecordTeam(){
-		return record_team;
-	}
-	
-	public String getRecordTijd() {
-		return record_tijd;
-	}
-	
-	public String getFilenameHoogteverschil(){
-		return filename_hoogteverschil;
+	/*String formaat*/
+	public String toString(){
+		return "Etappe#: "+getId()+" afstand: "+getAfstand()+" geslacht: "+getGeslacht() +'\n';
 	}
 }
