@@ -4,6 +4,8 @@ package com.ut.bataapp.fragments;
 import java.util.ArrayList;
 
 import com.ut.bataapp.R;
+import com.ut.bataapp.activities.EtappeChartByTeam;
+import com.ut.bataapp.activities.RoutesActivity;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Team;
@@ -100,6 +102,15 @@ public class TeamFragment extends Fragment {
     			table.addView(tr, new TableLayout.LayoutParams(
 	    				LayoutParams.FILL_PARENT,
 	    				LayoutParams.WRAP_CONTENT));
+    			
+    			tr.setOnClickListener(new View.OnClickListener() {
+    		           @Override
+    		           public void onClick(View view) {
+    		        	   EtappeChartByTeam c = new EtappeChartByTeam();
+    		               //Intent i = new Intent(getActivity(), EtappeChartByTeam.class);
+    		               startActivity(c.execute(getActivity()));
+    		           }
+    		       });
 	    	}
     	return view;
     }
