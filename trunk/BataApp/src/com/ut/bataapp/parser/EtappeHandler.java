@@ -6,6 +6,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import com.ut.bataapp.objects.Etappe;
 
+//RECOMMIT AANPASSING VOOR BAS
 public class EtappeHandler extends DefaultHandler{
 
 	private boolean etappe;

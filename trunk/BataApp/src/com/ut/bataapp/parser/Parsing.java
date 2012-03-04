@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.ut.bataapp.objects.Etappe;
 
+//RECOMMIT AANPASSING VOOR BAS
 public class Parsing extends Activity{
 
 	ArrayList<Etappe> etappes = new ArrayList<Etappe>();
