@@ -41,9 +41,9 @@
         <activity
 			android:name=".activities.TeamActivity" />
         
-        <activity
-            android:name=".activities.EtappeChartByTeam" />
-         <activity android:name="org.achartengine.GraphicalActivity" />
+        <activity android:name=".activities.EtappeChartByTeam" />
+
+		<activity android:name="org.achartengine.GraphicalActivity" />
         
         <activity
 			android:name=".activities.KlassementenActivity"	/>

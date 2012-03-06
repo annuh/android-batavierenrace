@@ -31,7 +31,7 @@ public class RouteArrayAdapter extends ArrayAdapter<String> {
 		
 		// Change the icon
 		
-		if(values.get(position).getGeslacht() == 'M') {
+		if(values.get(position).getGeslacht() == 'H') {
 			
 			
 		} else {
