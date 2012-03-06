@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.EtappeChartByTeam;
+import com.ut.bataapp.activities.KlassementenActivity;
 import com.ut.bataapp.activities.RoutesActivity;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
@@ -87,6 +88,7 @@ public class TeamFragment extends Fragment {
     	TableLayout table = (TableLayout)view.findViewById(R.id.table_team_uitslag);
  	    	for(Uitslag uitslag: uitslagen){
 	    		TableRow tr = new TableRow(this.getActivity());
+	    		tr.setBackgroundResource(R.drawable.ad_selectable_background);
 		    		TextView tv1 = new TextView(view.getContext());
 	    			tv1.setText(Integer.toString(uitslag.getEtappe().getId()));
 	    			tv1.setLayoutParams(new TableRow.LayoutParams(
@@ -108,7 +110,9 @@ public class TeamFragment extends Fragment {
     		           public void onClick(View view) {
     		        	   EtappeChartByTeam c = new EtappeChartByTeam();
     		               //Intent i = new Intent(getActivity(), EtappeChartByTeam.class);
-    		               startActivity(c.execute(getActivity()));
+    		               //startActivity(c.execute(getActivity()));
+    		               Intent i = new Intent(getActivity(), EtappeChartByTeam.class);
+    		               startActivity(i);
     		           }
     		       });
 	    	}
@@ -129,9 +133,7 @@ public class TeamFragment extends Fragment {
 			case MENU_FOLLOW:
 				Toast toast = Toast.makeText(this.getActivity(), "U volgt dit team nu.", Toast.LENGTH_SHORT);
 				toast.show();
-			break;
-		
-			
+			break;		
 		}
 		return false;
    }

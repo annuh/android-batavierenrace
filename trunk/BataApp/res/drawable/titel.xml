@@ -13,7 +13,7 @@
     <gradient
       android:startColor="@color/jaarkleur"
       android:centerColor="@color/jaarkleur"
-      android:endColor="#FF000000"
+      android:endColor="#E66C2C00"
       android:angle="0" />
 
     <corners android:topLeftRadius="3dp" android:topRightRadius="3dp"/> 

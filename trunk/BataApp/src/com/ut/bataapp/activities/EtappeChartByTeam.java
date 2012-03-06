@@ -1,21 +1,19 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.chart.BarChart.Type;
 import org.achartengine.model.CategorySeries;
-import org.achartengine.model.TimeSeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
+import com.actionbarsherlock.R;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
 
@@ -23,29 +21,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 
-/**
- * Sales demo bar chart.
- */
-public class EtappeChartByTeam {
-  /**
-   * Returns the chart name.
-   * 
-   * @return the chart name
-   */
-  public String getName() {
-    return "Sales stacked bar chart";
-  }
+public class EtappeChartByTeam extends FragmentActivity {
 
-  /**
-   * Returns the chart description.
-   * 
-   * @return the chart description
-   */
-  public String getDesc() {
-    return "The monthly sales for the last 2 years (stacked bar chart)";
-  }
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.chartbyteam);
+		LinearLayout view = (LinearLayout) this.findViewById(R.id.chart);
+		view.addView(this.execute(getApplicationContext()));
+	}
 
   /**
    * Executes the chart demo.
@@ -53,7 +42,7 @@ public class EtappeChartByTeam {
    * @param context the context
    * @return the built intent
    */
-  public Intent execute(Context context) {
+  public View execute(Context context) {
     String[] titles = new String[] { "2008", "2007" };
     HashMap<Integer, Integer> tijden = api.getLooptijdenByEtappe(new Etappe(0, 'M'));
     Integer aantal = tijden.size();
@@ -67,10 +56,6 @@ public class EtappeChartByTeam {
         Double value = (double)entry.getValue();
         anderetijdenX[i] = key;
         anderetijdenY[i] = value;
-        
-       
-        Log.v("AnderetijdX", Double.toString(anderetijdenX[i]));
-        Log.v("AnderetijdY", Double.toString(anderetijdenY[i]));
         i++;
     }
 
@@ -103,7 +88,7 @@ public class EtappeChartByTeam {
     // renderer.setZoomEnabled(false);
     renderer.setZoomRate(1.1f);
     renderer.setBarSpacing(0.5f);
-    return ChartFactory.getBarChartIntent(context, buildBarDataset(titles, valuesX, valuesY), renderer,
+    return ChartFactory.getBarChartView(context, buildBarDataset(titles, valuesX, valuesY), renderer,
         Type.STACKED);
   }
   
@@ -139,18 +124,22 @@ public class EtappeChartByTeam {
 	  }
   
   protected void setChartSettings(XYMultipleSeriesRenderer renderer, String title, String xTitle,
-	      String yTitle, double xMin, double xMax, double yMin, double yMax, int axesColor,
-	      int labelsColor) {
-	    renderer.setChartTitle(title);
+		String yTitle, double xMin, double xMax, double yMin, double yMax, int axesColor,
+	    int labelsColor) {
+	  	renderer.setChartTitle(title);
 	    renderer.setXTitle(xTitle);
 	    renderer.setYTitle(yTitle);
 	    renderer.setXAxisMin(xMin);
 	    renderer.setXAxisMax(xMax);
 	    renderer.setYAxisMin(yMin);
 	    renderer.setYAxisMax(yMax);
-	    renderer.setAxesColor(axesColor);
-	    renderer.setLabelsColor(labelsColor);
-	    renderer.setBackgroundColor(Color.BLACK);
+	    renderer.setAxesColor(Color.BLACK);
+	    renderer.setLabelsColor(Color.BLACK);
+	    renderer.setBackgroundColor(Color.WHITE);
+	    renderer.setMarginsColor(Color.WHITE);
+	    renderer.setBarSpacing(0.5f);
+	    renderer.setPanEnabled(false);
+	    renderer.setInScroll(false);
 	  }
   
   protected XYMultipleSeriesDataset buildBarDataset(String[] titles, List<double[]> valuesX, List<double[]> valuesY) {
