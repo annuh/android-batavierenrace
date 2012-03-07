@@ -1,3 +1,10 @@
+/*
+ * Versie: v2
+ * Date: 07-03-12 15:57
+ * By: Jochem Elsinga
+ * Update: Changed getTeams() to get actual teams
+ */
+
 package com.ut.bataapp.api;
 
 import java.util.ArrayList;
@@ -16,19 +23,7 @@ public class api {
 	 * @return 
 	 */
 	public ArrayList<Etappe> getEtappes() {
-
 		ArrayList<Etappe> etappes =new Parsing().parseEtappe();
-		/**
-		Etappe etappe1 = new Etappe(1, 'M');
-		
-		Etappe etappe2 = new Etappe(1, 'V');
-		Etappe etappe3 = new Etappe(1, 'M');
-		Etappe etappe4 = new Etappe(1, 'M');
-		etappes.add(etappe1);
-		etappes.add(etappe2);
-		etappes.add(etappe3);
-		etappes.add(etappe4);
-		*/
 		return etappes;
 	}
 	
@@ -67,15 +62,7 @@ public class api {
 	 * Haal van elk team basis informatie op.
 	 */
 	public static ArrayList<Team> getTeams() {
-		Team team1 = new Team(1,1, "Blaat");
-		Team team2 = new Team(2,1, "INTER");
-		Team team3 = new Team(3,1, "Actief");
-		Team team4 = new Team(4,1, "Blaat2");
-		ArrayList<Team> teams = new ArrayList<Team>();
-		teams.add(team1);
-		teams.add(team2);
-		teams.add(team3);
-		teams.add(team4);
+		ArrayList<Team> teams = new Parsing().parseTeam();
 		return teams;
 	}
 	

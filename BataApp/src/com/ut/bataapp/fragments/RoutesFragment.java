@@ -27,7 +27,7 @@ public class RoutesFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
        api api = new api();
-        ArrayList<Etappe> values = api.getEtappes();
+        ArrayList<Etappe> values = new api().getEtappes();
         
         // Populate list with our static array of titles.
         setListAdapter(new RouteArrayAdapter(getActivity(), values));
