@@ -1,3 +1,13 @@
+/*
+ * Versie: v2
+ * Date: 07-03-12 15:07
+ * By: Jochem Elsinga
+ * Update: Added Setters
+ * Update: Organized Getters
+ * Update: Added toString()
+ * Update: Added lege constructor
+ */
+
 package com.ut.bataapp.objects;
 
 import java.util.ArrayList;
@@ -19,35 +29,23 @@ public class Team {
 		this.naam = naam;
 	}
 	
-	/**
-	 * 
-	 * @return ID van dit team
-	 */
-	public int getStartnummer(){
-		return startnummer;
-	}
+	/*lege constructor*/
+	public Team(){}
 	
-	/**
-	 * 
-	 * @return Startgroep van deze groep
-	 */
-	public int getStartGroep(){
-		return startgroep;
-	}
+	/*Setters*/
+	public void setStartnummer(int start){this.startnummer = start;}
+	public void setStartGroep(int groep){this.startgroep = groep;}
+	public void setNaam(String naam){this.naam = naam;}
+	public void addLooptijd(Uitslag looptijd) {looptijden.add(looptijd);}
 	
-	/**
-	 * Naam van dit team
-	 * @return
-	 */
-	public String getNaam() {
-		return naam;
-	}
+	/*Getters*/
+	public int getStartnummer(){return startnummer;}
+	public int getStartGroep(){return startgroep;}
+	public String getNaam() {return naam;}
+	public ArrayList<Uitslag> getLooptijden(){return looptijden;}
 	
-	public void addLooptijd(Uitslag looptijd) {
-		looptijden.add(looptijd);
-	}
-	
-	public ArrayList<Uitslag> getLooptijden(){
-		return looptijden;
+	/*String formaat*/
+	public String toString(){
+		return "Team#: "+getStartnummer()+" group#: "+getStartGroep()+" naam: "+getNaam()+'\n';
 	}
 }

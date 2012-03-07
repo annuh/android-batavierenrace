@@ -1,3 +1,12 @@
+/*
+ * Versie: v2
+ * Date: 07-03-12 15:15
+ * By: Jochem Elsinga
+ * Update: Added Setters
+ * Update: Organized Getters
+ * Update: Added toString()
+ */
+
 package com.ut.bataapp.objects;
 
 public class Uitslag {
@@ -20,19 +29,21 @@ public class Uitslag {
 		this.foutcode = foutcode;
 	}
 	
-	public Team getTeam(){
-		return team;
-	}
 	
-	public Etappe getEtappe(){
-		return etappe;
-	}
+	/*Setters*/
+	public void setTeam(Team team){this.team = team;}
+	public void setEtappe(Etappe etappe){this.etappe = etappe;}
+	public void setTijd(String tijd){this.tijd = tijd;}
+	public void setFoutcode(String foutcode){this.foutcode = foutcode;}
 	
-	public String getTijd(){
-		return tijd;
-	}
+	/*Getters*/
+	public Team getTeam(){return team;}
+	public Etappe getEtappe(){return etappe;}
+	public String getTijd(){return tijd;}
+	public String getFoutcode(){return foutcode;}
 	
-	public String getFoutcode(){
-		return foutcode;
+	/*String Formaat*/
+	public String toString(){
+		return "Team: "+getTeam().getNaam()+" op etappe: "+getEtappe().getId()+" met tijd: "+getTijd()+" en/of foutcode: "+getFoutcode()+'\n';
 	}
 }
