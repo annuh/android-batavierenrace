@@ -5,8 +5,9 @@
 	<drawable name="batablauw">#8dc9e8</drawable>
 	<drawable name="batabruin">#2a2723</drawable>
 	<drawable name="jaarkleur">#FFE13B</drawable>
+	<drawable name="lichtblauw">#cef3ff</drawable>
 	
-	
+	<color name="batablauw">#8dc9e8</color>
 	<color name="jaarkleur">#FFE13B</color>
 	<color name="NiceButtonStartColor">#4AA02C</color>
     <color name="NiceButtonEndColor">#348017</color>

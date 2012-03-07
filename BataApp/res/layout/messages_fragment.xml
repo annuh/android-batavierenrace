@@ -8,6 +8,7 @@
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:id="@+id/message_inhoud"
+    	android:background="@drawable/lichtblauw"
     	android:orientation="vertical" >
     	<TextView android:text="Berichten" style="@style/h1" />
     	

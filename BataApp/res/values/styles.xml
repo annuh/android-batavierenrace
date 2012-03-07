@@ -107,9 +107,7 @@
 		<item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/container</item>
         <item name="android:layout_marginBottom">10dip</item>
-        <item name="android:padding">5dip</item>
-		
-       
+        <item name="android:padding">5dip</item>       
     </style>
 
     <style name="scroller">
@@ -125,9 +123,8 @@
        <item name="android:textStyle">bold</item>
        <item name="android:layout_width">match_parent</item>
        <item name="android:layout_height">wrap_content</item>
-       <item name="android:textSize">24dip</item>
-       <item name="android:paddingLeft">10dip</item>
-       <item name="android:paddingBottom">1dip</item>
+       <item name="android:paddingLeft">40dip</item>
+       <item name="android:paddingBottom">20dip</item>
    </style>
     
 </resources>
