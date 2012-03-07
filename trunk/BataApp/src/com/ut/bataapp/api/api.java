@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.Team;
@@ -126,6 +127,15 @@ public class api {
 	 */
 	public String getDatum(){
 		return "28/04/2012";
+	}
+	
+	public static Bericht[] getBerichten(){
+		
+		Bericht[] berichten = new Bericht[4];
+		berichten[2] = new Bericht("003", "BataComm", "Hoi3");
+		berichten[1] = new Bericht("002", "BataComm", "Hoi2");
+		berichten[0] = new Bericht("001", "BataComm", "Hoi");
+		return berichten;
 	}
 	
 		

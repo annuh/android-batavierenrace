@@ -17,7 +17,6 @@ import com.actionbarsherlock.R;
 import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
 
-
 public class TeamsActivity extends FragmentActivity  {
 	
    /** Called when the activity is first created. */
@@ -27,6 +26,7 @@ public class TeamsActivity extends FragmentActivity  {
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.teams_fragment);
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	   
    }
    
 	@Override
