@@ -30,6 +30,7 @@ public class TeamsFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
       
         ArrayList<Team> teams = api.getTeams();
+        teams = api.sortTeamByName(teams);
         String[] values = new String[teams.size()];
         for(int i = 0; i<teams.size(); i++){
         	values[i] = teams.get(i).getNaam();
