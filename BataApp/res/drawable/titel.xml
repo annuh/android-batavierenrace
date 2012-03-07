@@ -12,12 +12,7 @@
             />	     
 		</shape>
 	</item>
-	<item>
-	    <bitmap android:src="@drawable/overlay_left" android:gravity="left"  />
-	</item>
-	<item>
-	    <bitmap android:src="@drawable/overlay_right" android:gravity="right"  />
-	</item>
+	
 	    
 	
 </layer-list>
