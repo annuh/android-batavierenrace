@@ -131,8 +131,10 @@ public class api {
 	
 	public static Bericht[] getBerichten(){
 		
-		Bericht[] berichten = new Bericht[4];
-		berichten[2] = new Bericht("003", "BataComm", "Hoi3");
+		Bericht[] berichten = new Bericht[5];
+		berichten[4] = new Bericht("003", "BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm ", "Hoi3");
+		berichten[3] = new Bericht("003", "BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm ", "Hoi3");
+		berichten[2] = new Bericht("003", "BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm ", "Hoi3");
 		berichten[1] = new Bericht("002", "BataComm", "Hoi2");
 		berichten[0] = new Bericht("001", "BataComm", "Hoi");
 		return berichten;

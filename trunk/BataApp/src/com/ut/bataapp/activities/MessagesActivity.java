@@ -40,8 +40,12 @@ public class MessagesActivity extends FragmentActivity  {
 	   
 	   for(int i = 0; i<berichten.length; i++){
 		   
-		   TextView child = new TextView(this);
+		   TextView child = (TextView) getLayoutInflater().inflate(R.layout.textview_message, null);
+		   //TextView child = new TextView(this);
 		   child.setText(berichten[i].getAfzender());
+		   if((i % 2) == 0){
+			   child.setBackgroundResource(R.drawable.batablauw);
+		   }
 		   layout.addView(child);
 		   
 	   }
