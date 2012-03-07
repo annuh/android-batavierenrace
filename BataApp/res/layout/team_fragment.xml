@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroller"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fillViewport="true" 
-    android:padding="5dip">
+    style="@style/scroller">
 	<LinearLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
@@ -42,8 +39,7 @@
 
 		</TableLayout>
 
-	    <View
-	        style="@style/container"></View>
+	
 	    
 		<TextView
 	        android:id="@+id/label_looptijden"
@@ -54,7 +50,8 @@
     	    android:id="@+id/table_team_uitslag"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:background="@drawable/container_background" >
+		    android:background="@drawable/container_background"
+		     style="@style/table" > >
 		   <TableRow
 				android:layout_width="match_parent"
 		    	android:layout_height="wrap_content">
@@ -70,9 +67,7 @@
 		       </TextView>
 		   </TableRow>
 		</TableLayout>
-	    
-	    <View
-	        style="@style/container"></View>
+	  
 	   
 	</LinearLayout>
 </ScrollView>

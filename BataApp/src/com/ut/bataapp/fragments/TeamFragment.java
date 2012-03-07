@@ -2,6 +2,7 @@ package com.ut.bataapp.fragments;
 
 //import com.actionbarsherlock.sample.shakespeare.Shakespeare;
 import java.util.ArrayList;
+import java.util.Map;
 
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.EtappeChartByTeam;
@@ -14,6 +15,7 @@ import com.ut.bataapp.objects.Uitslag;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,6 +39,7 @@ import android.widget.Toast;
 public class TeamFragment extends Fragment {
 	
 	private final int MENU_FOLLOW = Menu.FIRST;
+	private Team team;
     /**
      * Create a new instance of DetailsFragment, initialized to
      * show the text at 'index'.
@@ -74,7 +77,7 @@ public class TeamFragment extends Fragment {
     	
     	int id = getArguments().getInt("index", 0) + 1;
     	
-    	Team team = api.getTeamByID(id);
+    	team = api.getTeamByID(id);
     	
     	View view = inflater.inflate(R.layout.team_fragment, container, false);
     	TextView label_info = (TextView)  view.findViewById(R.id.label_info);
@@ -133,6 +136,10 @@ public class TeamFragment extends Fragment {
 			case MENU_FOLLOW:
 				Toast toast = Toast.makeText(this.getActivity(), "U volgt dit team nu.", Toast.LENGTH_SHORT);
 				toast.show();
+				SharedPreferences keyValues = this.getActivity().getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
+				SharedPreferences.Editor keyValuesEditor = keyValues.edit();
+				keyValuesEditor.putInt(team.getNaam(), team.getStartnummer());	
+				keyValuesEditor.commit();
 			break;		
 		}
 		return false;

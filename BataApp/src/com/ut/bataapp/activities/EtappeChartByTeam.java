@@ -139,7 +139,6 @@ public class EtappeChartByTeam extends FragmentActivity {
 	    renderer.setMarginsColor(Color.WHITE);
 	    renderer.setBarSpacing(0.5f);
 	    renderer.setPanEnabled(false);
-	    renderer.setInScroll(false);
 	  }
   
   protected XYMultipleSeriesDataset buildBarDataset(String[] titles, List<double[]> valuesX, List<double[]> valuesY) {
