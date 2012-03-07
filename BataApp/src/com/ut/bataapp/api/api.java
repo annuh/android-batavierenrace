@@ -24,7 +24,7 @@ public class api {
 	 * Haal van alle etappes basis informatie op.
 	 * @return 
 	 */
-	public ArrayList<Etappe> getEtappes() {
+	public static ArrayList<Etappe> getEtappes() {
 		ArrayList<Etappe> etappes =new Parsing().parseEtappe();
 		return etappes;
 	}
@@ -68,7 +68,7 @@ public class api {
 		return teams;
 	}
 	
-	public ArrayList<Team> sortTeamByName(ArrayList<Team> teams){
+	public static ArrayList<Team> sortTeamByName(ArrayList<Team> teams){
 		ArrayList<Team> t = teams;
 		Collections.sort(t,new TeamNaamComparator());
 		return t;
