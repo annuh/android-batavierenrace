@@ -1,13 +1,15 @@
 /*
- * Versie: v2
- * Date: 07-03-12 15:57
+ * Versie: v3
+ * Date: 07-03-12 17:20
  * By: Jochem Elsinga
  * Update: Changed getTeams() to get actual teams
+ * Update: Added sortTeamByName() to sort the teams by name
  */
 
 package com.ut.bataapp.api;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import com.ut.bataapp.objects.Etappe;
@@ -66,6 +68,11 @@ public class api {
 		return teams;
 	}
 	
+	public ArrayList<Team> sortTeamByName(ArrayList<Team> teams){
+		ArrayList<Team> t = teams;
+		Collections.sort(t,new TeamNaamComparator());
+		return t;
+	}
 	
 	/**
 	 * Detailleerde informatie van een team, inclusief looptijden van de lopers (uitslag)
