@@ -86,7 +86,7 @@ public class MainActivity extends FragmentActivity {
 	   batadag.set(2012, 4-1, 28);
 	   long dagenVerschil = (batadag.getTimeInMillis() - nu.getTimeInMillis())/ (24 * 60 * 60 * 1000);
 	   TextView viewDagen = (TextView) findViewById(R.id.dashboard_time);
-	   viewDagen.setText("Het duurt nog " +dagenVerschil+ " dagen!");
+	   viewDagen.setText("Het duurt nog " +dagenVerschil + " dagen!");
    }
    
    @Override
@@ -115,9 +115,7 @@ public class MainActivity extends FragmentActivity {
    		case MENU_MESSAGE:
 	   		// Launch Messages activity
    			Intent j = new Intent(getApplicationContext(), MessagesActivity.class);
-	   		Log.e(ACTIVITY_SERVICE, "gemaakt");
 	   		startActivity(j);
-	   		Log.e(ACTIVITY_SERVICE, "gestart");
 	   		break;
 
    	}

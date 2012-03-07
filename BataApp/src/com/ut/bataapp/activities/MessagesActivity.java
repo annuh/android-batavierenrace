@@ -30,7 +30,7 @@ public class MessagesActivity extends FragmentActivity  {
    public void onCreate(Bundle savedInstanceState) {
 	   setTitle("Messages");
 	   super.onCreate(savedInstanceState);
-	   setContentView(R.layout.klassementen_fragment);
+	   setContentView(R.layout.messages_fragment);
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   
    }

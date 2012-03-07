@@ -10,10 +10,10 @@
     	android:id="@+id/layout_klassementen"
     	android:orientation="vertical" >
     	<TextView 
-        	android:text="Klassementen"
+        	android:text="Messages"
         	style="@style/h1" />
-		<Button 
-			android:text="Klassementen"
-			style="@style/nice_button" />
+		<TextView 
+        	android:text="Messages"
+        	style="@style/message" />
 	</LinearLayout>
 </ScrollView>
