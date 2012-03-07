@@ -7,10 +7,33 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
 
-	    <TextView
-	        android:id="@+id/label_info"
-	        android:text = "@string/team_informatie"
-	        style="@style/h1" />
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:background="@drawable/titel" >
+	        
+	        <ImageView
+	            android:src="@drawable/overlay_left"
+	            android:layout_width="wrap_content"
+		   		android:layout_height="wrap_content"
+		   		android:layout_alignParentLeft="true"
+		   		android:id="@+id/overlay_left"
+		   		/>
+	 
+		    <TextView
+		        android:id="@+id/label_info"
+		        android:text = "Bla bla Bla bla Bla bla Bla bla Bla bla "
+		         android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:layout_toRightOf="@+id/overlay_left"
+		         />
+	    	<ImageView
+	            android:src="@drawable/overlay_right"
+	            android:layout_width="wrap_content"
+		   		android:layout_height="wrap_content"
+		   		android:layout_alignParentRight="true" />
+	    </RelativeLayout>
 	    
 	    <TableLayout
     	    android:id="@+id/table_team_info"
