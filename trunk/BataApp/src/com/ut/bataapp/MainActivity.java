@@ -8,24 +8,20 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.Menu;
 import android.support.v4.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.actionbarsherlock.R;
-import com.ut.bataapp.activities.InformatieActivity;
-import com.ut.bataapp.activities.KlassementenActivity;
-import com.ut.bataapp.activities.PreferencesActivity;
-import com.ut.bataapp.activities.RoutesActivity;
-import com.ut.bataapp.activities.TeamsActivity;
-import com.ut.bataapp.activities.WeerActivity;
+import com.ut.bataapp.activities.*;
 
 
 public class MainActivity extends FragmentActivity {
 	
 	private static int THEME = R.style.Theme_BataApp;
 	private final int MENU_SETTINGS = Menu.FIRST;
-	private final int MENU_MAIL = Menu.FIRST+1;
+	private final int MENU_MESSAGE = Menu.FIRST+1;
 	
    /** Called when the activity is first created. */
    @Override
@@ -90,7 +86,7 @@ public class MainActivity extends FragmentActivity {
 	   batadag.set(2012, 4-1, 28);
 	   long dagenVerschil = (batadag.getTimeInMillis() - nu.getTimeInMillis())/ (24 * 60 * 60 * 1000);
 	   TextView viewDagen = (TextView) findViewById(R.id.dashboard_time);
-	   viewDagen.setText("Het duurt nog "+dagenVerschil+" dagen!");
+	   viewDagen.setText("Het duurt nog " +dagenVerschil+ " dagen!");
    }
    
    @Override
@@ -99,9 +95,9 @@ public class MainActivity extends FragmentActivity {
 		    .setIcon(R.drawable.ic_action_settings)
 		    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		
-		menu.add(0,MENU_MAIL,Menu.NONE,"Berichten")
-	    .setIcon(R.drawable.ic_action_mail)
-	    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		menu.add(0,MENU_MESSAGE,Menu.NONE,"Berichten")
+		    .setIcon(R.drawable.ic_action_mail)
+		    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -109,12 +105,20 @@ public class MainActivity extends FragmentActivity {
    @Override
    public boolean onOptionsItemSelected(MenuItem item) {
    	switch (item.getItemId()) {
-   	// We have only one menu option
-   	case MENU_SETTINGS:
-   		// Launch Preference activity
-   		Intent i = new Intent(this, PreferencesActivity.class);
-   		startActivity(i);
-   		break;
+   		
+   		case MENU_SETTINGS:
+	   		// Launch Preference activity
+	   		Intent i = new Intent(this, PreferencesActivity.class);
+	   		startActivity(i);
+	   		break;
+	   		
+   		case MENU_MESSAGE:
+	   		// Launch Messages activity
+   			Intent j = new Intent(getApplicationContext(), MessagesActivity.class);
+	   		Log.e(ACTIVITY_SERVICE, "gemaakt");
+	   		startActivity(j);
+	   		Log.e(ACTIVITY_SERVICE, "gestart");
+	   		break;
 
    	}
    	return true;

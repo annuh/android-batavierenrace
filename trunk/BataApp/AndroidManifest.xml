@@ -56,6 +56,9 @@
         
         <activity
 			android:name=".activities.PreferencesActivity" />
+        
+        <activity
+			android:name=".activities.MessagesActivity" />
 
 
         <!-- android:stopWithTask="true" /> THIS WAS PART OF THE SUPPORT DEMOS? -->
