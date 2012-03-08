@@ -1,7 +1,8 @@
 /*
- * Versie: v3
- * Date: 07-03-12 17:20
- * By: Jochem Elsinga
+ * Versie: v4
+ * Date: 08-03-12 11:54
+ * By: Johem Elsinga
+ * Update: Added findTeam() to get a list of teams containing a certain string
  * Update: Changed getTeams() to get actual teams
  * Update: Added sortTeamByName() to sort the teams by name
  */
@@ -69,9 +70,21 @@ public class api {
 		return teams;
 	}
 	
+	//Sorteer de teams alfabetisch
 	public static ArrayList<Team> sortTeamByName(ArrayList<Team> teams){
 		ArrayList<Team> t = teams;
 		Collections.sort(t,new TeamNaamComparator());
+		return t;
+	}
+	
+	//Zoek teams bij naam
+	public static ArrayList<Team> findTeam(String deelNaam,ArrayList<Team> teams){
+		ArrayList<Team> t = new ArrayList<Team>();
+		for(int i=0;i<teams.size()-1;i++){
+			if(teams.get(i).getNaam().contains(deelNaam)){
+				t.add(teams.get(i));
+			}
+		}
 		return t;
 	}
 	
