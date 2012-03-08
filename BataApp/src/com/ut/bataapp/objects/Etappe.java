@@ -1,7 +1,5 @@
 package com.ut.bataapp.objects;
 
-import java.io.File;
-
 public class Etappe {
 	private int id;
 	private int afstand;
