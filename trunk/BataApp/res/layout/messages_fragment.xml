@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/message_scroller"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fillViewport="true" >
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    	android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:id="@+id/message_inhoud"
-    	android:background="@drawable/lichtblauw"
-    	android:orientation="vertical" >
-    	<TextView android:text="Berichten" style="@style/h1" />
-    	
-    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    	android:layout_width="match_parent"
-	    	android:layout_height="wrap_content"
-	    	android:id="@+id/messages_lijst"
-	    	android:orientation="vertical" >    	
-		
-	</LinearLayout>
-		
-	</LinearLayout>
-</ScrollView>
+
+<!-- Top-level content view for the layout fragment sample.  This version is
+     for display when not in landscape: we can only fit the list of titles. -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <fragment class="com.ut.bataapp.fragments.MessagesFragment"
+            android:id="@+id/messages_fragment"
+            android:layout_width="match_parent" android:layout_height="match_parent" />
+</FrameLayout>

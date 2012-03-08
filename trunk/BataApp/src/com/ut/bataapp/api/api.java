@@ -134,14 +134,13 @@ public class api {
 		return "28/04/2012";
 	}
 	
-	public static Bericht[] getBerichten(){
+	public static ArrayList<Bericht> getBerichten(){
 		
-		Bericht[] berichten = new Bericht[5];
-		berichten[4] = new Bericht("003", "BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm ", "Hoi3");
-		berichten[3] = new Bericht("003", "BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm ", "Hoi3");
-		berichten[2] = new Bericht("003", "BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm BataComm ", "Hoi3");
-		berichten[1] = new Bericht("002", "BataComm", "Hoi2");
-		berichten[0] = new Bericht("001", "BataComm", "Hoi");
+		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
+		berichten.add(0, new Bericht("001", 0, "Batacommissie", "Succes met bata", "Iedereen succes", "10/01/12 om 15:34"));
+		berichten.add(0, new Bericht("001", 1, "Batacommissie", "Succes met bata", "Iedereen succes", "10/01/12 om 15:13"));
+		berichten.add(0, new Bericht("001", 2, "Batacommissie", "Succes met bata", "Iedereen succes", "10/01/12 om 15:09"));
+		
 		return berichten;
 	}
 	
