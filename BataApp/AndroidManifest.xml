@@ -12,7 +12,7 @@
 
     <uses-library android:name="com.google.android.maps" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
 
     <application android:label="@string/app_titel"
