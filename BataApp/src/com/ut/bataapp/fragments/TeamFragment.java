@@ -81,7 +81,7 @@ public class TeamFragment extends Fragment {
     	
     	View view = inflater.inflate(R.layout.team_fragment, container, false);
     	TextView label_info = (TextView)  view.findViewById(R.id.label_info);
-    	label_info.setText(team.getNaam());
+    	label_info.setText(team.getNaam());   
     	    
     	TextView team_startnummer = (TextView)  view.findViewById(R.id.team_startnummer);
     	team_startnummer.setText(Integer.toString(team.getStartnummer()));
