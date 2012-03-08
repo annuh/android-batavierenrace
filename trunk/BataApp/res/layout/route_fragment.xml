@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroller"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fillViewport="true" 
-    android:padding="5dip" >
+    style="@style/scroller" >
+    
 	<LinearLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
@@ -13,7 +11,7 @@
 	    <TextView
 	        android:id="@+id/label_info"
 	        android:text = "@string/etappe_informatie"
-	        style="@style/h1" />
+	        style="@style/container_head" />
 	    
 	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		    style="@style/table" >"
@@ -37,37 +35,31 @@
 		            style="@style/table_right" />
 		    </TableRow>
 		</TableLayout>
-	    
-	    <View
-	        style="@style/container"></View>
+
 	    
 	    <TextView
 	        android:id="@+id/label_hoogteverschil"
 	        android:text = "@string/etappe_hoogteverschil"
-		 	style="@style/h1"
-	        />
+		 	style="@style/container_head" />
+	      
 	    <LinearLayout
 	        android:background="@drawable/container_background"
 	        android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:padding="1dp" >		
-	      	 <ImageView 
-			android:id="@+id/image_hoogteverschil"
-			android:src="@drawable/grafiek"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-				/>
+			<ImageView 
+				android:id="@+id/image_hoogteverschil"
+				android:src="@drawable/grafiek"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
 	     </LinearLayout>
 	    
-	    
-	    <View
-	        style="@style/container"></View>
 	    
 	    <TextView
 	        android:id="@+id/label_recordtijd"
 	        android:text = "@string/etappe_recordtijd"
-	        style="@style/h1"
-	        />
+	        style="@style/container_head" />
+	        
 	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		    style="@style/table" >
 		    <TableRow>
@@ -91,8 +83,6 @@
 			        style="@style/table_right" />
 			</TableRow>
 		</TableLayout>
-		
-		<View
-	        style="@style/container"></View>
+
 	</LinearLayout>
 </ScrollView>

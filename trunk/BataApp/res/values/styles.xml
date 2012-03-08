@@ -55,7 +55,7 @@
         <item name="android:stretchColumns">1</item>
         <item name="android:background">@drawable/container_background</item>
         <item name="android:padding">10dip</item>
-        <item name="android:layout_marginRight">15px</item>
+        <item name="android:layout_marginRight">14px</item>
         
     </style>
 
@@ -94,20 +94,26 @@
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowColor">#000</item>
     </style>
+      
     
-    <style name="container">
-        <item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">5dp</item>
-        <item name="android:background">@drawable/under</item>
-        <item name="android:layout_marginBottom">10dip</item>
+     <style name="container_head">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">24dip</item>
+        <item name="android:background">@drawable/titel</item>
+        <item name="android:paddingLeft">30dip</item>
+        <item name="android:paddingBottom">1dip</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
     
-    <style name="container1">
+    <style name="container_block">
         <item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/container</item>
         <item name="android:layout_marginBottom">10dip</item>
-        <item name="android:padding">5dip</item>       
+        <item name="android:background">@drawable/container_background</item>
+        <item name="android:padding">10dip</item>
+        <item name="android:layout_marginRight">14px</item>
     </style>
 
     <style name="scroller">
