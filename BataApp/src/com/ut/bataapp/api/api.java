@@ -27,8 +27,7 @@ public class api {
 	 * @return 
 	 */
 	public static ArrayList<Etappe> getEtappes() {
-		ArrayList<Etappe> etappes =new Parsing().parseEtappe();
-		return etappes;
+		return Parsing.parseEtappe();
 	}
 	
 	/**
@@ -62,12 +61,10 @@ public class api {
 		return tijden;
 	}
 	
-	/**
-	 * Haal van elk team basis informatie op.
-	 */
+	//Haal van elk team basis informatie op.
 	public static ArrayList<Team> getTeams() {
-		ArrayList<Team> teams = new Parsing().parseTeam();
-		return teams;
+		return Parsing.parseTeam();
+		
 	}
 	
 	//Sorteer de teams alfabetisch
@@ -108,13 +105,8 @@ public class api {
 	}
 	
 	
-	public static ArrayList<String> getKlassementsnamen(){
-		String klassement1="Algemeen Klassement";
-		String klassement2="Universiteits klassement";
-		ArrayList<String> namen = new ArrayList<String>();
-		namen.add(klassement1);
-		namen.add(klassement2);
-		return namen;
+	public static ArrayList<Klassement> getKlassement(){
+		return Parsing.parseKlassement();
 	}
 		
 	public static Klassement getKlassementByNaam(String naam) {
@@ -122,7 +114,7 @@ public class api {
 		uitslagen.put(1, new Team(1, 1, "Inter-Actief"));
 		uitslagen.put(2, new Team(5, 1, "Team 5"));
 		uitslagen.put(3, new Team(11, 1, "Team 11"));
-		Klassement klassement = new Klassement(0, "Algemeen Klassement", uitslagen);
+		Klassement klassement = new Klassement("Algemeen Klassement", uitslagen);
 		return klassement;
 	}
 	
