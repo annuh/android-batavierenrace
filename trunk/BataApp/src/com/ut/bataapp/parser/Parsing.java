@@ -1,7 +1,9 @@
 /*
- * Versie: v2
- * Date: 07-03-12 15:18
+ * Versie: v3
+ * Date: 08-03-12 12:05
  * By: Jochem Elsinga
+ * Update: made methods static
+ * Update: Added ArrayList<Klassement> parseKlassement();
  * Update: Added ArrayList<Team> parseTeam();
  */
 
@@ -26,12 +28,39 @@ import android.widget.TextView;
 
 import com.ut.bataapp.objects.*;
 
-public class Parsing extends Activity{
+public class Parsing{
 
-	ArrayList<Etappe> etappes = new ArrayList<Etappe>();
-	ArrayList<Team> teams = new ArrayList<Team>();
+	public static ArrayList<Klassement> parseKlassement(){
+		ArrayList<Klassement> klassement = new ArrayList<Klassement>();
+		try{
+			URL url = new URL("http://api.batavierenrace.nl/xml/2010/ask.xml");
+			SAXParserFactory spf = SAXParserFactory.newInstance();
+			SAXParser sp = spf.newSAXParser();
+			XMLReader xr = sp.getXMLReader();
+			
+			KlassementHandler klassementHandler = new KlassementHandler();
+			xr.setContentHandler(klassementHandler);
+			xr.parse(new InputSource(url.openStream()));
+			
+			klassement = klassementHandler.getParsedData();
+			
+		}catch(SAXException e){
+			e.printStackTrace();
+		}catch(MalformedURLException e){
+			e.printStackTrace();
+		}catch(ParserConfigurationException e) {
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return klassement;
+	}
 	
-	public ArrayList<Team> parseTeam(){
+	//Functie gebruikt om de TeamsXML te parse naar een ArrayList<Team>
+	public static ArrayList<Team> parseTeam(){
+		ArrayList<Team> teams = new ArrayList<Team>();
 		try{
 			URL url = new URL("http://api.batavierenrace.nl/xml/2011/ploegen.xml");
 			SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -58,7 +87,9 @@ public class Parsing extends Activity{
 		return teams;
 	}
 	
-	public ArrayList<Etappe> parseEtappe(){
+	//Functie gebruikt om de EtappesXML te parse naar een ArrayList<Etappe>
+	public static ArrayList<Etappe> parseEtappe(){
+		ArrayList<Etappe> etappes = new ArrayList<Etappe>();
 		try{
 			URL url = new URL("http://api.batavierenrace.nl/xml/2011/etappes.xml");
 			SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -83,13 +114,5 @@ public class Parsing extends Activity{
 			e.printStackTrace();
 		}
 		return etappes;
-	}
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);
-		TextView tv = new TextView(this);
-		tv.setText(etappes.toString());
-		setContentView(tv);
 	}
 }

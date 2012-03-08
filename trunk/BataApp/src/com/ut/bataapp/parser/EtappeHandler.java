@@ -53,6 +53,6 @@ public class EtappeHandler extends DefaultHandler{
 	
 	@Override
 	public void startDocument() throws SAXException{
-		this.etappes = new ArrayList();
+		this.etappes = new ArrayList<Etappe>();
 	}
 }
