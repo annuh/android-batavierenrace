@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RouteArrayAdapter extends ArrayAdapter<String> {
+	
 	private final Context context;
 	private final ArrayList<Etappe> values;
 
