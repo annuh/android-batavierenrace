@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.ut.bataapp.objects.Bericht;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
