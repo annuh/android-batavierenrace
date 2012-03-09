@@ -11,6 +11,7 @@ package com.ut.bataapp.api;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 
 import com.ut.bataapp.objects.Bericht;
@@ -63,7 +64,12 @@ public class api {
 	
 	//Haal van elk team basis informatie op.
 	public static ArrayList<Team> getTeams() {
-		return Parsing.parseTeam();
+		long initial = new Date().getTime();
+		ArrayList<Team> teams = Parsing.parseTeam();
+		//teams = sortTeamByName(teams);
+		long end = new Date().getTime();
+		teams.add(0,new Team(0,0,Long.toString(end-initial)));
+		return teams;
 		
 	}
 	
