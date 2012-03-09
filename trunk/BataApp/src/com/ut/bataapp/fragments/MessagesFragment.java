@@ -2,23 +2,17 @@ package com.ut.bataapp.fragments;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.actionbarsherlock.R;
 import com.ut.bataapp.MessageArrayAdapter;
-import com.ut.bataapp.RouteArrayAdapter;
 import com.ut.bataapp.activities.MessagesActivity;
-import com.ut.bataapp.activities.RouteActivity;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Bericht;
-import com.ut.bataapp.objects.Etappe;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MessagesFragment extends ListFragment {
@@ -63,7 +57,7 @@ public class MessagesFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        showDetails(position);
+        
     }
 
     /**
