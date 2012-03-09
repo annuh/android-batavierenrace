@@ -137,9 +137,9 @@ public class api {
 	public static ArrayList<Bericht> getBerichten(){
 		
 		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
-		berichten.add(0, new Bericht("001", 0, "Batacommissie", "Succes met bata", "Iedereen succes", "10/01/12 om 15:34"));
-		berichten.add(0, new Bericht("001", 1, "Batacommissie", "Succes met bata", "Iedereen succes", "10/01/12 om 15:13"));
-		berichten.add(0, new Bericht("001", 2, "Batacommissie", "Succes met bata", "Iedereen succes", "10/01/12 om 15:09"));
+		berichten.add(new Bericht("003", 0, "Batacommissie", "Permanente stop", "Omdat bij de toplopers doping is geconstateerd is de batavierenrace 2012 permanent gestopt.", "10/01/12 om 15:34"));
+		berichten.add(new Bericht("002", 1, "Batacommissie", "Tijdelijke stop", "Omdat de lopers te hard gelopen hebben is er een tijdelijke stop. De batavierenracecommissie onderzoekt of er doping is gebruikt.", "10/01/12 om 15:13"));
+		berichten.add(new Bericht("001", 2, "Batacommissie", "Lopers veel succes", "De batavierenracecommissie wenst elke loper veel succes in de race.", "10/01/12 om 15:09"));
 		
 		return berichten;
 	}

@@ -32,8 +32,10 @@ public class MessageArrayAdapter extends ArrayAdapter<String> {
 		TextView contentView = (TextView) rowView.findViewById(R.id.message_content);
 		ImageView codeView = (ImageView) rowView.findViewById(R.id.code);
 		
-		headerView.setText("Titel");
-		int code = berichten.get(position).getCode();
+		Bericht bericht = berichten.get(position);
+		
+		headerView.setText(bericht.getTitel());
+		int code = bericht.getCode();
 		int colour;
 		if(code == Bericht.ROOD){
 			colour = R.color.red;
@@ -43,17 +45,9 @@ public class MessageArrayAdapter extends ArrayAdapter<String> {
 			colour = R.color.green;
 		}
 		codeView.setBackgroundResource(colour);
-		contentView.setText("Afzender "+ berichten.get(position).getAfzender());
-		subheaderView.setText("Afzender: " + berichten.get(position).getAfzender() + " om " + berichten.get(position).getDatum());
+		subheaderView.setText("Afzender: " + bericht.getAfzender() + " om " + bericht.getDatum());
+		contentView.setText(bericht.getBericht());
 		
-		// Change the icon
-		
-		if(berichten.get(position).getCode() == Bericht.GEEL) {
-			
-			
-		}
-		
-
 		return rowView;
 	}
 	
