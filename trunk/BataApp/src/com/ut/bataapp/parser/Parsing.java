@@ -9,7 +9,13 @@
 
 package com.ut.bataapp.parser;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,12 +30,14 @@ import org.xml.sax.XMLReader;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.widget.TextView;
 
 import com.ut.bataapp.objects.*;
 
 public class Parsing{
 
+	//Functi gebruikt om de KlassementXML te parse naar een ArrayList<Klassement>
 	public static ArrayList<Klassement> parseKlassement(){
 		ArrayList<Klassement> klassement = new ArrayList<Klassement>();
 		try{
@@ -62,17 +70,16 @@ public class Parsing{
 	public static ArrayList<Team> parseTeam(){
 		ArrayList<Team> teams = new ArrayList<Team>();
 		try{
-			URL url = new URL("http://api.batavierenrace.nl/xml/2011/ploegen.xml");
+			URL url = new URL("http://dl.dropbox.com/u/61224458/ploegensmall.xml");
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			SAXParser sp = spf.newSAXParser();
 			XMLReader xr = sp.getXMLReader();
 			
-			TeamHandler teamHandler = new TeamHandler();
+			SimpleTeamHandler teamHandler = new SimpleTeamHandler();
 			xr.setContentHandler(teamHandler);
 			xr.parse(new InputSource(url.openStream()));
 			
 			teams = teamHandler.getParsedData();
-			
 		}catch(SAXException e){
 			e.printStackTrace();
 		}catch(MalformedURLException e){
@@ -80,7 +87,8 @@ public class Parsing{
 		}catch(ParserConfigurationException e) {
 			e.printStackTrace();
 		}catch(IOException e){
-			e.printStackTrace();
+			teams.add(new Team(0,0,"Er is iets fout: "+e.toString()));
+			return teams;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
