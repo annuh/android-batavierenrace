@@ -11,6 +11,12 @@
 	    android:background="@drawable/batavier" >
 	    
 	    <Button
+	        android:id="@+id/dashboard_klassement"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu_klassement"
+	        android:text="@string/dashboard_klassement" />
+	    
+	    <Button
 	        android:id="@+id/dashboard_etappes"
 	        style="@style/DashboardButton"
 	        android:drawableTop="@drawable/menu_etappes"
@@ -22,11 +28,6 @@
 	        android:drawableTop="@drawable/menu_teams"
 	        android:text="@string/dashboard_teams" />
 	    
-	    <Button
-	        android:id="@+id/dashboard_klassement"
-	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu_klassement"
-	        android:text="@string/dashboard_klassement" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_weer"
