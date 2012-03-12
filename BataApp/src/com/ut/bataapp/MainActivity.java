@@ -2,30 +2,30 @@ package com.ut.bataapp;
 
 import java.util.Calendar;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.Menu;
-import android.support.v4.view.MenuItem;
+
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.actionbarsherlock.R;
 import com.ut.bataapp.activities.*;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends SherlockFragmentActivity {
 	
-	private static int THEME = R.style.Theme_BataApp;
+	
 	private final int MENU_SETTINGS = Menu.FIRST;
 	private final int MENU_MESSAGE = Menu.FIRST+1;
 	
    /** Called when the activity is first created. */
    @Override
    public void onCreate(Bundle savedInstanceState) {
-	   setTheme(THEME);
+	   
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.actionbar_styles);
        

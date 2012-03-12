@@ -6,7 +6,8 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.MenuItem;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import android.view.ViewGroup;
 import com.actionbarsherlock.R;
 import com.ut.bataapp.fragments.RouteFragment;
 
-public class RouteActivity extends FragmentActivity {
+public class RouteActivity extends SherlockFragmentActivity {
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {

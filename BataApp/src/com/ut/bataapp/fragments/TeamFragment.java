@@ -4,6 +4,9 @@ package com.ut.bataapp.fragments;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.EtappeChartByTeam;
 import com.ut.bataapp.activities.KlassementenActivity;
@@ -19,9 +22,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.Menu;
-import android.support.v4.view.MenuItem;
-import android.support.v4.view.SubMenu;
+
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TeamFragment extends Fragment {
+public class TeamFragment extends SherlockFragment {
 	
 	private final int MENU_FOLLOW = Menu.FIRST;
 	private Team team;
@@ -122,7 +123,6 @@ public class TeamFragment extends Fragment {
     	return view;
     }
     
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {	
     	
     	menu.add(0,MENU_FOLLOW,Menu.NONE,"Volg dit team")

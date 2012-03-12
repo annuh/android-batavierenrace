@@ -18,27 +18,27 @@ package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.Tab;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
-import com.ut.bataapp.R;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.fragments.ContactFragment;
 import com.ut.bataapp.fragments.VervoerFragment;
-
+import com.actionbarsherlock.R;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActionBar;
-import android.support.v4.app.ActionBar.Tab;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.MenuItem;
 import android.support.v4.view.ViewPager;
 
-public class InformatieActivity extends FragmentActivity {
+
+public class InformatieActivity extends SherlockFragmentActivity {
    
 	ViewPager  mViewPager;
 	TabsAdapter mTabsAdapter;
