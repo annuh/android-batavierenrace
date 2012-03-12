@@ -18,7 +18,7 @@
     <application android:label="@string/app_titel"
             android:icon="@drawable/icon"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.Sherlock" >
+            android:theme="@style/Theme.BataApp" >
 
         <activity android:name="MainActivity">
             <intent-filter>
