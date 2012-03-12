@@ -15,7 +15,21 @@
     <style name="ThemeDialogWhenLarge" parent="android:style/Theme">
     </style>
     
-  
+	  <style name="Theme.BataApp" parent="Theme.Sherlock.Light.DarkActionBar">
+	    <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+	    <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+	    <item name="android:selectableItemBackground">@drawable/ad_selectable_background</item>
+	    
+	    <item name="actionBarItemBackground">@drawable/ad_selectable_background</item>
+	    <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item>   
+	</style>
+	
+	<style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+	    <item name="background">@drawable/batablauw</item>
+	    <item name="android:background">@drawable/batablauw</item>	
+	    
+	   
+	</style>
 
     
     <style name="DashboardButton">
