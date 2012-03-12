@@ -1,5 +1,9 @@
 package com.ut.bataapp.fragments;
 
+import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.SubMenu;
 import com.ut.bataapp.R;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
@@ -8,9 +12,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.Menu;
-import android.support.v4.view.MenuItem;
-import android.support.v4.view.SubMenu;
+
 
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -19,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class RouteFragment extends Fragment {
+public class RouteFragment extends SherlockFragment {
     
 	private final int MENU_ROUTE_AUTO = Menu.FIRST + 1;
 	private final int MENU_ROUTE_OVERSLAG = Menu.FIRST + 2;
@@ -80,7 +82,7 @@ public class RouteFragment extends Fragment {
     	
     }
     
-    @Override
+    
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {	
     	SubMenu subMenu1 = menu.addSubMenu("Routebeschrijving");
     	

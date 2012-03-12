@@ -7,8 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.Menu;
-import android.support.v4.view.MenuItem;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,12 +17,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.R;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.api.api;
 
 
-public class KlassementenActivity extends FragmentActivity  {
+public class KlassementenActivity extends SherlockFragmentActivity  {
 	
    /** Called when the activity is first created. */
    @Override

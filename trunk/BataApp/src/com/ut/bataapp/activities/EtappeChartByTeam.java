@@ -13,10 +13,10 @@ import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
-import com.actionbarsherlock.R;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
-
+import com.actionbarsherlock.R;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,7 +27,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class EtappeChartByTeam extends FragmentActivity {
+public class EtappeChartByTeam extends SherlockFragmentActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
