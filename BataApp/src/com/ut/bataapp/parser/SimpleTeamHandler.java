@@ -32,7 +32,6 @@ public class SimpleTeamHandler extends DefaultHandler{
 		else if(localName.equals("s")) this.startnummer = true;
 		else if(localName.equals("n")) this.naam = true;
 		else if(localName.equals("g")) this.startgroep = true;
-		
 	}
 	
 	@Override
@@ -40,7 +39,6 @@ public class SimpleTeamHandler extends DefaultHandler{
 		if(localName.equals("s")) this.startnummer = false;
 		else if(localName.equals("n")) this.naam = false;
 		else if(localName.equals("g")) this.startgroep = false;
-	
 	}
 	
 	@Override
@@ -52,7 +50,6 @@ public class SimpleTeamHandler extends DefaultHandler{
 		if(startgroep) teams.get(teams.size()-1).setStartGroep(Integer.parseInt(new String(ch,start,length)));
 		else if(naam) teams.get(teams.size()-1).setNaam(new String(ch,start,length));
 		else if(startnummer) teams.get(teams.size()-1).setStartnummer(Integer.parseInt(new String(ch,start,length)));
-		
 	}
 	
 	@Override

@@ -31,7 +31,6 @@ public class RoutesActivity extends SherlockFragmentActivity  {
 		    .setIcon(R.drawable.ic_action_settings)
 		    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);	
 		return super.onCreateOptionsMenu(menu);
-		
 	}
 	
 	@Override

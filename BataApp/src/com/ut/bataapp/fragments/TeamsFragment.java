@@ -1,29 +1,38 @@
 package com.ut.bataapp.fragments;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import com.actionbarsherlock.R;
-import com.ut.bataapp.RouteArrayAdapter;
-import com.ut.bataapp.activities.RouteActivity;
+import com.actionbarsherlock.app.SherlockListFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.api.api;
-import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Team;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class TeamsFragment extends ListFragment {
+public class TeamsFragment extends SherlockListFragment {
     boolean mHasDetailsFrame;
     int mPositionChecked = 0;
     int mPositionShown = -1;
 
+    private final int MENU_SEARCH = Menu.FIRST;
+	private final int MENU_SORT = Menu.FIRST + 1;
+    
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {	
+ 	   menu.add(0,MENU_SEARCH,Menu.NONE, R.string.ab_zoeken)
+ 	   	.setIcon(R.drawable.ic_action_search)
+ 	   	.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+ 	   menu.add(0,MENU_SORT,Menu.NONE, R.string.ab_sorteren)
+ 	   	.setIcon(R.drawable.ic_action_search)
+ 	   	.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+    
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

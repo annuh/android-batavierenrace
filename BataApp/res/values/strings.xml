@@ -20,6 +20,12 @@
     <string name="alert_dialog_ok">OK</string>
     <string name="alert_dialog_cancel">Annuleren</string>
     
+    <string name="ab_zoeken">Zoeken</string>
+    <string name="ab_sorteren">Sorteren</string>
+    <string name="ab_volgen">Volg dit team</string>
+    <string name="ab_verwijderen">Verwijder dit team</string>
+    <string name="ab_instellingen">Instellingen</string>
+    
     <string name="dashboard_routes">Routes</string>
     <string name="dashboard_teams">Teams</string>
     <string name="dashboard_klassement">Klassement</string>

@@ -1,10 +1,8 @@
 package com.ut.bataapp.fragments;
 
-
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import com.actionbarsherlock.R;
+import com.actionbarsherlock.app.SherlockListFragment;
 import com.ut.bataapp.RouteArrayAdapter;
 import com.ut.bataapp.activities.RouteActivity;
 import com.ut.bataapp.api.api;
@@ -13,12 +11,11 @@ import com.ut.bataapp.objects.Etappe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class RoutesFragment extends ListFragment {
+public class RoutesFragment extends SherlockListFragment {
     boolean mHasDetailsFrame;
     int mPositionChecked = 0;
     int mPositionShown = -1;
@@ -27,6 +24,9 @@ public class RoutesFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ArrayList<Etappe> values = api.getEtappes();
+        for(Etappe e: values){
+        	Log.e("test",Double.toString(e.getAfstand()));
+        }
         
         // Populate list with our static array of titles.
         setListAdapter(new RouteArrayAdapter(getActivity(), values));
