@@ -124,7 +124,6 @@ public class TeamFragment extends SherlockFragment {
     }
     
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {	
-    	
     	menu.add(0,MENU_FOLLOW,Menu.NONE,"Volg dit team")
     	.setIcon(R.drawable.ic_action_star)
     	.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);

@@ -11,6 +11,8 @@ import com.ut.bataapp.MainActivity.OverridePendingTransition;
 
 public class TeamsActivity extends SherlockFragmentActivity  {
 	
+	
+	
    /** Called when the activity is first created. */
    @Override
    public void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,8 @@ public class TeamsActivity extends SherlockFragmentActivity  {
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   
    }
+   
+   
    
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

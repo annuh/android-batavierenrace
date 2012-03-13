@@ -92,6 +92,9 @@ public class Parsing{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		if(teams.isEmpty()){
+			teams.add(new Team(0,0,"Ik haal niks binnen :("));
+		}
 		return teams;
 	}
 	
