@@ -9,13 +9,7 @@
 
 package com.ut.bataapp.parser;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,11 +21,6 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Environment;
-import android.widget.TextView;
 
 import com.ut.bataapp.objects.*;
 
@@ -70,30 +59,34 @@ public class Parsing{
 	public static ArrayList<Team> parseTeam(){
 		ArrayList<Team> teams = new ArrayList<Team>();
 		try{
-			URL url = new URL("http://dl.dropbox.com/u/61224458/ploegensmall.xml");
+			URL url = new URL("http://api.batavierenrace.nl/xml/2011/ploegen.xml");
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			SAXParser sp = spf.newSAXParser();
 			XMLReader xr = sp.getXMLReader();
 			
-			SimpleTeamHandler teamHandler = new SimpleTeamHandler();
+			TeamHandler teamHandler = new TeamHandler();
 			xr.setContentHandler(teamHandler);
 			xr.parse(new InputSource(url.openStream()));
-			
+
 			teams = teamHandler.getParsedData();
 		}catch(SAXException e){
-			e.printStackTrace();
+			teams.add(new Team(0,0,"Er is iets fout met SAX : "+e.toString()));
+			return teams;
 		}catch(MalformedURLException e){
-			e.printStackTrace();
+			teams.add(new Team(0,0,"Er is iets fout met URL: "+e.toString()));
+			return teams;
 		}catch(ParserConfigurationException e) {
-			e.printStackTrace();
+			teams.add(new Team(0,0,"Er is iets fout met Parser: "+e.toString()));
+			return teams;
 		}catch(IOException e){
-			teams.add(new Team(0,0,"Er is iets fout: "+e.toString()));
+			teams.add(new Team(0,0,"Er is iets fout met IO: "+e.toString()));
 			return teams;
 		}catch(Exception e){
-			e.printStackTrace();
+			teams.add(new Team(0,0,"Er is iets fout iets heel anders: "+e.toString()));
+			return teams;
 		}
 		if(teams.isEmpty()){
-			teams.add(new Team(0,0,"Ik haal niks binnen :("));
+			teams.add(new Team(0,0,"Ik haal niks binnen =("));
 		}
 		return teams;
 	}
