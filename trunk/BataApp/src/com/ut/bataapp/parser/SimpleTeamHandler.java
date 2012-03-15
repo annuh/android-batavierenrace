@@ -11,10 +11,11 @@ import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+import org.xml.sax.ext.DefaultHandler2;
 import org.xml.sax.helpers.*;
 import com.ut.bataapp.objects.Team;
 
-public class SimpleTeamHandler extends DefaultHandler{
+public class SimpleTeamHandler extends DefaultHandler2{
 
 	private boolean ploeg;
 	private boolean startnummer;
@@ -55,5 +56,6 @@ public class SimpleTeamHandler extends DefaultHandler{
 	@Override
 	public void startDocument() throws SAXException{
 		this.teams = new ArrayList<Team>();
+		teams.add(0,new Team(0,0,"TEST!!"));
 	}
 }

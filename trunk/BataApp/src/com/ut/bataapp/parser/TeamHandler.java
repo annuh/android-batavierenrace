@@ -39,14 +39,16 @@ public class TeamHandler extends DefaultHandler{
 	
 	@Override
 	public void endElement(String nameSpaceURI, String localName, String qName) throws SAXException{		
-	if(localName.equals("lopers")) this.dontRead = false;
-	else if(localName.equals("startnummer")) this.startnummer = false;
-	else if(localName.equals("naam")) this.naam = false;
-	else if(localName.equals("startgroep")) this.startgroep = false;
-}
+		if(localName.equals("lopers")) this.dontRead = false;
+		else if(localName.equals("startnummer")) this.startnummer = false;
+		else if(localName.equals("naam")) this.naam = false;
+		else if(localName.equals("startgroep")) this.startgroep = false;
+	}
 	
 	@Override
 	public void characters(char ch[], int start, int length){
+		teams.add(new Team(0,0,"EEN TEAM"));
+		/**
 		if(ploeg){
 			teams.add(new Team());
 			ploeg = false;
@@ -54,7 +56,7 @@ public class TeamHandler extends DefaultHandler{
 		if(startgroep) teams.get(teams.size()-1).setStartGroep(Integer.parseInt(new String(ch,start,length)));
 		else if(naam) teams.get(teams.size()-1).setNaam(new String(ch,start,length));
 		else if(startnummer) teams.get(teams.size()-1).setStartnummer(Integer.parseInt(new String(ch,start,length)));
-
+		*/
 	}
 	
 	@Override
