@@ -19,7 +19,7 @@
 	    <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
 	    <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
 	    <item name="android:selectableItemBackground">@drawable/ad_selectable_background</item>
-	    
+	    <item name="absForceOverflow">true</item>
 	    <item name="actionBarItemBackground">@drawable/ad_selectable_background</item>
 	    <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item>   
 	</style>

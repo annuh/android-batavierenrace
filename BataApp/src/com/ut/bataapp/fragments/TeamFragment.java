@@ -4,40 +4,34 @@ package com.ut.bataapp.fragments;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.EtappeChartByTeam;
-import com.ut.bataapp.activities.KlassementenActivity;
-import com.ut.bataapp.activities.RoutesActivity;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Uitslag;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.ArrayAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TeamFragment extends SherlockFragment {
+public class TeamFragment extends SherlockFragment implements ActionBar.OnNavigationListener {
 	
 	private final int MENU_FOLLOW = Menu.FIRST;
 	private Team team;
@@ -57,7 +51,27 @@ public class TeamFragment extends SherlockFragment {
     }
 
     @Override
+    public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+        //mSelected.setText("Selected: " + mLocations[itemPosition]);
+        return true;
+    }
+    
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    	
+      // getSherlockActivity().getSupportActionBar().setTitle("");
+
+        Context context = getSherlockActivity().getSupportActionBar().getThemedContext();
+      //  ArrayAdapter<CharSequence> list = ArrayAdapter.createFromResource(context, R.array.locations, R.layout.sherlock_spinner_item);
+        //list.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item);
+        getSherlockActivity().getSupportActionBar().setTitle("");
+        getSherlockActivity().getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        ArrayAdapter<CharSequence> list = ArrayAdapter.createFromResource(context, R.array.locations, R.layout.sherlock_spinner_item);
+        list.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item);
+        getSherlockActivity().getSupportActionBar().setListNavigationCallbacks(list, this);
+       
+    	
+    	
     	setHasOptionsMenu(true);
     	if (container == null) {
             // We have different layouts, and in one of them this
@@ -123,12 +137,14 @@ public class TeamFragment extends SherlockFragment {
     	return view;
     }
     
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {	
-    	menu.add(0,MENU_FOLLOW,Menu.NONE,"Volg dit team")
-    	.setIcon(R.drawable.ic_action_star)
-    	.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    	
+    	menu.add("Favo")
+	    .setIcon(R.drawable.ic_action_star)
+	    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);	
     }
-    
+   
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
