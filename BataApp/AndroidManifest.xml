@@ -38,7 +38,8 @@
             android:name=".activities.TeamsActivity" />
         
         <activity
-			android:name=".activities.TeamActivity" />
+			android:name=".activities.TeamActivity"
+			android:theme="@style/StyledIndicators" />
         
         <activity android:name=".activities.EtappeChartByTeam" />
 
