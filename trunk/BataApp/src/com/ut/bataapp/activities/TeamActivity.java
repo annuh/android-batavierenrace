@@ -1,47 +1,43 @@
 package com.ut.bataapp.activities;
 
-import android.app.Activity;
+import java.util.ArrayList;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.actionbarsherlock.R;
-import com.ut.bataapp.fragments.RouteFragment;
-import com.ut.bataapp.fragments.TeamFragment;
+import com.ut.bataapp.fragments.ContactFragment;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
-
+import android.support.v4.view.ViewPager;
+import com.viewpagerindicator.TabPageIndicator;
+import com.viewpagerindicator.TitleProvider;
+import com.viewpagerindicator.PageIndicator;
 
 public class TeamActivity extends SherlockFragmentActivity {
 	
-    @Override
+	ViewPager mPager;
+	PageIndicator mIndicator;
+	FragmentPagerAdapter mAdapter;
+	
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            // If the screen is now in landscape mode, we can show the
-            // dialog in-line with the list so we don't need this activity.
-            finish();
-            return;
-        }
-
-        if (savedInstanceState == null) {
-            // During initial setup, plug in the details fragment.
-        	TeamFragment details = new TeamFragment();
-            details.setArguments(getIntent().getExtras());
-            
-            getSupportFragmentManager()
-            	.beginTransaction()
-            	.add(android.R.id.content, details)
-            	.commit();
-        }
+        
+        setContentView(R.layout.simple_tabs);
+		
+		mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
+		
+		mPager = (ViewPager)findViewById(R.id.pager);
+		mPager.setAdapter(mAdapter);
+		
+		mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
+		mIndicator.setViewPager(mPager);
         
     }
     
@@ -62,6 +58,37 @@ public class TeamActivity extends SherlockFragmentActivity {
 		}
 		
 		return super.onOptionsItemSelected(item);
+	}
+	
+	class TeamFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+		
+		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+		
+		public TeamFragmentAdapter(FragmentManager fm) {
+			super(fm);
+			fragments.add(new ContactFragment());
+			fragments.add(new ContactFragment());
+			fragments.add(new ContactFragment());
+			fragments.add(new ContactFragment());
+			fragments.add(new ContactFragment());
+			fragments.add(new ContactFragment());
+			fragments.add(new ContactFragment());
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			return fragments.get(position);
+		}
+
+		@Override
+		public int getCount() {
+			return fragments.size();
+		}
+
+		@Override
+		public String getTitle(int position) {
+			return "Informatie";
+		}
 	}
 
 }
