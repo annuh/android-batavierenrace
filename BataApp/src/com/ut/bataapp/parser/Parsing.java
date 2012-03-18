@@ -25,7 +25,7 @@ import org.xml.sax.XMLReader;
 import com.ut.bataapp.objects.*;
 
 public class Parsing{
-
+	public String abc = "edit";
 	//Functi gebruikt om de KlassementXML te parse naar een ArrayList<Klassement>
 	public static ArrayList<Klassement> parseKlassement(){
 		ArrayList<Klassement> klassement = new ArrayList<Klassement>();
@@ -86,7 +86,7 @@ public class Parsing{
 			return teams;
 		}
 		if(teams.isEmpty()){
-			teams.add(new Team(0,0,"Ik haal niks binnen =("));
+			teams.add(new Team(0,0,"Ik haal niks binnen =( asdsabadf"));
 		}
 		return teams;
 	}
