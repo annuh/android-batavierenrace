@@ -66,7 +66,7 @@ public class api {
 	public static ArrayList<Team> getTeams() {
 		long initial = new Date().getTime();
 		ArrayList<Team> teams = Parsing.parseTeam();
-		teams = sortTeamByName(teams);
+		//teams = sortTeamByName(teams);
 		long end = new Date().getTime();
 		
 		teams.add(0,new Team(0,0,Long.toString(end-initial)));
