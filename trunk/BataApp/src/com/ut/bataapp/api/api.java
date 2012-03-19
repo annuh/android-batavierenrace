@@ -107,7 +107,14 @@ public class api {
 		// Team 1 heeft Etappe 2 in 0:21:31 gelopen
 		Uitslag uitslag2 = new Uitslag(team, new Etappe(2, 'M'), "0:21:31", null);
 		team.addLooptijd(uitslag2);
-		
+		long t0, t1;
+
+        t0 =  System.currentTimeMillis();
+
+        do{
+            t1 = System.currentTimeMillis();
+        }
+        while ((t1 - t0) < (5 * 1000));
 		return team;
 	}
 	

@@ -8,8 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class ContactFragment extends SherlockFragment {
-    String text = "???";
-    
+        
     public ContactFragment() {
         setRetainInstance(true);
     }
