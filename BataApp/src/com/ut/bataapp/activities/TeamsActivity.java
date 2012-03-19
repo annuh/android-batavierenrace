@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListActivity;
@@ -89,6 +91,10 @@ public class TeamsActivity extends SherlockListActivity  {
 				filterText = (EditText) item.getActionView().findViewById(R.id.search_box);
 				filterText.addTextChangedListener(filterTextWatcher);
 				filterText.requestFocus();
+				InputMethodManager imm =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+				if(imm != null) {
+				    imm.showSoftInput(filterText, 0); 
+				}
 				break;
 			case MENU_SORT_NAAM:
 				Collections.sort(teams,new Comparator<Team>() {

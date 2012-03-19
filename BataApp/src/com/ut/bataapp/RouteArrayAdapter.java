@@ -16,7 +16,7 @@ public class RouteArrayAdapter extends ArrayAdapter<String> {
 	private final ArrayList<Etappe> values;
 
 	public RouteArrayAdapter(Context context, ArrayList<Etappe> values) {
-		super(context, R.layout.route_row, getIds(values));
+		super(context, R.layout.etappe_row, getIds(values));
 		this.context = context;
 		this.values = values;
 	}
@@ -25,7 +25,7 @@ public class RouteArrayAdapter extends ArrayAdapter<String> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.route_row, parent, false);
+		View rowView = inflater.inflate(R.layout.etappe_row, parent, false);
 		TextView textView = (TextView) rowView.findViewById(R.id.etappe);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.geslacht);
 		textView.setText("Etappe "+ Integer.toString(values.get(position).getId()));
