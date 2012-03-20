@@ -15,7 +15,7 @@
     <style name="ThemeDialogWhenLarge" parent="android:style/Theme">
     </style>
     
-	  <style name="Theme.BataApp" parent="Theme.Sherlock.Light.DarkActionBar">
+	<style name="Theme.BataApp" parent="Theme.Sherlock.Light.DarkActionBar">
 	    <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
 	    <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
 	    <item name="android:selectableItemBackground">@drawable/ad_selectable_background</item>
@@ -25,9 +25,14 @@
 	</style>
 	
 	<style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
-	    <item name="background">@drawable/batablauw</item>
-	    <item name="android:background">@drawable/batablauw</item>	
+	    <item name="background">@drawable/wit</item>
+	    <item name="android:background">@drawable/wit</item>
+	    <item name="android:titleTextStyle">@style/myTheme.ActionBar.Text</item>
 	</style>
+	
+	<style name="myTheme.ActionBar.Text" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/batablauw</item>
+    </style>
 
 	<style name="StyledIndicators" parent="Theme.BataApp">
         <item name="vpiTabPageIndicatorStyle">@style/myTabPageIndicator</item>
@@ -152,6 +157,10 @@
        <item name="android:layout_height">wrap_content</item>
        <item name="android:paddingLeft">40dip</item>
        <item name="android:paddingBottom">20dip</item>
+   </style>
+   
+   <style name="BorderTop">
+       
    </style>
     
 </resources>
