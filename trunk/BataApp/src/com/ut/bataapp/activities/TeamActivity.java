@@ -76,12 +76,14 @@ public class TeamActivity extends SherlockFragmentActivity {
 	            }
 	            break;
 			case MENU_FOLLOW:
-				Toast toast = Toast.makeText(this, "U volgt dit team nu.", Toast.LENGTH_SHORT);
-				toast.show();
 				SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
+				//keyValues.contains(key)
+				
 				SharedPreferences.Editor keyValuesEditor = keyValues.edit();
 				keyValuesEditor.putInt(team.getNaam(), team.getStartnummer());	
 				keyValuesEditor.commit();
+				Toast toast = Toast.makeText(this, "U volgt dit team nu.", Toast.LENGTH_SHORT);
+				toast.show();
 		}
 		
 		return super.onOptionsItemSelected(item);

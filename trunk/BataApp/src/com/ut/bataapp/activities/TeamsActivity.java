@@ -91,15 +91,13 @@ public class TeamsActivity extends SherlockListActivity  {
 				filterText = (EditText) item.getActionView().findViewById(R.id.search_box);
 				filterText.addTextChangedListener(filterTextWatcher);
 				filterText.requestFocus();
-				InputMethodManager imm =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-				if(imm != null) {
-				    imm.showSoftInput(filterText, 0); 
-				}
+				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.showSoftInput(filterText, InputMethodManager.SHOW_IMPLICIT);
 				break;
 			case MENU_SORT_NAAM:
 				Collections.sort(teams,new Comparator<Team>() {
 				    public int compare(Team arg0, Team arg1) {
-				    	return arg1.getNaam().compareTo(arg0.getNaam());
+				    	return arg0.getNaam().compareTo(arg1.getNaam());
 				    }
 				});
 
@@ -120,7 +118,7 @@ public class TeamsActivity extends SherlockListActivity  {
 				});*/
 				Collections.sort(teams,new Comparator<Team>() {
 				    public int compare(Team arg0, Team arg1) {
-				    	return (arg0.getStartnummer()>arg1.getStartnummer() ? -1 : (arg0.getStartnummer()==arg1.getStartnummer() ? 0 : 1));
+				    	return (arg0.getStartnummer()<arg1.getStartnummer() ? -1 : (arg0.getStartnummer()==arg1.getStartnummer() ? 0 : 1));
 				    }
 				});
 				adapter = new TeamAdapter(TeamsActivity.this, teams);

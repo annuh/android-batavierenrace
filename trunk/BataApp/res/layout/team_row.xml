@@ -8,14 +8,16 @@
         android:id="@+id/team_start"
         android:layout_width="50dp"
         android:layout_height="wrap_content"        
-        android:layout_margin="5dp" >
+        android:layout_margin="5dp"
+        android:gravity="center_vertical" >
 
     </TextView>
     <TextView
         android:id="@+id/team_naam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"        
-        android:layout_margin="5dp" >
+        android:layout_margin="5dp"
+        android:gravity="center_vertical" >
     </TextView>
 
 </LinearLayout>

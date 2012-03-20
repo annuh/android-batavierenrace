@@ -37,41 +37,25 @@ public class TeamInformatieFragment extends SherlockFragment {
 	private Team team;
 	private int team_id;
 	
-	public void onCreate (Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		team_id = this.getActivity().getIntent().getIntExtra("index", 1);
-		new getTeam().execute();
-	}
-
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
 		team = ((TeamActivity)this.getActivity()).getTeam();
 		getSherlockActivity().getSupportActionBar().setTitle(team.getNaam());     
     	setHasOptionsMenu(true);
     	
-    	View view = inflater.inflate(R.layout.team_fragment, container, false);
+    	View view = inflater.inflate(R.layout.team_informatie, container, false);
     	TextView label_info = (TextView)  view.findViewById(R.id.label_info);
     	label_info.setText(team.getNaam());   
     	    
     	TextView team_startnummer = (TextView)  view.findViewById(R.id.team_startnummer);
     	team_startnummer.setText(Integer.toString(team.getStartnummer()));
+    	
     	TextView team_startgroep = (TextView) view.findViewById(R.id.team_startgroep);
     	team_startgroep.setText(Integer.toString(team.getStartGroep()));
     	
-    	
     	return view;
-    }
-    
-	public void setTeam(Team team){
-		this.team = team;
-		((TeamActivity)this.getActivity()).setTeam(team);
-	}
-	
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {	
-    	menu.add("Favo")
-	    .setIcon(R.drawable.ic_action_star)
-	    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);	
     }
    
 	@Override
@@ -88,23 +72,5 @@ public class TeamInformatieFragment extends SherlockFragment {
 		}
 		return false;
    }
-	
-	private class getTeam extends AsyncTask<Void, Void, Void> {  
-		private ProgressDialog progressDialog;  
-		protected void onPreExecute() {  
-			//progressDialog = ProgressDialog.show(TeamActivity.this,  
-			//  "Bezig met laden", "Teams worden opgehaald...", true);  
-		}
-		
-		@Override  
-		protected Void doInBackground(Void... arg0) {  
-			setTeam(api.getTeamByID(team_id));
-			return null;       
-		}
-		
-		@Override  
-		protected void onPostExecute(Void result) {
-			//progressDialog.dismiss();
-		}
-	}
+
 }
