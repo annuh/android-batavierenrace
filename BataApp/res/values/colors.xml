@@ -5,7 +5,12 @@
 	<drawable name="batabruin">#2a2723</drawable>
 	<drawable name="jaarkleur">#FFE13B</drawable>
 	<drawable name="lichtblauw">#cef3ff</drawable>
+	<drawable name="wit">#FFFFFF</drawable>
 	
+	<drawable name="border_blauw">#31B5E7</drawable>
+	<drawable name="border_bruin">#2A2723</drawable>
+	
+	<color name="batabruin">#2A2723</color>
 	<color name="red">#ff0000</color>
 	<color name="geel">#FFFF00</color>
 	<color name="green">#008000</color>
