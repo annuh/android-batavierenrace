@@ -34,7 +34,7 @@ public class MainActivity extends SherlockFragmentActivity {
            @Override
            public void onClick(View view) {
                // Launching News Feed Screen
-               Intent i = new Intent(getApplicationContext(), RoutesActivity.class);
+               Intent i = new Intent(getApplicationContext(), EtappesActivity.class);
                startActivity(i);
            }
        });

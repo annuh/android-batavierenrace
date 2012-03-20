@@ -24,8 +24,16 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
+import com.ut.bataapp.activities.TeamActivity.TeamFragmentAdapter;
 import com.ut.bataapp.fragments.ContactFragment;
+import com.ut.bataapp.fragments.InfoCalamiteitenFragment;
+import com.ut.bataapp.fragments.InfoOverzichtskaartenFragment;
+import com.ut.bataapp.fragments.TeamInformatieFragment;
+import com.ut.bataapp.fragments.TeamLooptijdenFragment;
 import com.ut.bataapp.fragments.VervoerFragment;
+import com.viewpagerindicator.PageIndicator;
+import com.viewpagerindicator.TabPageIndicator;
+import com.viewpagerindicator.TitleProvider;
 import com.actionbarsherlock.R;
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +41,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -40,30 +49,24 @@ import android.support.v4.view.ViewPager;
 
 public class InformatieActivity extends SherlockFragmentActivity {
    
-	ViewPager  mViewPager;
-	TabsAdapter mTabsAdapter;
+	ViewPager mPager;
+	PageIndicator mIndicator;
+	FragmentPagerAdapter mAdapter;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.informatie_styles);
-        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
-        ActionBar.Tab tab1 = getSupportActionBar().newTab().setText("Contact");
-        ActionBar.Tab tab2 = getSupportActionBar().newTab().setText("Vervoer");
-        ActionBar.Tab tab3 = getSupportActionBar().newTab().setText("Slapen");
-        
-        mViewPager = (ViewPager)findViewById(R.id.pager);
-        mTabsAdapter = new TabsAdapter(this, getSupportActionBar(), mViewPager);
-        
-        mTabsAdapter.addTab(tab1, ContactFragment.class);
-        mTabsAdapter.addTab(tab2, VervoerFragment.class);
-        mTabsAdapter.addTab(tab3, ContactFragment.class);
-        
-        if (savedInstanceState != null) {
-        	getSupportActionBar().setSelectedNavigationItem(savedInstanceState.getInt("index"));
-        }
+
+        setContentView(R.layout.simple_tabs);
+		
+        mAdapter = new InformatieFragmentAdapter(getSupportFragmentManager());
+		
+		mPager = (ViewPager)findViewById(R.id.pager);
+		mPager.setAdapter(mAdapter);
+		
+		mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
+		mIndicator.setViewPager(mPager);
     }
     
     @Override
@@ -83,75 +86,37 @@ public class InformatieActivity extends SherlockFragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
     
+    class InformatieFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+		
+		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+		ArrayList<String> titels = new ArrayList<String>();
+		
+		public InformatieFragmentAdapter(FragmentManager fm) {
+			super(fm);
+			fragments.add(new InfoCalamiteitenFragment());
+			titels.add("Calamiteiten");
+			fragments.add(new InfoOverzichtskaartenFragment());
+			titels.add("Overzichtskaarten");
+			fragments.add(new ContactFragment());
+			titels.add("Algemeen");
+			fragments.add(new ContactFragment());
+			titels.add("Colofon");
+		}
+		
+		
+		@Override
+		public Fragment getItem(int position) {
+			return fragments.get(position);
+		}
 
-    /**
-     * This is a helper class that implements the management of tabs and all
-     * details of connecting a ViewPager with associated TabHost.  It relies on a
-     * trick.  Normally a tab host has a simple API for supplying a View or
-     * Intent that each tab will show.  This is not sufficient for switching
-     * between pages.  So instead we make the content part of the tab host
-     * 0dp high (it is not shown) and the TabsAdapter supplies its own dummy
-     * view to show as the tab content.  It listens to changes in tabs, and takes
-     * care of switch to the correct paged in the ViewPager whenever the selected
-     * tab changes.
-     */
-    public static class TabsAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener, ActionBar.TabListener {
-        private final Context mContext;
-        private final ActionBar mActionBar;
-        private final ViewPager mViewPager;
-        private final ArrayList<String> mTabs = new ArrayList<String>();
+		@Override
+		public int getCount() {
+			return fragments.size();
+		}
 
-        public TabsAdapter(FragmentActivity activity, ActionBar actionBar, ViewPager pager) {
-            super(activity.getSupportFragmentManager());
-            mContext = activity;
-            mActionBar = actionBar;
-            mViewPager = pager;
-            mViewPager.setAdapter(this);
-            mViewPager.setOnPageChangeListener(this);
-        }
-
-        public void addTab(ActionBar.Tab tab, Class<?> clss) {
-            mTabs.add(clss.getName());
-            mActionBar.addTab(tab.setTabListener(this));
-            notifyDataSetChanged();
-        }
-
-        @Override
-        public int getCount() {
-            return mTabs.size();
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return Fragment.instantiate(mContext, mTabs.get(position), null);
-        }
-
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            mActionBar.setSelectedNavigationItem(position);
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-        }
-
-    	@Override
-    	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-    		mViewPager.setCurrentItem(tab.getPosition());
-    	}
-
-    	@Override
-    	public void onTabReselected(Tab tab, FragmentTransaction ft) {
-    	}
-
-    	@Override
-    	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-    	}
-    }
-    
-    
+		@Override
+		public String getTitle(int position) {
+			return titels.get(position);
+		}
+	}
 }

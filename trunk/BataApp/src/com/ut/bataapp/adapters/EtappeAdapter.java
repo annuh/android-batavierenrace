@@ -1,6 +1,11 @@
-package com.ut.bataapp;
+package com.ut.bataapp.adapters;
 
 import java.util.ArrayList;
+
+import com.ut.bataapp.R;
+import com.ut.bataapp.R.drawable;
+import com.ut.bataapp.R.id;
+import com.ut.bataapp.R.layout;
 import com.ut.bataapp.objects.Etappe;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,12 +15,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class RouteArrayAdapter extends ArrayAdapter<String> {
+public class EtappeAdapter extends ArrayAdapter<String> {
 	
 	private final Context context;
 	private final ArrayList<Etappe> values;
 
-	public RouteArrayAdapter(Context context, ArrayList<Etappe> values) {
+	public EtappeAdapter(Context context, ArrayList<Etappe> values) {
 		super(context, R.layout.etappe_row, getIds(values));
 		this.context = context;
 		this.values = values;

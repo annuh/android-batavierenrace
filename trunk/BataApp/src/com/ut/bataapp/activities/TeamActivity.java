@@ -18,6 +18,7 @@ import com.actionbarsherlock.R;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.fragments.ContactFragment;
 import com.ut.bataapp.fragments.TeamInformatieFragment;
+import com.ut.bataapp.fragments.TeamLooptijdenFragment;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import android.support.v4.view.ViewPager;
@@ -32,6 +33,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 	PageIndicator mIndicator;
 	FragmentPagerAdapter mAdapter;
 	private final int MENU_FOLLOW = Menu.FIRST;
+	private final int MENU_UNFOLLOW = Menu.FIRST + 1;
 	private Team team = null;
 	private int team_id;
 	
@@ -49,18 +51,40 @@ public class TeamActivity extends SherlockFragmentActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         team_id = this.getIntent().getIntExtra("index", 0) + 1;
         new getTeam().execute();
-        
-        
     }
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		if(team != null) {
+			team.getNaam();
+			SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
+			MenuItem menuItem_volg = menu.findItem(MENU_FOLLOW);
+			MenuItem menuItem_delete = menu.findItem(MENU_UNFOLLOW);
+			if(keyValues.contains(team.getNaam())) {
+				menuItem_volg.setVisible(false);
+				menuItem_delete.setVisible(true);
+			} else {
+				menuItem_volg.setVisible(true);
+				menuItem_delete.setVisible(false);
+			}
+		}
+		return super.onPrepareOptionsMenu(menu);
+	}
 	   
 	@Override
-	   public boolean onCreateOptionsMenu(Menu menu) {	
-	 	   menu.add(0,MENU_FOLLOW,Menu.NONE, R.string.ab_volgen)
-	 	   	.setIcon(R.drawable.ic_action_star)
-	 	   	.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-	 	   
-	 	   return true;
-	    }
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0,MENU_UNFOLLOW,Menu.NONE, R.string.ab_verwijderen)
+		 .setIcon(R.drawable.ic_action_delete)
+		 .setVisible(false)
+		 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		
+		menu.add(0,MENU_FOLLOW,Menu.NONE, R.string.ab_volgen)
+		 .setIcon(R.drawable.ic_action_star)
+		 .setVisible(false)
+		 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		
+		return super.onCreateOptionsMenu(menu);
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -77,13 +101,25 @@ public class TeamActivity extends SherlockFragmentActivity {
 	            break;
 			case MENU_FOLLOW:
 				SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
-				//keyValues.contains(key)
-				
 				SharedPreferences.Editor keyValuesEditor = keyValues.edit();
 				keyValuesEditor.putInt(team.getNaam(), team.getStartnummer());	
 				keyValuesEditor.commit();
-				Toast toast = Toast.makeText(this, "U volgt dit team nu.", Toast.LENGTH_SHORT);
+				//item.setVisible(false);
+				invalidateOptionsMenu();
+				Toast toast = Toast.makeText(this, "U volgt dit tean nu.", Toast.LENGTH_SHORT);
 				toast.show();
+				
+				break;
+			case MENU_UNFOLLOW:
+				SharedPreferences keyValues1 = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
+				SharedPreferences.Editor keyValuesEditor1 = keyValues1.edit();
+				keyValuesEditor1.remove(team.getNaam());
+				keyValuesEditor1.commit();
+				//item.setVisible(false);
+				invalidateOptionsMenu();
+				Toast toast1 = Toast.makeText(this, "U volgt dit tean nu niet meer.", Toast.LENGTH_SHORT);
+				toast1.show();
+				break;
 		}
 		
 		return super.onOptionsItemSelected(item);
@@ -98,14 +134,10 @@ public class TeamActivity extends SherlockFragmentActivity {
 			super(fm);
 			fragments.add(new TeamInformatieFragment());
 			titels.add("Informatie");
-			fragments.add(new ContactFragment());
+			fragments.add(new TeamLooptijdenFragment());
 			titels.add("Routetijden");
 			fragments.add(new ContactFragment());
 			titels.add("Klassement");
-			fragments.add(new ContactFragment());
-			titels.add("Informatie");
-			fragments.add(new ContactFragment());
-			titels.add("Informatie");
 		}
 
 		
@@ -151,7 +183,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 			
 			mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 			mIndicator.setViewPager(mPager);
-		
+			invalidateOptionsMenu();
 			progressDialog.dismiss();
 		}
 	}

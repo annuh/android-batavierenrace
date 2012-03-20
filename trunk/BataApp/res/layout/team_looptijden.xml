@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    style="@style/scroller" >
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+
+	    <TextView
+                android:id="@+id/label_info"
+                android:text = "Looptijden"
+                style="@style/h1" />
+	    <TableLayout
+	   	    android:id="@+id/table_team_looptijden"
+		    style="@style/table" >
+		   <TableRow
+				android:layout_width="match_parent"
+		    	android:layout_height="wrap_content">
+		       <TextView
+		    		android:text="Etappe"
+		    		style="@style/table_left" />		       
+		       <TextView
+		    		android:text="Tijd"
+		    		style="@style/table_right" />
+		   </TableRow>
+		   
+		   <TableRow
+				android:layout_width="match_parent"
+		    	android:layout_height="wrap_content" >
+		       <TextView
+					android:text="1"
+					style="@style/table_left" />		       
+		       <TextView
+		            android:text="0:21:24"
+		    		style="@style/table_right" />
+		   </TableRow>
+		   <TableRow
+				android:layout_width="match_parent"
+		    	android:layout_height="wrap_content" >
+		       <TextView
+					android:text="2"
+					style="@style/table_left" />		       
+		       <TextView
+		           android:text="0:23:34"
+		    		style="@style/table_right" />
+		   </TableRow>
+	
+		</TableLayout>
+
+	</LinearLayout>
+	    
+		
+</ScrollView>
