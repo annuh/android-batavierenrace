@@ -37,6 +37,7 @@ public class TeamAdapter extends ArrayAdapter<Team> {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.team_row, parent, false);
+		rowView.setId(filteredItems.get(position).getStartnummer());
 		
 		TextView text_start = (TextView) rowView.findViewById(R.id.team_start);
 		text_start.setText(Integer.toString(filteredItems.get(position).getStartnummer()));

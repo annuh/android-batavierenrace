@@ -27,12 +27,12 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".activities.RoutesActivity">
+        <activity android:name=".activities.EtappesActivity">
         </activity>
         
         <activity
-			android:name=".activities.RouteActivity"
-		/>
+			android:name=".activities.EtappeActivity"
+			android:theme="@style/StyledIndicators" />
         
         <activity 
             android:name=".activities.TeamsActivity" />
@@ -52,15 +52,17 @@
 			android:name=".activities.WeerActivity" />
         
         <activity
-			android:name=".activities.InformatieActivity" />
+			android:name=".activities.InformatieActivity"
+			android:theme="@style/StyledIndicators" />
+        
+        <activity
+			android:name=".activities.AfbeeldingActivity" />
         
         <activity
 			android:name=".activities.PreferencesActivity" />
         
         <activity
 			android:name=".activities.MessagesActivity" />
-
-
-        <!-- android:stopWithTask="true" /> THIS WAS PART OF THE SUPPORT DEMOS? -->
+        
     </application>
 </manifest>

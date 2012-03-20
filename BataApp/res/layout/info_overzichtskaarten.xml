@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:id="@+id/scroller_info_overzichtskaarten">
+<ScrollView 
+    android:id="@+id/scroller"
+    style="@style/scroller" >
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" 
+	    android:id="@+id/scroller_info_overzichtskaarten1">
+
+	    <TextView
+			android:id="@+id/label_info"
+			android:text = "@string/team_informatie"
+			style="@style/h1" />
+		<Button 
+			android:text="Herstart Barchem"
+			android:id="@+id/herstart_barchem"
+			style="@style/nice_button" />
+	   <Button
+	       android:id="@+id/herstart_ulft" 
+			android:text="Herstart Ulft"
+			style="@style/nice_button" />
+	   <Button 
+	       android:id="@+id/campus_enschede"
+			android:text="Campus Enschede"
+			style="@style/nice_button" />
+	   <Button 
+	       android:id="@+id/stad_enschede"
+			android:text="Stad Enschede"
+			style="@style/nice_button" />
+	   <Button 
+	       android:id="@+id/stad_nijmegen"
+			android:text="Stad Nijmegen"
+			style="@style/nice_button" />
+	</LinearLayout>
+</ScrollView>
+</LinearLayout>
