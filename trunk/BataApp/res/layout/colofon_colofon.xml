@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    style="@style/scroller" >
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" 
+	    android:id="@+id/scroller_info_overzichtskaarten1">
+
+	    <TextView
+			android:text = "Colofon"
+			style="@style/h1" />
+		<TextView
+			android:text="Deze applicatie is ontwikkeld door:\n
+							Danny Bergsma \n
+							Erik Pleijsier \n
+							Jochem Elsinga	Anne van de Venis \n
+							Bas Janssen	 \n
+							\n
+							Studenten Informatica – Universiteit Twente \n
+							\n
+							In samenwerking met:\n
+							Stichting de Batavierenrace, 40e Organisatie Commissie \n
+							\n
+							April 2012"
+			style="@style/container_block" />
+	</LinearLayout>
+</ScrollView>

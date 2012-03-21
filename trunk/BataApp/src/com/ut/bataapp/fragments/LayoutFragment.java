@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class TextFragment extends SherlockFragment {
+public class LayoutFragment extends SherlockFragment {
 	
 	private int layout;
 	
-	public TextFragment(int layout) {
+	public LayoutFragment(int layout) {
 		this.layout = layout;
 	}
 	

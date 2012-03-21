@@ -55,6 +55,10 @@
 			android:name=".activities.InformatieActivity"
 			android:theme="@style/StyledIndicators" />
         
+         <activity
+			android:name=".activities.ColofonActivity"
+			android:theme="@style/StyledIndicators" />
+        
         <activity
 			android:name=".activities.AfbeeldingActivity" />
         

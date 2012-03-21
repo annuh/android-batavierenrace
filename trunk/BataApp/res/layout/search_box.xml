@@ -3,4 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:hint="Search"
-	android:id="@+id/search_box" />
+	android:id="@+id/search_box"
+	android:imeOptions="actionDone" android:inputType="text"
+	android:maxLines="1"/>
