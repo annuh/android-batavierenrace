@@ -48,7 +48,7 @@ public class DashboardLayout extends ViewGroup {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         mMaxChildWidth = 0;
         mMaxChildHeight = 0;
-
+        
         // Measure once to find the maximum child size.
 
         int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(
