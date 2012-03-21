@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    style="@style/scroller" >
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" 
+	    android:id="@+id/scroller_info_overzichtskaarten1">
+
+	    <TextView
+			android:text = "Medische ondersteuning"
+			style="@style/h1" />
+	    
+	    <TextView
+			android:text = "@string/info_algemeen_watmoetjeweten_medischeondersteuning"
+			style="@style/container_block" />
+	        
+		<TextView
+			android:text = "Hesinname"
+			style="@style/h1" />
+	    
+	    <TextView
+	        android:text = "@string/info_algemeen_watmoetjeweten_hesinname"
+	        style="@style/container_block" />
+
+		<TextView
+			android:text = "Gevonden voorwerpen"
+			style="@style/h1" />
+		
+		<TextView
+		    android:text="Bij de infobalie herstarts of Enschede." 
+		    style="@style/container_block" />
+		
+		<TextView
+			android:text = "Tot slot"
+			style="@style/h1" />
+		
+		<TextView
+		    android:text = "@string/info_algemeen_watmoetjeweten_totslot"
+		    style="@style/container_block" />
+	   
+		
+	</LinearLayout>
+</ScrollView>

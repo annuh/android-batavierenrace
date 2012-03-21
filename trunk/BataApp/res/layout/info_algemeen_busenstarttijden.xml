@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    style="@style/scroller" >
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" 
+	    android:id="@+id/scroller_info_overzichtskaarten1">
+
+	    <TextView
+			android:text = "Bustijden"
+			style="@style/h1" />
+	    
+	    <TableLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent" >
+	        <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="Nijmegen – Ulft" />"
+	            <TextView
+	                style="@style/table_right"
+	                android:text="04:00 uur" />
+	        </TableRow>
+	        <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="Nijmegen – Barchem" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="09:30 uur" />
+	        </TableRow>
+	    </TableLayout>
+	    
+	    <TextView
+			android:text = "Starttijden"
+			style="@style/h1" />
+	    
+		<TextView
+			android:text="Start nijmegen"
+			style="@style/container_block" />
+		
+		<TableLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent" >
+	        <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="Start" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="Ploegen" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="Uur" />
+	        </TableRow>
+	        
+	        <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="1e" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="1 t/m 50" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="0:00" />
+	        </TableRow>
+	        
+	         <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="2e" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="51 t/m 100" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="0:15" />
+	        </TableRow>
+	        
+	        <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="3e" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="101 t/m 150" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="0:30" />
+	        </TableRow>
+	        
+	        <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="4e" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="151 t/m 200" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="0:45" />
+	        </TableRow>
+	        
+	         <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="5e" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="201 t/m 250" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="1:00" />
+	        </TableRow>
+	        
+	          <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="6e" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="251 t/m 300" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="1:15" />
+	        </TableRow>
+	        
+	           <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="7e" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="301 t/m 350" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="1:30" />
+	        </TableRow>
+	    </TableLayout>
+		
+	</LinearLayout>
+</ScrollView>
