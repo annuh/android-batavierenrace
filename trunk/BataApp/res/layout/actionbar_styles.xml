@@ -5,110 +5,66 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     <include layout="@layout/border_top" />
-    <LinearLayout
+	<com.ut.bataapp.DashboardLayout
 	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
+	    android:layout_height="0dip"
 	    android:layout_weight="1"
-	    android:orientation="vertical" >
-    	
-        <LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="horizontal"
-		    android:layout_weight="1" >
-		    
-            <LinearLayout
-            android:id="@+id/menu_3x3_1"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    
-            </LinearLayout>
-		    
-            <LinearLayout
-            android:id="@+id/menu_3x3_2"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    </LinearLayout>
-            
-            <LinearLayout
-                android:id="@+id/menu_3x3_3"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    </LinearLayout>
-		  
-	    </LinearLayout>
-	    <LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="horizontal"
-		    android:layout_weight="1" >
-            
-	        <LinearLayout
-            android:id="@+id/menu_3x3_4"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    
-            </LinearLayout>
-		    
-            <LinearLayout
-            android:id="@+id/menu_3x3_5"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    </LinearLayout>
-            
-            <LinearLayout
-            android:id="@+id/menu_3x3_6"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    </LinearLayout>
-	    	
-	    </LinearLayout>
-	    <LinearLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="horizontal"
-		    android:layout_weight="1" >
-            
-	        <LinearLayout
-            android:id="@+id/menu_3x3_7"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    
-            </LinearLayout>
-		    
-            <LinearLayout
-            android:id="@+id/menu_3x3_8"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    </LinearLayout>
-            
-            <LinearLayout
-            android:id="@+id/menu_3x3_9"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="1" >
-		    </LinearLayout>
+	    android:background="@drawable/batavier" >
 	    
-	    </LinearLayout>
+	    <Button
+	        android:id="@+id/dashboard_klassement"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_klassement" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_etappes"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_routes" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_teams"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_teams" />
+	    
+	    
+	    <Button
+	        android:id="@+id/dashboard_weer"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_weer" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_informatie"
+	        style="@style/DashboardButton"
+	       android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_informatie" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_sponsor"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_sponsor" />
+	   <Button
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_sponsor" />
+	   <Button
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_sponsor" />
+	   	   	   <Button
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_sponsor" /> 
+	</com.ut.bataapp.DashboardLayout>
+	<View
+		android:background="#000"
+		android:layout_width="fill_parent"
+		android:layout_height="1dp" />
 	
-	</LinearLayout>	
 	<LinearLayout
 	    android:layout_width="match_parent"
     	android:layout_height="50dip"
