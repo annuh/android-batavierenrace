@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    style="@style/scroller" >
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+
+	    <TextView
+			android:text = "Algemene informatie"
+			style="@style/h1" />
+		<Button 
+			android:text="Wat moet je weten?"
+			android:id="@+id/info_watmoetjeweten"
+			style="@style/nice_button" />
+		<Button 
+			android:text="Bus en startijden"
+			android:id="@+id/info_bustijden"
+			style="@style/nice_button" />
+		<Button 
+			android:text="Slapen"
+			android:id="@+id/info_slapen"
+			style="@style/nice_button" />
+	   
+	</LinearLayout>
+</ScrollView>

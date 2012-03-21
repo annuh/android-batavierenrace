@@ -13,8 +13,8 @@
 	        android:text = "@string/etappe_informatie"
 	        style="@style/container_head" />
 	    
-	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		    style="@style/table" >"
+	    <TableLayout
+	        style="@style/table" >
 		    <TableRow>
 		        <TextView
 		            android:id="@+id/label_routeafstand"

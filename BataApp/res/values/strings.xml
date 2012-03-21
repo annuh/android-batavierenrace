@@ -82,5 +82,40 @@
 							Bastille, kamer 334\n
 							Drienerlolaan 5\n
 							7522 NB Enschede</string>
+	<string name="info_algemeen_watmoetjeweten_medischeondersteuning">
+	    In de race rijden zeven artsen mee. Zij zijn aanwezig bij start, herstarts en de finsh 
+	    en kunnen via een medewerker opgeroepen worden. Eenmaal opgeroepen ben je verplicht te 
+	    wachten. Op de campus is de zorg in handen van EHBO Enschede; op de hoek van de Carilloncamping, 
+	    Drienerlolaan.</string> 
+
+	<string name="info_algemeen_watmoetjeweten_hesinname">
+		Van 17.45 uur tot 19.30 uur in de Vrijhof, campus Enschede.\n 
+		Inleveren: Lopershes met chip, fietsershes en twee witte en blauwe startnummers met elk een chip.
+		Lever je dit in, dan krijg je €80 borg terug. Ben je te laat, dan krijg je €70 borg terug.
+	</string>
+	
+	<string name="info_algemeen_watmoetjeweten_totslot">
+		-	Geen alcohol\n
+		-	Door Duitsland: geldig paspoort en groene verzekeringskaart busje\n
+		-	Let op omroepen en errata\n
+		-	Slapen in sportcentrum: slaapbandje dragen\n
+		-	Geen open vuur\n
+		-	Parkeren op de aangegeven plaatsen
+	</string>
+	
+	<string name="info_algemeen_slapen">
+		In Enschede zijn twee mogelijkheden:\n
+		-	Sportcentrum\n
+		Hier zijn drie zalen waar deelnemers kunnen slapen. Hiervoor heb je van te voren een slaapbandje moeten kopen.\n
+		\n
+		-	Camping\n
+		In Enschede zijn drie campings: Carillon-, Hockey- en Vlindercamping.\n 
+			Enkele regels:\n
+		\t o	Binnen de lijnen\n
+		\t o	Tent mag maximaal voor 6 personen groot\n
+		\t o	Open vuur is verboden\n
+		\t o	Gooi afval op de daarvoor bestemde plaatsen\n
+		\t o	Zondagochtend 11 uur dien je het terrein verlaten te hebben
+	</string>
     
 </resources>
