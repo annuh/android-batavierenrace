@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2011 Google Inc.
  *
@@ -27,7 +28,7 @@ import android.view.ViewGroup;
  */
 public class DashboardLayout extends ViewGroup {
 
-    private static final int UNEVEN_GRID_PENALTY_MULTIPLIER = 10;
+    private static final int UNEVEN_GRID_PENALTY_MULTIPLIER = 1;
 
     private int mMaxChildWidth = 0;
     private int mMaxChildHeight = 0;
@@ -48,7 +49,7 @@ public class DashboardLayout extends ViewGroup {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         mMaxChildWidth = 0;
         mMaxChildHeight = 0;
-        
+
         // Measure once to find the maximum child size.
 
         int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(
