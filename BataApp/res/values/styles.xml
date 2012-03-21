@@ -43,19 +43,16 @@
     	<item name="android:background">@drawable/abs__tab_indicator_holo</item>
 	</style>
 	
-	
-	
-	
-	
     <style name="DashboardButton">
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">16dp</item>
+        <item name="android:padding">5dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/batabruin</item>
-        <item name="android:background">@drawable/dashboard_item_background_pressed</item>
+        <item name="android:background">@drawable/dashboard_item_background</item>
     </style>  
     
     <style name="h1">
