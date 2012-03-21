@@ -62,5 +62,25 @@
 	<string name="contact_bezoekadres_text">Batavierenrace Nijmegen
 							Heyendaalseweg 141
 							6525 AJ Nijmegen</string>
+							
+	<string name="info_contact">Contactgegevens Stichting De Batavierenrace
+							<b>Batavierenrace Nijmegen</b>\n
+							Heyendaalseweg 141\n
+							6525 AJ Nijmegen\n
+							E: nijmegen@batavierenrace.nl\n
+							T: +31 (0)24-3615876\n\n
+							Bezoekadres:\n
+							Kamer N-1.260\n
+							Heyendaalseweg 141\n
+							6525 AJ Nijmegen\n\n
+							<b>Batavierenrace Enschede</b>
+							Postbus 217\n
+							7500 AE Enschede\n
+							E: enschede@batavierenrace.nl\n
+							T: +31 (0)53-4893787\n\n
+							Bezoekadres:\n
+							Bastille, kamer 334\n
+							Drienerlolaan 5\n
+							7522 NB Enschede</string>
     
 </resources>

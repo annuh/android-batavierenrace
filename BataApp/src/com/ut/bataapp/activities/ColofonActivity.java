@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2011 The Android Open Source Project
- * Copyright (C) 2011 Jake Wharton
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
@@ -21,10 +5,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
-import com.ut.bataapp.fragments.ContactFragment;
-import com.ut.bataapp.fragments.InfoCalamiteitenFragment;
-import com.ut.bataapp.fragments.InfoColofonFragment;
-import com.ut.bataapp.fragments.InfoOverzichtskaartenFragment;
+import com.ut.bataapp.fragments.LayoutFragment;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
@@ -37,7 +18,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-public class InformatieActivity extends SherlockFragmentActivity {
+public class ColofonActivity extends SherlockFragmentActivity {
    
 	ViewPager mPager;
 	PageIndicator mIndicator;
@@ -47,22 +28,31 @@ public class InformatieActivity extends SherlockFragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         setContentView(R.layout.simple_tabs);
 		
-        mAdapter = new InformatieFragmentAdapter(getSupportFragmentManager());
-		
+        mAdapter = new ColofonFragmentAdapter(getSupportFragmentManager());
 		mPager = (ViewPager)findViewById(R.id.pager);
 		mPager.setAdapter(mAdapter);
-		
 		mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
+		
+		String page = "";
+		page = getIntent().getStringExtra("page");
+		int pageid = 0;
+		if(page.equals("contact")) { pageid = 0; }
+		else if(page.equals("colofon")) { pageid = 1; }
+		else if(page.equals("disclaimer")) { pageid = 2; }
+		
+		mPager.setCurrentItem(pageid);
 		mIndicator.setViewPager(mPager);
+		mIndicator.setCurrentItem(pageid);
     }
     
     @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
+				finish();
+				/*
 				Intent intent = new Intent(this, MainActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
@@ -70,27 +60,25 @@ public class InformatieActivity extends SherlockFragmentActivity {
 				//Get rid of the slide-in animation, if possible
 	            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
 	                OverridePendingTransition.invoke(this);
-	            }
+	            }*/
 		}
 		
 		return super.onOptionsItemSelected(item);
 	}
     
-    class InformatieFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+    class ColofonFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
 		
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 		ArrayList<String> titels = new ArrayList<String>();
 		
-		public InformatieFragmentAdapter(FragmentManager fm) {
+		public ColofonFragmentAdapter(FragmentManager fm) {
 			super(fm);
-			fragments.add(new InfoCalamiteitenFragment());
-			titels.add("Calamiteiten");
-			fragments.add(new InfoOverzichtskaartenFragment());
-			titels.add("Overzichtkaart");
-			fragments.add(new ContactFragment());
-			titels.add("Algemeen");
-			fragments.add(new InfoColofonFragment());
+			fragments.add(new LayoutFragment(R.layout.colofon_contactgegevens));
+			titels.add("Contact");
+			fragments.add(new LayoutFragment(R.layout.colofon_colofon));
 			titels.add("Colofon");
+			fragments.add(new LayoutFragment(R.layout.colofon_disclaimer));
+			titels.add("Disclaimer");
 		}
 		
 		
