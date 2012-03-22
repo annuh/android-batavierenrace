@@ -28,19 +28,26 @@
         </activity>
         
         <activity 
-            android:name=".activities.EtappesActivity" />
+            android:name=".activities.FavoTeamsActivity" />
+        
+        <activity 
+            android:name=".activities.EtappesActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard" />
         
         
         <activity
 			android:name=".activities.EtappeActivity"
-			android:theme="@style/StyledIndicators" />
+			android:theme="@style/StyledIndicators"
+			android:configChanges="orientation|keyboardHidden|keyboard" />
         
         <activity 
-            android:name=".activities.TeamsActivity" />
+            android:name=".activities.TeamsActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard" />
         
         <activity
 			android:name=".activities.TeamActivity"
-			android:theme="@style/StyledIndicators" />
+			android:theme="@style/StyledIndicators"
+			android:configChanges="orientation|keyboardHidden|keyboard" />
         
         <activity android:name=".activities.EtappeChartByTeam" />
 
