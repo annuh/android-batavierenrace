@@ -13,6 +13,25 @@
 	        android:text = "Looproute"
 	        style="@style/container_head" />
 	    
+	    <LinearLayout 
+	    	android:orientation="horizontal"
+	    	style="@style/container_block">
+	        
+	        <ImageView
+	            android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:src="@drawable/icon_maps" >
+	        </ImageView>
+	        
+	        <ImageView
+	            android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:src="@drawable/icon_earth" >
+	        </ImageView>
+	        
+	        
+	    </LinearLayout>
+	    
 	    <TextView
 	        android:text = "Autoroute"
 	        style="@style/container_head" />

@@ -21,7 +21,7 @@ public class EtappeRoutes extends SherlockFragment {
     	etappe = ((EtappeActivity) getActivity()).getEtappe();
     	View view = inflater.inflate(R.layout.etappe_routes, container, false);
     	
-    	
+    	String [] lopers_maps =  getResources().getStringArray(R.array.looproutes_maps);
     	
     	return view;
     	
