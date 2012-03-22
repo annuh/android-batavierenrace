@@ -9,9 +9,14 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -75,6 +80,7 @@ public class TeamsActivity extends SherlockListActivity  {
    
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.d("Keyboard", String.valueOf(item.getItemId()));
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Intent intent = new Intent(this, MainActivity.class);
@@ -90,9 +96,21 @@ public class TeamsActivity extends SherlockListActivity  {
 				item.setActionView(R.layout.search_box);
 				filterText = (EditText) item.getActionView().findViewById(R.id.search_box);
 				filterText.addTextChangedListener(filterTextWatcher);
-				filterText.requestFocus();
-				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.showSoftInput(filterText, InputMethodManager.SHOW_IMPLICIT);
+				/*filterText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+				    public void onFocusChange(View v, boolean hasFocus) {
+				        if (hasFocus) {
+				        	
+				        } else {
+				        	InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+				        	imm.hideSoftInputFromWindow(filterText.getWindowToken(), 0);
+				        }
+				    }
+				});
+				*/
+				setKeyboardFocus(filterText);
+				//InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				//imm.showSoftInput(filterText, InputMethodManager.SHOW_IMPLICIT);
+				//this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 				break;
 			case MENU_SORT_NAAM:
 				Collections.sort(teams,new Comparator<Team>() {
@@ -128,6 +146,15 @@ public class TeamsActivity extends SherlockListActivity  {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public static void setKeyboardFocus(final EditText primaryTextField) {
+		   (new Handler()).postDelayed(new Runnable() {
+		     public void run() {
+		       primaryTextField.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, 0, 0, 0));
+		       primaryTextField.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP , 0, 0, 0));
+		     }
+		   }, 100);
+		 }
 	
 	private class getTeams extends AsyncTask<Void, Void, Void> {  
 		private ProgressDialog progressDialog;  
