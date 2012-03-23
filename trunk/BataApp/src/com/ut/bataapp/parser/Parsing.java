@@ -95,14 +95,14 @@ public class Parsing{
 	public static ArrayList<Etappe> parseEtappe(){
 		ArrayList<Etappe> etappes = new ArrayList<Etappe>();
 		try{
-			URL url = new URL("http://api.batavierenrace.nl/xml/2011/etappes.xml");
+			InputSource input = getInputSource("etappes.xml");
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			SAXParser sp = spf.newSAXParser();
 			XMLReader xr = sp.getXMLReader();
 			
 			EtappeHandler etappeHandler = new EtappeHandler();
 			xr.setContentHandler(etappeHandler);
-			xr.parse(new InputSource(url.openStream()));
+			xr.parse(input);
 			
 			etappes = etappeHandler.getParsedData();
 			
@@ -118,5 +118,114 @@ public class Parsing{
 			e.printStackTrace();
 		}
 		return etappes;
+	}
+   /**
+	* Deze functie levert een inputsource voor de parser
+	* @param path het pad naar de file zoals bijvoorbeeld: "/etappes.xml"
+	 * @throws IOException 
+	*
+	*/
+	public static InputSource getInputSource(String path) throws IOException{
+	File sdRoot = Environment.getExternalStorageDirectory();
+	File sdFile = new File(sdRoot,path);
+	InputSource result = null;
+	if(sdFile.exists()){
+		if(isNewest(path)){
+			result = new InputSource(new FileInputStream(sdFile));
+		}
+		else{
+			if(downloadToSD(path)){
+				//Het is gelukt om de file te downloaden, gebruik dit bestand.
+				result = new InputSource(new FileInputStream(sdFile));	
+			}else{
+		    	//Het is niet gelukt de file te downloaden, gebruik oude versie
+		    	result = new InputSource(new FileInputStream(sdFile));
+			}
+		}
+	}
+	else{
+		if(downloadToSD(path)){
+			//Het is gelukt om de file te downloaden, gebruik dit bestand.
+			result = new InputSource(new FileInputStream(sdFile));	
+		}else{
+		    //Het is niet gelukt de file te downloaden, wat nu?
+		}	
+	}
+	
+	return result;
+	
+	}
+	/**
+	* Deze functie controleerd of de huidige versie van een bestand de nieuwste is.
+	*/
+	public static boolean isNewest(String path){
+		/**boolean result = false;
+		if(#seconds from lastupdate of updatefile >api.getThreshold()){
+			downloadToSD("update.xml");
+		}
+		if(#timestamp voor path in update.xml <= timestamp in path op SD){
+			return true;
+		}
+		return result;*/
+		return true;
+	}
+	/**
+	* Deze methode probeert de file gegeven door path te downloaden naar de sdcard.
+	* http://www.androidsnippets.com/download-an-http-file-to-sdcard-with-progress-notification
+	* http://www.vogella.de/articles/AndroidFileSystem/article.html
+	*/
+	public static boolean downloadToSD(String path){
+	boolean result = false;
+	try{
+		Log.d("parser",api.getURL()+path);
+		URL url = new URL(api.getURL()+path);//de file die gedownload moet worden
+		//nieuwe verbinding:
+		HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+		//setup connectie:
+	    urlConnection.setRequestMethod("GET");
+	    urlConnection.setDoOutput(true);
+
+	    // connect!
+	    urlConnection.connect();
+		
+		File sdRoot = Environment.getExternalStorageDirectory();
+		File sdFile = new File(sdRoot,path);
+		//this will be used to write the downloaded data into the file we created
+	    
+	    FileOutputStream fileOutput = new FileOutputStream(sdFile);
+
+	    //this will be used in reading the data from the internet
+	    InputStream inputStream = urlConnection.getInputStream();
+
+	    //this is the total size of the file
+	    int totalSize = urlConnection.getContentLength();
+	    //variable to store total downloaded bytes
+	    int downloadedSize = 0;
+
+	    //create a buffer...
+	    byte[] buffer = new byte[1024];
+	    int bufferLength = 0; //used to store a temporary size of the buffer
+
+	    //now, read through the input buffer and write the contents to the file
+	    while ( (bufferLength = inputStream.read(buffer)) > 0 ) {
+	         //add the data in the buffer to the file in the file output stream (the file on the sd card
+	         fileOutput.write(buffer, 0, bufferLength);
+	         //add up the size so we know how much is downloaded
+	         downloadedSize += bufferLength;
+	         //this is where you would do something to report the prgress, like this maybe
+	         //updateProgress(downloadedSize, totalSize);
+	        }
+	        //close the output stream when done
+	        fileOutput.close();
+
+		result = true;	
+	}catch(MalformedURLException mue){
+		Log.d("parser","malformedurl");
+	}catch(IOException ioe){
+		Log.d("parser","ioexeption");
+	}
+	Log.d("parser","result"+ result);
+
+	return result;	
 	}
 }
