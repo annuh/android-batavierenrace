@@ -147,7 +147,12 @@ public class api {
 	public String getDatum(){
 		return "28/04/2012";
 	}
-	
+	/**
+	* Haal de url op waar de bestanden op de servers staan
+	*/
+	public static String getURL(){
+		return "http://api.batavierenrace.nl/xml/2011/";
+	}
 	public static ArrayList<Bericht> getBerichten(){
 		
 		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
