@@ -64,14 +64,8 @@ public class api {
 	
 	//Haal van elk team basis informatie op.
 	public static ArrayList<Team> getTeams() {
-		long initial = new Date().getTime();
 		ArrayList<Team> teams = Parsing.parseTeam();
-		//teams = sortTeamByName(teams);
-		long end = new Date().getTime();
-		
-		teams.add(0,new Team(0,0,Long.toString(end-initial)));
 		return teams;
-		
 	}
 	
 	//Sorteer de teams alfabetisch
@@ -92,31 +86,34 @@ public class api {
 		return t;
 	}
 	
+	//Get uitslagen van Team
+	public static Team getTeamMetUitslagen(int id){
+		ArrayList<Uitslag> uitslagen = Parsing.parseUitslag(id);
+		Team team = uitslagen.get(0).getTeam();
+		for(int i=0;i<uitslagen.size()-1;i++){
+			team.addLooptijd(uitslagen.get(i));
+		}
+		return  team;
+	}
+	
+	public static ArrayList<Uitslag> getUitslagByTeam(int id){
+		return Parsing.parseUitslag(id);
+	}
+	
 	/**
 	 * Detailleerde informatie van een team, inclusief looptijden van de lopers (uitslag)
 	 * @param id van team
 	 * @return
 	 */
 	public static Team getTeamByID(int id) {
-		Team team = new Team(1,1, "Blaat");
-		
-		// Team 1 heeft Etappe 1 in 0:31:31 gelopen
-		Uitslag uitslag1 = new Uitslag(team, new Etappe(1, 'M'), "0:31:31", null);
-		team.addLooptijd(uitslag1);
-		
-		// Team 1 heeft Etappe 2 in 0:21:31 gelopen
-		Uitslag uitslag2 = new Uitslag(team, new Etappe(2, 'M'), "0:21:31", null);
-		team.addLooptijd(uitslag2);
-		long t0, t1;
-
-        t0 =  System.currentTimeMillis();
-
-        do{
-            t1 = System.currentTimeMillis();
-        }
-        while ((t1 - t0) < (5 * 1000));
+		ArrayList<Uitslag> uitslagen = Parsing.parseUitslag(id);
+		Team team = uitslagen.get(0).getTeam();
+		for(int i=0;i<uitslagen.size()-1;i++){
+			team.addLooptijd(uitslagen.get(i));
+		}
 		return team;
 	}
+	
 	
 	
 	public static ArrayList<Klassement> getKlassement(){
@@ -147,21 +144,21 @@ public class api {
 	public String getDatum(){
 		return "28/04/2012";
 	}
+	
 	/**
 	* Haal de url op waar de bestanden op de servers staan
 	*/
 	public static String getURL(){
-		return "http://api.batavierenrace.nl/xml/2011/";
+		return "http://bata-dev.snt.utwente.nl/~jorne/xml_2011/";
 	}
+	
 	public static ArrayList<Bericht> getBerichten(){
-		
 		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
 		berichten.add(new Bericht("003", 0, "Batacommissie", "Permanente stop", "Omdat bij de toplopers doping is geconstateerd is de batavierenrace 2012 permanent gestopt.", "10/01/12 om 15:34"));
 		berichten.add(new Bericht("002", 1, "Batacommissie", "Tijdelijke stop", "Omdat de lopers te hard gelopen hebben is er een tijdelijke stop. De batavierenracecommissie onderzoekt of er doping is gebruikt.", "10/01/12 om 15:13"));
 		berichten.add(new Bericht("001", 2, "Batacommissie", "Lopers veel succes", "De batavierenracecommissie wenst elke loper veel succes in de race.", "10/01/12 om 15:09"));
 		
 		return berichten;
-	}
-	
-		
+	}	
+
 }

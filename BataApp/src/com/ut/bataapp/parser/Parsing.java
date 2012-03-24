@@ -36,7 +36,35 @@ import com.ut.bataapp.objects.*;
 
 public class Parsing{
 	public String abc = "edit";
-	//Functi gebruikt om de KlassementXML te parse naar een ArrayList<Klassement>
+	
+	//
+	public static ArrayList<Uitslag> parseUitslag(final int id){
+		ArrayList<Uitslag> uitslagen = new ArrayList<Uitslag>();
+			try{
+				//InputSource input = getInputSource("ploeguitslag/"+id+".xml");
+				URL url = new URL("http://bata-dev.snt.utwente.nl/~jorne/xml_2011/ploeguitslag/"+id+".xml");
+				SAXParserFactory spf = SAXParserFactory.newInstance();
+				SAXParser sp = spf.newSAXParser();
+				XMLReader xr = sp.getXMLReader();
+				
+				PloegHandler ploegHandler = new PloegHandler();
+				xr.setContentHandler(ploegHandler);
+				xr.parse(new InputSource(url.openStream()));
+				//xr.parse(input);
+				
+				uitslagen = ploegHandler.getParsedData();
+			}catch(SAXException e){
+				Log.d("Uitslag","SAXEception: "+e.getMessage());
+			}catch(MalformedURLException e){
+				Log.d("Uitslag","MalformedUrlException: "+e.getMessage());
+			}catch(ParserConfigurationException e){
+				Log.d("Uitslag","ParserConfigException: "+e.getMessage());
+			}catch(IOException e){
+				Log.d("Uitslag","IOExcpetion: "+e.getMessage());
+			}
+		return uitslagen;
+	}
+	//Functie gebruikt om de KlassementXML te parse naar een ArrayList<Klassement>
 	public static ArrayList<Klassement> parseKlassement(){
 		ArrayList<Klassement> klassement = new ArrayList<Klassement>();
 		try{
@@ -69,34 +97,26 @@ public class Parsing{
 	public static ArrayList<Team> parseTeam(){
 		ArrayList<Team> teams = new ArrayList<Team>();
 		try{
-			URL url = new URL("http://api.batavierenrace.nl/xml/2011/ploegen.xml");
+			InputSource input = getInputSource("ploegen.xml");
+			URL url = new URL("http://bata-dev.snt.utwente.nl/~jorne/xml_2011/ploegen.xml");
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			SAXParser sp = spf.newSAXParser();
 			XMLReader xr = sp.getXMLReader();
 			
 			TeamHandler teamHandler = new TeamHandler();
 			xr.setContentHandler(teamHandler);
-			xr.parse(new InputSource(url.openStream()));
+			//xr.parse(new InputSource(url.openStream()));
+			xr.parse(input);
 
 			teams = teamHandler.getParsedData();
 		}catch(SAXException e){
-			teams.add(new Team(0,0,"Er is iets fout met SAX : "+e.toString()));
-			return teams;
+			Log.d("Ploegen","SAXEception: "+e.getMessage());
 		}catch(MalformedURLException e){
-			teams.add(new Team(0,0,"Er is iets fout met URL: "+e.toString()));
-			return teams;
-		}catch(ParserConfigurationException e) {
-			teams.add(new Team(0,0,"Er is iets fout met Parser: "+e.toString()));
-			return teams;
+			Log.d("Ploegen","MalformedUrlException: "+e.getMessage());
+		}catch(ParserConfigurationException e){
+			Log.d("Ploegen","ParserConfigException: "+e.getMessage());
 		}catch(IOException e){
-			teams.add(new Team(0,0,"Er is iets fout met IO: "+e.toString()));
-			return teams;
-		}catch(Exception e){
-			teams.add(new Team(0,0,"Er is iets fout iets heel anders: "+e.toString()));
-			return teams;
-		}
-		if(teams.isEmpty()){
-			teams.add(new Team(0,0,"Ik haal niks binnen =( asdsabadf"));
+			Log.d("Ploegen","IOExcpetion: "+e.getMessage());
 		}
 		return teams;
 	}
@@ -117,18 +137,17 @@ public class Parsing{
 			etappes = etappeHandler.getParsedData();
 			
 		}catch(SAXException e){
-			e.printStackTrace();
+			Log.d("Etappe","SAXEception: "+e.getMessage());
 		}catch(MalformedURLException e){
-			e.printStackTrace();
-		}catch(ParserConfigurationException e) {
-			e.printStackTrace();
+			Log.d("Etappe","MalformedUrlException: "+e.getMessage());
+		}catch(ParserConfigurationException e){
+			Log.d("Etappe","ParserConfigException: "+e.getMessage());
 		}catch(IOException e){
-			e.printStackTrace();
-		}catch(Exception e){
-			e.printStackTrace();
+			Log.d("Etappe","IOExcpetion: "+e.getMessage());
 		}
 		return etappes;
 	}
+	
    /**
 	* Deze functie levert een inputsource voor de parser
 	* @param path het pad naar de file zoals bijvoorbeeld: "/etappes.xml"
@@ -165,6 +184,8 @@ public class Parsing{
 	return result;
 	
 	}
+	
+	
 	/**
 	* Deze functie controleerd of de huidige versie van een bestand de nieuwste is.
 	*/
@@ -179,6 +200,8 @@ public class Parsing{
 		return result;*/
 		return true;
 	}
+	
+	
 	/**
 	* Deze methode probeert de file gegeven door path te downloaden naar de sdcard.
 	* http://www.androidsnippets.com/download-an-http-file-to-sdcard-with-progress-notification
@@ -230,11 +253,11 @@ public class Parsing{
 
 		result = true;	
 	}catch(MalformedURLException mue){
-		Log.d("parser","malformedurl");
+		Log.d("parser","malformedurl: "+mue.toString());
 	}catch(IOException ioe){
-		Log.d("parser","ioexeption");
+		Log.d("parser","ioexeption: "+ioe.toString());
 	}
-	Log.d("parser","result"+ result);
+	Log.d("parser","result: "+ result);
 
 	return result;	
 	}

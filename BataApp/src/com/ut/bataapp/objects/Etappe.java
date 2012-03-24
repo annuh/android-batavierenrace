@@ -36,6 +36,11 @@ public class Etappe {
 		this.geslacht = geslacht;
 	}
 	
+	//Nog kleinere constuctor
+	public Etappe(int id){
+		this.id = id;
+	}
+	
 	
 	/*Setters*/
 	public void setAfstand(int afstand){ this.afstand = afstand;}
