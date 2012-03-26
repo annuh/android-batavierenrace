@@ -151,7 +151,13 @@ public class api {
 	public static String getURL(){
 		return "http://bata-dev.snt.utwente.nl/~jorne/xml_2011/";
 	}
-	
+	/**
+	 * Haal de submap op waar de bestanden op de sdcard moeten staan
+	 * @return Stringvorm van de map waar bestanden op SD moeten staan
+	 */
+	public static String getSDmap(){
+		return "/bataxml/";
+	}
 	public static ArrayList<Bericht> getBerichten(){
 		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
 		berichten.add(new Bericht("003", 0, "Batacommissie", "Permanente stop", "Omdat bij de toplopers doping is geconstateerd is de batavierenrace 2012 permanent gestopt.", "10/01/12 om 15:34"));
