@@ -41,16 +41,16 @@ public class Parsing{
 	public static ArrayList<Uitslag> parseUitslag(final int id){
 		ArrayList<Uitslag> uitslagen = new ArrayList<Uitslag>();
 			try{
-				//InputSource input = getInputSource("ploeguitslag/"+id+".xml");
-				URL url = new URL("http://bata-dev.snt.utwente.nl/~jorne/xml_2011/ploeguitslag/"+id+".xml");
+				InputSource input = getInputSource("ploeguitslag/"+id+".xml");
+				//URL url = new URL("http://bata-dev.snt.utwente.nl/~jorne/xml_2011/ploeguitslag/"+id+".xml");
 				SAXParserFactory spf = SAXParserFactory.newInstance();
 				SAXParser sp = spf.newSAXParser();
 				XMLReader xr = sp.getXMLReader();
 				
 				PloegHandler ploegHandler = new PloegHandler();
 				xr.setContentHandler(ploegHandler);
-				xr.parse(new InputSource(url.openStream()));
-				//xr.parse(input);
+				//xr.parse(new InputSource(url.openStream()));
+				xr.parse(input);
 				
 				uitslagen = ploegHandler.getParsedData();
 			}catch(SAXException e){
@@ -231,6 +231,9 @@ public class Parsing{
 	    }
 	    
 		File sdFile = new File(xmlMap.getPath()+'/'+path);
+		if(!sdFile.getParentFile().exists()){
+			sdFile.getParentFile().mkdir();
+		}
 		//sdFile is de file waar de nieuw file heengeschreven word.
 	    
 	    FileOutputStream fileOutput = new FileOutputStream(sdFile);
