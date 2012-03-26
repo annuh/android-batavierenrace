@@ -5,11 +5,11 @@
 	    <item>5 min.</item>
 	    <item>60 min.</item>
 	</string-array>
-	<string-array name="listValues">
+	<integer-array name="listValues">
 	    <item>0</item>
 	    <item>5</item>
 	    <item>60</item>
-	</string-array>
+	</integer-array>
 	<string-array name="looproutes_earth">
         <item>http://g.co/maps/bkwev</item>
         <item>http://g.co/maps/a4s7a</item>

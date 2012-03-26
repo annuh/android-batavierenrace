@@ -44,7 +44,7 @@ public class EtappeChartByTeam extends SherlockFragmentActivity {
    */
   public View execute(Context context) {
     String[] titles = new String[] { "2008", "2007" };
-    HashMap<Integer, Integer> tijden = api.getLooptijdenByEtappe(new Etappe(0, 'M'));
+    HashMap<Integer, Integer> tijden = api.getLooptijdenByEtappe(new Etappe(0));
     Integer aantal = tijden.size();
     double[] anderetijdenX = new double[aantal];
     double[] anderetijdenY = new double[aantal];

@@ -1,10 +1,8 @@
 package com.ut.bataapp.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +10,7 @@ import android.widget.Button;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.*;
 
-
 public class InfoAlgemeenFragment extends SherlockFragment {
-	
-	
 	
 	public void openAlgemeen(String page) {
 		Intent intent = new Intent(getActivity().getApplicationContext(), InfoAlgemeenActivity.class);
@@ -24,7 +19,6 @@ public class InfoAlgemeenFragment extends SherlockFragment {
 		startActivity(intent);
 	}
 	
-   /** Called when the activity is first created. */
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	   super.onCreate(savedInstanceState);
@@ -34,7 +28,6 @@ public class InfoAlgemeenFragment extends SherlockFragment {
 	   info_bustijden.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   Log.d("fm","Onclick");
         	   openAlgemeen("bustijden");
            }
        });
@@ -57,10 +50,5 @@ public class InfoAlgemeenFragment extends SherlockFragment {
 	   
 	   return view;
    }
-
-   public static final class OverridePendingTransition {
-       public static void invoke(Activity activity) {
-           activity.overridePendingTransition(0, 0);
-       }
-   }
+   
 }

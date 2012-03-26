@@ -21,7 +21,6 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
-import com.ut.bataapp.fragments.ContactFragment;
 import com.ut.bataapp.fragments.InfoAlgemeenFragment;
 import com.ut.bataapp.fragments.InfoCalamiteitenFragment;
 import com.ut.bataapp.fragments.InfoColofonFragment;

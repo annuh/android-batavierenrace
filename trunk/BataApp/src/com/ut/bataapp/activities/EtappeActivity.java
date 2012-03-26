@@ -1,7 +1,6 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,23 +11,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.R;
 import com.ut.bataapp.api.api;
-import com.ut.bataapp.fragments.ContactFragment;
+import com.ut.bataapp.fragments.LayoutFragment;
 import com.ut.bataapp.fragments.EtappeInformatie;
 import com.ut.bataapp.fragments.EtappeRoutes;
-import com.ut.bataapp.fragments.TeamInformatieFragment;
-import com.ut.bataapp.fragments.TeamLooptijdenFragment;
 import com.ut.bataapp.objects.Etappe;
 import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
 public class EtappeActivity extends SherlockFragmentActivity {
-	
 
 	ViewPager mPager;
 	PageIndicator mIndicator;
@@ -71,7 +66,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
         }
     }
     
-class EtappeFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+    class EtappeFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
 		
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 		ArrayList<String> titels = new ArrayList<String>();
@@ -82,7 +77,7 @@ class EtappeFragmentAdapter extends FragmentPagerAdapter implements TitleProvide
 			titels.add("Informatie");
 			fragments.add(new EtappeRoutes());
 			titels.add("Routes");
-			fragments.add(new ContactFragment());
+			fragments.add(new LayoutFragment(R.layout.info_algemeen_busenstarttijden));
 			titels.add("Looptijden");
 		}
 

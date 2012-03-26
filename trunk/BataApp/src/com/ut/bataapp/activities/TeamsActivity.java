@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -16,8 +15,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListActivity;
@@ -40,11 +37,6 @@ public class TeamsActivity extends SherlockListActivity  {
 	 private EditText filterText = null;
 	 private TeamAdapter adapter = null;
 	 
-	 public void setTeams(ArrayList<Team> arrayList){
-		 this.teams=arrayList;
-	 }
-	
-   /** Called when the activity is first created. */
    @Override
    public void onCreate(Bundle savedInstanceState) {
 	   setTitle("Teams");
@@ -65,7 +57,6 @@ public class TeamsActivity extends SherlockListActivity  {
    public boolean onCreateOptionsMenu(Menu menu) {	
  	   menu.add(0,MENU_SEARCH,Menu.NONE, R.string.ab_zoeken)
  	   	.setIcon(R.drawable.ic_action_search)
- 	   	//.setActionView(R.layout.search_box)
  	   	.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
  	   
  	  SubMenu subMenu1 = menu.addSubMenu(R.string.ab_sorteren);
@@ -96,21 +87,7 @@ public class TeamsActivity extends SherlockListActivity  {
 				item.setActionView(R.layout.search_box);
 				filterText = (EditText) item.getActionView().findViewById(R.id.search_box);
 				filterText.addTextChangedListener(filterTextWatcher);
-				/*filterText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-				    public void onFocusChange(View v, boolean hasFocus) {
-				        if (hasFocus) {
-				        	
-				        } else {
-				        	InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-				        	imm.hideSoftInputFromWindow(filterText.getWindowToken(), 0);
-				        }
-				    }
-				});
-				*/
 				setKeyboardFocus(filterText);
-				//InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				//imm.showSoftInput(filterText, InputMethodManager.SHOW_IMPLICIT);
-				//this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 				break;
 			case MENU_SORT_NAAM:
 				Collections.sort(teams,new Comparator<Team>() {
@@ -118,22 +95,11 @@ public class TeamsActivity extends SherlockListActivity  {
 				    	return arg0.getNaam().compareTo(arg1.getNaam());
 				    }
 				});
-
-				/*adapter.sort(new Comparator<Team>() {
-				    public int compare(Team arg0, Team arg1) {
-				    	return arg0.getNaam().compareTo(arg1.getNaam());
-				    }
-				});*/
 				adapter = new TeamAdapter(TeamsActivity.this, teams);
 			    setListAdapter(adapter);
 			    adapter.notifyDataSetChanged();
 				break;
 			case MENU_SORT_START:
-				/*adapter.sort(new Comparator<Team>() {
-				    public int compare(Team arg0, Team arg1) {
-				    	return (arg0.getStartnummer()>arg1.getStartnummer() ? -1 : (arg0.getStartnummer()==arg1.getStartnummer() ? 0 : 1));
-				    }
-				});*/
 				Collections.sort(teams,new Comparator<Team>() {
 				    public int compare(Team arg0, Team arg1) {
 				    	return (arg0.getStartnummer()<arg1.getStartnummer() ? -1 : (arg0.getStartnummer()==arg1.getStartnummer() ? 0 : 1));

@@ -16,7 +16,6 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.R;
 import com.ut.bataapp.api.api;
-import com.ut.bataapp.fragments.ContactFragment;
 import com.ut.bataapp.fragments.TeamInformatieFragment;
 import com.ut.bataapp.fragments.TeamLooptijdenFragment;
 import com.ut.bataapp.objects.Team;
@@ -136,8 +135,6 @@ public class TeamActivity extends SherlockFragmentActivity {
 			titels.add("Informatie");
 			fragments.add(new TeamLooptijdenFragment());
 			titels.add("Routetijden");
-			fragments.add(new ContactFragment());
-			titels.add("Klassement");
 		}
 
 		
@@ -168,8 +165,8 @@ public class TeamActivity extends SherlockFragmentActivity {
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			
-			team = api.getTeamByID(team_id);
-			return null;       
+			team = api.getTeamMetUitslagen(team_id);
+			return null;
 		}
 		
 		@Override  
