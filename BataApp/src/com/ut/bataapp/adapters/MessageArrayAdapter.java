@@ -1,7 +1,8 @@
-package com.ut.bataapp;
+package com.ut.bataapp.adapters;
 
 import java.util.ArrayList;
 
+import com.ut.bataapp.R;
 import com.ut.bataapp.objects.Bericht;
 import android.content.Context;
 import android.view.LayoutInflater;

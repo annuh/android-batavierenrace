@@ -1,33 +1,15 @@
 package com.ut.bataapp.fragments;
 
-import java.util.Calendar;
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebViewFragment;
 import android.widget.Button;
-import android.widget.TextView;
-
-import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.*;
-
 
 public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	
@@ -38,8 +20,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
-	
-   /** Called when the activity is first created. */
+
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	   super.onCreate(savedInstanceState);
@@ -49,7 +30,6 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   herstart_barchem.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   Log.d("fm","Onclick");
                openKaart("herstart_barchem");
            }
        });

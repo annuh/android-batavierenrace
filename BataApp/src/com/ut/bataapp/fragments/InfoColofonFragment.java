@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,7 @@ import android.widget.Button;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.*;
 
-
-public class InfoColofonFragment extends SherlockFragment {
-	
-	
+public class InfoColofonFragment extends SherlockFragment {	
 	
 	public void openColofon(String page) {
 		Intent intent = new Intent(getActivity().getApplicationContext(), ColofonActivity.class);
@@ -24,7 +20,6 @@ public class InfoColofonFragment extends SherlockFragment {
 		startActivity(intent);
 	}
 	
-   /** Called when the activity is first created. */
    @Override
    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	   super.onCreate(savedInstanceState);
@@ -34,7 +29,6 @@ public class InfoColofonFragment extends SherlockFragment {
 	   info_contact.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   Log.d("fm","Onclick");
         	   openColofon("contact");
            }
        });

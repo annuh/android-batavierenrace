@@ -42,7 +42,7 @@ public class EtappeHandler extends DefaultHandler{
 	@Override
 	public void characters(char ch[], int start, int length){
 		if(etappe){
-			etappes.add(new Etappe(etappes.size()+1,0,'D',"0","0",null,null,null,null));
+			etappes.add(new Etappe(etappes.size()+1));
 			etappe = false;
 		}
 		if(tijd) etappes.get(etappes.size()-1).setRecordTijd(new String(ch,start,length));

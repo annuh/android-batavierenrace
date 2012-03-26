@@ -4,8 +4,8 @@ package com.ut.bataapp.fragments;
 import java.util.ArrayList;
 
 import com.actionbarsherlock.R;
-import com.ut.bataapp.MessageArrayAdapter;
 import com.ut.bataapp.activities.MessagesActivity;
+import com.ut.bataapp.adapters.MessageArrayAdapter;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Bericht;
 

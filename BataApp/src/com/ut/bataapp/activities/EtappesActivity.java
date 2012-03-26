@@ -1,8 +1,6 @@
 package com.ut.bataapp.activities;
 
-
 import java.util.ArrayList;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,7 +11,6 @@ import com.actionbarsherlock.app.SherlockListActivity;
 import com.ut.bataapp.adapters.EtappeAdapter;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
-
 
 public class EtappesActivity extends SherlockListActivity  {
 	
@@ -41,12 +38,13 @@ public class EtappesActivity extends SherlockListActivity  {
 		private ProgressDialog progressDialog;  
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(EtappesActivity.this,  
-			  "Bezig met laden", "Teams worden opgehaald...", true);  
+			  "Bezig met laden", "Etappes worden opgehaald...", true);  
 		}
 		
+		@SuppressWarnings("unchecked")
 		@Override  
-		protected Void doInBackground(Void... arg0) {  
-			etappes = api.getEtappes();
+		protected Void doInBackground(Void... arg0) { 
+			etappes = (ArrayList<Etappe>) api.getEtappes().getResponse();
 			return null;       
 		}
 		

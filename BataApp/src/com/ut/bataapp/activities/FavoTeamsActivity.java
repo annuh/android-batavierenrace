@@ -41,7 +41,6 @@ public class FavoTeamsActivity extends SherlockListActivity {
         	ArrayList<Team> teams = new ArrayList<Team>();
         	for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
         		teams.add(new Team((Integer) entry.getValue(),0,entry.getKey()));
-        	   // System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
         	}
         	TeamAdapter adapter = new TeamAdapter(FavoTeamsActivity.this, teams);
 			setListAdapter(adapter);

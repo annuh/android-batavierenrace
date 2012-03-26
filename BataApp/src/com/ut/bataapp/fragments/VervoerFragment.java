@@ -8,8 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class VervoerFragment extends SherlockFragment {
-    String text = "???";
-    
+        
     public VervoerFragment() {
         setRetainInstance(true);
     }
