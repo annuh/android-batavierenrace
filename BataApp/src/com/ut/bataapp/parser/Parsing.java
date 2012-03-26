@@ -98,14 +98,12 @@ public class Parsing{
 		ArrayList<Team> teams = new ArrayList<Team>();
 		try{
 			InputSource input = getInputSource("ploegen.xml");
-			URL url = new URL("http://bata-dev.snt.utwente.nl/~jorne/xml_2011/ploegen.xml");
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			SAXParser sp = spf.newSAXParser();
 			XMLReader xr = sp.getXMLReader();
 			
 			TeamHandler teamHandler = new TeamHandler();
 			xr.setContentHandler(teamHandler);
-			//xr.parse(new InputSource(url.openStream()));
 			xr.parse(input);
 
 			teams = teamHandler.getParsedData();
@@ -155,10 +153,12 @@ public class Parsing{
 	*
 	*/
 	public static InputSource getInputSource(String path) throws IOException{
-	File sdRoot = Environment.getExternalStorageDirectory();
-	File sdFile = new File(sdRoot,path);
+	//De locatie van de file is de root van de sdkaart+dexmlmap+het gegeven path.
+	File sdFile = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
+	Log.d("parser","gis:"+sdFile.getPath());
 	InputSource result = null;
 	if(sdFile.exists()){
+		Log.d("parser","gis:file exist");
 		if(isNewest(path)){
 			result = new InputSource(new FileInputStream(sdFile));
 		}
@@ -173,9 +173,11 @@ public class Parsing{
 		}
 	}
 	else{
+		Log.d("parser","gis:file not exist");
 		if(downloadToSD(path)){
 			//Het is gelukt om de file te downloaden, gebruik dit bestand.
 			result = new InputSource(new FileInputStream(sdFile));	
+			Log.d("parser","gis:file gedownload");
 		}else{
 		    //Het is niet gelukt de file te downloaden, wat nu?
 		}	
@@ -204,8 +206,7 @@ public class Parsing{
 	
 	/**
 	* Deze methode probeert de file gegeven door path te downloaden naar de sdcard.
-	* http://www.androidsnippets.com/download-an-http-file-to-sdcard-with-progress-notification
-	* http://www.vogella.de/articles/AndroidFileSystem/article.html
+	* @result true als het downloaden gelukt is, false als het dat niet is
 	*/
 	public static boolean downloadToSD(String path){
 	boolean result = false;
@@ -221,35 +222,32 @@ public class Parsing{
 	    // connect!
 	    urlConnection.connect();
 		
-		File sdRoot = Environment.getExternalStorageDirectory();
-		File sdFile = new File(sdRoot,path);
-		//this will be used to write the downloaded data into the file we created
+	    //De locatie van de file is de root van de sdkaart+dexmlmap+het gegeven path.
+	    File xmlMap = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap());
+	    //Maak directory aan als die nog niet bestaat
+	    if(!xmlMap.exists()){
+	    	Log.d("parser","dts:xmlMap bestaat nog niet");
+	    	xmlMap.mkdir();
+	    }
+	    
+		File sdFile = new File(xmlMap.getPath()+'/'+path);
+		//sdFile is de file waar de nieuw file heengeschreven word.
 	    
 	    FileOutputStream fileOutput = new FileOutputStream(sdFile);
 
-	    //this will be used in reading the data from the internet
+	    //InputStream vanaf internet
 	    InputStream inputStream = urlConnection.getInputStream();
 
-	    //this is the total size of the file
-	    int totalSize = urlConnection.getContentLength();
-	    //variable to store total downloaded bytes
-	    int downloadedSize = 0;
-
-	    //create a buffer...
+	    //aanmaken leesbuffer.
 	    byte[] buffer = new byte[1024];
-	    int bufferLength = 0; //used to store a temporary size of the buffer
+	    int bufferLength = 0; //tijdelijke lengte van de buffer
 
-	    //now, read through the input buffer and write the contents to the file
+	    //lees door de input buffer en schrijf naar de File.
 	    while ( (bufferLength = inputStream.read(buffer)) > 0 ) {
-	         //add the data in the buffer to the file in the file output stream (the file on the sd card
 	         fileOutput.write(buffer, 0, bufferLength);
-	         //add up the size so we know how much is downloaded
-	         downloadedSize += bufferLength;
-	         //this is where you would do something to report the prgress, like this maybe
-	         //updateProgress(downloadedSize, totalSize);
-	        }
-	        //close the output stream when done
-	        fileOutput.close();
+	    }
+	    //Sluit de outputSream
+	    fileOutput.close();
 
 		result = true;	
 	}catch(MalformedURLException mue){
