@@ -10,13 +10,11 @@
 package com.ut.bataapp.api;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
-
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
+import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Uitslag;
 import com.ut.bataapp.parser.Parsing;
@@ -27,8 +25,8 @@ public class api {
 	 * Haal van alle etappes basis informatie op.
 	 * @return 
 	 */
-	public static ArrayList<Etappe> getEtappes() {
-		return Parsing.parseEtappe();
+	public static Response getEtappes() {
+		return new Response(Parsing.parseEtappe(),Response.OK_UPDATE);
 	}
 	
 	/**
@@ -37,7 +35,7 @@ public class api {
 	 * @return
 	 */
 	public static Etappe getEtappesByID(int id) {
-		Etappe etappe = new Etappe(1, 2500, 'M', "Team-naam", "0:23:23", null, "LOOPKML.kml","AUTOKML.kml","OVERSLAG.kml");
+		Etappe etappe = new Etappe(1, "Van", "Naar", 2500, 'M', "Omschrijving", "2000", "Team-naam", "23 km/h", "0:23:23");
 		return etappe;
 	}
 	
@@ -66,13 +64,6 @@ public class api {
 	public static ArrayList<Team> getTeams() {
 		ArrayList<Team> teams = Parsing.parseTeam();
 		return teams;
-	}
-	
-	//Sorteer de teams alfabetisch
-	public static ArrayList<Team> sortTeamByName(ArrayList<Team> teams){
-		ArrayList<Team> t = teams;
-		Collections.sort(t,new TeamNaamComparator());
-		return t;
 	}
 	
 	//Zoek teams bij naam
@@ -129,21 +120,6 @@ public class api {
 		return klassement;
 	}
 	
-	/**
-	 * Haal jaarkleur op.
-	 * @return
-	 */
-	public String getJaarkleur() {
-		return "#FFE13B";
-	}
-	
-	/**
-	 * Haal data van de volgende Bata op
-	 * @return dag/maand/jaar van volgende bata
-	 */
-	public String getDatum(){
-		return "28/04/2012";
-	}
 	
 	/**
 	* Haal de url op waar de bestanden op de servers staan
