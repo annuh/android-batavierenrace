@@ -16,7 +16,7 @@ public class Team {
 	private int startnummer = 0;
 	private int startgroep = 0;
 	private String naam = "";
-	private ArrayList<Uitslag> looptijden = new ArrayList<Uitslag>();
+	private ArrayList<Looptijd> looptijden = new ArrayList<Looptijd>();
 	
 	/**
 	 * Kleine constructor
@@ -36,13 +36,13 @@ public class Team {
 	public void setStartnummer(int start){this.startnummer = start;}
 	public void setStartGroep(int groep){this.startgroep = groep;}
 	public void setNaam(String naam){this.naam = naam;}
-	public void addLooptijd(Uitslag looptijd) {looptijden.add(looptijd);}
+	public void addLooptijd(Looptijd looptijd) {looptijden.add(looptijd);}
 	
 	/*Getters*/
 	public int getStartnummer(){return startnummer;}
 	public int getStartGroep(){return startgroep;}
 	public String getNaam() {return naam;}
-	public ArrayList<Uitslag> getLooptijden(){return looptijden;}
+	public ArrayList<Looptijd> getLooptijden(){return looptijden;}
 	
 	/*String formaat*/
 	public String toString(){

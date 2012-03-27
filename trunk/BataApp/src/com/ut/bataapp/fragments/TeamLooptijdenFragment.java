@@ -4,7 +4,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.objects.Team;
-import com.ut.bataapp.objects.Uitslag;
+import com.ut.bataapp.objects.Looptijd;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +34,7 @@ public class TeamLooptijdenFragment extends SherlockFragment {
 
     	TableLayout table = (TableLayout) view.findViewById(R.id.table_team_looptijden);
     	
-	    for(Uitslag uitslag : team.getLooptijden()) {
+	    for(Looptijd uitslag : team.getLooptijden()) {
 	    	Log.d("# Uitslagen", String.valueOf(team.getLooptijden().size()));
 	    	TableRow tr = new TableRow(this.getActivity());
 		    	//tr.setLayoutParams(new LayoutParams(

@@ -9,11 +9,12 @@
 
 package com.ut.bataapp.objects;
 
-public class Uitslag {
+public class Looptijd {
 	private Team team;
 	private Etappe etappe;
 	private String tijd;
 	private String foutcode;
+	private String snelheid;
 	
 	/**
 	 * 
@@ -22,7 +23,7 @@ public class Uitslag {
 	 * @param tijd - Tijd van deze uitslag
 	 * @param foutcode - Eventuele foutcode
 	 */
-	public Uitslag(Team team, Etappe etappe, String tijd, String foutcode) {
+	public Looptijd(Team team, Etappe etappe, String tijd, String foutcode) {
 		this.team = team;
 		this.etappe = etappe;
 		this.tijd = tijd;

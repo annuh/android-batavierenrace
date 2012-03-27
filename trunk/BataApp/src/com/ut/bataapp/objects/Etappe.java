@@ -34,17 +34,6 @@ public class Etappe {
 		this.record_snelheid = record_snelheid;
 		this.record_tijd = record_tijd;
 	}
-
-	/**
-	 * Kleine constructor
-	 * @param id - ID van de etappe
-	 * @param geslacht - Geslacht van de etappe
-	 */
-	public Etappe(int id, char geslacht, String van) {
-		this.id = id;
-		this.geslacht = geslacht;
-		this.van = van;
-	}
 	
 	//Nog kleinere constuctor
 	public Etappe(int id){
