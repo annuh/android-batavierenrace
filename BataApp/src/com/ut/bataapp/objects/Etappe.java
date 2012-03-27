@@ -65,6 +65,9 @@ public class Etappe {
 	
 	/*String formaat*/
 	public String toString(){
-		return "Etappe#: "+getId()+" afstand: "+getAfstand()+" geslacht: "+getGeslacht() +'\n';
+		String statement;
+		if(van!=null) statement = "Etappe#: "+getId()+" geslacht: "+getGeslacht()+" van-naar: "+getVan()+"-"+getNaar()+" record jaar: "+getRecordJaar()+'\n';
+		else statement = "Etappe#: "+getId()+" afstand: "+getAfstand()+" geslacht: "+getGeslacht() +'\n';
+		return statement;
 	}
 }

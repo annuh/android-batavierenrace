@@ -39,13 +39,15 @@ public class api {
 	}
 	
 	public static ArrayList<Looptijd> getUitslagenVanEtappe(int id){
+		return Parsing.parseEtappeUitslag(id);
+		/**
 		ArrayList<Looptijd> uitslagen = new ArrayList<Looptijd>();
 		Looptijd looptijd1 = new Looptijd(new Team(1,1,"team1"),new Etappe(id),"12:30:00","");
 		Looptijd looptijd2 = new Looptijd(new Team(2,1,"team1"),new Etappe(id),"01:43:00","");
 		Looptijd looptijd3 = new Looptijd(new Team(3,1,"team1"),new Etappe(id),"06:11:40","");
 		uitslagen.add(looptijd1);uitslagen.add(looptijd2);uitslagen.add(looptijd3);
 		return uitslagen;
-		
+		*/
 	}
 	
 	//Haal van elk team basis informatie op.
