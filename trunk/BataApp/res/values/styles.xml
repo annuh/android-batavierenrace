@@ -15,8 +15,7 @@
     <style name="ThemeDialogWhenLarge" parent="android:style/Theme">
     </style>
     
-	<style name="Theme.BataApp" parent="Theme.Sherlock.Light">
-	    <item name="android:background">@color/wit</item>
+	<style name="Theme.BataApp" parent="Theme.Sherlock.Light.DarkActionBar">
 	    <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
 	    <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
 	    <item name="android:selectableItemBackground">@drawable/ad_selectable_background</item>
@@ -130,7 +129,6 @@
         <item name="android:background">@drawable/titel</item>
         <item name="android:paddingLeft">30dip</item>
         <item name="android:paddingBottom">1dip</item>
-        <item name="android:layout_marginTop">10dp</item>
     </style>
     
     <style name="container_block">
@@ -146,6 +144,7 @@
         <item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">fill_parent</item>
         <item name="android:fillViewport">true</item>
+        <item name="android:background">@color/wit</item>
     </style>
     
     <style name="message">
