@@ -16,7 +16,7 @@ import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
-import com.ut.bataapp.objects.Uitslag;
+import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.parser.Parsing;
 
 public class api {
@@ -35,29 +35,17 @@ public class api {
 	 * @return
 	 */
 	public static Etappe getEtappesByID(int id) {
-		Etappe etappe = new Etappe(1, "Van", "Naar", 2500, 'M', "Omschrijving", "2000", "Team-naam", "23 km/h", "0:23:23");
-		return etappe;
+		return Parsing.parseDetailEtappe(id);
 	}
 	
-	/**
-	 * COMMENT: Deze methode kunnen we eventueel samenvoegen met getEtappeById(), als we deze info willen laten zien bij de etappe info.
-	 * @param etappe
-	 * @return
-	 */
-	public static HashMap<Integer, Integer> getLooptijdenByEtappe(Etappe etappe) {
-		HashMap<Integer, Integer> tijden = new HashMap<Integer, Integer>();
-		// In minuut 0 finishen 0 lopers
-		tijden.put(0, 0);
-		tijden.put(1, 0);
-		// In minuut 2 (2:00 - 2:59) finishen 3 lopers
-		tijden.put(2, 3);
-		// In minutt 3 (3:00 - 3:59) finishen 5 lopers etc..
-		tijden.put(3, 5);
-		tijden.put(4, 100);
-		tijden.put(5, 12);
-		tijden.put(6, 2);
-		tijden.put(7, 0);
-		return tijden;
+	public static ArrayList<Looptijd> getUitslagenVanEtappe(int id){
+		ArrayList<Looptijd> uitslagen = new ArrayList<Looptijd>();
+		Looptijd looptijd1 = new Looptijd(new Team(1,1,"team1"),new Etappe(id),"12:30:00","");
+		Looptijd looptijd2 = new Looptijd(new Team(2,1,"team1"),new Etappe(id),"01:43:00","");
+		Looptijd looptijd3 = new Looptijd(new Team(3,1,"team1"),new Etappe(id),"06:11:40","");
+		uitslagen.add(looptijd1);uitslagen.add(looptijd2);uitslagen.add(looptijd3);
+		return uitslagen;
+		
 	}
 	
 	//Haal van elk team basis informatie op.
@@ -77,17 +65,7 @@ public class api {
 		return t;
 	}
 	
-	//Get uitslagen van Team
-	public static Team getTeamMetUitslagen(int id){
-		ArrayList<Uitslag> uitslagen = Parsing.parseUitslag(id);
-		Team team = uitslagen.get(0).getTeam();
-		for(int i=0;i<uitslagen.size()-1;i++){
-			team.addLooptijd(uitslagen.get(i));
-		}
-		return  team;
-	}
-	
-	public static ArrayList<Uitslag> getUitslagByTeam(int id){
+	public static ArrayList<Looptijd> getUitslagByTeam(int id){
 		return Parsing.parseUitslag(id);
 	}
 	
@@ -97,14 +75,13 @@ public class api {
 	 * @return
 	 */
 	public static Team getTeamByID(int id) {
-		ArrayList<Uitslag> uitslagen = Parsing.parseUitslag(id);
+		ArrayList<Looptijd> uitslagen = Parsing.parseUitslag(id);
 		Team team = uitslagen.get(0).getTeam();
 		for(int i=0;i<uitslagen.size()-1;i++){
 			team.addLooptijd(uitslagen.get(i));
 		}
 		return team;
 	}
-	
 	
 	
 	public static ArrayList<Klassement> getKlassement(){
@@ -141,6 +118,11 @@ public class api {
 		berichten.add(new Bericht("001", 2, "Batacommissie", "Lopers veel succes", "De batavierenracecommissie wenst elke loper veel succes in de race.", "10/01/12 om 15:09"));
 		
 		return berichten;
+	}
+
+	//Omdat dit ergens wordt aangeroepen :S
+	public static HashMap<Integer, Integer> getLooptijdenByEtappe(Etappe etappe) {
+		return null;
 	}	
 
 }

@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Team;
-import com.ut.bataapp.objects.Uitslag;
+import com.ut.bataapp.objects.Looptijd;
 
 public class PloegHandler extends DefaultHandler{
 	
@@ -26,11 +26,11 @@ public class PloegHandler extends DefaultHandler{
 	
 	private Team team;
 	private Etappe et;
-	private ArrayList<Uitslag> uitslagen;
+	private ArrayList<Looptijd> uitslagen;
 
-	public ArrayList<Uitslag> getParsedData(){
+	public ArrayList<Looptijd> getParsedData(){
 		if(uitslagen.isEmpty()){
-			uitslagen.add(new Uitslag(team,new Etappe(1),"123","abc"));
+			uitslagen.add(new Looptijd(team,new Etappe(1),"123","abc"));
 		}
 		return uitslagen;
 	}
@@ -78,7 +78,7 @@ public class PloegHandler extends DefaultHandler{
 			startgroep =false;
 		}
 		if(uitslag){
-			uitslagen.add(new Uitslag(team,null,null,null));
+			uitslagen.add(new Looptijd(team,null,null,null));
 			uitslag =false;
 		}
 		if(foutcode){ 
@@ -93,7 +93,7 @@ public class PloegHandler extends DefaultHandler{
 
 	@Override
 	public void startDocument() throws SAXException{
-		this.uitslagen = new ArrayList<Uitslag>();
+		this.uitslagen = new ArrayList<Looptijd>();
 	}
 
 }

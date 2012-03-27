@@ -165,7 +165,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			
-			team = api.getTeamMetUitslagen(team_id);
+			team = api.getTeamByID(team_id);
 			return null;
 		}
 		

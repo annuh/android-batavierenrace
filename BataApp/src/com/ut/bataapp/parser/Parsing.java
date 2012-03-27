@@ -35,11 +35,36 @@ import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.*;
 
 public class Parsing{
-	public String abc = "edit";
+	
+	public static Etappe parseDetailEtappe(int id) {
+		Etappe etappe = null;
+		try{
+			InputSource input = getInputSource("etappes.xml");
+			SAXParserFactory spf = SAXParserFactory.newInstance();
+			SAXParser sp = spf.newSAXParser();
+			XMLReader xr = sp.getXMLReader();
+			
+			DetailedEtappeHandler detailedEtappeHandler = new DetailedEtappeHandler(id);
+			xr.setContentHandler(detailedEtappeHandler);
+			xr.parse(input);
+			
+			etappe = detailedEtappeHandler.getParsedData();
+			
+		}catch(SAXException e){
+			Log.d("Etappe","SAXEception: "+e.getMessage());
+		}catch(MalformedURLException e){
+			Log.d("Etappe","MalformedUrlException: "+e.getMessage());
+		}catch(ParserConfigurationException e){
+			Log.d("Etappe","ParserConfigException: "+e.getMessage());
+		}catch(IOException e){
+			Log.d("Etappe","IOExcpetion: "+e.getMessage());
+		}
+		return etappe;
+	}
 	
 	//
-	public static ArrayList<Uitslag> parseUitslag(final int id){
-		ArrayList<Uitslag> uitslagen = new ArrayList<Uitslag>();
+	public static ArrayList<Looptijd> parseUitslag(final int id){
+		ArrayList<Looptijd> uitslagen = new ArrayList<Looptijd>();
 			try{
 				InputSource input = getInputSource("ploeguitslag/"+id+".xml");
 				//URL url = new URL("http://bata-dev.snt.utwente.nl/~jorne/xml_2011/ploeguitslag/"+id+".xml");
@@ -262,4 +287,5 @@ public class Parsing{
 
 	return result;	
 	}
+
 }
