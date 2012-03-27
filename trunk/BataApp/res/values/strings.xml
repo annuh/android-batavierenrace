@@ -26,11 +26,14 @@
     <string name="ab_verwijderen">Verwijder dit team</string>
     <string name="ab_instellingen">Instellingen</string>
     
-    <string name="dashboard_routes">Routes</string>
-    <string name="dashboard_teams">Teams</string>
+    <string name="dashboard_favorieten">Favorieten</string>
     <string name="dashboard_klassement">Klassement</string>
-    <string name="dashboard_weer">Weer</string>
+    <string name="dashboard_teams">Teams</string>
+    <string name="dashboard_etappes">Etappes</string>
     <string name="dashboard_informatie">Informatie</string>
+    <string name="dashboard_jubileum">Jubileum</string>
+    <string name="dashboard_bataradio">BataRadio</string>   
+    <string name="dashboard_weer">Weer</string>    
     <string name="dashboard_sponsor">Sponsor</string>
 
     <string name="etappe_informatie">Informatie</string>

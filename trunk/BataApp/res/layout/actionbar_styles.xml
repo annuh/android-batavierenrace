@@ -8,57 +8,62 @@
 	<com.ut.bataapp.DashboardLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dip"
-	    android:layout_weight="1"
-	    android:background="@drawable/batavier" >
+	    android:layout_weight="1" >
+	    
+	    <Button
+	        android:id="@+id/dashboard_favorieten"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/favorieten"
+	        android:text="@string/dashboard_favorieten" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_klassement"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
+	        android:drawableTop="@drawable/klassement"
 	        android:text="@string/dashboard_klassement" />
-	    
-	    <Button
-	        android:id="@+id/dashboard_etappes"
-	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
-	        android:text="@string/dashboard_routes" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_teams"
 	        style="@style/DashboardButton"
 	        android:drawableTop="@drawable/menu"
-	        android:text="@string/dashboard_teams" />
+	        android:text="@string/dashboard_teams" />	    
 	    
+	    <Button
+	        android:id="@+id/dashboard_etappes"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/etappes"
+	        android:text="@string/dashboard_etappes" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_informatie"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_informatie" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_jubileum"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/jubileum"
+	        android:text="@string/dashboard_jubileum" />
+	    
+	    <Button
+	        android:id="@+id/dashboard_bataradio"
+	        style="@style/DashboardButton"
+	        android:drawableTop="@drawable/menu"
+	        android:text="@string/dashboard_bataradio" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_weer"
 	        style="@style/DashboardButton"
 	        android:drawableTop="@drawable/menu"
-	        android:text="@string/dashboard_weer" />
-	    
-	    <Button
-	        android:id="@+id/dashboard_informatie"
-	        style="@style/DashboardButton"
-	       android:drawableTop="@drawable/menu"
-	        android:text="@string/dashboard_informatie" />
+	        android:text="@string/dashboard_weer" />	    
 	    
 	    <Button
 	        android:id="@+id/dashboard_sponsor"
 	        style="@style/DashboardButton"
 	        android:drawableTop="@drawable/menu"
 	        android:text="@string/dashboard_sponsor" />
-	   <Button
-	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
-	        android:text="@string/dashboard_sponsor" />
-	   <Button
-	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
-	        android:text="@string/dashboard_sponsor" />
-	   	   	   <Button
-	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
-	        android:text="@string/dashboard_sponsor" /> 
+	   
 	</com.ut.bataapp.DashboardLayout>
 	<View
 		android:background="#000"
