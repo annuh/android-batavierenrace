@@ -36,6 +36,34 @@ import com.ut.bataapp.objects.*;
 
 public class Parsing{
 	
+	//Functie gebruikt om de Etappeuitslag/*.xml te parse naar een ArrayList<Looptijd>
+	public static ArrayList<Looptijd> parseEtappeUitslag(int id){
+		ArrayList<Looptijd> uitslagen = new ArrayList<Looptijd>();
+		try{
+			InputSource input = getInputSource("etappeuitslag/"+id+".xml");
+			SAXParserFactory spf = SAXParserFactory.newInstance();
+			SAXParser sp = spf.newSAXParser();
+			XMLReader xr = sp.getXMLReader();
+			
+			EtappeUitslagHandler etappeUitslagHandler = new EtappeUitslagHandler();
+			xr.setContentHandler(etappeUitslagHandler);
+			xr.parse(input);
+			
+			uitslagen = etappeUitslagHandler.getParsedData();
+		}catch(SAXException e){
+			Log.d("EtappeUitslag","SAXEception: "+e.getMessage());
+		}catch(MalformedURLException e){
+			Log.d("EtappeUitslag","MalformedUrlException: "+e.getMessage());
+		}catch(ParserConfigurationException e){
+			Log.d("EtappeUitslag","ParserConfigException: "+e.getMessage());
+		}catch(IOException e){
+			Log.d("EtappeUitslag","IOExcpetion: "+e.getMessage());
+		}
+	Log.d("Data Check","EtappeUitslag, uitslag 4: "+uitslagen.get(4));
+	return uitslagen;
+	}
+	
+	//Functie gebruikt om de EtappesXML te pasrse naar een volledige Etappe
 	public static Etappe parseDetailEtappe(int id) {
 		Etappe etappe = null;
 		try{
@@ -51,18 +79,19 @@ public class Parsing{
 			etappe = detailedEtappeHandler.getParsedData();
 			
 		}catch(SAXException e){
-			Log.d("Etappe","SAXEception: "+e.getMessage());
+			Log.d("DetailedEtappe","SAXEception: "+e.getMessage());
 		}catch(MalformedURLException e){
-			Log.d("Etappe","MalformedUrlException: "+e.getMessage());
+			Log.d("DetailedEtappe","MalformedUrlException: "+e.getMessage());
 		}catch(ParserConfigurationException e){
-			Log.d("Etappe","ParserConfigException: "+e.getMessage());
+			Log.d("DetailedEtappe","ParserConfigException: "+e.getMessage());
 		}catch(IOException e){
-			Log.d("Etappe","IOExcpetion: "+e.getMessage());
+			Log.d("DetailedEtappe","IOExcpetion: "+e.getMessage());
 		}
+		Log.d("Data Check","DetailedEtappe, Etappe "+id+": "+etappe);
 		return etappe;
 	}
 	
-	//
+	//Functie gebruikt om de Ploeguitslag/*.xml te parse naar een ArrayList<Looptijd>
 	public static ArrayList<Looptijd> parseUitslag(final int id){
 		ArrayList<Looptijd> uitslagen = new ArrayList<Looptijd>();
 			try{
@@ -79,16 +108,18 @@ public class Parsing{
 				
 				uitslagen = ploegHandler.getParsedData();
 			}catch(SAXException e){
-				Log.d("Uitslag","SAXEception: "+e.getMessage());
+				Log.d("PloegUitslag","SAXEception: "+e.getMessage());
 			}catch(MalformedURLException e){
-				Log.d("Uitslag","MalformedUrlException: "+e.getMessage());
+				Log.d("PloegUitslag","MalformedUrlException: "+e.getMessage());
 			}catch(ParserConfigurationException e){
-				Log.d("Uitslag","ParserConfigException: "+e.getMessage());
+				Log.d("PloegUitslag","ParserConfigException: "+e.getMessage());
 			}catch(IOException e){
-				Log.d("Uitslag","IOExcpetion: "+e.getMessage());
+				Log.d("PloegUitslag","IOExcpetion: "+e.getMessage());
 			}
+		Log.d("Data Check","PloegUitslag, uitslag 4: "+uitslagen.get(4));
 		return uitslagen;
 	}
+	
 	//Functie gebruikt om de KlassementXML te parse naar een ArrayList<Klassement>
 	public static ArrayList<Klassement> parseKlassement(){
 		ArrayList<Klassement> klassement = new ArrayList<Klassement>();
@@ -118,7 +149,7 @@ public class Parsing{
 		return klassement;
 	}
 	
-	//Functie gebruikt om de TeamsXML te parse naar een ArrayList<Team>
+	//Functie gebruikt om de PloegenXML te parse naar een ArrayList<Team>
 	public static ArrayList<Team> parseTeam(){
 		ArrayList<Team> teams = new ArrayList<Team>();
 		try{
@@ -141,10 +172,11 @@ public class Parsing{
 		}catch(IOException e){
 			Log.d("Ploegen","IOExcpetion: "+e.getMessage());
 		}
+		Log.d("Data Check","Teams, team 4: "+teams.get(4));
 		return teams;
 	}
 	
-	//Functie gebruikt om de EtappesXML te parse naar een ArrayList<Etappe>
+	//Functie gebruikt om de EtappesXML te parse naar een ArrayList<Etappe> van simpele Etappes
 	public static ArrayList<Etappe> parseEtappe(){
 		ArrayList<Etappe> etappes = new ArrayList<Etappe>();
 		try{
@@ -160,14 +192,15 @@ public class Parsing{
 			etappes = etappeHandler.getParsedData();
 			
 		}catch(SAXException e){
-			Log.d("Etappe","SAXEception: "+e.getMessage());
+			Log.d("SimpleEtappe","SAXEception: "+e.getMessage());
 		}catch(MalformedURLException e){
-			Log.d("Etappe","MalformedUrlException: "+e.getMessage());
+			Log.d("SimpleEtappe","MalformedUrlException: "+e.getMessage());
 		}catch(ParserConfigurationException e){
-			Log.d("Etappe","ParserConfigException: "+e.getMessage());
+			Log.d("SimpleEtappe","ParserConfigException: "+e.getMessage());
 		}catch(IOException e){
-			Log.d("Etappe","IOExcpetion: "+e.getMessage());
+			Log.d("SimpleEtappe","IOExcpetion: "+e.getMessage());
 		}
+		Log.d("Data Check","SimpleEtappe, etappe 4: "+etappes.get(4));
 		return etappes;
 	}
 	
