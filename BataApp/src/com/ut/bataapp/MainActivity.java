@@ -25,6 +25,7 @@ public class MainActivity extends SherlockFragmentActivity {
    @Override
    public void onCreate(Bundle savedInstanceState) {
 	   
+	   this.getSupportActionBar().setTitle("Blaat");
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.actionbar_styles);
        
