@@ -4,15 +4,12 @@ import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
-import android.util.Log;
 
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Looptijd;
 
-public class PloegHandler extends DefaultHandler{
+public class PloegHandler extends Handler{
 	
 	private boolean ploeg;
 	private boolean startnummer;
@@ -25,9 +22,11 @@ public class PloegHandler extends DefaultHandler{
 	private boolean etappe;
 	
 	private Team team;
-	private Etappe et;
 	private ArrayList<Looptijd> uitslagen;
-
+	
+	public PloegHandler(String path){
+		super(path);
+	}
 	public ArrayList<Looptijd> getParsedData(){
 		if(uitslagen.isEmpty()){
 			uitslagen.add(new Looptijd(team,new Etappe(1),"123","abc"));

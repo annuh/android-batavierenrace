@@ -2,14 +2,11 @@ package com.ut.bataapp.parser;
 
 import java.util.ArrayList;
 import java.util.TreeSet;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
 import com.ut.bataapp.objects.Klassement;
 
-public class KlassementHandler extends DefaultHandler{
+public class KlassementHandler extends Handler{
 
 	private ArrayList<Klassement> klassement;
 	private TreeSet<String> kNamen = new TreeSet<String>();
@@ -18,7 +15,9 @@ public class KlassementHandler extends DefaultHandler{
 	private boolean teamNaam;
 	private boolean positie;
 	
-	
+	public KlassementHandler(String path){
+		super(path);
+	}
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{
 	}

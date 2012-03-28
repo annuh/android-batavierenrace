@@ -11,10 +11,9 @@ import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.*;
 import com.ut.bataapp.objects.Team;
 
-public class TeamHandler extends DefaultHandler{
+public class TeamHandler extends Handler{
 
 	private boolean ploeg;
 	private boolean startnummer;
@@ -24,6 +23,10 @@ public class TeamHandler extends DefaultHandler{
 	
 	private ArrayList<Team> teams;
 	
+	public TeamHandler(String path) {
+		super(path);
+	}
+
 	public ArrayList<Team> getParsedData() {return teams;}
 	
 	@Override

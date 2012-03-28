@@ -3,11 +3,10 @@ package com.ut.bataapp.parser;
 import java.util.ArrayList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 import com.ut.bataapp.objects.Etappe;
 
 //RECOMMIT AANPASSING VOOR BAS
-public class EtappeHandler extends DefaultHandler{
+public class EtappeHandler extends Handler{
 
 	private boolean etappe;
 	private boolean afstand;
@@ -16,7 +15,9 @@ public class EtappeHandler extends DefaultHandler{
 	private boolean tijd;
 	
 	private ArrayList<Etappe> etappes;
-	
+	public EtappeHandler(String path){
+		super(path);
+	}
 	public ArrayList<Etappe> getParsedData(){
 		return etappes;
 	}
