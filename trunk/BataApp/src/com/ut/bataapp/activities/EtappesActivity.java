@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.view.MenuItem;
+import com.ut.bataapp.MainActivity;
+import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.adapters.EtappeAdapter;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
@@ -29,10 +33,28 @@ public class EtappesActivity extends SherlockListActivity  {
    
    @Override
    public void onListItemClick(ListView l, View v, int position, long id) {
+	  
 	   Intent intent = new Intent(getApplicationContext(), EtappeActivity.class);
-       intent.putExtra("index", position);
+       intent.putExtra("index", v.getId());
        startActivity(intent);
    }
+   
+   @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Intent intent = new Intent(this, MainActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				
+				//Get rid of the slide-in animation, if possible
+	            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
+	                OverridePendingTransition.invoke(this);
+	            }
+		}
+		
+		return super.onOptionsItemSelected(item);
+	}
 
    private class getEtappes extends AsyncTask<Void, Void, Void> {  
 		private ProgressDialog progressDialog;  
@@ -42,7 +64,7 @@ public class EtappesActivity extends SherlockListActivity  {
 		}
 		
 		@SuppressWarnings("unchecked")
-		@Override  
+		@Override
 		protected Void doInBackground(Void... arg0) { 
 			etappes = (ArrayList<Etappe>) api.getEtappes().getResponse();
 			return null;       

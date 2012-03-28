@@ -21,20 +21,40 @@ public class EtappeInformatie extends SherlockFragment {
     	etappe = ((EtappeActivity) getActivity()).getEtappe();
     	View view = inflater.inflate(R.layout.etappe_info, container, false);
     	
-    	TextView routeafstand = (TextView) view.findViewById(R.id.text_routeafstand);
-    	routeafstand.setText(Integer.toString(etappe.getAfstand()));
+    	TextView etappenummer = (TextView) view.findViewById(R.id.text_etappenummer);
+    	etappenummer.setText(Integer.toString(etappe.getId()));
     	
-    	ImageView hoogte = (ImageView) view.findViewById(R.id.image_hoogteverschil);
+    	TextView etappevan = (TextView) view.findViewById(R.id.text_etappevan);
+    	etappevan.setText(etappe.getVan());
     	
-    	TextView routegeslacht = (TextView) view.findViewById(R.id.text_routegeslacht);
-    	String geslacht = (etappe.getGeslacht() == 'M') ? "Man" : "Vrouw"; 	
-    	routegeslacht.setText(geslacht);
+    	TextView etappenaar = (TextView) view.findViewById(R.id.text_etappenaar);
+    	etappenaar.setText(etappe.getNaar());
+    	
+    	TextView etappeafstand = (TextView) view.findViewById(R.id.text_etappeafstand);
+    	etappeafstand.setText(Integer.toString(etappe.getAfstand()));
+    	
+    	//ImageView hoogte = (ImageView) view.findViewById(R.id.image_hoogteverschil);
+    	
+    	TextView etappegeslacht = (TextView) view.findViewById(R.id.text_etappegeslacht);
+    	String geslacht = (etappe.getGeslacht() == 'H') ? "Man" : "Vrouw"; 	
+    	etappegeslacht.setText(geslacht);
+    	
+    	TextView etappeomschrijving = (TextView) view.findViewById(R.id.text_etappeomschrijving);
+    	etappeomschrijving.setText(etappe.getOmschrijving());
+    	
+    	
     	
     	TextView recordtijd_team = (TextView) view.findViewById(R.id.recordtijd_team);
     	recordtijd_team.setText(etappe.getRecordTeam());
     	
+    	TextView recordtijd_jaar = (TextView) view.findViewById(R.id.recordtijd_jaar);
+    	recordtijd_jaar.setText(etappe.getRecordJaar());
+    	
     	TextView recordtijd_tijd = (TextView) view.findViewById(R.id.recordtijd_tijd);
     	recordtijd_tijd.setText(etappe.getRecordTijd());
+    	
+    	TextView recordtijd_snelheid = (TextView) view.findViewById(R.id.recordtijd_snelheid);
+    	recordtijd_snelheid.setText(etappe.getRecordSnelheid());
     	
     	return view;
     	

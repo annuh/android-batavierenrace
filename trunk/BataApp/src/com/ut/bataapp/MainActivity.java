@@ -39,6 +39,17 @@ public class MainActivity extends SherlockFragmentActivity {
            }
        });
 	   
+	   
+	   Button btn_favorieten = (Button) findViewById(R.id.dashboard_favorieten);
+	   btn_favorieten.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               // Launching News Feed Screen
+               Intent i = new Intent(getApplicationContext(), FavoTeamsActivity.class);
+               startActivity(i);
+           }
+       });
+	   
 	   Button btn_teams = (Button) findViewById(R.id.dashboard_teams);
 	   btn_teams.setOnClickListener(new View.OnClickListener() {
            @Override

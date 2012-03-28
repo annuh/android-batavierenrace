@@ -48,7 +48,7 @@ public class TeamActivity extends SherlockFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        team_id = this.getIntent().getIntExtra("index", 0) + 1;
+        team_id = this.getIntent().getIntExtra("index", 0);
         new getTeam().execute();
     }
 	

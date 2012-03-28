@@ -23,8 +23,9 @@ public class TeamInformatieFragment extends SherlockFragment {
     	setHasOptionsMenu(true);
     	
     	View view = inflater.inflate(R.layout.team_informatie, container, false);
-    	TextView label_info = (TextView)  view.findViewById(R.id.label_info);
-    	label_info.setText(team.getNaam());   
+    	
+    	TextView team_naam = (TextView)  view.findViewById(R.id.team_naam);
+    	team_naam.setText(team.getNaam());
     	    
     	TextView team_startnummer = (TextView)  view.findViewById(R.id.team_startnummer);
     	team_startnummer.setText(Integer.toString(team.getStartnummer()));

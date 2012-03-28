@@ -35,7 +35,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        etappe_id = this.getIntent().getIntExtra("index", 0) + 1;
+        etappe_id = this.getIntent().getIntExtra("index", 0);
         new getEtappe().execute();
     }
     

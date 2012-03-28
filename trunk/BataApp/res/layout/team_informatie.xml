@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroller"
     style="@style/scroller" >
 	<LinearLayout
 	    android:layout_width="match_parent"
@@ -8,19 +7,34 @@
 	    android:orientation="vertical" >
 
 	    <TextView
-                android:id="@+id/label_info"
-                android:text = "@string/team_informatie"
-                style="@style/h1" />
+			android:text = "@string/team_informatie"
+			style="@style/h1" />
 	    
 	    <TableLayout
-    	    android:id="@+id/table_team_info"
 		    style="@style/table" >
+		    
+	        <TableRow
+				android:layout_width="match_parent"
+		    	android:layout_height="wrap_content">
+		       
+		       <TextView
+		    		android:text="@string/team_naam"
+		    		style="@style/table_left" />		       
+		       
+		       <TextView
+		    		android:id="@+id/team_naam"
+		    		style="@style/table_right" />
+		       
+		   </TableRow>
+		   
 		   <TableRow
 				android:layout_width="match_parent"
 		    	android:layout_height="wrap_content">
+		       
 		       <TextView
 		    		android:text="@string/team_startnummer"
 		    		style="@style/table_left" />		       
+		       
 		       <TextView
 		    		android:id="@+id/team_startnummer"
 		    		style="@style/table_right" />
@@ -37,37 +51,7 @@
 		    		style="@style/table_right" />
 		   </TableRow>
 
-		</TableLayout>
-
-	
-	    
-		<TextView
-	        android:id="@+id/label_looptijden"
-	        android:text = "@string/team_looptijden"
-	        style="@style/h1" />
-	    
-    	<TableLayout
-    	    android:id="@+id/table_team_uitslag"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:background="@drawable/container_background"
-		     style="@style/table" > >
-		   <TableRow
-				android:layout_width="match_parent"
-		    	android:layout_height="wrap_content">
-		       <TextView
-					android:layout_width="50dip"
-		    		android:layout_height="wrap_content"
-		    		android:text="#" >
-		       </TextView>
-		       <TextView
-					android:layout_width="match_parent"
-		    		android:layout_height="wrap_content"
-		    		android:text="Tijd" >
-		       </TextView>
-		   </TableRow>
-		</TableLayout>
-	  
+		</TableLayout>  
 	   
 	</LinearLayout>
 </ScrollView>
