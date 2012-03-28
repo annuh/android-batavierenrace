@@ -10,7 +10,7 @@
     	android:orientation="vertical" >
     	<TextView 
         	android:text="Klassementen"
-        	style="@style/container_head" />
+        	style="@style/h1" />
 		<Button 
 			android:text="Klassementen"
 			style="@style/nice_button" />

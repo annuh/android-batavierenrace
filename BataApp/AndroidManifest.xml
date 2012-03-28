@@ -79,6 +79,10 @@
         
         <activity
 			android:name=".activities.MessagesActivity" />
+		<service
+			android:name=".services.BackgroundUpdater"
+			android:process=":remote">
+		</service>
         
     </application>
 </manifest>
