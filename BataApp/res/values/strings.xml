@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
     <string name="app_titel">Batavierenrace</string>
 
     <string name="alert_dialog_ok">OK</string>
@@ -37,15 +23,22 @@
     <string name="dashboard_sponsor">Sponsor</string>
 
     <string name="etappe_informatie">Informatie</string>
-    <string name="etappe_informatie_afstand">Afstand:</string>
-    <string name="etappe_informatie_geslacht">Geslacht:</string>
+    <string name="etappe_informatie_nummer">Etappe</string>
+    <string name="etappe_informatie_van">Van</string>
+    <string name="etappe_informatie_naar">Naar</string>
+    <string name="etappe_informatie_afstand">Afstand</string>
+    <string name="etappe_informatie_geslacht">Geslacht</string>
+    <string name="etappe_informatie_omschrijving">Omschrijving</string>
     <string name="etappe_hoogteverschil">Hoogteverschil</string>
     <string name="etappe_recordtijd">Recordtijd</string>
-    <string name="etappe_recordtijd_team">Teamnaam:</string>
-    <string name="etappe_recordtijd_tijd">Tijd:</string>
+    <string name="etappe_recordtijd_team">Teamnaam</string>
+    <string name="etappe_recordtijd_jaar">Jaar</string>
+    <string name="etappe_recordtijd_tijd">Tijd</string>
+    <string name="etappe_recordtijd_snelheid">Snelheid</string>
     
     <string name="team_informatie">Informatie:</string>
     <string name="team_looptijden">Tijd:</string>
+    <string name="team_naam">Naam:</string>
     <string name="team_startnummer">Startnummer:</string>
     <string name="team_startgroep">Startgroep:</string>
     

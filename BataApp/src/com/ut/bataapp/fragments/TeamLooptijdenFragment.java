@@ -1,17 +1,28 @@
 package com.ut.bataapp.fragments;
 
+import java.util.ArrayList;
+
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
+import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.activities.TeamActivity;
+import com.ut.bataapp.activities.TeamsActivity;
+import com.ut.bataapp.adapters.LooptijdAdapter;
+import com.ut.bataapp.adapters.TeamAdapter;
+import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Looptijd;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -30,36 +41,21 @@ public class TeamLooptijdenFragment extends SherlockFragment {
     	
     	View view = inflater.inflate(R.layout.team_looptijden, container, false);
     	
-    	Log.d("# Uitslagen", String.valueOf(team.getLooptijden().size()));
+    	ListView lv = (ListView) view.findViewById(R.id.list_looptijden);		
+		lv.setAdapter(new LooptijdAdapter(this.getActivity().getApplicationContext(), team.getLooptijden()));
+		OnItemClickListener listener = new OnItemClickListener() {
+		    @Override  
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		    	Intent intent = new Intent(getActivity().getApplicationContext(), EtappeActivity.class);
+		        intent.putExtra("index", view.getId());
+		        startActivity(intent);
+		      }
 
-    	TableLayout table = (TableLayout) view.findViewById(R.id.table_team_looptijden);
-    	
-	    for(Looptijd uitslag : team.getLooptijden()) {
-	    	Log.d("# Uitslagen", String.valueOf(team.getLooptijden().size()));
-	    	TableRow tr = new TableRow(this.getActivity());
-		    	//tr.setLayoutParams(new LayoutParams(
-		          //             LayoutParams.MATCH_PARENT ,
-		            //           LayoutParams.WRAP_CONTENT));
-		    
-		    TextView etappe = new TextView(this.getActivity());
-		    	etappe.setLayoutParams(new TableRow.LayoutParams(
-                    50, LayoutParams.WRAP_CONTENT));
-	        TextView tijd = new TextView(this.getActivity());
-	        	tijd.setLayoutParams(new TableRow.LayoutParams(
-	                    LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-	        	
-	    	etappe.setText(String.valueOf(uitslag.getEtappe().getId()));
-	    	tijd.setText(uitslag.getTijd());
-	    	
-	    	tr.addView(etappe);
-	    	tr.addView(tijd);
-		             
-	    	table.addView(tr, new TableLayout.LayoutParams(
-                      LayoutParams.MATCH_PARENT,
-                      LayoutParams.WRAP_CONTENT));
-	    }
-	    	
+		};
+    	lv.setOnItemClickListener(listener);
+		
     	return view;
     }
+	
 
 }

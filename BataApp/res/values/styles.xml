@@ -18,8 +18,9 @@
 	<style name="Theme.BataApp" parent="Theme.Sherlock.Light.DarkActionBar">
 	    <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
 	    <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
-	    <item name="android:selectableItemBackground">@drawable/ad_selectable_background</item>
 	    <item name="absForceOverflow">true</item>
+	    <item name="homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
+	    <item name="android:homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
 	    <item name="actionBarItemBackground">@drawable/ad_selectable_background</item>
 	    <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item>   
 	</style>
@@ -31,7 +32,7 @@
            <item name="android:titleTextStyle">@style/myTheme.ActionBar.Text</item>
        </style>
        
-       <style name="myTheme.ActionBar.Text" parent="@android:style/TextAppearance">
+    <style name="myTheme.ActionBar.Text" parent="@android:style/TextAppearance">
        <item name="android:textColor">@color/batablauw</item>
        <item name="textColor">@color/batablauw</item>
    </style>
@@ -140,11 +141,14 @@
         <item name="android:layout_marginRight">14px</item>
     </style>
 
-    <style name="scroller">
+    <style name="scroller" parent="@style/container">
+        <item name="android:fillViewport">true</item>
+    </style>
+
+    <style name="container">
+        <item name="android:background">@color/wit</item>
         <item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">fill_parent</item>
-        <item name="android:fillViewport">true</item>
-        <item name="android:background">@color/wit</item>
     </style>
     
     <style name="message">

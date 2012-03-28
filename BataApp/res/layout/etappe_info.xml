@@ -6,39 +6,72 @@
 	<LinearLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >"
+	    android:orientation="vertical" >
 	
 	    <TextView
-	        android:id="@+id/label_info"
 	        android:text = "@string/etappe_informatie"
 	        style="@style/container_head" />
 	    
 	    <TableLayout
 	        style="@style/table" >
+	        
+	        <TableRow>
+		        <TextView
+		            android:text = "@string/etappe_informatie_nummer"
+		            style="@style/table_left" />
+		        <TextView
+		            android:id="@+id/text_etappenummer"
+		            style="@style/table_right" />
+		    </TableRow>
+		    
+	        <TableRow>
+		        <TextView
+		            android:text = "@string/etappe_informatie_van"
+		            style="@style/table_left" />
+		        <TextView
+		            android:id="@+id/text_etappevan"
+		            style="@style/table_right" />
+		    </TableRow>
+		    
+	         <TableRow>
+		        <TextView
+		            android:text = "@string/etappe_informatie_naar"
+		            style="@style/table_left" />
+		        <TextView
+		            android:id="@+id/text_etappenaar"
+		            style="@style/table_right" />
+		    </TableRow>
+	        
 		    <TableRow>
 		        <TextView
-		            android:id="@+id/label_routeafstand"
 		            android:text = "@string/etappe_informatie_afstand"
 		            style="@style/table_left" />
 		        <TextView
-		            android:id="@+id/text_routeafstand"
+		            android:id="@+id/text_etappeafstand"
 		            style="@style/table_right" />
 		    </TableRow>
 		
 		    <TableRow>
 		        <TextView
-		            android:id="@+id/label_routegeslacht"
 		            android:text = "@string/etappe_informatie_geslacht"
 		            style="@style/table_left" />
 		        <TextView
-		            android:id="@+id/text_routegeslacht"
+		            android:id="@+id/text_etappegeslacht"
+		            style="@style/table_right" />
+		    </TableRow>
+		    
+		     <TableRow>
+		        <TextView
+		            android:text = "@string/etappe_informatie_omschrijving"
+		            style="@style/table_left" />
+		        <TextView
+		            android:id="@+id/text_etappeomschrijving"
 		            style="@style/table_right" />
 		    </TableRow>
 		</TableLayout>
 
 	    
 	    <TextView
-	        android:id="@+id/label_hoogteverschil"
 	        android:text = "@string/etappe_hoogteverschil"
 		 	style="@style/container_head" />
 	      
@@ -56,30 +89,44 @@
 	    
 	    
 	    <TextView
-	        android:id="@+id/label_recordtijd"
 	        android:text = "@string/etappe_recordtijd"
 	        style="@style/container_head" />
 	        
-	    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		    style="@style/table" >
+	    <TableLayout
+	        style="@style/table" >
 		    <TableRow>
 			    <TextView
-			        android:id="@+id/label_recordtijd_team"
 			        android:text = "@string/etappe_recordtijd_team"
 				    style="@style/table_left" />
-			       
 			    <TextView
 			        android:id="@+id/recordtijd_team"
+				    style="@style/table_right" />
+			</TableRow>
+			
+		    <TableRow>
+			    <TextView
+			        android:text = "@string/etappe_recordtijd_jaar"
+				    style="@style/table_left" />
+			    <TextView
+			        android:id="@+id/recordtijd_jaar"
 				    style="@style/table_right" />
 			</TableRow>
 		
 		    <TableRow>
 			    <TextView
-			        android:id="@+id/label_recordtijd_tijd"
 			        android:text = "@string/etappe_recordtijd_tijd"
 			        style="@style/table_left" />
 			     <TextView
 			        android:id="@+id/recordtijd_tijd"
+			        style="@style/table_right" />
+			</TableRow>
+			
+		      <TableRow>
+			    <TextView
+			        android:text = "@string/etappe_recordtijd_snelheid"
+			        style="@style/table_left" />
+			     <TextView
+			        android:id="@+id/recordtijd_snelheid"
 			        style="@style/table_right" />
 			</TableRow>
 		</TableLayout>

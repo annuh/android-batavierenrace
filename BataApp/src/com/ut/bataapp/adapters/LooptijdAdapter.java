@@ -1,0 +1,44 @@
+package com.ut.bataapp.adapters;
+
+import java.util.ArrayList;
+
+import com.ut.bataapp.R;
+import com.ut.bataapp.objects.Etappe;
+import com.ut.bataapp.objects.Looptijd;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class LooptijdAdapter extends ArrayAdapter<Looptijd> {
+	
+	private final Context context;
+	private final ArrayList<Looptijd> values;
+
+	public LooptijdAdapter(Context context, ArrayList<Looptijd> values) {
+		super(context, R.layout.looptijd_row, values);
+		this.context = context;
+		this.values = values;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View rowView = inflater.inflate(R.layout.looptijd_row, parent, false);
+		rowView.setId(values.get(position).getEtappe().getId());
+		
+		TextView etappe = (TextView) rowView.findViewById(R.id.etappe);
+		etappe.setText(String.valueOf(values.get(position).getEtappe().getId()));
+		
+		TextView tijd = (TextView) rowView.findViewById(R.id.tijd);
+		tijd.setText(values.get(position).getTijd());
+
+		return rowView;
+	}
+	
+}

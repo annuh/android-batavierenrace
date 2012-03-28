@@ -49,7 +49,7 @@ public class TeamsActivity extends SherlockListActivity  {
    @Override
    public void onListItemClick(ListView l, View v, int position, long id) {
 	   Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
-       intent.putExtra("index", position);
+       intent.putExtra("index", v.getId());
        startActivity(intent);
    }
    
