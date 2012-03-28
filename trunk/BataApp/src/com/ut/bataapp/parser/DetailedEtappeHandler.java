@@ -6,7 +6,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import com.ut.bataapp.objects.Etappe;
 
-public class DetailedEtappeHandler extends DefaultHandler{
+public class DetailedEtappeHandler extends Handler{
 
 	private int etappeNummer;
 	private int currentNummer;
@@ -26,8 +26,9 @@ public class DetailedEtappeHandler extends DefaultHandler{
 	private boolean record_snelheid;
 	private boolean record_tijd;
 	
-	public DetailedEtappeHandler(int id) {
-		etappeNummer = id;
+	public DetailedEtappeHandler(String path,int id) {
+		super(path);
+		this.etappeNummer=id;
 	}
 	
 	public Etappe getParsedData() {

@@ -17,7 +17,7 @@ import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Looptijd;
-import com.ut.bataapp.parser.Parsing;
+import com.ut.bataapp.parser.*;
 
 public class api {
 	
@@ -26,7 +26,9 @@ public class api {
 	 * @return 
 	 */
 	public static Response getEtappes() {
-		return new Response(Parsing.parseEtappe(),Response.OK_UPDATE);
+		EtappeHandler eh = new EtappeHandler("etappes.xml");
+		eh.parse();
+		return new Response(eh.getParsedData(),Response.OK_UPDATE);
 	}
 	
 	/**
@@ -35,11 +37,15 @@ public class api {
 	 * @return
 	 */
 	public static Etappe getEtappesByID(int id) {
-		return Parsing.parseDetailEtappe(id);
+		DetailedEtappeHandler deh = new DetailedEtappeHandler("etappes.xml",id);
+		deh.parse();
+		return deh.getParsedData();
 	}
 	
 	public static ArrayList<Looptijd> getUitslagenVanEtappe(int id){
-		return Parsing.parseEtappeUitslag(id);
+		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml");
+		euh.parse();
+		return euh.getParsedData();
 		/**
 		ArrayList<Looptijd> uitslagen = new ArrayList<Looptijd>();
 		Looptijd looptijd1 = new Looptijd(new Team(1,1,"team1"),new Etappe(id),"12:30:00","");
@@ -52,8 +58,9 @@ public class api {
 	
 	//Haal van elk team basis informatie op.
 	public static ArrayList<Team> getTeams() {
-		ArrayList<Team> teams = Parsing.parseTeam();
-		return teams;
+		TeamHandler th = new TeamHandler("ploegen.xml");
+		th.parse();
+		return th.getParsedData();
 	}
 	
 	//Zoek teams bij naam
@@ -68,7 +75,9 @@ public class api {
 	}
 	
 	public static ArrayList<Looptijd> getUitslagByTeam(int id){
-		return Parsing.parseUitslag(id);
+		PloegHandler ph = new PloegHandler("ploeguitslag/"+id+".xml");
+		ph.parse();
+		return ph.getParsedData();
 	}
 	
 	/**
@@ -77,7 +86,7 @@ public class api {
 	 * @return
 	 */
 	public static Team getTeamByID(int id) {
-		ArrayList<Looptijd> uitslagen = Parsing.parseUitslag(id);
+		ArrayList<Looptijd> uitslagen = getUitslagByTeam(id);
 		Team team = uitslagen.get(0).getTeam();
 		for(int i=0;i<uitslagen.size()-1;i++){
 			team.addLooptijd(uitslagen.get(i));
@@ -87,7 +96,9 @@ public class api {
 	
 	
 	public static ArrayList<Klassement> getKlassement(){
-		return Parsing.parseKlassement();
+		KlassementHandler kh = new KlassementHandler("ask.xml");
+		kh.parse();
+		return kh.getParsedData();
 	}
 		
 	public static Klassement getKlassementByNaam(String naam) {
