@@ -56,7 +56,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/batabruin</item>
         <item name="android:background">@drawable/dashboard_item_background</item>
-    </style>  
+    </style>
     
     <style name="h1">
         <item name="android:textStyle">bold</item>
@@ -120,18 +120,7 @@
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowColor">#000</item>
     </style>
-      
-    
-     <style name="container_head">
-        <item name="android:textStyle">bold</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">24dip</item>
-        <item name="android:background">@drawable/titel</item>
-        <item name="android:paddingLeft">30dip</item>
-        <item name="android:paddingBottom">1dip</item>
-    </style>
-    
+   
     <style name="container_block">
         <item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
@@ -149,6 +138,14 @@
         <item name="android:background">@color/wit</item>
         <item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">fill_parent</item>
+    </style>
+    
+    <style name="listview_text">
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">wrap_content</item>
+         <item name="android:layout_height">wrap_content</item>
+         <item name="android:layout_margin">5dp</item>
+         <item name="android:layout_gravity">center_vertical</item>
     </style>
     
     <style name="message">

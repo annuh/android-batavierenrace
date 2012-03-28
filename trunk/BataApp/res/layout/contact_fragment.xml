@@ -29,33 +29,6 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content" />
 		</LinearLayout>
-	       
-		<TextView
-	        android:id="@+id/titel_adresgegevens"
-	        android:text = "Adresgegevens"
-	        style="@style/container_head" />
-		<LinearLayout
-		    style="@style/container_block"
-		    android:orientation="vertical"
-		    android:layout_width="match_parent"
-			android:layout_height="wrap_content" >"
-		     <TextView
-				android:id="@+id/adresgegevens"
-				android:text = "Universitair Sportcentrum Nijmegen \n
-							Kamer N-1.260 \n
-							Heyendaalseweg 141 \n
-							6525 AJ Nijmegen \n"
-							android:layout_width="match_parent"
-					    	android:layout_height="wrap_content" />
-	    	    <TextView
-			        android:id="@+id/adresgegevens2"
-			        android:text = "Universiteit Twente \n
-									Bastille, kamer 334 \n
-									Drienerlolaan 5 \n
-									7522 NB Enschede \n"
-				 	android:layout_width="match_parent"
-			    	android:layout_height="wrap_content" />
-		</LinearLayout>
 	   
 	</LinearLayout>
 </ScrollView>

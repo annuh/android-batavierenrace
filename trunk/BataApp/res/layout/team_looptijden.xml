@@ -6,7 +6,6 @@
 	style="@style/container" >
 	
 	<TextView
-		android:id="@+id/label_info"
 		android:text = "Looptijden"
 		style="@style/h1" />
 	

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroller"
     style="@style/scroller" >
     
 	<LinearLayout
@@ -10,7 +9,7 @@
 	
 	    <TextView
 	        android:text = "@string/etappe_informatie"
-	        style="@style/container_head" />
+	        style="@style/h1" />
 	    
 	    <TableLayout
 	        style="@style/table" >
@@ -73,7 +72,7 @@
 	    
 	    <TextView
 	        android:text = "@string/etappe_hoogteverschil"
-		 	style="@style/container_head" />
+		 	style="@style/h1" />
 	      
 	    <LinearLayout
 	        android:background="@drawable/container_background"
@@ -90,7 +89,7 @@
 	    
 	    <TextView
 	        android:text = "@string/etappe_recordtijd"
-	        style="@style/container_head" />
+	        style="@style/h1" />
 	        
 	    <TableLayout
 	        style="@style/table" >
