@@ -23,7 +23,13 @@
 	    <item name="android:homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
 	    <item name="actionBarItemBackground">@drawable/ad_selectable_background</item>
 	    <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item>   
+	    <item name="android:listViewStyle">@style/MyListView</item>
 	</style>
+
+	<style name="MyListView" parent="@android:style/Widget.ListView">
+    	<item name="android:cacheColorHint">#00000000</item>
+	</style>
+	
 	
 	<style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
            <item name="background">@drawable/wit</item>

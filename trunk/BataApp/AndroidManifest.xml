@@ -78,7 +78,7 @@
 			android:name=".activities.PreferencesActivity" />
         
         <activity
-			android:name=".activities.MessagesActivity" />
+			android:name=".activities.BerichtenActivity" />
 		<service
 			android:name=".services.BackgroundUpdater"
 			android:process=":remote">

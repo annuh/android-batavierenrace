@@ -17,7 +17,7 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
    public void onCreate(Bundle savedInstanceState) {
 	   setTitle("Klassement");
 	   super.onCreate(savedInstanceState);
-	   setContentView(R.layout.klassementen_fragment);
+	   setContentView(R.layout.klassementen);
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   
    }

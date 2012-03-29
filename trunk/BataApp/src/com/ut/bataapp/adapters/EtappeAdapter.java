@@ -18,7 +18,7 @@ public class EtappeAdapter extends ArrayAdapter<Etappe> {
 	private final ArrayList<Etappe> values;
 
 	public EtappeAdapter(Context context, ArrayList<Etappe> values) {
-		super(context, R.layout.etappe_row, values);
+		super(context, R.layout.row_etappe, values);
 		this.context = context;
 		this.values = values;
 	}
@@ -27,7 +27,7 @@ public class EtappeAdapter extends ArrayAdapter<Etappe> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.etappe_row, parent, false);
+		View rowView = inflater.inflate(R.layout.row_etappe, parent, false);
 		rowView.setId(values.get(position).getId());
 		
 		TextView textView = (TextView) rowView.findViewById(R.id.etappe);
