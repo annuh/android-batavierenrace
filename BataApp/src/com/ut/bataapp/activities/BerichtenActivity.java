@@ -1,32 +1,28 @@
 package com.ut.bataapp.activities;
 
-import android.app.ListActivity;
+import java.util.ArrayList;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import com.actionbarsherlock.R;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
+import com.ut.bataapp.adapters.BerichtAdapter;
+import com.ut.bataapp.api.api;
+import com.ut.bataapp.objects.Bericht;
 
 
-public class MessagesActivity extends SherlockFragmentActivity  {
+public class BerichtenActivity extends SherlockListActivity  {
 	
    /** Called when the activity is first created. */
    @Override
    public void onCreate(Bundle savedInstanceState) {
+	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   setTitle("Berichten");
 	   super.onCreate(savedInstanceState);
-	   setContentView(R.layout.messages_fragment);
-	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	   ArrayList<Bericht> values = api.getBerichten();
+	   setListAdapter(new BerichtAdapter(BerichtenActivity.this, values));
    }
    
    	@Override

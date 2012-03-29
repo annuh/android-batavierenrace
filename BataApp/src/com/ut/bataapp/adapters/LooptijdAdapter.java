@@ -20,7 +20,7 @@ public class LooptijdAdapter extends ArrayAdapter<Looptijd> {
 	private final ArrayList<Looptijd> values;
 
 	public LooptijdAdapter(Context context, ArrayList<Looptijd> values) {
-		super(context, R.layout.looptijd_row, values);
+		super(context, R.layout.row_looptijd, values);
 		this.context = context;
 		this.values = values;
 	}
@@ -29,7 +29,7 @@ public class LooptijdAdapter extends ArrayAdapter<Looptijd> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.looptijd_row, parent, false);
+		View rowView = inflater.inflate(R.layout.row_looptijd, parent, false);
 		rowView.setId(values.get(position).getEtappe().getId());
 		
 		TextView etappe = (TextView) rowView.findViewById(R.id.etappe);

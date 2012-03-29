@@ -22,7 +22,7 @@ public class TeamAdapter extends ArrayAdapter<Team> {
     private TeamFilter filter;
 
 	public TeamAdapter(Context context, ArrayList<Team> values) {
-		super(context, R.layout.team_row, values);
+		super(context, R.layout.row_team, values);
 		this.context = context;
 		this.values = new ArrayList<Team>();
 		this.values.addAll(values);
@@ -36,7 +36,7 @@ public class TeamAdapter extends ArrayAdapter<Team> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.team_row, parent, false);
+		View rowView = inflater.inflate(R.layout.row_team, parent, false);
 		rowView.setId(filteredItems.get(position).getStartnummer());
 		
 		TextView text_start = (TextView) rowView.findViewById(R.id.team_start);

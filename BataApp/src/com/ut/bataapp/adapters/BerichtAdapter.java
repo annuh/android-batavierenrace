@@ -12,13 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MessageArrayAdapter extends ArrayAdapter<String> {
+public class BerichtAdapter extends ArrayAdapter<Bericht> {
 	
 	private final Context context;
 	private final ArrayList<Bericht> berichten;
 
-	public MessageArrayAdapter(Context context, ArrayList<Bericht> berichten) {
-		super(context, R.layout.message_row, getIds(berichten));
+	public BerichtAdapter(Context context, ArrayList<Bericht> berichten) {
+		super(context, R.layout.message_row, berichten);
 		this.context = context;
 		this.berichten = berichten;
 	}
@@ -50,13 +50,5 @@ public class MessageArrayAdapter extends ArrayAdapter<String> {
 		contentView.setText(bericht.getBericht());
 		
 		return rowView;
-	}
-	
-	public static ArrayList<String> getIds(ArrayList<Bericht> berichten) {
-		ArrayList<String> ids = new ArrayList<String>();
-		for(int i = 0; i < berichten.size(); i++) {
-			ids.add(berichten.get(i).getId());
-		}
-		return ids;
 	}
 }

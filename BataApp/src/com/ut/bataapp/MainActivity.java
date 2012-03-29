@@ -100,17 +100,17 @@ public class MainActivity extends SherlockFragmentActivity {
    }
    
    @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-                menu.add(0,MENU_SETTINGS,Menu.NONE,"Instellingen")
-                    .setIcon(R.drawable.ic_action_settings)
-                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-                
-                menu.add(0,MENU_MESSAGE,Menu.NONE,"Berichten")
-                    .setIcon(R.drawable.ic_action_mail)
-                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-                
-                return super.onCreateOptionsMenu(menu);
-        }
+   public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0,MENU_MESSAGE,Menu.NONE,"Berichten")
+		 .setIcon(R.drawable.ic_action_mail)
+		 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		   
+		menu.add(0,MENU_SETTINGS,Menu.NONE,"Instellingen")
+		 .setIcon(R.drawable.ic_action_settings)
+		 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		
+		return super.onCreateOptionsMenu(menu);
+   }
    
    @Override
    public boolean onOptionsItemSelected(MenuItem item) {
@@ -124,7 +124,7 @@ public class MainActivity extends SherlockFragmentActivity {
                         
                 case MENU_MESSAGE:
                         // Launch Messages activity
-                        Intent j = new Intent(getApplicationContext(), MessagesActivity.class);
+                        Intent j = new Intent(getApplicationContext(), BerichtenActivity.class);
                         startActivity(j);
                         break;
 

@@ -69,11 +69,11 @@ public class ColofonActivity extends SherlockFragmentActivity {
 		
 		public ColofonFragmentAdapter(FragmentManager fm) {
 			super(fm);
-			fragments.add(new LayoutFragment(R.layout.colofon_contactgegevens));
+			fragments.add(new LayoutFragment(R.layout.info_colofon_contactgegevens));
 			titels.add("Contact");
-			fragments.add(new LayoutFragment(R.layout.colofon_colofon));
+			fragments.add(new LayoutFragment(R.layout.info_colofon_colofon));
 			titels.add("Colofon");
-			fragments.add(new LayoutFragment(R.layout.colofon_disclaimer));
+			fragments.add(new LayoutFragment(R.layout.info_colofon_disclaimer));
 			titels.add("Disclaimer");
 		}
 		
