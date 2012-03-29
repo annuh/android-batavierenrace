@@ -13,6 +13,7 @@ public class EtappeHandler extends Handler{
 	private boolean type;
 	private boolean ploeg;
 	private boolean tijd;
+	private boolean van;
 	
 	private ArrayList<Etappe> etappes;
 	public EtappeHandler(String path){
@@ -29,6 +30,7 @@ public class EtappeHandler extends Handler{
 		else if(localName.equals("type")) this.type = true;
 		else if(localName.equals("ploeg")) this.ploeg = true;
 		else if(localName.equals("tijd")) this.tijd = true;
+		else if(localName.equals("van")) this.van = true;
 	}
 	
 	@Override
@@ -38,6 +40,7 @@ public class EtappeHandler extends Handler{
 		else if(localName.equals("type")) this.type = false;
 		else if(localName.equals("ploeg")) this.ploeg = false;
 		else if(localName.equals("tijd")) this.tijd = false;
+		else if(localName.equals("van")) this.van = false;
 	}
 	
 	@Override
@@ -50,6 +53,7 @@ public class EtappeHandler extends Handler{
 		else if(ploeg) etappes.get(etappes.size()-1).setRecordTeam(new String(ch,start,length));
 		else if(type) etappes.get(etappes.size()-1).setGeslacht(ch[0]);
 		else if(afstand) etappes.get(etappes.size()-1).setAfstand(Integer.parseInt(new String(ch,start,length)));
+		else if(van) etappes.get(etappes.size()-1).setVan(new String(ch,start,length));
 	}
 	
 	@Override

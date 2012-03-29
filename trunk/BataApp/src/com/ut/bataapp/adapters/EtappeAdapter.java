@@ -31,9 +31,12 @@ public class EtappeAdapter extends ArrayAdapter<Etappe> {
 		rowView.setId(values.get(position).getId());
 		
 		TextView textView = (TextView) rowView.findViewById(R.id.etappe);
-		ImageView imageView = (ImageView) rowView.findViewById(R.id.geslacht);
 		textView.setText("Etappe "+ Integer.toString(values.get(position).getId()));
-				
+		
+		TextView naam = (TextView) rowView.findViewById(R.id.naam);
+		naam.setText(values.get(position).getVan());
+		
+		ImageView imageView = (ImageView) rowView.findViewById(R.id.geslacht);		
 		if(values.get(position).getGeslacht() == 'H') {
 			
 		} else {

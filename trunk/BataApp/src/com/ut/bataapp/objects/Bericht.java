@@ -24,28 +24,12 @@ public class Bericht {
 		
 	}
 	
-	public String getId(){
-		return this.id;
-	}
+	public String getId(){ return this.id; }
+	public int getCode(){ return this.code; }	
+	public String getAfzender(){ return this.afzender; }	
+	public String getTitel(){ return this.titel; }	
+	public String getBericht(){ return this.bericht; }	
+	public String getDatum(){ return this.datum; }
 	
-	public int getCode(){
-		return this.code;
-	}
-	
-	public String getAfzender(){
-		return this.afzender;
-	}
-	
-	public String getTitel(){
-		return this.titel;
-	}
-	
-	public String getBericht(){
-		return this.bericht;
-	}
-	
-	public String getDatum(){
-		return this.datum;		
-	}
 
 }
