@@ -55,13 +55,14 @@ public class BackgroundUpdater  extends IntentService {
 				"A new notification", System.currentTimeMillis());
 		// Hide the notification after its selected
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
+		notification.number += 1;
 		
 		Intent tointent = new Intent(this, TeamActivity.class);
 		tointent.putExtra("index", id);
 		PendingIntent activity = PendingIntent.getActivity(this, 0, tointent, 0);
 		notification.setLatestEventInfo(this, "Batavierenrace",
 				"Nieuwe update!", activity);
-		notification.number += 1;
+		
 		notificationManager.notify(0, notification);
 	}
 	

@@ -1,4 +1,4 @@
-package com.ut.bataapp;
+package com.ut.bataapp.services;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +13,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -27,6 +30,8 @@ import android.widget.Toast;
 
 import com.google.android.c2dm.C2DMBaseReceiver;
 import com.google.android.c2dm.C2DMessaging;
+import com.ut.bataapp.MainActivity;
+import com.ut.bataapp.R;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -71,7 +76,21 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 		String message = intent.getExtras().getString("message");
 		String strTitle = intent.getExtras().getString("title");
 		if (message != null) {
-			//write code to do something with your msg
+			Log.d("C2DM", message);
+			NotificationManager notificationManager = (NotificationManager) context
+					.getSystemService(Context.NOTIFICATION_SERVICE);
+			Notification notification = new Notification(R.drawable.icon,
+					"Message received", System.currentTimeMillis());
+			// Hide the notification after its selected
+			notification.flags |= Notification.FLAG_AUTO_CANCEL;
+			notification.number += 1;
+
+			Intent tointent = new Intent(context, MainActivity.class);
+			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
+					tointent, 0);
+			notification.setLatestEventInfo(context, "Batavierenrace",
+					message, pendingIntent);
+			notificationManager.notify(0, notification);
 		}
 	}
 
