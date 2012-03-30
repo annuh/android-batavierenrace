@@ -5,6 +5,7 @@ import java.util.TreeSet;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import com.ut.bataapp.objects.Klassement;
+import com.ut.bataapp.objects.Response;
 
 public class KlassementHandler extends Handler{
 
@@ -38,8 +39,8 @@ public class KlassementHandler extends Handler{
 		this.klassement = new ArrayList<Klassement>();
 	}
 	
-	public ArrayList<Klassement> getParsedData() {
-		return klassement;
+	public Response getParsedData() {
+		return new Response(klassement,this.status);
 	}
 
 }

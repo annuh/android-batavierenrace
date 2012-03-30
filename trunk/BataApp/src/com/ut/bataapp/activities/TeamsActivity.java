@@ -129,9 +129,10 @@ public class TeamsActivity extends SherlockListActivity  {
 			  "Bezig met laden", "Teams worden opgehaald...", true);  
 		}
 		
+		@SuppressWarnings("unchecked")
 		@Override  
 		protected Void doInBackground(Void... arg0) {  
-			teams = api.getTeams();
+			teams = (ArrayList<Team>) api.getTeams().getResponse();
 			return null;       
 		}
 		

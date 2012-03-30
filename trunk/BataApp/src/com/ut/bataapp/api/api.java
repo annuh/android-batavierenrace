@@ -28,7 +28,7 @@ public class api {
 	public static Response getEtappes() {
 		EtappeHandler eh = new EtappeHandler("etappes.xml");
 		eh.parse();
-		return new Response(eh.getParsedData(),Response.OK_UPDATE);
+		return eh.getParsedData();
 	}
 	
 	/**
@@ -36,13 +36,13 @@ public class api {
 	 * @param id - ID van de etappe
 	 * @return
 	 */
-	public static Etappe getEtappesByID(int id) {
+	public static Response getEtappesByID(int id) {
 		DetailedEtappeHandler deh = new DetailedEtappeHandler("etappes.xml",id);
 		deh.parse();
 		return deh.getParsedData();
 	}
 	
-	public static ArrayList<Looptijd> getUitslagenVanEtappe(int id){
+	public static Response getUitslagenVanEtappe(int id){
 		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml");
 		euh.parse();
 		return euh.getParsedData();
@@ -57,7 +57,7 @@ public class api {
 	}
 	
 	//Haal van elk team basis informatie op.
-	public static ArrayList<Team> getTeams() {
+	public static Response getTeams() {
 		TeamHandler th = new TeamHandler("ploegen.xml");
 		th.parse();
 		return th.getParsedData();
@@ -74,7 +74,7 @@ public class api {
 		return t;
 	}
 	
-	public static ArrayList<Looptijd> getUitslagByTeam(int id){
+	public static Response getUitslagByTeam(int id){
 		PloegHandler ph = new PloegHandler("ploeguitslag/"+id+".xml");
 		ph.parse();
 		return ph.getParsedData();
@@ -86,7 +86,7 @@ public class api {
 	 * @return
 	 */
 	public static Team getTeamByID(int id) {
-		ArrayList<Looptijd> uitslagen = getUitslagByTeam(id);
+		ArrayList<Looptijd> uitslagen = (ArrayList<Looptijd>) getUitslagByTeam(id).getResponse();
 		Team team = uitslagen.get(0).getTeam();
 		for(int i=0;i<uitslagen.size()-1;i++){
 			team.addLooptijd(uitslagen.get(i));
@@ -95,7 +95,7 @@ public class api {
 	}
 	
 	
-	public static ArrayList<Klassement> getKlassement(){
+	public static Response getKlassement(){
 		KlassementHandler kh = new KlassementHandler("ask.xml");
 		kh.parse();
 		return kh.getParsedData();

@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+
+import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 
 public class TeamHandler extends Handler{
@@ -27,7 +29,7 @@ public class TeamHandler extends Handler{
 		super(path);
 	}
 
-	public ArrayList<Team> getParsedData() {return teams;}
+	public Response getParsedData() {return new Response(teams,this.status);}
 	
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{

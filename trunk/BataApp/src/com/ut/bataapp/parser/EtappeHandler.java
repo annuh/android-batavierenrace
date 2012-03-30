@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import com.ut.bataapp.objects.Etappe;
+import com.ut.bataapp.objects.Response;
 
 //RECOMMIT AANPASSING VOOR BAS
 public class EtappeHandler extends Handler{
@@ -19,8 +20,9 @@ public class EtappeHandler extends Handler{
 	public EtappeHandler(String path){
 		super(path);
 	}
-	public ArrayList<Etappe> getParsedData(){
-		return etappes;
+	
+	public Response getParsedData(){
+		return new Response(etappes,this.status);
 	}
 	
 	@Override
