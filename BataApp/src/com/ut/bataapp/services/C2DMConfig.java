@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ut.bataapp;
+package com.ut.bataapp.services;
 
 /**
  * Configuration settings for the Android client.

@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ut.bataapp.activities.*;
+import com.ut.bataapp.services.C2DMReceiver;
 
 
 public class MainActivity extends SherlockFragmentActivity {	
