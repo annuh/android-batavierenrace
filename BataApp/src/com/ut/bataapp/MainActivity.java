@@ -4,15 +4,26 @@ import java.util.Calendar;
 
 
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import com.google.android.c2dm.C2DMessaging;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.ut.bataapp.activities.*;
 
 
@@ -28,7 +39,8 @@ public class MainActivity extends SherlockFragmentActivity {
 	   this.getSupportActionBar().setTitle("Batavierenrace");
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.actionbar_styles);
-       
+	   setupC2DM();
+	   //register();
 	   Button btn_routes = (Button) findViewById(R.id.dashboard_etappes);
 	   btn_routes.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -137,4 +149,47 @@ public class MainActivity extends SherlockFragmentActivity {
            activity.overridePendingTransition(0, 0);
        }
    }
+   
+   public void setupC2DM() {
+	   Log.d("C2DM", "START");
+;	   SharedPreferences prefs = getSharedPreferences(C2DMessaging.PREFERENCE, Context.MODE_PRIVATE);
+	   if ((Build.VERSION.SDK_INT >= 8) && (C2DMessaging.shouldRegisterForPush(getApplicationContext()))) {
+		   Log.d("C2DM", "Moet registreren");
+			C2DMReceiver.refreshAppC2DMRegistrationState(getApplicationContext(), true);
+	   }
+
+	   if (prefs.contains("dm_registration")) {
+		   Log.d("C2DM", "Contains reg");
+		   return;
+	   } 	
+	   if (Build.VERSION.SDK_INT >= 8) {
+		   Log.d("C2DM", "Registeren");
+			Editor e = prefs.edit();
+			e.putString("dm_registration", "");
+			e.commit();
+			C2DMessaging.setRegisterForPush(getApplicationContext(), true);
+			C2DMReceiver.refreshAppC2DMRegistrationState(getApplicationContext(), true);
+		}
+	   Log.d("C2DM", "Goed fout");
+   }
+   
+   public void register() {
+		Log.w("C2DM", "start registration process");
+		Intent intent = new Intent("com.google.android.c2dm.intent.REGISTER");
+		intent.putExtra("app",
+				PendingIntent.getBroadcast(this, 0, new Intent(), 0));
+		// Sender currently not used
+		intent.putExtra("sender", "batabericht@gmail.com");
+		startService(intent);
+	}
+
+	public void showRegistrationId() {
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		String string = prefs.getString("authentication", "n/a");
+		Toast.makeText(this, string, Toast.LENGTH_LONG).show();
+		Log.d("C2DM RegId", string);
+
+	}
+   
 }

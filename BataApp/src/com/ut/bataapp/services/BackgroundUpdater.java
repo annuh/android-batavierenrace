@@ -1,7 +1,13 @@
 package com.ut.bataapp.services;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.TeamActivity;
+import com.ut.bataapp.api.api;
+import com.ut.bataapp.objects.Response;
+import com.ut.bataapp.objects.Team;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -19,16 +25,30 @@ import android.util.Log;
 
 public class BackgroundUpdater  extends IntentService {
 	
+	
 	public BackgroundUpdater() {
 		super(BackgroundUpdater.class.getSimpleName());
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		prefs.registerOnSharedPreferenceChangeListener(listener);
 		
+		//ArrayList<Team> teams = new ArrayList<Team>();
+		SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
+        Map<String, ?> favoteams = keyValues.getAll();
+    	for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
+    		//if(api.getTeamByID((Integer) entry.getValue()).getStatus() == Response.OK_UPDATE) {
+    		//	makeNotification((Integer) entry.getValue(), entry.getKey());
+    		//}
+    	}
+		
+		scheduleNextUpdate();
+	}
+	
+	@SuppressWarnings({ "deprecation", "unused" })
+	private void makeNotification(int id, String naam) {
 		NotificationManager notificationManager = (NotificationManager) 
 				getSystemService(NOTIFICATION_SERVICE);
 		Notification notification = new Notification(R.drawable.icon,
@@ -37,13 +57,12 @@ public class BackgroundUpdater  extends IntentService {
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
 		
 		Intent tointent = new Intent(this, TeamActivity.class);
+		tointent.putExtra("index", id);
 		PendingIntent activity = PendingIntent.getActivity(this, 0, tointent, 0);
-		notification.setLatestEventInfo(this, "This is the title",
-				"This is the text", activity);
+		notification.setLatestEventInfo(this, "Batavierenrace",
+				"Nieuwe update!", activity);
 		notification.number += 1;
 		notificationManager.notify(0, notification);
-		
-		scheduleNextUpdate();
 	}
 	
 	private void scheduleNextUpdate() {

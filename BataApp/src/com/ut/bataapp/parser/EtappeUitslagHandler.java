@@ -2,6 +2,7 @@ package com.ut.bataapp.parser;
 
 import java.util.ArrayList;
 import com.ut.bataapp.objects.Looptijd;
+import com.ut.bataapp.objects.Response;
 
 public class EtappeUitslagHandler extends Handler{
 
@@ -11,8 +12,8 @@ public class EtappeUitslagHandler extends Handler{
 		super(path);
 	}
 
-	public ArrayList<Looptijd> getParsedData() {
-		return uitslagen;
+	public Response getParsedData() {
+		return new Response(uitslagen,this.status);
 	}
 
 }

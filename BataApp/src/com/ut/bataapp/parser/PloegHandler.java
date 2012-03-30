@@ -6,6 +6,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import com.ut.bataapp.objects.Etappe;
+import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Looptijd;
 
@@ -27,11 +28,11 @@ public class PloegHandler extends Handler{
 	public PloegHandler(String path){
 		super(path);
 	}
-	public ArrayList<Looptijd> getParsedData(){
+	public Response getParsedData(){
 		if(uitslagen.isEmpty()){
 			uitslagen.add(new Looptijd(team,new Etappe(1),"123","abc"));
 		}
-		return uitslagen;
+		return new Response(uitslagen,this.status);
 	}
 	
 	@Override

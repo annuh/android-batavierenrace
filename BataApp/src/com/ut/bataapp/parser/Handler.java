@@ -19,16 +19,15 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.ut.bataapp.api.api;
+import com.ut.bataapp.objects.Response;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
 public abstract class Handler extends DefaultHandler{
 String location;
+public int status = Response.NOK_NO_DATA;
 private boolean parsed=false;//only for parse method!!
-private boolean updated=true;//only for getInputSource method!! 
 public Handler(String path){
 	this.location = path;
 }
@@ -38,7 +37,7 @@ public boolean parse(){
 	boolean result = false;
 	try{
 		InputSource input = getInputSource(location);
-		if(!parsed||updated){
+		if(!parsed||!(status==Response.OK_NO_UPDATE)){
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		SAXParser sp = spf.newSAXParser();
 		XMLReader xr = sp.getXMLReader();
@@ -69,21 +68,23 @@ public boolean parse(){
 private InputSource getInputSource(String path) throws IOException{
 File sdFile = getFile(path);
 InputSource result = null;
-updated=true;
 if(sdFile == null){
+	status = Response.NOK_OLD_DATA;
 	result = new InputSource(new URL(api.getURL()+path).openStream());
 }else{
 if(sdFile.exists()){
 	if(isNewest(path)){
-		updated=false;
+		status = Response.OK_NO_UPDATE;
 		result = new InputSource(new FileInputStream(sdFile));
 	}
 	else{
 		if(downloadToSD(path)){
+			status = Response.OK_UPDATE;
 			//Het is gelukt om de file te downloaden, gebruik dit bestand.
 			result = new InputSource(new FileInputStream(sdFile));	
 		}else{
 	    	//Het is niet gelukt de file te downloaden, gebruik oude versie
+			status = Response.NOK_OLD_DATA;
 	    	result = new InputSource(new FileInputStream(sdFile));
 		}
 	}
@@ -92,7 +93,9 @@ else{
 	if(downloadToSD(path)){
 		//Het is gelukt om de file te downloaden, gebruik dit bestand.
 		result = new InputSource(new FileInputStream(sdFile));	
+		status = Response.OK_UPDATE;
 	}else{
+		status = Response.NOK_NO_DATA;
 	    //Het is niet gelukt de file te downloaden, wat nu?
 	}	
 }

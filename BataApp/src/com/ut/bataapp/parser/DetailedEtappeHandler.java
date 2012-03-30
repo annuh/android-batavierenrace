@@ -5,6 +5,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.ut.bataapp.objects.Etappe;
+import com.ut.bataapp.objects.Response;
 
 public class DetailedEtappeHandler extends Handler{
 
@@ -31,8 +32,8 @@ public class DetailedEtappeHandler extends Handler{
 		this.etappeNummer=id;
 	}
 	
-	public Etappe getParsedData() {
-		return etappe;
+	public Response getParsedData() {
+		return new Response(etappe,this.status);
 	}
 
 	@Override
