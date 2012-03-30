@@ -20,11 +20,15 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import com.ut.bataapp.api.api;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
 public abstract class Handler extends DefaultHandler{
 String location;
+private boolean parsed=false;//only for parse method!!
+private boolean updated=true;//only for getInputSource method!! 
 public Handler(String path){
 	this.location = path;
 }
@@ -34,13 +38,15 @@ public boolean parse(){
 	boolean result = false;
 	try{
 		InputSource input = getInputSource(location);
+		if(!parsed||updated){
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		SAXParser sp = spf.newSAXParser();
 		XMLReader xr = sp.getXMLReader();
 		
 		xr.setContentHandler(this);
 		xr.parse(input);
-		
+		parsed = true;
+		}
 		result = true;
 	}catch(SAXException e){
 		Log.d("SimpleEtappe","SAXEception: "+e.getMessage());
@@ -61,11 +67,15 @@ public boolean parse(){
 *
 */
 private InputSource getInputSource(String path) throws IOException{
-//De locatie van de file is de root van de sdkaart+dexmlmap+het gegeven path.
-File sdFile = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
+File sdFile = getFile(path);
 InputSource result = null;
+updated=true;
+if(sdFile == null){
+	result = new InputSource(new URL(api.getURL()+path).openStream());
+}else{
 if(sdFile.exists()){
 	if(isNewest(path)){
+		updated=false;
 		result = new InputSource(new FileInputStream(sdFile));
 	}
 	else{
@@ -86,11 +96,21 @@ else{
 	    //Het is niet gelukt de file te downloaden, wat nu?
 	}	
 }
-
+}
 return result;
 
 }
-
+private File getFile(String path){
+	File result = null;
+	if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+	    //"externe" media is gemount dus we kunnen lezen en schrijven naar file.
+		//Activity act = new Activity();
+		//result =  new File(act.getExternalFilesDir(api.getSDmap()).getPath()+path);
+		result = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
+	}
+	Log.d("parser","test"+result.getPath());
+		return result;
+}
 
 /**
 * Deze functie controleerd of de huidige versie van een bestand de nieuwste is.
@@ -126,18 +146,8 @@ try{
     // connect!
     urlConnection.connect();
 	
-    //De locatie van de file is de root van de sdkaart+dexmlmap+het gegeven path.
-    File xmlMap = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap());
-    //Maak directory aan als die nog niet bestaat
-    if(!xmlMap.exists()){
-    	Log.d("parser","dts:xmlMap bestaat nog niet");
-    	xmlMap.mkdir();
-    }
     
-	File sdFile = new File(xmlMap.getPath()+'/'+path);
-	if(!sdFile.getParentFile().exists()){
-		sdFile.getParentFile().mkdir();
-	}
+	File sdFile = getFile(path);
 	//sdFile is de file waar de nieuw file heengeschreven word.
     
     FileOutputStream fileOutput = new FileOutputStream(sdFile);
