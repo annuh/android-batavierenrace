@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tabtitel_weer_advies">Advies</string>
+    <string name="tabtitel_weer_verwachting">Verwachting</string>
+    <string name="tabtitel_weer_buienradar">Buienradar</string>
+</resources>

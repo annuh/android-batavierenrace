@@ -114,4 +114,10 @@
 		\t o	Zondagochtend 11 uur dien je het terrein verlaten te hebben
 	</string>
     
+	<string name="bezig_met_laden">Bezig met laden</string>
+	<string name="ophalen_weergegevens">Weergegevens worden opgehaald&#8230;</string>
+	<string name="adviesmin15">Advies ...15</string>
+	<string name="advies1520">Advies 15-20</string>
+	<string name="advies2025">Advies 20-25</string>
+	<string name="advies25plus">Advies >=25</string>
 </resources>

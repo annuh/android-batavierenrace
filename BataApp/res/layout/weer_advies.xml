@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    style="@style/scroller" >
+	<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
+		    <TextView
+				android:id="@+id/weer_huidig"
+				android:text = "Huidig weer "
+				style="@style/h1" />
+		    <LinearLayout
+		        android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+		   	 	android:orientation="horizontal">
+		   	 	<TextView
+		   	 	    android:text = "Temperatuur: "
+		   	 	    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+		   	 	<TextView
+		   	 	    android:id= "@+id/weer_huidig_temp" 
+		   	 	    android:text = "niet bekend" 
+		   	 	    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+		   	 	<ImageView
+		   	 	    android:id="@+id/weer_huidig_icoon"
+		   	 	    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+		   	</LinearLayout>
+		   	<TextView
+				android:text= "Advies"
+				style="@style/h1" />
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		    	android:layout_height="wrap_content"
+		   	 	android:orientation="horizontal">
+		   	 	<TextView
+		   	 	    android:text = "Verwachte max. temp.: " 
+		   	 	    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+		   	 	<TextView
+		   	 	    android:id= "@+id/weer_max_verwacht_temp"
+		   	 	    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+		   	 	    android:text = "niet bekend" />
+		   	 	<ImageView
+		   	 	    android:id="@+id/weer_verwacht_icoon"
+		   	 	    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+		   	</LinearLayout>
+		   	<TextView
+				android:id= "@+id/weer_advies"
+				style="@style/container_block" />
+	</LinearLayout>
+</ScrollView>
