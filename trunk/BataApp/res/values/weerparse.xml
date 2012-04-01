@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="attr_google_vandaag_data">data</string>
+    <string name="tag_verwachting_vandaag">verwachting_vandaag</string>
+    <string name="tag_verwachting_vandaag_tekst">tekst</string>
+    <string name="tag_verwachting_meerdaags">dag-plus</string>
+    <string name="tag_verwachting_meerdaags_icon">icoon</string>
+    <string name="tag_verwachting_meerdaags_max">maxtempmax</string>
+    <string name="tag_google_vandaag">forecast_conditions</string>
+    <string name="tag_google_vandaag_high">high</string>
+    <string name="tag_google_vandaag_icon">icon</string>
+    <string name="id_nijmegen">6275</string>
+    <string name="id_groenlo">6283</string>
+    <string name="id_enschede">6290</string>
+    <string name="tag_huidig_temp">temperatuurGC</string>
+    <string name="tag_huidig_icoon">icoonactueel</string>
+</resources>

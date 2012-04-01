@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="url_xml_buienradar">http://xml.buienradar.nl</string>
+    <string name="url_xml_google">http://www.google.com/ig/api?weather=Enschede</string>
+    <string name="url_google_icon_prefix">http://www.google.com</string>
+</resources>

@@ -24,7 +24,7 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />  
 	
-    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="13" />
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="13" />
 
     <application android:label="@string/app_titel"
             android:icon="@drawable/icon"
@@ -68,7 +68,8 @@
 			android:name=".activities.KlassementenActivity"	/>
         
         <activity
-			android:name=".activities.WeerActivity" />
+			android:name=".activities.WeerActivity"
+			android:theme="@style/StyledIndicators" />
         
         <activity
 			android:name=".activities.InformatieActivity"
