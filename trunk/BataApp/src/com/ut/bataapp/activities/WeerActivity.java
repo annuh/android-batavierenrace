@@ -161,7 +161,7 @@ public class WeerActivity extends SherlockFragmentActivity implements WeerAdvies
 		
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(WeerActivity.this, getResources().getString(R.string.bezig_met_laden), 
-			  getResources().getString(R.string.ophalen_weergegevens), true);  
+			  getResources().getString(R.string.ophalen_weergegevens), true);
 		}
 				
 		@Override
@@ -175,17 +175,14 @@ public class WeerActivity extends SherlockFragmentActivity implements WeerAdvies
 					try {
 						result[i] = documentBuilder.parse(arg[i]);
 					} catch (IOException e) {
-						Toast.makeText(getApplicationContext(), String.format(getResources().getString(R.string.error_cant_download_xml), e), Toast.LENGTH_LONG).show();
-						cancel(true);
+						cancel(false);
 					} catch (SAXException e) {
-						Toast.makeText(getApplicationContext(), String.format(getResources().getString(R.string.error_cant_parse_xml), e), Toast.LENGTH_LONG).show();
-						cancel(true);
+						cancel(false);
 					}
 					i++;
 				}			
 			} catch (ParserConfigurationException e) {
-				Toast.makeText(getApplicationContext(), String.format(getResources().getString(R.string.error_cant_start_xml_parser), e), Toast.LENGTH_LONG).show();
-				cancel(true);
+				cancel(false);
 			}
 			
 			return result;
@@ -199,6 +196,7 @@ public class WeerActivity extends SherlockFragmentActivity implements WeerAdvies
 		@Override
 		protected void onCancelled() {
 			progressDialog.dismiss();
+			Toast.makeText(getApplicationContext(), R.string.error_cant_download_xml, Toast.LENGTH_LONG).show();
 		}
 	}
 }
