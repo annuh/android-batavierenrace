@@ -9,6 +9,10 @@
 	    <TextView
 	        android:text = "Van wisselpunt naar wisselpunt"
 	        style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 
 		<TextView
 			style="@style/container_block"
@@ -24,6 +28,10 @@ In het personenbusje worden de verschillende ploegen (nachtploeg, ochtendploeg e
 	<TextView
         android:text = "Van en naar de herstarts"
         style="@style/h1" />
+	<TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		
      <TextView
 		style="@style/container_block"

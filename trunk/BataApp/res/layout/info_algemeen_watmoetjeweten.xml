@@ -11,6 +11,10 @@
 	    <TextView
 			android:text = "Medische ondersteuning"
 			style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 	    
 	    <TextView
 			android:text = "@string/info_algemeen_watmoetjeweten_medischeondersteuning"
@@ -19,6 +23,10 @@
 		<TextView
 			android:text = "Hesinname"
 			style="@style/h1" />
+		<TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 	    
 	    <TextView
 	        android:text = "@string/info_algemeen_watmoetjeweten_hesinname"
@@ -27,6 +35,10 @@
 		<TextView
 			android:text = "Gevonden voorwerpen"
 			style="@style/h1" />
+		<TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		
 		<TextView
 		    android:text="Bij de infobalie herstarts of Enschede." 
@@ -35,6 +47,10 @@
 		<TextView
 			android:text = "Tot slot"
 			style="@style/h1" />
+		<TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		
 		<TextView
 		    android:text = "@string/info_algemeen_watmoetjeweten_totslot"

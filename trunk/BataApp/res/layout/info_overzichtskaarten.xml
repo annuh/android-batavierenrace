@@ -12,6 +12,10 @@
 			android:id="@+id/label_info"
 			android:text = "@string/team_informatie"
 			style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		<Button 
 			android:text="Herstart Barchem"
 			android:id="@+id/herstart_barchem"

@@ -8,8 +8,12 @@
 	    android:orientation="vertical" >
 		
 	    <TextView
-			android:text = "Noodgevallen"
+			android:text = "Stap 1. Bel 112"
 			style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
    
 	    <LinearLayout
 			android:layout_width="match_parent"
@@ -17,18 +21,48 @@
 			android:orientation="horizontal"
 			style="@style/container_block" >
 			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
+				android:src="@drawable/icon_phone"
+				android:layout_margin="5dp" />
+			<TextView
+			    android:id="@+id/label_112"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_gravity="center_vertical"
+			    android:text="112"
+			    android:textSize="20dp" />
+
+		</LinearLayout>
+		<TextView
+			android:text = "Stap 2. Infomeer de organisatie"
+			style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
+   
+	    <LinearLayout
+	        android:id="@+id/bel_organisatie"
+	        android:clickable = "true"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			style="@style/container_block" >
+			<ImageView
+				android:layout_width="60dp"
+				android:layout_height="60dp"
 				android:src="@drawable/icon_phone"
 				android:layout_margin="5dp" />
-
+			
 			<TextView
-				android:id="@+id/label_hoogteverschil"
-				android:text = "112"
-				android:textSize="40dp"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
+			    android:id="@+id/label_belorganisatie"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_gravity="center_vertical"
+			    android:text="0031 - (0)53 - 4895331"
+			    android:textSize="20dp" />
+
 		</LinearLayout>
-	   
 	</LinearLayout>
 </ScrollView>

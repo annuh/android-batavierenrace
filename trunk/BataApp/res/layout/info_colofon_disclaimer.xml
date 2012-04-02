@@ -11,6 +11,10 @@
 	    <TextView
 			android:text = "Disclaimer"
 			style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		<TextView
 			android:text="Aan deze applicatie kunnen geen rechten worden ontleend. 
 			Gegevens (informatie, uitslagen, routes, etc.) die via andere wegen ter 

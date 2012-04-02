@@ -10,6 +10,10 @@
 				android:id="@+id/weer_huidig"
 				android:text = "Huidig weer "
 				style="@style/h1" />
+		    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		    <LinearLayout
 		        android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,6 +35,10 @@
 		   	<TextView
 				android:text= "Advies"
 				style="@style/h1" />
+		   	<TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		    <LinearLayout
 		        android:layout_width="match_parent"
 		    	android:layout_height="wrap_content"
