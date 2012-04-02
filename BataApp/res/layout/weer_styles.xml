@@ -9,6 +9,10 @@
         android:id="@+id/weer_titel"
 		style="@style/h1"
         android:text="Weer" />
+    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
     
     <ImageView
         android:id="@+id/weer_buienradar"  

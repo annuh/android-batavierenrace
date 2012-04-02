@@ -37,7 +37,7 @@
 	    <Button
 	        android:id="@+id/dashboard_informatie"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
+	        android:drawableTop="@drawable/informatie"
 	        android:text="@string/dashboard_informatie" />
 	    
 	    <Button
@@ -49,13 +49,13 @@
 	    <Button
 	        android:id="@+id/dashboard_bataradio"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
+	        android:drawableTop="@drawable/radio"
 	        android:text="@string/dashboard_bataradio" />
 	    
 	    <Button
 	        android:id="@+id/dashboard_weer"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
+	        android:drawableTop="@drawable/weer"
 	        android:text="@string/dashboard_weer" />	    
 	    
 	    <Button

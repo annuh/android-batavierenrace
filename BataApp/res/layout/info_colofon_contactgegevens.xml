@@ -11,6 +11,10 @@
 	    <TextView
 			android:text = "Contactgegevens"
 			style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		<TextView
 			android:text="@string/info_contact"
 			style="@style/container_block" />

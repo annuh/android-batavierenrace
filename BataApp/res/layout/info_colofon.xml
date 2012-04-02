@@ -11,6 +11,10 @@
 	    <TextView
 			android:text = "Colofon"
 			style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		<Button 
 			android:text="Contactgegevens"
 			android:id="@+id/info_contact"

@@ -83,12 +83,12 @@ public class InformatieActivity extends SherlockFragmentActivity {
 		
 		public InformatieFragmentAdapter(FragmentManager fm) {
 			super(fm);
+			fragments.add(new InfoAlgemeenFragment());
+			titels.add("Algemeen");
 			fragments.add(new InfoCalamiteitenFragment());
 			titels.add("Calamiteiten");
 			fragments.add(new InfoOverzichtskaartenFragment());
 			titels.add("Overzichtkaart");
-			fragments.add(new InfoAlgemeenFragment());
-			titels.add("Algemeen");
 			fragments.add(new InfoColofonFragment());
 			titels.add("Colofon");
 		}

@@ -10,6 +10,10 @@
 	    <TextView
 			android:text = "Algemene informatie"
 			style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 		<Button 
 			android:text="Wat moet je weten?"
 			android:id="@+id/info_watmoetjeweten"
