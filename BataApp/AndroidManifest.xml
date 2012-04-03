@@ -91,8 +91,9 @@
         
     
     
-    
-			<receiver android:name=".services.C2DMReceiver" android:permission="com.google.android.c2dm.permission.SEND">  
+    		<service android:name=".C2DMReceiver" />
+    		
+			<receiver android:name="com.google.android.c2dm.C2DMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">  
 			        <!-- Receive actual messages -->  
 					<intent-filter>  
 					    <action android:name="com.google.android.c2dm.intent.RECEIVE"></action>

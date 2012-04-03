@@ -1,31 +1,19 @@
 package com.ut.bataapp;
 
 import java.util.Calendar;
-
-
 import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.android.c2dm.C2DMessaging;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.ut.bataapp.activities.*;
-import com.ut.bataapp.services.C2DMReceiver;
 
 
 public class MainActivity extends SherlockFragmentActivity {	
@@ -46,7 +34,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	   btn_routes.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), EtappesActivity.class);
                startActivity(i);
            }
@@ -57,7 +44,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	   btn_favorieten.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), FavoTeamsActivity.class);
                startActivity(i);
            }
@@ -67,7 +53,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	   btn_teams.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), TeamsActivity.class);
                startActivity(i);
            }
@@ -77,7 +62,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	   btn_klassement.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), KlassementenActivity.class);
                startActivity(i);
            }
@@ -87,7 +71,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	   btn_weer.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), WeerActivity.class);
                startActivity(i);
            }
@@ -97,7 +80,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	   btn_informatie.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               // Launching News Feed Screen
                Intent i = new Intent(getApplicationContext(), InformatieActivity.class);
                startActivity(i);
            }
@@ -161,7 +143,7 @@ public class MainActivity extends SherlockFragmentActivity {
    }
    
    public void setupC2DM() {
-	   Log.d("C2DM", "START");
+	   /*Log.d("C2DM", "START");
 ;	   SharedPreferences prefs = getSharedPreferences(C2DMessaging.PREFERENCE, Context.MODE_PRIVATE);
 	   if ((Build.VERSION.SDK_INT >= 8) && (C2DMessaging.shouldRegisterForPush(getApplicationContext()))) {
 		   Log.d("C2DM", "Moet registreren");
@@ -180,26 +162,17 @@ public class MainActivity extends SherlockFragmentActivity {
 			C2DMessaging.setRegisterForPush(getApplicationContext(), true);
 			C2DMReceiver.refreshAppC2DMRegistrationState(getApplicationContext(), true);
 		}
-	   Log.d("C2DM", "Goed fout");
+	   Log.d("C2DM", "Goed fout");*/
+	   if (Build.VERSION.SDK_INT >= 8) {
+		   String registrationId = C2DMessaging.getRegistrationId(this);
+		    if(registrationId != null && !"".equals(registrationId)){
+		        Log.i("GenericNotifier", "Already registered. registrationId is " + registrationId);
+		    }else{
+		        Log.i("GenericNotifier", "No existing registrationId. Registering..");
+		        C2DMessaging.register(this, "batabericht@gmail.com");
+		    }
+	   }
+
    }
-   
-   public void register() {
-		Log.w("C2DM", "start registration process");
-		Intent intent = new Intent("com.google.android.c2dm.intent.REGISTER");
-		intent.putExtra("app",
-				PendingIntent.getBroadcast(this, 0, new Intent(), 0));
-		// Sender currently not used
-		intent.putExtra("sender", "batabericht@gmail.com");
-		startService(intent);
-	}
-
-	public void showRegistrationId() {
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(this);
-		String string = prefs.getString("authentication", "n/a");
-		Toast.makeText(this, string, Toast.LENGTH_LONG).show();
-		Log.d("C2DM RegId", string);
-
-	}
    
 }
