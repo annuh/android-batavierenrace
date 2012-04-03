@@ -3,62 +3,88 @@
     android:id="@+id/scroller"
     style="@style/scroller" >
 	<LinearLayout
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:orientation="vertical" >
-		    <TextView
-				android:id="@+id/weer_huidig"
-				android:text = "Huidig weer "
-				style="@style/h1" />
-		    <TextView
+	    android:layout_width="match_parent"
+		android:layout_height="wrap_content"	
+		android:orientation="vertical" >
+		<TextView
+			android:text = "@string/huidigweer"
+			style="@style/h1"/>
+		<TextView
 	        android:layout_height="10dp"
 	        android:layout_width="fill_parent"
 			android:background = "@drawable/onder" />
-		    <LinearLayout
-		        android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-		   	 	android:orientation="horizontal">
-		   	 	<TextView
-		   	 	    android:text = "Temperatuur: "
-		   	 	    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-		   	 	<TextView
-		   	 	    android:id= "@+id/weer_huidig_temp" 
-		   	 	    android:text = "niet bekend" 
-		   	 	    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-		   	 	<ImageView
-		   	 	    android:id="@+id/weer_huidig_icoon"
-		   	 	    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-		   	</LinearLayout>
-		   	<TextView
-				android:text= "Advies"
-				style="@style/h1" />
-		   	<TextView
+		<TableLayout
+		    android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:padding="10dip"
+	    	android:stretchColumns="0">
+		    <TableRow>
+		        <TextView
+		            android:text="@string/plaats"
+		            android:textColor="@android:color/darker_gray" />
+		        <TextView
+		            android:text="@string/temperatuur"
+		            android:textColor="@android:color/darker_gray"
+		            android:padding="3dip" />
+		        <TextView
+		            android:text="@string/weericoon"
+		            android:textColor="@android:color/darker_gray" />
+		    </TableRow>
+		    <TableRow>
+		        <TextView
+		            android:text="@string/nijmegen" />
+		        <TextView
+		            android:id="@+id/nijmegen_huidig_temp" 
+		            android:padding="3dip" />
+		        <ImageView
+		   	 	    android:id="@+id/nijmegen_huidig_icoon"
+	                android:gravity="right"/>	
+		    </TableRow>
+		    <TableRow>
+		        <TextView
+		            android:text="@string/ruurlo" />
+		        <TextView
+		            android:id="@+id/ruurlo_huidig_temp"
+		            android:padding="3dip" />
+		        <ImageView
+		   	 	    android:id="@+id/ruurlo_huidig_icoon"
+	                android:gravity="right"/>	
+		    </TableRow>
+		    <TableRow>
+		        <TextView
+		            android:text="@string/enschede" />
+		        <TextView
+		            android:id="@+id/enschede_huidig_temp"
+		            android:padding="3dip" />
+		        <ImageView
+		   	 	    android:id="@+id/enschede_huidig_icoon"
+	                android:gravity="right"/>	
+		    </TableRow>
+		</TableLayout>  
+	   	<TextView
+			android:text= "@string/advies"
+			style="@style/h1" />+
+		<TextView
 	        android:layout_height="10dp"
 	        android:layout_width="fill_parent"
 			android:background = "@drawable/onder" />
-		    <LinearLayout
-		        android:layout_width="match_parent"
-		    	android:layout_height="wrap_content"
-		   	 	android:orientation="horizontal">
-		   	 	<TextView
-		   	 	    android:text = "Verwachte max. temp.: " 
-		   	 	    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-		   	 	<TextView
-		   	 	    android:id= "@+id/weer_max_verwacht_temp"
-		   	 	    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-		   	 	    android:text = "niet bekend" />
-		   	 	<ImageView
-		   	 	    android:id="@+id/weer_verwacht_icoon"
-		   	 	    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-		   	</LinearLayout>
-		   	<TextView
-				android:id= "@+id/weer_advies"
-				style="@style/container_block" />
+	   	<LinearLayout
+	   	    android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:padding="10dip"
+	   	 	android:orientation="horizontal">
+		    <TextView
+	   	 	    android:text = "@string/verwachte_max_temp" 
+	   	 	    android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" />
+	   		<TextView
+	   	 	    android:id = "@+id/verwachte_max_temp" 
+	   	 	    android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:padding="3dip" />
+	   	</LinearLayout>
+	   	<TextView
+			android:id= "@+id/weer_advies"
+			style="@style/container_block" />
 	</LinearLayout>
 </ScrollView>
