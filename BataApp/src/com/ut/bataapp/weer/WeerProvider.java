@@ -9,9 +9,13 @@ import java.util.Date;
  * @version 0.1
  */
 public interface WeerProvider {
-	public static final int NIJMEGEN = 0, GROENLO = 1, ENSCHEDE = 2;
+	public static final byte NIJMEGEN = 0, RUURLO = 1, ENSCHEDE = 2;
+	public static final byte TOTAL = 3;
 	
-	public String getVerwachting() throws WeerException;	
-	public WeerInfo getHuidig(int loc) throws WeerException;
-	public WeerInfo getVerwachting(Date date) throws WeerException;
+	public boolean hasData();
+	public void refresh(Date datum) throws WeerException;
+	public String getAlgemeneVerwachting();	
+	public WeerInfo getHuidig(int plaats);
+	public WeerInfo getVerwachting(int plaats);
+	public byte getMax();
 }

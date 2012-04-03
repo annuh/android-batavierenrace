@@ -1,17 +1,8 @@
 package com.ut.bataapp.activities;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
+import java.util.Date;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -41,10 +32,13 @@ import com.viewpagerindicator.TitleProvider;
  * @author Danny Bergsma
  * @version 0.1
  */
-public class WeerActivity extends SherlockFragmentActivity implements WeerAdviesFragment.OnRequestWeerProvider {
-	private WeerProvider mWeerProvider;
-    
-    /**
+public class WeerActivity extends SherlockFragmentActivity {
+    private WeerProvider mWeerProvider;
+    private boolean mRefreshOngoing;
+    private WeerAdviesFragment mWeerAdviesFragment;
+    private WeerVerwachtingFragment mWeerVerwachtingFragment;
+	
+	/**
      * Callback-methode creëren activity. Layout wordt opgebouwd.
      */
 	@Override
@@ -60,30 +54,26 @@ public class WeerActivity extends SherlockFragmentActivity implements WeerAdvies
 		mPager.setAdapter(mAdapter);
 		PageIndicator mIndicator = (TabPageIndicator) findViewById(R.id.indicator);
 		mIndicator.setViewPager(mPager);
+		
+		mWeerProvider = new WeerBuienradarGoogle(this); 
     }
     
     /**
      * Callback-methode resumen activity. XML-weergegevens (Google en Buienradar) worden opgehaald.
      */
     @Override
-	protected void onResume() {
-    	super.onResume();
-    	try {
-			Document[] documents = new getXML().execute(getResources().getString(R.string.url_xml_buienradar), getResources().getString(R.string.url_xml_google)).get();
-			mWeerProvider = new WeerBuienradarGoogle(documents[0], documents[1], this);
-    	} catch (InterruptedException e) {
-			setResult(RESULT_CANCELED);
-			finish();
-		} catch (ExecutionException e) {
-			setResult(RESULT_CANCELED);
-			finish();
-		} catch (CancellationException e) {
-			setResult(RESULT_CANCELED);
-			finish();
-		}
+	protected void onStart() {
+    	super.onStart();
+    	Calendar now = Calendar.getInstance();
+    	now.add(Calendar.DATE, 1);
+    	new RefreshWeerProvider().execute(mWeerProvider, now.getTime());
 	}
+        
+    public boolean refreshOngoing() {
+    	return mRefreshOngoing;
+    }
     
-    public WeerProvider onRequestWeerProvider() {
+    public WeerProvider getWeerProvider() {
     	return mWeerProvider;
     }
     
@@ -111,9 +101,9 @@ public class WeerActivity extends SherlockFragmentActivity implements WeerAdvies
 		 */
 		public WeerFragmentAdapter(FragmentManager fm) {
 			super(fm);
-			fragments.add(new WeerAdviesFragment());
+			fragments.add(mWeerAdviesFragment = new WeerAdviesFragment());
 			titels.add(getResources().getString(R.string.tabtitel_weer_advies));
-			fragments.add(new WeerVerwachtingFragment());
+			fragments.add(mWeerVerwachtingFragment = new WeerVerwachtingFragment());
 			titels.add(getResources().getString(R.string.tabtitel_weer_verwachting));
 			fragments.add(new WeerBuienradarFragment());
 			titels.add(getResources().getString(R.string.tabtitel_weer_buienradar));
@@ -156,47 +146,44 @@ public class WeerActivity extends SherlockFragmentActivity implements WeerAdvies
     
     /* Klasse voor het binnenhalen van XML-documenten.
      */
-    private class getXML extends AsyncTask<String, Void, Document[]> {  
-		private ProgressDialog progressDialog;  
+    private class RefreshWeerProvider extends AsyncTask<Object, Void, Object> {  
+		private ProgressDialog mProgressDialog;
 		
-		protected void onPreExecute() {  
-			progressDialog = ProgressDialog.show(WeerActivity.this, getResources().getString(R.string.bezig_met_laden), 
+		protected void onPreExecute() {
+	    	mRefreshOngoing = true;
+			mProgressDialog = ProgressDialog.show(WeerActivity.this, getResources().getString(R.string.bezig_met_laden), 
 			  getResources().getString(R.string.ophalen_weergegevens), true);
 		}
 				
 		@Override
-		protected Document[] doInBackground(String... arg) {  
-			Document[] result = new Document[arg.length];
-			
+		protected Object doInBackground(Object... arg) {
+			Object result;
 			try {
-				DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-				int i=0;
-				while (i<arg.length && !isCancelled()) {
-					try {
-						result[i] = documentBuilder.parse(arg[i]);
-					} catch (IOException e) {
-						cancel(false);
-					} catch (SAXException e) {
-						cancel(false);
-					}
-					i++;
-				}			
-			} catch (ParserConfigurationException e) {
+				((WeerProvider) arg[0]).refresh((Date) arg[1]);
+				result = arg[0];
+			} catch (WeerException e) {
+				result = e;
 				cancel(false);
 			}
-			
 			return result;
 		}
 		
 		@Override  
-		protected void onPostExecute(Document[] result) {
-			progressDialog.dismiss();
+		protected void onPostExecute(Object result) {
+			mWeerAdviesFragment.updateView();
+			mWeerVerwachtingFragment.updateView();
+			mRefreshOngoing = false;
+			mProgressDialog.dismiss();
 		}
 		
 		@Override
-		protected void onCancelled() {
-			progressDialog.dismiss();
-			Toast.makeText(getApplicationContext(), R.string.error_cant_download_xml, Toast.LENGTH_LONG).show();
+		protected void onCancelled(Object result) {
+			WeerException e = (WeerException) result;
+			mProgressDialog.dismiss();
+			mRefreshOngoing = false;
+			Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+			setResult(RESULT_CANCELED);
+			finish();
 		}
 	}
 }

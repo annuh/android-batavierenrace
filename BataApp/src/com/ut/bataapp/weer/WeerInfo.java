@@ -1,27 +1,28 @@
 package com.ut.bataapp.weer;
 
-import android.net.Uri;
+import android.graphics.Bitmap;
 
 /**
  * Klasse voor het representeren van weerinformatie. Simpelweg een record met twee velden: temperatuur en
- * grafische beschrijving.
+ * URL van grafische beschrijving.
  * Onderdeel van ontwerpproject BataApp. 
  * @author Danny Bergsma
  * @version 0.1
  */
 public class WeerInfo {
-	private String temp, url;
+	private byte mTemp; 
+	private Bitmap mDesc;
 	
-	public WeerInfo(String temp, String url) {
-		this.temp = temp;
-		this.url = url;
+	WeerInfo(byte temp, Bitmap desc) {
+		this.mTemp = temp;
+		this.mDesc = desc;
 	}
 	
-	public String getTemp() {
-		return temp;
+	public byte getTemp() {
+		return mTemp;
 	}
 	
-	public String getURL() {
-		return url;
+	public Bitmap getDesc() {
+		return mDesc;
 	}
 }

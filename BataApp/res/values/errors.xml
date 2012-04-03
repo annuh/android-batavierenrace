@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="error_cant_download_xml">Kan XML niet downloaden</string>
+    <string name="error_cant_download_xml">Kan XML niet downloaden: </string>
+    <string name="error_cant_parse_xml">Kan XML niet parsen: </string>
+    <string name="error_cant_start_parser">Kan XML-parser niet starten: </string>
     <string name="error_too_many_days_ahead">Weersverwachting nog niet bekend.</string>
     <string name="error_verwachting">Weersverwachting niet beschikbaar.</string>
 </resources>
