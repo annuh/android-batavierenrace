@@ -106,10 +106,23 @@ return result;
 private File getFile(String path){
 	File result = null;
 	if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+		//De locatie van de file is de root van de sdkaart+dexmlmap+het gegeven path.
+	    File map = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap());
+	    //Maak directory aan als die nog niet bestaat
+	    if(!map.exists()){
+	        Log.d("parser","dts:xmlMap bestaat nog niet");
+	        map.mkdir();
+	    }
+	    
+	        result = new File(map.getPath()+'/'+path);
+	        if(!result.getParentFile().exists()){
+	                result.getParentFile().mkdir();
+	        }
+	        //sdFile is de file waar de nieuw file heengeschreven word.
 	    //"externe" media is gemount dus we kunnen lezen en schrijven naar file.
 		//Activity act = new Activity();
 		//result =  new File(act.getExternalFilesDir(api.getSDmap()).getPath()+path);
-		result = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
+		//result = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
 	}
 	Log.d("parser","test"+result.getPath());
 		return result;
