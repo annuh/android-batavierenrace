@@ -108,8 +108,17 @@ public class MainActivity extends SherlockFragmentActivity {
 	   Calendar batadag = Calendar.getInstance();
 	   batadag.set(2012, 4-1, 28);
 	   long dagenVerschil = (batadag.getTimeInMillis() - nu.getTimeInMillis())/ (24 * 60 * 60 * 1000);
+	   
 	   TextView viewDagen = (TextView) findViewById(R.id.dashboard_time);
-	   viewDagen.setText("Het duurt nog " +dagenVerschil + " dagen!");
+	   String weergeven = "";
+	   if(dagenVerschil>0){
+		   weergeven = "Het duurt nog " +dagenVerschil + " dagen!";
+	   } else if(dagenVerschil<=0 && dagenVerschil>-1){
+		   weergeven = "Batavierenrace XL";
+	   } else{
+		   weergeven = "Tot volgend jaar!";
+	   }
+	   viewDagen.setText(weergeven);
    }
    
    @Override
