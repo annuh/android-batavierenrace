@@ -25,7 +25,7 @@
 	    <Button
 	        android:id="@+id/dashboard_teams"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
+	        android:drawableTop="@drawable/teams"
 	        android:text="@string/dashboard_teams" />	    
 	    
 	    <Button

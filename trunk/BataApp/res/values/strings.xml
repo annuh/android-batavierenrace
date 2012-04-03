@@ -59,38 +59,24 @@
 							Heyendaalseweg 141
 							6525 AJ Nijmegen</string>
 							
-	<string name="info_contact">Contactgegevens Stichting De Batavierenrace\n
-							<b>Batavierenrace Nijmegen</b>\n
-							Heyendaalseweg 141\n
-							6525 AJ Nijmegen\n
-							E: nijmegen@batavierenrace.nl\n
-							T: +31 (0)24-3615876\n\n
-							Bezoekadres:\n
-							Kamer N-1.260\n
-							Heyendaalseweg 141\n
-							6525 AJ Nijmegen\n\n
-							<b>Batavierenrace Enschede</b>\n
-							Postbus 217\n
-							7500 AE Enschede\n
-							E: enschede@batavierenrace.nl\n
-							T: +31 (0)53-4893787\n\n
-							Bezoekadres:\n
-							Bastille, kamer 334\n
-							Drienerlolaan 5\n
-							7522 NB Enschede</string>
+	<string name="colofon"><b>Deze applicatie is ontwikkeld door:</b>\n\n\tDanny Bergsma\n\tJochem Elsinga\n\tBas Janssen\n\tErik Pleijsier\n\tAnne van de Venis\n\nStudenten Informatica\nUniversiteit Twente\n\n<b>In samenwerking met:</b>\n\n\tStichting de Batavierenrace\n\t40e Organisatie Commissie\n\nApril 2012</string>
+	<string name="disclamer">Aan deze applicatie kunnen geen rechten worden ontleend. Gegevens (informatie, uitslagen, routes, etc.) die via andere wegen ter uiting worden gebracht door organen van de Batavierenrace zijn leidend	boven de publicatie in deze applicatie. Verder is op deze applicatie ook het wedstrijd- en inschrijfregelement van toepassing. De volledige wedstrijd- en inschrijfregelementen zijn te vinden op www.batavierenrace.nl.\n\n Hieronder staan enkele belangrijke punten uit de regelementen herhaald:\n\n1) Iedere deelnemer neemt deel op eigen risico. De Stichting Batavierenrace kan niet aansprakelijk worden gesteld voor het zoek raken of de beschadiging van persoonlijke eigendommen, noch voor enig opgelopen persoonlijk letsel.\n\n 2)	Er bestaan voor de lopers en de volgauto&quot;s aparte routes. De routes beschreven in het deelnemersboekje zijn leidend [, ook boven de applicatie. Errata worden zoveel mogelijk meegenomen in de applicatie.] De borden langs de lopersroute dienen slechts ter ondersteuning. Indien van de in het boekje en de errata beschreven route moet worden afgeweken, zal iemand van de organisatie dit aangeven.\n\n 3) De Wegenverkeerswet, het Reglement Verkeersregels en Verkeerstekens en de Straßenverkehrsordnung zijn tijdens de race onder alle omstandigheden van kracht. [Werkende fietsverlichting is bijvoorbeeld ook verplicht.]\n\n4) Het Wedstrijdsecretariaat draagt de verantwoordelijkheid voor de einduitslag. Het is bevoegd om bij constatering van een overtreding van het wedstrijdreglement straftijd toe te kennen. Het Wedstrijdsecretariaat is tevens verantwoordelijk voor de protestafhandeling.\n\n5) Protesten dienen zo snel mogelijk te worden ingediend bij het Wedstrijdsecretariaat. Dit kan tijdens de gehele race telefonisch en op gezette tijden in Enschede. De gepubliceerde uitslag tijdens en na de race is voorlopig[, ook publicatie in de applicatie]. Tot en met de eerstvolgende woensdag na de race is het mogelijk om via e-mail protesten in te dienen bij het Wedstrijdsecretariaat (protesten@batavierenrace.nl).</string>						
+	
+	<string name="info_contact"><b>Stichting De Batavierenrace</b>\n\n<b>Batavierenrace Nijmegen</b>\nHeyendaalseweg 141\n6525 AJ Nijmegen\nE: nijmegen@batavierenrace.nl\nT: +31 (0)24-3615876\n\nBezoekadres:\nKamer N-1.260\nHeyendaalseweg 141\n6525 AJ Nijmegen\n\n<b>Batavierenrace Enschede</b>\nPostbus 217\n7500 AE Enschede\nE: enschede@batavierenrace.nl\nT: +31 (0)53-4893787\n\nBezoekadres:\nBastille, kamer 334\nDrienerlolaan 5\n7522 NB Enschede</string>
 	<string name="info_algemeen_watmoetjeweten_medischeondersteuning">
 	    In de race rijden zeven artsen mee. Zij zijn aanwezig bij start, herstarts en de finsh 
 	    en kunnen via een medewerker opgeroepen worden. Eenmaal opgeroepen ben je verplicht te 
 	    wachten. Op de campus is de zorg in handen van EHBO Enschede; op de hoek van de Carilloncamping, 
 	    Drienerlolaan.</string> 
 
-	<string name="info_algemeen_watmoetjeweten_hesinname">
-		Van 17.45 uur tot 19.30 uur in de Vrijhof, campus Enschede.\n
-		Inleveren: Lopershes met chip, fietsershes en twee witte en blauwe startnummers met elk een chip.
-		Lever je dit in, dan krijg je €80 borg terug. Ben je te laat, dan krijg je €70 borg terug.
+	<string name="info_algemeen_watmoetjeweten_hesinname">Dit is mogelijk van 17.45 uur tot 19.30 uur in de Vrijhof op de UT-campus in Enschede.\n\n<b>Inleveren:</b>\nLopershes met chip, fietsershes en twee witte en blauwe startnummers met elk een chip.\n\nLever je dit op tijd in, dan krijg je €80 borg terug. Ben je te laat, dan krijg je €70 borg terug.
 	</string>
 	
-	<string name="info_algemeen_watmoetjeweten_totslot">-	Geen alcohol\n-	Door Duitsland: geldig paspoort en groene verzekeringskaart busje\n-	Let op omroepen en errata\n	-	Slapen in sportcentrum: slaapbandje dragen\n-	Geen open vuur\n-	Parkeren op de aangegeven plaatsen</string>
+	<string name="info_algemeen_watmoetjeweten_gevondenvoorwerpen">
+	    Tijdens de race gaan alle gevonden voorwerpen naar de infobalie op de herstarts. Na de race gaan alle spullen naar de infobalie in het sporcentrum te Enschede.
+	</string>
+	
+	<string name="info_algemeen_watmoetjeweten_totslot">- Het nuttigen van alcoholische dranken en het gebruik van drogerende middelen tijden de race door mensen die nog moeten rijden of lopen is absoluut niet toegestaan.\n-	Door Duitsland: geldig paspoort en groene verzekeringskaart busje\n-	Let op omroepen en errata\n	-	Slapen in sportcentrum: slaapbandje dragen\n-	Geen open vuur\n-	Parkeren op de aangegeven plaatsen</string>
 	
 	<string name="info_algemeen_slapen">
 		In Enschede zijn twee mogelijkheden:\n

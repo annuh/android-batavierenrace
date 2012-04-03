@@ -43,7 +43,7 @@
 			android:background = "@drawable/onder" />
 		
 		<TextView
-		    android:text="Bij de infobalie herstarts of Enschede." 
+		    android:text="@string/info_algemeen_watmoetjeweten_gevondenvoorwerpen" 
 		    style="@style/container_block" />
 		
 		<TextView

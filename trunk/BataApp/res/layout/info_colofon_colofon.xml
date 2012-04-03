@@ -16,18 +16,7 @@
 	        android:layout_width="fill_parent"
 			android:background = "@drawable/onder" />
 		<TextView
-			android:text="Deze applicatie is ontwikkeld door:\n
-							Danny Bergsma \n
-							Erik Pleijsier \n
-							Jochem Elsinga	Anne van de Venis \n
-							Bas Janssen	 \n
-							\n
-							Studenten Informatica – Universiteit Twente \n
-							\n
-							In samenwerking met:\n
-							Stichting de Batavierenrace, 40e Organisatie Commissie \n
-							\n
-							April 2012"
+			android:text="@string/colofon"
 			style="@style/container_block" />
 	</LinearLayout>
 </ScrollView>
