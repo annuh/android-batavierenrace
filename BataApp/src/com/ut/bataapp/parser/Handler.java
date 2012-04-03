@@ -195,8 +195,9 @@ public abstract class Handler extends DefaultHandler {
 			while ((bufferLength = inputStream.read(buffer)) > 0) {
 				fileOutput.write(buffer, 0, bufferLength);
 			}
-			// Sluit de outputSream
+			// Sluit de outputSream en httpconnection
 			fileOutput.close();
+			urlConnection.disconnect();
 
 			result = true;
 		} catch (MalformedURLException mue) {
