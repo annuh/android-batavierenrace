@@ -8,7 +8,7 @@
 	    android:orientation="vertical" >
 		
 	    <TextView
-			android:text = "Stap 1. Bel 112"
+			android:text = "Bel 112"
 			style="@style/h1" />
 	    <TextView
 	        android:layout_height="10dp"
@@ -16,6 +16,8 @@
 			android:background = "@drawable/onder" />
    
 	    <LinearLayout
+	        android:id="@+id/bel_112"
+	        android:clickable = "true"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:orientation="horizontal"
@@ -35,7 +37,7 @@
 
 		</LinearLayout>
 		<TextView
-			android:text = "Stap 2. Infomeer de organisatie"
+			android:text = "Infomeer de organisatie"
 			style="@style/h1" />
 	    <TextView
 	        android:layout_height="10dp"

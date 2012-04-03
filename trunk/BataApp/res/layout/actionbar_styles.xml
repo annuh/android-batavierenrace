@@ -61,7 +61,7 @@
 	    <Button
 	        android:id="@+id/dashboard_sponsor"
 	        style="@style/DashboardButton"
-	        android:drawableTop="@drawable/menu"
+	        android:drawableTop="@drawable/sponsor"
 	        android:text="@string/dashboard_sponsor" />
 	   
 	</com.ut.bataapp.DashboardLayout>
