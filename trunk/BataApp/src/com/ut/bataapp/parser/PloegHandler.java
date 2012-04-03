@@ -23,6 +23,10 @@ public class PloegHandler extends Handler{
 	private boolean foutcode;
 	private boolean tijd;
 	private boolean etappe;
+	
+	private boolean snelheid;
+	private boolean etappeStand;
+	private boolean cumulatieveStand;
 
 	private String teamNaam;
 	private int startNummer;
@@ -47,6 +51,9 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("foutcode")) this.foutcode = true;
 		else if(localName.equals("klassementstijd")) this.tijd = true;
 		else if(localName.equals("etappenummer")) this.etappe = true;
+		else if(localName.equals("snelheid")) this.snelheid = true;
+		else if(localName.equals("etappe")) this.etappeStand = true;
+		else if(localName.equals("cumulatief")) this.cumulatieveStand = true;
 	}
 	
 	@Override
@@ -59,6 +66,9 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("foutcode")) this.foutcode = false;
 		else if(localName.equals("klassementstijd")) this.tijd = false;
 		else if(localName.equals("etappenummer")) this.etappe = false;
+		else if(localName.equals("snelheid")) this.snelheid = false;
+		else if(localName.equals("etappe")) this.etappeStand = false;
+		else if(localName.equals("cumulatief")) this.cumulatieveStand = false;
 	}
 
 	@Override
@@ -67,12 +77,16 @@ public class PloegHandler extends Handler{
 		else if(naam) teamNaam = new String(ch,start,length);
 		else if(startgroep) startGroep = Integer.parseInt(new String(ch,start,length));
 		else if(uitslag){
-			looptijd = new Looptijd(teamNaam,startNummer,startGroep,-1,"","");
+			looptijd = new Looptijd();
+			looptijd.setTeamNaam(teamNaam);looptijd.setTeamStartnummer(startNummer);looptijd.setTeamStartgroep(startGroep);
 			uitslag = false;
 		}
 		else if(foutcode) looptijd.setFoutcode(new String(ch,start,length));
 		else if(tijd) looptijd.setTijd(new String(ch,start,length));
 		else if(etappe) looptijd.setEtappe(Integer.parseInt(new String(ch,start,length)));
+		else if(snelheid) looptijd.setSnelheid(new String(ch,start,length));
+		else if(etappeStand) looptijd.setEtappeStand(Integer.parseInt(new String(ch,start,length)));
+		else if(cumulatieveStand) looptijd.setCumulatieveStand(Integer.parseInt(new String(ch,start,length)));
 	}
 
 	@Override
