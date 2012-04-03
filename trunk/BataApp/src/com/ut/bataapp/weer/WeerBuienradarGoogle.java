@@ -1,26 +1,40 @@
 package com.ut.bataapp.weer;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 import android.content.Context;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.ut.bataapp.R;
 
 public class WeerBuienradarGoogle implements WeerProvider {
 	public static final int MILLIS_IN_DAY = 60 * 60 * 24 * 1000;
-	public static final byte MAX_DAYS_AHEAD = 5;
+	public static final byte MAX_DAYS_AHEAD = 3;
+	public static final byte DIFF_CF = 32;
+	public static final float FACTOR_CF  = 1.8F;
 	
-	private Document mBuienradar, mGoogle;
+	private WeerInfo[] mHuidig = new WeerInfo[TOTAL];
+	private WeerInfo[] mVerwachting = new WeerInfo[TOTAL];
+	private String mAlgemeneVerwachting;
+	
+	private boolean mHasData = false;
 	private Context mCtx;
 	
-	public WeerBuienradarGoogle(Document buienradar, Document google, Context ctx) {
-		mBuienradar = buienradar;
-		mGoogle = google;
+	public WeerBuienradarGoogle(Context ctx) {
 		mCtx = ctx;
 	}
 	
@@ -35,64 +49,91 @@ public class WeerBuienradarGoogle implements WeerProvider {
 	}
 	
 	private byte convertFtoC(byte f) {
-		return (byte) Math.round((f-32) / 1.8);
+		return (byte) Math.round((f-DIFF_CF) / FACTOR_CF);
 	}
 	
-	@Override
-	public WeerInfo getVerwachting(Date date) throws WeerException {
-		String maxTemp, url;
-		
-		long diffDays = diffDays(date);
-		if (diffDays == 0) {
-			String tagGoogleVandaag = mCtx.getResources().getString(R.string.tag_google_vandaag),
-			       tagGoogleVandaagHigh = mCtx.getResources().getString(R.string.tag_google_vandaag_high),
-			       tagGoogleVandaagIcon = mCtx.getResources().getString(R.string.tag_google_vandaag_icon),
-			       attrGoogleVandaagData = mCtx.getResources().getString(R.string.attr_google_vandaag_data);
-			Element elemGoogleVandaag = (Element) mGoogle.getElementsByTagName(tagGoogleVandaag).item(0),
-					elemGoogleVandaagHigh = (Element) elemGoogleVandaag.getElementsByTagName(tagGoogleVandaagHigh).item(0),
-					elemGoogleVandaagIcon = (Element) elemGoogleVandaag.getElementsByTagName(tagGoogleVandaagIcon).item(0);
-			maxTemp = (convertFtoC(Byte.parseByte(elemGoogleVandaagHigh.getAttribute(attrGoogleVandaagData))) + "");
-			url = mCtx.getResources().getString(R.string.url_google_icon_prefix) + elemGoogleVandaagIcon.getAttribute(attrGoogleVandaagData);
-		} else if (diffDays <= MAX_DAYS_AHEAD) {
-			String tagVerwachtingMeerdaags = (mCtx.getResources().getString(R.string.tag_verwachting_meerdaags) + diffDays),
-			       tagVerwachtingMeerdaagsMax = mCtx.getResources().getString(R.string.tag_verwachting_meerdaags_max),
-			       tagVerwachtingMeerdaagsIcon = mCtx.getResources().getString(R.string.tag_verwachting_meerdaags_icon);
-			Element elemVerwachtingMeerdaags = (Element) mBuienradar.getElementsByTagName(tagVerwachtingMeerdaags).item(0);
-			maxTemp = elemVerwachtingMeerdaags.getElementsByTagName(tagVerwachtingMeerdaagsMax).item(0).getTextContent();
-			url = elemVerwachtingMeerdaags.getElementsByTagName(tagVerwachtingMeerdaagsIcon).item(0).getTextContent();
-		} else
-			throw new WeerException(mCtx.getResources().getString(R.string.error_too_many_days_ahead));
-		
-		return new WeerInfo(maxTemp, url);
+	private Bitmap getBitmap(String url) {
+		Bitmap result;
+		try {
+			result = BitmapFactory.decodeStream((InputStream)new URL(url).getContent());
+		} catch (MalformedURLException e) {
+			result = null;
+		} catch (IOException e) {
+			result = null;
+		}
+		return result;
+	}
+	
+	private String parseAlgemeneVerwachting(Document buienradar) {
+		String tagVerwachtingTekst = mCtx.getResources().getString(R.string.tag_buienradar_verwachting_tekst);
+		return buienradar.getElementsByTagName(tagVerwachtingTekst).item(0).getTextContent();
+	}
+	
+	private WeerInfo parseGoogle(Document xml, String tagDag, String tagTemp, String tagIcon, String attrData, String urlPrefix, int dag, boolean fahrenheit) {	
+		Element elemGoogleDag = (Element) xml.getElementsByTagName(tagDag).item(dag),
+				elemGoogleDagTemp = (Element) elemGoogleDag.getElementsByTagName(tagTemp).item(0),
+			    elemGoogleDagIcon = (Element) elemGoogleDag.getElementsByTagName(tagIcon).item(0);
+		byte temp = Byte.parseByte(elemGoogleDagTemp.getAttribute(attrData));
+		if (fahrenheit)
+			temp = convertFtoC(temp);
+		String iconURL = urlPrefix + elemGoogleDagIcon.getAttribute(attrData);
+		return new WeerInfo(temp, getBitmap(iconURL));
 	}
 
-	@Override
-	public String getVerwachting() throws WeerException {
-		String tagVerwachtingVandaag = mCtx.getResources().getString(R.string.tag_verwachting_vandaag),
-			   tagVerwachtingVandaagTekst = mCtx.getResources().getString(R.string.tag_verwachting_vandaag_tekst);
-		Element elemVerwachtingVandaag = (Element) mBuienradar.getElementsByTagName(tagVerwachtingVandaag).item(0);
-		return elemVerwachtingVandaag.getElementsByTagName(tagVerwachtingVandaagTekst).item(0).getTextContent();
+	public void refresh(Date datum) throws WeerException {
+		try {
+			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document buienradar = documentBuilder.parse(mCtx.getResources().getString(R.string.url_xml_buienradar));
+			mAlgemeneVerwachting = parseAlgemeneVerwachting(buienradar);
+			
+			short diffDays = diffDays(datum);
+			String[] googleURLs = mCtx.getResources().getStringArray(R.array.url_xml_google);
+			String tagGoogleHuidig = mCtx.getResources().getString(R.string.tag_google_huidig),
+				   tagGoogleHuidigTemp = mCtx.getResources().getString(R.string.tag_google_huidig_temp),
+				   tagGoogleHuidigIcon = mCtx.getResources().getString(R.string.tag_google_huidig_icon),
+				   tagGoogleVerwachting = mCtx.getResources().getString(R.string.tag_google_verwachting),
+				   tagGoogleVerwachtingMax = mCtx.getResources().getString(R.string.tag_google_verwachting_max),
+				   tagGoogleVerwachtingIcon = mCtx.getResources().getString(R.string.tag_google_verwachting_icon),
+				   attrGoogleData = mCtx.getResources().getString(R.string.attr_google_data),
+				   urlPrefix = mCtx.getResources().getString(R.string.url_google_icon_prefix);
+			for (int i=0; i<TOTAL; i++) {
+				Document xml = documentBuilder.parse(googleURLs[i]);
+				mHuidig[i] = parseGoogle(xml, tagGoogleHuidig, tagGoogleHuidigTemp, tagGoogleHuidigIcon, attrGoogleData, urlPrefix, 0, false);
+				if (diffDays <= MAX_DAYS_AHEAD)
+					mVerwachting[i] = parseGoogle(xml, tagGoogleVerwachting, tagGoogleVerwachtingMax, tagGoogleVerwachtingIcon, attrGoogleData, urlPrefix, diffDays, true);
+			}
+			
+			mHasData = true;
+		} catch (ParserConfigurationException e) {
+			throw new WeerException(mCtx.getResources().getString(R.string.error_cant_start_parser) + e);
+		} catch (SAXException e) {
+			throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml) + e);
+		} catch (IOException e) {
+			throw new WeerException(mCtx.getResources().getString(R.string.error_cant_download_xml) + e);
+		}
+	}
+	
+	public boolean hasData() {
+		return mHasData;
+	}
+	
+	public WeerInfo getVerwachting(int plaats) {
+		return mVerwachting[plaats];
 	}
 
-	@Override
-	public WeerInfo getHuidig(int loc) throws WeerException {
-		String id = "",
-			   tagHuidigTemp = mCtx.getResources().getString(R.string.tag_huidig_temp),
-			   tagHuidigIcoon = mCtx.getResources().getString(R.string.tag_huidig_icoon);
-		
-		switch (loc) {
-			case NIJMEGEN:	id = mCtx.getResources().getString(R.string.id_nijmegen);
-							break;
-			case GROENLO:	id = mCtx.getResources().getString(R.string.id_groenlo);
-							break;
-			case ENSCHEDE:	id = mCtx.getResources().getString(R.string.id_enschede);
-							break;
-		}		
-		
-		Element weerstation = mBuienradar.getElementById(id);
-		String temp = weerstation.getElementsByTagName(tagHuidigTemp).item(0).getTextContent(),
-		       url = weerstation.getElementsByTagName(tagHuidigIcoon).item(0).getTextContent();
-		
-		return new WeerInfo(temp, url);
+	public WeerInfo getHuidig(int plaats) {
+		return mHuidig[plaats];
+	}
+	
+	public String getAlgemeneVerwachting() {
+		return mAlgemeneVerwachting;
+	}
+	
+	public byte getMax() {
+		byte result = Byte.MIN_VALUE;
+		for (int i=0; i<mVerwachting.length; i++)
+			if (mVerwachting[i].getTemp() > result)
+				result = mVerwachting[i].getTemp();
+		return result;
 	}
 }

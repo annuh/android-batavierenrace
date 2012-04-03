@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="boundary1">15</integer>
+    <integer name="boundary2">20</integer>
+    <integer name="boundary3">25</integer>
+</resources>
