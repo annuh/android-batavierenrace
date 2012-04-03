@@ -9,8 +9,14 @@
 
 package com.ut.bataapp.api;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import android.app.Activity;
+import android.os.Environment;
+import android.util.Log;
+
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
@@ -19,7 +25,19 @@ import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.parser.*;
 
-public class api {
+public class api extends Activity {
+	
+	public File getFile(String path){
+		File result = null;
+		if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+		    //"externe" media is gemount dus we kunnen lezen en schrijven naar file.
+			//Activity act = new Activity();
+			result =  new File(this.getExternalFilesDir(api.getSDmap()).getPath()+path);
+			//result = new File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
+		}
+		Log.d("parser","test"+result.getPath());
+			return result;
+	}
 	
 	/**
 	 * Haal van alle etappes basis informatie op.
