@@ -9,12 +9,15 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockListActivity;
@@ -37,12 +40,15 @@ public class TeamsActivity extends SherlockListActivity  {
 	 private EditText filterText = null;
 	 private TeamAdapter adapter = null;
 	 
+	 
+	 
    @Override
    public void onCreate(Bundle savedInstanceState) {
 	   setTitle("Teams");
 	   super.onCreate(savedInstanceState);
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   this.getListView().setFastScrollEnabled(true);
+	   this.setContentView(R.layout.listview_team);
 	   new getTeams().execute();  
    }
    
@@ -131,16 +137,22 @@ public class TeamsActivity extends SherlockListActivity  {
 		
 		@SuppressWarnings("unchecked")
 		@Override  
-		protected Void doInBackground(Void... arg0) {  
+		protected Void doInBackground(Void... arg0) {
+			//Looper.prepare();
 			teams = (ArrayList<Team>) api.getTeams().getResponse();
 			return null;       
 		}
 		
 		@Override  
 		protected void onPostExecute(Void result) {
-			adapter = new TeamAdapter(TeamsActivity.this, teams);
-			setListAdapter(adapter);
-			progressDialog.dismiss();
+			try {
+				adapter = new TeamAdapter(TeamsActivity.this, teams);
+				setListAdapter(adapter);
+			
+				progressDialog.dismiss();
+			} catch (Exception e){
+				e.printStackTrace();
+			}
 		}
 	}
 	

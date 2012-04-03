@@ -98,19 +98,14 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	 * @see com.google.android.c2dm.C2DMBaseReceiver#onRegistered(android.content.Context, java.lang.String)
 	 */
 	@Override
-	public void onRegistered(Context context, String registrationId)
-			throws IOException {
-		
-		
+	public void onRegistered(Context context, String registrationId) throws IOException {
 		// TODO
 		super.onRegistered(context, registrationId);
 		Log.d("C2DM-MESSAGING", "registeren2");
 		Log.e(TAG, ">>>>id recieved" + registrationId);
-		String deviceId = Secure.getString(context.getContentResolver(),
-				Secure.ANDROID_ID);
-		//TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-
+		String deviceId = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
 		Log.e(TAG, ">>>>device unique id " + deviceId);
+		
 		// send to server
 		BufferedReader in = null;
 		try {
@@ -134,14 +129,14 @@ public class C2DMReceiver extends C2DMBaseReceiver {
             String page = sb.toString();
             System.out.println(page);
             } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                    } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            	if (in != null) {
+	                try {
+	                    in.close();
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+            	}
             }
-        }
 
 	}
 
