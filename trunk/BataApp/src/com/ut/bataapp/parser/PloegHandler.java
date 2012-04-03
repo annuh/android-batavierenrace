@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
+import android.util.Log;
+
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
@@ -21,74 +23,56 @@ public class PloegHandler extends Handler{
 	private boolean foutcode;
 	private boolean tijd;
 	private boolean etappe;
-	
-	private Team team;
+
+	private String teamNaam;
+	private int startNummer;
+	private int startGroep;
+	private Looptijd looptijd;
 	private ArrayList<Looptijd> uitslagen;
 	
 	public PloegHandler(String path){
 		super(path);
 	}
 	public Response getParsedData(){
-		if(uitslagen.isEmpty()){
-			uitslagen.add(new Looptijd(team,new Etappe(1),"123","abc"));
-		}
 		return new Response(uitslagen,this.status);
 	}
 	
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{
 		if(localName.equals("ploeg")) this.ploeg = true;
-		if(localName.equals("startnummer")) this.startnummer = true;
-		if(localName.equals("naam")) this.naam = true;
-		if(localName.equals("startgroep")) this.startgroep = true;
-		if(localName.equals("uitslag")) this.uitslag = true;
-		if(localName.equals("foutcode")) this.foutcode = true;
-		if(localName.equals("klassementstijd")) this.tijd = true;
-		if(localName.equals("etappenummer")) this.etappe = true;
+		else if(localName.equals("startnummer")) this.startnummer = true;
+		else if(localName.equals("naam")) this.naam = true;
+		else if(localName.equals("startgroep")) this.startgroep = true;
+		else if(localName.equals("uitslag")) this.uitslag = true;
+		else if(localName.equals("foutcode")) this.foutcode = true;
+		else if(localName.equals("klassementstijd")) this.tijd = true;
+		else if(localName.equals("etappenummer")) this.etappe = true;
 	}
 	
 	@Override
 	public void endElement(String nameSpaceURI, String localName, String qName) throws SAXException{
 		if(localName.equals("ploeg")) this.ploeg = false;
-		if(localName.equals("startgnummer")) this.startnummer = false;
-		if(localName.equals("naam")) this.naam = false;
-		if(localName.equals("startgroep")) this.startgroep = false;
-		if(localName.equals("uitslag")) this.uitslag = false;
-		if(localName.equals("foutcode")) this.foutcode = false;
-		if(localName.equals("klassementstijd")) this.tijd = false;
-		if(localName.equals("etappenummer")) this.etappe = false;
+		else if(localName.equals("startnummer")) this.startnummer = false;
+		else if(localName.equals("naam")) this.naam = false;
+		else if(localName.equals("startgroep")) this.startgroep = false;
+		else if(localName.equals("uitslag")) uitslagen.add(looptijd);
+		else if(localName.equals("foutcode")) this.foutcode = false;
+		else if(localName.equals("klassementstijd")) this.tijd = false;
+		else if(localName.equals("etappenummer")) this.etappe = false;
 	}
 
 	@Override
 	public void characters(char ch[], int start, int length){
-		if(ploeg){ 
-			team = new Team();
-			ploeg = false;
+		if(startnummer) startNummer = Integer.parseInt(new String(ch,start,length));
+		else if(naam) teamNaam = new String(ch,start,length);
+		else if(startgroep) startGroep = Integer.parseInt(new String(ch,start,length));
+		else if(uitslag){
+			looptijd = new Looptijd(teamNaam,startNummer,startGroep,-1,"","");
+			uitslag = false;
 		}
-		if(startnummer){ 
-			team.setStartnummer(Integer.parseInt(new String(ch,start,length)));
-			startnummer = false;
-		}
-		if(naam){ 
-			team.setNaam(new String(ch,start,length));
-			naam = false;
-		}
-		if(startgroep){ 
-			team.setStartGroep(Integer.parseInt(new String(ch,start,length)));
-			startgroep =false;
-		}
-		if(uitslag){
-			uitslagen.add(new Looptijd(team,null,null,null));
-			uitslag =false;
-		}
-		if(foutcode){ 
-			uitslagen.get(uitslagen.size()-1).setFoutcode(new String(ch,start,length));
-			foutcode = false;
-		}
-		if(tijd){ 
-			uitslagen.get(uitslagen.size()-1).setTijd(new String(ch,start,length));
-			tijd = false;
-		}if(etappe) uitslagen.get(uitslagen.size()-1).setEtappe(new Etappe(Integer.parseInt(new String(ch,start,length))));
+		else if(foutcode) looptijd.setFoutcode(new String(ch,start,length));
+		else if(tijd) looptijd.setTijd(new String(ch,start,length));
+		else if(etappe) looptijd.setEtappe(Integer.parseInt(new String(ch,start,length)));
 	}
 
 	@Override

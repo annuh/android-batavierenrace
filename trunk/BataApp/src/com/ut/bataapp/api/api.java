@@ -61,7 +61,7 @@ public class api extends Activity {
 	}
 	
 	public static Response getUitslagenVanEtappe(int id){
-		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml");
+		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml",id);
 		euh.parse();
 		return euh.getParsedData();
 		/**
@@ -105,7 +105,7 @@ public class api extends Activity {
 	 */
 	public static Team getTeamByID(int id) {
 		ArrayList<Looptijd> uitslagen = (ArrayList<Looptijd>) getUitslagByTeam(id).getResponse();
-		Team team = uitslagen.get(0).getTeam();
+		Team team = new Team(uitslagen.get(0).getTeamStartnummer(),uitslagen.get(0).getTeamStartgroep(),uitslagen.get(0).getTeamNaam());
 		for(int i=0;i<uitslagen.size()-1;i++){
 			team.addLooptijd(uitslagen.get(i));
 		}

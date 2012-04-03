@@ -30,10 +30,10 @@ public class LooptijdAdapter extends ArrayAdapter<Looptijd> {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.row_looptijd, parent, false);
-		rowView.setId(values.get(position).getEtappe().getId());
+		rowView.setId(values.get(position).getEtappe());
 		
 		TextView etappe = (TextView) rowView.findViewById(R.id.etappe);
-		etappe.setText(String.valueOf(values.get(position).getEtappe().getId()));
+		etappe.setText(String.valueOf(values.get(position).getEtappe()));
 		
 		TextView tijd = (TextView) rowView.findViewById(R.id.tijd);
 		tijd.setText(values.get(position).getTijd());
