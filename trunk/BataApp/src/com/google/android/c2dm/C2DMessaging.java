@@ -21,7 +21,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Log;
 
 /**
  * Utilities for device registration.
@@ -35,11 +34,10 @@ public class C2DMessaging {
     public static final String REQUEST_REGISTRATION_INTENT = "com.google.android.c2dm.intent.REGISTER";
     public static final String LAST_REGISTRATION_CHANGE = "last_registration_change";
     public static final String BACKOFF = "backoff";
-    public static final String GSF_PACKAGE = "com.google.android.gsf";
 
 
     // package
-    public static final String PREFERENCE = "com.google.android.c2dm";
+    static final String PREFERENCE = "com.google.android.c2dm";
     
     private static final long DEFAULT_BACKOFF = 30000;
 
@@ -48,9 +46,7 @@ public class C2DMessaging {
      */
     public static void register(Context context,
             String senderId) {
-    	Log.d("C2DM-MESSAGING", "registeren");
         Intent registrationIntent = new Intent(REQUEST_REGISTRATION_INTENT);
-        registrationIntent.setPackage(GSF_PACKAGE);
         registrationIntent.putExtra(EXTRA_APPLICATION_PENDING_INTENT,
                 PendingIntent.getBroadcast(context, 0, new Intent(), 0));
         registrationIntent.putExtra(EXTRA_SENDER, senderId);
@@ -63,7 +59,6 @@ public class C2DMessaging {
      */
     public static void unregister(Context context) {
         Intent regIntent = new Intent(REQUEST_UNREGISTRATION_INTENT);
-        regIntent.setPackage(GSF_PACKAGE);
         regIntent.putExtra(EXTRA_APPLICATION_PENDING_INTENT, PendingIntent.getBroadcast(context,
                 0, new Intent(), 0));
         context.startService(regIntent);
@@ -109,7 +104,7 @@ public class C2DMessaging {
     }
 
     // package
-   public static void clearRegistrationId(Context context) {
+    static void clearRegistrationId(Context context) {
         final SharedPreferences prefs = context.getSharedPreferences(
                 PREFERENCE,
                 Context.MODE_PRIVATE);
@@ -121,7 +116,7 @@ public class C2DMessaging {
     }
 
     // package
-	static void setRegistrationId(Context context, String registrationId) {
+    static void setRegistrationId(Context context, String registrationId) {
         final SharedPreferences prefs = context.getSharedPreferences(
                 PREFERENCE,
                 Context.MODE_PRIVATE);
@@ -129,27 +124,5 @@ public class C2DMessaging {
         editor.putString("dm_registration", registrationId);
         editor.commit();
 
-    }
-    
-   public static void setRegisterForPush(Context context,boolean flag) {
-        final SharedPreferences prefs = context.getSharedPreferences(
-                PREFERENCE,
-                Context.MODE_PRIVATE);
-        Editor editor = prefs.edit();
-        editor.putString("should_register", flag?"yes":"false");
-        editor.commit();
-
-    }
-    public static boolean shouldRegisterForPush(Context context) {
-        final SharedPreferences prefs = context.getSharedPreferences(
-                PREFERENCE,
-                Context.MODE_PRIVATE);
-        String value = null;
-        if(prefs.contains("should_register"))
-        	value= prefs.getString("should_register", "");
-        if((value!=null) && (value.compareTo("yes")==0)){
-        	return true;
-        }
-        return false;
     }
 }
