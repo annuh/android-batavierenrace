@@ -16,34 +16,7 @@
 	        android:layout_width="fill_parent"
 			android:background = "@drawable/onder" />
 		<TextView
-			android:text="Aan deze applicatie kunnen geen rechten worden ontleend. 
-			Gegevens (informatie, uitslagen, routes, etc.) die via andere wegen ter 
-			uiting worden gebracht door organen van de Batavierenrace zijn leidend 
-			boven de publicatie in deze applicatie. Verder is op deze applicatie ook 
-			het wedstrijd- en inschrijfregelement van toepassing. De volledige wedstrijd- 
-			en inschrijfregelementen zijn te vinden op http://www.batavierenrace.nl. 
-			Hieronder staan enkele belangrijke punten uit de regelementen herhaald:\n
-			
-			1) Iedere deelnemer neemt deel op eigen risico. De Stichting Batavierenrace 
-			kan niet aansprakelijk worden gesteld voor het zoek raken of de beschadiging 
-			van persoonlijke eigendommen, noch voor enig opgelopen persoonlijk letsel.\n
-			2)	Er bestaan voor de lopers en de volgauto's aparte routes. De routes beschreven 
-			in het deelnemersboekje zijn leidend [, ook boven de applicatie. Errata worden 
-			zoveel mogelijk meegenomen in de applicatie.] De borden langs de lopersroute dienen 
-			slechts ter ondersteuning. Indien van de in het boekje en de errata beschreven route 
-			moet worden afgeweken, zal iemand van de organisatie dit aangeven.\n
-			3)	De Wegenverkeerswet, het Reglement Verkeersregels en Verkeerstekens en de 
-			Straßenverkehrsordnung zijn tijdens de race onder alle omstandigheden van kracht. 
-			[Werkende fietsverlichting is bijvoorbeeld ook verplicht.]\n
-			4)	Het Wedstrijdsecretariaat draagt de verantwoordelijkheid voor de einduitslag. 
-			Het is bevoegd om bij constatering van een overtreding van het wedstrijdreglement 
-			straftijd toe te kennen. Het Wedstrijdsecretariaat is tevens verantwoordelijk voor 
-			de protestafhandeling.\n
-			5)	Protesten dienen zo snel mogelijk te worden ingediend bij het Wedstrijdsecretariaat. 
-			Dit kan tijdens de gehele race telefonisch en op gezette tijden in Enschede. De 
-			gepubliceerde uitslag tijdens en na de race is voorlopig[, ook publicatie in de 
-			applicatie]. Tot en met de eerstvolgende woensdag na de race is het mogelijk om via 
-			e-mail protesten in te dienen bij het Wedstrijdsecretariaat (protesten@batavierenrace.nl)."
+			android:text="@string/disclamer"
 			style="@style/container_block" />
 	</LinearLayout>
 </ScrollView>

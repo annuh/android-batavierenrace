@@ -5,8 +5,7 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
-
-	    <TextView
+		<TextView
 			android:text = "@string/team_informatie"
 			style="@style/h1" />
 	    <TextView
