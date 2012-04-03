@@ -26,9 +26,21 @@ public class InfoCalamiteitenFragment extends SherlockFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	View view = inflater.inflate(R.layout.info_contact_fragment, container, false);
+    	
+    	LinearLayout call_112 = (LinearLayout) view.findViewById(R.id.bel_112);
+    	call_112.setOnClickListener(
+    	            new View.OnClickListener() {    
+    	                @Override
+    	                public void onClick(View v) {
+    	                	Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: 112"));
+    	                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    	                    startActivity(intent);
+    	                }
+    	            }
+    	        );
         
-    	LinearLayout call = (LinearLayout) view.findViewById(R.id.bel_organisatie);
-    	call.setOnClickListener(
+    	LinearLayout call_org = (LinearLayout) view.findViewById(R.id.bel_organisatie);
+    	call_org.setOnClickListener(
     	            new View.OnClickListener() {    
     	                @Override
     	                public void onClick(View v) {
