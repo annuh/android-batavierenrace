@@ -62,6 +62,7 @@
         
         <activity
 			android:name=".activities.WeerActivity"
+			android:configChanges="orientation|screenSize"
 			android:theme="@style/StyledIndicators" />
         
         <activity

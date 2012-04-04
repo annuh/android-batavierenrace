@@ -107,7 +107,7 @@
 	<string name="temperatuur">Temp.</string>
 	<string name="weericoon">Weer</string>
 	<string name="advies">Advies</string>
-	<string name="verwachte_max_temp">Verwachte maximum temperatuur: </string>
+	<string name="verwachte_max_temp">Verwachte maximumtemperatuur: </string>
 	<string name="format_temp">%s°</string>
 	<string name="verwachtweer">Verwacht weer racedag</string>
 	<string name="algemeneverwachting">Algemene verwachting</string>
