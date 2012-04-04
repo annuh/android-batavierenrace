@@ -40,7 +40,7 @@ public abstract class Handler extends DefaultHandler {
 		boolean result = false;
 		try {
 			InputSource input = getInputSource(location);
-			if (!parsed || !(status == Response.OK_NO_UPDATE)) {
+			if (!parsed || !(status == Response.OK_NO_UPDATE || status == Response.NOK_NO_DATA)) {
 				SAXParserFactory spf = SAXParserFactory.newInstance();
 				SAXParser sp = spf.newSAXParser();
 				XMLReader xr = sp.getXMLReader();
@@ -48,8 +48,8 @@ public abstract class Handler extends DefaultHandler {
 				xr.setContentHandler(this);
 				xr.parse(input);
 				parsed = true;
+				result = true;
 			}
-			result = true;
 		} catch (SAXException e) {
 			Log.d("SimpleEtappe", "SAXEception: " + e.getMessage());
 		} catch (MalformedURLException e) {
@@ -104,7 +104,7 @@ public abstract class Handler extends DefaultHandler {
 					status = Response.OK_UPDATE;
 				} else {
 					status = Response.NOK_NO_DATA;
-					// Het is niet gelukt de file te downloaden, wat nu?
+					// Het is niet gelukt de file te downloaden, dus de server werkt niet, error versturen!!
 				}
 			}
 		}
@@ -114,12 +114,10 @@ public abstract class Handler extends DefaultHandler {
 
 	private File getFile(String path) {
 		File result = null;
-		if (Environment.MEDIA_MOUNTED.equals(Environment
-				.getExternalStorageState())) {
+		if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
 			// De locatie van de file is de root van de sdkaart+dexmlmap+het
 			// gegeven path.
-			File map = new File(Environment.getExternalStorageDirectory()
-					.getPath() + api.getSDmap());
+			File map = new File(Environment.getExternalStorageDirectory().getPath() + api.getSDmap());
 			// Maak directory aan als die nog niet bestaat
 			if (!map.exists()) {
 				Log.d("parser", "dts:xmlMap bestaat nog niet");
@@ -139,7 +137,7 @@ public abstract class Handler extends DefaultHandler {
 			// result = new
 			// File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
 		}
-		Log.d("parser", "test" + result.getPath());
+		Log.d("parser", "getfile" + result.getPath()+ " exists: "+  result.exists());
 		return result;
 	}
 
@@ -166,39 +164,46 @@ public abstract class Handler extends DefaultHandler {
 	private boolean downloadToSD(String path) {
 		boolean result = false;
 		try {
-			Log.d("parser", api.getURL() + path);
+			Log.d("parser", "downloadtosd: "+api.getURL() + path);
 			URL url = new URL(api.getURL() + path);// de file die gedownload
 													// moet worden
 			// nieuwe verbinding:
-			HttpURLConnection urlConnection = (HttpURLConnection) url
-					.openConnection();
+			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+			Log.d("parser", "downloadtosd: url.openconnection gelukt");
 			// setup connectie:
 			urlConnection.setRequestMethod("GET");
 			urlConnection.setDoOutput(true);
+			Log.d("parser", "downloadtosd: iets voor urlconnection.connect()");
 
 			// connect!
 			urlConnection.connect();
+			Log.d("parser", "downloadtosd: urlconnected");
 
 			File sdFile = getFile(path);
 			// sdFile is de file waar de nieuw file heengeschreven word.
+			Log.d("parser", "downloadtosd: got file");
 
 			FileOutputStream fileOutput = new FileOutputStream(sdFile);
 
 			// InputStream vanaf internet
 			InputStream inputStream = urlConnection.getInputStream();
+			Log.d("parser", "downloadtosd: got inputstream");
 
 			// aanmaken leesbuffer.
 			byte[] buffer = new byte[1024];
 			int bufferLength = 0; // tijdelijke lengte van de buffer
+			Log.d("parser", "downloadtosd: voor while");
 
 			// lees door de input buffer en schrijf naar de File.
 			while ((bufferLength = inputStream.read(buffer)) > 0) {
 				fileOutput.write(buffer, 0, bufferLength);
 			}
+			Log.d("parser", "downloadtosd: na while");
+
 			// Sluit de outputSream en httpconnection
 			fileOutput.close();
 			urlConnection.disconnect();
-
+			
 			result = true;
 		} catch (MalformedURLException mue) {
 			Log.d("parser", "malformedurl: " + mue.toString());
