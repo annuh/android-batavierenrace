@@ -24,4 +24,10 @@ public class WeerBuienradarFragment extends SherlockFragment {
 		String summary = "<iframe src=\"http://mijn.buienradar.nl/lokalebuienradar.aspx?voor=1&lat=52.1046995&x=1&y=1&lng=6.2937736&overname=2&zoom=8&naam=doetinchem&size=2&map=1\" scrolling=no width=256 height=256 frameborder=no></iframe>";
 		mWebView.loadData(summary, "text/html", null);
 	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		((WebView) getActivity().findViewById(R.id.webview)).onPause();
+	}
 }

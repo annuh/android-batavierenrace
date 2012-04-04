@@ -146,7 +146,7 @@ public class WeerActivity extends SherlockFragmentActivity {
     
     /* Klasse voor het binnenhalen van XML-documenten.
      */
-    private class RefreshWeerProvider extends AsyncTask<Object, Void, Object> {  
+    private class RefreshWeerProvider extends AsyncTask<Object, Void, WeerException> {  
 		private ProgressDialog mProgressDialog;
 		
 		protected void onPreExecute() {
@@ -156,34 +156,29 @@ public class WeerActivity extends SherlockFragmentActivity {
 		}
 				
 		@Override
-		protected Object doInBackground(Object... arg) {
-			Object result;
+		protected WeerException doInBackground(Object... arg) {
+			WeerException result = null;
 			try {
 				((WeerProvider) arg[0]).refresh((Date) arg[1]);
-				result = arg[0];
 			} catch (WeerException e) {
 				result = e;
-				cancel(false);
 			}
 			return result;
 		}
 		
 		@Override  
-		protected void onPostExecute(Object result) {
-			mWeerAdviesFragment.updateView();
-			mWeerVerwachtingFragment.updateView();
+		protected void onPostExecute(WeerException result) {
+			if (result == null) {
+				mWeerAdviesFragment.updateView();
+				mWeerVerwachtingFragment.updateView();
+			}
 			mRefreshOngoing = false;
 			mProgressDialog.dismiss();
-		}
-		
-		@Override
-		protected void onCancelled(Object result) {
-			WeerException e = (WeerException) result;
-			mProgressDialog.dismiss();
-			mRefreshOngoing = false;
-			Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-			setResult(RESULT_CANCELED);
-			finish();
+			if (result != null) {
+				Toast.makeText(getApplicationContext(), result.getMessage(), Toast.LENGTH_LONG).show();
+				setResult(RESULT_CANCELED);
+				finish();
+			}
 		}
 	}
 }
