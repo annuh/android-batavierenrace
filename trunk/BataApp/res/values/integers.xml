@@ -3,4 +3,5 @@
     <integer name="boundary1">15</integer>
     <integer name="boundary2">20</integer>
     <integer name="boundary3">25</integer>
+    <integer name="spinner_quality_default">1</integer>
 </resources>
