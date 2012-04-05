@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    style="@style/scroller" >
+    
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/layout_klassementen"
+    	android:orientation="vertical" >
+    	
+    	<include layout="@layout/border_top" />
+    	<LinearLayout 
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="horizontal"
+    	android:gravity="center" >
+    		<LinearLayout 
+	    	android:layout_width="300px"
+	    	android:layout_height="wrap_content"
+	    	android:orientation="vertical" >
+	    	<ImageView 
+				android:src="@drawable/sponsor_susa"
+				android:layout_marginTop="5dp"
+				android:layout_width="match_parent"			
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:contentDescription="Sponsor Susa" />
+	    	<TextView
+	    	    android:layout_marginTop="5dp"
+	    	     android:layout_marginBottom="10dp"
+	    	    android:text="Studenten uitzendbureau SUSA heeft volop bijbanen, studentenwerk en vakantiewerk. Schrijf je nu in voor een bijbaan die past bij jou!"
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	    	    />
+	    	<LinearLayout 
+	    	    android:layout_height="5dp"
+	    	    android:layout_width="match_parent"
+	    	    android:background="@drawable/border_blauw" />
+	    	<ImageView 
+				android:src="@drawable/sponsor_mindef"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"			
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:contentDescription="Sponsor MinDef" />
+			<TextView
+			    android:layout_marginTop="5dp"
+			    android:layout_marginBottom="10dp"
+	    	    android:text="Organisatie, nieuws, banen en overzichten van taken, lopende operaties en krijgsmachtonderdelen."
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	    	    />
+			<LinearLayout 
+	    	    android:layout_height="5dp"
+	    	    android:layout_width="match_parent"
+	    	    android:background="@drawable/border_blauw" />
+			<ImageView 
+				android:src="@drawable/sponsor_autodrop"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"			
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:contentDescription="Sponsor Autodrop" />
+			<TextView
+			    android:layout_marginTop="5dp"
+	    	    android:text="Nieuw van Autodrop: centre filled! Vloeibare drop en snoep in verschillende smaken… Heb je ze al geproefd? Absurd lekker!"
+	    	    android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	    	    />
+	    	</LinearLayout>
+    	</LinearLayout>		
+	</LinearLayout>
+</ScrollView>
