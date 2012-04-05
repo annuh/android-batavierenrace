@@ -112,4 +112,17 @@
 	<string name="verwachtweer">Verwacht weer racedag</string>
 	<string name="algemeneverwachting">Algemene verwachting</string>
 	<string name="buienverwachting">Buien komende 2 uur</string>
+	<string name="bataradio">BataRadio</string>
+	<string name="bataradio_algemeen_header">Algemene informatie</string>
+	<string name="bataradio_algemeen">
+	    BataRadio brengt een mix van muziek, actuele informatie over de race, live verslaggeving en reportages.\n\n
+		Zo hoor je om het half uur een update met al het actuele nieuws omtrent de Batavierenrace. Uiteraard zijn er verslaggevers van BataRadio aanwezig bij de start in Nijmegen en de finish in Enschede en op de verschillende wisselpunten en herstarts.\n\n
+		Daarnaast volgt BataRadio een aantal teams die geregeld zullen worden gebeld in de uitzending. Ook komen er gasten langs in de studio in het sportcentrum in Enschede en zijn er achtergrondreportages te horen.\n\n
+		In Enschede is BataRadio te ontvangen op 105.1 FM en in Nijmegen op 107.8 FM.</string>
+	<string name="bataradio_live_header">Livestream</string>
+    <string-array name="bataradio_kwaliteit_array">
+        <item>Hoge kwaliteit</item>
+        <item>Normale kwaliteit</item>
+        <item>Lage kwaliteit</item>
+    </string-array>
 </resources>

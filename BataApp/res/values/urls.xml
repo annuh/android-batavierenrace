@@ -7,4 +7,9 @@
         <item>http://www.google.com/ig/api?weather=Enschede</item>
     </string-array>
     <string name="url_google_icon_prefix">http://www.google.com</string>
+    <string-array name="url_livestream">
+        <item>http://mp3.streampower.be/stubru-high.mp3</item>
+        <item>http://mp3.streampower.be/stubru-mid.mp3</item>
+        <item>http://mp3.streampower.be/stubru-low.mp3</item>
+    </string-array>
 </resources>

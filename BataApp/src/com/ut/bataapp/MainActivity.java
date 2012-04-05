@@ -93,6 +93,15 @@ public class MainActivity extends SherlockFragmentActivity {
            }
        });
 	   
+	   Button btn_bataradio = (Button) findViewById(R.id.dashboard_bataradio);
+	   btn_bataradio.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent i = new Intent(getApplicationContext(), BataRadioActivity.class);
+               startActivity(i);
+           }
+       });
+	   
 	   // Aantal dagen
 	   Calendar nu = Calendar.getInstance();
 	   Calendar batadag = Calendar.getInstance();
