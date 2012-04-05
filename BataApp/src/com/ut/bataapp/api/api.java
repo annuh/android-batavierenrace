@@ -101,8 +101,8 @@ public class api {
 		uitslagen.put(1, new Team(1, 1, "Inter-Actief"));
 		uitslagen.put(2, new Team(5, 1, "Team 5"));
 		uitslagen.put(3, new Team(11, 1, "Team 11"));
-		Klassement klassement = new Klassement("Algemeen Klassement", uitslagen);
-		return klassement;
+		//Klassement klassement = new Klassement("Algemeen Klassement", uitslagen);
+		return null;
 	}
 	
 	
