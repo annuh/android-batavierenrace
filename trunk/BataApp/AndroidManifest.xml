@@ -34,7 +34,9 @@
         </activity>
         
         <activity android:name=".activities.FavoTeamsActivity" />
-        <activity android:name=".activities.BataRadioActivity" />
+        <activity 
+            android:name=".activities.BataRadioActivity" 
+        	android:launchMode="singleTop"/>
         
         <activity 
             android:name=".activities.EtappesActivity"
