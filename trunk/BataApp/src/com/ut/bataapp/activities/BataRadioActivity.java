@@ -39,9 +39,9 @@ public class BataRadioActivity extends SherlockActivity {
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        getSupportActionBar().setTitle(R.string.dashboard_bataradio);
+		super.onCreate(savedInstanceState);
+		
+    	getSupportActionBar().setTitle(R.string.dashboard_bataradio);
         setContentView(R.layout.bataradio);
         mSpinner = (Spinner) findViewById(R.id.spinner_quality);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.bataradio_kwaliteit_array, android.R.layout.simple_spinner_item);
