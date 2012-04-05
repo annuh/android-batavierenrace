@@ -12,6 +12,8 @@ package com.ut.bataapp.api;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.util.Log;
+
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
@@ -81,7 +83,7 @@ public class api {
 	public static Team getTeamByID(int id) {
 		ArrayList<Looptijd> uitslagen = (ArrayList<Looptijd>) getUitslagByTeam(id).getResponse();
 		Team team = new Team(uitslagen.get(0).getTeamStartnummer(),uitslagen.get(0).getTeamStartgroep(),uitslagen.get(0).getTeamNaam());
-		for(int i=0;i<uitslagen.size()-1;i++){
+		for(int i=0;i<uitslagen.size();i++){
 			team.addLooptijd(uitslagen.get(i));
 		}
 		return team;
