@@ -15,32 +15,39 @@ import java.util.Map;
 public class Klassement {
 	
 	String naam;
-	HashMap<Integer, Team> uitslag;
+	HashMap<Integer, KlassementInfo> uitslag;
 	
 	/**
 	 * @param naam - Naam dit klassement
 	 * @param uitslag - Uitslag van dit klassement
 	 */
-	public Klassement(String naam, HashMap<Integer, Team> uitslag) {
+	public Klassement(String naam, HashMap<Integer, KlassementInfo> uitslag) {
 		this.naam = naam;
 		this.uitslag = uitslag;
 	}
 	
+	//LEGE CONSTRUCTOR!
+	public Klassement(){}
+		
 	/*Setters*/
 	public void setNaam(String naam){this.naam = naam;}
 	
 	/*Getters*/
 	public String getNaam() {return naam;}
-	public HashMap<Integer, Team> getUitslag(){return uitslag;}
-	public Iterable<Team> getTeams() {return uitslag.values();}
-	public int getUitslagFromTeam(Team team) {
-		for (Map.Entry<Integer, Team> entry : uitslag.entrySet()) {
+	public HashMap<Integer, KlassementInfo> getUitslag(){return uitslag;}
+	public Iterable<KlassementInfo> getKlassementInfo() {return uitslag.values();}
+	public int getUitslagFromTeam(KlassementInfo info) {
+		for (Map.Entry<Integer, KlassementInfo> entry : uitslag.entrySet()) {
 		    int key = entry.getKey();
-		    Team value = entry.getValue();
-		    if(value == team)
+		    KlassementInfo value = entry.getValue();
+		    if(value == info)
 		    	return key;
 		}
 		return -1;
+	}
+	
+	public String toString(){
+		return "klassement: "+getNaam();
 	}
 	
 	/**
@@ -49,11 +56,24 @@ public class Klassement {
 	 * @param team
 	 * @param plaats
 	 */
-	public void addTeam(Team team, int plaats){
+	public void addTeam(KlassementInfo team, int plaats){
 		uitslag.put(plaats, team);
 	}
 	
-
-	
-	
+	public class KlassementInfo{
+		
+		String teamNaam;
+		String tijd;
+		int teamStartNummer;
+		
+		public void setTeamNaam(String teamNaam){ this.teamNaam = teamNaam;}
+		public void setTijd(String tijd){ this.tijd = tijd;}
+		public void setTeamStartNummer(int teamStartNummer){ this.teamStartNummer = teamStartNummer;}
+		public String getTeamNaam(){ return teamNaam;}
+		public String getTijd(){ return tijd;}
+		public int getTeamStartNummer(){ return teamStartNummer;}
+		public String toString(){
+			return "KlassementInfo: "+getTeamNaam()+", "+getTeamStartNummer()+", "+getTijd();
+		}
+	}
 }
