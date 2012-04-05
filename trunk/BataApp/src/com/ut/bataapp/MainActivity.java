@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.ut.bataapp.activities.*;
 
-
 public class MainActivity extends SherlockFragmentActivity {	
 	
 	private final int MENU_SETTINGS = Menu.FIRST;
@@ -81,6 +80,15 @@ public class MainActivity extends SherlockFragmentActivity {
            @Override
            public void onClick(View view) {
                Intent i = new Intent(getApplicationContext(), InformatieActivity.class);
+               startActivity(i);
+           }
+       });
+	   
+	   Button btn_sponsor = (Button) findViewById(R.id.dashboard_sponsor);
+	   btn_sponsor.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent i = new Intent(getApplicationContext(), SponsorActivity.class);
                startActivity(i);
            }
        });

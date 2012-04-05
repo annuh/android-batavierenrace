@@ -60,6 +60,8 @@
         
         <activity android:name=".activities.KlassementenActivity" />
         
+        <activity android:name=".activities.SponsorActivity" />
+        
         <activity
 			android:name=".activities.WeerActivity"
 			android:configChanges="orientation|screenSize"
