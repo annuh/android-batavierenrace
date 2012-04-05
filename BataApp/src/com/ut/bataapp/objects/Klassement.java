@@ -27,7 +27,9 @@ public class Klassement {
 	}
 	
 	//LEGE CONSTRUCTOR!
-	public Klassement(){}
+	public Klassement(){
+		this.uitslag = new HashMap<Integer,KlassementInfo>();
+	}
 		
 	/*Setters*/
 	public void setNaam(String naam){this.naam = naam;}
@@ -56,8 +58,8 @@ public class Klassement {
 	 * @param team
 	 * @param plaats
 	 */
-	public void addTeam(KlassementInfo team, int plaats){
-		uitslag.put(plaats, team);
+	public void addKlassementInfo(KlassementInfo info, int plaats){
+		uitslag.put(plaats, info);
 	}
 	
 	public class KlassementInfo{
@@ -65,6 +67,8 @@ public class Klassement {
 		String teamNaam;
 		String tijd;
 		int teamStartNummer;
+		
+		public KlassementInfo(){}
 		
 		public void setTeamNaam(String teamNaam){ this.teamNaam = teamNaam;}
 		public void setTijd(String tijd){ this.tijd = tijd;}

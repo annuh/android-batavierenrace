@@ -1,7 +1,6 @@
 package com.ut.bataapp.parser;
 
 import java.util.ArrayList;
-import java.util.TreeSet;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
@@ -44,19 +43,13 @@ public class KlassementHandler extends Handler{
 	public void endElement(String nameSpaceURI, String localName, String qName) throws SAXException{
 		if(localName.equals("klassement")){
 			klassementen.add(klassement);
-			Log.d("Klassement","new klassement aan klassementen toegevoegd: "+klassement.toString());
+			Log.d("klassement","new klassement aan klassementen toegevoegd: "+klassement.toString());
 		}
 		else if(localName.equals("klassementnaam")) klassnaam = false;
 		else if(localName.equals("plaats")){
-			if(info==null){
-				Log.d("klassement","er wordt niks in info geschreven");
-			}else if(currentPos<0){
-				Log.d("klassement","er is geen geldige positie");
-			}else{
-				klassement.addTeam(info, currentPos);
-				Log.d("Klassement","new info aan klassement toegevoegd: "+info.toString()+" met positie: "+currentPos);
-				currentPos = -1;
-			}
+			klassement.addKlassementInfo(info, currentPos);
+			Log.d("klassement","new info aan klassement toegevoegd: "+info.toString()+" met positie: "+currentPos);
+			currentPos = -1;
 		}
 		else if(localName.equals("positie")) positie = false;
 		else if(localName.equals("teamnr")) teamnr = false;
