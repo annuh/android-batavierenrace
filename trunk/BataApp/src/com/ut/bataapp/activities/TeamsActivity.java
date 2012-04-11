@@ -3,7 +3,10 @@ package com.ut.bataapp.activities;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -20,6 +23,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -27,8 +32,10 @@ import com.actionbarsherlock.view.SubMenu;
 import com.actionbarsherlock.R;
 import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
+import com.ut.bataapp.Utils;
 import com.ut.bataapp.adapters.TeamAdapter;
 import com.ut.bataapp.api.api;
+import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 
 public class TeamsActivity extends SherlockListActivity  {
@@ -36,9 +43,10 @@ public class TeamsActivity extends SherlockListActivity  {
 	 private final int MENU_SEARCH = Menu.FIRST;
 	 private final int MENU_SORT_NAAM = Menu.FIRST + 1;
 	 private final int MENU_SORT_START = Menu.FIRST + 2;
-	 private ArrayList<Team> teams = null;
+	 private Response teams = null;
 	 private EditText filterText = null;
 	 private TeamAdapter adapter = null;
+	 
 	 
 	 
 	 
@@ -49,7 +57,7 @@ public class TeamsActivity extends SherlockListActivity  {
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   this.getListView().setFastScrollEnabled(true);
 	   this.setContentView(R.layout.listview_team);
-	   new getTeams().execute();  
+	   new getTeams().execute();  	   
    }
    
    @Override
@@ -75,19 +83,13 @@ public class TeamsActivity extends SherlockListActivity  {
  	   return true;
     }
    
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Log.d("Keyboard", String.valueOf(item.getItemId()));
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Intent intent = new Intent(this, MainActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-				
-				//Get rid of the slide-in animation, if possible
-	            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
-	                OverridePendingTransition.invoke(this);
-	            }
+				Utils.goHome(getApplicationContext());
 	            break;
 			case MENU_SEARCH:
 				item.setActionView(R.layout.search_box);
@@ -96,22 +98,22 @@ public class TeamsActivity extends SherlockListActivity  {
 				setKeyboardFocus(filterText);
 				break;
 			case MENU_SORT_NAAM:
-				Collections.sort(teams,new Comparator<Team>() {
+				Collections.sort( (ArrayList<Team>) teams.getResponse(),new Comparator<Team>() {
 				    public int compare(Team arg0, Team arg1) {
 				    	return arg0.getNaam().compareTo(arg1.getNaam());
 				    }
 				});
-				adapter = new TeamAdapter(TeamsActivity.this, teams);
+				adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams.getResponse());
 			    setListAdapter(adapter);
 			    adapter.notifyDataSetChanged();
 				break;
 			case MENU_SORT_START:
-				Collections.sort(teams,new Comparator<Team>() {
+				Collections.sort((ArrayList<Team>) teams.getResponse(),new Comparator<Team>() {
 				    public int compare(Team arg0, Team arg1) {
 				    	return (arg0.getStartnummer()<arg1.getStartnummer() ? -1 : (arg0.getStartnummer()==arg1.getStartnummer() ? 0 : 1));
 				    }
 				});
-				adapter = new TeamAdapter(TeamsActivity.this, teams);
+				adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams.getResponse());
 			    setListAdapter(adapter);
 			    adapter.notifyDataSetChanged();
 			    
@@ -138,21 +140,23 @@ public class TeamsActivity extends SherlockListActivity  {
 		@SuppressWarnings("unchecked")
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			//Looper.prepare();
-			teams = (ArrayList<Team>) api.getTeams().getResponse();
+			teams = (Response) api.getTeams();
 			return null;       
 		}
 		
+		@SuppressWarnings("unchecked")
 		@Override  
 		protected void onPostExecute(Void result) {
-			try {
-				adapter = new TeamAdapter(TeamsActivity.this, teams);
-				setListAdapter(adapter);
-			
-				progressDialog.dismiss();
-			} catch (Exception e){
-				e.printStackTrace();
+			if(teams.getStatus() == Response.NOK_NO_DATA) {
+				Utils.noData(getApplicationContext());
+			} else if(teams.getStatus() == Response.NOK_OLD_DATA) {
+				Utils.old_data(getApplicationContext());
 			}
+			adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams.getResponse());
+			
+			setListAdapter(adapter);
+			progressDialog.dismiss();
+		
 		}
 	}
 	

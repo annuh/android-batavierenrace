@@ -90,6 +90,14 @@ public class api {
 	}
 	
 	
+	public static Response getKlassementen(){
+		String kl1 = "Algemeen Klassement";
+		String kl2 = "Universiteits klassement";
+		ArrayList<String> klassementen = new ArrayList<String>();
+		klassementen.add(kl1); klassementen.add(kl2);
+		return new Response(klassementen, Response.OK_UPDATE);	
+	}
+	
 	public static Response getKlassement(){
 		KlassementHandler kh = new KlassementHandler("ask.xml");
 		kh.parse();
