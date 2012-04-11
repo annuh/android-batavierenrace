@@ -23,7 +23,12 @@ public class MainActivity extends SherlockFragmentActivity {
    /** Called when the activity is first created. */
    @Override
    public void onCreate(Bundle savedInstanceState) {
-	   
+	   try {
+			Class.forName("android.os.AsyncTask");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	   this.getSupportActionBar().setTitle("Batavierenrace");
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.actionbar_styles);

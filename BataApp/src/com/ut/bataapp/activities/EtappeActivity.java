@@ -101,8 +101,8 @@ public class EtappeActivity extends SherlockFragmentActivity {
     private class getEtappe extends AsyncTask<Void, Void, Void> {  
 		private ProgressDialog progressDialog;  
 		protected void onPreExecute() {  
-			progressDialog = ProgressDialog.show(EtappeActivity.this,  
-			  "Bezig met laden", "Etappe wordt opgehaald...", true);  
+			//progressDialog = ProgressDialog.show(EtappeActivity.this,  
+			 // "Bezig met laden", "Etappe wordt opgehaald...", true);  
 		}
 		
 		@Override
@@ -113,7 +113,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 		
 		@Override  
 		protected void onPostExecute(Void result) {
-			setContentView(R.layout.simple_tabs);
+			/*setContentView(R.layout.simple_tabs);
 			
 	        mAdapter = new EtappeFragmentAdapter(getSupportFragmentManager());
 			
@@ -123,7 +123,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 			mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 			mIndicator.setViewPager(mPager);
 			
-			progressDialog.dismiss();
+			progressDialog.dismiss();*/
 		}
 	}
 }

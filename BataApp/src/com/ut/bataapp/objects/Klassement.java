@@ -9,6 +9,7 @@
 
 package com.ut.bataapp.objects;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,12 +19,29 @@ public class Klassement {
 	HashMap<Integer, KlassementInfo> uitslag;
 	
 	/**
+	 * Lijst met alle teamnamen, gesorteerd op positie in klassement.
+	 */
+	private ArrayList<String> teamnaam = new ArrayList<String>();
+	private ArrayList<String> teamuitslag = new ArrayList<String>();
+	private ArrayList<Integer> teamid = new ArrayList<Integer>();
+	private ArrayList<String> teamtijd = new ArrayList<String>();
+	
+	/**
 	 * @param naam - Naam dit klassement
 	 * @param uitslag - Uitslag van dit klassement
 	 */
 	public Klassement(String naam, HashMap<Integer, KlassementInfo> uitslag) {
 		this.naam = naam;
 		this.uitslag = uitslag;
+	}
+	
+	// NIEUWE METHODE (?)
+	public void addUitslag(String naam, String uitslag, int id, String tijd) {
+		teamnaam.add(naam);
+		teamuitslag.add(uitslag);
+		teamid.add(id);
+		teamtijd.add(tijd);
+		
 	}
 	
 	//LEGE CONSTRUCTOR!
