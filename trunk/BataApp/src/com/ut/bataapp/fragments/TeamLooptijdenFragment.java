@@ -41,7 +41,7 @@ public class TeamLooptijdenFragment extends SherlockListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Intent intent = new Intent(getActivity().getApplicationContext(), EtappeActivity.class);
+		Intent intent = new Intent(getActivity().getApplicationContext(), TeamActivity.class);
 		intent.putExtra("index", v.getId());
 		startActivity(intent);
 	}
