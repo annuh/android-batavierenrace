@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" >
+
+        <TextView
+            android:id="@+id/klassement_header_plaats"
+            android:text="#"
+            style="@style/listview_text"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:width="35dp" />
+
+        <TextView
+            android:id="@+id/klassement_header_team"
+            android:text="Team"
+            style="@style/listview_text"
+            android:layout_toRightOf="@id/klassement_header_plaats" />
+
+        <TextView
+            android:id="@+id/klassement_header_tijd"
+            android:text="Plaats"
+            style="@style/listview_text"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/klassement_header_team" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leeg" />
+
+</LinearLayout>

@@ -5,6 +5,7 @@ import com.ut.bataapp.R;
 import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.objects.Team;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class TeamInformatieFragment extends SherlockFragment {
 		team = ((TeamActivity)this.getActivity()).getTeam();
 		getSherlockActivity().getSupportActionBar().setTitle(team.getNaam());     
     	setHasOptionsMenu(true);
-    	
+    	Log.d("FragmentView","Hello1");
     	View view = inflater.inflate(R.layout.team_informatie, container, false);
     	
     	TextView team_naam = (TextView)  view.findViewById(R.id.team_naam);

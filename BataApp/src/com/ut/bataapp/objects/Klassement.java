@@ -16,7 +16,7 @@ import java.util.Map;
 public class Klassement {
 	
 	String naam;
-	HashMap<Integer, KlassementInfo> uitslag;
+	ArrayList<KlassementInfo> uitslag;
 	
 	/**
 	 * Lijst met alle teamnamen, gesorteerd op positie in klassement.
@@ -30,7 +30,7 @@ public class Klassement {
 	 * @param naam - Naam dit klassement
 	 * @param uitslag - Uitslag van dit klassement
 	 */
-	public Klassement(String naam, HashMap<Integer, KlassementInfo> uitslag) {
+	public Klassement(String naam, ArrayList<KlassementInfo> uitslag) {
 		this.naam = naam;
 		this.uitslag = uitslag;
 	}
@@ -46,7 +46,7 @@ public class Klassement {
 	
 	//LEGE CONSTRUCTOR!
 	public Klassement(){
-		this.uitslag = new HashMap<Integer,KlassementInfo>();
+		this.uitslag = new ArrayList<KlassementInfo>();
 	}
 		
 	/*Setters*/
@@ -54,8 +54,9 @@ public class Klassement {
 	
 	/*Getters*/
 	public String getNaam() {return naam;}
-	public HashMap<Integer, KlassementInfo> getUitslag(){return uitslag;}
-	public Iterable<KlassementInfo> getKlassementInfo() {return uitslag.values();}
+	public ArrayList<KlassementInfo> getUitslag(){return uitslag;}
+	
+	/*public Iterable<KlassementInfo> getKlassementInfo() {return uitslag.values();}
 	public int getUitslagFromTeam(KlassementInfo info) {
 		for (Map.Entry<Integer, KlassementInfo> entry : uitslag.entrySet()) {
 		    int key = entry.getKey();
@@ -64,7 +65,7 @@ public class Klassement {
 		    	return key;
 		}
 		return -1;
-	}
+	}*/
 	
 	public String toString(){
 		return "klassement: "+getNaam();
@@ -76,21 +77,25 @@ public class Klassement {
 	 * @param team
 	 * @param plaats
 	 */
-	public void addKlassementInfo(KlassementInfo info, int plaats){
-		uitslag.put(plaats, info);
+	public void addKlassementInfo(KlassementInfo info){
+		uitslag.add(info);
 	}
 	
 	public class KlassementInfo{
 		
+		int plaats;
 		String teamNaam;
 		String tijd;
 		int teamStartNummer;
 		
 		public KlassementInfo(){}
 		
+		public void setPlaats(int plaats) {this.plaats = plaats;}
 		public void setTeamNaam(String teamNaam){ this.teamNaam = teamNaam;}
 		public void setTijd(String tijd){ this.tijd = tijd;}
 		public void setTeamStartNummer(int teamStartNummer){ this.teamStartNummer = teamStartNummer;}
+		
+		public int getPlaats() { return plaats; }
 		public String getTeamNaam(){ return teamNaam;}
 		public String getTijd(){ return tijd;}
 		public int getTeamStartNummer(){ return teamStartNummer;}
