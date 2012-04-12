@@ -104,7 +104,7 @@ public class api {
 		return kh.getParsedData();
 	}
 		
-	public static Klassement getKlassementByNaam(String naam) {
+	public static Response getKlassementByNaam(String naam) {
 		HashMap<Integer, Team> uitslagen = new HashMap<Integer, Team>();
 		uitslagen.put(1, new Team(1, 1, "Inter-Actief"));
 		uitslagen.put(2, new Team(5, 1, "Team 5"));

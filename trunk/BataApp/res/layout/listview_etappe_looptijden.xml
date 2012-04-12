@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical" >
+	
+	<LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="40dp"
+		    android:orientation="horizontal"
+		    android:background="@color/jaarkleur">
+	    
+	    <TextView
+	        android:layout_width="50dp"
+	        style="@style/listview_text"
+	        android:text="#"
+	        android:gravity="center_vertical" >
+	    </TextView>
+	    <TextView
+	        android:text="Team"
+	        style="@style/listview_text"
+	        android:gravity="center_vertical" >
+	    </TextView>
+	    <TextView
+	        android:text="Tijd"
+	        style="@style/listview_text"
+	        android:gravity="center_vertical" >
+	    </TextView>
+	    
+	    <TextView
+	        android:text="Code"
+	        style="@style/listview_text"
+	        android:gravity="center_vertical" >
+	    </TextView>
+	</LinearLayout>
+	
+	<ListView
+	    android:id="@android:id/list"
+	    android:layout_width="fill_parent"
+		android:layout_height="fill_parent" />
+	
+	<TextView
+	    android:id="@android:id/empty"
+	    android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Leeg" />
+</LinearLayout>

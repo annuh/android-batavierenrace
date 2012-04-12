@@ -15,7 +15,6 @@ public class KlassementHandler extends Handler{
 	private ArrayList<Klassement> klassementen;
 	private Klassement klassement;
 	private KlassementInfo info;
-	private int currentPos = -1;
 	
 	private boolean klass;
 	private boolean klassnaam;
@@ -47,9 +46,8 @@ public class KlassementHandler extends Handler{
 		}
 		else if(localName.equals("klassementnaam")) klassnaam = false;
 		else if(localName.equals("plaats")){
-			klassement.addKlassementInfo(info, currentPos);
-			Log.d("klassement","new info aan klassement toegevoegd: "+info.toString()+" met positie: "+currentPos);
-			currentPos = -1;
+			klassement.addKlassementInfo(info);
+			Log.d("klassement","new info aan klassement toegevoegd: "+info.toString()+" met positie: "+info.getPlaats());
 		}
 		else if(localName.equals("positie")) positie = false;
 		else if(localName.equals("teamnr")) teamnr = false;
@@ -68,7 +66,7 @@ public class KlassementHandler extends Handler{
 			info =  klassement.new KlassementInfo();
 			plaats = false;
 		}
-		else if(positie) currentPos = Integer.parseInt(new String(ch,start,length));
+		else if(positie) info.setPlaats(Integer.parseInt(new String(ch,start,length)));
 		else if(teamnr) info.setTeamStartNummer(Integer.parseInt(new String(ch,start,length)));
 		else if(teamnaam) info.setTeamNaam(new String(ch,start,length));
 		else if(tijd) info.setTijd(new String(ch,start,length));

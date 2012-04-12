@@ -15,6 +15,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.R;
 import com.ut.bataapp.api.api;
+import com.ut.bataapp.fragments.EtappeLooptijdenFragment;
 import com.ut.bataapp.fragments.LayoutFragment;
 import com.ut.bataapp.fragments.EtappeInformatie;
 import com.ut.bataapp.fragments.EtappeRoutes;
@@ -78,7 +79,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 			titels.add("Informatie");
 			fragments.add(new EtappeRoutes());
 			titels.add("Routes");
-			fragments.add(new LayoutFragment(R.layout.info_algemeen_busenstarttijden));
+			fragments.add(new EtappeLooptijdenFragment());
 			titels.add("Looptijden");
 		}
 
@@ -101,8 +102,8 @@ public class EtappeActivity extends SherlockFragmentActivity {
     private class getEtappe extends AsyncTask<Void, Void, Void> {  
 		private ProgressDialog progressDialog;  
 		protected void onPreExecute() {  
-			//progressDialog = ProgressDialog.show(EtappeActivity.this,  
-			 // "Bezig met laden", "Etappe wordt opgehaald...", true);  
+			progressDialog = ProgressDialog.show(EtappeActivity.this,  
+			  "Bezig met laden", "Etappe wordt opgehaald...", true);  
 		}
 		
 		@Override
@@ -113,7 +114,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 		
 		@Override  
 		protected void onPostExecute(Void result) {
-			/*setContentView(R.layout.simple_tabs);
+			setContentView(R.layout.simple_tabs);
 			
 	        mAdapter = new EtappeFragmentAdapter(getSupportFragmentManager());
 			
@@ -123,7 +124,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 			mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 			mIndicator.setViewPager(mPager);
 			
-			progressDialog.dismiss();*/
+			progressDialog.dismiss();
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package com.ut.bataapp.adapters;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import com.ut.bataapp.R;
@@ -35,6 +36,11 @@ public class EtappeAdapter extends ArrayAdapter<Etappe> {
 		
 		TextView naam = (TextView) rowView.findViewById(R.id.naam);
 		naam.setText(values.get(position).getVan());
+		
+		TextView afstand = (TextView) rowView.findViewById(R.id.afstand);
+		BigDecimal afst = new BigDecimal((values.get(position).getAfstand()));
+		afst = afst.divide(new BigDecimal(1000), 1, BigDecimal.ROUND_FLOOR);
+		afstand.setText(afst.toString() + " km");
 		
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.geslacht);		
 		if(values.get(position).getGeslacht() == 'H') {
