@@ -74,7 +74,7 @@ public class TeamAdapter extends ArrayAdapter<Team> {
                 for(int i = 0, l = values.size(); i < l; i++)
                 {
                     Team m = values.get(i);
-                    if(m.getNaam().toLowerCase().contains(constraint))
+                    if(m.getNaam().toLowerCase().contains(constraint) || String.valueOf(m.getStartnummer()).contains(constraint))
                         filteredItems.add(m);
                 }
                 result.count = filteredItems.size();

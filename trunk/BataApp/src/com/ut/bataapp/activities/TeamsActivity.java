@@ -3,35 +3,24 @@ package com.ut.bataapp.activities;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 import com.actionbarsherlock.R;
-import com.ut.bataapp.MainActivity;
-import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.Utils;
 import com.ut.bataapp.adapters.TeamAdapter;
 import com.ut.bataapp.api.api;
@@ -43,12 +32,9 @@ public class TeamsActivity extends SherlockListActivity  {
 	private final int MENU_SEARCH = Menu.FIRST;
 	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
 	private final int MENU_SORT_START = Menu.FIRST + 2;
-	private Response teams = null;
+	private ArrayList<Team> teams = null;
 	private EditText filterText = null;
 	private TeamAdapter adapter = null;
-
-
-
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -83,10 +69,8 @@ public class TeamsActivity extends SherlockListActivity  {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.d("Keyboard", String.valueOf(item.getItemId()));
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			Utils.goHome(getApplicationContext());
@@ -98,22 +82,22 @@ public class TeamsActivity extends SherlockListActivity  {
 			setKeyboardFocus(filterText);
 			break;
 		case MENU_SORT_NAAM:
-			Collections.sort( (ArrayList<Team>) teams.getResponse(),new Comparator<Team>() {
+			Collections.sort( (ArrayList<Team>) teams,new Comparator<Team>() {
 				public int compare(Team arg0, Team arg1) {
 					return arg0.getNaam().compareTo(arg1.getNaam());
 				}
 			});
-			adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams.getResponse());
+			adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams);
 			setListAdapter(adapter);
 			adapter.notifyDataSetChanged();
 			break;
 		case MENU_SORT_START:
-			Collections.sort((ArrayList<Team>) teams.getResponse(),new Comparator<Team>() {
+			Collections.sort((ArrayList<Team>) teams,new Comparator<Team>() {
 				public int compare(Team arg0, Team arg1) {
 					return (arg0.getStartnummer()<arg1.getStartnummer() ? -1 : (arg0.getStartnummer()==arg1.getStartnummer() ? 0 : 1));
 				}
 			});
-			adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams.getResponse());
+			adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams);
 			setListAdapter(adapter);
 			adapter.notifyDataSetChanged();
 
@@ -131,32 +115,30 @@ public class TeamsActivity extends SherlockListActivity  {
 	}
 
 	private class getTeams extends AsyncTask<Void, Void, Void> {  
-		private ProgressDialog progressDialog;  
+
+		private ProgressDialog progressDialog;
+		private Response response;
+
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamsActivity.this,  
 					"Bezig met laden", "Teams worden opgehaald...", true);  
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			teams = (Response) api.getTeams();
+			response = (Response) api.getTeams();
 			return null;       
 		}
 
 		@SuppressWarnings("unchecked")
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(teams.getStatus() == Response.NOK_NO_DATA) {
-				Utils.noData(getApplicationContext());
-			} else if(teams.getStatus() == Response.NOK_OLD_DATA) {
-				Utils.old_data(getApplicationContext());
+			if(Utils.checkResponse(getApplicationContext(), response)) {
+				teams = (ArrayList<Team>) response.getResponse();
+				adapter = new TeamAdapter(TeamsActivity.this, teams);
+				setListAdapter(adapter);
+				progressDialog.dismiss();
 			}
-			adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams.getResponse());
-
-			setListAdapter(adapter);
-			progressDialog.dismiss();
-
 		}
 	}
 
