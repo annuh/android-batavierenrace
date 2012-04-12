@@ -44,6 +44,11 @@ public class Team {
 	public String getNaam() {return naam;}
 	public ArrayList<Looptijd> getLooptijden(){return looptijden;}
 	
+	public int getID() {
+		// zolang uid nog niet uit XML te halen is:
+		return startnummer;
+	}
+	
 	/*String formaat*/
 	public String toString(){
 		return "Team#: "+getStartnummer()+" group#: "+getStartGroep()+" naam: "+getNaam()+'\n';
