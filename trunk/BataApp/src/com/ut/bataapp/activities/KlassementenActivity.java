@@ -54,7 +54,6 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 			  "Bezig met laden", "Klassementen worden opgehaald...", true);  
 		}
 		
-		@SuppressWarnings("unchecked")
 		@Override  
 		protected Void doInBackground(Void... arg0) {
 			response = (Response) api.getKlassementen();
@@ -67,13 +66,12 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 			if(Utils.checkResponse(getApplicationContext(), response)) {
 				LinearLayout c = (LinearLayout) findViewById(R.id.container_klassementen);
 				for(final String klassement: (ArrayList<String>) response.getResponse()) {
-					//Button button = new Button(getApplicationContext());
-					Log.d("Naam",klassement);
+
 					Button button = (Button)getLayoutInflater().inflate(R.drawable.button, null);
 					button.setText(klassement);
 					button.setOnClickListener(new View.OnClickListener() {
 			             public void onClick(View v) {
-			         		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+			         		Intent intent = new Intent(getApplicationContext(), KlassementActivity.class);
 			         		intent.putExtra("index", klassement);
 			        		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			        		startActivity(intent);

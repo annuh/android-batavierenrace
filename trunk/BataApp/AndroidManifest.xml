@@ -1,118 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- Declare the contents of this Android application.  The namespace
+<!--
+     Declare the contents of this Android application.  The namespace
      attribute brings in the Android platform namespace, and the package
      supplies a unique name for the application.  When writing your
      own application, the package name must be changed from "com.example.*"
-     to come from a domain that you own or have control over. -->
+     to come from a domain that you own or have control over.
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ut.bataapp"
     android:versionCode="1"
-    android:versionName="0.1">
-    
-    <uses-library android:name="com.google.android.maps" />    
-    <permission android:name="com.ut.bataapp.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    android:versionName="0.1" >
+
+    <uses-library android:name="com.google.android.maps" />
+
+    <permission
+        android:name="com.ut.bataapp.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
 
     <uses-permission android:name="com.ut.bataapp.permission.C2D_MESSAGE" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />		
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />  
-	
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="13" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <application android:label="@string/app_titel"
-            android:icon="@drawable/icon"
-            android:hardwareAccelerated="true"
-            android:theme="@style/Theme.BataApp" >
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="13" />
 
-        <activity android:name="MainActivity">
+    <application
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_titel"
+        android:theme="@style/Theme.BataApp" >
+        <activity android:name="MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity android:name=".activities.FavoTeamsActivity" />
-        <activity 
-            android:name=".activities.BataRadioActivity" 
-        	android:launchMode="singleTop"/>
-        
-        <activity 
+        <activity
+            android:name=".activities.BataRadioActivity"
+            android:launchMode="singleTop" />
+        <activity
             android:name=".activities.EtappesActivity"
             android:configChanges="orientation|keyboardHidden|keyboard" />
-        
-        
         <activity
-			android:name=".activities.EtappeActivity"
-			android:theme="@style/StyledIndicators"
-			android:configChanges="orientation|keyboardHidden|keyboard" />
-        
-        <activity 
+            android:name=".activities.EtappeActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:theme="@style/StyledIndicators" />
+        <activity
             android:name=".activities.TeamsActivity"
             android:configChanges="orientation|keyboardHidden|keyboard" />
-        
         <activity
-			android:name=".activities.TeamActivity"
-			android:theme="@style/StyledIndicators"
-			android:configChanges="orientation|keyboardHidden|keyboard" />
-        
+            android:name=".activities.TeamActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:theme="@style/StyledIndicators" />
         <activity android:name=".activities.EtappeChartByTeam" />
-
-		<activity android:name="org.achartengine.GraphicalActivity" />
-        
+        <activity android:name="org.achartengine.GraphicalActivity" />
         <activity android:name=".activities.KlassementenActivity" />
-        
+        <activity android:name=".activities.KlassementActivity" />
         <activity android:name=".activities.SponsorActivity" />
-        
         <activity
-			android:name=".activities.WeerActivity"
-			android:configChanges="orientation|screenSize"
-			android:theme="@style/StyledIndicators" />
-        
+            android:name=".activities.WeerActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/StyledIndicators" />
         <activity
-			android:name=".activities.InformatieActivity"
-			android:theme="@style/StyledIndicators" />
-        
+            android:name=".activities.InformatieActivity"
+            android:theme="@style/StyledIndicators" />
         <activity
-			android:name=".activities.InfoAlgemeenActivity"
-			android:theme="@style/StyledIndicators" />
-        
-         <activity
-			android:name=".activities.ColofonActivity"
-			android:theme="@style/StyledIndicators" />
-        
+            android:name=".activities.InfoAlgemeenActivity"
+            android:theme="@style/StyledIndicators" />
         <activity
-			android:name=".activities.AfbeeldingActivity" />
-        
-        <activity
-			android:name=".activities.PreferencesActivity" />
-        
-        <activity
-			android:name=".activities.BerichtenActivity" />
-		<service
-			android:name=".services.BackgroundUpdater"
-			android:process=":remote">
-		</service>
-        
-    	<service
-    	    android:name=".services.BataRadioService">
-    	</service>
-    
-    		<service android:name=".C2DMReceiver" />
-    		
-			<receiver android:name="com.google.android.c2dm.C2DMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">  
-			        <!-- Receive actual messages -->  
-					<intent-filter>  
-					    <action android:name="com.google.android.c2dm.intent.RECEIVE"></action>
-					    <category android:name="com.ut.bataapp"></category>
-					</intent-filter>  
-					<!-- Receive registration ids -->  
-					         <intent-filter>  
-					             <action android:name="com.google.android.c2dm.intent.REGISTRATION"></action>  
-					             <category android:name="com.ut.bataapp"></category>
-					</intent-filter>  
-		     </receiver> 
-        </application>
+            android:name=".activities.ColofonActivity"
+            android:theme="@style/StyledIndicators" />
+        <activity android:name=".activities.AfbeeldingActivity" />
+        <activity android:name=".activities.PreferencesActivity" />
+        <activity android:name=".activities.BerichtenActivity" />
+
+        <service
+            android:name=".services.BackgroundUpdater"
+            android:process=":remote" >
+        </service>
+        <service android:name=".services.BataRadioService" >
+        </service>
+        <service android:name=".C2DMReceiver" />
+
+        <receiver
+            android:name="com.google.android.c2dm.C2DMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+
+            <!-- Receive actual messages -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" >
+                </action>
+
+                <category android:name="com.ut.bataapp" >
+                </category>
+            </intent-filter>
+            <!-- Receive registration ids -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" >
+                </action>
+
+                <category android:name="com.ut.bataapp" >
+                </category>
+            </intent-filter>
+        </receiver>
+    </application>
 
 </manifest>

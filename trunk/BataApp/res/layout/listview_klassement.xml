@@ -5,30 +5,28 @@
     android:orientation="vertical" >
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="40dp" >
+        style="@style/listview_header" >
 
         <TextView
             android:id="@+id/klassement_header_plaats"
             android:text="#"
-            style="@style/listview_text"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
+            style="@style/listview_header_text"
+            android:layout_alignParentTop="true"
             android:width="35dp" />
 
         <TextView
             android:id="@+id/klassement_header_team"
             android:text="Team"
-            style="@style/listview_text"
+            style="@style/listview_header_text"
+            android:layout_alignParentTop="true"
             android:layout_toRightOf="@id/klassement_header_plaats" />
 
         <TextView
             android:id="@+id/klassement_header_tijd"
             android:text="Plaats"
-            style="@style/listview_text"
+            style="@style/listview_header_text"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/klassement_header_team" />
+            android:layout_alignParentTop="true" />
     </RelativeLayout>
 
     <ListView
