@@ -61,7 +61,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 			SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
 			MenuItem menuItem_volg = menu.findItem(MENU_FOLLOW);
 			MenuItem menuItem_delete = menu.findItem(MENU_UNFOLLOW);
-			if(keyValues.contains(team.getNaam())) {
+			if(keyValues.contains(String.valueOf(team.getStartnummer()))) {
 				menuItem_volg.setVisible(false);
 				menuItem_delete.setVisible(true);
 			} else {
