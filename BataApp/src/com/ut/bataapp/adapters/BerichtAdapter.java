@@ -46,7 +46,7 @@ public class BerichtAdapter extends ArrayAdapter<Bericht> {
 			colour = R.color.green;
 		}
 		codeView.setBackgroundResource(colour);
-		subheaderView.setText("Afzender: " + bericht.getAfzender() + " om " + bericht.getDatum());
+		subheaderView.setText("Afzender: " + " om " + bericht.getDatum());
 		contentView.setText(bericht.getBericht());
 		
 		return rowView;

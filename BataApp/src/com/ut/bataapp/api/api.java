@@ -17,6 +17,8 @@ import android.util.Log;
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
+import com.ut.bataapp.objects.Klassement.KlassementInfo;
+import com.ut.bataapp.objects.KlassementItem;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Looptijd;
@@ -49,6 +51,22 @@ public class api {
 		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml",id);
 		euh.parse();
 		return euh.getParsedData();
+	}
+	
+	/**
+	 * Nieuw, laatste binnengekomen teams per etappe. Gesorteerd op binnenkomsttijd!
+	 * @param id
+	 * @return
+	 */
+	public static Response getLaatstBinnengekomenVanEtappe(int id) {
+		ArrayList<Looptijd> laatste = new ArrayList<Looptijd>();
+		Looptijd l1 = new Looptijd();
+		l1.setSnelheid("14.3");
+		l1.setTeamNaam("Inter-Actief");
+		l1.setTeamStartnummer(34);
+		l1.setTijd("12:45");
+		laatste.add(l1);
+		return new Response(laatste, Response.OK_NO_UPDATE);
 	}
 	
 	//Haal van elk team basis informatie op.
@@ -89,7 +107,10 @@ public class api {
 		return team;
 	}
 	
-	
+	/**
+	 * NIEUWE METHODE: GEEFT KLASSEMENTEN TERUG	
+	 * @return
+	 */
 	public static Response getKlassementen(){
 		String kl1 = "Algemeen Klassement";
 		String kl2 = "Universiteits klassement";
@@ -98,19 +119,36 @@ public class api {
 		return new Response(klassementen, Response.OK_UPDATE);	
 	}
 	
+	/** KAN WEG
 	public static Response getKlassement(){
 		KlassementHandler kh = new KlassementHandler("ask.xml");
 		kh.parse();
 		return kh.getParsedData();
-	}
-		
+	}*/
+	
+	/**
+	 * NIEUWE METHODE:
+	 * @param naam
+	 * @return
+	 */
 	public static Response getKlassementByNaam(String naam) {
-		HashMap<Integer, Team> uitslagen = new HashMap<Integer, Team>();
-		uitslagen.put(1, new Team(1, 1, "Inter-Actief"));
-		uitslagen.put(2, new Team(5, 1, "Team 5"));
-		uitslagen.put(3, new Team(11, 1, "Team 11"));
-		//Klassement klassement = new Klassement("Algemeen Klassement", uitslagen);
-		return null;
+		KlassementItem ki1 = new KlassementItem();
+		ki1.setPlaats(1);
+		ki1.setTeamNaam("Inter Actief");
+		ki1.setTeamStartNummer(34);
+		ki1.setTijd("34:34:12");
+		
+		KlassementItem ki2 = new KlassementItem();
+		ki2.setPlaats(1);
+		ki2.setTeamNaam("Inter Actief");
+		ki2.setTeamStartNummer(34);
+		ki2.setTijd("34:34:12");
+		ki2.setPlaats(1);
+		ki2.setTeamNaam("Inter-Actief");
+		ArrayList<KlassementItem> items = new ArrayList<KlassementItem>();
+		
+		Klassement klassement = new Klassement("Algemeen Klassement", items);
+		return new Response(klassement, Response.OK_UPDATE);
 	}
 	
 	
@@ -120,6 +158,7 @@ public class api {
 	public static String getURL(){
 		return "http://bata-dev.snt.utwente.nl/~jorne/xml_2011/";
 	}
+	
 	/**
 	 * Haal de submap op waar de bestanden op de sdcard moeten staan
 	 * @return Stringvorm van de map waar bestanden op SD moeten staan
@@ -127,11 +166,16 @@ public class api {
 	public static String getSDmap(){
 		return "/bataxml/";
 	}
+	
+	/**
+	 * NIEUWE METHODE
+	 * @return
+	 */
 	public static ArrayList<Bericht> getBerichten(){
 		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
-		berichten.add(new Bericht("003", 0, "Batacommissie", "Permanente stop", "Omdat bij de toplopers doping is geconstateerd is de batavierenrace 2012 permanent gestopt.", "10/01/12 om 15:34"));
-		berichten.add(new Bericht("002", 1, "Batacommissie", "Tijdelijke stop", "Omdat de lopers te hard gelopen hebben is er een tijdelijke stop. De batavierenracecommissie onderzoekt of er doping is gebruikt.", "10/01/12 om 15:13"));
-		berichten.add(new Bericht("001", 2, "Batacommissie", "Lopers veel succes", "De batavierenracecommissie wenst elke loper veel succes in de race.", "10/01/12 om 15:09"));
+		berichten.add(new Bericht("003", 0, "Permanente stop", "Omdat bij de toplopers doping is geconstateerd is de batavierenrace 2012 permanent gestopt.", "10/01/12 om 15:34"));
+		berichten.add(new Bericht("002", 1, "Tijdelijke stop", "Omdat de lopers te hard gelopen hebben is er een tijdelijke stop. De batavierenracecommissie onderzoekt of er doping is gebruikt.", "10/01/12 om 15:13"));
+		berichten.add(new Bericht("001", 2, "Lopers veel succes", "De batavierenracecommissie wenst elke loper veel succes in de race.", "10/01/12 om 15:09"));
 		
 		return berichten;
 	}

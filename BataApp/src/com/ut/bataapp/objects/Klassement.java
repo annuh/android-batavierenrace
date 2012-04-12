@@ -14,91 +14,66 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Klassement {
-	
+
 	String naam;
-	ArrayList<KlassementInfo> uitslag;
 	
-	/**
-	 * Lijst met alle teamnamen, gesorteerd op positie in klassement.
-	 */
-	private ArrayList<String> teamnaam = new ArrayList<String>();
-	private ArrayList<String> teamuitslag = new ArrayList<String>();
-	private ArrayList<Integer> teamid = new ArrayList<Integer>();
-	private ArrayList<String> teamtijd = new ArrayList<String>();
-	
+	ArrayList<KlassementItem> uitslag;
+
 	/**
 	 * @param naam - Naam dit klassement
 	 * @param uitslag - Uitslag van dit klassement
 	 */
-	public Klassement(String naam, ArrayList<KlassementInfo> uitslag) {
+	public Klassement(String naam, ArrayList<KlassementItem> uitslag) {
 		this.naam = naam;
 		this.uitslag = uitslag;
 	}
-	
-	// NIEUWE METHODE (?)
-	public void addUitslag(String naam, String uitslag, int id, String tijd) {
-		teamnaam.add(naam);
-		teamuitslag.add(uitslag);
-		teamid.add(id);
-		teamtijd.add(tijd);
-		
-	}
-	
+
 	//LEGE CONSTRUCTOR!
 	public Klassement(){
-		this.uitslag = new ArrayList<KlassementInfo>();
+		this.uitslag = new ArrayList<KlassementItem>();
 	}
-		
+
 	/*Setters*/
 	public void setNaam(String naam){this.naam = naam;}
-	
+
 	/*Getters*/
 	public String getNaam() {return naam;}
-	public ArrayList<KlassementInfo> getUitslag(){return uitslag;}
-	
-	/*public Iterable<KlassementInfo> getKlassementInfo() {return uitslag.values();}
-	public int getUitslagFromTeam(KlassementInfo info) {
-		for (Map.Entry<Integer, KlassementInfo> entry : uitslag.entrySet()) {
-		    int key = entry.getKey();
-		    KlassementInfo value = entry.getValue();
-		    if(value == info)
-		    	return key;
-		}
-		return -1;
-	}*/
-	
+	public ArrayList<KlassementItem> getUitslag(){return uitslag;}
+
 	public String toString(){
 		return "klassement: "+getNaam();
 	}
-	
+
 	/**
 	 * Voegt team toe aan dit klassement
 	 * @ensures team.getKlassement() == this
 	 * @param team
 	 * @param plaats
 	 */
-	public void addKlassementInfo(KlassementInfo info){
+	public void addKlassementInfo(KlassementItem info){
 		uitslag.add(info);
 	}
+
 	
 	public class KlassementInfo{
-		
+
 		int plaats;
 		String teamNaam;
 		String tijd;
 		int teamStartNummer;
-		
+
 		public KlassementInfo(){}
-		
+
 		public void setPlaats(int plaats) {this.plaats = plaats;}
 		public void setTeamNaam(String teamNaam){ this.teamNaam = teamNaam;}
 		public void setTijd(String tijd){ this.tijd = tijd;}
 		public void setTeamStartNummer(int teamStartNummer){ this.teamStartNummer = teamStartNummer;}
-		
+
 		public int getPlaats() { return plaats; }
 		public String getTeamNaam(){ return teamNaam;}
 		public String getTijd(){ return tijd;}
 		public int getTeamStartNummer(){ return teamStartNummer;}
+
 		public String toString(){
 			return "KlassementInfo: "+getTeamNaam()+", "+getTeamStartNummer()+", "+getTijd();
 		}
