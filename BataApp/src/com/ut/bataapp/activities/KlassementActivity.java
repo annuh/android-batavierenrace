@@ -1,51 +1,29 @@
 package com.ut.bataapp.activities;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 import com.actionbarsherlock.R;
-import com.ut.bataapp.MainActivity;
-import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.Utils;
 import com.ut.bataapp.adapters.KlassementAdapter;
-import com.ut.bataapp.adapters.TeamAdapter;
 import com.ut.bataapp.api.api;
-import com.ut.bataapp.objects.Klassement.KlassementInfo;
+import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.Response;
-import com.ut.bataapp.objects.Team;
 
 public class KlassementActivity extends SherlockListActivity  {
 
 	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
 	private final int MENU_SORT_PLAATS = Menu.FIRST + 2;
-	private Response klassement = null;
 	private String naam;
+	private Klassement klassement;
 	private KlassementAdapter adapter = null;
 
 	@Override
@@ -79,7 +57,6 @@ public class KlassementActivity extends SherlockListActivity  {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Log.d("Keyboard", String.valueOf(item.getItemId()));
@@ -121,18 +98,17 @@ public class KlassementActivity extends SherlockListActivity  {
 					"Bezig met laden", "Klassement wordt opgehaald...", true);  
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			response = (Response) api.getKlassementByNaam(naam);
+			response = api.getKlassementByNaam(naam);
 			return null;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getApplicationContext(), response)) {
-				adapter = new KlassementAdapter(KlassementActivity.this, (ArrayList<KlassementInfo>) response.getResponse());
+				klassement = (Klassement) response.getResponse();
+				adapter = new KlassementAdapter(KlassementActivity.this, klassement.getUitslag());
 				setListAdapter(adapter);
 				progressDialog.dismiss();
 			}
