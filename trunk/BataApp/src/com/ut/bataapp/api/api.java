@@ -156,7 +156,7 @@ public class api {
 	* Haal de url op waar de bestanden op de servers staan
 	*/
 	public static String getURL(){
-		return "http://bata-dev.snt.utwente.nl/~jorne/xml_2011/";
+		return "http://api.batavierenrace.nl/xml/2011/";
 	}
 	
 	/**
