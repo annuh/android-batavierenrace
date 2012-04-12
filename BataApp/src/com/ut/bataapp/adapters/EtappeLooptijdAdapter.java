@@ -1,8 +1,6 @@
 package com.ut.bataapp.adapters;
 
 import java.util.ArrayList;
-
-import com.actionbarsherlock.view.Menu;
 import com.ut.bataapp.R;
 import com.ut.bataapp.objects.Looptijd;
 import android.content.Context;

@@ -58,6 +58,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	/* (non-Javadoc)
 	 * @see com.google.android.c2dm.C2DMBaseReceiver#onMessage(android.content.Context, android.content.Intent)
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onMessage(Context context, Intent intent) {
 		String message = intent.getExtras().getString("message");
@@ -85,14 +86,14 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	 * @see com.google.android.c2dm.C2DMBaseReceiver#onRegistered(android.content.Context, java.lang.String)
 	 */
 	@Override
-    public void onRegistrered(Context context, String registrationId) {
+	public void onRegistrered(Context context, String registrationId) {
 		//super.onRegistrered(context, registrationId);
 		this.context = context;
 		this.deviceRegistrationID = registrationId;
 		//Log.e(TAG, ">>>>id recieved" + registrationId);
 		//Log.e(TAG, ">>>>device unique id " + deviceId);
 		new registerServer().execute();
-		
+
 
 	}
 
@@ -130,34 +131,34 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 
 		}
 	}
-*/	
+	 */	
 	private class registerServer extends AsyncTask<Void, Void, Void> {  		
-		
+
 		@Override  
 		protected Void doInBackground(Void... arg0) {
 			// send to server
 			BufferedReader in = null;
 			try {
-	            HttpClient client = new DefaultHttpClient();
-	            HttpGet request = new HttpGet();
-	            String deviceId = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
+				HttpClient client = new DefaultHttpClient();
+				HttpGet request = new HttpGet();
+				String deviceId = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
 				request.setURI(new URI("http://batabericht.eu5.org/push_register.php?deviceid="+URLEncoder.encode(deviceId)+"&devicetoken="+URLEncoder.encode(deviceRegistrationID).toString()));
-				
-	            HttpResponse response = client.execute(request);
-	            in = new BufferedReader
-	            (new InputStreamReader(response.getEntity().getContent()));
-	            StringBuffer sb = new StringBuffer("");
-	            String line = "";
-	            String NL = System.getProperty("line.separator");
-	            while ((line = in.readLine()) != null) {
-	                sb.append(line + NL);
-	            }
-	            in.close();
-	            String page = sb.toString();
-	            System.out.println(page);
-	            
-	           
-            } catch (URISyntaxException e) {
+
+				HttpResponse response = client.execute(request);
+				in = new BufferedReader
+						(new InputStreamReader(response.getEntity().getContent()));
+				StringBuffer sb = new StringBuffer("");
+				String line = "";
+				String NL = System.getProperty("line.separator");
+				while ((line = in.readLine()) != null) {
+					sb.append(line + NL);
+				}
+				in.close();
+				String page = sb.toString();
+				System.out.println(page);
+
+
+			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			} catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block
@@ -166,15 +167,15 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
-            	if (in != null) {
-	                try {
-	                    in.close();
-	                } catch (IOException e) {
-	                    e.printStackTrace();
-	                }
-            	}
-            }
-		
+				if (in != null) {
+					try {
+						in.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
 			return null;       
 		}
 	}
