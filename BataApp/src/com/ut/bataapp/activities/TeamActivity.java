@@ -20,6 +20,8 @@ import com.ut.bataapp.fragments.TeamInformatieFragment;
 import com.ut.bataapp.fragments.TeamLooptijdenFragment;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
+import com.ut.bataapp.Utils;
+
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 import com.viewpagerindicator.TabPageIndicator;
@@ -99,25 +101,13 @@ public class TeamActivity extends SherlockFragmentActivity {
 	            }
 	            break;
 			case MENU_FOLLOW:
-				SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
-				SharedPreferences.Editor keyValuesEditor = keyValues.edit();
-				keyValuesEditor.putInt(team.getNaam(), team.getStartnummer());	
-				keyValuesEditor.commit();
-				//item.setVisible(false);
+				Utils.addFavoTeam(getApplicationContext(), team);
 				invalidateOptionsMenu();
-				Toast toast = Toast.makeText(this, "U volgt dit tean nu.", Toast.LENGTH_SHORT);
-				toast.show();
 				
 				break;
 			case MENU_UNFOLLOW:
-				SharedPreferences keyValues1 = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
-				SharedPreferences.Editor keyValuesEditor1 = keyValues1.edit();
-				keyValuesEditor1.remove(team.getNaam());
-				keyValuesEditor1.commit();
-				//item.setVisible(false);
+				Utils.removeFavoteam(getApplicationContext(), team.getStartnummer());
 				invalidateOptionsMenu();
-				Toast toast1 = Toast.makeText(this, "U volgt dit tean nu niet meer.", Toast.LENGTH_SHORT);
-				toast1.show();
 				break;
 		}
 		

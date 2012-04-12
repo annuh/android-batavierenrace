@@ -1,134 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/scroller" >
-    
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >
-	
-	    <TextView
-	        android:text = "@string/etappe_informatie"
-	        style="@style/h1" />
-	    
-	    <TableLayout
-	        style="@style/table" >
-	        
-	        <TableRow>
-		        <TextView
-		            android:text = "@string/etappe_informatie_nummer"
-		            style="@style/table_left" />
-		        <TextView
-		            android:id="@+id/text_etappenummer"
-		            style="@style/table_right" />
-		    </TableRow>
-		    
-	        <TableRow>
-		        <TextView
-		            android:text = "@string/etappe_informatie_van"
-		            style="@style/table_left" />
-		        <TextView
-		            android:id="@+id/text_etappevan"
-		            style="@style/table_right" />
-		    </TableRow>
-		    
-	         <TableRow>
-		        <TextView
-		            android:text = "@string/etappe_informatie_naar"
-		            style="@style/table_left" />
-		        <TextView
-		            android:id="@+id/text_etappenaar"
-		            style="@style/table_right" />
-		    </TableRow>
-	        
-		    <TableRow>
-		        <TextView
-		            android:text = "@string/etappe_informatie_afstand"
-		            style="@style/table_left" />
-		        <TextView
-		            android:id="@+id/text_etappeafstand"
-		            style="@style/table_right" />
-		    </TableRow>
-		
-		    <TableRow>
-		        <TextView
-		            android:text = "@string/etappe_informatie_geslacht"
-		            style="@style/table_left" />
-		        <TextView
-		            android:id="@+id/text_etappegeslacht"
-		            style="@style/table_right" />
-		    </TableRow>
-		    
-		     <TableRow>
-		        <TextView
-		            android:text = "@string/etappe_informatie_omschrijving"
-		            style="@style/table_left" />
-		        <TextView
-		            android:id="@+id/text_etappeomschrijving"
-		            style="@style/table_right" />
-		    </TableRow>
-		</TableLayout>
 
-	    
-	    <TextView
-	        android:text = "@string/etappe_hoogteverschil"
-		 	style="@style/h1" />
-	      
-	    <LinearLayout
-	        android:background="@drawable/container_background"
-	        android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:padding="1dp" >		
-			<ImageView 
-				android:id="@+id/image_hoogteverschil"
-				android:src="@drawable/grafiek"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" />
-	     </LinearLayout>
-	    
-	    
-	    <TextView
-	        android:text = "@string/etappe_recordtijd"
-	        style="@style/h1" />
-	        
-	    <TableLayout
-	        style="@style/table" >
-		    <TableRow>
-			    <TextView
-			        android:text = "@string/etappe_recordtijd_team"
-				    style="@style/table_left" />
-			    <TextView
-			        android:id="@+id/recordtijd_team"
-				    style="@style/table_right" />
-			</TableRow>
-			
-		    <TableRow>
-			    <TextView
-			        android:text = "@string/etappe_recordtijd_jaar"
-				    style="@style/table_left" />
-			    <TextView
-			        android:id="@+id/recordtijd_jaar"
-				    style="@style/table_right" />
-			</TableRow>
-		
-		    <TableRow>
-			    <TextView
-			        android:text = "@string/etappe_recordtijd_tijd"
-			        style="@style/table_left" />
-			     <TextView
-			        android:id="@+id/recordtijd_tijd"
-			        style="@style/table_right" />
-			</TableRow>
-			
-		      <TableRow>
-			    <TextView
-			        android:text = "@string/etappe_recordtijd_snelheid"
-			        style="@style/table_left" />
-			     <TextView
-			        android:id="@+id/recordtijd_snelheid"
-			        style="@style/table_right" />
-			</TableRow>
-		</TableLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-	</LinearLayout>
+        <TextView
+            style="@style/h1"
+            android:text="@string/etappe_informatie" />
+
+        <TableLayout style="@style/table" >
+
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_informatie_nummer" />
+
+                <TextView
+                    android:id="@+id/text_etappenummer"
+                    style="@style/table_right" />
+            </TableRow>
+
+            <View style="@style/divider" >
+            </View>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_informatie_van" />
+
+                <TextView
+                    android:id="@+id/text_etappevan"
+                    style="@style/table_right" />
+            </TableRow>
+
+             <View style="@style/divider" >
+            </View>
+            
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_informatie_naar" />
+
+                <TextView
+                    android:id="@+id/text_etappenaar"
+                    style="@style/table_right" />
+            </TableRow>
+
+             <View style="@style/divider" >
+            </View>
+            
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_informatie_afstand" />
+
+                <TextView
+                    android:id="@+id/text_etappeafstand"
+                    style="@style/table_right" />
+            </TableRow>
+
+             <View style="@style/divider" >
+            </View>
+            
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_informatie_geslacht" />
+
+                <TextView
+                    android:id="@+id/text_etappegeslacht"
+                    style="@style/table_right" />
+            </TableRow>
+
+             <View style="@style/divider" >
+            </View>
+            
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_informatie_omschrijving" />
+
+                <TextView
+                    android:id="@+id/text_etappeomschrijving"
+                    style="@style/table_right" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            style="@style/h1"
+            android:text="@string/etappe_hoogteverschil" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/container_background"
+            android:padding="1dp" >
+
+            <ImageView
+                android:id="@+id/image_hoogteverschil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/grafiek" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/h1"
+            android:text="@string/etappe_recordtijd" />
+
+        <TableLayout style="@style/table" >
+
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_recordtijd_team" />
+
+                <TextView
+                    android:id="@+id/recordtijd_team"
+                    style="@style/table_right" />
+            </TableRow>
+
+             <View style="@style/divider" >
+            </View>
+            
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_recordtijd_jaar" />
+
+                <TextView
+                    android:id="@+id/recordtijd_jaar"
+                    style="@style/table_right" />
+            </TableRow>
+
+             <View style="@style/divider" >
+            </View>
+            
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_recordtijd_tijd" />
+
+                <TextView
+                    android:id="@+id/recordtijd_tijd"
+                    style="@style/table_right" />
+            </TableRow>
+
+             <View style="@style/divider" >
+            </View>
+            
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_recordtijd_snelheid" />
+
+                <TextView
+                    android:id="@+id/recordtijd_snelheid"
+                    style="@style/table_right" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
 </ScrollView>

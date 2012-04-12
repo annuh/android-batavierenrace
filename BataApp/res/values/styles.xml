@@ -1,57 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- This is a theme that will adjust itself depending on the API version.
+
+    <!--
+         This is a theme that will adjust itself depending on the API version.
          The default definition is the safe one, using a theme that has always
          been defined.  Look at values-11/styles.xml for a variation that is
-         selected when the holographic theme is available. -->
-    <style name="ThemeHolo" parent="android:Theme">
-    </style>
-    
-    <!-- Older platforms don't have Theme.Holo.DialogWhenLarge; we will define
+         selected when the holographic theme is available.
+    -->
+    <style name="ThemeHolo" parent="android:Theme"></style>
+
+    <!--
+         Older platforms don't have Theme.Holo.DialogWhenLarge; we will define
          our own wrapper theme that uses it only when running on the appropriate
          platform version.  On older platforms, we always use the generic
          fullscreen theme, because they don't support some feature that help
-         in correctly laying out an activity as a dialog. -->
-    <style name="ThemeDialogWhenLarge" parent="android:style/Theme">
+         in correctly laying out an activity as a dialog.
+    -->
+    <style name="ThemeDialogWhenLarge" parent="android:style/Theme"></style>
+
+    <style name="Theme.BataApp" parent="Theme.Sherlock.Light.DarkActionBar">
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="absForceOverflow">true</item>
+        <item name="homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
+        <item name="android:homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
+        <item name="actionBarItemBackground">@drawable/ad_selectable_background</item>
+        <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item>
+        <item name="android:listViewStyle">@style/MyListView</item>
     </style>
-    
-	<style name="Theme.BataApp" parent="Theme.Sherlock.Light.DarkActionBar">
-	    <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
-	    <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
-	    <item name="absForceOverflow">true</item>
-	    <item name="homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
-	    <item name="android:homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
-	    <item name="actionBarItemBackground">@drawable/ad_selectable_background</item>
-	    <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item>   
-	    <item name="android:listViewStyle">@style/MyListView</item>
-	</style>
 
-	<style name="MyListView" parent="@android:style/Widget.ListView">
-    	<item name="android:cacheColorHint">#000000</item>
-		<item name="android:fastScrollEnabled">true</item>
-	</style>
-	
-	<style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
-           <item name="background">@drawable/wit</item>
-           <item name="android:background">@drawable/wit</item>
-           <item name="titleTextStyle">@style/myTheme.ActionBar.Text</item>
-           <item name="android:titleTextStyle">@style/myTheme.ActionBar.Text</item>
-       </style>
-       
+    <style name="MyListView" parent="@android:style/Widget.ListView">
+        <item name="android:cacheColorHint">#000000</item>
+        <item name="android:fastScrollEnabled">true</item>
+    </style>
+
+    <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+        <item name="background">@drawable/wit</item>
+        <item name="android:background">@drawable/wit</item>
+        <item name="titleTextStyle">@style/myTheme.ActionBar.Text</item>
+        <item name="android:titleTextStyle">@style/myTheme.ActionBar.Text</item>
+    </style>
+
     <style name="myTheme.ActionBar.Text" parent="@android:style/TextAppearance">
-       <item name="android:textColor">@color/batablauw</item>
-       <item name="textColor">@color/batablauw</item>
-   </style>
+        <item name="android:textColor">@color/batablauw</item>
+        <item name="textColor">@color/batablauw</item>
+    </style>
 
-	<style name="StyledIndicators" parent="Theme.BataApp">
+    <style name="StyledIndicators" parent="Theme.BataApp">
         <item name="vpiTabPageIndicatorStyle">@style/myTabPageIndicator</item>
         <item name="vpiTabTextStyle">@style/Widget.TabPageIndicator.Text</item>
     </style>
-	
-	<style name="myTabPageIndicator" parent="Widget.TabPageIndicator">
-    	<item name="android:background">@drawable/abs__tab_indicator_holo</item>
-	</style>
-	
+
+    <style name="myTabPageIndicator" parent="Widget.TabPageIndicator">
+        <item name="android:background">@drawable/abs__tab_indicator_holo</item>
+    </style>
+
     <style name="DashboardButton">
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:layout_width">wrap_content</item>
@@ -63,7 +66,7 @@
         <item name="android:textColor">@color/batabruin</item>
         <item name="android:background">@drawable/dashboard_item_background</item>
     </style>
-    
+
     <style name="h1">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_width">match_parent</item>
@@ -74,20 +77,19 @@
         <item name="android:paddingLeft">30dip</item>
         <item name="android:paddingBottom">1dip</item>
     </style>
-    
+
     <style name="info">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">#FFF</item>
     </style>
-    
-     <style name="table">
+
+    <style name="table">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:stretchColumns">1</item>
         <item name="android:background">@drawable/container_background</item>
         <item name="android:padding">10dip</item>
         <item name="android:layout_marginRight">14px</item>
-        
     </style>
 
     <style name="table_left">
@@ -95,42 +97,40 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    
+
     <style name="table_right">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingRight">5dip</item>
         <item name="android:gravity">right</item>
     </style>
-    
+
     <style name="table_team_uitslagen_head_left">
         <item name="android:background">#AAA</item>
         <item name="android:textStyle">bold</item>
     </style>
-    
+
     <style name="table_team_uitslagen_left">
         <item name="android:layout_width">100dip</item>
         <item name="android:padding">3dip</item>
     </style>
-    
+
     <style name="nice_button">
-		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">wrap_content</item>
-		
-		<item name="android:layout_marginTop">5dp</item>
-		<item name="android:layout_marginBottom">5dp</item>
-		<item name="android:paddingTop">20dp</item>
-		<item name="android:paddingBottom">20dp</item>
-		
-		<item name="android:gravity">center</item>		
-		<item name="android:background">@drawable/nice_button_gradient</item>
-		<item name="android:textColor">#FFF</item>
-		<item name="android:textSize">18sp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/nice_button_gradient</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textSize">18sp</item>
     </style>
-   
+
     <style name="container_block">
         <item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">10dip</item>
         <item name="android:background">@drawable/container_background</item>
         <item name="android:padding">10dip</item>
@@ -144,47 +144,46 @@
     <style name="container">
         <item name="android:background">@color/wit</item>
         <item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
     </style>
-    
+
     <style name="listview_text">
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:layout_width">wrap_content</item>
-         <item name="android:layout_height">wrap_content</item>
-         <item name="android:layout_margin">5dp</item>
-         <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
-    
+
     <style name="message">
-       <item name="android:textStyle">bold</item>
-       <item name="android:layout_width">match_parent</item>
-       <item name="android:layout_height">wrap_content</item>
-       <item name="android:paddingLeft">40dip</item>
-       <item name="android:paddingBottom">20dip</item>
-   </style>
-   
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">40dip</item>
+        <item name="android:paddingBottom">20dip</item>
+    </style>
+
     <style name="divider">
         <item name="android:layout_height">1dp</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_marginRight">20dp</item>
-        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
         <item name="android:background">@drawable/batablauw</item>
     </style>
-    
-	<style name="listview_header">
-		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">40dp</item>
-		<item name="android:orientation">horizontal</item>
-		<item name="android:background">@color/jaarkleur</item>
+
+    <style name="listview_header">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/jaarkleur</item>
     </style>
+
     <style name="listview_header_text" parent="listview_text">
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center_vertical</item>
     </style>
-    
-   <style name="BorderTop">
-       
-   </style>
-    
+
+    <style name="BorderTop"></style>
+
 </resources>
