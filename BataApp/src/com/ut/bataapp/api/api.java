@@ -109,7 +109,7 @@ public class api {
 			for(int i=0;i<uitslagen.size();i++){
 				team.addLooptijd(uitslagen.get(i));
 			}
-			result = new Response(team,result.getStatus());
+			result = new Response(team,uitslagbyteam.getStatus());
 		}	
 		return result;
 	}
