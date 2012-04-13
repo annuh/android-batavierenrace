@@ -1,14 +1,10 @@
 package com.ut.bataapp.parser;
 
 import java.util.ArrayList;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-
-import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.objects.Response;
-import com.ut.bataapp.objects.Team;
 
 public class EtappeUitslagHandler extends Handler{
 
@@ -24,7 +20,6 @@ public class EtappeUitslagHandler extends Handler{
 	private boolean cumulatieveStand;
 	private boolean etappeStand;
 	
-	private boolean ploeg;
 	private boolean startnummer;
 	private boolean naam;
 	private boolean startgroep;

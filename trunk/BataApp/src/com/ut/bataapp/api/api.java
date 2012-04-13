@@ -28,9 +28,8 @@ import com.ut.bataapp.parser.KlassementHandler;
 import com.ut.bataapp.parser.PloegHandler;
 import com.ut.bataapp.parser.TeamHandler;
 
-
 public class api {
-	
+		
 	//~~ PARSER AANROEPEN ~~\\
 	
 	/**

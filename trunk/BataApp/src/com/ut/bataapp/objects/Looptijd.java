@@ -10,6 +10,10 @@
 package com.ut.bataapp.objects;
 
 public class Looptijd {
+
+	//Waarde(s) voor als die niet in de XML staan
+	public static final int NULLINT = 999;
+	
 	private String teamnaam;
 	private int teamStartnummer;
 	private int teamStartgroep;
@@ -17,8 +21,8 @@ public class Looptijd {
 	private String tijd;
 	private String foutcode;
 	private String snelheid;
-	private int etappeStand;
-	private int cumulatieveStand;
+	private int etappeStand = NULLINT;
+	private int cumulatieveStand = NULLINT;
 	
 	/**
 	 * 
