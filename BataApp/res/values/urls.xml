@@ -12,4 +12,7 @@
         <item>http://mp3.streampower.be/stubru-mid.mp3</item>
         <item>http://mp3.streampower.be/stubru-low.mp3</item>
     </string-array>
+    <string name="url_xml_klassement">klassement.xml</string>
+    <string name="url_xml_etappeuitslag">etappeuitslag/%s.xml</string>
+    <string name="url_xml_ploeguitslag">ploeguitslag/%s.xml</string>
 </resources>

@@ -1,5 +1,8 @@
 package com.ut.bataapp;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
@@ -13,6 +16,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class Utils {
+	/* aantal milliseconden in een dag */
+	private static final int MILLIS_IN_DAY = 60 * 60 * 24 * 1000;
+	/* converterwaarden voor fahrenheit -> celsius */
+	public static final byte DIFF_CF = 32;
+	public static final float FACTOR_CF  = 1.8F;
 
 	public static void old_data(Context context){
 		Toast.makeText(context, "Geen nieuwe data", Toast.LENGTH_LONG).show();
@@ -65,7 +73,7 @@ public class Utils {
 		keyValuesEditor1.remove(String.valueOf(id));
 		keyValuesEditor1.commit();
 
-		Toast toast1 = Toast.makeText(context, "U volgt dit tean nu niet meer.", Toast.LENGTH_SHORT);
+		Toast toast1 = Toast.makeText(context, "U volgt dit team nu niet meer.", Toast.LENGTH_SHORT);
 		toast1.show();
 	}
 	
@@ -75,10 +83,55 @@ public class Utils {
 		SharedPreferences.Editor keyValuesEditor = keyValues.edit();
 		keyValuesEditor.putString(String.valueOf(team.getID()), team.getNaam());
 		keyValuesEditor.commit();		
-		Toast toast = Toast.makeText(context, "U volgt dit tean nu.", Toast.LENGTH_SHORT);
+		Toast toast = Toast.makeText(context, "U volgt dit team nu.", Toast.LENGTH_SHORT);
 		toast.show();
 	}
 	
+	public static String stripNonDigits(final String input){
+	    final StringBuilder sb = new StringBuilder();
+	    for(int i = 0; i < input.length(); i++){
+	        final char c = input.charAt(i);
+	        if(c > 47 && c < 58){
+	            sb.append(c);
+	        }
+	    }
+	    return sb.toString();
+	}
+	
+	/**
+	 * Ontdoet cal van de tijdelementen.
+	 * @param cal datum die van tijdelementen moet worden ontdaan
+	 * @require cal != null
+	 */
+	public static void clearTime(Calendar cal) {
+		 cal.set(Calendar.HOUR_OF_DAY, 0);
+		 cal.set(Calendar.MINUTE, 0);
+		 cal.set(Calendar.SECOND, 0);
+		 cal.set(Calendar.MILLISECOND, 0);
+	}
+	
+	/**
+	 * Geeft het aantal dagen terug dat ligt tussen nu en date. Is negatief wanneer date in het verleden ligt.
+	 * @param date datum waarvan bepaald moet worden over hoeveel dagen het de desbetreffende dag is
+	 * @require date != null
+	 * @return aantal dagen tussen nu en date
+	 */
+	public static short diffDays(Calendar date) {
+		Calendar now = Calendar.getInstance();
+	    clearTime(now);
+	    clearTime(date);
+		return (short) ((date.getTimeInMillis() - now.getTimeInMillis()) / MILLIS_IN_DAY);
+	}
+	
+	/**
+	 * Converteert temperatuur in fahrenheit f naar (hele) graden celsius.
+	 * @param f temperatuur in fahrenheit
+	 * @return temperatuur in (hele) graden celsius
+	 */
+	public static byte convertFtoC(byte f) {
+		return (byte) Math.round((f-DIFF_CF) / FACTOR_CF);
+	}
+
 	public static void addBericht(Context context, String string) {
 		//Log.d("FavoTeams", "ADD: "+String.valueOf(team.getStartGroep()));
 		SharedPreferences keyValues = context.getSharedPreferences("push_berichten", Context.MODE_PRIVATE);

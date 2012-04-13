@@ -3,6 +3,7 @@
     <string name="tag_buienradar_verwachting_tekst">tekst</string>
     <string name="attr_google_data">data</string>
     <string name="tag_google_verwachting">forecast_conditions</string>
+    <string name="tag_google_verwachting_min">low</string>
     <string name="tag_google_verwachting_max">high</string>
     <string name="tag_google_verwachting_icon">icon</string>
     <string name="tag_google_huidig">current_conditions</string>

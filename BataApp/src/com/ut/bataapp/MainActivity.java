@@ -1,22 +1,34 @@
 package com.ut.bataapp;
 
 import java.util.Calendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.google.android.c2dm.C2DMessaging;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.ut.bataapp.activities.*;
+
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.google.android.c2dm.C2DMessaging;
+import com.ut.bataapp.activities.BataRadioActivity;
+import com.ut.bataapp.activities.BerichtenActivity;
+import com.ut.bataapp.activities.EtappesActivity;
+import com.ut.bataapp.activities.FavoTeamsActivity;
+import com.ut.bataapp.activities.InformatieActivity;
+import com.ut.bataapp.activities.KlassementenActivity;
+import com.ut.bataapp.activities.PreferencesActivity;
+import com.ut.bataapp.activities.SponsorActivity;
+import com.ut.bataapp.activities.TeamsActivity;
+import com.ut.bataapp.activities.WeerActivity;
+import com.ut.bataapp.services.BackgroundUpdater;
 
 public class MainActivity extends SherlockFragmentActivity {	
-	
 	private final int MENU_SETTINGS = Menu.FIRST;
 	private final int MENU_MESSAGE = Menu.FIRST+1;
 	
@@ -123,6 +135,11 @@ public class MainActivity extends SherlockFragmentActivity {
 		   weergeven = "Tot volgend jaar!";
 	   }
 	   viewDagen.setText(weergeven);
+	   
+	   	if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getResources().getString(R.string.pref_background_update), getResources().getBoolean(R.bool.pref_default_background_update))) {
+	   		Intent startServiceIntent = new Intent(this, BackgroundUpdater.class);
+	   		startService(startServiceIntent);
+	   	}
    }
    
    @Override

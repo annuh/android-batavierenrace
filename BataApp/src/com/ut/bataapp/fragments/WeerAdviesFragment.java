@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.WeerActivity;
-import com.ut.bataapp.weer.WeerInfo;
+import com.ut.bataapp.weer.WeerInfoHuidig;
 import com.ut.bataapp.weer.WeerProvider;
 
 public class WeerAdviesFragment extends SherlockFragment {	
@@ -38,9 +38,9 @@ public class WeerAdviesFragment extends SherlockFragment {
     public void updateView() {
     	if (getView() != null) { // onCreateView() geweest?
     		WeerProvider weerProvider = mWeerActivity.getWeerProvider();
-			WeerInfo nijmegen = weerProvider.getHuidig(WeerProvider.NIJMEGEN),
-					 ruurlo = weerProvider.getHuidig(WeerProvider.RUURLO),
-					 enschede = weerProvider.getHuidig(WeerProvider.ENSCHEDE);
+			WeerInfoHuidig nijmegen = weerProvider.getHuidig(WeerProvider.NIJMEGEN),
+					       ruurlo = weerProvider.getHuidig(WeerProvider.RUURLO),
+					       enschede = weerProvider.getHuidig(WeerProvider.ENSCHEDE);
 			((TextView) getActivity().findViewById(R.id.nijmegen_huidig_temp)).setText(String.format(getResources().getString(R.string.format_temp), nijmegen.getTemp()));
 			((TextView) getActivity().findViewById(R.id.ruurlo_huidig_temp)).setText(String.format(getResources().getString(R.string.format_temp), ruurlo.getTemp()));
 			((TextView) getActivity().findViewById(R.id.enschede_huidig_temp)).setText(String.format(getResources().getString(R.string.format_temp), enschede.getTemp()));

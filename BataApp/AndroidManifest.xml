@@ -22,6 +22,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -79,12 +82,8 @@
         <activity android:name=".activities.PreferencesActivity" />
         <activity android:name=".activities.BerichtenActivity" />
 
-        <service
-            android:name=".services.BackgroundUpdater"
-            android:process=":remote" >
-        </service>
-        <service android:name=".services.BataRadioService" >
-        </service>
+        <service android:name=".services.BackgroundUpdater" />
+        <service android:name=".services.BataRadioService" />
         <service android:name=".C2DMReceiver" />
 
         <receiver
@@ -108,6 +107,11 @@
                 </category>
             </intent-filter>
         </receiver>
+        
+        <receiver android:name=".StartAtBoot">  
+    		<intent-filter>  
+        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
+    		</intent-filter>  
+		</receiver>
     </application>
-
 </manifest>

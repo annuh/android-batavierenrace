@@ -3,25 +3,33 @@ package com.ut.bataapp.weer;
 import android.graphics.Bitmap;
 
 /**
- * Klasse voor het representeren van weerinformatie. Simpelweg een record met twee velden: temperatuur en
- * URL van grafische beschrijving.
+ * (Abstracte) klasse voor het representeren van weerinformatie (voor een bepaalde plaats, voor een bepaalde dag).
+ * Simpelweg een record met een veld: een grafische beschrijving. 
  * Onderdeel van ontwerpproject BataApp. 
  * @author Danny Bergsma
  * @version 0.1
  */
-public class WeerInfo {
-	private byte mTemp; 
+public abstract class WeerInfo { 
+	/* grafische beschrijving 
+	 * @invariant mDesc != null 
+	 */
 	private Bitmap mDesc;
 	
-	WeerInfo(byte temp, Bitmap desc) {
-		this.mTemp = temp;
+	/**
+	 * Creeren van representatie van weerinformatie (voor een bepaalde plaats, voor een bepaalde dag).
+	 * @param desc grafische beschrijving
+	 * @require desc != null
+	 * @ensure getDesc() == desc
+	 */
+	protected WeerInfo(Bitmap desc) {
 		this.mDesc = desc;
 	}
 	
-	public byte getTemp() {
-		return mTemp;
-	}
-	
+	/**
+	 * Geeft grafische beschrijving terug.
+	 * @return grafische beschrijving
+	 * @ensure result != null
+	 */
 	public Bitmap getDesc() {
 		return mDesc;
 	}

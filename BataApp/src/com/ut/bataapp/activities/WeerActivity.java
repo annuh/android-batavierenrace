@@ -66,7 +66,7 @@ public class WeerActivity extends SherlockFragmentActivity {
     	super.onStart();
     	Calendar now = Calendar.getInstance();
     	now.add(Calendar.DATE, 1);
-    	new RefreshWeerProvider().execute(mWeerProvider, now.getTime());
+    	new RefreshWeerProvider().execute(mWeerProvider, now);
 	}
         
     public boolean refreshOngoing() {
@@ -159,7 +159,7 @@ public class WeerActivity extends SherlockFragmentActivity {
 		protected WeerException doInBackground(Object... arg) {
 			WeerException result = null;
 			try {
-				((WeerProvider) arg[0]).refresh((Date) arg[1]);
+				((WeerProvider) arg[0]).refresh((Calendar) arg[1]);
 			} catch (WeerException e) {
 				result = e;
 			}
