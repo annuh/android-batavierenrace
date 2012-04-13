@@ -1,5 +1,6 @@
 package com.ut.bataapp;
 
+import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 
@@ -76,5 +77,13 @@ public class Utils {
 		keyValuesEditor.commit();		
 		Toast toast = Toast.makeText(context, "U volgt dit tean nu.", Toast.LENGTH_SHORT);
 		toast.show();
+	}
+	
+	public static void addBericht(Context context, String string) {
+		//Log.d("FavoTeams", "ADD: "+String.valueOf(team.getStartGroep()));
+		SharedPreferences keyValues = context.getSharedPreferences("push_berichten", Context.MODE_PRIVATE);
+		SharedPreferences.Editor keyValuesEditor = keyValues.edit();
+		keyValuesEditor.putString(new java.util.Date().toString() , string);
+		keyValuesEditor.commit();
 	}
 }
