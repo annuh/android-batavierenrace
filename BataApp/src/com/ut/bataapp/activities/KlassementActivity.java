@@ -91,7 +91,7 @@ public class KlassementActivity extends SherlockListActivity  {
 
 
 	private class getKlassement extends AsyncTask<Void, Void, Void> {
-		Response response;
+		Response<Klassement> response;
 		private ProgressDialog progressDialog;  
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(KlassementActivity.this,  
@@ -107,7 +107,7 @@ public class KlassementActivity extends SherlockListActivity  {
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getApplicationContext(), response)) {
-				klassement = (Klassement) response.getResponse();
+				klassement = response.getResponse();
 				adapter = new KlassementAdapter(KlassementActivity.this, klassement.getUitslag());
 				setListAdapter(adapter);
 				progressDialog.dismiss();

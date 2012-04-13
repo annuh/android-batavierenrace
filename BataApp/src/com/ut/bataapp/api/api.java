@@ -12,17 +12,21 @@ package com.ut.bataapp.api;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.util.Log;
+import android.content.Context;
 
-import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
-import com.ut.bataapp.objects.Klassement.KlassementInfo;
-import com.ut.bataapp.objects.KlassementItem;
+import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
-import com.ut.bataapp.objects.Looptijd;
-import com.ut.bataapp.parser.*;
+import com.ut.bataapp.parser.BerichtenHandler;
+import com.ut.bataapp.parser.DetailedEtappeHandler;
+import com.ut.bataapp.parser.EtappeDataHandler;
+import com.ut.bataapp.parser.EtappeHandler;
+import com.ut.bataapp.parser.EtappeUitslagHandler;
+import com.ut.bataapp.parser.KlassementHandler;
+import com.ut.bataapp.parser.PloegHandler;
+import com.ut.bataapp.parser.TeamHandler;
 
 public class api {
 	
@@ -41,9 +45,10 @@ public class api {
 	 * @param id - ID van de etappe
 	 * @return
 	 */
-	public static Response getEtappesByID(int id) {
+	public static Response getEtappesByID(int id,Context context) {
 		DetailedEtappeHandler deh = new DetailedEtappeHandler("etappes.xml",id);
 		deh.parse();
+		EtappeDataHandler eDH = new EtappeDataHandler(context);
 		return deh.getParsedData();
 	}
 	
@@ -131,7 +136,7 @@ public class api {
 	 * @param naam
 	 * @return
 	 */
-	public static Response getKlassementByNaam(String naam) {
+	public static Response<Klassement> getKlassementByNaam(String naam) {
 		KlassementHandler kh = new KlassementHandler("klassement.xml",naam);
 		kh.parse();
 		return kh.getParsedData();
