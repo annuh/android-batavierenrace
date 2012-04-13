@@ -30,7 +30,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		this.setContentView(R.layout.listview_team);
+		this.setContentView(R.layout.listview_favo);
 		registerForContextMenu(getListView());
 
 		SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);

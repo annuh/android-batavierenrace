@@ -39,6 +39,7 @@ public class TeamsActivity extends SherlockListActivity  {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		setTitle("Teams");
+		
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.getListView().setFastScrollEnabled(true);
