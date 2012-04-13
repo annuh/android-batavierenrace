@@ -21,8 +21,8 @@ public class EtappeHandler extends Handler{
 		super(path);
 	}
 	
-	public Response getParsedData(){
-		return new Response(etappes,this.status);
+	public Response<ArrayList<Etappe>> getParsedData(){
+		return new Response<ArrayList<Etappe>>(etappes,this.status);
 	}
 	
 	@Override

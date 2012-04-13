@@ -29,7 +29,9 @@ public class TeamHandler extends Handler{
 		super(path);
 	}
 
-	public Response getParsedData() {return new Response(teams,this.status);}
+	public Response<ArrayList<Team>> getParsedData() {
+		return new Response<ArrayList<Team>>(teams,this.status);
+	}
 	
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{

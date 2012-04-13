@@ -118,7 +118,7 @@ public class TeamsActivity extends SherlockListActivity  {
 	private class getTeams extends AsyncTask<Void, Void, Void> {  
 
 		private ProgressDialog progressDialog;
-		private Response response;
+		private Response<ArrayList<Team>> response;
 
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamsActivity.this,  
@@ -127,15 +127,14 @@ public class TeamsActivity extends SherlockListActivity  {
 
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			response = (Response) api.getTeams();
+			response = api.getTeams();
 			return null;       
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getApplicationContext(), response)) {
-				teams = (ArrayList<Team>) response.getResponse();
+				teams = response.getResponse();
 				adapter = new TeamAdapter(TeamsActivity.this, teams);
 				setListAdapter(adapter);
 				progressDialog.dismiss();

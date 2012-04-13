@@ -141,7 +141,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 	
 	private class getTeam extends AsyncTask<Void, Void, Void> {  
 		private ProgressDialog progressDialog;
-		Response response;
+		Response<Team> response;
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamActivity.this,  
 			  "Bezig met laden", "Team wordt opgehaald...", true);  
@@ -149,7 +149,6 @@ public class TeamActivity extends SherlockFragmentActivity {
 		
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			
 			response = api.getTeamByID(team_id);
 			return null;
 		}
@@ -158,7 +157,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getApplicationContext(), response)) {
 				setContentView(R.layout.simple_tabs);
-				team = (Team) response.getResponse();
+				team = response.getResponse();
 		        mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
 				
 				mPager = (ViewPager)findViewById(R.id.pager);
