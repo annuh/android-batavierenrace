@@ -11,6 +11,10 @@ public class Etappe {
 	private String record_ploeg;
 	private String record_snelheid;
 	private String record_tijd;
+	private String opentijd = "";
+	private String uitersteStarttijd = "";
+	private String limiettijd = "";
+	private String universteitsLimietstijd = "";
 	
 	/**
 	 * 

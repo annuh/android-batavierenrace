@@ -11,6 +11,7 @@ import com.actionbarsherlock.view.SubMenu;
 import com.ut.bataapp.R;
 import com.ut.bataapp.Utils;
 import com.ut.bataapp.activities.EtappeActivity;
+import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.adapters.EtappeLooptijdAdapter;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Looptijd;
@@ -88,7 +89,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Intent intent = new Intent(getActivity().getApplicationContext(), EtappeActivity.class);
+		Intent intent = new Intent(getActivity().getApplicationContext(), TeamActivity.class);
 		intent.putExtra("index", v.getId());
 		startActivity(intent);
 	}
