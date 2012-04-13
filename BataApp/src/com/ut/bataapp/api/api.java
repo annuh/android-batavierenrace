@@ -119,19 +119,12 @@ public class api {
 	 * @return
 	 */
 	public static Response getKlassementen(){
-		String kl1 = "Algemeen Klassement";
-		String kl2 = "Universiteits klassement";
+		String kl1 = "Algemeen";
+		String kl2 = "Universiteitscompetitie";
 		ArrayList<String> klassementen = new ArrayList<String>();
 		klassementen.add(kl1); klassementen.add(kl2);
 		return new Response(klassementen, Response.OK_UPDATE);	
 	}
-	
-	/** KAN WEG
-	public static Response getKlassement(){
-		KlassementHandler kh = new KlassementHandler("ask.xml");
-		kh.parse();
-		return kh.getParsedData();
-	}*/
 	
 	/**
 	 * NIEUWE METHODE:
@@ -139,23 +132,9 @@ public class api {
 	 * @return
 	 */
 	public static Response getKlassementByNaam(String naam) {
-		KlassementItem ki1 = new KlassementItem();
-		ki1.setPlaats(1);
-		ki1.setTeamNaam("Inter Actief");
-		ki1.setTeamStartNummer(34);
-		ki1.setTijd("34:34:12");
-		
-		KlassementItem ki2 = new KlassementItem();
-		ki2.setPlaats(1);
-		ki2.setTeamNaam("Inter Actief");
-		ki2.setTeamStartNummer(34);
-		ki2.setTijd("34:34:12");
-		ki2.setPlaats(1);
-		ki2.setTeamNaam("Inter-Actief");
-		ArrayList<KlassementItem> items = new ArrayList<KlassementItem>();
-		
-		Klassement klassement = new Klassement("Algemeen Klassement", items);
-		return new Response(klassement, Response.OK_UPDATE);
+		KlassementHandler kh = new KlassementHandler("klassement.xml",naam);
+		kh.parse();
+		return kh.getParsedData();
 	}
 	
 	

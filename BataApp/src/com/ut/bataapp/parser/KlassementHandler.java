@@ -1,84 +1,87 @@
 package com.ut.bataapp.parser;
 
-import java.util.ArrayList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 import android.util.Log;
 
 import com.ut.bataapp.objects.Klassement;
-import com.ut.bataapp.objects.Klassement.KlassementInfo;
+import com.ut.bataapp.objects.KlassementItem;
 import com.ut.bataapp.objects.Response;
 
 public class KlassementHandler extends Handler{
 
-	private ArrayList<Klassement> klassementen;
 	private Klassement klassement;
-	private KlassementInfo info;
+	private KlassementItem item = new KlassementItem();
+	private String naam;
 	
-	private boolean klass;
 	private boolean klassnaam;
+	private boolean readNaam; //true als de klassnaam == naam anders false;
 	private boolean plaats;
 	private boolean positie;
 	private boolean teamnr;
 	private boolean teamnaam;
+	private boolean startgroep;
 	private boolean tijd;
 	
-	public KlassementHandler(String path){
+	public KlassementHandler(String path,String naam){
 		super(path);
+		this.naam = naam;
 	}
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{
-		if(localName.equals("klassement")) klass = true;
-		else if(localName.equals("klassementnaam")) klassnaam = true;
+		if(localName.equals("naam")) klassnaam = true;
 		else if(localName.equals("plaats")) plaats = true;
 		else if(localName.equals("positie")) positie = true;
 		else if(localName.equals("teamnr")) teamnr = true;
 		else if(localName.equals("teamnaam")) teamnaam = true;
+		else if(localName.equals("startgroep")) startgroep = true;
 		else if(localName.equals("tijd")) tijd = true;
 	}
 	
 	@Override
 	public void endElement(String nameSpaceURI, String localName, String qName) throws SAXException{
-		if(localName.equals("klassement")){
-			klassementen.add(klassement);
-			Log.d("klassement","new klassement aan klassementen toegevoegd: "+klassement.toString());
-		}
-		else if(localName.equals("klassementnaam")) klassnaam = false;
+		if(localName.equals("naam")) klassnaam = false;
 		else if(localName.equals("plaats")){
-			//klassement.addKlassementInfo(info);
-			Log.d("klassement","new info aan klassement toegevoegd: "+info.toString()+" met positie: "+info.getPlaats());
+			if(readNaam){
+				Log.d("klassement","new info aan klassement toegevoegd: "+item.toString()+" met positie: "+item.getPlaats());
+				klassement.addKlassementInfo(item);
+			}
 		}
 		else if(localName.equals("positie")) positie = false;
 		else if(localName.equals("teamnr")) teamnr = false;
 		else if(localName.equals("teamnaam")) teamnaam = false;
+		else if(localName.equals("startgroep")) startgroep = false;
 		else if(localName.equals("tijd")) tijd = false;
 	}
 	
 	@Override
 	public void characters(char ch[], int start, int length){
-		if(klass){
-			klassement = new Klassement();
-			klass = false;
+		if(klassnaam){
+			if(new String(ch,start,length).equals(naam))readNaam = true;
+			else readNaam = false;	
 		}
-		else if(klassnaam) klassement.setNaam(new String(ch,start,length));
-		else if(plaats){
-			info =  klassement.new KlassementInfo();
-			plaats = false;
+		if(readNaam){
+			if(plaats){
+				item =  new KlassementItem();
+				plaats = false;
+			}
+			if(positie)	item.setPlaats(Integer.parseInt(new String(ch,start,length)));
+			else if(teamnr) item.setTeamStartNummer(Integer.parseInt(new String(ch,start,length)));
+			else if(teamnaam) item.setTeamNaam(new String(ch,start,length));
+			else if(startgroep) item.setTeamStartGroep(Integer.parseInt(new String(ch,start,length)));
+			else if(tijd) item.setTijd(new String(ch,start,length));
 		}
-		else if(positie) info.setPlaats(Integer.parseInt(new String(ch,start,length)));
-		else if(teamnr) info.setTeamStartNummer(Integer.parseInt(new String(ch,start,length)));
-		else if(teamnaam) info.setTeamNaam(new String(ch,start,length));
-		else if(tijd) info.setTijd(new String(ch,start,length));
 	}
 	
 	@Override
 	public void startDocument() throws SAXException{
-		this.klassementen = new ArrayList<Klassement>();
+		this.klassement = new Klassement();
+		klassement.setNaam(this.naam);
 	}
 	
 	public Response getParsedData() {
-		return new Response(klassementen,this.status);
+		return new Response(klassement,this.status);
 	}
 
 }
