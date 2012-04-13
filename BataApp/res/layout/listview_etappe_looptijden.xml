@@ -34,6 +34,14 @@
 	    </TextView>
 	</LinearLayout>
 	
+    <TextView
+        android:layout_width="fill_parent"
+        android:background="#FF0000"
+		android:layout_height="400dp"
+        android:id="@+id/loading"
+        android:text="Laden" 
+        />
+    	
 	<ListView
 	    android:id="@android:id/list"
 	    android:layout_width="fill_parent"

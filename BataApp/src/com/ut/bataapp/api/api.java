@@ -47,7 +47,7 @@ public class api {
 	 * @param id - ID van de etappe
 	 * @return
 	 */
-	public static Response<Etappe> getEtappesByID(int id,Context context) {
+	public static Response<Etappe> getEtappesByID(int id) {
 		DetailedEtappeHandler deh = new DetailedEtappeHandler("etappes.xml",id);
 		deh.parse();
 		//EtappeDataHandler eDH = new EtappeDataHandler(context);

@@ -18,6 +18,7 @@ import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.objects.Response;
 import android.content.Context;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class EtappeLooptijdenFragment extends SherlockListFragment {
 
@@ -32,6 +34,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	private EtappeLooptijdAdapter adapter = null;
 	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
 	private final int MENU_SORT_STAND = Menu.FIRST + 2;
+	TextView loading;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
+		//loading = findViewById(R.id.loading);
 		new getEtappeLooptijden().execute();
 	}
 
@@ -103,11 +107,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 			return null;
 		}
 
-		@SuppressWarnings("unchecked")
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 				looptijden = response.getResponse();
+				getView().findViewById(R.id.loading).setVisibility(View.GONE);
 				adapter = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden);
 				setListAdapter(adapter);
 			}

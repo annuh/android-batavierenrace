@@ -14,9 +14,11 @@ import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
+import com.ut.bataapp.Utils;
 import com.ut.bataapp.adapters.EtappeAdapter;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
+import com.ut.bataapp.objects.Response;
 
 public class EtappesActivity extends SherlockListActivity  {
 	
@@ -46,14 +48,8 @@ public class EtappesActivity extends SherlockListActivity  {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Intent intent = new Intent(this, MainActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-				
-				//Get rid of the slide-in animation, if possible
-	            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
-	                OverridePendingTransition.invoke(this);
-	            }
+				Utils.goHome(getApplicationContext());
+				break;
 		}
 		
 		return super.onOptionsItemSelected(item);
@@ -61,23 +57,28 @@ public class EtappesActivity extends SherlockListActivity  {
 
    private class getEtappes extends AsyncTask<Void, Void, Void> {  
 		private ProgressDialog progressDialog;  
+		Response<ArrayList<Etappe>> response;
+		
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(EtappesActivity.this,  
 			  "Bezig met laden", "Etappes worden opgehaald...", true);  
 		}
 		
-		@SuppressWarnings("unchecked")
 		@Override
 		protected Void doInBackground(Void... arg0) { 
-			etappes = api.getEtappes().getResponse();
+			response = api.getEtappes();
 			return null;       
 		}
 		
 		@Override  
 		protected void onPostExecute(Void result) {
-			adapter = new EtappeAdapter(EtappesActivity.this, etappes);
-			setListAdapter(adapter);
-			progressDialog.dismiss();
+			if(Utils.checkResponse(getApplicationContext(), response)){
+				etappes = response.getResponse();
+				adapter = new EtappeAdapter(EtappesActivity.this, etappes);
+				setListAdapter(adapter);
+				progressDialog.dismiss();
+			}
+			
 		}
 	}
 

@@ -14,6 +14,8 @@ import android.widget.ToggleButton;
 
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
+import com.ut.bataapp.Utils;
 import com.ut.bataapp.services.BataRadioService;
 
 public class BataRadioActivity extends SherlockActivity {
@@ -49,6 +51,16 @@ public class BataRadioActivity extends SherlockActivity {
         mSpinner.setAdapter(adapter);
         mSpinner.setSelection(getPreferences(MODE_PRIVATE).getInt(LAST_QUAL_SELECTION, getResources().getInteger(R.integer.spinner_quality_default)));
         mSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Utils.goHome(getApplicationContext());
+				break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	
 	@Override

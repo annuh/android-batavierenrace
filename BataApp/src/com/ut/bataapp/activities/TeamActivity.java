@@ -3,10 +3,8 @@ package com.ut.bataapp.activities;
 import java.util.ArrayList;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,11 +18,8 @@ import com.ut.bataapp.fragments.TeamInformatieFragment;
 import com.ut.bataapp.fragments.TeamLooptijdenFragment;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
-import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.Utils;
-
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 import com.viewpagerindicator.PageIndicator;
@@ -140,8 +135,10 @@ public class TeamActivity extends SherlockFragmentActivity {
 	}
 	
 	private class getTeam extends AsyncTask<Void, Void, Void> {  
+		
 		private ProgressDialog progressDialog;
 		Response<Team> response;
+		
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamActivity.this,  
 			  "Bezig met laden", "Team wordt opgehaald...", true);  

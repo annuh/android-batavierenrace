@@ -8,6 +8,7 @@ import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
+import com.ut.bataapp.Utils;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.api.api;
 
@@ -26,14 +27,7 @@ public class SponsorActivity extends SherlockFragmentActivity  {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Intent intent = new Intent(this, MainActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-				
-				//Get rid of the slide-in animation, if possible
-	            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
-	                OverridePendingTransition.invoke(this);
-	            }
+				Utils.goHome(getApplicationContext());
 		}
 		
 		return super.onOptionsItemSelected(item);
