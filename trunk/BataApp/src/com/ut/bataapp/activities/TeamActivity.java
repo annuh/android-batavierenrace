@@ -91,14 +91,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Intent intent = new Intent(this, TeamsActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-				
-				//Get rid of the slide-in animation, if possible
-	            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
-	                OverridePendingTransition.invoke(this);
-	            }
+				Utils.goHome(getApplicationContext());
 	            break;
 			case MENU_FOLLOW:
 				Utils.addFavoTeam(getApplicationContext(), team);
@@ -106,7 +99,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 				
 				break;
 			case MENU_UNFOLLOW:
-				Utils.removeFavoteam(getApplicationContext(), team.getStartnummer());
+				Utils.removeFavoteam(getApplicationContext(), team.getID());
 				invalidateOptionsMenu();
 				break;
 		}

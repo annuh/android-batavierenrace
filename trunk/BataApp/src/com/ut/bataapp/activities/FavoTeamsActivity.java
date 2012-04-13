@@ -37,12 +37,11 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		Map<String, ?> favoteams = keyValues.getAll();
 		if(favoteams.size() < 1) {
 			noFavoTeams();
-
 		} else if (favoteams.size() == 1) {
 			Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
 			int id = 0;
 			for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
-				id = (Integer) entry.getValue();
+				id = Integer.parseInt(entry.getKey());
 			}
 			intent.putExtra("index", id);
 			startActivity(intent);
@@ -50,7 +49,8 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		} else {
 			ArrayList<Team> teams = new ArrayList<Team>();
 			for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
-				teams.add(new Team((Integer) entry.getValue(),0,entry.getKey()));
+				teams.add(new Team(Integer.parseInt(entry.getKey()),0 , (String) entry.getValue()));
+				//teams.add(new Team((Integer) entry.getValue(),0,entry.getKey()));
 			}
 			adapter = new TeamAdapter(FavoTeamsActivity.this, teams);
 			setListAdapter(adapter);

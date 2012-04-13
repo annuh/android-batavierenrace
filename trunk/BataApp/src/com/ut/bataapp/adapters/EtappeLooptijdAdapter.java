@@ -37,9 +37,6 @@ public class EtappeLooptijdAdapter extends ArrayAdapter<Looptijd> {
 		TextView tijd = (TextView) rowView.findViewById(R.id.etappe_looptijd_tijd);
 		tijd.setText(values.get(position).getTijd());
 
-		TextView code = (TextView) rowView.findViewById(R.id.etappe_looptijd_code);
-		code.setText(values.get(position).getFoutcode());
-
 		return rowView;
 	}
 
