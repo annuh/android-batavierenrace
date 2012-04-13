@@ -78,8 +78,11 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 			             }
 			         });
 					c.addView(button);
+					///getLayoutInflater().from(getBaseContext()).inflate(R.layout.layout_to_load, parent, false);
 					//TextView myText = (TextView)getLayoutInflater().inflate(R.layout.tvtemplate, null);
+/*loadedView = LayoutInflater.from(getBaseContext()).inflate(R.layout.layout_to_load, parent, false);
 
+}*/
 					
 				}
 				
