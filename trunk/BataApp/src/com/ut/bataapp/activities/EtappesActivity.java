@@ -8,6 +8,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+
+import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
@@ -28,6 +30,7 @@ public class EtappesActivity extends SherlockListActivity  {
 	   super.onCreate(savedInstanceState);
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   this.getListView().setFastScrollEnabled(true);
+	   this.setContentView(R.layout.listview_etappes);
 	   new getEtappes().execute();  
    }
    
