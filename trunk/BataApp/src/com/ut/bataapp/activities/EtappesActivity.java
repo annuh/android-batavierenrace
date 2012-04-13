@@ -69,7 +69,7 @@ public class EtappesActivity extends SherlockListActivity  {
 		@SuppressWarnings("unchecked")
 		@Override
 		protected Void doInBackground(Void... arg0) { 
-			etappes = (ArrayList<Etappe>) api.getEtappes().getResponse();
+			etappes = api.getEtappes().getResponse();
 			return null;       
 		}
 		

@@ -28,6 +28,11 @@ public class KlassementHandler extends Handler{
 		super(path);
 		this.naam = naam;
 	}
+	
+	public Response<Klassement> getParsedData() {
+		return new Response<Klassement>(klassement,this.status);
+	}
+	
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{
 		if(localName.equals("naam")) klassnaam = true;
@@ -79,9 +84,4 @@ public class KlassementHandler extends Handler{
 		this.klassement = new Klassement();
 		klassement.setNaam(this.naam);
 	}
-	
-	public Response<Klassement> getParsedData() {
-		return new Response<Klassement>(klassement,this.status);
-	}
-
 }

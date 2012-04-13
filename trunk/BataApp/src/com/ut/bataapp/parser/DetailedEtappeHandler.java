@@ -32,8 +32,8 @@ public class DetailedEtappeHandler extends Handler{
 		this.etappeNummer=id;
 	}
 	
-	public Response getParsedData() {
-		return new Response(etappe,this.status);
+	public Response<Etappe> getParsedData() {
+		return new Response<Etappe>(etappe,this.status);
 	}
 
 	@Override

@@ -47,7 +47,7 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 	}
 	
 	private class getKlassementen extends AsyncTask<Void, Void, Void> {
-		Response response = null;
+		Response<ArrayList<String>> response = null;
 		private ProgressDialog progressDialog;  
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(KlassementenActivity.this,  
@@ -56,16 +56,15 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 		
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			response = (Response) api.getKlassementen();
+			response = api.getKlassementen();
 			return null;       
 		}
 		
-		@SuppressWarnings("unchecked")
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getApplicationContext(), response)) {
 				LinearLayout c = (LinearLayout) findViewById(R.id.container_klassementen);
-				for(final String klassement: (ArrayList<String>) response.getResponse()) {
+				for(final String klassement: response.getResponse()) {
 
 					Button button = (Button)getLayoutInflater().inflate(R.drawable.button, null);
 					button.setText(klassement);

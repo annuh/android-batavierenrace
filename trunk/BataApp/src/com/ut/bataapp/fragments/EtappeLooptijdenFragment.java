@@ -95,11 +95,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	}
 
 	private class getEtappeLooptijden extends AsyncTask<Void, Void, Void> {
-		Response response;
+		Response<ArrayList<Looptijd>> response;
 
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			response = (Response) api.getUitslagenVanEtappe(((EtappeActivity) getActivity()).getEtappe().getId());
+			response = api.getUitslagenVanEtappe(((EtappeActivity) getActivity()).getEtappe().getId());
 			return null;
 		}
 
@@ -107,7 +107,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
-				looptijden = (ArrayList<Looptijd>) response.getResponse();
+				looptijden = response.getResponse();
 				adapter = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden);
 				setListAdapter(adapter);
 			}

@@ -49,7 +49,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 		return super.onOptionsItemSelected(item);
 	}
    	private class getBerichten extends AsyncTask<Void, Void, Void> {
-		Response response;
+		Response<ArrayList<Bericht>> response;
 		private ProgressDialog progressDialog;  
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(BerichtenActivity.this,  
@@ -65,7 +65,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getApplicationContext(), response)) {
-				values =  (ArrayList<Bericht>) response.getResponse();
+				values = response.getResponse();
 				ba = new BerichtAdapter(BerichtenActivity.this, values);
 				setListAdapter(ba);
 				progressDialog.dismiss();

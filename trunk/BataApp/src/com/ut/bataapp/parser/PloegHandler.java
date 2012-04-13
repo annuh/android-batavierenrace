@@ -37,8 +37,8 @@ public class PloegHandler extends Handler{
 	public PloegHandler(String path){
 		super(path);
 	}
-	public Response getParsedData(){
-		return new Response(uitslagen,this.status);
+	public Response<ArrayList<Looptijd>> getParsedData(){
+		return new Response<ArrayList<Looptijd>>(uitslagen,this.status);
 	}
 	
 	@Override

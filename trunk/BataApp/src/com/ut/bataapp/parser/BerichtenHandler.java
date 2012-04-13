@@ -20,8 +20,8 @@ public class BerichtenHandler extends Handler{
 		super(path);
 	}
 	
-	public Response getParsedData(){
-		return new Response(berichten,this.status);
+	public Response<ArrayList<Bericht>> getParsedData(){
+		return new Response<ArrayList<Bericht>>(berichten,this.status);
 	}
 	
 	@Override

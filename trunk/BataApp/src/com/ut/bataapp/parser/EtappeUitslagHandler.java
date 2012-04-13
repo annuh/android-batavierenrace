@@ -34,8 +34,8 @@ public class EtappeUitslagHandler extends Handler{
 		etappeID = id;
 	}
 	
-	public Response getParsedData() {
-		return new Response(uitslagen,this.status);
+	public Response<ArrayList<Looptijd>> getParsedData() {
+		return new Response<ArrayList<Looptijd>>(uitslagen,this.status);
 	}
 
 	@Override
