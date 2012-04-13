@@ -21,7 +21,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   setTitle("Berichten");
 	   super.onCreate(savedInstanceState);
-	   ArrayList<Bericht> values = api.getBerichten();
+	   ArrayList<Bericht> values = (ArrayList<Bericht>) api.getBerichten().getResponse();
 	   setListAdapter(new BerichtAdapter(BerichtenActivity.this, values));
    }
    
