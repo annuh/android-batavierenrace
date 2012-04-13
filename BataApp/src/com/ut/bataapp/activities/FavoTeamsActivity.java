@@ -37,6 +37,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		Map<String, ?> favoteams = keyValues.getAll();
 		if(favoteams.size() < 1) {
 			noFavoTeams();
+			// TODO: 
 		} else if (favoteams.size() == 1) {
 			Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
 			int id = 0;

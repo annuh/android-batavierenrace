@@ -76,7 +76,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 			Intent tointent = new Intent(context, MainActivity.class);
 			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
 					tointent, 0);
-			notification.setLatestEventInfo(context, "Batavierenrace",
+			notification.setLatestEventInfo(context, "Batavierenrace ("+strTitle+")",
 					message, pendingIntent);
 			notificationManager.notify(0, notification);
 		}

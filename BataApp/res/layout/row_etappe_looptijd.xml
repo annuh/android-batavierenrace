@@ -18,6 +18,4 @@
         android:id="@+id/etappe_looptijd_tijd"
         android:layout_alignParentRight="true"
         style="@style/listview_text" />
-    
-
 </RelativeLayout>
