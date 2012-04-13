@@ -93,18 +93,25 @@ public class api {
 		return ph.getParsedData();
 	}
 	
-	/**
+ /**
 	 * Detailleerde informatie van een team, inclusief looptijden van de lopers (uitslag)
 	 * @param id van team
 	 * @return
 	 */
-	public static Team getTeamByID(int id) {
-		ArrayList<Looptijd> uitslagen = (ArrayList<Looptijd>) getUitslagByTeam(id).getResponse();
-		Team team = new Team(uitslagen.get(0).getTeamStartnummer(),uitslagen.get(0).getTeamStartgroep(),uitslagen.get(0).getTeamNaam());
-		for(int i=0;i<uitslagen.size();i++){
-			team.addLooptijd(uitslagen.get(i));
-		}
-		return team;
+	public static Response getTeamByID(int id) {
+		Response uitslagbyteam = getUitslagByTeam(id);
+		Response result = null;
+		if(uitslagbyteam.getStatus() == Response.NOK_NO_DATA){
+			result = uitslagbyteam;
+		}else{
+			ArrayList<Looptijd> uitslagen = (ArrayList<Looptijd>) uitslagbyteam.getResponse();
+			Team team = new Team(uitslagen.get(0).getTeamStartnummer(),uitslagen.get(0).getTeamStartgroep(),uitslagen.get(0).getTeamNaam());
+			for(int i=0;i<uitslagen.size();i++){
+				team.addLooptijd(uitslagen.get(i));
+			}
+			result = new Response(team,result.getStatus());
+		}	
+		return result;
 	}
 	
 	/**
