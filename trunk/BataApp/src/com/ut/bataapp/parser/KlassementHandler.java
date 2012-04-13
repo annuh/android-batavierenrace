@@ -80,8 +80,8 @@ public class KlassementHandler extends Handler{
 		klassement.setNaam(this.naam);
 	}
 	
-	public Response getParsedData() {
-		return new Response(klassement,this.status);
+	public Response<Klassement> getParsedData() {
+		return new Response<Klassement>(klassement,this.status);
 	}
 
 }

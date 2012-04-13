@@ -108,7 +108,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 		
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			etappe = (Etappe) api.getEtappesByID(etappe_id).getResponse();
+			etappe = (Etappe) api.getEtappesByID(etappe_id,EtappeActivity.this).getResponse();
 			return null;       
 		}
 		

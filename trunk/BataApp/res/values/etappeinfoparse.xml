@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tag_etappeinfo_root">ei</string>
+    <string name="tag_etappeinfo_etappe">e</string>
+    <string name="tag_etappeinfo_id">i</string>
+    <string name="tag_etappeinfo_limiettijd">lt</string>
+    <string name="tag_etappeinfo_uinversiteitlimiettijd">ult</string>
+    <string name="tag_etappeinfo_open">o</string>
+    <string name="tag_etappeinfo_uiterstestarttijd">us</string>
+</resources>
