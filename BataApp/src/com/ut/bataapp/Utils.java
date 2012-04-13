@@ -42,6 +42,7 @@ public class Utils {
 				Utils.noData(context);
 				return false;
 			case Response.NOK_OLD_DATA:
+				Toast.makeText(context, "Geen nieuwe data", Toast.LENGTH_LONG).show();
 				return true;
 			case Response.OK_NO_UPDATE:
 				return true;
@@ -71,7 +72,7 @@ public class Utils {
 		Log.d("FavoTeams", "ADD: "+String.valueOf(team.getStartGroep()));
 		SharedPreferences keyValues = context.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
 		SharedPreferences.Editor keyValuesEditor = keyValues.edit();
-		keyValuesEditor.putString(String.valueOf(team.getStartGroep()), team.getNaam());
+		keyValuesEditor.putString(String.valueOf(team.getID()), team.getNaam());
 		keyValuesEditor.commit();		
 		Toast toast = Toast.makeText(context, "U volgt dit tean nu.", Toast.LENGTH_SHORT);
 		toast.show();

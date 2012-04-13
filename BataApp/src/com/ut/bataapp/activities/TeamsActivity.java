@@ -32,7 +32,7 @@ public class TeamsActivity extends SherlockListActivity  {
 	private final int MENU_SEARCH = Menu.FIRST;
 	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
 	private final int MENU_SORT_START = Menu.FIRST + 2;
-	private ArrayList<Team> teams = null;
+	private static ArrayList<Team> teams = null;
 	private EditText filterText = null;
 	private TeamAdapter adapter = null;
 
@@ -43,7 +43,7 @@ public class TeamsActivity extends SherlockListActivity  {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.getListView().setFastScrollEnabled(true);
 		this.setContentView(R.layout.listview_team);
-		new getTeams().execute();  	   
+		new getTeams().execute();	   
 	}
 
 	@Override
@@ -138,6 +138,7 @@ public class TeamsActivity extends SherlockListActivity  {
 				adapter = new TeamAdapter(TeamsActivity.this, teams);
 				setListAdapter(adapter);
 				progressDialog.dismiss();
+				response = null;
 			}
 		}
 	}
