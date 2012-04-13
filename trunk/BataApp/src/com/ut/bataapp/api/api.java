@@ -157,14 +157,20 @@ public class api {
 	 * NIEUWE METHODE
 	 * @return
 	 */
-	public static ArrayList<Bericht> getBerichten(){
+	/**public static ArrayList<Bericht> getBerichten(){
 		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
 		berichten.add(new Bericht("003", 0, "Permanente stop", "Omdat bij de toplopers doping is geconstateerd is de batavierenrace 2012 permanent gestopt.", "10/01/12 om 15:34"));
 		berichten.add(new Bericht("002", 1, "Tijdelijke stop", "Omdat de lopers te hard gelopen hebben is er een tijdelijke stop. De batavierenracecommissie onderzoekt of er doping is gebruikt.", "10/01/12 om 15:13"));
 		berichten.add(new Bericht("001", 2, "Lopers veel succes", "De batavierenracecommissie wenst elke loper veel succes in de race.", "10/01/12 om 15:09"));
 		
 		return berichten;
+	}*/
+	public static Response getBerichten(){
+		BerichtenHandler bh = new BerichtenHandler("nieuws.xml");
+		bh.parse();
+		return bh.getParsedData();
 	}
+
 
 	//Omdat dit ergens wordt aangeroepen :S
 	public static HashMap<Integer, Integer> getLooptijdenByEtappe(Etappe etappe) {

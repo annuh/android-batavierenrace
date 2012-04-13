@@ -13,6 +13,9 @@ public class Bericht {
 	private String bericht = "";
 	private String datum = "";
 	
+	public Bericht(){
+		this("",CUSTOM,"","","");
+	}
 	public Bericht(String id, int code, String titel, String bericht, String datum){	
 		this.id = id;
 		this.code = code;
@@ -21,7 +24,10 @@ public class Bericht {
 		this.datum = datum;
 	}
 	
-	
+	public void setId(String id){this.id = id;}
+	public void setTitel(String titel){this.titel = titel;}
+	public void setBericht(String bericht){this.bericht = bericht;}
+
 	
 	public String getId(){ return this.id; }
 	public int getCode(){ return this.code; }
