@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.WeerActivity;
-import com.ut.bataapp.weer.WeerInfo;
+import com.ut.bataapp.weer.WeerInfoVerwachting;
 import com.ut.bataapp.weer.WeerProvider;
 
 public class WeerVerwachtingFragment extends SherlockFragment {
@@ -38,12 +38,12 @@ public class WeerVerwachtingFragment extends SherlockFragment {
 	public void updateView() {
 		if (getView() != null) { // onCreateView() geweest?
     		WeerProvider weerProvider = mWeerActivity.getWeerProvider();
-	    	WeerInfo nijmegen = weerProvider.getVerwachting(WeerProvider.NIJMEGEN),
-					 ruurlo = weerProvider.getVerwachting(WeerProvider.RUURLO),
-					 enschede = weerProvider.getVerwachting(WeerProvider.ENSCHEDE);
-			((TextView) getActivity().findViewById(R.id.nijmegen_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), nijmegen.getTemp()));
-			((TextView) getActivity().findViewById(R.id.ruurlo_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), ruurlo.getTemp()));
-			((TextView) getActivity().findViewById(R.id.enschede_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), enschede.getTemp()));
+	    	WeerInfoVerwachting nijmegen = weerProvider.getVerwachting(WeerProvider.NIJMEGEN),
+					            ruurlo = weerProvider.getVerwachting(WeerProvider.RUURLO),
+					            enschede = weerProvider.getVerwachting(WeerProvider.ENSCHEDE);
+			((TextView) getActivity().findViewById(R.id.nijmegen_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), nijmegen.getMaxTemp()));
+			((TextView) getActivity().findViewById(R.id.ruurlo_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), ruurlo.getMaxTemp()));
+			((TextView) getActivity().findViewById(R.id.enschede_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), enschede.getMaxTemp()));
 			((ImageView) getActivity().findViewById(R.id.nijmegen_verwacht_icoon)).setImageBitmap(nijmegen.getDesc());
 			((ImageView) getActivity().findViewById(R.id.ruurlo_verwacht_icoon)).setImageBitmap(ruurlo.getDesc());
 			((ImageView) getActivity().findViewById(R.id.enschede_verwacht_icoon)).setImageBitmap(enschede.getDesc());

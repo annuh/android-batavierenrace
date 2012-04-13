@@ -1,16 +1,14 @@
 package com.ut.bataapp.parser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import android.util.Log;
-
-import com.ut.bataapp.objects.Etappe;
-import com.ut.bataapp.objects.Response;
-import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.objects.Looptijd;
+import com.ut.bataapp.objects.Response;
 
 public class PloegHandler extends Handler{
 	
@@ -94,4 +92,10 @@ public class PloegHandler extends Handler{
 		this.uitslagen = new ArrayList<Looptijd>();
 	}
 
+	@Override
+	public InputSource getInputSource() throws IOException {
+		synchronized (PloegHandler.class) { // kan ook vanuit de AsyncTask-thread van BackgroundUpdater worden aangeroepen (tegelijk met een AsyncTask-thread uit een activity)
+			return super.getInputSource();
+		}
+	}
 }

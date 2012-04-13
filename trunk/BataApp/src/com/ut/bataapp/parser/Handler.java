@@ -24,13 +24,13 @@ import com.ut.bataapp.objects.Response;
 import android.os.Environment;
 import android.util.Log;
 
-public abstract class Handler extends DefaultHandler {
-	String location;
+public class Handler extends DefaultHandler {
+	private String path;
 	public int status = Response.NOK_NO_DATA;
 	private boolean parsed = false;// only for parse method!!
 
 	public Handler(String path) {
-		this.location = path;
+		this.path = path;
 	}
 
 	public Handler() {
@@ -39,7 +39,7 @@ public abstract class Handler extends DefaultHandler {
 	public boolean parse() {
 		boolean result = false;
 		try {
-			InputSource input = getInputSource(location);
+			InputSource input = getInputSource();
 			if (!parsed || !(status == Response.OK_NO_UPDATE || status == Response.NOK_NO_DATA)) {
 				SAXParserFactory spf = SAXParserFactory.newInstance();
 				SAXParser sp = spf.newSAXParser();
@@ -72,7 +72,7 @@ public abstract class Handler extends DefaultHandler {
 	 * @throws IOException
 	 * 
 	 */
-	private InputSource getInputSource(String path) throws IOException {
+	public InputSource getInputSource() throws IOException {
 		File sdFile = getFile(path);
 		InputSource result = null;
 		if (sdFile == null) {
@@ -109,7 +109,6 @@ public abstract class Handler extends DefaultHandler {
 			}
 		}
 		return result;
-
 	}
 
 	private File getFile(String path) {
@@ -227,4 +226,7 @@ public abstract class Handler extends DefaultHandler {
 		return result;
 	}
 
+	public int getStatus() {
+		return status;
+	}
 }
