@@ -42,6 +42,19 @@ public class EtappeInformatie extends SherlockFragment {
     	TextView etappeomschrijving = (TextView) view.findViewById(R.id.text_etappeomschrijving);
     	etappeomschrijving.setText(etappe.getOmschrijving());
     	
+    	// Tijden:
+    	TextView opentijd = (TextView) view.findViewById(R.id.text_etappe_opentijd);
+    	//opentijd.setText(etappe);
+    	
+    	TextView sluittijd = (TextView) view.findViewById(R.id.text_etappe_sluittijd);
+    	sluittijd.setText(etappe.getNaar());
+    	
+    	TextView limiettijd = (TextView) view.findViewById(R.id.text_etappe_limiettijd);
+    	limiettijd.setText(etappe.getNaar());
+    	
+    	TextView unilimiettijd = (TextView) view.findViewById(R.id.text_etappe_unilimiettijd);
+    	unilimiettijd.setText(etappe.getNaar());
+    	
     	
     	
     	TextView recordtijd_team = (TextView) view.findViewById(R.id.recordtijd_team);

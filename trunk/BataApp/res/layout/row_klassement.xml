@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="wrap_content"
     android:background="@drawable/listview_background">
     
-   
-
     <TextView  
         android:id="@+id/klassement_plaats"
 		style="@style/listview_text"
@@ -15,6 +13,7 @@
     <TextView
         android:id="@+id/klassement_team"
         style="@style/listview_text"
+        
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/klassement_plaats" />
     

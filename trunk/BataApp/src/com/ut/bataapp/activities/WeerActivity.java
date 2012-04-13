@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
+import com.ut.bataapp.Utils;
 import com.ut.bataapp.fragments.WeerAdviesFragment;
 import com.ut.bataapp.fragments.WeerBuienradarFragment;
 import com.ut.bataapp.fragments.WeerVerwachtingFragment;
@@ -57,6 +59,16 @@ public class WeerActivity extends SherlockFragmentActivity {
 		
 		mWeerProvider = new WeerBuienradarGoogle(this); 
     }
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Utils.goHome(getApplicationContext());
+				break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
     
     /**
      * Callback-methode resumen activity. XML-weergegevens (Google en Buienradar) worden opgehaald.

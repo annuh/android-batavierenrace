@@ -38,9 +38,9 @@
                     style="@style/table_right" />
             </TableRow>
 
-             <View style="@style/divider" >
+            <View style="@style/divider" >
             </View>
-            
+
             <TableRow>
 
                 <TextView
@@ -52,9 +52,9 @@
                     style="@style/table_right" />
             </TableRow>
 
-             <View style="@style/divider" >
+            <View style="@style/divider" >
             </View>
-            
+
             <TableRow>
 
                 <TextView
@@ -66,9 +66,9 @@
                     style="@style/table_right" />
             </TableRow>
 
-             <View style="@style/divider" >
+            <View style="@style/divider" >
             </View>
-            
+
             <TableRow>
 
                 <TextView
@@ -80,9 +80,9 @@
                     style="@style/table_right" />
             </TableRow>
 
-             <View style="@style/divider" >
+            <View style="@style/divider" >
             </View>
-            
+
             <TableRow>
 
                 <TextView
@@ -95,6 +95,61 @@
             </TableRow>
         </TableLayout>
 
+        <TextView
+            style="@style/h1"
+            android:text="@string/etappe_tijden" />
+        
+        <TableLayout style="@style/table" >
+            <TableRow>
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_tijden_opentijd" />
+
+                <TextView
+                    android:id="@+id/text_etappe_opentijd"
+                    style="@style/table_right" />
+            </TableRow>
+
+            <View style="@style/divider" />
+
+            <TableRow>
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_tijden_sluittijd" />
+
+                <TextView
+                    android:id="@+id/text_etappe_sluittijd"
+                    style="@style/table_right" />
+            </TableRow>
+
+            <View style="@style/divider" />
+
+            <TableRow>
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_tijden_limiettijd" />
+
+                <TextView
+                    android:id="@+id/text_etappe_limiettijd"
+                    style="@style/table_right" />
+            </TableRow>
+
+            <View style="@style/divider" >
+            </View>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/etappe_tijden_unilimiettijd" />
+
+                <TextView
+                    android:id="@+id/text_etappe_unilimiettijd"
+                    style="@style/table_right" />
+            </TableRow>
+
+        </TableLayout>
+        
         <TextView
             style="@style/h1"
             android:text="@string/etappe_hoogteverschil" />
@@ -129,9 +184,9 @@
                     style="@style/table_right" />
             </TableRow>
 
-             <View style="@style/divider" >
+            <View style="@style/divider" >
             </View>
-            
+
             <TableRow>
 
                 <TextView
@@ -143,9 +198,9 @@
                     style="@style/table_right" />
             </TableRow>
 
-             <View style="@style/divider" >
+            <View style="@style/divider" >
             </View>
-            
+
             <TableRow>
 
                 <TextView
@@ -157,9 +212,9 @@
                     style="@style/table_right" />
             </TableRow>
 
-             <View style="@style/divider" >
+            <View style="@style/divider" >
             </View>
-            
+
             <TableRow>
 
                 <TextView

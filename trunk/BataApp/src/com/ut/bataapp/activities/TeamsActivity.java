@@ -11,7 +11,6 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -39,7 +38,7 @@ public class TeamsActivity extends SherlockListActivity  {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		setTitle("Teams");
-		
+
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.getListView().setFastScrollEnabled(true);
@@ -68,6 +67,13 @@ public class TeamsActivity extends SherlockListActivity  {
 		.setIcon(R.drawable.ic_action_sort)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		return true;
+	}
+
+	@Override
+	public boolean onSearchRequested() {
+		this.findViewById(MENU_SEARCH).performClick();
+		return false;
+		//return super.onSearchRequested();
 	}
 
 	@Override

@@ -16,13 +16,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.provider.Settings.Secure;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.google.android.c2dm.C2DMBaseReceiver;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.BerichtenActivity;
@@ -146,6 +143,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	 */	
 	private class registerServer extends AsyncTask<Void, Void, Void> {  		
 
+		@SuppressWarnings("deprecation")
 		@Override  
 		protected Void doInBackground(Void... arg0) {
 			// send to server

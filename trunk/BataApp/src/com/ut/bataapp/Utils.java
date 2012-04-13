@@ -2,11 +2,9 @@ package com.ut.bataapp;
 
 import java.util.Calendar;
 import java.util.Date;
-
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,15 +20,12 @@ public class Utils {
 	public static final byte DIFF_CF = 32;
 	public static final float FACTOR_CF  = 1.8F;
 
-	public static void old_data(Context context){
-		Toast.makeText(context, "Geen nieuwe data", Toast.LENGTH_LONG).show();
-	}
 	
 	public static void noData(final Context context){
 		new AlertDialog.Builder(context)
-     	 .setTitle("U heeft geen favoriete teams!")
-     	 .setMessage("Wilt u nu teams toevoegen?")
-		   .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+     	 .setTitle("Fout!")
+     	 .setMessage("Controleer uw internetverbinding.")
+		   .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 		       public void onClick(DialogInterface dialog, int id) {
 		    	   Intent i = new Intent(context.getApplicationContext(), MainActivity.class);
 		           context.startActivity(i);
@@ -45,7 +40,7 @@ public class Utils {
 		context.startActivity(intent);
 	}
 	
-	public static boolean checkResponse(Context context, Response response) {
+	public static boolean checkResponse(Context context, Response<?> response) {
 		switch (response.getStatus()) {
 			case Response.NOK_NO_DATA:
 				Utils.noData(context);
