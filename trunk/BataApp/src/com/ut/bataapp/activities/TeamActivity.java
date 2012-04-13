@@ -18,6 +18,7 @@ import com.actionbarsherlock.R;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.fragments.TeamInformatieFragment;
 import com.ut.bataapp.fragments.TeamLooptijdenFragment;
+import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.Utils;
@@ -139,7 +140,8 @@ public class TeamActivity extends SherlockFragmentActivity {
 	}
 	
 	private class getTeam extends AsyncTask<Void, Void, Void> {  
-		private ProgressDialog progressDialog;  
+		private ProgressDialog progressDialog;
+		Response response;
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamActivity.this,  
 			  "Bezig met laden", "Team wordt opgehaald...", true);  
@@ -148,23 +150,26 @@ public class TeamActivity extends SherlockFragmentActivity {
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			
-			team = api.getTeamByID(team_id);
+			response = api.getTeamByID(team_id);
 			return null;
 		}
 		
 		@Override  
 		protected void onPostExecute(Void result) {
-			setContentView(R.layout.simple_tabs);
+			if(Utils.checkResponse(getApplicationContext(), response)) {
+				setContentView(R.layout.simple_tabs);
+				team = (Team) response.getResponse();
+		        mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
+				
+				mPager = (ViewPager)findViewById(R.id.pager);
+				mPager.setAdapter(mAdapter);
+				
+				mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
+				mIndicator.setViewPager(mPager);
+				invalidateOptionsMenu();
+				progressDialog.dismiss();
+			}
 			
-	        mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
-			
-			mPager = (ViewPager)findViewById(R.id.pager);
-			mPager.setAdapter(mAdapter);
-			
-			mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
-			mIndicator.setViewPager(mPager);
-			invalidateOptionsMenu();
-			progressDialog.dismiss();
 		}
 	}
 
