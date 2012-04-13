@@ -25,6 +25,8 @@ import android.widget.Toast;
 
 import com.google.android.c2dm.C2DMBaseReceiver;
 import com.ut.bataapp.R;
+import com.ut.bataapp.activities.BerichtenActivity;
+import com.ut.bataapp.activities.WeerActivity;
 import com.ut.bataapp.services.C2DMConfig;
 
 /**
@@ -62,24 +64,34 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	@Override
 	protected void onMessage(Context context, Intent intent) {
 		String message = intent.getExtras().getString("message");
-		String strTitle = intent.getExtras().getString("title");
+		String type = intent.getExtras().getString("title");
 		if (message != null) {
 			Log.d("C2DM", message);
-			NotificationManager notificationManager = (NotificationManager) context
-					.getSystemService(Context.NOTIFICATION_SERVICE);
-			Notification notification = new Notification(R.drawable.icon,
-					"Message received", System.currentTimeMillis());
-			// Hide the notification after its selected
-			notification.flags |= Notification.FLAG_AUTO_CANCEL;
-			notification.number += 1;
-
-			Intent tointent = new Intent(context, MainActivity.class);
-			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-					tointent, 0);
-			notification.setLatestEventInfo(context, "Batavierenrace ("+strTitle+")",
-					message, pendingIntent);
-			notificationManager.notify(0, notification);
+			
+			Utils.addBericht(getApplicationContext(), type+message);
+			
+			
 		}
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void makeNotificiation(String type, String message) {
+		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+		Notification notification = new Notification(R.drawable.icon, "Message received", System.currentTimeMillis());
+		
+		// Hide the notification after its selected
+		notification.flags |= Notification.FLAG_AUTO_CANCEL;
+		notification.number += 1;
+		Intent tointent = new Intent(context, BerichtenActivity.class);
+		if(type.equals("w")) {
+			tointent = new Intent(context, WeerActivity.class);
+		}
+		
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
+				tointent, 0);
+		notification.setLatestEventInfo(context, "Batavierenrace ("+type+")",
+				message, pendingIntent);
+		notificationManager.notify(0, notification);
 	}
 
 	/* (non-Javadoc)
