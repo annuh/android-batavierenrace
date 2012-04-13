@@ -141,18 +141,30 @@ public abstract class Handler extends DefaultHandler {
 		return result;
 	}
 
-	/**
+  /**
 	 * Deze functie controleerd of de huidige versie van een bestand de nieuwste
 	 * is.
+	 * @require getFile(path) != null
 	 */
 	private boolean isNewest(String path) {
-		/**
-		 * boolean result = false; if(#seconds from lastupdate of updatefile
-		 * >api.getThreshold()){ downloadToSD("update.xml"); } if(#timestamp
-		 * voor path in update.xml <= timestamp in path op SD){ return true; }
-		 * return result;
-		 */
-		return true;
+		boolean result = true;
+		long timestampsd = getFile(path).lastModified();
+		long timestampwww = 0;
+		
+		try {
+			URL url = new URL(api.getURL() + path);
+			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+			timestampwww = urlConnection.getLastModified();
+		} catch (MalformedURLException e) {result = false;
+		} catch (IOException e) {result = false;}
+		
+		if(timestampwww>timestampsd || timestampwww == 0){
+			result = false;
+		}
+		Log.d("handler","timestamp sd: "+timestampsd+" voor file: "+path);
+		Log.d("handler","timestamp www: "+timestampwww+" voor file: "+path);
+		Log.d("handler","isNewest("+path+") = "+result);
+		return result;
 	}
 
 	/**
