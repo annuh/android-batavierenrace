@@ -57,12 +57,6 @@ public class EtappeActivity extends SherlockFragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	private static final class OverridePendingTransition {
-		static void invoke(Activity activity) {
-			activity.overridePendingTransition(0, 0);
-		}
-	}
-
 	class EtappeFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
 
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
@@ -111,7 +105,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(getApplicationContext(), response)) {
+			if(Utils.checkResponse(EtappeActivity.this, response)) {
 				etappe = response.getResponse();
 				setContentView(R.layout.simple_tabs);
 				mAdapter = new EtappeFragmentAdapter(getSupportFragmentManager());

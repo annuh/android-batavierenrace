@@ -106,7 +106,7 @@ public class KlassementActivity extends SherlockListActivity  {
 
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(getApplicationContext(), response)) {
+			if(Utils.checkResponse(KlassementActivity.this, response)) {
 				klassement = response.getResponse();
 				adapter = new KlassementAdapter(KlassementActivity.this, klassement.getUitslag());
 				setListAdapter(adapter);

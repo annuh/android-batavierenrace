@@ -57,7 +57,7 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(getApplicationContext(), response)) {
+			if(Utils.checkResponse(KlassementenActivity.this, response)) {
 				klassementen = response.getResponse();
 				ViewGroup c = (ViewGroup) findViewById(R.id.container_klassementen);
 				for(final String klassement: (ArrayList<String>) response.getResponse()) {

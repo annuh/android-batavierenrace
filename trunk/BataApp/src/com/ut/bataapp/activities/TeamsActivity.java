@@ -139,7 +139,7 @@ public class TeamsActivity extends SherlockListActivity  {
 
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(getApplicationContext(), response)) {
+			if(Utils.checkResponse(TeamsActivity.this, response)) {
 				teams = response.getResponse();
 				adapter = new TeamAdapter(TeamsActivity.this, teams);
 				setListAdapter(adapter);

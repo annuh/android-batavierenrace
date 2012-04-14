@@ -97,6 +97,18 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		return false;
 	} 
 
+	public ArrayList<Team> getFavoTeams() {
+		SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
+		Map<String, ?> favoteams = keyValues.getAll();
+		ArrayList<Team> teams = new ArrayList<Team>();
+		
+		for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
+			teams.add(new Team(Integer.parseInt(entry.getKey()),0 , (String) entry.getValue()));
+		}
+		return teams;
+		
+	}
+	
 	public void noFavoTeams() {
 		new AlertDialog.Builder(this)
 		.setTitle("U heeft geen favoriete teams!")
