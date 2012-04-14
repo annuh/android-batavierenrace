@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
@@ -118,9 +119,14 @@ public class api {
 	 * @return
 	 */
 	public static Response<ArrayList<Looptijd>> getUitslagByTeam(int id){
+		Log.d("UITSLAG","Punt 1");
 		PloegHandler ph = new PloegHandler("ploeguitslag/"+id+".xml");
+		Log.d("UITSLAG","Punt 2");
 		ph.parse();
-		return ph.getParsedData();
+		Log.d("UITSLAG","Punt 3");
+		Response<ArrayList<Looptijd>> result = ph.getParsedData();
+		Log.d("UITSLAG","Punt 4: "+result.getStatus());
+		return result;
 	}
 	
 	/**

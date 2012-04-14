@@ -40,7 +40,8 @@ public class Handler extends DefaultHandler {
 		boolean result = false;
 		try {
 			InputSource input = getInputSource();
-			if (!parsed || !(status == Response.OK_NO_UPDATE || status == Response.NOK_NO_DATA)) {
+			if(status != Response.NOK_NO_DATA && (!parsed || status == Response.OK_UPDATE)){
+			//if (!parsed && !(status == Response.OK_NO_UPDATE || status == Response.NOK_NO_DATA)) {
 				SAXParserFactory spf = SAXParserFactory.newInstance();
 				SAXParser sp = spf.newSAXParser();
 				XMLReader xr = sp.getXMLReader();
@@ -76,8 +77,13 @@ public class Handler extends DefaultHandler {
 		File sdFile = getFile(path);
 		InputSource result = null;
 		if (sdFile == null) {
-			status = Response.NOK_OLD_DATA;
-			result = new InputSource(new URL(api.getURL() + path).openStream());
+			try{
+				result = new InputSource(new URL(api.getURL() + path).openStream());
+				status = Response.OK_UPDATE;
+			}catch (IOException e){
+				Log.d("parser","IOException bij geen sd kaart en geen internet: "+e.toString());
+				status = Response.NOK_NO_DATA;
+			}
 		} else {
 			if (sdFile.exists()) {
 				if (isNewest(path)) {
