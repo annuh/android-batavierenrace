@@ -20,6 +20,8 @@ import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.Utils;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 import com.viewpagerindicator.PageIndicator;
@@ -47,6 +49,7 @@ public class TeamActivity extends SherlockFragmentActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         team_id = this.getIntent().getIntExtra("index", 0);
+        Log.d("Teamid",""+team_id);
         new getTeam().execute();
     }
 	

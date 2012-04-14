@@ -16,6 +16,7 @@ public class Team {
 	private int startnummer = 0;
 	private int startgroep = 0;
 	private String naam = "";
+	private int id = 0;
 	private ArrayList<Looptijd> looptijden = new ArrayList<Looptijd>();
 	
 	/**
@@ -27,6 +28,20 @@ public class Team {
 		this.startnummer = startnummer;
 		this.startgroep = startgroep;
 		this.naam = naam;
+	}
+	
+	/**
+	 * Wordt gebruikt in FavoTeam
+	 * TODO: Samenvoegen met bovenstaande constructor?
+	 * @param naam
+	 * @param startnummer
+	 * @param id
+	 */
+	public Team(int id,String naam) {
+		this.id = id;
+		this.startnummer = id;
+		this.naam = naam;
+		
 	}
 	
 	/*lege constructor*/

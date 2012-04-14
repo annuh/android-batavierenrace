@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
@@ -25,6 +26,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 
 	public final static int DELETE_FAVOTEAM = 1;
 	TeamAdapter adapter;
+	boolean firstLaunch = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,27 +34,29 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setContentView(R.layout.listview_favo);
 		registerForContextMenu(getListView());
-
-		SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
-		Map<String, ?> favoteams = keyValues.getAll();
-		if(favoteams.size() < 1) {
+		//initLijst();
+		//SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
+		//Map<String, ?> favoteams = keyValues.getAll();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		initLijst();
+	}
+	
+	public void initLijst() {
+		ArrayList<Team> teams = this.getFavoTeams();
+		if(teams.size() < 1) {
 			noFavoTeams();
-			// TODO: 
-		} else if (favoteams.size() == 1) {
+		} else if (teams.size() == 1 && firstLaunch) {
 			Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
-			int id = 0;
-			for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
-				id = Integer.parseInt(entry.getKey());
-			}
-			intent.putExtra("index", id);
+			//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("index", teams.get(0).getID());
+			Log.d("FavoTeamStart",""+teams.get(0).getID());
 			startActivity(intent);
-
+			firstLaunch = false;
 		} else {
-			ArrayList<Team> teams = new ArrayList<Team>();
-			for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
-				teams.add(new Team(Integer.parseInt(entry.getKey()),0 , (String) entry.getValue()));
-				//teams.add(new Team((Integer) entry.getValue(),0,entry.getKey()));
-			}
 			adapter = new TeamAdapter(FavoTeamsActivity.this, teams);
 			setListAdapter(adapter);
 		}
@@ -90,8 +94,10 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		switch (item.getItemId()) {
 		case DELETE_FAVOTEAM:
 			Utils.removeFavoteam(getApplicationContext(), (int) id);
-			startActivity(getIntent()); finish();
-			adapter.notifyDataSetChanged();
+			//startActivity(getIntent()); finish();
+			//adapter.notifyDataSetChanged();
+			adapter = new TeamAdapter(FavoTeamsActivity.this, getFavoTeams());
+			setListAdapter(adapter);
 			return true;
 		}
 		return false;
@@ -103,7 +109,8 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		ArrayList<Team> teams = new ArrayList<Team>();
 		
 		for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
-			teams.add(new Team(Integer.parseInt(entry.getKey()),0 , (String) entry.getValue()));
+			teams.add(new Team(Integer.parseInt(entry.getKey()), (String) entry.getValue()));
+			Log.d("FavoTeam", ""+entry.getKey());
 		}
 		return teams;
 		
@@ -124,7 +131,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 			public void onClick(DialogInterface dialog, int id) {
 				FavoTeamsActivity.this.finish();
 			}
-		}).create();
+		}).create().show();
 	}
 
 
