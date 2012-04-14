@@ -98,35 +98,9 @@ public class api {
 	 * @return
 	 */
 	public static Response<Team> getTeamByID(int id) {
-		Response<ArrayList<Looptijd>> uitslagbyteam = getUitslagByTeam(id);
-		Response<Team> result = null;
-		if(uitslagbyteam.getStatus() == Response.NOK_NO_DATA){
-			result = new Response<Team>(null,Response.NOK_NO_DATA);
-		}else{
-			ArrayList<Looptijd> uitslagen = uitslagbyteam.getResponse();
-			Team team = new Team(uitslagen.get(0).getTeamStartnummer(),uitslagen.get(0).getTeamStartgroep(),uitslagen.get(0).getTeamNaam());
-			for(int i=0;i<uitslagen.size();i++){
-				team.addLooptijd(uitslagen.get(i));
-			}
-			result = new Response<Team>(team,uitslagbyteam.getStatus());
-		}	
-		return result;
-	}
-		
-	/**
-	 * Geeft een lijst met uitslagen van een team
-	 * @param id - ID van team
-	 * @return
-	 */
-	public static Response<ArrayList<Looptijd>> getUitslagByTeam(int id){
-		Log.d("UITSLAG","Punt 1");
-		PloegHandler ph = new PloegHandler("ploeguitslag/"+id+".xml");
-		Log.d("UITSLAG","Punt 2");
-		ph.parse();
-		Log.d("UITSLAG","Punt 3");
-		Response<ArrayList<Looptijd>> result = ph.getParsedData();
-		Log.d("UITSLAG","Punt 4: "+result.getStatus());
-		return result;
+		PloegHandler phHandler = new PloegHandler("ploeguitslag/"+id+".xml");
+		phHandler.parse();
+		return phHandler.getParsedData();
 	}
 	
 	/**

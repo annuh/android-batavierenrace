@@ -9,6 +9,7 @@ import org.xml.sax.SAXException;
 
 import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.objects.Response;
+import com.ut.bataapp.objects.Team;
 
 public class PloegHandler extends Handler{
 	
@@ -30,13 +31,13 @@ public class PloegHandler extends Handler{
 	private int startNummer;
 	private int startGroep;
 	private Looptijd looptijd;
-	private ArrayList<Looptijd> uitslagen;
+	private Team team;
 	
 	public PloegHandler(String path){
 		super(path);
 	}
-	public Response<ArrayList<Looptijd>> getParsedData(){
-		return new Response<ArrayList<Looptijd>>(uitslagen,this.status);
+	public Response<Team> getParsedData(){
+		return new Response<Team>(team,this.status);
 	}
 	
 	@Override
@@ -56,11 +57,16 @@ public class PloegHandler extends Handler{
 	
 	@Override
 	public void endElement(String nameSpaceURI, String localName, String qName) throws SAXException{
-		if(localName.equals("ploeg")) this.ploeg = false;
+		if(localName.equals("ploeg")){
+			team.setNaam(teamNaam);
+			team.setStartGroep(startGroep);
+			team.setStartnummer(startNummer);
+			this.ploeg = false;
+		}
 		else if(localName.equals("startnummer")) this.startnummer = false;
 		else if(localName.equals("naam")) this.naam = false;
 		else if(localName.equals("startgroep")) this.startgroep = false;
-		else if(localName.equals("uitslag")) uitslagen.add(looptijd);
+		else if(localName.equals("uitslag")) team.addLooptijd(looptijd);
 		else if(localName.equals("foutcode")) this.foutcode = false;
 		else if(localName.equals("klassementstijd")) this.tijd = false;
 		else if(localName.equals("etappenummer")) this.etappe = false;
@@ -89,7 +95,7 @@ public class PloegHandler extends Handler{
 
 	@Override
 	public void startDocument() throws SAXException{
-		this.uitslagen = new ArrayList<Looptijd>();
+		this.team = new Team();
 	}
 
 	@Override
