@@ -3,71 +3,114 @@
     android:id="@+id/scroller"
     style="@style/scroller" >
     
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:id="@+id/layout_klassementen"
-    	android:orientation="vertical" >
+    	android:orientation="vertical" >  
     	
-    	<include layout="@layout/border_top" />
+        <include layout="@layout/border_top" />	
+    	
     	<LinearLayout 
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal"
     	android:gravity="center" >
     		<LinearLayout 
-	    	android:layout_width="300px"
+	    	android:layout_width="160dp"
 	    	android:layout_height="wrap_content"
 	    	android:orientation="vertical" >
-	    	<ImageView 
-				android:src="@drawable/sponsor_susa"
-				android:layout_marginTop="5dp"
-				android:layout_width="match_parent"			
-				android:layout_height="0dp"
-				android:layout_weight="1"
-				android:contentDescription="Sponsor Susa" />
-	    	<TextView
-	    	    android:layout_marginTop="5dp"
-	    	     android:layout_marginBottom="10dp"
-	    	    android:text="Studenten uitzendbureau SUSA heeft volop bijbanen, studentenwerk en vakantiewerk. Schrijf je nu in voor een bijbaan die past bij jou!"
-	    	    android:layout_width="match_parent"
-	    	    android:layout_height="wrap_content"
-	    	    />
+		    	<ImageView 
+		    	    android:id="@+id/sponsor1"
+					android:src="@drawable/sponsor_susa"
+					android:layout_marginTop="5dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="52dp"
+					android:contentDescription="Sponsor Susa" />
+		    	<ImageView 
+		    	    android:id="@+id/sponsor2"
+					android:src="@drawable/sponsor_mindef"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="36dp"
+					android:contentDescription="Sponsor MinDef" />
+				<ImageView
+				    android:id="@+id/sponsor3"
+					android:src="@drawable/sponsor_eurosport"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="170dp"
+					android:contentDescription="Sponsor Eurosport" />
+				<ImageView 
+				    android:id="@+id/sponsor4"
+					android:src="@drawable/sponsor_ematch"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="72dp"
+					android:contentDescription="Sponsor Ematch" />
+				<ImageView 
+				    android:id="@+id/sponsor5"
+					android:src="@drawable/sponsor_grolsch"
+					android:layout_marginTop="10dp"
+					android:layout_width="150dp"			
+					android:layout_height="100dp"
+					android:contentDescription="Sponsor Grolsch" />
+	    	</LinearLayout>
 	    	<LinearLayout 
-	    	    android:layout_height="5dp"
-	    	    android:layout_width="match_parent"
-	    	    android:background="@drawable/border_blauw" />
-	    	<ImageView 
-				android:src="@drawable/sponsor_mindef"
-				android:layout_marginTop="10dp"
-				android:layout_width="match_parent"			
-				android:layout_height="0dp"
-				android:layout_weight="1"
-				android:contentDescription="Sponsor MinDef" />
-			<TextView
-			    android:layout_marginTop="5dp"
-			    android:layout_marginBottom="10dp"
-	    	    android:text="Organisatie, nieuws, banen en overzichten van taken, lopende operaties en krijgsmachtonderdelen."
-	    	    android:layout_width="match_parent"
-	    	    android:layout_height="wrap_content"
-	    	    />
-			<LinearLayout 
-	    	    android:layout_height="5dp"
-	    	    android:layout_width="match_parent"
-	    	    android:background="@drawable/border_blauw" />
-			<ImageView 
-				android:src="@drawable/sponsor_autodrop"
-				android:layout_marginTop="10dp"
-				android:layout_width="match_parent"			
-				android:layout_height="0dp"
-				android:layout_weight="1"
-				android:contentDescription="Sponsor Autodrop" />
-			<TextView
-			    android:layout_marginTop="5dp"
-	    	    android:text="Nieuw van Autodrop: centre filled! Vloeibare drop en snoep in verschillende smaken… Heb je ze al geproefd? Absurd lekker!"
-	    	    android:layout_width="match_parent"
-	    	    android:layout_height="wrap_content"
-	    	    />
+	    	android:layout_width="160dp"
+	    	android:layout_height="wrap_content"
+	    	android:orientation="vertical" >
+		    	<ImageView 
+		    	    android:id="@+id/sponsor6"
+					android:src="@drawable/sponsor_autodrop"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="31dp"
+					android:contentDescription="Sponsor Autodrop" />
+				<ImageView 
+				    android:id="@+id/sponsor7"
+					android:src="@drawable/sponsor_su"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="88dp"
+					android:contentDescription="Sponsor Student Union" />
+				<ImageView 
+				    android:id="@+id/sponsor8"
+					android:src="@drawable/sponsor_uitinenschede"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="77dp"
+					android:contentDescription="Sponsor UitInEnschede" />
+				<ImageView 
+				    android:id="@+id/sponsor9"
+					android:src="@drawable/sponsor_pentair"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="34dp"
+					android:contentDescription="Sponsor Pentair" />
+				<ImageView 
+				    android:id="@+id/sponsor10"
+					android:src="@drawable/sponsor_autorent"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp"
+					android:layout_width="150dp"			
+					android:layout_height="68dp"
+					android:contentDescription="Sponsor Autodrop" />
+				<ImageView 
+				    android:id="@+id/sponsor11"
+					android:src="@drawable/sponsor_studentenfiets"
+					android:layout_marginTop="10dp"
+					android:layout_width="150dp"			
+					android:layout_height="109dp"
+					android:contentDescription="Sponsor Autodrop" />
 	    	</LinearLayout>
     	</LinearLayout>		
 	</LinearLayout>
