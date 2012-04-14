@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
+import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.MainActivity;
@@ -29,6 +31,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   setTitle("Berichten");
 	   super.onCreate(savedInstanceState);
+	   this.setContentView(R.layout.listview_berichten);
 	   new getBerichten().execute();
    }
    

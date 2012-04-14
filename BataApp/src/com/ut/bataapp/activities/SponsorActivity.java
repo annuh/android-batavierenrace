@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -20,6 +23,8 @@ public class SponsorActivity extends SherlockFragmentActivity  {
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.sponsor);
 	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	   
+	   
 	   
    }
    
