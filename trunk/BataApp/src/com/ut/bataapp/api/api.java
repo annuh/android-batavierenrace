@@ -161,7 +161,7 @@ public class api {
 	* Haal de url op waar de bestanden op de servers staan
 	*/
 	public static String getURL(){
-		return "http://api.batavierenrace.nl/xml/2011/";
+		return "http://api.batavierenrace.nl/xml/4040/";
 	}
 	
 	/**

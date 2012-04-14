@@ -21,7 +21,7 @@ public class Looptijd {
 	private String tijd;
 	private String foutcode;
 	private String snelheid;
-	private int etappeStand = NULLINT;
+	private int etappeStand = NULLINT; 
 	private int cumulatieveStand = NULLINT;
 	
 	/**
