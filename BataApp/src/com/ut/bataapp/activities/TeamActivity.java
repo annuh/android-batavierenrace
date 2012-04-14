@@ -152,7 +152,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 		
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(getApplicationContext(), response)) {
+			if(Utils.checkResponse(TeamActivity.this, response)) {
 				setContentView(R.layout.simple_tabs);
 				team = response.getResponse();
 		        mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());

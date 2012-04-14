@@ -58,7 +58,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(getApplicationContext(), response)) {
+			if(Utils.checkResponse(BerichtenActivity.this, response)) {
 				values = response.getResponse();
 				ba = new BerichtAdapter(BerichtenActivity.this, values);
 				setListAdapter(ba);

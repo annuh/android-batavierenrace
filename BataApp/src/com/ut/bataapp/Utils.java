@@ -30,7 +30,7 @@ public class Utils {
 		    	   Intent i = new Intent(context.getApplicationContext(), MainActivity.class);
 		           context.startActivity(i);
 		       }
-		   }).create();
+		   }).create().show();
 	}
 
 	
@@ -41,6 +41,7 @@ public class Utils {
 	}
 	
 	public static boolean checkResponse(Context context, Response<?> response) {
+		Log.d("Response code",String.valueOf(response.getStatus()));
 		switch (response.getStatus()) {
 			case Response.NOK_NO_DATA:
 				Utils.noData(context);

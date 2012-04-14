@@ -72,7 +72,7 @@ public class EtappesActivity extends SherlockListActivity  {
 		
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(getApplicationContext(), response)){
+			if(Utils.checkResponse(EtappesActivity.this, response)){
 				etappes = response.getResponse();
 				adapter = new EtappeAdapter(EtappesActivity.this, etappes);
 				setListAdapter(adapter);
