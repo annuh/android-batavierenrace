@@ -49,7 +49,6 @@ public class KlassementHandler extends Handler{
 		if(localName.equals("naam")) klassnaam = false;
 		else if(localName.equals("plaats")){
 			if(readNaam){
-				Log.d("klassement","new info aan klassement toegevoegd: "+item.toString()+" met positie: "+item.getPlaats());
 				klassement.addKlassementInfo(item);
 			}
 		}

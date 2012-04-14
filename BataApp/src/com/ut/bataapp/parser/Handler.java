@@ -196,7 +196,7 @@ public class Handler extends DefaultHandler {
 			urlConnection.connect();
 			Log.d("parser", "downloadtosd: urlconnected");
 
-			File sdFile = getFile(path);
+			File sdFile = getFile(path+"t");
 			// sdFile is de file waar de nieuw file heengeschreven word.
 			Log.d("parser", "downloadtosd: got file");
 
@@ -220,6 +220,8 @@ public class Handler extends DefaultHandler {
 			// Sluit de outputSream en httpconnection
 			fileOutput.close();
 			urlConnection.disconnect();
+			
+			sdFile.renameTo(getFile(path));
 			
 			result = true;
 		} catch (MalformedURLException mue) {
