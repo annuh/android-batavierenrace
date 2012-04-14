@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@drawable/listview_background">
 
@@ -10,12 +10,16 @@
         android:layout_alignParentLeft="true"
         android:layout_width="35dp"
         style="@style/listview_text" />
-    <TextView
-        android:id="@+id/etappe_looptijd_team"
-        style="@style/listview_text"
-        android:layout_toRightOf="@id/etappe_looptijd_plaats" />
-    <TextView
+    
+     <TextView
         android:id="@+id/etappe_looptijd_tijd"
         android:layout_alignParentRight="true"
         style="@style/listview_text" />
+    
+    <TextView
+        android:id="@+id/etappe_looptijd_team"
+        style="@style/listview_text"
+        android:layout_toLeftOf="@id/etappe_looptijd_tijd"
+        android:layout_toRightOf="@id/etappe_looptijd_plaats" />
+   
 </RelativeLayout>

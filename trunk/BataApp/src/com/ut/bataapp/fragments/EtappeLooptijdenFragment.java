@@ -8,6 +8,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
+import com.actionbarsherlock.view.Window;
 import com.ut.bataapp.R;
 import com.ut.bataapp.Utils;
 import com.ut.bataapp.activities.EtappeActivity;
@@ -39,7 +40,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		inflater.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
-		View view = inflater.inflate(R.layout.listview_etappe_looptijden, null); 
+		View view = inflater.inflate(R.layout.listview_etappe_looptijden, null);
 		return view;
 	}
 
@@ -48,6 +49,12 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		//loading = findViewById(R.id.loading);
+		
+	}
+	
+	@Override
+	public void onResume(){
+		super.onResume();
 		new getEtappeLooptijden().execute();
 	}
 
