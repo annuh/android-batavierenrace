@@ -11,6 +11,8 @@ package com.ut.bataapp.api;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import android.content.Context;
 import android.util.Log;
@@ -60,10 +62,47 @@ public class api {
 	 * @param id - ID van etapp
 	 * @return
 	*/
-	public static Response<ArrayList<Looptijd>> getUitslagenVanEtappe(int id){
-		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml",id);
-		euh.parse();
-		return euh.getParsedData();
+	public static Response<ArrayList<ArrayList<Looptijd>>> getUitslagenVanEtappe(int id){
+		ArrayList<ArrayList<Looptijd>> uitslagen = new ArrayList<ArrayList<Looptijd>>();
+		
+		ArrayList<Looptijd> uni = new ArrayList<Looptijd>();
+		Looptijd l1 = new Looptijd();
+		l1.setSnelheid("14.3");
+		l1.setTeamNaam("Inter-Actief1");
+		l1.setTeamStartnummer(34);
+		l1.setTijd("12:45");
+		l1.setEtappeStand(30);
+		uni.add(l1);
+		Looptijd l4 = new Looptijd();
+		l4.setSnelheid("14.3");
+		l4.setTeamNaam("Inter-Actief4");
+		l4.setTeamStartnummer(7);
+		l4.setTijd("12:45");
+		l4.setEtappeStand(3);
+		uni.add(l4);
+		
+		ArrayList<Looptijd> alg = new ArrayList<Looptijd>();
+		Looptijd l2 = new Looptijd();
+		l2.setSnelheid("14.3");
+		l2.setTeamNaam("Inter-Actief2");
+		l2.setTeamStartnummer(34);
+		l2.setTijd("12:45");
+		l2.setEtappeStand(23);
+		alg.add(l2);
+		Looptijd l3 = new Looptijd();
+		l3.setSnelheid("14.3");
+		l3.setTeamNaam("Inter-Actief3");
+		l3.setTeamStartnummer(34);
+		l3.setTijd("12:45");
+		l3.setEtappeStand(11);
+		alg.add(l3);
+		
+		uitslagen.add(uni);uitslagen.add(alg);
+		return new Response<ArrayList<ArrayList<Looptijd>>>(uitslagen, Response.OK_UPDATE);
+		
+		//EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml",id);
+		//euh.parse();
+		//return euh.getParsedData();
 	}
 	
 	/**
@@ -72,6 +111,7 @@ public class api {
 	 * @return
 	 */
 	public static Response<ArrayList<Looptijd>> getLaatstBinnengekomenVanEtappe(int id) {
+		
 		ArrayList<Looptijd> laatste = new ArrayList<Looptijd>();
 		Looptijd l1 = new Looptijd();
 		l1.setSnelheid("14.3");
