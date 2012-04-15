@@ -10,6 +10,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 import com.actionbarsherlock.view.Window;
 import com.ut.bataapp.R;
+import com.ut.bataapp.SeparatedListAdapter;
 import com.ut.bataapp.Utils;
 import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.activities.TeamActivity;
@@ -31,8 +32,9 @@ import android.widget.TextView;
 
 public class EtappeLooptijdenFragment extends SherlockListFragment {
 
-	private ArrayList<Looptijd> looptijden;
-	private EtappeLooptijdAdapter adapter = null;
+	private ArrayList<ArrayList<Looptijd>> looptijden;
+	private EtappeLooptijdAdapter adapter_uni = null;
+	private EtappeLooptijdAdapter adapter_alg = null;
 	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
 	private final int MENU_SORT_STAND = Menu.FIRST + 2;
 	TextView loading;
@@ -55,7 +57,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	@Override
 	public void onResume(){
 		super.onResume();
-		new getEtappeLooptijden().execute();
+		if(adapter_uni == null) {
+			new getEtappeLooptijden().execute();
+		} else {
+			makeList();
+		}
 	}
 
 
@@ -72,27 +78,17 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.d("Keyboard", String.valueOf(item.getItemId()));
 		switch (item.getItemId()) {
 		case MENU_SORT_NAAM:
-			Collections.sort(looptijden,new Comparator<Looptijd>() {
-				public int compare(Looptijd arg0, Looptijd arg1) {
-					return arg0.getTeamNaam().compareTo(arg1.getTeamNaam());
-				}
-			});
-			adapter = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden);
-			setListAdapter(adapter);
-			adapter.notifyDataSetChanged();
+			sortList(looptijden.get(0), "naam");
+			sortList(looptijden.get(1), "naam");			
+			makeList();
+
 			break;
 		case MENU_SORT_STAND:
-			Collections.sort(looptijden,new Comparator<Looptijd>() {
-				public int compare(Looptijd arg0, Looptijd arg1) {
-					return (arg0.getEtappeStand()<arg1.getEtappeStand() ? -1 : (arg0.getEtappeStand()==arg1.getEtappeStand() ? 0 : 1));
-				}
-			});
-			adapter = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden);
-			setListAdapter(adapter);
-			adapter.notifyDataSetChanged();
+			sortList(looptijden.get(0), "stand");
+			sortList(looptijden.get(1), "stand");			
+			makeList();
 
 		}
 		return super.onOptionsItemSelected(item);
@@ -106,7 +102,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	}
 
 	private class getEtappeLooptijden extends AsyncTask<Void, Void, Void> {
-		Response<ArrayList<Looptijd>> response;
+		Response<ArrayList<ArrayList<Looptijd>>> response;
 
 		@Override  
 		protected Void doInBackground(Void... arg0) {
@@ -119,11 +115,37 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 			if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 				looptijden = response.getResponse();
 				getView().findViewById(R.id.loading).setVisibility(View.GONE);
-				adapter = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden);
-				setListAdapter(adapter);
+				makeList();
 			}
 		}
 	}
 
+	/**
+	 * Maakt de listview
+	 */
+	public void makeList() {
+		adapter_uni = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(0));
+		adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
+						
+		SeparatedListAdapter adapter = new SeparatedListAdapter(getActivity().getApplicationContext());  
+        adapter.addSection("Universiteitsklassement", adapter_uni);  
+        adapter.addSection("Algemeen klassement", adapter_alg);
+        
+		setListAdapter(adapter);
+	}
+	
+	
+	public void sortList(ArrayList<Looptijd> list, final String sort) {
+		Collections.sort(list,new Comparator<Looptijd>() {
+			public int compare(Looptijd arg0, Looptijd arg1) {
+				if(sort.equals("naam"))
+					return arg0.getTeamNaam().compareTo(arg1.getTeamNaam());
+				else if(sort.equals("stand"))
+					return (arg0.getEtappeStand()<arg1.getEtappeStand() ? -1 : (arg0.getEtappeStand()==arg1.getEtappeStand() ? 0 : 1));
+				else
+					return 0;
+			}
+		});
+	}
 
 }
