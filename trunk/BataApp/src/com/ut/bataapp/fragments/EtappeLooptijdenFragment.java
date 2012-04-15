@@ -114,7 +114,6 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 				looptijden = response.getResponse();
-				getView().findViewById(R.id.loading).setVisibility(View.GONE);
 				makeList();
 			}
 		}
@@ -124,6 +123,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	 * Maakt de listview
 	 */
 	public void makeList() {
+		getView().findViewById(R.id.loading).setVisibility(View.GONE);
 		adapter_uni = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(0));
 		adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
 						
