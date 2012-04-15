@@ -140,6 +140,7 @@
 
     <style name="scroller" parent="@style/container">
         <item name="android:fillViewport">true</item>
+        <item name="android:cacheColorHint">@color/batabruin</item>
     </style>
 
     <style name="container">
@@ -183,6 +184,15 @@
     <style name="listview_header_text" parent="listview_text">
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="viewport">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/viewport</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="BorderTop"></style>

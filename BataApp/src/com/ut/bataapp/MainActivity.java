@@ -43,7 +43,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 	   this.getSupportActionBar().setTitle("Batavierenrace");
 	   super.onCreate(savedInstanceState);
-	   setContentView(R.layout.actionbar_styles);
+	   setContentView(R.layout.main);
 	   setupC2DM();
 	   //register();
 	   Button btn_routes = (Button) findViewById(R.id.dashboard_etappes);

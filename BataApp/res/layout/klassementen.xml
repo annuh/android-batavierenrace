@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    
-    <include layout="@layout/border_top" />
-	<ScrollView
-	    android:id="@+id/scroller"
-	    style="@style/scroller"
-	    android:layout_width="match_parent"
-	    android:layout_height="0dp"
-	    android:layout_weight="1" >
-	    
-		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    	android:layout_width="match_parent"
-	    	android:layout_height="wrap_content"
-	    	android:id="@+id/container_klassementen"
-	    	android:orientation="vertical" >
-	    	<TextView 
-	        	android:text="Klassementen"
-	        	style="@style/h1" />
-	    	<TextView
-		        android:layout_height="10dp"
-		        android:layout_width="fill_parent"
-				android:background = "@drawable/onder" />
-			
-		</LinearLayout>
-	</ScrollView>
-	<include layout="@layout/border_bottom" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/viewport" >
+
+    <ScrollView
+        android:id="@+id/scroller"
+        style="@style/scroller"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container_klassementen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/h1"
+                android:text="Klassementen" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/onder" />
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
