@@ -8,6 +8,7 @@ import com.ut.bataapp.adapters.LooptijdAdapter;
 import com.ut.bataapp.objects.Team;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ public class TeamLooptijdenFragment extends SherlockListFragment {
 		//inflater.inflate(R.layout.listview_looptijden, container);
 		setListAdapter(new LooptijdAdapter(this.getActivity().getApplicationContext(), team.getLooptijden()));
 
-		View view = inflater.inflate(R.layout.listview_looptijden, null); 
+		View view = inflater.inflate(R.layout.listview_team_looptijden, null); 
 		return view; 
 		//return super.onCreateView(inflater, container, savedInstanceState);
 	}
@@ -41,6 +42,7 @@ public class TeamLooptijdenFragment extends SherlockListFragment {
 		intent.putExtra("index", v.getId());
 		startActivity(intent);
 	}
+	
 
 
 }

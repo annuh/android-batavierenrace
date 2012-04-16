@@ -142,7 +142,7 @@ public class TeamsActivity extends SherlockListActivity  {
 
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			while(!isCancelled())
+			if(!isCancelled())
 				response = api.getTeams();
 			return null;       
 		}

@@ -13,11 +13,26 @@
     <TextView
         android:id="@+id/tijd"
         style="@style/listview_text"
-        android:layout_toRightOf="@id/etappe"/>
+        android:layout_toRightOf="@id/etappe" />
 
     <TextView
         android:id="@+id/snelheid"
         style="@style/listview_text"
         android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/etappe_klassement"
+        style="@style/listview_text"
+        android:layout_width="0dp" />
+
+    <TextView
+        android:id="@+id/cum_klassement"
+        style="@style/listview_text"
+        android:layout_width="0dp" />
+
+    <TextView
+        android:id="@+id/etappe_foutcode"
+        style="@style/listview_text"
+        android:layout_width="0dp" />
 
 </RelativeLayout>
