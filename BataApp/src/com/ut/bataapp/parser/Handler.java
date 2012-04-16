@@ -35,11 +35,11 @@ public class Handler extends DefaultHandler {
 
 	public Handler() {
 	}
-
-	public boolean parse() {
+	
+	public boolean parse(boolean suppressdownload) {
 		boolean result = false;
 		try {
-			InputSource input = getInputSource();
+			InputSource input = getInputSource(suppressdownload);
 			if(status != Response.NOK_NO_DATA && (!parsed || status == Response.OK_UPDATE)){
 			//if (!parsed && !(status == Response.OK_NO_UPDATE || status == Response.NOK_NO_DATA)) {
 				SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -73,7 +73,10 @@ public class Handler extends DefaultHandler {
 	 * @throws IOException
 	 * 
 	 */
-	public InputSource getInputSource() throws IOException {
+	public InputSource getInputSource() throws IOException{
+		return this.getInputSource(false);
+	}
+	public InputSource getInputSource(boolean suppressdownload) throws IOException {
 		File sdFile = getFile(path);
 		InputSource result = null;
 		if (sdFile == null) {
@@ -86,7 +89,7 @@ public class Handler extends DefaultHandler {
 			}
 		} else {
 			if (sdFile.exists()) {
-				if (isNewest(path)) {
+				if (isNewest(path) || suppressdownload) {
 					status = Response.OK_NO_UPDATE;
 					result = new InputSource(new FileInputStream(sdFile));
 				} else {

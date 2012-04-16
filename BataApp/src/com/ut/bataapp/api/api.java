@@ -1,7 +1,6 @@
 package com.ut.bataapp.api;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -42,7 +41,7 @@ public class api {
 	 */
 	public static Response<ArrayList<Etappe>> getEtappes() {
 		EtappeHandler eh = new EtappeHandler("etappes.xml");
-		eh.parse();
+		eh.parse(false);
 		return eh.getParsedData();
 	}
 	
@@ -53,7 +52,7 @@ public class api {
 	 */
 	public static Response<Etappe> getEtappesByID(int id,Context context) {
 		DetailedEtappeHandler deh = new DetailedEtappeHandler("etappes.xml",id);
-		deh.parse();
+		deh.parse(false);
 		Etappe etappe = deh.getParsedData().getResponse();
 		int status = deh.getParsedData().getStatus();
 		if(status != Response.NOK_NO_DATA && etappe!=null){
@@ -87,7 +86,7 @@ public class api {
 	*/
 	public static Response<ArrayList<ArrayList<Looptijd>>> getUitslagenVanEtappe(int id){
 		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml",id);
-		euh.parse();
+		euh.parse(false);
 		return euh.getParsedData();
 	}
 	
@@ -114,7 +113,7 @@ public class api {
 	 */
 	public static Response<ArrayList<Team>> getTeams() {
 		TeamHandler th = new TeamHandler("ploegen.xml");
-		th.parse();
+		th.parse(false);
 		return th.getParsedData();
 	}
 
@@ -125,7 +124,7 @@ public class api {
 	 */
 	public static Response<Team> getTeamByID(int id) {
 		PloegHandler phHandler = new PloegHandler("ploeguitslag/"+id+".xml");
-		phHandler.parse();
+		phHandler.parse(false);
 		return phHandler.getParsedData();
 	}
 	
@@ -149,7 +148,7 @@ public class api {
 	 */
 	public static Response<Klassement> getKlassementByNaam(String naam) {
 		KlassementHandler kh = new KlassementHandler("klassement.xml",naam);
-		kh.parse();
+		kh.parse(false);
 		return kh.getParsedData();
 	}
 	
@@ -159,7 +158,7 @@ public class api {
 	 */
 	public static Response<ArrayList<Bericht>> getBerichten(){
 		BerichtenHandler bh = new BerichtenHandler("nieuws.xml");
-		bh.parse();
+		bh.parse(false);
 		return bh.getParsedData();
 	}
 
