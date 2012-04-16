@@ -8,20 +8,58 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" 
-	    android:id="@+id/scroller_info_overzichtskaarten1">
-
+	    android:id="@+id/sponsor_layout"
+	    style="container_block">
+		
 	    <TextView
-			android:text = "Sponsortje"
+	        android:id="@+id/sponsor_titel"
 			style="@style/h1" />
 	    <TextView
 	        android:layout_height="10dp"
 	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
+			android:background = "@drawable/onder" />	    
 	    
 	    <TextView
-			android:text = "@string/info_algemeen_watmoetjeweten_medischeondersteuning"
-			style="@style/container_block" />
-	   
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:id="@+id/sponsor_naam" />
+	   	<TextView
+	   	    android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:id="@+id/sponsor_branche" />
+	   	<TextView
+	   	    android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:id="@+id/sponsor_regio" />
+	   	<TextView
+	   	    android:autoLink="web"
+	   	    android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:id="@+id/sponsor_link" />
+	   		    
+	    <TextView
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:text = "@string/sponsor_omschrijving_dik" />   
+	    <TextView
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:id="@+id/sponsor_omschrijving" />
+	    
+	    <LinearLayout 
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent">
+	        
+	        <ImageView
+	        android:id="@+id/sponsor_plaatje_3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="top"
+	        android:layout_marginTop="5dp"
+	        android:contentDescription="Sponsor plaatje" />
+	        
+	    </LinearLayout>
+	       
 		
 	</LinearLayout>
 </ScrollView>

@@ -41,6 +41,8 @@
     <string name="etappe_recordtijd_tijd">Tijd</string>
     <string name="etappe_recordtijd_snelheid">Snelheid</string>
     
+    <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
+    
     
     <string name="teams_header_nummer">#</string>
     <string name="teams_header_naam">Team</string>

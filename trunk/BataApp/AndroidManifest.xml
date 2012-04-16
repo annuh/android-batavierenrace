@@ -64,8 +64,7 @@
         <activity android:name=".activities.KlassementenActivity" />
         <activity android:name=".activities.KlassementActivity" />
         <activity android:name=".activities.SponsorActivity" />
-        <activity android:name=".activities.SponsorItemActivity"
-            android:theme="@style/StyledIndicators" />
+        
         <activity
             android:name=".activities.WeerActivity"
             android:configChanges="orientation|screenSize"
@@ -82,6 +81,8 @@
         <activity android:name=".activities.AfbeeldingActivity" />
         <activity android:name=".activities.PreferencesActivity" />
         <activity android:name=".activities.BerichtenActivity" />
+        <activity android:name=".activities.SponsorInformatieActivity"
+            android:theme="@style/StyledIndicators" />
 
         <service android:name=".services.BackgroundUpdater" />
         <service android:name=".services.BataRadioService" />
