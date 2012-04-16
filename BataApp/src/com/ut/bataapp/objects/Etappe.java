@@ -54,6 +54,10 @@ public class Etappe {
 	public void setRecordTeam(String recordPloeg){ this.record_ploeg = recordPloeg;}
 	public void setRecordSnelheid(String recordSnelheid){ this.record_snelheid = recordSnelheid;}
 	public void setRecordTijd(String recordTijd){ this.record_tijd = recordTijd;}
+	public void setOpenTijd(String opentijd){ this.opentijd = opentijd;}
+	public void setUitersteStartTijd(String uitersteStarttijd){ this.uitersteStarttijd = uitersteStarttijd;}
+	public void setLimeitTijd(String limiettijd){ this.limiettijd = limiettijd;}
+	public void setUniversteitsLimietTijd(String universteitsLimietstijd){ this.universteitsLimietstijd = universteitsLimietstijd;}
 	
 	/*Getters*/
 	public int getId(){ return id;}
@@ -66,6 +70,10 @@ public class Etappe {
 	public String getRecordTeam(){ return record_ploeg;}
 	public String getRecordSnelheid() {return record_snelheid;}
 	public String getRecordTijd() { return record_tijd;}
+	public String getOpenTijd(){ return this.opentijd;}
+	public String getUitersteStartTijd(){ return this.uitersteStarttijd;}
+	public String getLimietTijd(){ return this.limiettijd;}
+	public String getUniversteitsLimietTijd(){ return this.universteitsLimietstijd;}
 	
 	/*String formaat*/
 	public String toString(){

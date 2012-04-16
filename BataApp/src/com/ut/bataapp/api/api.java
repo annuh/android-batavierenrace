@@ -1,8 +1,22 @@
 package com.ut.bataapp.api;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+
+import android.content.Context;
+import android.content.res.Resources.NotFoundException;
+
+import com.ut.bataapp.R;
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Klassement;
@@ -11,6 +25,7 @@ import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.parser.BerichtenHandler;
 import com.ut.bataapp.parser.DetailedEtappeHandler;
+import com.ut.bataapp.parser.EtappeDataHandler;
 import com.ut.bataapp.parser.EtappeHandler;
 import com.ut.bataapp.parser.EtappeUitslagHandler;
 import com.ut.bataapp.parser.KlassementHandler;
@@ -36,13 +51,35 @@ public class api {
 	 * @param id - ID van de etappe
 	 * @return
 	 */
-	public static Response<Etappe> getEtappesByID(int id) {
+	public static Response<Etappe> getEtappesByID(int id,Context context) {
 		DetailedEtappeHandler deh = new DetailedEtappeHandler("etappes.xml",id);
 		deh.parse();
-		//EtappeDataHandler eDH = new EtappeDataHandler(context);
-		return deh.getParsedData();
+		Etappe etappe = deh.getParsedData().getResponse();
+		int status = deh.getParsedData().getStatus();
+		if(status != Response.NOK_NO_DATA && etappe!=null){
+			try {
+				SAXParserFactory spf = SAXParserFactory.newInstance();
+				SAXParser sp = spf.newSAXParser();
+				XMLReader xr = sp.getXMLReader();
+				EtappeDataHandler eDH = new EtappeDataHandler(context,etappe);
+				xr.setContentHandler(eDH);
+				xr.parse(new InputSource(context.getResources().openRawResource(R.raw.ei)));
+				etappe = eDH.getParsedData();
+			} catch (NotFoundException e) {
+				status = Response.NOK_NO_DATA;
+			} catch (IOException e) {
+				status = Response.NOK_NO_DATA;
+			} catch (SAXException e) {
+				status = Response.NOK_NO_DATA;
+			} catch (ParserConfigurationException e) {
+				status = Response.NOK_NO_DATA;
+			}
+		}else{
+			status = Response.NOK_NO_DATA;
+		}
+		return new Response<Etappe>(etappe,status);
 	}
-	
+
 	/**
 	 * Geeft lijst van uitslagen van een etappe
 	 * @param id - ID van etapp
@@ -143,7 +180,7 @@ public class api {
 		}
 		return t;
 	}
-	
+
 	//~~ OTHER ~~\\
 	
 	/**
