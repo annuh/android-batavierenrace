@@ -19,7 +19,7 @@ public class KlassementAdapter extends ArrayAdapter<KlassementItem> {
 	private KlassementFilter filter;
 
 	public KlassementAdapter(Context context, ArrayList<KlassementItem> values) {
-		super(context, R.layout.row_looptijd, values);
+		super(context, R.layout.row_team_looptijd, values);
 		this.context = context;
 		this.values = new ArrayList<KlassementItem>();
 		this.values.addAll(values);

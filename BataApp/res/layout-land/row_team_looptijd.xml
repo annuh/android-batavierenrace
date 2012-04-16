@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/listview_background"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/etappe"
+        style="@style/listview_text"
+        android:layout_width="35dp" />
+
+    <TextView
+        android:id="@+id/tijd"
+        style="@style/listview_text"
+        android:layout_toRightOf="@id/etappe" />
+
+    <TextView
+        android:id="@+id/snelheid"
+        style="@style/listview_text"
+        android:layout_toRightOf="@id/tijd" />
+
+    <TextView
+        android:id="@+id/etappe_klassement"
+        style="@style/listview_text"
+        android:layout_toRightOf="@id/snelheid" />
+
+    <TextView
+        android:id="@+id/cum_klassement"
+        style="@style/listview_text"
+        android:layout_toRightOf="@id/etappe_klassement" />
+
+    <TextView
+        android:id="@+id/etappe_foutcode"
+        style="@style/listview_text"
+        android:layout_alignParentRight="@id/etappe_klassement" />
+
+</RelativeLayout>

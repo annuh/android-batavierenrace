@@ -5,8 +5,7 @@
 	android:orientation="vertical" >
 	
     <RelativeLayout
-		    style="@style/listview_header" >"
-	    
+		    style="@style/listview_header" >
 	    <TextView
 	        android:layout_width="35dp"
 	        style="@style/listview_header_text"

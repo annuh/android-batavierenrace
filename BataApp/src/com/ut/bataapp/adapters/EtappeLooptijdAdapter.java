@@ -16,7 +16,7 @@ public class EtappeLooptijdAdapter extends ArrayAdapter<Looptijd> {
 	private final ArrayList<Looptijd> values;
 
 	public EtappeLooptijdAdapter(Context context, ArrayList<Looptijd> values) {
-		super(context, R.layout.row_looptijd, values);
+		super(context, R.layout.row_team_looptijd, values);
 		this.context = context;
 		this.values = values;
 	}
