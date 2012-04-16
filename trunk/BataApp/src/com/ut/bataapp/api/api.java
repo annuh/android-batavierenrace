@@ -1,18 +1,7 @@
-/*
- * Versie: v4
- * Date: 08-03-12 11:54
- * By: Johem Elsinga
- * Update: Added findTeam() to get a list of teams containing a certain string
- * Update: Changed getTeams() to get actual teams
- * Update: Added sortTeamByName() to sort the teams by name
- */
-
 package com.ut.bataapp.api;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import android.util.Log;
 
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Etappe;
@@ -61,9 +50,7 @@ public class api {
 	*/
 	public static Response<ArrayList<ArrayList<Looptijd>>> getUitslagenVanEtappe(int id){
 		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml",id);
-		Log.d("parser","lalalala");
 		euh.parse();
-		Log.d("parser","geparsed officieel");
 		return euh.getParsedData();
 	}
 	
