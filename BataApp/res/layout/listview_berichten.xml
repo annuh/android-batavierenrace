@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	style="style/viewport" >
+	style="@style/viewport" >
 	
 	<ListView
 	    android:id="@android:id/list"

@@ -12,12 +12,10 @@ import android.widget.TextView;
 
 public class TeamInformatieFragment extends SherlockFragment {
 
-	private Team team;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		team = ((TeamActivity)this.getActivity()).getTeam();
+		Team team = ((TeamActivity)this.getActivity()).getTeam();
 		getSherlockActivity().getSupportActionBar().setTitle(team.getNaam());     
 		View view = inflater.inflate(R.layout.team_informatie, container, false);
 

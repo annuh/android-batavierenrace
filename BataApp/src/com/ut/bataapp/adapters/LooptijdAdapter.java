@@ -34,6 +34,9 @@ public class LooptijdAdapter extends ArrayAdapter<Looptijd> {
 		
 		TextView tijd = (TextView) rowView.findViewById(R.id.tijd);
 		tijd.setText(values.get(position).getTijd());
+		
+		TextView snelheid = (TextView) rowView.findViewById(R.id.snelheid);
+		snelheid.setText(values.get(position).getSnelheid());
 
 		return rowView;
 	}

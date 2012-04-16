@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -128,12 +130,20 @@ public class TeamsActivity extends SherlockListActivity  {
 
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamsActivity.this,  
-					"Bezig met laden", "Teams worden opgehaald...", true);  
+					"Bezig met laden", "Teams worden opgehaald...", true);
+			progressDialog.setCancelable(true);
+			progressDialog.setOnCancelListener(new OnCancelListener() {
+				public void onCancel(DialogInterface dialog) {
+					cancel(true);
+					Utils.goHome(TeamsActivity.this);
+				}
+			});
 		}
 
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			response = api.getTeams();
+			while(!isCancelled())
+				response = api.getTeams();
 			return null;       
 		}
 

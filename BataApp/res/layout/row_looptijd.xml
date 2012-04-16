@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal"
-    android:background="@drawable/listview_background">
+    android:background="@drawable/listview_background"
+    android:orientation="horizontal" >
 
     <TextView
         android:id="@+id/etappe"
-        android:layout_width="50dp"
-        style="@style/listview_text" />
+        style="@style/listview_text"
+        android:layout_width="35dp" />
+
     <TextView
         android:id="@+id/tijd"
-        style="@style/listview_text" />
+        style="@style/listview_text"
+        android:layout_toRightOf="@id/etappe"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/snelheid"
+        style="@style/listview_text"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

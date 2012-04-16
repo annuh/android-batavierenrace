@@ -78,7 +78,6 @@ public class KlassementActivity extends SherlockListActivity  {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.d("Keyboard", String.valueOf(item.getItemId()));
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			Utils.goHome(getApplicationContext());
