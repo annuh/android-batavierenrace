@@ -18,6 +18,7 @@ public class Looptijd {
 	private int teamStartnummer;
 	private int teamStartgroep;
 	private int etappe;
+	private String klassement;
 	private String tijd;
 	private String foutcode;
 	private String snelheid;
@@ -53,6 +54,7 @@ public class Looptijd {
 	public void setSnelheid(String snelheid){this.snelheid = snelheid;}
 	public void setEtappeStand(int stand){this.etappeStand = stand;}
 	public void setCumulatieveStand(int stand){this.cumulatieveStand = stand;}
+	public void setKlassement(String klassement){this.klassement = klassement;}
 	
 	/*Getters*/
 	public String getTeamNaam(){return teamnaam;}
@@ -64,6 +66,7 @@ public class Looptijd {
 	public String getSnelheid(){return snelheid;}
 	public int getEtappeStand(){return etappeStand;}
 	public int getCumulatieveStand(){return cumulatieveStand;}
+	public String getKlassement(){return klassement;}
 	
 	/*String Formaat*/
 	public String toString(){
