@@ -25,7 +25,6 @@ public class SimpleTeamHandler extends DefaultHandler2{
 	
 	private ArrayList<Team> teams;
 	
-	public ArrayList<Team> getParsedData() {return teams;}
 	
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{
