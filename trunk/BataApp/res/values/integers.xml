@@ -9,4 +9,6 @@
     <integer name="batadag_dag">28</integer>
     <integer name="batadag_maand">4</integer>
     <integer name="batadag_jaar">2012</integer>
+    <integer name="notification_flashing_on_ms">300</integer>
+    <integer name="notification_flashing_off_ms">1000</integer>
 </resources>

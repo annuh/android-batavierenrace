@@ -141,8 +141,8 @@ public class Handler extends DefaultHandler {
 			// File(act.getExternalFilesDir(api.getSDmap()).getPath()+path);
 			// result = new
 			// File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
+			Log.d("parser", "getfile" + result.getPath()+ " exists: "+  result.exists());
 		}
-		Log.d("parser", "getfile" + result.getPath()+ " exists: "+  result.exists());
 		return result;
 	}
 
