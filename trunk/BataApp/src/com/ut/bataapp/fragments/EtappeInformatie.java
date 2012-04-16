@@ -44,16 +44,16 @@ public class EtappeInformatie extends SherlockFragment {
     	
     	// Tijden:
     	TextView opentijd = (TextView) view.findViewById(R.id.text_etappe_opentijd);
-    	//opentijd.setText(etappe);
+    	opentijd.setText(etappe.getOpenTijd());
     	
     	TextView sluittijd = (TextView) view.findViewById(R.id.text_etappe_sluittijd);
-    	sluittijd.setText(etappe.getNaar());
+    	sluittijd.setText(etappe.getUitersteStartTijd());
     	
     	TextView limiettijd = (TextView) view.findViewById(R.id.text_etappe_limiettijd);
-    	limiettijd.setText(etappe.getNaar());
+    	limiettijd.setText(etappe.getLimietTijd());
     	
     	TextView unilimiettijd = (TextView) view.findViewById(R.id.text_etappe_unilimiettijd);
-    	unilimiettijd.setText(etappe.getNaar());
+    	unilimiettijd.setText(etappe.getUniversteitsLimietTijd());
     	
     	
     	

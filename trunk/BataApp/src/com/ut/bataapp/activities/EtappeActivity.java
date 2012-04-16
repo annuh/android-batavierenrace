@@ -1,11 +1,8 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -99,7 +96,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			response = api.getEtappesByID(etappe_id);
+			response = api.getEtappesByID(etappe_id,EtappeActivity.this);
 			return null;       
 		}
 
