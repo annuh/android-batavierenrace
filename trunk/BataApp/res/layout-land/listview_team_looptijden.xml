@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/listview_header" >
+
+        <TextView
+            android:id="@+id/listview_header_etappe"
+            style="@style/listview_header_text"
+            android:layout_width="35dp"
+            android:text="@string/team_looptijden_header_etappe" />
+
+        <TextView
+            android:id="@+id/listview_header_tijd"
+            style="@style/listview_header_text"
+            android:layout_width="80dp"
+            android:layout_toRightOf="@id/listview_header_etappe"
+            android:text="@string/team_looptijden_header_tijd" />
+
+        <TextView
+            android:id="@+id/listview_header_snelheid"
+            style="@style/listview_header_text"
+            android:layout_width="80dp"
+			android:layout_toRightOf="@id/listview_header_tijd"
+            android:text="@string/team_looptijden_header_snelheid" />
+
+        <TextView
+            android:id="@+id/listview_header_etappe_klassement"
+            style="@style/listview_header_text"
+            android:layout_width="150dp"
+            android:layout_toRightOf="@id/listview_header_snelheid"
+            android:text="@string/team_looptijden_header_etappe_klassement" />
+
+        <TextView
+            android:id="@+id/listview_header_cum_klassement"
+             style="@style/listview_header_text"
+            android:layout_width="150dp"
+            android:layout_toRightOf="@id/listview_header_etappe_klassement"
+            android:text="@string/team_looptijden_header_cum_klassement" />
+
+        <TextView
+            android:id="@+id/listview_header_etappe_foutcode"
+            style="@style/listview_header_text"
+            android:layout_alignParentRight="true"
+            android:text="@string/team_looptijden_header_foutcode" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leeg" />
+
+</LinearLayout>
