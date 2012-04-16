@@ -1,5 +1,7 @@
 package com.ut.bataapp.fragments;
 
+import java.util.ArrayList;
+
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.TeamActivity;
@@ -17,16 +19,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SponsorInformatieFragment extends SherlockFragment {
-
-	private Sponsor sponsor;
 	
-	public SponsorInformatieFragment(Sponsor sponsor){
-		this.sponsor = sponsor;
-	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		ArrayList<Sponsor> sponsors = Sponsor.getSponsors();
+		
+		Bundle b = this.getArguments();
+		int page = b.getInt("page");		
+		Sponsor sponsor = sponsors.get(page);
 		
 		getSherlockActivity().getSupportActionBar().setTitle("Sponsor");     
 		View view = inflater.inflate(R.layout.sponsor_item, container, false);
