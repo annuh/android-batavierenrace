@@ -15,11 +15,11 @@ import android.widget.Filter;
 import android.widget.TextView;
 
 public class TeamAdapter extends ArrayAdapter<Team> {
-	
+
 	private final Context context;
 	private ArrayList<Team> values;
 	private ArrayList<Team> filteredItems;
-    private TeamFilter filter;
+	private TeamFilter filter;
 
 	public TeamAdapter(Context context, ArrayList<Team> values) {
 		super(context, R.layout.row_team, values);
@@ -29,7 +29,7 @@ public class TeamAdapter extends ArrayAdapter<Team> {
 		filteredItems = new ArrayList<Team>();
 		filteredItems.addAll(values);
 		getFilter();
-		 
+
 	}
 
 	@Override
@@ -38,19 +38,19 @@ public class TeamAdapter extends ArrayAdapter<Team> {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.row_team, parent, false);
 		rowView.setId(filteredItems.get(position).getStartnummer());
-		
+
 		TextView text_start = (TextView) rowView.findViewById(R.id.team_start);
 		text_start.setText(Integer.toString(filteredItems.get(position).getStartnummer()));
-		
+
 		TextView text_naam = (TextView) rowView.findViewById(R.id.team_naam);
 		text_naam.setText(filteredItems.get(position).getNaam());
-		
+
 
 		return rowView;
 	}
-	
-	
-	
+
+
+
 	@Override
 	public Filter getFilter() {
 		if (filter == null){
@@ -61,36 +61,36 @@ public class TeamAdapter extends ArrayAdapter<Team> {
 
 
 	private class TeamFilter extends Filter{
-		 
+
 		@Override
 		protected FilterResults performFiltering(CharSequence constraint) {
-            
-            constraint = constraint.toString().toLowerCase();
-            FilterResults result = new FilterResults();
-            if(constraint != null && constraint.toString().length() > 0)
-            {
-                ArrayList<Team> filteredItems = new ArrayList<Team>();
-               
-                for(int i = 0, l = values.size(); i < l; i++)
-                {
-                    Team m = values.get(i);
-                    if(m.getNaam().toLowerCase().contains(constraint) || String.valueOf(m.getStartnummer()).contains(constraint))
-                        filteredItems.add(m);
-                }
-                result.count = filteredItems.size();
-                result.values = filteredItems;
-            }
-            else
-            {
-                synchronized(this)
-                {
-                    result.values = values;
-                    result.count = values.size();
-                }
-            }
-            return result;
-        }
-		
+
+			constraint = constraint.toString().toLowerCase();
+			FilterResults result = new FilterResults();
+			if(constraint != null && constraint.toString().length() > 0)
+			{
+				ArrayList<Team> filteredItems = new ArrayList<Team>();
+
+				for(int i = 0, l = values.size(); i < l; i++)
+				{
+					Team m = values.get(i);
+					if(m.getNaam().toLowerCase().contains(constraint) || String.valueOf(m.getStartnummer()).contains(constraint))
+						filteredItems.add(m);
+				}
+				result.count = filteredItems.size();
+				result.values = filteredItems;
+			}
+			else
+			{
+				synchronized(this)
+				{
+					result.values = values;
+					result.count = values.size();
+				}
+			}
+			return result;
+		}
+
 		@SuppressWarnings("unchecked")
 		@Override
 		protected void publishResults(CharSequence constraint, FilterResults results) {
@@ -103,9 +103,9 @@ public class TeamAdapter extends ArrayAdapter<Team> {
 			}
 			Log.d("Filter", "Finished publishing results");
 			notifyDataSetInvalidated();
-	
-    }
+
+		}
 	}
-	
+
 
 }

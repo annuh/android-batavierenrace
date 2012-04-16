@@ -1,8 +1,6 @@
 package com.ut.bataapp;
 
 import java.util.Calendar;
-import java.util.Date;
-import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import android.app.AlertDialog;
@@ -19,7 +17,6 @@ public class Utils {
 	/* converterwaarden voor fahrenheit -> celsius */
 	public static final byte DIFF_CF = 32;
 	public static final float FACTOR_CF  = 1.8F;
-
 	
 	public static void noData(final Context context){
 		new AlertDialog.Builder(context)

@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/klassement_header_tijd"
-            android:text="Plaats"
+            android:text="Tijd"
             style="@style/listview_header_text"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true" />
