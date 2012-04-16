@@ -52,13 +52,13 @@ public class Handler extends DefaultHandler {
 				result = true;
 			}
 		} catch (SAXException e) {
-			Log.d("SimpleEtappe", "SAXEception: " + e.getMessage());
+			Log.d("handler", "SAXEception: " + e.getMessage());
 		} catch (MalformedURLException e) {
-			Log.d("SimpleEtappe", "MalformedUrlException: " + e.getMessage());
+			Log.d("handler", "MalformedUrlException: " + e.getMessage());
 		} catch (ParserConfigurationException e) {
-			Log.d("SimpleEtappe", "ParserConfigException: " + e.getMessage());
+			Log.d("handler", "ParserConfigException: " + e.getMessage());
 		} catch (IOException e) {
-			Log.d("SimpleEtappe", "IOExcpetion: " + e.getMessage());
+			Log.d("handler", "IOException: " + e.getMessage());
 		}
 		Log.d("parser", "parse geeft als resultaat:" + result + " bij klasse: "
 				+ this.getClass());
@@ -186,42 +186,38 @@ public class Handler extends DefaultHandler {
 													// moet worden
 			// nieuwe verbinding:
 			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-			Log.d("parser", "downloadtosd: url.openconnection gelukt");
 			// setup connectie:
 			urlConnection.setRequestMethod("GET");
 			urlConnection.setDoOutput(true);
-			Log.d("parser", "downloadtosd: iets voor urlconnection.connect()");
 
 			// connect!
 			urlConnection.connect();
-			Log.d("parser", "downloadtosd: urlconnected");
 
 			File sdFile = getFile(path+"t");
 			// sdFile is de file waar de nieuw file heengeschreven word.
-			Log.d("parser", "downloadtosd: got file");
 
 			FileOutputStream fileOutput = new FileOutputStream(sdFile);
 
 			// InputStream vanaf internet
 			InputStream inputStream = urlConnection.getInputStream();
-			Log.d("parser", "downloadtosd: got inputstream");
 
 			// aanmaken leesbuffer.
 			byte[] buffer = new byte[1024];
 			int bufferLength = 0; // tijdelijke lengte van de buffer
-			Log.d("parser", "downloadtosd: voor while");
 
 			// lees door de input buffer en schrijf naar de File.
 			while ((bufferLength = inputStream.read(buffer)) > 0) {
 				fileOutput.write(buffer, 0, bufferLength);
 			}
-			Log.d("parser", "downloadtosd: na while");
-
+			
+			sdFile.renameTo(getFile(path));
+			long temp = urlConnection.getLastModified();
+			sdFile.setLastModified(temp);
 			// Sluit de outputSream en httpconnection
 			fileOutput.close();
 			urlConnection.disconnect();
 			
-			sdFile.renameTo(getFile(path));
+			
 			
 			result = true;
 		} catch (MalformedURLException mue) {

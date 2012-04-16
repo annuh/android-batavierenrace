@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
-import android.util.Log;
-
 import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.objects.Response;
 
@@ -34,10 +32,6 @@ public class EtappeUitslagHandler extends Handler{
 	}
 	
 	public Response<ArrayList<ArrayList<Looptijd>>> getParsedData() {
-		Log.d("handler","etappeuitslaghandler uitslagen.size: "+uitslagen.size());
-		Log.d("handler","etappeuitslaghandler uitslagen.get(0).size: "+uitslagen.get(0).size());
-		Log.d("handler","etappeuitslaghandler uitslagen.get(1).size: "+uitslagen.get(1).size());
-
 		return new Response<ArrayList<ArrayList<Looptijd>>>(uitslagen,this.status);
 	}
 
@@ -58,7 +52,6 @@ public class EtappeUitslagHandler extends Handler{
 	@Override
 	public void endElement(String nameSpaceURI, String localName, String qName) throws SAXException{
 		if(localName.equals("uitslag")){
-			Log.d("parser","etappeuitslaghandler add looptijd in klassement: "+looptijd.getKlassement());
 			if(looptijd.getKlassement().equals("U")){
 				uitslagen.get(0).add(looptijd);
 			}else{
