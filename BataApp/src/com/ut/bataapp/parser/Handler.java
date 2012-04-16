@@ -143,10 +143,6 @@ public class Handler extends DefaultHandler {
 			// File(Environment.getExternalStorageDirectory().getPath()+api.getSDmap()+path);
 			Log.d("parser", "getfile" + result.getPath()+ " exists: "+  result.exists());
 		}
-<<<<<<< .mine
-		//Log.d("parser", "getfile" + result.getPath()+ " exists: "+  result.exists());
-=======
->>>>>>> .r192
 		return result;
 	}
 
