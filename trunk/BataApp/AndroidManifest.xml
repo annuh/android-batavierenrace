@@ -64,6 +64,8 @@
         <activity android:name=".activities.KlassementenActivity" />
         <activity android:name=".activities.KlassementActivity" />
         <activity android:name=".activities.SponsorActivity" />
+        <activity android:name=".activities.SponsorItemActivity"
+            android:theme="@style/StyledIndicators" />
         <activity
             android:name=".activities.WeerActivity"
             android:configChanges="orientation|screenSize"

@@ -21,25 +21,27 @@ public class SponsorItemActivity extends SherlockFragmentActivity {
 	FragmentPagerAdapter mAdapter;
     
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {    	
+    	super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.simple_tabs);
 		
-        mAdapter = new AlgemeenFragmentAdapter(getSupportFragmentManager());
+        mAdapter = new SponsorItemAdapter(getSupportFragmentManager());
 		mPager = (ViewPager)findViewById(R.id.pager);
 		mPager.setAdapter(mAdapter);
+		
 		mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
+		mIndicator.setViewPager(mPager);
+		
 		
 		String page = "";
 		page = getIntent().getStringExtra("page");
 		int pageid = 0;
-		if(page.equals("watmoetjeweten")) { pageid = 0; }
+		if(page.equals("sponsor1")) { pageid = 2; }
 		else if(page.equals("bustijden")) { pageid = 1; }
-		else if(page.equals("slapen")) { pageid = 2; }
+		else if(page.equals("slapen")) { pageid = 0; }
 		
 		mPager.setCurrentItem(pageid);
-		mIndicator.setViewPager(mPager);
 		mIndicator.setCurrentItem(pageid);
     }
     
@@ -62,14 +64,15 @@ public class SponsorItemActivity extends SherlockFragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
     
-    class AlgemeenFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+    class SponsorItemAdapter extends FragmentPagerAdapter implements TitleProvider {
 		
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 		ArrayList<String> titels = new ArrayList<String>();
 		
-		public AlgemeenFragmentAdapter(FragmentManager fm) {
+		public SponsorItemAdapter(FragmentManager fm) {
 			super(fm);
-			fragments.add(new LayoutFragment(R.layout.info_algemeen_watmoetjeweten));
+			LayoutFragment frag1 = new LayoutFragment(R.layout.sponsor_item);
+			fragments.add(frag1);
 			titels.add("Wat moet je weten");
 			fragments.add(new LayoutFragment(R.layout.info_algemeen_busenstarttijden));
 			titels.add("Tijden");
