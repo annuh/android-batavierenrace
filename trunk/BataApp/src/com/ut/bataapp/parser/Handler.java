@@ -210,14 +210,14 @@ public class Handler extends DefaultHandler {
 				fileOutput.write(buffer, 0, bufferLength);
 			}
 			
-			sdFile.renameTo(getFile(path));
+			File tempfile = getFile(path);
+			sdFile.renameTo(tempfile);
 			long temp = urlConnection.getLastModified();
-			sdFile.setLastModified(temp);
+			tempfile.setLastModified(temp);
+
 			// Sluit de outputSream en httpconnection
 			fileOutput.close();
 			urlConnection.disconnect();
-			
-			
 			
 			result = true;
 		} catch (MalformedURLException mue) {
