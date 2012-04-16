@@ -105,6 +105,8 @@ public class Handler extends DefaultHandler {
 						result = new InputSource(new FileInputStream(sdFile));
 					}
 				}
+			} else if(suppressdownload){
+				status = Response.NOK_NO_DATA;
 			} else {
 				if (downloadToSD(path)) {
 					// Het is gelukt om de file te downloaden, gebruik dit
