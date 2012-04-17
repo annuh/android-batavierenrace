@@ -10,6 +10,10 @@
         <TextView
             style="@style/h1"
             android:text="@string/etappe_informatie" />
+        <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 
         <TableLayout style="@style/table" >
 
@@ -98,7 +102,10 @@
         <TextView
             style="@style/h1"
             android:text="@string/etappe_tijden" />
-        
+        <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />        
         <TableLayout style="@style/table" >
             <TableRow>
                 <TextView
@@ -153,23 +160,69 @@
         <TextView
             style="@style/h1"
             android:text="@string/etappe_hoogteverschil" />
+        <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/container_background"
             android:padding="1dp" >
-
-            <ImageView
-                android:id="@+id/image_hoogteverschil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/grafiek" />
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent">
+                <TableRow>
+                    <LinearLayout 
+                        android:layout_width="35dp"                        
+                        android:layout_height="fill_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:gravity="top"
+			            	android:layout_width="wrap_content"
+			             	android:layout_height="0dp"
+			             	android:layout_weight="1"
+			            	android:text="99m" />
+                        <TextView
+                            android:gravity="bottom"
+			            	android:layout_width="wrap_content"
+			             	android:layout_height="wrap_content"
+			            	android:text="11m" />
+                    </LinearLayout>
+			       	<ImageView
+			       	    android:id="@+id/image_hoogteverschil"
+			       	    android:layout_width="0dp"
+			       	    android:layout_weight="1"
+			       	    android:maxWidth="500dp"
+			       	    android:layout_height="wrap_content"
+			       	    android:gravity="top"
+			       	    android:scaleType="fitStart"
+			       	    android:src="@drawable/kaart"
+			       	    android:adjustViewBounds="true" />
+			    </TableRow>
+			    <TableRow>
+			        <TextView
+			            android:layout_width="0dp"
+			            android:layout_weight="1"
+			            android:layout_column="1"
+			            android:text="0" />
+			       	<TextView
+			       	    android:gravity="right"
+			            android:layout_width="60dp"
+			            android:layout_column="1"
+			            android:text="7.5km" />
+			    </TableRow>
+            </TableLayout>            
         </LinearLayout>
 
         <TextView
             style="@style/h1"
             android:text="@string/etappe_recordtijd" />
+        <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 
         <TableLayout style="@style/table" >
 
