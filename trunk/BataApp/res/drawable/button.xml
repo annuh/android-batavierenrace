@@ -1,2 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button style="@style/nice_button" />
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true" >
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+		    <gradient 
+		        android:startColor="#89cdef" 
+		        android:endColor="#89cdef"
+		        android:angle="225"
+		     />
+		    <corners android:radius="0dp" />
+		    <stroke android:width="3dp" android:color="#1e8bb4"/>
+		</shape>
+    </item>
+	
+    <item android:state_focused="true" >
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+		    <gradient 
+		        android:startColor="#89cdef" 
+		        android:endColor="#89cdef"
+		        android:angle="225"
+		     />
+		    <corners android:radius="0dp" />
+		    <stroke android:width="3dp" android:color="#1e8bb4"/>
+		</shape>
+    </item>
+
+	<item android:state_enabled="false">
+    	<shape xmlns:android="http://schemas.android.com/apk/res/android">
+			<gradient 
+		    	android:startColor="@color/batablauw" 
+		        android:endColor="@color/batablauw"
+		        android:angle="225"
+		     />
+		    <corners android:radius="0dp" />
+		    <stroke android:width="3dp" android:color="#1e8bb4"/>
+		</shape>
+  	</item>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+		    <gradient 
+		        android:startColor="@color/batablauw" 
+		        android:endColor="@color/batablauw"
+		        android:angle="225"
+		     />
+		    <corners android:radius="0dp" />
+		    <stroke android:width="3dp" android:color="#1e8bb4"/>
+		</shape>
+    </item>
+</selector>
