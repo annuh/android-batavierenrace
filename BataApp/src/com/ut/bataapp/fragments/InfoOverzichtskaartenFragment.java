@@ -13,10 +13,9 @@ import com.ut.bataapp.activities.*;
 
 public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	
-	
-	
-	public void openKaart(String kaart) {
+	public void openKaart(int kaart) {
 		Intent intent = new Intent(getActivity().getApplicationContext(), AfbeeldingActivity.class);
+		intent.putExtra("kaart", kaart);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
@@ -30,7 +29,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   herstart_barchem.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               openKaart("herstart_barchem");
+               openKaart(0);
            }
        });
 	   
@@ -38,7 +37,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   herstart_ulft.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart("herstart_barchem");
+        	   openKaart(1);
            }
        });
 	   
@@ -46,7 +45,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   campus_enschede.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart("herstart_barchem");
+        	   openKaart(2);
            }
        });
 	   
@@ -54,7 +53,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   stad_enschede.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart("herstart_barchem");
+        	   openKaart(3);
            }
        });
 	   
@@ -62,7 +61,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   stad_nijmegen.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart("herstart_barchem");
+        	   openKaart(4);
            }
        });
 	   

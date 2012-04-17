@@ -120,15 +120,22 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	 * Maakt de listview
 	 */
 	public void makeList() {
-		getView().findViewById(R.id.loading).setVisibility(View.GONE);
-		adapter_uni = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(0));
-		adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
-						
-		SeparatedListAdapter adapter = new SeparatedListAdapter(getActivity().getApplicationContext());  
-        adapter.addSection("Universiteitsklassement", adapter_uni);  
-        adapter.addSection("Algemeen klassement", adapter_alg);
-        
-		setListAdapter(adapter);
+		
+		View view = getView();
+		if(view != null){
+			
+			view.findViewById(R.id.loading).setVisibility(View.GONE);
+			adapter_uni = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(0));
+			adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
+							
+			SeparatedListAdapter adapter = new SeparatedListAdapter(getActivity().getApplicationContext());
+	        adapter.addSection("Universiteitsklassement", adapter_uni);
+	        adapter.addSection("Algemeen klassement", adapter_alg);
+	        
+			setListAdapter(adapter);
+			
+		}
+		
 	}
 	
 	
