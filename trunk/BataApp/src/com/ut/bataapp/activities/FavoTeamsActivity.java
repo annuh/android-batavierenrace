@@ -1,12 +1,7 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
-import java.util.Map;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -34,21 +29,18 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setContentView(R.layout.listview_favo);
 		registerForContextMenu(getListView());
-		//initLijst();
-		//SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
-		//Map<String, ?> favoteams = keyValues.getAll();
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		initLijst();
 	}
-	
+
 	public void initLijst() {
-		ArrayList<Team> teams = this.getFavoTeams();
+		ArrayList<Team> teams = Utils.getFavoTeams(FavoTeamsActivity.this);
 		if(teams.size() < 1) {
-			noFavoTeams();
+			Utils.noFavoTeams(FavoTeamsActivity.this);
 		} else if (teams.size() == 1 && firstLaunch) {
 			Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
 			//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -96,43 +88,14 @@ public class FavoTeamsActivity extends SherlockListActivity {
 			Utils.removeFavoteam(getApplicationContext(), (int) id);
 			//startActivity(getIntent()); finish();
 			//adapter.notifyDataSetChanged();
-			adapter = new TeamAdapter(FavoTeamsActivity.this, getFavoTeams());
+			adapter = new TeamAdapter(FavoTeamsActivity.this, Utils.getFavoTeams(FavoTeamsActivity.this));
 			setListAdapter(adapter);
 			return true;
 		}
 		return false;
 	} 
 
-	public ArrayList<Team> getFavoTeams() {
-		SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
-		Map<String, ?> favoteams = keyValues.getAll();
-		ArrayList<Team> teams = new ArrayList<Team>();
-		
-		for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
-			teams.add(new Team(Integer.parseInt(entry.getKey()), (String) entry.getValue()));
-			Log.d("FavoTeam", ""+entry.getKey());
-		}
-		return teams;
-		
-	}
-	
-	public void noFavoTeams() {
-		new AlertDialog.Builder(this)
-		.setTitle("U heeft geen favoriete teams!")
-		.setMessage("Wilt u nu teams toevoegen?")
-		.setCancelable(false)
-		.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				Intent i = new Intent(getApplicationContext(), TeamsActivity.class);
-				startActivity(i);
-			}
-		})
-		.setNegativeButton("Nee", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				FavoTeamsActivity.this.finish();
-			}
-		}).create().show();
-	}
+
 
 
 }

@@ -164,7 +164,7 @@ public class KlassementActivity extends SherlockListActivity  {
 
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			while(!isCancelled())
+			if(!isCancelled())
 				response = api.getKlassementByNaam(naam);
 			return null;
 		}
