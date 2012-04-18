@@ -10,6 +10,7 @@
     <string name="ab_volgen">Volg dit team</string>
     <string name="ab_verwijderen">Verwijder dit team</string>
     <string name="ab_instellingen">Instellingen</string>
+    <string name="ab_foutcodes">Foutcodes</string>
 
     <!-- Dashboard -->
     <string name="dashboard_favorieten">Favorieten</string>

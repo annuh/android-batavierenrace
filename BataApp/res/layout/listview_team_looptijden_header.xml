@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/team_looptijden_header"
+    style="@style/listview_header" >
+
+    <TextView
+        android:id="@+id/listview_header_etappenr"
+        style="@style/listview_header_text"
+        android:layout_width="35dp"
+        android:text="#" >
+    </TextView>
+
+    <TextView
+        style="@style/listview_header_text"
+        android:layout_toRightOf="@id/listview_header_etappenr"
+        android:text="Tijd" >
+    </TextView>
+
+    <TextView
+        style="@style/listview_header_text"
+        android:layout_alignParentRight="true"
+        android:text="Snelheid" >
+    </TextView>
+
+</RelativeLayout>
