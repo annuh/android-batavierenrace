@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!--  Algemeen/Actionbar -->
+    <!-- Algemeen/Actionbar -->
     <string name="app_titel">Batavierenrace</string>
     <string name="alert_dialog_ok">OK</string>
     <string name="alert_dialog_cancel">Annuleren</string>
@@ -23,20 +23,32 @@
     <string name="dashboard_weer">Weer</string>
     <string name="dashboard_sponsor">Sponsor</string>
 
+    <!-- Algemeen -->
+    <string name="laden_titel">Bezig met laden</string>
+
+    <!-- Sorteren -->
     <string name="sort_D">\u2193</string>
     <string name="sort_A">\u2191</string>
-    
-    <!--  Favo teams -->
-    
-    
-    <!--  Klassementen -->
-    
-    
+    <string name="sort_naam">Naam</string>
+    <string name="sort_startnummer">Startnummer</string>
+    <string name="sort_stand">Stand</string>
+
+    <!-- Favo teams -->
+    <string name="favo_verwijderteam">Verwijder team</string>
+
+    <!-- Klassementen -->
+    <string name="klassementen_laden">Klassementen worden geladen…</string>
+    <string name="klassement_titel">Klassement</string>
+    <string name="klassement_laden">Klassement wordt geladen…</string>
+    <string name="klassement_header_stand">#</string>
+    <string name="klassement_header_team">Team</string>
+    <string name="klassement_header_tijd">Tijd</string>
+    <string name="klassement_leeg">Er zijn geen klassementen gevonden</string>
+
     <!-- Teams -->
     <string name="teams_header_startnummer">#</string>
     <string name="teams_header_naam">Ploeg</string>
     <string name="teams_geenteams">Geen teams gevonden ..</string>
-    
     <string name="team_informatie">Informatie:</string>
     <string name="team_looptijden">Tijd:</string>
     <string name="team_naam">Naam:</string>
@@ -70,10 +82,9 @@
     <string name="etappe_recordtijd_snelheid">Snelheid</string>
     <string name="etappes_geenetappes">Geen etappes gevonden..</string>
     <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
-
     <string name="berichten_geenberichten">Er zijn op dit moment geen berichten.</string>
-    
-    <!--  Informatie -->
+
+    <!-- Informatie -->
     <string name="informatie_titel">Informatie</string>
     <string name="informatie_eten_drinken_tijdens_de_race"></string>
     <string name="informatie_eten_drinken_tijdens_de_race_text">         Het wordt zeer sterk aangeraden om eten en drinken mee te nemen voor tijdens de race. 
@@ -94,8 +105,8 @@
     <string name="info_algemeen_watmoetjeweten_totslot">- Het nuttigen van alcoholische dranken en het gebruik van drogerende middelen tijden de race door mensen die nog moeten rijden of lopen is absoluut niet toegestaan.\n- Door Duitsland: geldig paspoort en groene verzekeringskaart busje\n- Let op omroepen en errata\n- Slapen in sportcentrum: slaapbandje dragen\n- Geen open vuur\n- Parkeren op de aangegeven plaatsen</string>
     <string name="info_algemeen_slapen">In Enschede zijn twee mogelijkheden:\n<b>Sportcentrum</b>\nHier zijn drie zalen waar deelnemers kunnen slapen. Hiervoor heb je van te voren een slaapbandje moeten kopen.\n\n<b>Camping</b>\nIn Enschede zijn drie campings:\n- Carilloncamping\n- Hockeycamping\n- Vlindercamping\nEnkele regels:\n\t o Plaats de tent binnen de lijnen\n\t o Tent mag maximaal voor 6 personen groot\n\t o Een open vuur is verboden\n\t o Gooi afval op de daarvoor bestemde plaatsen\n\t o Zondagochtend 11 uur dien je het terrein verlaten te hebben</string>
     <string name="bezig_met_laden">Bezig met laden</string>
-    
-    <!--  Weer -->
+
+    <!-- Weer -->
     <string name="ophalen_weergegevens">Weergegevens worden opgehaald…</string>
     <string name="advies1">Advies …15</string>
     <string name="advies2">Advies 15–20</string>
@@ -114,22 +125,37 @@
     <string name="verwachtweer">Verwacht weer racedag</string>
     <string name="algemeneverwachting">Algemene verwachting</string>
     <string name="buienverwachting">Buien komende 2 uur</string>
-    
-    <!--  BataRadio -->
+
+    <!-- BataRadio -->
     <string name="bataradio_live_header">Internetstream</string>
     <string name="bataradio_live_beschikbaar">De livestream is beschikbaar van 27 april 21.00 tot 28 april 19.00.</string>
     <string name="bataradio_live_buffering_can_take_a_while">Afhankelijk van je telefoon en internetverbinding, kan het bufferen enige tijd duren.</string>
     <string name="bataradio_live_waarschuwing">Let op: Het afspelen van de livestream zorgt voor relatief veel dataverkeer. Wanneer je luistert via mobiel internet, kan je databundel snel leegraken. Een uurtje luisteren op normale kwaliteit neemt ongeveer 50MB aan data, op hoge kwaliteit 85MB en op lage kwaliteit 30MB.</string>
     <string name="bataradio_algemeen_header">Algemene informatie</string>
     <string name="bataradio_algemeen">BataRadio brengt een mix van muziek, actuele informatie over de race, live verslaggeving en reportages.\n\nZo hoor je om het half uur een update met al het actuele nieuws omtrent de Batavierenrace. Uiteraard zijn er verslaggevers van BataRadio aanwezig bij de start in Nijmegen en de finish in Enschede en op de verschillende wisselpunten en herstarts.\n\nDaarnaast volgt BataRadio een aantal teams die geregeld zullen worden gebeld in de uitzending. Ook komen er gasten langs in de studio in het sportcentrum in Enschede en zijn er achtergrondreportages te horen.\n\nIn Enschede is BataRadio te ontvangen op 105.1 FM en in Nijmegen op 107.8 FM.</string>
-	<string name="bataradio_programmering_header">Programmering</string>
+    <string name="bataradio_programmering_header">Programmering</string>
     <string name="bataradio_programmering">21:00–23:00 Thijs Maalderink\n23:00–01:00 Thymen Wabeke\n01:00–03:00 Thomas van Vliet\n03:00–05:00 Pim van Dongen\n05:00–07:00 Iwan Verrips\n07:00–09:00 Elger van der Wel\n09:00–11:00 Thijs Maalderink\n11:00–13:00 Elger van der Wel\n13:00–15:00 Bas van Dalen\n15:00–17:00 Arno Leblanc\n17:00–19:00 Thomas van Vliet</string>
-
     <string name="notification_bataradio_title">BataRadio</string>
     <string name="notification_bataradio_buffering">Buffering…</string>
     <string name="notification_bataradio_playing">Playing…</string>
-    
-    <!-- Background updater  -->
+
+    <!-- Background updater -->
     <string name="notification_bu_ticker">Nieuwe data %s</string>
     <string name="notification_bu_title">Nieuwe data</string>
+
+    <string-array name="bataradio_kwaliteit_array">
+        <item>Hoge kwaliteit</item>
+        <item>Normale kwaliteit</item>
+        <item>Lage kwaliteit</item>
+    </string-array>
+
+    <string name="pref_background_update">backgroundupdater</string>
+    <string name="pref_background_update_interval">backgroundinterval</string>
+    <string name="pref_background_update_notify">backgroundnotify</string>
+    <string name="pref_background_update_sound">backgroundsound</string>
+    <string name="pref_background_update_vibrate">backgroundvibrate</string>
+    <string name="pref_background_update_flash">backgroundflash</string>
+    <string name="notification_bu_ticker">Nieuwe data %s</string>
+    <string name="notification_bu_title">Nieuwe data</string>
+
 </resources>

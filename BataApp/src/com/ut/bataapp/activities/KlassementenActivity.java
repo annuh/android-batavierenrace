@@ -18,12 +18,10 @@ import com.ut.bataapp.objects.Response;
 
 public class KlassementenActivity extends SherlockFragmentActivity  {
 
-	public ArrayList<String> klassementen;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		setTitle("Klassement");
 		super.onCreate(savedInstanceState);
+		setTitle(R.string.dashboard_klassement);
 		setContentView(R.layout.klassementen);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		new getKlassementen().execute(); 
@@ -32,21 +30,18 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			Utils.goHome(getApplicationContext());
-		}
-
+			case android.R.id.home:
+				Utils.goHome(getApplicationContext());
+			}
 		return super.onOptionsItemSelected(item);
 	}
 
 	private class getKlassementen extends AsyncTask<Void, Void, Void> {
-
 		Response<ArrayList<String>> response = null;
 		private ProgressDialog progressDialog;  
-
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(KlassementenActivity.this,  
-					"Bezig met laden", "Klassementen worden opgehaald...", true);  
+					getString(R.string.laden_titel), getString(R.string.klassementen_laden), true);  
 		}
 
 		@Override  
@@ -58,7 +53,6 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(KlassementenActivity.this, response)) {
-				klassementen = response.getResponse();
 				ViewGroup c = (ViewGroup) findViewById(R.id.container_klassementen);
 				for(final String klassement: (ArrayList<String>) response.getResponse()) {
 					Button button = (Button) LayoutInflater.from(getBaseContext()).inflate(R.drawable.button, c, false);
