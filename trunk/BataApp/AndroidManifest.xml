@@ -43,21 +43,18 @@
         </activity>
         <activity android:name=".activities.FavoTeamsActivity" />
         <activity
-            android:name=".activities.BataRadioActivity"
-            android:launchMode="singleTop" />
-        <activity
             android:name=".activities.EtappesActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard" />
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".activities.EtappeActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
         <activity
             android:name=".activities.TeamsActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard" />
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".activities.TeamActivity"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
         <activity android:name=".activities.EtappeChartByTeam" />
         <activity android:name="org.achartengine.GraphicalActivity" />
@@ -71,7 +68,7 @@
             android:theme="@style/StyledIndicators" />  
         <activity
             android:name=".activities.WeerActivity"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
         <activity
             android:name=".activities.InformatieActivity"
