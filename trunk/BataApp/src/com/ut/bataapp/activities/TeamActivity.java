@@ -11,9 +11,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.Loader;
-
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -30,17 +27,20 @@ import android.util.Log;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 import com.viewpagerindicator.PageIndicator;
-import android.support.v4.app.LoaderManager;
 
-public class TeamActivity extends SherlockFragmentActivity implements LoaderManager.LoaderCallbacks<Response<Team>> {
+public class TeamActivity extends SherlockFragmentActivity {
 
 	ViewPager mPager;
 	PageIndicator mIndicator;
 	FragmentPagerAdapter mAdapter;
 	private final int MENU_FOLLOW = Menu.FIRST;
 	private final int MENU_UNFOLLOW = Menu.FIRST + 1;
-	Team team = null;
-	static int team_id;
+	private Team team = null;
+	private int team_id;
+
+	public void setTeam(Team team){
+		this.team = team;
+	}
 
 	public Team getTeam(){
 		return team;
@@ -52,11 +52,7 @@ public class TeamActivity extends SherlockFragmentActivity implements LoaderMana
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		team_id = this.getIntent().getIntExtra("index", 0);
 		Log.d("Teamid",""+team_id);
-		getSupportLoaderManager().initLoader(0, null, this);//.forceLoad();
-
-
-		//getSupportLoaderManager().getLoader(0).startLoading();
-		//new getTeam().execute();
+		new getTeam().execute();
 	}
 
 	@Override
@@ -184,88 +180,6 @@ public class TeamActivity extends SherlockFragmentActivity implements LoaderMana
 			}
 
 		}
-	}
-
-	public static class AppListLoader extends AsyncTaskLoader<Response<Team>> {
-		Response<Team> response;
-		public AppListLoader(Context context) {
-			super(context);
-		}
-
-		@Override public Response<Team> loadInBackground() {
-			response = api.getTeamByID(team_id);
-			return response;
-		}
-
-		@Override public void deliverResult(Response<Team> response) {
-			if (isReset()) {
-				return;
-			}
-
-			this.response = response;
-			super.deliverResult(response);
-		}
-
-		@Override protected void onStartLoading() {
-			if (response != null) {
-				deliverResult(response);
-			}
-			if (takeContentChanged() || response == null) {
-				forceLoad();
-			}
-		}
-
-		@Override
-		protected void onStopLoading() {
-			// Attempt to cancel the current load task if possible.
-			cancelLoad();
-		}
-
-		@Override
-		protected void onReset() {
-			super.onReset();
-			// Ensure the loader is stopped
-			onStopLoading();
-			response = null;
-		}
-	}
-
-	private ProgressDialog progressDialog;
-
-	@Override
-	public Loader<Response<Team>> onCreateLoader(int arg0, Bundle arg1) {
-		progressDialog = ProgressDialog.show(TeamActivity.this,  
-				"Bezig met laden", "Team wordt opgehaald...", true);
-		progressDialog.setCancelable(true);
-		progressDialog.setOnCancelListener(new OnCancelListener() {
-			public void onCancel(DialogInterface dialog) {
-				finish();
-			}
-		});
-		return new AppListLoader(this);
-	}
-
-	@Override
-	public void onLoadFinished(Loader<Response<Team>> loader, Response<Team> response) {
-		//Log.d("Loader", "Klaar");
-		if(Utils.checkResponse(TeamActivity.this, response)) {
-			team = response.getResponse();
-			setContentView(R.layout.simple_tabs);
-			mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
-	
-			mPager = (ViewPager)findViewById(R.id.pager);
-			mPager.setAdapter(mAdapter);
-	
-			mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
-			mIndicator.setViewPager(mPager);
-			invalidateOptionsMenu();
-			progressDialog.dismiss();
-		}
-	}
-
-	@Override
-	public void onLoaderReset(Loader<Response<Team>> arg0) {		
-		//Utils.goHome(this);
 	}
 
 }
