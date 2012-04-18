@@ -3,12 +3,9 @@
     <integer name="boundary1">15</integer>
     <integer name="boundary2">20</integer>
     <integer name="boundary3">25</integer>
-    <integer name="spinner_quality_default">1</integer>
     <integer name="n_etappes">25</integer>
-    <integer name="background_update_interval_default">1</integer>
     <integer name="batadag_dag">28</integer>
     <integer name="batadag_maand">4</integer>
     <integer name="batadag_jaar">2012</integer>
-    <integer name="notification_flashing_on_ms">300</integer>
-    <integer name="notification_flashing_off_ms">1000</integer>
+    <integer name="bataradio_retry_every_seconds">15</integer>
 </resources>

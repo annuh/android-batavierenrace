@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background upater -->
+    <string name="pref_background_update">backgroundupdater</string>
+    <string name="pref_background_update_interval">backgroundinterval</string>
+    <string name="pref_background_update_notify">backgroundnotify</string>
+    <string name="pref_background_update_sound">backgroundsound</string>
+    <string name="pref_background_update_vibrate">backgroundvibrate</string>
+    <string name="pref_background_update_flash">backgroundflash</string>
+    
+    <integer name="pref_background_update_interval_default">1</integer>
+    <bool name="pref_background_update_default">true</bool>
+    <bool name="pref_background_update_notify_default">true</bool>
+    <bool name="pref_background_update_sound_default">true</bool>
+    <bool name="pref_background_update_vibrate_default">true</bool>
+    <bool name="pref_background_update_flash_default">true</bool>
+    
+    <integer name="notification_flashing_on_ms">300</integer>
+    <integer name="notification_flashing_off_ms">1000</integer>
+    <color name="notification_flashing_color">#ff00ff00</color>
+    
+    <!-- BataRadio -->
+    <string name="pref_bataradio_quality">bataradioquality</string>
+    <string-array name="pref_bataradio_quality_options">
+        <item>Hoge kwaliteit</item>
+        <item>Normale kwaliteit</item>
+        <item>Lage kwaliteit</item>
+    </string-array>
+ 
+    <integer name="pref_bataradio_quality_default">1</integer> 
+</resources>

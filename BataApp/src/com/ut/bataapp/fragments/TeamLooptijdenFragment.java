@@ -1,40 +1,25 @@
 package com.ut.bataapp.fragments;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.SubMenu;
 import com.ut.bataapp.R;
-import com.ut.bataapp.Utils;
 import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.activities.TeamActivity;
-import com.ut.bataapp.activities.TeamsActivity;
 import com.ut.bataapp.adapters.LooptijdAdapter;
-import com.ut.bataapp.adapters.TeamAdapter;
 import com.ut.bataapp.objects.Team;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-
 public class TeamLooptijdenFragment extends SherlockListFragment {
-	
 	private final int MENU_FOUTCODES = Menu.FIRST + 2;
 	
 	@Override
@@ -45,7 +30,6 @@ public class TeamLooptijdenFragment extends SherlockListFragment {
 		setListAdapter(new LooptijdAdapter(this.getActivity().getApplicationContext(), team.getLooptijden()));
 		View view = inflater.inflate(R.layout.listview_team_looptijden, null); 
 		return view; 
-
 	}
 	
 	@Override
@@ -75,15 +59,5 @@ public class TeamLooptijdenFragment extends SherlockListFragment {
 		Intent intent = new Intent(getActivity().getApplicationContext(), EtappeActivity.class);
 		intent.putExtra("index", v.getId());
 		startActivity(intent);
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		Log.d("FRAGMENT", "ROTATION");
-		RelativeLayout head = (RelativeLayout) getView().findViewById(R.id.team_looptijden_header);
-		head.removeAllViews();
-		RelativeLayout h = (RelativeLayout)getLayoutInflater(this.getArguments()).inflate(R.layout.listview_team_looptijden_header, null);
-		head.addView(h);
-
 	}
 }
