@@ -48,7 +48,6 @@ public class TeamActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		mTeamID = ((savedInstanceState == null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("teamid"));
 		Log.d("Teamid", "teamid: " + mTeamID);
 		new getTeam().execute();		

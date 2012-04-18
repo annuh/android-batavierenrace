@@ -3,7 +3,6 @@ package com.ut.bataapp.activities;
 import java.util.ArrayList;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
@@ -20,12 +19,11 @@ import com.ut.bataapp.objects.Team;
 public class FavoTeamsActivity extends SherlockListActivity {
 
 	public final static int DELETE_FAVOTEAM = 1;
-	TeamAdapter adapter;
-	boolean firstLaunch = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.getSupportActionBar().setTitle(R.string.dashboard_favorieten);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setContentView(R.layout.listview_favo);
 		registerForContextMenu(getListView());
@@ -37,19 +35,15 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		initLijst();
 	}
 
+	/**
+	 * Bouwt de lijst met favorieten
+	 */
 	public void initLijst() {
 		ArrayList<Team> teams = Utils.getFavoTeams(FavoTeamsActivity.this);
 		if(teams.size() < 1) {
 			Utils.noFavoTeams(FavoTeamsActivity.this);
-		} else if (teams.size() == 1 && firstLaunch) {
-			Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
-			//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.putExtra("index", teams.get(0).getID());
-			Log.d("FavoTeamStart",""+teams.get(0).getID());
-			startActivity(intent);
-			firstLaunch = false;
 		} else {
-			adapter = new TeamAdapter(FavoTeamsActivity.this, teams);
+			TeamAdapter adapter = new TeamAdapter(FavoTeamsActivity.this, teams);
 			setListAdapter(adapter);
 		}
 	}
@@ -75,9 +69,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-		menu.add(Menu.NONE, DELETE_FAVOTEAM, Menu.NONE, "Verwijder team");
-		//AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-		//int id = info.targetView.getId();
+		menu.add(Menu.NONE, DELETE_FAVOTEAM, Menu.NONE, getString(R.string.favo_verwijderteam));
 	}
 
 	public boolean onContextItemSelected(android.view.MenuItem item) {
@@ -86,16 +78,9 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		switch (item.getItemId()) {
 		case DELETE_FAVOTEAM:
 			Utils.removeFavoteam(getApplicationContext(), (int) id);
-			//startActivity(getIntent()); finish();
-			//adapter.notifyDataSetChanged();
-			adapter = new TeamAdapter(FavoTeamsActivity.this, Utils.getFavoTeams(FavoTeamsActivity.this));
-			setListAdapter(adapter);
+			initLijst();
 			return true;
 		}
 		return false;
-	} 
-
-
-
-
+	}
 }

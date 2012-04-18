@@ -9,22 +9,26 @@
         style="@style/listview_header" >
 
         <TextView
-            android:id="@+id/klassement_header_plaats"
-            android:text="#"
+            android:id="@+id/klassement_header_stand"
+            android:text="@string/klassement_header_stand"
+            android:clickable="true"
+            android:onClick="sortStand"
             style="@style/listview_header_text"
             android:layout_alignParentTop="true"
             android:width="35dp" />
 
         <TextView
             android:id="@+id/klassement_header_team"
-            android:text="Team"
+            android:text="@string/klassement_header_team"
             style="@style/listview_header_text"
+            android:clickable="true"
+            android:onClick="sortNaam"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/klassement_header_plaats" />
+            android:layout_toRightOf="@id/klassement_header_stand" />
 
         <TextView
             android:id="@+id/klassement_header_tijd"
-            android:text="Tijd"
+            android:text="@string/klassement_header_tijd"
             style="@style/listview_header_text"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true" />
@@ -39,6 +43,6 @@
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Leeg" />
+        android:text="@string/klassement_leeg" />
 
 </LinearLayout>

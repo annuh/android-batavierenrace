@@ -5,7 +5,7 @@
     <LinearLayout style="@style/listview_header" >
 
         <TextView
-            android:id="@+id/teams_headers_startnummer"
+            android:id="@+id/teams_header_startnummer"
             style="@style/listview_header_text"
             android:layout_width="40dp"
             android:clickable="true"
@@ -13,7 +13,7 @@
             android:text="@string/teams_header_startnummer" />
 
         <TextView
-            android:id="@+id/teams_headers_naam"
+            android:id="@+id/teams_header_naam"
             style="@style/listview_header_text"
             android:clickable="true"
             android:onClick="sortNaam"
