@@ -1,10 +1,12 @@
 package com.ut.bataapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.R;
 import com.ut.bataapp.Utils;
+
 import android.webkit.WebView;
 
 public class AfbeeldingActivity extends SherlockActivity {
@@ -40,7 +42,6 @@ public class AfbeeldingActivity extends SherlockActivity {
 			locatie = hoogteverschillen[kaart][0];
 			titel = hoogteverschillen[kaart][1];
 		}
-		
 		getSupportActionBar().setTitle(titel);
 		setContentView(R.layout.afbeelding);
 		WebView webview = (WebView) findViewById(R.id.webview);
