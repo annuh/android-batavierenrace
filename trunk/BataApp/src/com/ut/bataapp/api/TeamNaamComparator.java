@@ -11,11 +11,11 @@ import java.util.Comparator;
 
 import com.ut.bataapp.objects.Team;
 
-public class TeamNaamComparator implements Comparator{
+public class TeamNaamComparator implements Comparator<Team>{
 
 	@Override
-	public int compare(Object e0, Object e1) {
-		return ((Team)e0).getNaam().compareTo(((Team)e1).getNaam());
+	public int compare(Team e0, Team e1) {
+		return e0.getNaam().compareTo(e1.getNaam());
 	}
 
 }

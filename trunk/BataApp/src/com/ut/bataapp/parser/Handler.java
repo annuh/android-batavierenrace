@@ -35,13 +35,13 @@ public class Handler extends DefaultHandler {
 
 	public Handler() {
 	}
-	
+
 	public boolean parse(boolean suppressdownload) {
 		boolean result = false;
 		try {
 			InputSource input = getInputSource(suppressdownload);
 			if(status != Response.NOK_NO_DATA && (!parsed || status == Response.OK_UPDATE)){
-			//if (!parsed && !(status == Response.OK_NO_UPDATE || status == Response.NOK_NO_DATA)) {
+				//if (!parsed && !(status == Response.OK_NO_UPDATE || status == Response.NOK_NO_DATA)) {
 				SAXParserFactory spf = SAXParserFactory.newInstance();
 				SAXParser sp = spf.newSAXParser();
 				XMLReader xr = sp.getXMLReader();
@@ -79,6 +79,7 @@ public class Handler extends DefaultHandler {
 	public InputSource getInputSource(boolean suppressdownload) throws IOException {
 		File sdFile = getFile(path);
 		InputSource result = null;
+		
 		if (sdFile == null) {
 			try{
 				result = new InputSource(new URL(api.getURL() + path).openStream());
@@ -89,18 +90,16 @@ public class Handler extends DefaultHandler {
 			}
 		} else {
 			if (sdFile.exists()) {
-				if (isNewest(path) || suppressdownload) {
+				if (suppressdownload) {
 					status = Response.OK_NO_UPDATE;
 					result = new InputSource(new FileInputStream(sdFile));
 				} else {
-					if (downloadToSD(path)) {
-						status = Response.OK_UPDATE;
-						// Het is gelukt om de file te downloaden, gebruik dit
-						// bestand.
+					if (downloadToSD(path,sdFile.lastModified())) {
+						//	Het is gelukt om de file te downloaden, gebruik dit bestand.
+						//	status set by downloadToSD
 						result = new InputSource(new FileInputStream(sdFile));
 					} else {
-						// Het is niet gelukt de file te downloaden, gebruik
-						// oude versie
+						// Het is niet gelukt de file te downloaden, gebruik oude versie
 						status = Response.NOK_OLD_DATA;
 						result = new InputSource(new FileInputStream(sdFile));
 					}
@@ -108,11 +107,10 @@ public class Handler extends DefaultHandler {
 			} else if(suppressdownload){
 				status = Response.NOK_NO_DATA;
 			} else {
-				if (downloadToSD(path)) {
-					// Het is gelukt om de file te downloaden, gebruik dit
-					// bestand.
+				if (downloadToSD(path,0)) {
+					// Het is gelukt om de file te downloaden, gebruik dit bestand.
+					// status set by downloadToSD
 					result = new InputSource(new FileInputStream(sdFile));
-					status = Response.OK_UPDATE;
 				} else {
 					status = Response.NOK_NO_DATA;
 					// Het is niet gelukt de file te downloaden, dus de server werkt niet, error versturen!!
@@ -151,31 +149,7 @@ public class Handler extends DefaultHandler {
 		return result;
 	}
 
-  /**
-	 * Deze functie controleerd of de huidige versie van een bestand de nieuwste
-	 * is.
-	 * @require getFile(path) != null
-	 */
-	private boolean isNewest(String path) {
-		boolean result = true;
-		long timestampsd = getFile(path).lastModified();
-		long timestampwww = 0;
-		
-		try {
-			URL url = new URL(api.getURL() + path);
-			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-			timestampwww = urlConnection.getLastModified();
-		} catch (MalformedURLException e) {result = false;
-		} catch (IOException e) {result = false;}
-		
-		if(timestampwww>timestampsd || timestampwww == 0){
-			result = false;
-		}
-		Log.d("handler","timestamp sd: "+timestampsd+" voor file: "+path);
-		Log.d("handler","timestamp www: "+timestampwww+" voor file: "+path);
-		Log.d("handler","isNewest("+path+") = "+result);
-		return result;
-	}
+	
 
 	/**
 	 * Deze methode probeert de file gegeven door path te downloaden naar de
@@ -183,56 +157,61 @@ public class Handler extends DefaultHandler {
 	 * 
 	 * @result true als het downloaden gelukt is, false als het dat niet is
 	 */
-	private boolean downloadToSD(String path) {
+	private boolean downloadToSD(String path, long lastmodified) {
 		boolean result = false;
 		try {
 			Log.d("parser", "downloadtosd: "+api.getURL() + path);
 			URL url = new URL(api.getURL() + path);// de file die gedownload
-													// moet worden
+			// moet worden
 			// nieuwe verbinding:
 			HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 			// setup connectie:
 			urlConnection.setRequestMethod("GET");
-			urlConnection.setDoOutput(true);
-
+			urlConnection.setDoOutput(false);
+			urlConnection.setIfModifiedSince(lastmodified);
 			// connect!
 			urlConnection.connect();
+			if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
+				File sdFile = getFile(path+"t");
+				// sdFile is de file waar de nieuw file heengeschreven word.
 
-			File sdFile = getFile(path+"t");
-			// sdFile is de file waar de nieuw file heengeschreven word.
+				FileOutputStream fileOutput = new FileOutputStream(sdFile);
 
-			FileOutputStream fileOutput = new FileOutputStream(sdFile);
+				// InputStream vanaf internet
+				InputStream inputStream = urlConnection.getInputStream();
 
-			// InputStream vanaf internet
-			InputStream inputStream = urlConnection.getInputStream();
+				// aanmaken leesbuffer.
+				byte[] buffer = new byte[1024];
+				int bufferLength = 0; // tijdelijke lengte van de buffer
 
-			// aanmaken leesbuffer.
-			byte[] buffer = new byte[1024];
-			int bufferLength = 0; // tijdelijke lengte van de buffer
+				// lees door de input buffer en schrijf naar de File.
+				while ((bufferLength = inputStream.read(buffer)) > 0) {
+					fileOutput.write(buffer, 0, bufferLength);
+				}
 
-			// lees door de input buffer en schrijf naar de File.
-			while ((bufferLength = inputStream.read(buffer)) > 0) {
-				fileOutput.write(buffer, 0, bufferLength);
+				File tempfile = getFile(path);
+				sdFile.renameTo(tempfile);
+				long temp = urlConnection.getLastModified();
+				tempfile.setLastModified(temp);
+
+				// Sluit de outputSream en httpconnection
+				fileOutput.close();
+				urlConnection.disconnect();
+				status = Response.OK_UPDATE;
+				result = true;
+			}else if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_NOT_MODIFIED){
+				result = true;
+				status = Response.OK_NO_UPDATE;
 			}
-			
-			File tempfile = getFile(path);
-			sdFile.renameTo(tempfile);
-			long temp = urlConnection.getLastModified();
-			tempfile.setLastModified(temp);
-
-			// Sluit de outputSream en httpconnection
-			fileOutput.close();
-			urlConnection.disconnect();
-			
-			result = true;
 		} catch (MalformedURLException mue) {
+			result = false;
 			Log.d("parser", "malformedurl: " + mue.toString());
 		} catch (IOException ioe) {
+			result = false;
 			Log.d("parser", "ioexeption: " + ioe.toString());
 		}
-		Log.d("parser", "result: " + result);
-
-		return result;
+			Log.d("parser", "result: " + result + " status: "+status);
+			return result;
 	}
 
 	public int getStatus() {
