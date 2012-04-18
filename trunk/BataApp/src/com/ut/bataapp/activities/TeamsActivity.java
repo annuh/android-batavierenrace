@@ -38,8 +38,7 @@ public class TeamsActivity extends SherlockListActivity  {
 	private static ArrayList<Team> teams = null;
 	private EditText filterText = null;
 	private TeamAdapter adapter = null;
-	private int sortNaam = 'D';
-	private char sortStartnummer = 'D';
+	private char sortNaam = 'D', sortStartnummer = 'D';
 	
 	
 	@Override
