@@ -15,6 +15,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	
 	public void openKaart(int kaart) {
 		Intent intent = new Intent(getActivity().getApplicationContext(), AfbeeldingActivity.class);
+		intent.putExtra("type", "overzichtskaart");
 		intent.putExtra("kaart", kaart);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
