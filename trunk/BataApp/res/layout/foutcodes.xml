@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/table" >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="A" />
+
+        <TextView
+            android:text="Anders voortbewogen"
+            style="@style/table_right" />
+    </TableRow>
+
+    <View style="@style/divider" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="D" />
+
+        <TextView
+            android:text="Diskwalificatie loper"
+            style="@style/table_right" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="H" />
+
+        <TextView
+            android:text="Heer op damesetappe"
+            style="@style/table_right" />
+    </TableRow>
+
+</TableLayout>

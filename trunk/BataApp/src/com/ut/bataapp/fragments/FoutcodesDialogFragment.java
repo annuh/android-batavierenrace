@@ -9,12 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class FoutcodesDialogFragment extends DialogFragment {
-
-	/*@Override
+	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.foutcodes, container, false);
-		this.getDialog().setTitle("Foutcodes");
+		this.getDialog().setTitle(R.string.ab_foutcodes);
 		return v;
-	}*/
+	}
 
 }
