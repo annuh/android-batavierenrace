@@ -1,57 +1,115 @@
 package com.ut.bataapp.activities;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningServiceInfo;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.ToggleButton;
-
-import com.actionbarsherlock.R;
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.MenuItem;
+import com.ut.bataapp.R;
 import com.ut.bataapp.Utils;
-import com.ut.bataapp.services.BataRadioService;
+import com.ut.bataapp.fragments.*;
 
-public class BataRadioActivity extends SherlockActivity {
-	public static final String LAST_QUAL_SELECTION = "LQS";
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.support.v4.app.*;
+import android.support.v4.view.ViewPager;
+
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
+import com.viewpagerindicator.*;
+
+import java.util.ArrayList;
+
+/**
+ * Activity voor het BataRadio-gedeelte. Bevat drie tabbladen (fragments): livestream, algemene informatie en programmering. 
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Danny Bergsma
+ * @version 0.1
+ */
+public class BataRadioActivity extends SherlockFragmentActivity {
+	// -- INNER CLASSES --
 	
-	private Spinner mSpinner;
-	
-	private boolean isMyServiceRunning() {
-	    ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-	    for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-	        if (BataRadioService.class.getCanonicalName().equals(service.service.getClassName())) {
-	            return true;
-	        }
-	    }
-	    return false;
+	/* Adapterklasse voor fragments -> pager.
+     * Onderdeel van ontwerpproject BataApp.
+     * @author Danny Bergsma
+     * @version 0.1
+     */
+    private class BataRadioFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+		/* Lijst van alle tabs (fragments) in de pager
+		 * @invariant fragments != null
+		 * @invariant voor alle 0 <= i < fragments.size(): fragments.get(i) != null
+		 */
+    	private ArrayList<Fragment> mFragments = new ArrayList<Fragment>();
+    	/* Lijst van alle titels in de pager
+		 * @invariant titels != null
+		 * @invariant voor alle 0 <= i < titels.size(): titels.get(i) != null
+		 */
+		private ArrayList<String> mTitels = new ArrayList<String>();
+		
+		/**
+		 * Constructor voor deze adapter. Bouwt de adapter op met alle tabs (fragments) en titels.
+		 * @param fm manager voor de fragments
+		 * @require fm != null
+		 */
+		public BataRadioFragmentAdapter(FragmentManager fm) {
+			super(fm);
+			Resources res = getResources();
+			mFragments.add(new BataRadioLiveFragment());
+			mTitels.add(res.getString(R.string.tabtitel_bataradio_live));
+			mFragments.add(new BataRadioInfoFragment());
+			mTitels.add(res.getString(R.string.tabtitel_bataradio_info));
+			mFragments.add(new BataRadioProgrammeringFragment());
+			mTitels.add(res.getString(R.string.tabtitel_bataradio_programmering));
+		}
+		
+		/**
+		 * Geeft het Fragment op positie position terug.
+		 * @param position positie van fragment
+		 * @return Fragment op positie position
+		 * @require 0 <= position < getCount()
+		 * @ensure result != null
+		 */
+		@Override
+		public Fragment getItem(int position) {
+			return mFragments.get(position);
+		}
+
+		/**
+		 * Geeft het aantal fragments terug.
+		 * @return aantal fragments
+		 * @ensure result >= 0
+		 */
+		@Override
+		public int getCount() {
+			return mFragments.size();
+		}
+
+		/**
+		 * Geeft de titel van het fragment (de tab) op positie position.
+		 * @param position positie van fragment (tab)
+		 * @return de titel van het fragment (de tab) op positie position
+		 * @require 0 <= position < getCount()
+		 * @ensure result != null
+		 */
+		@Override
+		public String getTitle(int position) {
+			return mTitels.get(position);
+		}
 	}
 	
-	private void startMP() {
-		Intent intent = new Intent(this, BataRadioService.class);
-    	intent.putExtra(BataRadioService.MP_URL, getResources().getStringArray(R.array.url_livestream)[mSpinner.getSelectedItemPosition()]);
-    	startService(intent);
-	}
+	// -- LIFECYCLEMETHODEN --
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-    	getSupportActionBar().setTitle(R.string.dashboard_bataradio);
-        setContentView(R.layout.bataradio);
-        mSpinner = (Spinner) findViewById(R.id.spinner_quality);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.bataradio_kwaliteit_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpinner.setAdapter(adapter);
-        mSpinner.setSelection(getPreferences(MODE_PRIVATE).getInt(LAST_QUAL_SELECTION, getResources().getInteger(R.integer.spinner_quality_default)));
-        mSpinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
-	}
+        super.onCreate(savedInstanceState);
+
+        getSupportActionBar().setTitle(R.string.dashboard_bataradio);
+        setContentView(R.layout.simple_tabs);
+        
+        // opbouwen tabbladen:
+        FragmentPagerAdapter mAdapter = new BataRadioFragmentAdapter(getSupportFragmentManager());
+		ViewPager mPager = (ViewPager) findViewById(R.id.pager);
+		mPager.setAdapter(mAdapter);
+		PageIndicator mIndicator = (TabPageIndicator) findViewById(R.id.indicator);
+		mIndicator.setViewPager(mPager);
+    }
+	
+	// -- CALLBACKMETHODEN --
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -61,38 +119,5 @@ public class BataRadioActivity extends SherlockActivity {
 				break;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	@Override
-	public void onResume() {
-		super.onResume();
-		ToggleButton button = (ToggleButton) findViewById(R.id.toggle_radio);
-        button.setChecked(isMyServiceRunning());
-	}
-	
-	public void onToggleClicked(View v) {
-	    if (((ToggleButton) v).isChecked())
-	    	startMP();
-	    else
-	        stopService(new Intent(this, BataRadioService.class));
-	}
-	
-	public class MyOnItemSelectedListener implements OnItemSelectedListener {
-	    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-	    	if (pos != getPreferences(MODE_PRIVATE).getInt(LAST_QUAL_SELECTION, getResources().getInteger(R.integer.spinner_quality_default))) {
-	    		SharedPreferences settings = getPreferences(MODE_PRIVATE);
-	    		SharedPreferences.Editor editor = settings.edit();
-	    		editor.putInt(LAST_QUAL_SELECTION, pos);
-	    		editor.commit();
-		    	if (isMyServiceRunning()) {
-		    		stopService(new Intent(BataRadioActivity.this, BataRadioService.class));
-		    		startMP();
-		    	}
-	    	}
-	    }
-
-	    public void onNothingSelected(AdapterView parent) {
-	      // Do nothing.
-	    }
 	}
 }

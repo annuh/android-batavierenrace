@@ -57,7 +57,7 @@
             android:configChanges="orientation|keyboardHidden|keyboard" />
         <activity
             android:name=".activities.TeamActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/StyledIndicators" />
         <activity android:name=".activities.EtappeChartByTeam" />
         <activity android:name="org.achartengine.GraphicalActivity" />
@@ -65,6 +65,10 @@
         <activity android:name=".activities.KlassementActivity" />
         <activity android:name=".activities.SponsorActivity" />
         
+        <activity
+            android:name=".activities.BataRadioActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/StyledIndicators" />  
         <activity
             android:name=".activities.WeerActivity"
             android:configChanges="orientation|screenSize"

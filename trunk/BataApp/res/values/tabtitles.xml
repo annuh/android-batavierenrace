@@ -3,4 +3,7 @@
     <string name="tabtitel_weer_advies">Advies</string>
     <string name="tabtitel_weer_verwachting">Verwachting</string>
     <string name="tabtitel_weer_buienradar">Buienradar</string>
+    <string name="tabtitel_bataradio_live">Live</string>
+    <string name="tabtitel_bataradio_info">Informatie</string>
+    <string name="tabtitel_bataradio_programmering">Programma</string>
 </resources>

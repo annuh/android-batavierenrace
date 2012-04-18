@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -57,7 +58,6 @@ public class MainActivity extends SherlockFragmentActivity {
 				startActivity(i);
 			}
 		});
-
 
 		Button btn_favorieten = (Button) findViewById(R.id.dashboard_favorieten);
 		btn_favorieten.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +146,9 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 		viewDagen.setText(weergeven);
 
-		if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getResources().getString(R.string.pref_background_update), getResources().getBoolean(R.bool.pref_default_background_update))) {
+		// starten background updater:
+		Resources res = getResources();
+		if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(res.getString(R.string.pref_background_update), res.getBoolean(R.bool.pref_background_update_default))) {
 			Intent startServiceIntent = new Intent(this, BackgroundUpdater.class);
 			startService(startServiceIntent);
 		}

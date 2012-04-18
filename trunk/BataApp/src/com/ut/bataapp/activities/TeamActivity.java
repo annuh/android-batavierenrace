@@ -1,68 +1,71 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
+
+import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.R;
+import com.ut.bataapp.Utils;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.fragments.TeamInformatieFragment;
 import com.ut.bataapp.fragments.TeamLooptijdenFragment;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
-import com.ut.bataapp.Utils;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-
+import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
-import com.viewpagerindicator.PageIndicator;
 
 public class TeamActivity extends SherlockFragmentActivity {
-
-	ViewPager mPager;
-	PageIndicator mIndicator;
-	FragmentPagerAdapter mAdapter;
-	private final int MENU_FOLLOW = Menu.FIRST;
-	private final int MENU_UNFOLLOW = Menu.FIRST + 1;
-	private Team team = null;
-	private int team_id;
-
-	public void setTeam(Team team){
-		this.team = team;
-	}
+	private static final int MENU_FOLLOW = Menu.FIRST;
+	private static final int MENU_UNFOLLOW = Menu.FIRST + 1;
+	
+	private ViewPager mPager;
+	private PageIndicator mIndicator;
+	private TeamFragmentAdapter mAdapter;
+	private Team mTeam;
+	private int mTeamID;
 
 	public Team getTeam(){
-		return team;
+		return mTeam;
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		team_id = this.getIntent().getIntExtra("index", 0);
-		Log.d("Teamid",""+team_id);
-		new getTeam().execute();
-	}
 
+		mTeamID = ((savedInstanceState == null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("teamid"));
+		Log.d("Teamid", "teamid: " + mTeamID);
+		new getTeam().execute();		
+	}
+		
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		outState.putInt("teamid", mTeamID);
+	}
+	
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		if(team != null) {
-			team.getNaam();
+		if(mTeam != null) {
 			SharedPreferences keyValues = this.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
 			MenuItem menuItem_volg = menu.findItem(MENU_FOLLOW);
 			MenuItem menuItem_delete = menu.findItem(MENU_UNFOLLOW);
-			if(keyValues.contains(String.valueOf(team.getStartnummer()))) {
+			if(keyValues.contains(String.valueOf(mTeam.getStartnummer()))) {
 				menuItem_volg.setVisible(false);
 				menuItem_delete.setVisible(true);
 			} else {
@@ -95,12 +98,12 @@ public class TeamActivity extends SherlockFragmentActivity {
 			Utils.goHome(getApplicationContext());
 			break;
 		case MENU_FOLLOW:
-			Utils.addFavoTeam(getApplicationContext(), team);
+			Utils.addFavoTeam(getApplicationContext(), mTeam);
 			invalidateOptionsMenu();
 
 			break;
 		case MENU_UNFOLLOW:
-			Utils.removeFavoteam(getApplicationContext(), team.getID());
+			Utils.removeFavoteam(getApplicationContext(), mTeam.getID());
 			invalidateOptionsMenu();
 			break;
 		}
@@ -109,7 +112,6 @@ public class TeamActivity extends SherlockFragmentActivity {
 	}
 
 	class TeamFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
-
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 		ArrayList<String> titels = new ArrayList<String>();
 
@@ -120,8 +122,6 @@ public class TeamActivity extends SherlockFragmentActivity {
 			fragments.add(new TeamLooptijdenFragment());
 			titels.add("Routetijden");
 		}
-
-
 
 		@Override
 		public Fragment getItem(int position) {
@@ -136,6 +136,13 @@ public class TeamActivity extends SherlockFragmentActivity {
 		@Override
 		public String getTitle(int position) {
 			return titels.get(position);
+		}
+		
+		public void deleteAll(FragmentManager fm) {
+			FragmentTransaction ft = fm.beginTransaction();
+			for (Fragment fragment: fragments)
+				ft.remove(fragment);
+			ft.commit();
 		}
 	}
 
@@ -159,7 +166,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			if(!isCancelled())
-				response = api.getTeamByID(team_id);
+				response = api.getTeamByID(mTeamID);
 			return null;
 		}
 
@@ -167,7 +174,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(TeamActivity.this, response)) {
 				setContentView(R.layout.simple_tabs);
-				team = response.getResponse();
+				mTeam = response.getResponse();
 				mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
 
 				mPager = (ViewPager)findViewById(R.id.pager);
@@ -181,5 +188,15 @@ public class TeamActivity extends SherlockFragmentActivity {
 
 		}
 	}
-
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		int currentItem = mPager.getCurrentItem(); // huidige tabbladindex  
+		mAdapter.deleteAll(getSupportFragmentManager()); // cleanup van alle oude fragments
+		mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
+		mPager.setAdapter(mAdapter);
+		mIndicator.notifyDataSetChanged();
+		mPager.setCurrentItem(currentItem, false);
+	}
 }

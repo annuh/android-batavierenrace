@@ -58,7 +58,7 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 			
 			@Override
 			protected void onPostExecute(Map.Entry<String, ?> result) {
-				if (result != null && mPrefs.getBoolean(mRes.getString(R.string.pref_background_update_notify), mRes.getBoolean(R.bool.pref_default_background_notify))) {
+				if (result != null && mPrefs.getBoolean(mRes.getString(R.string.pref_background_update_notify), mRes.getBoolean(R.bool.pref_background_update_notify_default))) {
 					int id = Integer.parseInt(result.getKey());
 					String teamNaam = (String) result.getValue();
 					NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -66,11 +66,11 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 					Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
 					intent.putExtra("index", id);
 					PendingIntent contentIntent = PendingIntent.getActivity(BackgroundUpdater.this, 0, intent, 0);
-					if (mPrefs.getBoolean(mRes.getString(R.string.pref_background_update_sound), mRes.getBoolean(R.bool.pref_default_background_sound)))
+					if (mPrefs.getBoolean(mRes.getString(R.string.pref_background_update_sound), mRes.getBoolean(R.bool.pref_background_update_sound_default)))
 						notification.defaults |= Notification.DEFAULT_SOUND;
-					if (mPrefs.getBoolean(mRes.getString(R.string.pref_background_update_vibrate), mRes.getBoolean(R.bool.pref_default_background_vibrate)))
+					if (mPrefs.getBoolean(mRes.getString(R.string.pref_background_update_vibrate), mRes.getBoolean(R.bool.pref_background_update_vibrate_default)))
 						notification.defaults |= Notification.DEFAULT_VIBRATE;
-					if (mPrefs.getBoolean(mRes.getString(R.string.pref_background_update_flash), mRes.getBoolean(R.bool.pref_default_background_flash))) {
+					if (mPrefs.getBoolean(mRes.getString(R.string.pref_background_update_flash), mRes.getBoolean(R.bool.pref_background_update_flash_default))) {
 						notification.ledARGB = mRes.getColor(R.color.notification_flashing_color);
 						notification.ledOnMS = mRes.getInteger(R.integer.notification_flashing_on_ms);
 						notification.ledOffMS = mRes.getInteger(R.integer.notification_flashing_off_ms);
@@ -120,7 +120,7 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 	    	long interval = Long.MIN_VALUE;
 	    	/*if (diff < 0)
 	    		interval = bataDag.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();*/
-	    	interval = Math.max(interval, mPrefs.getInt(mRes.getString(R.string.pref_background_update_interval), mRes.getInteger(R.integer.background_update_interval_default)) * MILLIS_IN_MINUTE);
+	    	interval = Math.max(interval, mPrefs.getInt(mRes.getString(R.string.pref_background_update_interval), mRes.getInteger(R.integer.pref_background_update_interval_default)) * MILLIS_IN_MINUTE);
 	    	mHandler.removeMessages(BACKGROUND_UPDATE);
 	    	mHandler.sendEmptyMessageDelayed(BACKGROUND_UPDATE, interval);
 	    	System.out.println("Next background update scheduled at " + interval + "ms");

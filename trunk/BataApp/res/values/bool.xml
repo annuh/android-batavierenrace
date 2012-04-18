@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <bool name="pref_default_background_update">true</bool>
-    <bool name="pref_default_background_notify">true</bool>
-    <bool name="pref_default_background_sound">true</bool>
-    <bool name="pref_default_background_vibrate">true</bool>
-    <bool name="pref_default_background_flash">true</bool>
-</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/scroller">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="vertical">
+        <TextView
+			android:text="@string/bataradio_live_header" 
+			style="@style/h1"/>
+        <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
+        <TextView
+            android:text="@string/bataradio_live_beschikbaar"
+            style="@style/container_block" />
+        <LinearLayout
+        	android:id="@+id/radio_control"
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="horizontal"
+        	android:gravity="center">
+        	<ToggleButton android:id="@+id/toggle_radio"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textOn="On"
+		        android:textOff="Off"/>
+       		<Spinner 
+		        android:id="@+id/spinner_quality"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:text="@string/bataradio_live_buffering_can_take_a_while"
+            style="@style/container_block" />
+        <TextView
+            android:text="@string/bataradio_live_waarschuwing"
+            android:textStyle="bold"
+            style="@style/container_block" />
+    </LinearLayout>
+</ScrollView>
