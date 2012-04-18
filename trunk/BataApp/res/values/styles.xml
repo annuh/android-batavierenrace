@@ -88,13 +88,14 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:stretchColumns">1</item>
+        <item name="android:shrinkColumns">1</item>
         <item name="android:background">@drawable/container_background</item>
         <item name="android:padding">10dip</item>
-        <item name="android:layout_marginRight">14px</item>
     </style>
 
     <style name="table_left">
         <item name="android:paddingLeft">5dip</item>
+        <item name="android:paddingRight">10dip</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

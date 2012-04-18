@@ -36,7 +36,10 @@ public class TeamsActivity extends SherlockListActivity  {
 	private static ArrayList<Team> teams = null;
 	private EditText filterText = null;
 	private TeamAdapter adapter = null;
-
+	private int sortNaam = 'D';
+	private char sortStartnummer = 'D';
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		setTitle("Teams");
@@ -91,24 +94,10 @@ public class TeamsActivity extends SherlockListActivity  {
 			setKeyboardFocus(filterText);
 			break;
 		case MENU_SORT_NAAM:
-			Collections.sort( (ArrayList<Team>) teams,new Comparator<Team>() {
-				public int compare(Team arg0, Team arg1) {
-					return arg0.getNaam().compareTo(arg1.getNaam());
-				}
-			});
-			adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams);
-			setListAdapter(adapter);
-			adapter.notifyDataSetChanged();
+			sortNaam(null);
 			break;
 		case MENU_SORT_START:
-			Collections.sort((ArrayList<Team>) teams,new Comparator<Team>() {
-				public int compare(Team arg0, Team arg1) {
-					return (arg0.getStartnummer()<arg1.getStartnummer() ? -1 : (arg0.getStartnummer()==arg1.getStartnummer() ? 0 : 1));
-				}
-			});
-			adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams);
-			setListAdapter(adapter);
-			adapter.notifyDataSetChanged();
+			sortStartnummer(null);
 
 		}
 		return super.onOptionsItemSelected(item);
@@ -151,8 +140,7 @@ public class TeamsActivity extends SherlockListActivity  {
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(TeamsActivity.this, response)) {
 				teams = response.getResponse();
-				adapter = new TeamAdapter(TeamsActivity.this, teams);
-				setListAdapter(adapter);
+				sortStartnummer(null);
 				progressDialog.dismiss();
 				response = null;
 			}
@@ -172,6 +160,47 @@ public class TeamsActivity extends SherlockListActivity  {
 				int count) {
 			adapter.getFilter().filter(s);
 		}
-
 	};
+	
+	public void sortStartnummer(View v) {
+		if(sortStartnummer == 'D') {
+			Collections.sort((ArrayList<Team>) teams,new Comparator<Team>() {
+				public int compare(Team arg0, Team arg1) {
+					return (arg0.getStartnummer()<arg1.getStartnummer() ? -1 : (arg0.getStartnummer()==arg1.getStartnummer() ? 0 : 1));
+				}
+			});
+			sortStartnummer = 'A';
+		} else {
+			Collections.sort((ArrayList<Team>) teams,new Comparator<Team>() {
+				public int compare(Team arg0, Team arg1) {
+					return (arg1.getStartnummer()<arg0.getStartnummer() ? -1 : (arg1.getStartnummer()==arg0.getStartnummer() ? 0 : 1));
+				}
+			});
+			sortStartnummer = 'D';
+		}
+		adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams);
+		setListAdapter(adapter);
+		adapter.notifyDataSetChanged();
+	}
+	
+	public void sortNaam(View v) {
+		if(sortNaam == 'A') {
+			Collections.sort( (ArrayList<Team>) teams,new Comparator<Team>() {
+				public int compare(Team arg0, Team arg1) {
+					return arg0.getNaam().compareTo(arg1.getNaam());
+				}
+			});
+			sortNaam = 'D';
+		} else {
+			Collections.sort( (ArrayList<Team>) teams,new Comparator<Team>() {
+				public int compare(Team arg0, Team arg1) {
+					return arg1.getNaam().compareTo(arg0.getNaam());
+				}
+			});
+			sortNaam = 'A';
+		}
+		adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams);
+		setListAdapter(adapter);
+		adapter.notifyDataSetChanged();
+	}
 }

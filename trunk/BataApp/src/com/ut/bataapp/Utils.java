@@ -1,6 +1,9 @@
 package com.ut.bataapp;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Map;
+import com.ut.bataapp.activities.TeamsActivity;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import android.app.AlertDialog;
@@ -30,7 +33,6 @@ public class Utils {
 		   }).create().show();
 	}
 
-	
 	public static void goHome(Context context) {
 		Intent intent = new Intent(context, MainActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -78,6 +80,36 @@ public class Utils {
 		keyValuesEditor.commit();		
 		Toast toast = Toast.makeText(context, "U volgt dit team nu.", Toast.LENGTH_SHORT);
 		toast.show();
+	}
+	
+	public static ArrayList<Team> getFavoTeams(Context context) {
+		SharedPreferences keyValues = context.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
+		Map<String, ?> favoteams = keyValues.getAll();
+		ArrayList<Team> teams = new ArrayList<Team>();
+
+		for (Map.Entry<String, ?> entry : favoteams.entrySet()) {
+			teams.add(new Team(Integer.parseInt(entry.getKey()), (String) entry.getValue()));
+			Log.d("FavoTeam", ""+entry.getKey());
+		}
+		return teams;
+	}
+	
+	public static void noFavoTeams(final Context context) {
+		new AlertDialog.Builder(context)
+		.setTitle("U heeft geen favoriete teams!")
+		.setMessage("Wilt u nu teams toevoegen?")
+		.setCancelable(false)
+		.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				Intent i = new Intent(context, TeamsActivity.class);
+				context.startActivity(i);
+			}
+		})
+		.setNegativeButton("Nee", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.dismiss();
+			}
+		}).create().show();
 	}
 	
 	public static String stripNonDigits(final String input){
