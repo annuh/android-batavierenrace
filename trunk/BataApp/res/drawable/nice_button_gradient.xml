@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient 
-        android:startColor="#89cdef" 
-        android:endColor="#89cdef"
-        android:angle="225"
-     />
-    <corners android:radius="0dp" />
-    <stroke android:width="3dp" android:color="#1e8bb4"/>
-</shape>
+<selector
+   xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" >
+        <shape>
+            <solid android:color="@color/jaarkleur" />
+            <stroke
+               android:width="3dp"
+               android:color="#1e8bb4" />          
+        </shape>
+    </item>
+
+    <item android:state_focused="true" >
+        <shape>
+            <solid android:color="#89cdef"/>
+            <stroke
+               android:width="3dp"
+               android:color="@color/jaarkleur" />   
+        </shape>
+    </item>
+
+  <item android:state_enabled="false">
+          <shape>
+            <solid android:color="#89cdef"/>
+            <stroke
+               android:width="3dp"
+               android:color="#1e8bb4" />   
+        </shape>
+  </item>
+
+    <item>        
+        <shape>
+            <solid android:color="#89cdef"/>
+            <stroke
+               android:width="3dp"
+               android:color="#1e8bb4" />   
+        </shape>
+    </item>
+</selector>

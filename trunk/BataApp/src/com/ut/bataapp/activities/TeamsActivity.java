@@ -17,6 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -178,6 +180,10 @@ public class TeamsActivity extends SherlockListActivity  {
 			});
 			sortStartnummer = 'D';
 		}
+		int i = this.getResources().getIdentifier("sort_"+sortStartnummer, "string", this.getPackageName());
+		((TextView) this.findViewById(R.id.teams_headers_startnummer)).setText(this.getText(R.string.teams_header_startnummer) +" "+ getText(i));
+
+		
 		adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams);
 		setListAdapter(adapter);
 		adapter.notifyDataSetChanged();
@@ -199,6 +205,8 @@ public class TeamsActivity extends SherlockListActivity  {
 			});
 			sortNaam = 'A';
 		}
+		int i = this.getResources().getIdentifier("sort_"+sortNaam, "string", this.getPackageName());
+		((TextView) this.findViewById(R.id.teams_headers_naam)).setText(this.getText(R.string.teams_header_naam) +" "+ getText(i));
 		adapter = new TeamAdapter(TeamsActivity.this, (ArrayList<Team>) teams);
 		setListAdapter(adapter);
 		adapter.notifyDataSetChanged();

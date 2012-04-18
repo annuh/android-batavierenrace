@@ -5,13 +5,15 @@
     <LinearLayout style="@style/listview_header" >
 
         <TextView
+            android:id="@+id/teams_headers_startnummer"
             style="@style/listview_header_text"
             android:layout_width="40dp"
             android:clickable="true"
             android:onClick="sortStartnummer"
-            android:text="@string/teams_header_nummer" />
+            android:text="@string/teams_header_startnummer" />
 
         <TextView
+            android:id="@+id/teams_headers_naam"
             style="@style/listview_header_text"
             android:clickable="true"
             android:onClick="sortNaam"
