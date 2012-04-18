@@ -7,7 +7,7 @@
         <TextView
             style="@style/listview_header_text"
             android:layout_width="40dp"
-            android:text="@string/teams_header_nummer" />
+            android:text="@string/teams_header_startnummer" />
 
         <TextView
             style="@style/listview_header_text"
