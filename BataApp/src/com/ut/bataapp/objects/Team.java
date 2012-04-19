@@ -12,6 +12,8 @@ package com.ut.bataapp.objects;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 public class Team {
 	private int startnummer = 0;
 	private int startgroep = 0;
@@ -75,6 +77,8 @@ public class Team {
 	}
 
 	public String getKlassement() {
+		if(klassement == null)
+			Log.d("Klassement","NULL");
 		if(klassement.equals("A")){
 			return "Algemeen";
 		}else if(klassement.equals("U")){

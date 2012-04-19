@@ -7,6 +7,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import android.util.Log;
+
 import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
@@ -29,7 +31,7 @@ public class PloegHandler extends Handler{
 	private boolean cumulatieveStand;
 
 	private String teamNaam;
-	private String teamKlassement;
+	private String teamKlassement ="";
 	private int startNummer;
 	private int startGroep;
 	private Looptijd looptijd;
@@ -91,7 +93,7 @@ public class PloegHandler extends Handler{
 			uitslag = false;
 		}
 		else if(foutcode) looptijd.setFoutcode(new String(ch,start,length));
-		else if(klassement) teamKlassement = new String(ch,start,length);
+		else if(klassement) team.setKlassement(new String(ch,start,length));
 		else if(tijd) looptijd.setTijd(new String(ch,start,length));
 		else if(etappe) looptijd.setEtappe(Integer.parseInt(new String(ch,start,length)));
 		else if(snelheid) looptijd.setSnelheid(new String(ch,start,length));

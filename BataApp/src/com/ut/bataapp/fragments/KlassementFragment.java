@@ -53,7 +53,7 @@ public class KlassementFragment extends SherlockListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setHasOptionsMenu(true);
-		naam = ((KlassementActivity) getActivity()).getKlassementNaam();
+		naam = this.getArguments().getString("index");
 		new getKlassement().execute();  	
 	}
 
@@ -181,6 +181,7 @@ public class KlassementFragment extends SherlockListFragment {
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 				klassement = response.getResponse();
+				Log.d("Klassement", ""+klassement.getUitslag().size());
 				sortStand(null);
 				progressDialog.dismiss();
 			}
