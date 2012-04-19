@@ -123,8 +123,17 @@ public class api {
 	 * @return
 	 */
 	public static Response<Team> getTeamByID(int id) {
+		return getTeamByID(id, false);
+	}
+	
+	/**
+	 * Detailleerde informatie van een team, inclusief looptijden van de lopers (uitslag)
+	 * @param id van team
+	 * @return
+	 */
+	public static Response<Team> getTeamByID(int id, boolean surpressDownload) {
 		PloegHandler phHandler = new PloegHandler("ploeguitslag/"+id+".xml");
-		phHandler.parse(false);
+		phHandler.parse(surpressDownload);
 		return phHandler.getParsedData();
 	}
 	
@@ -201,5 +210,4 @@ public class api {
 	public static HashMap<Integer, Integer> getLooptijdenByEtappe(Etappe etappe) {
 		return null;
 	}	
-
 }

@@ -32,6 +32,12 @@ import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
 public class TeamActivity extends SherlockFragmentActivity {
+	public static final int ETAPPEUITSLAG_TAB = 1;
+	public static final int KLASSEMENT_TAB = 2;
+	
+	public static final String TAB = "tabid";
+	public static final String ID = "index";
+	
 	private static final int MENU_FOLLOW = Menu.FIRST;
 	private static final int MENU_UNFOLLOW = Menu.FIRST + 1;
 
@@ -60,12 +66,13 @@ public class TeamActivity extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		mTeamID = ((savedInstanceState == null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("teamid"));
 		Log.d("Teamid", "teamid: " + mTeamID);
-		new getTeam().execute();                
+		new getTeam((savedInstanceState == null) ? getIntent().getIntExtra("tabid", 0) : savedInstanceState.getInt("tabid")).execute();		
 	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		outState.putInt("teamid", mTeamID);
+		outState.putInt("tabid", (mPager == null ? 0 : mPager.getCurrentItem()));
 	}
 
 	@Override
@@ -167,7 +174,12 @@ public class TeamActivity extends SherlockFragmentActivity {
 
 		private ProgressDialog progressDialog;
 		Response<Team> response;
-
+		private int mTabId;
+		
+		public getTeam(int tabId) {
+			mTabId = tabId;
+		}
+		
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamActivity.this,  
 					getString(R.string.laden_titel), getString(R.string.team_laden), true);
@@ -200,9 +212,11 @@ public class TeamActivity extends SherlockFragmentActivity {
 				mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 				mIndicator.setViewPager(mPager);
 				invalidateOptionsMenu();
-				progressDialog.dismiss();
+				
+				mPager.setCurrentItem(mTabId);
+				mIndicator.setCurrentItem(mTabId);
 			}
-
+			progressDialog.dismiss();
 		}
 	}
 
