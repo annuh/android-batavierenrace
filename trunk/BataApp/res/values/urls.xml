@@ -12,6 +12,33 @@
         <item>http://mp3.streampower.be/stubru-mid.mp3</item>
         <item>http://mp3.streampower.be/stubru-low.mp3</item>
     </string-array>
+    <string-array name="url_autoroutes">
+        <item></item>
+        <item>http://g.co/maps/wmvfq</item>
+		<item>http://g.co/maps/htcbq</item>
+		<item>http://g.co/maps/w933j</item>
+		<item>http://g.co/maps/x5aux</item>
+		<item>http://g.co/maps/qyctp</item>
+		<item>http://g.co/maps/us88r</item>
+		<item>http://g.co/maps/3xbkt</item>
+		<item>http://g.co/maps/d4dak</item>
+		<item>http://g.co/maps/36x63</item>
+		<item></item>
+		<item>http://g.co/maps/jdr44</item>
+		<item>http://g.co/maps/kzw6x</item>
+		<item>http://g.co/maps/wgp25</item>
+		<item>http://g.co/maps/ku8qm</item>
+		<item>http://g.co/maps/s7abc</item>
+		<item>http://g.co/maps/2zx2r</item>
+		<item>http://g.co/maps/v6z3r</item>
+		<item>http://g.co/maps/8xjqy</item>
+		<item>http://g.co/maps/urp7e</item>
+		<item>http://g.co/maps/5majj</item>
+		<item>http://g.co/maps/ucrae</item>
+		<item>http://g.co/maps/8dak6</item>
+		<item>http://g.co/maps/hhfka</item>
+		<item>http://g.co/maps/hhfka</item>
+    </string-array>
     <string name="url_xml_klassement">klassement.xml</string>
     <string name="url_xml_etappeuitslag">etappeuitslag/%s.xml</string>
     <string name="url_xml_ploeguitslag">ploeguitslag/%s.xml</string>
