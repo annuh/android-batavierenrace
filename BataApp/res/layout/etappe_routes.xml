@@ -36,7 +36,7 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="20dp"
 		            android:gravity="center"
-		            android:text="Maps" />
+		            android:text="@string/route_maps" />
 	        
 	        </LinearLayout>
 	        
@@ -55,7 +55,7 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="20dp"
 		            android:gravity="center"
-		            android:text="Beschrijving" />
+		            android:text="@string/route_kaart" />
 		       	
 	        </LinearLayout>
 	        
@@ -76,7 +76,7 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="20dp"
 		            android:gravity="center"
-		            android:text="Kaart" />
+		            android:text="@string/route_beschrijving" />
 	            
 	        </LinearLayout>
 	    </LinearLayout>
@@ -110,7 +110,7 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="20dp"
 		            android:gravity="center"
-		            android:text="Maps" />
+		            android:text="@string/route_beschrijving" />
 	        
 	        </LinearLayout>
 	        
@@ -129,7 +129,7 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="20dp"
 		            android:gravity="center"
-		            android:text="Beschrijving" />
+		            android:text="@string/route_maps" />
 		       	
 	        </LinearLayout>
 	        
@@ -149,7 +149,7 @@
 			            android:layout_width="match_parent"
 			            android:layout_height="20dp"
 			            android:gravity="center"
-			            android:text="Kaart" />
+			            android:text="@string/route_kaart" />
 		       	
 	        </LinearLayout>
 	        
@@ -186,7 +186,7 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="20dp"
 		            android:gravity="center"
-		            android:text="Kaart" />
+		            android:text="@string/route_kaart" />
 	        
 	        </LinearLayout>
 	        
@@ -206,7 +206,7 @@
 		            android:layout_width="match_parent"
 		            android:layout_height="20dp"
 		            android:gravity="center"
-		            android:text="Beschrijving" />
+		            android:text="@string/route_beschrijving" />
 		       	
 	        </LinearLayout>
 	        
@@ -226,7 +226,7 @@
 			            android:layout_width="match_parent"
 			            android:layout_height="20dp"
 			            android:gravity="center"
-			            android:text="Kaart" />
+			            android:text="@string/route_maps" />
 		       	
 	        </LinearLayout>
 	        
