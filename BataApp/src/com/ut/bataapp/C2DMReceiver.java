@@ -64,7 +64,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 		if (message != null) {
 			Log.d("C2DM", message);
 			
-			Utils.addBericht(getApplicationContext(), type+message);
+			Utils.addBericht(getApplicationContext(), type, message);
 			
 			makeNotification(context, type, message);
 		}
