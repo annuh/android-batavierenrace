@@ -20,7 +20,7 @@ public class Looptijd {
 	private int etappe;
 	private String klassement;
 	private String tijd;
-	private String foutcode;
+	private String foutcode = "–";
 	private String snelheid;
 	private int etappeStand = NULLINT; 
 	private int cumulatieveStand = NULLINT;

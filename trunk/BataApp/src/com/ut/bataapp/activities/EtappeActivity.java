@@ -1,6 +1,7 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
+
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,14 +9,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+
+import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.R;
 import com.ut.bataapp.Utils;
 import com.ut.bataapp.api.api;
-import com.ut.bataapp.fragments.EtappeLooptijdenFragment;
 import com.ut.bataapp.fragments.EtappeInformatie;
-import com.ut.bataapp.fragments.EtappeRoutes;
+import com.ut.bataapp.fragments.EtappeLooptijdenFragment;
+import com.ut.bataapp.fragments.EtappeRoutesFragment;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Response;
 import com.viewpagerindicator.PageIndicator;
@@ -63,7 +65,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 			super(fm);
 			fragments.add(new EtappeInformatie());
 			titels.add("Informatie");
-			fragments.add(new EtappeRoutes());
+			fragments.add(new EtappeRoutesFragment());
 			titels.add("Routes");
 			fragments.add(new EtappeLooptijdenFragment());
 			titels.add("Looptijden");

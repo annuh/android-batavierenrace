@@ -30,14 +30,14 @@
 	            android:id="@+id/lopers_image"
 	            android:layout_width="wrap_content"
 	    		android:layout_height="wrap_content"
-	    		android:src="@drawable/icon_image" >
+	    		android:src="@drawable/icon_earth" >
 	        </ImageView>
 	        
 	        <ImageView
 	           	android:id="@+id/lopers_tekst"
 	            android:layout_width="wrap_content"
 	    		android:layout_height="wrap_content"
-	    		android:src="@drawable/icon_text" >
+	    		android:src="@drawable/icon_earth" >
 	        </ImageView>
 	        
 	        
@@ -59,7 +59,7 @@
 	           		android:id="@+id/autos_tekst"
 	            	android:layout_width="wrap_content"
 	    			android:layout_height="wrap_content"
-	    			android:src="@drawable/icon_text" >
+	    			android:src="@drawable/icon_earth" >
 	        	</ImageView>
 		        
 		        <ImageView
@@ -73,7 +73,7 @@
 		            android:id="@+id/autos_image"
 		            android:layout_width="wrap_content"
 		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/icon_image" >
+		    		android:src="@drawable/icon_earth" >
 		        </ImageView>
 		        
 		    </LinearLayout>
@@ -94,14 +94,14 @@
 		            android:id="@+id/overslag_image"
 		            android:layout_width="wrap_content"
 		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/icon_image" >
+		    		android:src="@drawable/icon_earth" >
 		        </ImageView>
 		        
 		        <ImageView
 	           		android:id="@+id/overslag_tekst"
 	            	android:layout_width="wrap_content"
 	    			android:layout_height="wrap_content"
-	    			android:src="@drawable/icon_text" >
+	    			android:src="@drawable/icon_earth" >
 	        	</ImageView>
 	        	
 		        <ImageView
