@@ -209,11 +209,13 @@ public class TeamActivity extends SherlockFragmentActivity {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		int currentItem = mPager.getCurrentItem(); // huidige tabbladindex  
-		mAdapter.deleteAll(getSupportFragmentManager()); // cleanup van alle oude fragments
-		mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
-		mPager.setAdapter(mAdapter);
-		mIndicator.notifyDataSetChanged();
-		mPager.setCurrentItem(currentItem, false);
+		if(mPager != null) {
+			int currentItem = mPager.getCurrentItem(); // huidige tabbladindex  
+			mAdapter.deleteAll(getSupportFragmentManager()); // cleanup van alle oude fragments
+			mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
+			mPager.setAdapter(mAdapter);
+			mIndicator.notifyDataSetChanged();
+			mPager.setCurrentItem(currentItem, false);
+		}
 	}
 }

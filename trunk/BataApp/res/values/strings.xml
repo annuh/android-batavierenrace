@@ -94,7 +94,7 @@
     <string name="etappe_recordtijd_snelheid">Snelheid</string>
     <string name="etappes_geenetappes">Geen etappes gevonden..</string>
     <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
-    <string name="berichten_geenberichten">Er zijn op dit moment geen berichten.</string>
+    
 	<string name="etappe_route_tekst_afstand">afstand</string>
     <string name="etappe_route_tekst_omschrijving">omschrijving</string>
     <string name="etappe_route_tekst_locatie">locatie</string>
@@ -154,6 +154,10 @@
     <string name="notification_bataradio_buffering">Buffering…</string>
     <string name="notification_bataradio_playing">Playing…</string>
 
+    <!-- Berichten -->
+    <string name="berichten_laden">Berichten worden geladen…</string>
+    <string name="berichten_leeg">Er zijn op dit moment geen berichten.</string>
+    
     <!-- Background updater -->
     <string name="notification_bu_ticker">Nieuwe data %s</string>
     <string name="notification_bu_title">Nieuwe data</string>

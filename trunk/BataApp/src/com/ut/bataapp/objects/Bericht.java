@@ -2,7 +2,8 @@ package com.ut.bataapp.objects;
 
 public class Bericht {
 	
-	public static final int CUSTOM = 3;
+	public static final int CUSTOM = 4;
+	public static final int WEER = 3;
 	public static final int GROEN = 2;
 	public static final int GEEL = 1;
 	public static final int ROOD = 0;
@@ -27,7 +28,8 @@ public class Bericht {
 	public void setId(String id){this.id = id;}
 	public void setTitel(String titel){this.titel = titel;}
 	public void setBericht(String bericht){this.bericht = bericht;}
-
+	public void setDatum(String datum){this.datum=datum;}
+	public void setCode(int code){this.code = code;}
 	
 	public String getId(){ return this.id; }
 	public int getCode(){ return this.code; }

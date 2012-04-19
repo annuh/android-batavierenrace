@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
 import com.ut.bataapp.activities.TeamsActivity;
+import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 import android.app.AlertDialog;
@@ -157,11 +158,45 @@ public class Utils {
 		return (byte) Math.round((f-DIFF_CF) / FACTOR_CF);
 	}
 
-	public static void addBericht(Context context, String string) {
-		//Log.d("FavoTeams", "ADD: "+String.valueOf(team.getStartGroep()));
+	public static void addBericht(Context context, String type, String bericht) {
 		SharedPreferences keyValues = context.getSharedPreferences("push_berichten", Context.MODE_PRIVATE);
 		SharedPreferences.Editor keyValuesEditor = keyValues.edit();
-		keyValuesEditor.putString(new java.util.Date().toString() , string);
+		keyValuesEditor.putString(new java.util.Date().toString() , type+bericht);
 		keyValuesEditor.commit();
+	}
+	
+	
+	public static ArrayList<Bericht> getBerichten(Context context) {
+		SharedPreferences keyValues = context.getSharedPreferences("push_berichten", Context.MODE_PRIVATE);
+		Map<String, ?> pushberichten = keyValues.getAll();
+		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
+
+		for (Map.Entry<String, ?> entry : pushberichten.entrySet()) {
+			Log.d("Bericht",(String)entry.getValue());
+			Bericht bericht = new Bericht();
+			bericht.setDatum(entry.getKey());
+			int code;
+			switch(((String) entry.getValue()).charAt(0)) {
+			case 'y':
+				code = Bericht.GEEL;
+				break;
+			case 'g':
+				code = Bericht.GROEN;
+				break;
+			case 'r':
+				code = Bericht.ROOD;
+				break;
+			case 'w':
+				code = Bericht.WEER;
+				break;
+			default:
+				code = Bericht.CUSTOM;
+			}
+			bericht.setCode(code);
+			bericht.setBericht(((String) entry.getValue()).substring(1));
+			berichten.add(bericht);
+		}
+		return berichten;
+		
 	}
 }

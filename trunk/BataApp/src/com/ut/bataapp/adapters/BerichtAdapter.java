@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class BerichtAdapter extends ArrayAdapter<Bericht> {
-	
+
 	private final Context context;
 	private final ArrayList<Bericht> berichten;
 
@@ -29,12 +29,11 @@ public class BerichtAdapter extends ArrayAdapter<Bericht> {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.message_row, parent, false);
 		TextView headerView = (TextView) rowView.findViewById(R.id.message_header);
-		TextView subheaderView = (TextView) rowView.findViewById(R.id.message_subtitel);
 		TextView contentView = (TextView) rowView.findViewById(R.id.message_content);
 		ImageView codeView = (ImageView) rowView.findViewById(R.id.code);
-		
+
 		Bericht bericht = berichten.get(position);
-		
+
 		headerView.setText(bericht.getTitel());
 		int code = bericht.getCode();
 		int colour;
@@ -46,9 +45,8 @@ public class BerichtAdapter extends ArrayAdapter<Bericht> {
 			colour = R.color.green;
 		}
 		codeView.setBackgroundResource(colour);
-		subheaderView.setText("Afzender: " + " om " + bericht.getDatum());
 		contentView.setText(bericht.getBericht());
-		
+
 		return rowView;
 	}
 }
