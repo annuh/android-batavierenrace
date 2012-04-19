@@ -16,6 +16,7 @@ public class Team {
 	private int startnummer = 0;
 	private int startgroep = 0;
 	private String naam = "";
+	private String klassement ="";
 	private int id = 0;
 	private ArrayList<Looptijd> looptijden = new ArrayList<Looptijd>();
 	
@@ -67,5 +68,19 @@ public class Team {
 	/*String formaat*/
 	public String toString(){
 		return "Team#: "+getStartnummer()+" group#: "+getStartGroep()+" naam: "+getNaam()+'\n';
+	}
+
+	public void setKlassement(String klassement) {
+		this.klassement = klassement;
+	}
+
+	public String getKlassement() {
+		if(klassement.equals("A")){
+			return "Algemeen";
+		}else if(klassement.equals("U")){
+			return "Universiteitscompetitie";
+		}else{
+			return klassement;
+		}
 	}
 }
