@@ -10,31 +10,4 @@
 	    <item>5</item>
 	    <item>60</item>
 	</integer-array>
-	<string-array name="looproutes_earth">
-        <item>http://g.co/maps/bkwev</item>
-        <item>http://g.co/maps/a4s7a</item>
-        <item>http://g.co/maps/4q6tc</item>
-        <item>http://g.co/maps/cdbqs</item>
-        <item>http://g.co/maps/ehaxc</item>
-        <item>http://g.co/maps/fwr42</item>
-        <item>http://g.co/maps/vfj56</item>
-        <item>http://g.co/maps/nnyza</item>
-        <item>http://g.co/maps/dqh4q</item>
-        <item>http://g.co/maps/dqukn</item>
-        <!--  TO DO -->
-    </string-array>
-    
-	<!--  TO DO -->
-	<string-array name="autoroute_maps">
-        <item>http://g.co/maps/bkwev</item>
-        <item>http://g.co/maps/a4s7a</item>
-        <item>http://g.co/maps/4q6tc</item>
-        <item>http://g.co/maps/cdbqs</item>
-        <item>http://g.co/maps/ehaxc</item>
-        <item>http://g.co/maps/fwr42</item>
-        <item>http://g.co/maps/vfj56</item>
-        <item>http://g.co/maps/nnyza</item>
-        <item>http://g.co/maps/dqh4q</item>
-        <item>http://g.co/maps/dqukn</item>
-    </string-array>
 </resources>
