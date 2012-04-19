@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.EtappeActivity;
-import com.ut.bataapp.activities.EtappeRouteTekstActivity;
 import com.ut.bataapp.objects.Etappe;
 import android.content.Intent;
 import android.net.Uri;
@@ -51,7 +50,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
             }
         });
     	
-    	ImageView lopers_tekst = (ImageView) view.findViewById(R.id.lopers_tekst);
+    	/*ImageView lopers_tekst = (ImageView) view.findViewById(R.id.lopers_tekst);
     	lopers_tekst.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -59,7 +58,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
 				intent.putExtra("id",etappe.getId());
 				startActivity(intent);
 			}
-		});
+		});*/
     	
     	ImageView autos_map = (ImageView) view.findViewById(R.id.autos_maps);
     	autos_map.setOnClickListener(new View.OnClickListener() {

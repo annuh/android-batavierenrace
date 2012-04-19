@@ -23,6 +23,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.Utils;
 import com.ut.bataapp.api.api;
+import com.ut.bataapp.fragments.KlassementFragment;
 import com.ut.bataapp.fragments.TeamInformatieFragment;
 import com.ut.bataapp.fragments.TeamLooptijdenFragment;
 import com.ut.bataapp.objects.Response;
@@ -34,7 +35,7 @@ import com.viewpagerindicator.TitleProvider;
 public class TeamActivity extends SherlockFragmentActivity {
 	private static final int MENU_FOLLOW = Menu.FIRST;
 	private static final int MENU_UNFOLLOW = Menu.FIRST + 1;
-	
+
 	private ViewPager mPager;
 	private PageIndicator mIndicator;
 	private TeamFragmentAdapter mAdapter;
@@ -45,6 +46,16 @@ public class TeamActivity extends SherlockFragmentActivity {
 		return mTeam;
 	}
 
+	public String getKlassement() {
+		String r = mTeam.getLooptijden().get(0).getKlassement();
+		if(r.equals("A") || r.equals("Algemeen Klassement")){
+			return "Algemeen Klassement";
+		} else if(r.equals("U") || r.equals("Universiteit Klassement")){
+			return "Algemeen Klassement";
+		}
+		return r;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,12 +63,12 @@ public class TeamActivity extends SherlockFragmentActivity {
 		Log.d("Teamid", "teamid: " + mTeamID);
 		new getTeam().execute();		
 	}
-		
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		outState.putInt("teamid", mTeamID);
 	}
-	
+
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		if(mTeam != null) {
@@ -117,9 +128,16 @@ public class TeamActivity extends SherlockFragmentActivity {
 		public TeamFragmentAdapter(FragmentManager fm) {
 			super(fm);
 			fragments.add(new TeamInformatieFragment());
-			titels.add("Informatie");
+			titels.add(getString(R.string.team_titel_informatie));
 			fragments.add(new TeamLooptijdenFragment());
-			titels.add("Routetijden");
+			titels.add(getString(R.string.team_titel_looptijden));
+			Log.d("Klas", mTeam.getKlassement());
+			KlassementFragment kf = new KlassementFragment();
+			Bundle info = new Bundle();
+			info.putString("index",mTeam.getKlassement());
+			kf.setArguments(info);
+			fragments.add(kf);
+			titels.add(getString(R.string.team_titel_klassement));
 		}
 
 		@Override
@@ -136,7 +154,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 		public String getTitle(int position) {
 			return titels.get(position);
 		}
-		
+
 		public void deleteAll(FragmentManager fm) {
 			FragmentTransaction ft = fm.beginTransaction();
 			for (Fragment fragment: fragments)
@@ -152,7 +170,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamActivity.this,  
-					"Bezig met laden", "Team wordt opgehaald...", true);
+					getString(R.string.laden_titel), "Team wordt opgehaald...", true);
 			progressDialog.setCancelable(true);
 			progressDialog.setOnCancelListener(new OnCancelListener() {
 				public void onCancel(DialogInterface dialog) {
@@ -187,7 +205,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 
 		}
 	}
-	
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
