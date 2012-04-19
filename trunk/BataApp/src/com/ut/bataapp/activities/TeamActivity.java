@@ -16,7 +16,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -61,7 +60,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		mTeamID = ((savedInstanceState == null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("teamid"));
 		Log.d("Teamid", "teamid: " + mTeamID);
-		new getTeam().execute();		
+		new getTeam().execute();                
 	}
 
 	@Override
@@ -135,6 +134,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 			KlassementFragment kf = new KlassementFragment();
 			Bundle info = new Bundle();
 			info.putString("index",mTeam.getKlassement());
+			info.putInt("init", mTeam.getLooptijden().get(mTeam.getLooptijden().size()-1).getCumulatieveStand());
 			kf.setArguments(info);
 			fragments.add(kf);
 			titels.add(getString(R.string.team_titel_klassement));
@@ -170,7 +170,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamActivity.this,  
-					getString(R.string.laden_titel), "Team wordt opgehaald...", true);
+					getString(R.string.laden_titel), getString(R.string.team_laden), true);
 			progressDialog.setCancelable(true);
 			progressDialog.setOnCancelListener(new OnCancelListener() {
 				public void onCancel(DialogInterface dialog) {

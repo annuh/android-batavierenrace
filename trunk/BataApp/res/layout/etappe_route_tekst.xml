@@ -23,13 +23,13 @@
             
             <TableRow>
                 <TextView
-                    android:text="@string/etappe_route_tekst_afstand"
+                  
                     android:textColor="@android:color/darker_gray"/>
                 <TextView
-                    android:text="@string/etappe_route_tekst_omschrijving"
+       
                     android:textColor="@android:color/darker_gray"/>
                 <TextView
-                    android:text="@string/etappe_route_tekst_locatie"
+                   
                     android:textColor="@android:color/darker_gray"/>    
             </TableRow>
             <View style="@style/divider" />

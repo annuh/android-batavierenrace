@@ -15,5 +15,5 @@
 	    android:id="@android:id/empty"
 	    android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Leeg" />
+		android:text="@string/team_looptijden_leeg" />
 </LinearLayout>

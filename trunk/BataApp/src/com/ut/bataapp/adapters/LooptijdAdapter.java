@@ -29,14 +29,18 @@ public class LooptijdAdapter extends ArrayAdapter<Looptijd> {
 		View rowView = inflater.inflate(R.layout.row_team_looptijd, parent, false);
 		rowView.setId(values.get(position).getEtappe());
 		
+		String formatkmu = context.getResources().getString(R.string.kmu);		
+		
 		TextView etappe = (TextView) rowView.findViewById(R.id.etappe);
 		etappe.setText(String.valueOf(values.get(position).getEtappe()));
 		
 		TextView tijd = (TextView) rowView.findViewById(R.id.tijd);
 		tijd.setText(values.get(position).getTijd());
 		
-		TextView snelheid = (TextView) rowView.findViewById(R.id.snelheid);
-		snelheid.setText(values.get(position).getSnelheid());
+		if(values.get(position).getSnelheid() != null && values.get(position).getSnelheid().length() > 0) {
+			TextView snelheid = (TextView) rowView.findViewById(R.id.snelheid);
+			snelheid.setText(String.format(formatkmu,values.get(position).getSnelheid()));
+		}
 		
 		TextView etappe_klassement = (TextView) rowView.findViewById(R.id.etappe_klassement);
 		etappe_klassement.setText(String.valueOf(values.get(position).getEtappeStand()));

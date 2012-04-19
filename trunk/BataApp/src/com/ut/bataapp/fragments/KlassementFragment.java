@@ -183,7 +183,9 @@ public class KlassementFragment extends SherlockListFragment {
 				klassement = response.getResponse();
 				Log.d("Klassement", ""+klassement.getUitslag().size());
 				sortStand(null);
-				progressDialog.dismiss();
+				getListView().setSelection(getArguments().getInt("init") -1);
+				if(progressDialog != null)
+					progressDialog.dismiss();
 			}
 		}
 	}
@@ -212,7 +214,7 @@ public class KlassementFragment extends SherlockListFragment {
 		((TextView) getView().findViewById(R.id.klassement_header_team)).setText(this.getText(R.string.klassement_header_team) +" "+ getText(i));
 		adapter = new KlassementAdapter(getActivity().getApplicationContext(), klassement.getUitslag());
 		setListAdapter(adapter);
-		adapter.notifyDataSetChanged();		
+		adapter.notifyDataSetChanged();
 	}
 
 	public void sortStand(View v) {
