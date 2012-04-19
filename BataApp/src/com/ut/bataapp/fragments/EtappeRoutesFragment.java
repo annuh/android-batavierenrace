@@ -35,10 +35,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
     	lopers_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            	Intent mapLopersroute = new Intent(Intent.ACTION_VIEW); 
-                Uri uri0 = Uri.parse("http://maps.google.com/maps?f=d&source=s_d&saddr=51.82002+5.8679&daddr=51.82939+5.94184&geocode=FfS1FgMdfIlZAA%3BFY7aFgMdUKpaAA&aq=&sll=51.82939,5.94184&sspn=0.01037,0.027874&vpsrc=0&t=h&hl=nl&mra=ls&ie=UTF8&z=14&dirflg=d"); 
-                mapLopersroute.setData(uri0); 
-                startActivity(Intent.createChooser(mapLopersroute, "Lopersroute maps"));
+            	Toast.makeText(getActivity(), "coming soon"+'\u2122', Toast.LENGTH_SHORT).show();
             }
         });
     	
@@ -73,7 +70,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
 			public void onClick(View view) {
 				Intent mapAutoroute = new Intent(Intent.ACTION_VIEW);
 				if(auto_maps[etappe.getId()-1].equals("")){
-					Toast.makeText(getActivity(), "Van deze etappe is geen auto route", Toast.LENGTH_LONG).show();
+					Toast.makeText(getActivity(), "Van deze etappe is geen auto route", Toast.LENGTH_SHORT).show();
 				}else{
 					Uri uri0 = Uri.parse(auto_maps[etappe.getId()-1]);
 					mapAutoroute.setData(uri0); 
@@ -87,10 +84,13 @@ public class EtappeRoutesFragment extends SherlockFragment {
     	autos_image.setOnClickListener(new View.OnClickListener(){
     		@Override
     		public void onClick(View view){
+    			Toast.makeText(getActivity(), "coming soon"+'\u2122', Toast.LENGTH_SHORT).show();
+    			/**
     			Intent intent = new Intent(getActivity(),AfbeeldingActivity.class);
     			intent.putExtra("type","autoroute");
     			intent.putExtra("kaart",etappe.getId());
     			startActivity(intent);
+    			*/
     		}
     	});
 
