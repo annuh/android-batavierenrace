@@ -1,0 +1,23 @@
+Aankomst W.P. 13: Heelweg;;
+Open: 07:25 uur;;
+Uiterste starttijd: 10:10 uur;;
+Afst;Omschrijving;Locatie
+-;Na het W.P. rechtsaf;Heideweg
+0,7;Eerste weg linksaf (voor boerderij);Onverhard, Nicolaasweg
+1,1;Bij zijstraat rechtdoor;Verhard, Nicolaasweg
+2,1;Kruising onverharde weg recht oversteken;-
+3,0;Bij zijstraat (Stuivezandweg) rechtdoor;-
+3,2;Einde weg linksaf;Zanddijk, gevaarlijke T-splitsing
+3,4;Bij zijstraat (Zieuwentweg) rechtdoor;-
+3,8;Bij kruising voor rechtsaf;Landeweerweg
+4,2;Bij zijstraat (Pausendijk) rechtdoor;-
+4,4;Bij zijstraat (Tulnersweg) rechtdoor;-
+4,6;Bij driesprong links aanhouden;Halsedijk
+4,9;Bij voorrangsweg scherp rechtsaf;Halle Heideweg
+5,3;Eerste weg scherp linksaf;Kuiperstraat
+6,2;Bij 2 zijstraten rechtdoor;-
+7,2;Bij driesprong rechtsaf;Wolfersveenweg
+7,6;Het W.P. is voor de boerderij;-
+Aankomst W.P. 14: Wolfersveen;;
+Open: 07:50 uur;;
+Uiterste starttijd: 10:55 uur;;

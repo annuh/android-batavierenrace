@@ -27,6 +27,7 @@ public class CSV {
 			if(newLine.equals("Afst;Omschrijving;Locatie")){
 				tabelBegonnen = true;
 			} else{
+				if(!TekstVoorTabel.equals("")) TekstVoorTabel += '\n';
 				String[] zin = newLine.split(";");
 				TekstVoorTabel += zin[0];
 			}
@@ -54,6 +55,7 @@ public class CSV {
 		
 		while(scanner.hasNextLine()){
 			newLine = scanner.nextLine();
+			if(!TekstNaTabel.equals("")) TekstNaTabel += '\n';
 			String[] zin = newLine.split(";");
 			TekstNaTabel += zin[0];			
 		}

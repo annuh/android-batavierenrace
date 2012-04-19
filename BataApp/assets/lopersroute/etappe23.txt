@@ -1,0 +1,33 @@
+Vertrek W.P. 22: Grolsch;;
+Open: 13:55;;
+Uiterste starttijd: 16:20 uur;;
+Afst;Omschrijving;Locatie
+-;Na het W.P. weg vervolgen;-
+0,2;Einde Grolsch-terrein rechts en fietspad op;-
+0,5;Einde fietspad linksaf, blijf op fietspad;-
+0,7;Zijweg rechtdoor;-
+1,1;Zijweg (Rosinkweg) rechtdoor;-
+1,3;Zijweg linksaf;Usselerhofweg
+1,4;Met bocht mee naar rechts;-
+1,5;Einde weg linksaf, op fietspad;Viaduct over
+2;Zijweg (Keupersweg) eerte linksaf (onverhard);7545 Ruilverkavelingsweg 1
+2,3;Kuising (Hilgenhuesweg, onverhard) rechtdoor;7545 Ruilverkavelingsweg 1
+2,8;Voorrangskruising rechtdoor;Enschede binnenlopen, Bruggertstraat
+3,1;Weg links aanhouden en rechts stoep op;-
+3,6;Zijstraat (Pieter de Molijnstraat) rechtdoor;-
+4;Eerste weg linksaf, links op stoep lopen;Rembrandtlaan
+4,2;Rotonde rechtsaf, rechts op fietspad gaan lopen;Hendrik ter Kuilestraat
+4,7;Bij verkeerslichten rechtdoor;Hendrik ter Kuilestraat
+5;Bij verkeerslichten rechtdoor;-
+5,1;Zijstraat (met verkeerslichten) rechtdoor;-
+5,6;Einde weg voorrangsweg oversteken linksaf op fietspad gaan lopen;Parkweg
+5,8;Verkeerslichten rechtsaf, direct links, door park;-
+6;Blijf op stoep en eerste weg rechts;Stadsmatenstraat
+6,3;Kruising (Kortenaerstraat) rechtdoor;Maarten Harpetsz Tromplaa
+6,5;Voorrangsweg (De Ruyterlaan) oversteken;-
+6,8;Kruising (Nijverheidstraat) rechtdoor;Hoedemakerplein
+-;Fietsers stoppen bij ondergrondse fietsenstalling!;-
+6,9;Bij vijfsprong rechtdoor oversteken;Marktstraat
+7,3;W.P. bevindt zich op de Oude Markt;-
+Aankomst W.P. 23: Stad Enschede;;
+Open: 14:30 - 17:25 uur;;

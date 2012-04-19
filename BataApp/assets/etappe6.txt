@@ -1,0 +1,20 @@
+Etappe 6;;
+Vertrek W.P. 5: Oraniendeich;;
+Open: 02:20 uur;;
+Uiterste starttijd: 05:00 uur;;
+Afst;Omschrijving;Locatie
+-;Na W.P. weg vervolgen;-
+0,1;Linksaf brug over;-
+1,4;Einde brugfietspad op fietspad, linkerzijde;Klever Straße
+1,8;Verkeerslichten rechtdoor;-
+3,1;Verkeerslichten rechtdoor;-
+3,8;Verkeerslichten (bij tankstation) rechtdoor oversteken;S-Heerenberger straße
+5,1;Verkeerslichten rechtdoor;Hüthumer Straße
+5,8;Links aanhouden fietspad vervolgen ri ‘s-Heerenberg;Haferlandweg
+6,0;‘s-Heerenberg binnenlopen;Links blijven lopen
+6,4;Tweede weg rechtsaf ri Zeddam;Weg oversteken
+7,0;Rotonde rechtdoor;Ulenpasweg
+7,3;Na de kruising W.P. rechts van de weg;-
+Aankomst W.P. 6: 's Heerenberg;;
+Open: 02:50 uur;;
+Uiterste starttijd: 05:40 uur;;
