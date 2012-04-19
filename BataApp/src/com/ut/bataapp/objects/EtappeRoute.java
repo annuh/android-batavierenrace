@@ -1,4 +1,4 @@
-package com.ut.bataapp.parser;
+package com.ut.bataapp.objects;
 
 import java.util.ArrayList;
 

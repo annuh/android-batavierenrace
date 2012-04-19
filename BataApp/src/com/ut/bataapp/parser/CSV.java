@@ -1,16 +1,13 @@
 package com.ut.bataapp.parser;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.ut.bataapp.objects.EtappeRoute;
 
 public class CSV {
 	
-	public CSV(){
-		
-	
-	}
-	
-	public EtappeRoute parse(String csv){
+	public EtappeRoute parse(InputStream csv){
 				
 		Scanner scanner = new Scanner(csv);
 		
