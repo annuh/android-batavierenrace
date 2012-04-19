@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/first_menu_item"
+    <item android:id="@+id/first_menu_item"
         android:title="First Menu Item"
-        android:icon="@drawable/icon_maps">
+        android:icon="@drawable/route_maps">
         <menu>
             <item
                 android:id="@+id/first_submenu_item"
@@ -12,6 +11,5 @@
                 android:id="@+id/second_submenu_item"
                 android:title="Second Submenu Item"></item>
         </menu>
-    </item>
-    
+    </item>    
 </menu>
