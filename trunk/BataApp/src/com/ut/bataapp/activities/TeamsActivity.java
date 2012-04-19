@@ -175,6 +175,7 @@ public class TeamsActivity extends SherlockListActivity  {
 				}
 			});
 			sortStartnummer = 'A';
+			sortNaam = 'D';
 		} else {
 			Collections.sort((ArrayList<Team>) teams,new Comparator<Team>() {
 				public int compare(Team arg0, Team arg1) {
@@ -182,6 +183,7 @@ public class TeamsActivity extends SherlockListActivity  {
 				}
 			});
 			sortStartnummer = 'D';
+			sortNaam = 'D';
 		}
 		int i = this.getResources().getIdentifier("sort_"+sortStartnummer, "string", this.getPackageName());
 		((TextView) this.findViewById(R.id.teams_header_startnummer)).setText(this.getText(R.string.teams_header_startnummer) +" "+ getText(i));
@@ -194,20 +196,22 @@ public class TeamsActivity extends SherlockListActivity  {
 	
 	public void sortNaam(View v) {
 		resetArrows();
-		if(sortNaam == 'A') {
+		if(sortNaam == 'D') {
 			Collections.sort( (ArrayList<Team>) teams,new Comparator<Team>() {
 				public int compare(Team arg0, Team arg1) {
 					return arg0.getNaam().compareTo(arg1.getNaam());
 				}
 			});
-			sortNaam = 'D';
+			sortNaam = 'A';
+			sortStartnummer = 'D';
 		} else {
 			Collections.sort( (ArrayList<Team>) teams,new Comparator<Team>() {
 				public int compare(Team arg0, Team arg1) {
 					return arg1.getNaam().compareTo(arg0.getNaam());
 				}
 			});
-			sortNaam = 'A';
+			sortNaam = 'D';
+			sortStartnummer = 'D';
 		}
 		int i = this.getResources().getIdentifier("sort_"+sortNaam, "string", this.getPackageName());
 		((TextView) this.findViewById(R.id.teams_header_naam)).setText(this.getText(R.string.teams_header_naam) +" "+ getText(i));

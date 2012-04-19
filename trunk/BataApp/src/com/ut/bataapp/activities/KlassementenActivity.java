@@ -2,7 +2,9 @@ package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,11 +44,19 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(KlassementenActivity.this,  
 					getString(R.string.laden_titel), getString(R.string.klassementen_laden), true);  
+			progressDialog.setCancelable(true);
+			progressDialog.setOnCancelListener(new OnCancelListener() {
+				public void onCancel(DialogInterface dialog) {
+					cancel(true);
+					Utils.goHome(KlassementenActivity.this);
+				}
+			});
 		}
 
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			response = api.getKlassementen();
+			if(!isCancelled())
+				response = api.getKlassementen();
 			return null;       
 		}
 
