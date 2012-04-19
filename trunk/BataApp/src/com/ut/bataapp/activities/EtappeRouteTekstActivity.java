@@ -20,33 +20,20 @@ import com.ut.bataapp.parser.CSV;
 public class EtappeRouteTekstActivity extends SherlockActivity{
 
 	private int mId;
+	private String mType;
 	private EtappeRoute route;
 	
-	private void makeRoute(){
-		String tekstvoor = "Etappe 1\nVertrek Start SportCentrum Nijmegen";
-		String tekstna = "Aankomst W.P. 1: Driehuizerweg";
-		String[] row1 = {"-","Start op Atletiekbaan","Onder Sportcafe"};
-		String[] row2 = {"-","Rechtsom atletiekbaan over","Rondje om sportveld"};
-		ArrayList<String[]> table = new ArrayList<String[]>();
-		table.add(row1);table.add(row2);
-		route = new EtappeRoute(tekstvoor,table,tekstna);
-	}
-	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		mId = (savedInstanceState==null?getIntent().getIntExtra("id",1):savedInstanceState.getInt("id"));
-		makeRoute();
-		
+		mType = (savedInstanceState==null?getIntent().getStringExtra("type"):savedInstanceState.getString("type"));
 		try {
 			route = new CSV().parse(this.getResources().getAssets().open("etappe1.txt"));
-		} catch (IOException e) {
-			makeRoute();
-		}
 		
 		setContentView(R.layout.etappe_route_tekst);
+		this.setTitle(mType+"route "+mId);
 		Log.d("Routes",route.getVoorTabelTekst());
 		TextView voor = (TextView) findViewById(R.id.voor_tabel);
 		voor.setText(route.getVoorTabelTekst());
@@ -60,20 +47,23 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 			TextView col3 = new TextView(this);
 			col3.setText(route.getTabel().get(i)[2]);
 			col3.setGravity(Gravity.RIGHT);
-			col3.setPadding(3,0,0,0);
+			col3.setPadding(3,0,5,0);
 			TableRow row = new TableRow(this);
 			row.addView(col1);row.addView(col2);row.addView(col3);
 			table.addView(row);
 		}
 		TextView na = (TextView) findViewById(R.id.na_tabel);
 		na.setText(route.getNaTabelTekst());
-		
+		}catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		outState.putInt("id",mId);
+		outState.putString("type",mType);
 	}
 	
 	

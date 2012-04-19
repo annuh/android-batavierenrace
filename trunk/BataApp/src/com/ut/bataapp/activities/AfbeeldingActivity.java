@@ -1,6 +1,9 @@
 package com.ut.bataapp.activities;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -13,8 +16,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 	
 	public static String[][] overzichtskaarten = {{"herstart_barchem.jpg", "Herstart Barchem"}, {"herstart_ulft.jpg", "Herstart Ulft"}, {"campus_enschede.jpg", "Campus Enschede"}, {"stad_enschede.jpg", "Enschede stad"}, {"stad_nijmegen.jpg", "Nijmegen stad"}};
 	public static String[][] hoogteverschillen = {};
-	
-	String kaart;
+	private Boolean[] loopKaartRotatie = {false,true,true,true,true,false,true};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,13 @@ public class AfbeeldingActivity extends SherlockActivity {
 			}
 			locatie = hoogteverschillen[kaart][0];
 			titel = hoogteverschillen[kaart][1];
+		} else{
+			int kaart = getIntent().getIntExtra("kaart",0);
+			locatie = (type+"/"+kaart+".jpg");
+			titel = type+" "+kaart;
+			if(kaart<7 && loopKaartRotatie[kaart-1]){
+				this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+			}
 		}
 		getSupportActionBar().setTitle(titel);
 		setContentView(R.layout.afbeelding);

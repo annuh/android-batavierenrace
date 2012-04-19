@@ -37,7 +37,8 @@
                     android:gravity="right"
                     android:text="@string/etappe_route_tekst_locatie"
                     android:textColor="@android:color/darker_gray"
-                    android:layout_marginLeft="3dip"/>    
+                    android:layout_marginLeft="3dip"
+                    android:layout_marginRight="5dip"/>    
             </TableRow>
             <View style="@style/divider" />
         </TableLayout>
