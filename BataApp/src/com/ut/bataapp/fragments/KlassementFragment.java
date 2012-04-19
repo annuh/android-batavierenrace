@@ -2,10 +2,7 @@ package com.ut.bataapp.fragments;
 
 import java.util.Collections;
 import java.util.Comparator;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,20 +25,18 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 import com.ut.bataapp.Utils;
-import com.ut.bataapp.activities.KlassementenActivity;
 import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.adapters.KlassementAdapter;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.KlassementItem;
 import com.ut.bataapp.objects.Response;
-import com.ut.bataapp.activities.KlassementActivity;
 
 public class KlassementFragment extends SherlockListFragment {
 
-	private final int MENU_SEARCH = Menu.FIRST;
-	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
-	private final int MENU_SORT_STAND = Menu.FIRST + 2;
+	private final int MENU_SEARCH = Menu.FIRST + 10;
+	private final int MENU_SORT_NAAM = Menu.FIRST + 11;
+	private final int MENU_SORT_STAND = Menu.FIRST + 12;
 	private String filterText = "";
 	private String naam;
 	private Klassement klassement;
@@ -50,11 +45,16 @@ public class KlassementFragment extends SherlockListFragment {
 	private char sortStand = 'D';
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		naam = this.getArguments().getString("index");
 		new getKlassement().execute();  	
+	}
+	
+	@Override
+	public void onResume(){
+		super.onResume();
 	}
 
 	@Override
