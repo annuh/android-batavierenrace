@@ -58,14 +58,17 @@
             android:theme="@style/StyledIndicators" />
         <activity android:name=".activities.EtappeChartByTeam" />
         <activity android:name="org.achartengine.GraphicalActivity" />
-        <activity android:name=".activities.KlassementenActivity" />
-        <activity android:name=".activities.KlassementActivity" />
+        <activity
+            android:name=".activities.KlassementenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".activities.KlassementActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".activities.SponsorActivity" />
-        
         <activity
             android:name=".activities.BataRadioActivity"
             android:launchMode="singleTop"
-            android:theme="@style/StyledIndicators" />  
+            android:theme="@style/StyledIndicators" />
         <activity
             android:name=".activities.WeerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -82,7 +85,8 @@
         <activity android:name=".activities.AfbeeldingActivity" />
         <activity android:name=".activities.PreferencesActivity" />
         <activity android:name=".activities.BerichtenActivity" />
-        <activity android:name=".activities.SponsorInformatieActivity"
+        <activity
+            android:name=".activities.SponsorInformatieActivity"
             android:theme="@style/StyledIndicators" />
 
         <service android:name=".services.BackgroundUpdater" />
@@ -110,11 +114,11 @@
                 </category>
             </intent-filter>
         </receiver>
-        
-        <receiver android:name=".StartAtBoot">  
-    		<intent-filter>  
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />  
-    		</intent-filter>  
-		</receiver>
+        <receiver android:name=".StartAtBoot" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
+
 </manifest>

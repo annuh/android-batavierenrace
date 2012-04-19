@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
-	
-    <include layout="@layout/border_top" />
-    <RelativeLayout
-        style="@style/listview_header" >
+    style="@style/viewport" >
+
+    <RelativeLayout style="@style/listview_header" >
 
         <TextView
             android:id="@+id/klassement_header_stand"
-            android:text="@string/klassement_header_stand"
-            android:clickable="true"
-            android:onClick="sortStand"
             style="@style/listview_header_text"
             android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:text="@string/klassement_header_stand"
             android:width="35dp" />
 
         <TextView
             android:id="@+id/klassement_header_team"
-            android:text="@string/klassement_header_team"
             style="@style/listview_header_text"
-            android:clickable="true"
-            android:onClick="sortNaam"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/klassement_header_stand" />
+            android:layout_toRightOf="@id/klassement_header_stand"
+            android:clickable="true"
+            android:text="@string/klassement_header_team" />
 
         <TextView
             android:id="@+id/klassement_header_tijd"
-            android:text="@string/klassement_header_tijd"
             style="@style/listview_header_text"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:text="@string/klassement_header_tijd" />
     </RelativeLayout>
 
     <ListView

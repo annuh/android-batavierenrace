@@ -100,5 +100,12 @@ public class KlassementAdapter extends ArrayAdapter<KlassementItem> {
 
 		}
 	}
+	
+	public static ArrayList<KlassementItem> getDefault() {
+		ArrayList<KlassementItem> niks = new ArrayList<KlassementItem>();
+		KlassementItem niksitem = new KlassementItem();
+		niks.add(niksitem);
+		return niks;
+	}
 
 }
