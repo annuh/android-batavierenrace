@@ -10,6 +10,10 @@
 	    <TextView
 	        android:text = "Looproute"
 	        style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
 	    
 	    <LinearLayout 
 	    	android:orientation="horizontal"
@@ -23,10 +27,17 @@
 	        </ImageView>
 	        
 	        <ImageView
-	            android:id="@+id/lopers_earth"
+	            android:id="@+id/lopers_image"
 	            android:layout_width="wrap_content"
 	    		android:layout_height="wrap_content"
-	    		android:src="@drawable/icon_earth" >
+	    		android:src="@drawable/icon_image" >
+	        </ImageView>
+	        
+	        <ImageView
+	           	android:id="@+id/lopers_tekst"
+	            android:layout_width="wrap_content"
+	    		android:layout_height="wrap_content"
+	    		android:src="@drawable/icon_text" >
 	        </ImageView>
 	        
 	        
@@ -35,10 +46,72 @@
 	    <TextView
 	        android:text = "Autoroute"
 	        style="@style/h1" />
-	    
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />
+		    
+		    <LinearLayout 
+		    	android:orientation="horizontal"
+		    	style="@style/container_block">
+		        
+		        <ImageView
+	           		android:id="@+id/autos_tekst"
+	            	android:layout_width="wrap_content"
+	    			android:layout_height="wrap_content"
+	    			android:src="@drawable/icon_text" >
+	        	</ImageView>
+		        
+		        <ImageView
+		            android:id="@+id/autos_maps"
+		            android:layout_width="wrap_content"
+		    		android:layout_height="wrap_content"
+		    		android:src="@drawable/icon_maps" >
+		        </ImageView>
+		        
+		        <ImageView
+		            android:id="@+id/autos_image"
+		            android:layout_width="wrap_content"
+		    		android:layout_height="wrap_content"
+		    		android:src="@drawable/icon_image" >
+		        </ImageView>
+		        
+		    </LinearLayout>
+		    
 	    <TextView
 	        android:text = "Overslagroute"
 	        style="@style/h1" />
+	    <TextView
+	        android:layout_height="10dp"
+	        android:layout_width="fill_parent"
+			android:background = "@drawable/onder" />	    
 	    
+		    <LinearLayout 
+		    	android:orientation="horizontal"
+		    	style="@style/container_block">
+		       
+		       <ImageView
+		            android:id="@+id/overslag_image"
+		            android:layout_width="wrap_content"
+		    		android:layout_height="wrap_content"
+		    		android:src="@drawable/icon_image" >
+		        </ImageView>
+		        
+		        <ImageView
+	           		android:id="@+id/overslag_tekst"
+	            	android:layout_width="wrap_content"
+	    			android:layout_height="wrap_content"
+	    			android:src="@drawable/icon_text" >
+	        	</ImageView>
+	        	
+		        <ImageView
+		            android:id="@+id/overslag_maps"
+		            android:layout_width="wrap_content"
+		    		android:layout_height="wrap_content"
+		    		android:src="@drawable/icon_maps" >
+		        </ImageView>
+      
+		    </LinearLayout>
+		    	    
 	</LinearLayout>
 </ScrollView>
