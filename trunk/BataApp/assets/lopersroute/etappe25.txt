@@ -1,0 +1,38 @@
+Vertrek Herstart Stad Enschede;;
+Herstart: 17:30 uur;;
+Afst;Omschrijving;Locatie
+-;Na herstart een rondje om de kerk;-
+0,2;Rechtsaf (tegen de route van de 23e etappe in);Marktstraat
+0,4;Derde straat rechtsaf;Korte Hengelosestraat
+0,5;Net voor spoorbomen links plein op;Stationsterrein-oost
+0,6;Einde van het plein rechtsaf het fietspad op;-
+0,9;Bij kruising rechts tunnel in (krappe bocht!);Prinsessentunnel
+1,1;Na de tunnel rechtdoor oversteken en linksaf;Hengelosestraat
+1,2;Eerste weg rechtsaf (direct na ‘Kwik-Fit’);Boddenkampstraat
+1,6;De singel schuin links oversteken (paaltje!);Boddenkampstraat
+1,7;Einde weg rechts en meteen weer linksaf;Minister de Savornin Lohmanlaan
+2;Zijstraat (Minister Goeman Borgesiusstraat) rechtdoor;-
+2,2;Driesprong links aanhouden;-
+2,3;Einde weg rechts;Roessingbleeksweg
+2,4;In bocht naar rechts, links zijweg in;Maatmanweg
+2,7;Bij kruispunt met fietspad rechtsaf;-
+3;Einde fietspad rechtdoor (langs betonnen paaltje);7522 Doctor Zamenhoflaan 64
+3,1;Linksaf en aan linkerkant blijven lopen;7522 Doctor Zamenhoflaan 64
+3,2;Eerste zijweg linksaf;7522 Viermarkenweg 71
+3,6;Driesprong rechts aanhouden;7522 Viermarkenweg 85
+3,9;Waterpost ter hoogte van de boerderij;-
+4,1;Bij kruispunt rechtdoor;De Achterhorst
+4,3;Einde fietspad linksaf;De Achterhorst
+4,5;Eerste weg rechts;Universiteit Twente, De Knepse 1
+4,7;Bij driesprong links aanhouden;Universiteit Twente, De Horst 2
+4,7;Rechtdoor langs vijver;Universiteit Twente, De Horst 2
+4,8;Eerste weg rechts (onder loopbrug door);-
+5,1;Langs openstaande slagboom rechtdoor;Hallenweg
+5,4;De Drienerlolaan rechtdoor oversteken;Drienerbeeklaan
+5,9;Derde weg rechtsaf;-
+6,2;Bij kruising rechtsaf (voor de sportvelden langs);-
+6,5;Linksaf het fietspad op;Boerderijweg/Drienerlolaan
+6,7;Onder loopbrug door, links en direct weer rechts;-
+6,8;Na fietsenstalling sintelbaan op;Sintelbaan
+7,1;De finish is na 3/4 rondje sintelbaan;-
+Aankomst Finish;;

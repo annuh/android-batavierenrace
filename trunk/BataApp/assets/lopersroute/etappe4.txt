@@ -1,0 +1,27 @@
+Etappe 4;;
+Vertrek W.P. 3: Niel;;
+Open: 01:00 uur;;
+Uiterste starttijd: 03:25 uur;;
+Afst;Omschrijving;Locatie
+-;Na W.P. weg vervolgen;-
+0,6;Bruggetje over;Dingdung
+1,3;Zijweg rechtdoor;Dingdung
+1,7;Links aanhouden over stenen brug;-
+2,7;Kruising rechtsaf;Zyfflicher Straße
+3,1;Einde weg linksaf richting Düffelward;Trübsche Straße
+4,5;Düffelward binnenlopen;Trübsche Straße
+5;Driesprong rechts aanhouden;-
+5,1;Verlaat Zyfflich;-
+5,2;Voorrangsweg oversteken rechtsaf links op fietspad blijven lopen;Klever Straße
+6,6;Zijstraat (Drususdeich) rechtdoor;-
+7,4;Rindern binnenkomen links blijven lopen;-
+7,9;5e straat in Rindern linksaf richting Museum;Breite Straße
+8,3;Minirotonde rechtdoor;Tweestrom
+8,4;Kruising rechtdoor;Tweestrom
+8,7;Driesprong links;-
+8,9;Voorrangsweg oversteken linksaf fietspad;-
+9;Eerste rechtsaf;Spyckscher Baum
+9,1;W.P. in de bocht;-
+Aankomst W.P. 4: Rindern;;
+Open: 01:50 uur;;
+Uiterste starttijd: 04:25 uur;;

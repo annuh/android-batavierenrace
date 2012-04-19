@@ -30,30 +30,29 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 		mId = (savedInstanceState==null?getIntent().getIntExtra("id",1):savedInstanceState.getInt("id"));
 		mType = (savedInstanceState==null?getIntent().getStringExtra("type"):savedInstanceState.getString("type"));
 		try {
-			route = new CSV().parse(this.getResources().getAssets().open("etappe1.txt"));
-		
-		setContentView(R.layout.etappe_route_tekst);
-		this.setTitle(mType+"route "+mId);
-		Log.d("Routes",route.getVoorTabelTekst());
-		TextView voor = (TextView) findViewById(R.id.voor_tabel);
-		voor.setText(route.getVoorTabelTekst());
-		TableLayout table = (TableLayout) findViewById(R.id.route_tabel);
-		for(int i=0;i<route.getTabel().size();i++){
-			TextView col1 = new TextView(this);
-			col1.setText(route.getTabel().get(i)[0]);
-			col1.setPadding(0, 0, 5, 0);
-			TextView col2 = new TextView(this);
-			col2.setText(route.getTabel().get(i)[1]);
-			TextView col3 = new TextView(this);
-			col3.setText(route.getTabel().get(i)[2]);
-			col3.setGravity(Gravity.RIGHT);
-			col3.setPadding(3,0,5,0);
-			TableRow row = new TableRow(this);
-			row.addView(col1);row.addView(col2);row.addView(col3);
-			table.addView(row);
-		}
-		TextView na = (TextView) findViewById(R.id.na_tabel);
-		na.setText(route.getNaTabelTekst());
+			route = new CSV().parse(this.getResources().getAssets().open("etappe"+mId+".txt"));
+			setContentView(R.layout.etappe_route_tekst);
+			this.setTitle(mType+"route "+mId);
+			Log.d("Routes",route.getVoorTabelTekst());
+			TextView voor = (TextView) findViewById(R.id.voor_tabel);
+			voor.setText(route.getVoorTabelTekst());
+			TableLayout table = (TableLayout) findViewById(R.id.route_tabel);
+			for(int i=0;i<route.getTabel().size();i++){
+				TextView col1 = new TextView(this);
+				col1.setText(route.getTabel().get(i)[0]);
+				col1.setPadding(0, 0, 5, 0);
+				TextView col2 = new TextView(this);
+				col2.setText(route.getTabel().get(i)[1]);
+				TextView col3 = new TextView(this);
+				col3.setText(route.getTabel().get(i)[2]);
+				col3.setGravity(Gravity.RIGHT);
+				col3.setPadding(3,0,5,0);
+				TableRow row = new TableRow(this);
+				row.addView(col1);row.addView(col2);row.addView(col3);
+				table.addView(row);
+			}
+			TextView na = (TextView) findViewById(R.id.na_tabel);
+			na.setText(route.getNaTabelTekst());
 		}catch(IOException e){
 			e.printStackTrace();
 		}

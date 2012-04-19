@@ -1,0 +1,26 @@
+Etappe 3;;
+Vertrek W.P. 2: Wylerbergmeer;;
+Open: 00:30 uur;;
+Uiterste starttijd: 02:40 uur;;
+Afst;Omschrijving;Locatie
+-;Weg vervolgen op fietspad;Let op: Paaltjes!
+0,1;Linksaf, rechterkant parkeerplaats blijven;-
+0,3;Einde parkeerplaats rechtsaf;-
+0,4;2 bruggen over, vervolgens rechtdoor;-
+2,0;Weg vervolgen, asfaltweg rechts aanhouden;Niet over brug
+3,0;Driesprong rechts aanhouden;Niet over brug
+3,4;Driesprong links aanhouden;-
+4,1;Voorrangsweg linksaf, ri. Niel/Kleve;Kirchstraße
+5,1;Verlaat Zyfflich;-
+5,7;Brug over;Zyfflicherstraße
+7,0;Niel binnenlopen;-
+7,2;150m na bushokje linksaf;Effertsweg
+7,5;Bij driesprong rechts, na 50 m linksaf;Effertsweg
+7,6;Bij driesprong rechts;Effertsweg
+8,1;Eerste zijstraat linksaf;Kardinalsweg
+8,9;Einde weg rechtsaf;Grüner Weg
+9,6;Voorrangsweg oversteken;-
+9,7;100m na kruising is het W.P.;-
+Aankomst W.P. 3: Niel;;
+Open: 01:00 uur;;
+Uiterste starttijd: 03:25 uur;;

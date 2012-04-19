@@ -1,0 +1,21 @@
+Aankomst W.P. 12:Zwarte Veen;;
+Open: 07:05 uur;;
+Uiterste starttijd: 09:45 uur;;
+Afst;Omschrijving;Locatie
+-;Na het W.P. rechtsaf;Entinkweg
+0,8;Eerste weg linksaf ;Parellel Twente-route
+1,7;Eerste fietspad rechts;-
+1,7;Voorrangsweg oversteken;-
+1,8;Einde fietspad rechtsaf;Spiekersweg 1, Heelweg
+1,9;Eerste weg links;Molenweg
+2,3;Bij zijweg rechts aanhouden;Molenweg
+2,5;Bij driesprong links aanhouden;Molenweg
+2,8;Bij zijstraat rechtdoor, Heelweg inlopen;-
+3,1;Kruising recht oversteken;Molenweg
+3,8;Bij kruising rechts ;Hiddinkdijk
+4,1;Eerste weg links;Landstraat
+4,4;Bij zijweg rechtdoor;-
+5,1;Het W.P. is vlak voor de kruising;-
+Aankomst W.P. 13: Heelweg;;
+Open: 07:25 uur;;
+Uiterste starttijd: 10:10 uur;;

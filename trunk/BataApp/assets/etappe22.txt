@@ -1,0 +1,34 @@
+Vertrek W.P. 21: St. Isidorushoeve;;
+Open: 13:10;;
+Uiterste starttijd: 15:35 uur;;
+Afst;Omschrijving;Locatie
+-;Na het W.P. rechtsaf;Schoolkaterdijk
+0,6;Einde weg linksaf;Albertsweg
+0,7;Linksaf fietspad op;-
+0,8;Na rotonde weg oversteken weg aan rechterkant vervolgen;N739 Haaksbergen
+1,1;Haaksbergen uitlopen;N739 Haaksbergen
+1,3;Bij onverharde zijweg rechtsaf;Schaddenweg, onverhard
+1,7;Weg wordt verhard;-
+2,0;Bij kruising rechtsaf;Hazenweg
+2,4;Kruising (Stepelerveldweg) rechtdoor;-
+2,9;Kruising (Kolenbranderweg) rechtdoor;-
+3,2;Zijstraat (Grevenpaalweg) rechtdoor;-
+3,4;Kruising (Oude Boekeloseweg) rechtdoor;-
+3,8;Vlak voor spoor linksaf;Geukerdijk
+4,4;Kleine brug over;-
+4,8;Einde weg links, direct rechts;Welenmosweg
+5,8;Na ‘Hotel Bad Boekelo’ rechtsaf;Oude Deldenerweg
+5,9;Onbewaakte spoorlijn over direct scherp linksaf;Zoutindustrieweg, wordt Weleweg
+6,3;Zijstraat (Goorsedijk) links aanhouden;-
+6,4;Zijstraat (Meestersweg) rechtdoor;-
+6,7;Zijstraat (Weleweg) rechtdoor;-
+6,9;Einde weg rechtsaf;Rechtsaf brug over
+7,4;Tweede weg rechts binnenkomst Boekelo (Henry Dunantlaan);-
+7,7;Met bocht mee links, einde weg rechtsaf;Bastinglaan
+7,9;Bocht naar links volgen;-
+8,0;Einde weg rechtsaf, fietspad op;Boekelosestraat
+8,8;Linksaf door het hek van Grolsch;Nauwe doorgang!
+8,8;W.P. ligt na 30m op het Grolsch Terrein;-
+Aankomst W.P. 22: Grolsch;;
+Open: 13:55;;
+Uiterste starttijd: 16:20 uur;;

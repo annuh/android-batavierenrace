@@ -1,0 +1,35 @@
+Etappe 10;;
+Vertrek herstart Ulft;;
+Start: 06:20 uur;;
+Uiterste starttijd: 07:50 uur;;
+Afst;Omschrijving;Locatie
+-;Herstart bevindt zich op het DRU-Terrein;-
+0,2;Einde weg rechts de brug over;-
+0,3;Einde brug links, fietsers komen bij lopers;-
+1,0;Einde pad rechts;-
+1,1;Brug over;-
+1,9;Einde weg rechts en direct links;Ulftseweg, Boterweg
+2,5;Einde weg rechts;Prins Bernhardstraat
+2,6;Bij zijstraat (Molenweg) rechtdoor;-
+2,7;Bij zijstraat links;Molenberg
+2,8;Voorrangsweg (Berkenlaan) oversteken;Rabelingstraat
+3,2;Eerste weg rechts;Bievinkstraat
+3,8;Bij zijstraat (Goordijk) rechtdoor;-
+4,9;Bij kruising (Heidedijk) rechtdoor;-
+5,0;Bij kruising (Toldijk) rechtdoor;-
+5,2;Onverhard pad op;-
+6,0;Weg wordt verhard;Idinkweg
+6,6;Bij kruising (Nibbelinklaan) rechtdoor;-
+8,1;Weg langs spoor vervolgen;Westelijke Oude Aaltenseweg
+8,6;Weg wordt onverhard;-
+8,8;Einde weg links (weg wordt weer verhard);Harterinksdijk
+8,9;Einde weg links;Sinderensweg
+9,1;Spoor oversteken;-
+9,2;Bij rotonde rechtdoor;-
+9,2;Eerste weg rechts ;Aaltenseweg
+9,6;Einde weg links;Dames Jolinkweg
+9,7;Eerste weg rechts;Breukelaarsweg
+10,0;W.P. is voor “Kramp”;-
+Aankomst W.P. 10: Breukelaarsweg;;
+Open: 06:45 uur;;
+Uiterste starttijd: 09:05 uur;;
