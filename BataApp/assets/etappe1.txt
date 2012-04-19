@@ -1,0 +1,18 @@
+Etappe 1 ;;
+Vertrek Start Sportcentrum Nijmegen;;
+Afst;Omschrijving;Locatie
+-;Start op Atletiekbaan;Onder Sportcafe
+-;Rechtsom atletiekbaan over;Rondje om sportveld
+0.5;Einde atletiekbaan rechtsaf;-
+0.5;Einde weg rechtsaf;Driehuizerweg
+0.7;Eerste weg rechts;Kwekerijweg
+-;Fietsers voegen zich bij lopers;-
+0.9;Kruising met Heyendaalseweg, linksaf en direct rechts.;Houtlaan op de weg blijven lopen.
+1.7;Derde weg links;Burggraafstraat
+2.1;Einde weg links;Heemraadstraat
+2.6;Derde weg links;Kanunnik Mijllinckstraat
+2.7;Eerste weg rechts;Kanunnik Faberstraat
+3.1;Kruising Heyendaalseweg rechtdoor;Pater Eijmardweg
+3.3;Einde weg links;Driehuizerweg
+3.6;Het W.P. is op deze weg;-
+Aankomst W.P. 1: Driehuizerweg;;

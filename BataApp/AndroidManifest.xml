@@ -65,6 +65,8 @@
             android:name=".activities.KlassementActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".activities.SponsorActivity" />
+        <activity android:name=".activities.EtappeRouteTekstActivity" />
+
         <activity
             android:name=".activities.BataRadioActivity"
             android:launchMode="singleTop"

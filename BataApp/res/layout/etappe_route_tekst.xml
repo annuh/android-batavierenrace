@@ -12,29 +12,41 @@
         
         <TextView
             android:id="@+id/voor_tabel"
-            style="@style/container_block"/>
+            style="@style/container_block"
+            android:layout_marginBottom="0dip"
+            android:padding="0dip"/>
         
         <TableLayout 
+            android:id="@+id/route_tabel"
             android:stretchColumns="1,2"
             android:shrinkColumns="1,2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dip">
+            android:padding="5dip">
             
             <TableRow>
                 <TextView
-                  
+                    android:text="@string/etappe_route_tekst_afstand"
+                    android:textColor="@android:color/darker_gray"
+                	android:layout_marginRight="5dip"
+                	android:gravity="right"/>
+                <TextView
+                    android:text="@string/etappe_route_tekst_omschrijving"
                     android:textColor="@android:color/darker_gray"/>
                 <TextView
-       
-                    android:textColor="@android:color/darker_gray"/>
-                <TextView
-                   
-                    android:textColor="@android:color/darker_gray"/>    
+                    android:gravity="right"
+                    android:text="@string/etappe_route_tekst_locatie"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginLeft="3dip"/>    
             </TableRow>
             <View style="@style/divider" />
         </TableLayout>
         
+        <TextView
+            android:id="@+id/na_tabel"
+            style="@style/container_block"
+            android:layout_marginBottom="0dip"
+            android:padding="0dip"/>
     </LinearLayout>
   
 
