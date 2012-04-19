@@ -20,6 +20,7 @@ public class PloegHandler extends Handler{
 	
 	private boolean uitslag;
 	private boolean foutcode;
+	private boolean klassement;
 	private boolean tijd;
 	private boolean etappe;
 	
@@ -28,6 +29,7 @@ public class PloegHandler extends Handler{
 	private boolean cumulatieveStand;
 
 	private String teamNaam;
+	private String teamKlassement;
 	private int startNummer;
 	private int startGroep;
 	private Looptijd looptijd;
@@ -47,6 +49,7 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("naam")) this.naam = true;
 		else if(localName.equals("startgroep")) this.startgroep = true;
 		else if(localName.equals("uitslag")) this.uitslag = true;
+		else if(localName.equals("klassement")) this.klassement = true;
 		else if(localName.equals("foutcode")) this.foutcode = true;
 		else if(localName.equals("klassementstijd")) this.tijd = true;
 		else if(localName.equals("etappenummer")) this.etappe = true;
@@ -61,6 +64,7 @@ public class PloegHandler extends Handler{
 			team.setNaam(teamNaam);
 			team.setStartGroep(startGroep);
 			team.setStartnummer(startNummer);
+			team.setKlassement(teamKlassement);
 			this.ploeg = false;
 		}
 		else if(localName.equals("startnummer")) this.startnummer = false;
@@ -68,6 +72,7 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("startgroep")) this.startgroep = false;
 		else if(localName.equals("uitslag")) team.addLooptijd(looptijd);
 		else if(localName.equals("foutcode")) this.foutcode = false;
+		else if(localName.equals("klassement")) this.klassement = false;
 		else if(localName.equals("klassementstijd")) this.tijd = false;
 		else if(localName.equals("etappenummer")) this.etappe = false;
 		else if(localName.equals("snelheid")) this.snelheid = false;
@@ -86,6 +91,7 @@ public class PloegHandler extends Handler{
 			uitslag = false;
 		}
 		else if(foutcode) looptijd.setFoutcode(new String(ch,start,length));
+		else if(klassement) teamKlassement = new String(ch,start,length);
 		else if(tijd) looptijd.setTijd(new String(ch,start,length));
 		else if(etappe) looptijd.setEtappe(Integer.parseInt(new String(ch,start,length)));
 		else if(snelheid) looptijd.setSnelheid(new String(ch,start,length));
