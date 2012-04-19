@@ -95,7 +95,10 @@
     <string name="etappes_geenetappes">Geen etappes gevonden..</string>
     <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
     <string name="berichten_geenberichten">Er zijn op dit moment geen berichten.</string>
-
+	<string name="etappe_route_tekst_afstand">afstand</string>
+    <string name="etappe_route_tekst_omschrijving">omschrijving</string>
+    <string name="etappe_route_tekst_locatie">locatie</string>
+    
     <!-- Informatie -->
     <string name="informatie_titel">Informatie</string>
     <string name="informatie_eten_drinken_tijdens_de_race"></string>
