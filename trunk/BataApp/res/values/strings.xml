@@ -98,6 +98,9 @@
 	<string name="etappe_route_tekst_afstand">afstand</string>
     <string name="etappe_route_tekst_omschrijving">omschrijving</string>
     <string name="etappe_route_tekst_locatie">locatie</string>
+    <string name="route_kaart">Kaart</string>
+    <string name="route_beschrijving">Beschrijving</string>
+    <string name="route_maps">Maps</string>
     
     <!-- Informatie -->
     <string name="informatie_titel">Informatie</string>
