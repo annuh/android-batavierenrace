@@ -47,7 +47,7 @@ public class Utils {
 				Utils.noData(context);
 				return false;
 			case Response.NOK_OLD_DATA:
-				Toast.makeText(context, "Geen nieuwe data", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "Kan geen data ophalen, data is mogelijk verouderd", Toast.LENGTH_LONG).show();
 				return true;
 			case Response.OK_NO_UPDATE:
 				return true;

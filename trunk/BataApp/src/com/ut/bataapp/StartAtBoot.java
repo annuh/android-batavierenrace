@@ -3,8 +3,6 @@ package com.ut.bataapp;
 import com.ut.bataapp.services.BackgroundUpdater;
 
 import android.content.*;
-import android.content.res.Resources;
-import android.preference.PreferenceManager;
 
 /**
  * Broadcastreceiver voor boot completed-action.
@@ -16,10 +14,7 @@ import android.preference.PreferenceManager;
 public class StartAtBoot extends BroadcastReceiver {
 	@Override
     public void onReceive(Context context, Intent intent) {
-		Resources res = context.getResources();
-        if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(res.getString(R.string.pref_background_update), res.getBoolean(R.bool.pref_background_update_default))) {
-        	Intent startServiceIntent = new Intent(context, BackgroundUpdater.class);
-        	context.startService(startServiceIntent);
-        }
+		Intent startServiceIntent = new Intent(context, BackgroundUpdater.class);
+        context.startService(startServiceIntent);
     }
 }

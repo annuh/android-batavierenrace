@@ -20,6 +20,8 @@ public class Team {
 	private String naam = "";
 	private String klassement ="";
 	private int id = 0;
+	private int klassementsnotering = -1;
+	private int klassementTotEtappe = 0;
 	private ArrayList<Looptijd> looptijden = new ArrayList<Looptijd>();
 	
 	/**
@@ -55,12 +57,16 @@ public class Team {
 	public void setStartGroep(int groep){this.startgroep = groep;}
 	public void setNaam(String naam){this.naam = naam;}
 	public void addLooptijd(Looptijd looptijd) {looptijden.add(looptijd);}
+	public void setKlassementsnotering(int klassementsnotering) { this.klassementsnotering = klassementsnotering; }
+	public void setKlassementTotEtappe(int totEtappe) { this.klassementTotEtappe = totEtappe; }
 	
 	/*Getters*/
 	public int getStartnummer(){return startnummer;}
 	public int getStartGroep(){return startgroep;}
 	public String getNaam() {return naam;}
 	public ArrayList<Looptijd> getLooptijden(){return looptijden;}
+	public int getKlassementsnotering() {return klassementsnotering; }
+	public int getKlassementTotEtappe() {return klassementTotEtappe; }
 	
 	public int getID() {
 		// zolang uid nog niet uit XML te halen is:

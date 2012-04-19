@@ -139,7 +139,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		String weergeven = "";
 		if(dagenVerschil>0){
 			weergeven = "Het duurt nog " +dagenVerschil + " dagen!";
-		} else if(dagenVerschil<=0 && dagenVerschil>-1){
+		} else if(dagenVerschil==0){
 			weergeven = "Batavierenrace XL";
 		} else{
 			weergeven = "Tot volgend jaar!";
@@ -147,11 +147,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		viewDagen.setText(weergeven);
 
 		// starten background updater:
-		Resources res = getResources();
-		if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(res.getString(R.string.pref_background_update), res.getBoolean(R.bool.pref_background_update_default))) {
-			Intent startServiceIntent = new Intent(this, BackgroundUpdater.class);
-			startService(startServiceIntent);
-		}
+		Intent startServiceIntent = new Intent(this, BackgroundUpdater.class);
+		startService(startServiceIntent);
 	}
 
 	@Override

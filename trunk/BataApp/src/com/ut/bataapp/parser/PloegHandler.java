@@ -37,6 +37,12 @@ public class PloegHandler extends Handler{
 	private Looptijd looptijd;
 	private Team team;
 	
+	/* in afwachting van juiste XML-bestanden (voor testdoeleinden van notificaties background updater): */
+	private boolean notering;
+	private boolean totEtappe;
+	private int noteringI;
+	private int totEtappeI;
+	
 	public PloegHandler(String path){
 		super(path);
 	}
@@ -58,6 +64,8 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("snelheid")) this.snelheid = true;
 		else if(localName.equals("etappe")) this.etappeStand = true;
 		else if(localName.equals("cumulatief")) this.cumulatieveStand = true;
+		else if(localName.equals("positie")) this.notering = true;
+		else if(localName.equals("tot")) this.totEtappe = true;
 	}
 	
 	@Override
@@ -66,6 +74,8 @@ public class PloegHandler extends Handler{
 			team.setNaam(teamNaam);
 			team.setStartGroep(startGroep);
 			team.setStartnummer(startNummer);
+			team.setKlassementsnotering(noteringI);
+			team.setKlassementTotEtappe(totEtappeI);
 			team.setKlassement(teamKlassement);
 			this.ploeg = false;
 		}
@@ -80,6 +90,8 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("snelheid")) this.snelheid = false;
 		else if(localName.equals("etappe")) this.etappeStand = false;
 		else if(localName.equals("cumulatief")) this.cumulatieveStand = false;
+		else if(localName.equals("positie")) this.notering = false;
+		else if(localName.equals("tot")) this.totEtappe = false;
 	}
 
 	@Override
@@ -99,6 +111,8 @@ public class PloegHandler extends Handler{
 		else if(snelheid) looptijd.setSnelheid(new String(ch,start,length));
 		else if(etappeStand) looptijd.setEtappeStand(Integer.parseInt(new String(ch,start,length)));
 		else if(cumulatieveStand) looptijd.setCumulatieveStand(Integer.parseInt(new String(ch,start,length)));
+		else if(notering) noteringI = Integer.parseInt(new String(ch,start,length));
+		else if(totEtappe) totEtappeI = Integer.parseInt(new String(ch,start,length));
 	}
 
 	@Override
