@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import com.ut.bataapp.R;
 import com.ut.bataapp.objects.KlassementItem;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,16 +34,16 @@ public class KlassementAdapter extends ArrayAdapter<KlassementItem> {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.row_klassement, parent, false);
-		rowView.setId(values.get(position).getTeamStartNummer());
+		rowView.setId(filteredItems.get(position).getTeamStartNummer());
 
 		TextView plaats = (TextView) rowView.findViewById(R.id.klassement_plaats);
-		plaats.setText(String.valueOf(values.get(position).getPlaats()));
+		plaats.setText(String.valueOf(filteredItems.get(position).getPlaats()));
 
 		TextView team = (TextView) rowView.findViewById(R.id.klassement_team);
-		team.setText(values.get(position).getTeamNaam());
+		team.setText(filteredItems.get(position).getTeamNaam());
 
 		TextView tijd = (TextView) rowView.findViewById(R.id.klassement_tijd);
-		tijd.setText(values.get(position).getTijd());
+		tijd.setText(filteredItems.get(position).getTijd());
 
 		return rowView;
 	}
@@ -95,6 +96,7 @@ public class KlassementAdapter extends ArrayAdapter<KlassementItem> {
 			clear();
 			for (int i = 0; i <filteredItems.size(); i++){
 				add(filteredItems.get(i));
+				//Log.d("Filter", filteredItems.get(i).getTeamNaam());
 			}
 			notifyDataSetInvalidated();
 
