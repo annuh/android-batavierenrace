@@ -13,6 +13,7 @@ public class FoutcodesDialogFragment extends DialogFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.foutcodes, container, false);
 		this.getDialog().setTitle(R.string.ab_foutcodes);
+		this.setStyle(STYLE_NORMAL, android.R.style.Theme_Holo);
 		return v;
 	}
 

@@ -8,31 +8,31 @@
     <TextView
         android:id="@+id/etappe"
         style="@style/listview_text"
-        android:layout_width="35dp" />
+        android:layout_width="25dp" />
 
     <TextView
         android:id="@+id/tijd"
         style="@style/listview_text"
         android:layout_toRightOf="@id/etappe"
-        android:layout_width="70dp" />
+        android:layout_width="80dp" />
 
     <TextView
         android:id="@+id/snelheid"
         style="@style/listview_text"
         android:layout_toRightOf="@id/tijd"
-        android:layout_width="70dp" />
+        android:layout_width="100dp" />
 
     <TextView
         android:id="@+id/etappe_klassement"
         style="@style/listview_text"
         android:layout_toRightOf="@id/snelheid"
-        android:layout_width="70dp" />
+        android:layout_width="80dp" />
 
     <TextView
         android:id="@+id/cum_klassement"
         style="@style/listview_text"
         android:layout_toRightOf="@id/etappe_klassement"
-        android:layout_width="70dp" />
+        android:layout_width="120dp" />
 
     <TextView
         android:id="@+id/etappe_foutcode"

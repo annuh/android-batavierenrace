@@ -9,7 +9,7 @@
 
         <TextView
             style="@style/h1"
-            android:text="@string/team_informatie" />
+            android:text="@string/team_h1_informatie" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -49,7 +49,7 @@
 
             <View style="@style/divider" >
             </View>
-            
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
@@ -60,6 +60,47 @@
 
                 <TextView
                     android:id="@+id/team_startgroep"
+                    style="@style/table_right" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            style="@style/h1"
+            android:text="@string/team_h1_klassement" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/onder" />
+
+        <TableLayout style="@style/table" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/team_klassement" />
+
+                <TextView
+                    android:id="@+id/team_klassement"
+                    style="@style/table_right" />
+            </TableRow>
+
+            <View style="@style/divider" >
+            </View>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/team_cum_klassement" />
+
+                <TextView
+                    android:id="@+id/team_cum_klassement"
                     style="@style/table_right" />
             </TableRow>
         </TableLayout>

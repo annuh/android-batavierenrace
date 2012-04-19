@@ -26,6 +26,7 @@
     <!-- Algemeen -->
     <string name="laden_titel">Bezig met laden</string>
     <string name="km">%s km</string>
+    <string name="kmu">%s km/u</string>
     <string name="uur">%s u</string>
 
     <!-- Sorteren -->
@@ -56,17 +57,21 @@
     <string name="team_titel_informatie">Informatie</string>
     <string name="team_titel_looptijden">Looptijden</string>
     <string name="team_titel_klassement">Klassement</string>
-    <string name="team_informatie">Informatie:</string>
+    <string name="team_h1_informatie">Informatie:</string>
     <string name="team_looptijden">Tijd:</string>
     <string name="team_naam">Naam:</string>
     <string name="team_startnummer">Startnummer:</string>
     <string name="team_startgroep">Startgroep:</string>
+    <string name="team_h1_klassement">Klassement</string>
+    <string name="team_klassement">Klassement</string>
+    <string name="team_cum_klassement">Cumulatief</string>
     <string name="team_looptijden_header_etappe">#</string>
     <string name="team_looptijden_header_tijd">Tijd</string>
     <string name="team_looptijden_header_snelheid">Snelheid</string>
-    <string name="team_looptijden_header_etappe_klassement">Etappe klassement</string>
-    <string name="team_looptijden_header_cum_klassement">Cum klassement</string>
+    <string name="team_looptijden_header_etappe_klassement"># Etappe</string>
+    <string name="team_looptijden_header_cum_klassement"># Cumulatief</string>
     <string name="team_looptijden_header_foutcode">Code</string>
+    <string name="team_looptijden_leeg">Geen looptijden gevonden.</string>
 
     <!-- Etappe -->
     <string name="etappe_informatie">Informatie</string>
