@@ -1,14 +1,20 @@
 package com.ut.bataapp.fragments;
 
+import java.io.IOException;
+
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.objects.Etappe;
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 public class EtappeInformatie extends SherlockFragment {
@@ -19,6 +25,9 @@ public class EtappeInformatie extends SherlockFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	
     	etappe = ((EtappeActivity) getActivity()).getEtappe();
+    	
+    	int nummer = etappe.getId();
+    	
     	View view = inflater.inflate(R.layout.etappe_info, container, false);
     	
     	TextView etappenummer = (TextView) view.findViewById(R.id.text_etappenummer);
@@ -29,6 +38,14 @@ public class EtappeInformatie extends SherlockFragment {
     	
     	TextView etappenaar = (TextView) view.findViewById(R.id.text_etappenaar);
     	etappenaar.setText(etappe.getNaar());
+    	
+    	ImageView hoogteVerschil = (ImageView) view.findViewById(R.id.image_hoogteverschil);
+    	try {
+			hoogteVerschil.setImageDrawable(Drawable.createFromStream(this.getActivity().getAssets().open("hoogteverschil/kaart1.png"), null));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	TextView etappeafstand = (TextView) view.findViewById(R.id.text_etappeafstand);
     	etappeafstand.setText(Integer.toString(etappe.getAfstand()));
