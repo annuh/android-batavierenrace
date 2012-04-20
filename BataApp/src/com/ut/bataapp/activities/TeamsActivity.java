@@ -79,8 +79,7 @@ public class TeamsActivity extends SherlockListActivity  {
 	@Override
 	public boolean onSearchRequested() {
 		this.findViewById(MENU_SEARCH).performClick();
-		return false;
-		//return super.onSearchRequested();
+		return true;
 	}
 
 	@Override

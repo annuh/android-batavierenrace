@@ -74,6 +74,14 @@
     <string name="team_looptijden_leeg">Geen looptijden gevonden.</string>
 
     <!-- Etappe -->
+    <string name="etappes_laden">Etappes worden geladen…</string>
+    <string name="etappes_leeg">Geen etappes gevonden.</string>
+    <string name="etappes_etappe">Etappe %s</string>
+    <!-- Etappe -->
+    <string name="etappe_laden">Etappe wordt geladen…</string>
+    <string name="etappe_titel_informatie">Informatie</string>
+    <string name="etappe_titel_routes">Routes</string>
+    <string name="etappe_titel_looptijden">Looptijden</string>
     <string name="etappe_informatie">Informatie</string>
     <string name="etappe_informatie_nummer">Etappe</string>
     <string name="etappe_informatie_van">Van</string>
@@ -160,6 +168,22 @@
     <!-- Berichten -->
     <string name="berichten_laden">Berichten worden geladen…</string>
     <string name="berichten_leeg">Er zijn op dit moment geen berichten.</string>
+    
+    <!-- Foutcodes -->
+    <string name="foutcode_a">Anders voortbewogen</string>
+    <string name="foutcode_d">Diskwalificatie loper</string>
+    <string name="foutcode_h">Heer op damesetape</string>
+    <string name="foutcode_i">Etappe ingekort</string>
+    <string name="foutcode_l">Limiet overschreden</string>
+    <string name="foutcode_m">Medische Uitsluiting</string>
+    <string name="foutcode_n">Geen geldige looptijd</string>
+    <string name="foutcode_o">Etappe opgesplitst</string>
+    <string name="foutcode_t">Tweemaal gelopen</string>
+    <string name="foutcode_u">UK, onregelmentair gelopen</string>
+    <string name="foutcode_v">Valse wissel</string>
+    <string name="foutcode_w">Weigeren hes</string>
+    <string name="foutcode_x">Etappe afgelast</string>
+    <string name="foutcode_z">Meer dan 5x geen looptijd</string>
     
     <!-- Background updater -->
     <string name="notification_bu_klassement_ticker">Nieuwe notering %s</string>

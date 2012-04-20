@@ -11,8 +11,8 @@
             android:text="A" />
 
         <TextView
-            android:text="Anders voortbewogen"
-            style="@style/table_right" />
+            style="@style/table_right"
+            android:text="@string/foutcode_a" />
     </TableRow>
 
     <View style="@style/divider" />
@@ -26,8 +26,8 @@
             android:text="D" />
 
         <TextView
-            android:text="Diskwalificatie loper"
-            style="@style/table_right" />
+            style="@style/table_right"
+            android:text="@string/foutcode_d" />
     </TableRow>
 
     <View style="@style/divider" >
@@ -42,8 +42,184 @@
             android:text="H" />
 
         <TextView
-            android:text="Heer op damesetappe"
-            style="@style/table_right" />
+            style="@style/table_right"
+            android:text="@string/foutcode_h" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="I" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_i" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="L" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_l" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="M" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_m" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="N" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_n" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="O" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_o" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="T" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_t" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="U" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_u" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="V" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_v" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="W" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_w" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="X" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_x" />
+    </TableRow>
+
+    <View style="@style/divider" >
+    </View>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/table_left"
+            android:text="Z" />
+
+        <TextView
+            style="@style/table_right"
+            android:text="@string/foutcode_z" />
     </TableRow>
 
 </TableLayout>

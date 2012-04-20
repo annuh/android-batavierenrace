@@ -47,8 +47,6 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
-		//loading = findViewById(R.id.loading);
-		
 	}
 	
 	@Override
@@ -80,7 +78,6 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 			sortList(looptijden.get(0), "naam");
 			sortList(looptijden.get(1), "naam");			
 			makeList();
-
 			break;
 		case MENU_SORT_STAND:
 			sortList(looptijden.get(0), "stand");

@@ -48,7 +48,7 @@ public class InformatieActivity extends SherlockFragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        setTitle(R.string.dashboard_informatie);
         setContentView(R.layout.simple_tabs);
 		
         mAdapter = new InformatieFragmentAdapter(getSupportFragmentManager());
