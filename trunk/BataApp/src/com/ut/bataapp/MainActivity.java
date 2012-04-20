@@ -24,6 +24,7 @@ import com.ut.bataapp.activities.EtappesActivity;
 import com.ut.bataapp.activities.FavoTeamsActivity;
 import com.ut.bataapp.activities.InformatieActivity;
 import com.ut.bataapp.activities.KlassementenActivity;
+import com.ut.bataapp.activities.LustrumActivity;
 import com.ut.bataapp.activities.PreferencesActivity;
 import com.ut.bataapp.activities.SponsorActivity;
 import com.ut.bataapp.activities.TeamActivity;
@@ -83,7 +84,16 @@ public class MainActivity extends SherlockFragmentActivity {
 				startActivity(i);
 			}
 		});
-
+		Button btn_jubileum = (Button) findViewById(R.id.dashboard_jubileum);
+		btn_jubileum.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent i = new Intent(getApplicationContext(), LustrumActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		
 		Button btn_klassement = (Button) findViewById(R.id.dashboard_klassement);
 		btn_klassement.setOnClickListener(new View.OnClickListener() {
 			@Override
