@@ -51,6 +51,7 @@ public class KlassementFragment extends SherlockListFragment {
 		setHasOptionsMenu(true);
 		naam = this.getArguments().getString("index");
 		new getKlassement().execute();
+		this.setListAdapter(null);
 	}
 	
 	@Override
@@ -159,8 +160,8 @@ public class KlassementFragment extends SherlockListFragment {
 		private ProgressDialogFragment progressDialog;  
 		protected void onPreExecute() {
 			//setListShown(false); 
-			progressDialog = ProgressDialogFragment.newInstance(getString(R.string.laden_titel), getString(R.string.klassement_laden));
-			progressDialog.show(getActivity().getSupportFragmentManager(), "");
+			//progressDialog = ProgressDialogFragment.newInstance(getString(R.string.laden_titel), getString(R.string.klassement_laden));
+			//progressDialog.show(getActivity().getSupportFragmentManager(), "");
 			/*progressDialog = ProgressDialog.show(getActivity().getApplicationContext(),  
 					getString(R.string.laden_titel), getString(R.string.klassement_laden), true);*/
 			/*progressDialog.setCancelable(true);
@@ -186,8 +187,9 @@ public class KlassementFragment extends SherlockListFragment {
 				Log.d("Klassement", ""+klassement.getUitslag().size());
 				sortStand(null);
 				getListView().setSelection(getArguments().getInt("init") -1);
-				if(progressDialog != null)
-					progressDialog.dismiss();
+				//if(progressDialog != null)
+				//	progressDialog.dismiss();
+				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 			}
 		}
 	}

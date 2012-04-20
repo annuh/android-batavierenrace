@@ -14,7 +14,7 @@ public class KlassementActivity extends SherlockFragmentActivity  {
 	    KlassementFragment klassement = new KlassementFragment();
 	    klassement.setArguments(getIntent().getExtras());
 	    setContentView(R.layout.viewport);
-	    getSupportFragmentManager().beginTransaction().add(android.R.id.content, klassement).commit();
+	    getSupportFragmentManager().beginTransaction().add(R.id.viewport_content, klassement).commit();
 	    
 	    //setContentView(R.layout.klassement_activity);
 	}

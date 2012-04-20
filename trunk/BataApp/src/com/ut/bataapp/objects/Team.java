@@ -86,7 +86,11 @@ public class Team {
 	}
 	
 	public String getTotaalTijd() {
-		return null;
+		String totaaltijd = "";
+		if(looptijden != null && looptijden.size() > 0 ) {
+			totaaltijd = String.valueOf(looptijden.get(looptijden.size()-1).getCumtotaaltijd());
+		}
+		return totaaltijd;
 	}
 	
 	/*String formaat*/

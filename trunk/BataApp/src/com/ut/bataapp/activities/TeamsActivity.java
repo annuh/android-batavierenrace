@@ -47,7 +47,7 @@ public class TeamsActivity extends SherlockListActivity  {
 		setTitle("Teams");
 
 		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		this.getListView().setFastScrollEnabled(true);
 		this.setContentView(R.layout.listview_team);
 		new getTeams().execute();	   
