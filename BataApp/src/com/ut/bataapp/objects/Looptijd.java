@@ -24,7 +24,9 @@ public class Looptijd {
 	private String snelheid;
 	private int etappeStand = NULLINT; 
 	private int cumulatieveStand = NULLINT;
+	private String cumtotaaltijd;
 	
+
 	/**
 	 * 
 	 * @param team_id - ID van team
@@ -55,6 +57,7 @@ public class Looptijd {
 	public void setEtappeStand(int stand){this.etappeStand = stand;}
 	public void setCumulatieveStand(int stand){this.cumulatieveStand = stand;}
 	public void setKlassement(String klassement){this.klassement = klassement;}
+	public void setCumtotaaltijd(String tijd){this.cumtotaaltijd = tijd;}
 	
 	/*Getters*/
 	public String getTeamNaam(){return teamnaam;}
@@ -67,6 +70,7 @@ public class Looptijd {
 	public int getEtappeStand(){return etappeStand;}
 	public int getCumulatieveStand(){return cumulatieveStand;}
 	public String getKlassement(){return klassement;}
+	public String getCumtotaaltijd(){return cumtotaaltijd;}
 	
 	/*String Formaat*/
 	public String toString(){
