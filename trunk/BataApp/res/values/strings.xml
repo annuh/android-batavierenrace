@@ -162,22 +162,10 @@
     <string name="berichten_leeg">Er zijn op dit moment geen berichten.</string>
     
     <!-- Background updater -->
-    <string name="notification_bu_ticker">Nieuwe data %s</string>
-    <string name="notification_bu_title">Nieuwe data</string>
-
-    <string-array name="bataradio_kwaliteit_array">
-        <item>Hoge kwaliteit</item>
-        <item>Normale kwaliteit</item>
-        <item>Lage kwaliteit</item>
-    </string-array>
-
-    <string name="pref_background_update">backgroundupdater</string>
-    <string name="pref_background_update_interval">backgroundinterval</string>
-    <string name="pref_background_update_notify">backgroundnotify</string>
-    <string name="pref_background_update_sound">backgroundsound</string>
-    <string name="pref_background_update_vibrate">backgroundvibrate</string>
-    <string name="pref_background_update_flash">backgroundflash</string>
-    <string name="notification_bu_ticker">Nieuwe data %s</string>
-    <string name="notification_bu_title">Nieuwe data</string>
-
+    <string name="notification_bu_klassement_ticker">Nieuwe notering %s</string>
+    <string name="notification_bu_klassement_content">Klassementsnotering (t/m etappe %1$s): %2$s</string>
+    <string name="notification_bu_etappeuitslag_ticker">Nieuwe etappeuitslag %s</string>
+    <string name="notification_bu_etappeuitslag_content">Uitslag etappe %1$s: %2$s</string>
+    <string name="notification_bu_etappeuitslagen_ticker">Nieuwe etappeuitslagen %s</string>
+    <string name="notification_bu_etappeuitslagen_content">Nieuwe uitslag etappes %s</string>
 </resources>

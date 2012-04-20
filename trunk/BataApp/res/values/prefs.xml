@@ -7,6 +7,7 @@
     <string name="pref_background_update_sound">backgroundsound</string>
     <string name="pref_background_update_vibrate">backgroundvibrate</string>
     <string name="pref_background_update_flash">backgroundflash</string>
+    <string name="pref_background_update_notify_etappeuitslag">backgroundnotifyetappeuitslag</string>
     
     <integer name="pref_background_update_interval_default">1</integer>
     <bool name="pref_background_update_default">true</bool>
@@ -14,6 +15,9 @@
     <bool name="pref_background_update_sound_default">true</bool>
     <bool name="pref_background_update_vibrate_default">true</bool>
     <bool name="pref_background_update_flash_default">true</bool>
+    <bool name="pref_background_update_notify_etappeuitslag_default">true</bool>
+    
+    <integer name="pref_background_update_retry_on_failure">1</integer>
     
     <integer name="notification_flashing_on_ms">300</integer>
     <integer name="notification_flashing_off_ms">1000</integer>
@@ -27,5 +31,8 @@
         <item>Lage kwaliteit</item>
     </string-array>
  
-    <integer name="pref_bataradio_quality_default">1</integer> 
+    <integer name="pref_bataradio_quality_default">1</integer>
+    
+    <!-- Favorieten -->
+    <string name="pref_favorieten">teams_follow</string>
 </resources>
