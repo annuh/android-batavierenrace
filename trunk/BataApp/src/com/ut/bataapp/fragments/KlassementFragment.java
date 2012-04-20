@@ -11,6 +11,7 @@ import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,7 +50,7 @@ public class KlassementFragment extends SherlockListFragment {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		naam = this.getArguments().getString("index");
-		new getKlassement().execute();  	
+		new getKlassement().execute();
 	}
 	
 	@Override
@@ -80,6 +81,7 @@ public class KlassementFragment extends SherlockListFragment {
 				sortStand(null);
 			}
 		});
+		
 		return view;
 	}
 

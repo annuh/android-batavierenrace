@@ -1,15 +1,17 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
-
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -28,17 +30,27 @@ public class EtappeActivity extends SherlockFragmentActivity {
 
 	ViewPager mPager;
 	PageIndicator mIndicator;
-	FragmentPagerAdapter mAdapter;
+	EtappeFragmentAdapter mAdapter;
+	
+	public static final String TAB = "tabid";
+	public static final String ID = "index";
+	
 	private Etappe etappe = null;
 	private int etappe_id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		etappe_id = this.getIntent().getIntExtra("index", 0);
+		
+		etappe_id = ((savedInstanceState == null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("etappe_id"));
 		setTitle("Etappe "+etappe_id);
-		new getEtappe().execute();
+		new getEtappe((savedInstanceState == null) ? getIntent().getIntExtra("tabid", 0) : savedInstanceState.getInt("tabid")).execute();
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		outState.putInt("etappe_id", etappe_id);
+		outState.putInt("tabid", (mPager == null ? 0 : mPager.getCurrentItem()));
 	}
 
 	public Etappe getEtappe(){
@@ -52,7 +64,6 @@ public class EtappeActivity extends SherlockFragmentActivity {
 			Utils.goHome(getApplicationContext());
 			break;
 		}
-
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -64,11 +75,11 @@ public class EtappeActivity extends SherlockFragmentActivity {
 		public EtappeFragmentAdapter(FragmentManager fm) {
 			super(fm);
 			fragments.add(new EtappeInformatie());
-			titels.add("Informatie");
+			titels.add(getString(R.string.etappe_titel_informatie));
 			fragments.add(new EtappeRoutesFragment());
-			titels.add("Routes");
+			titels.add(getString(R.string.etappe_titel_routes));
 			fragments.add(new EtappeLooptijdenFragment());
-			titels.add("Looptijden");
+			titels.add(getString(R.string.etappe_titel_looptijden));
 		}
 
 		@Override
@@ -85,20 +96,40 @@ public class EtappeActivity extends SherlockFragmentActivity {
 		public String getTitle(int position) {
 			return titels.get(position);
 		}
+		
+		public void deleteAll(FragmentManager fm) {
+			FragmentTransaction ft = fm.beginTransaction();
+			for (Fragment fragment: fragments)
+				ft.remove(fragment);
+			ft.commit();
+		}
 	}
 
 	private class getEtappe extends AsyncTask<Void, Void, Void> {  
 		private ProgressDialog progressDialog;
 		Response<Etappe> response;
+		private int mTabId;
+		
+		public getEtappe(int tabId) {
+			mTabId = tabId;
+		}
 		
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(EtappeActivity.this,  
-					"Bezig met laden", "Etappe wordt opgehaald...", true);  
+					getString(R.string.laden_titel), getString(R.string.etappe_laden), true);
+			progressDialog.setCancelable(true);
+			progressDialog.setOnCancelListener(new OnCancelListener() {
+				public void onCancel(DialogInterface dialog) {
+					cancel(true);
+					Utils.goHome(EtappeActivity.this);
+				}
+			});
 		}
 
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			response = api.getEtappesByID(etappe_id,EtappeActivity.this);
+			if(!isCancelled())
+				response = api.getEtappesByID(etappe_id,EtappeActivity.this);
 			return null;       
 		}
 
@@ -112,9 +143,27 @@ public class EtappeActivity extends SherlockFragmentActivity {
 				mPager.setAdapter(mAdapter);
 				mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 				mIndicator.setViewPager(mPager);
-				progressDialog.dismiss();
+				
+				
+				mPager.setCurrentItem(mTabId);
+				mIndicator.setCurrentItem(mTabId);
 			}
+			progressDialog.dismiss();
 			
 		}
 	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		if(mPager != null) {
+			int currentItem = mPager.getCurrentItem(); // huidige tabbladindex  
+			mAdapter.deleteAll(getSupportFragmentManager()); // cleanup van alle oude fragments
+			mAdapter = new EtappeFragmentAdapter(getSupportFragmentManager());
+			mPager.setAdapter(mAdapter);
+			mIndicator.notifyDataSetChanged();
+			mPager.setCurrentItem(currentItem, false);
+		}
+	}
+	
 }

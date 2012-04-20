@@ -31,16 +31,19 @@ public class EtappeAdapter extends ArrayAdapter<Etappe> {
 		View rowView = inflater.inflate(R.layout.row_etappe, parent, false);
 		rowView.setId(values.get(position).getId());
 		
-		TextView textView = (TextView) rowView.findViewById(R.id.etappe);
-		textView.setText("Etappe "+ Integer.toString(values.get(position).getId()));
+		String formatetappe = context.getResources().getString(R.string.etappes_etappe);
+		String formatkm = context.getResources().getString(R.string.km);
 		
+		TextView textView = (TextView) rowView.findViewById(R.id.etappe);
+		textView.setText(String.format(formatetappe,String.valueOf(values.get(position).getId())));
+
 		TextView naam = (TextView) rowView.findViewById(R.id.naam);
 		naam.setText(values.get(position).getVan());
 		
 		TextView afstand = (TextView) rowView.findViewById(R.id.afstand);
 		BigDecimal afst = new BigDecimal((values.get(position).getAfstand()));
 		afst = afst.divide(new BigDecimal(1000), 1, BigDecimal.ROUND_FLOOR);
-		afstand.setText(afst.toString() + " km");
+		afstand.setText(String.format(formatkm, afst));
 		
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.geslacht);		
 		if(values.get(position).getGeslacht() == 'H') {

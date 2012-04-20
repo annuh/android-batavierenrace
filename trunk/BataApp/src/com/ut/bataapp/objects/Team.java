@@ -10,7 +10,11 @@
 
 package com.ut.bataapp.objects;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.util.Log;
 
@@ -71,6 +75,18 @@ public class Team {
 	public int getID() {
 		// zolang uid nog niet uit XML te halen is:
 		return startnummer;
+	}
+	
+	public String getCumKlassement() {
+		String cumKlassement = "";
+		if(looptijden != null && looptijden.size() > 0 ) {
+			cumKlassement = String.valueOf(looptijden.get(looptijden.size()-1).getCumulatieveStand());
+		}
+		return cumKlassement;
+	}
+	
+	public String getTotaalTijd() {
+		return null;
 	}
 	
 	/*String formaat*/

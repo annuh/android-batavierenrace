@@ -2,18 +2,16 @@ package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnCancelListener;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.ut.bataapp.MainActivity;
-import com.ut.bataapp.MainActivity.OverridePendingTransition;
 import com.ut.bataapp.Utils;
 import com.ut.bataapp.adapters.EtappeAdapter;
 import com.ut.bataapp.api.api;
@@ -27,18 +25,15 @@ public class EtappesActivity extends SherlockListActivity  {
 	
    @Override
    public void onCreate(Bundle savedInstanceState) {
-	   setTitle("Etappes");
-  
+	   setTitle(R.string.dashboard_etappes);
 	   super.onCreate(savedInstanceState);
-	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	   this.getListView().setFastScrollEnabled(true);
 	   this.setContentView(R.layout.listview_etappes);
-	   new getEtappes().execute();  
+	   new getEtappes().execute();
    }
    
    @Override
    public void onListItemClick(ListView l, View v, int position, long id) {
-	  
 	   Intent intent = new Intent(getApplicationContext(), EtappeActivity.class);
        intent.putExtra("index", v.getId());
        startActivity(intent);
@@ -49,9 +44,8 @@ public class EtappesActivity extends SherlockListActivity  {
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Utils.goHome(getApplicationContext());
-				break;
+				return true;
 		}
-		
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -61,12 +55,20 @@ public class EtappesActivity extends SherlockListActivity  {
 		
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(EtappesActivity.this,  
-			  "Bezig met laden", "Etappes worden opgehaald...", true);  
+			  getString(R.string.laden_titel), getString(R.string.etappes_laden), true);
+			progressDialog.setCancelable(true);
+			progressDialog.setOnCancelListener(new OnCancelListener() {
+				public void onCancel(DialogInterface dialog) {
+					cancel(true);
+					Utils.goHome(EtappesActivity.this);
+				}
+			});
 		}
 		
 		@Override
 		protected Void doInBackground(Void... arg0) { 
-			response = api.getEtappes();
+			if(!isCancelled())
+				response = api.getEtappes();
 			return null;       
 		}
 		

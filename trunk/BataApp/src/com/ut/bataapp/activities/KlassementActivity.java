@@ -10,6 +10,7 @@ public class KlassementActivity extends SherlockFragmentActivity  {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
+	    setTitle(getKlassementNaam());
 	    KlassementFragment klassement = new KlassementFragment();
 	    klassement.setArguments(getIntent().getExtras());
 	    setContentView(R.layout.viewport);
