@@ -29,6 +29,7 @@ public class PloegHandler extends Handler{
 	private boolean snelheid;
 	private boolean etappeStand;
 	private boolean cumulatieveStand;
+	private boolean cumklassementtijd;
 
 	private String teamNaam;
 	private String teamKlassement ="";
@@ -64,6 +65,7 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("snelheid")) this.snelheid = true;
 		else if(localName.equals("etappe")) this.etappeStand = true;
 		else if(localName.equals("cumulatief")) this.cumulatieveStand = true;
+		else if(localName.equals("cumklassementstijd")) this.cumklassementtijd = true;
 		else if(localName.equals("positie")) this.notering = true;
 		else if(localName.equals("tot")) this.totEtappe = true;
 	}
@@ -90,6 +92,7 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("snelheid")) this.snelheid = false;
 		else if(localName.equals("etappe")) this.etappeStand = false;
 		else if(localName.equals("cumulatief")) this.cumulatieveStand = false;
+		else if(localName.equals("cumklassementstijd")) this.cumklassementtijd = false;
 		else if(localName.equals("positie")) this.notering = false;
 		else if(localName.equals("tot")) this.totEtappe = false;
 	}
@@ -101,7 +104,9 @@ public class PloegHandler extends Handler{
 		else if(startgroep) startGroep = Integer.parseInt(new String(ch,start,length));
 		else if(uitslag){
 			looptijd = new Looptijd();
-			looptijd.setTeamNaam(teamNaam);looptijd.setTeamStartnummer(startNummer);looptijd.setTeamStartgroep(startGroep);
+			looptijd.setTeamNaam(teamNaam);
+			looptijd.setTeamStartnummer(startNummer);
+			looptijd.setTeamStartgroep(startGroep);
 			uitslag = false;
 		}
 		else if(foutcode) looptijd.setFoutcode(new String(ch,start,length));
@@ -111,6 +116,7 @@ public class PloegHandler extends Handler{
 		else if(snelheid) looptijd.setSnelheid(new String(ch,start,length));
 		else if(etappeStand) looptijd.setEtappeStand(Integer.parseInt(new String(ch,start,length)));
 		else if(cumulatieveStand) looptijd.setCumulatieveStand(Integer.parseInt(new String(ch,start,length)));
+		else if(cumklassementtijd) looptijd.setCumtotaaltijd(new String(ch,start,length));
 		else if(notering) noteringI = Integer.parseInt(new String(ch,start,length));
 		else if(totEtappe) totEtappeI = Integer.parseInt(new String(ch,start,length));
 	}
