@@ -15,26 +15,23 @@ import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 
 public class LustrumActivity extends SherlockFragmentActivity{
-	String text1 = "Batavierenrace 40 jaar!! \n\n1973: de eerste Batavierenrace vindt plaats \n1974: de Batavierenrace gaat van Nijmegen naar Enschede\n2012: de 40e Batavierenrace vindt plaats!";
-	String text2 = "Ter ere van het lustrum zal er tijdens de race een lustrumbus aanwezig zijn. \nDeze is te zien op de herstarts Ulft, Barchem en Enschede en enkele wisselpunten. \n" +
-					"Er zullen dan verschillende activiteiten plaats vinden, waar leuke gadgets van de Batavierenrace te verdienen zijn.\n" +
-					"\n\nVereeuwig je boodschap aan de Batavierenrace en het Batavierenfeest in steen.";
-	 @Override
+	
+	@Override
 	   public void onCreate(Bundle savedInstanceState) {
 		   super.onCreate(savedInstanceState);
-		   setTitle("Bata XL");
+		   setTitle(R.string.lustrum_titel);
 		   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		   setContentView(R.layout.lustrum);	 
 		   
 		   TextView lustrum_omschr1 = (TextView) findViewById(R.id.lustrum_omschrijving1);
-		   lustrum_omschr1.setText(text1);
+		   lustrum_omschr1.setText(R.string.lustrum_text1);
 		   
 		   ImageView lustrum_plaatje = (ImageView) findViewById(R.id.lustrum_plaatje);
 		   int id = this.getResources().getIdentifier(getPackageName()+":drawable/lustrum", null, null);
 		   lustrum_plaatje.setImageResource(id);
 		   
 		   TextView lustrum_omschr2 = (TextView) findViewById(R.id.lustrum_omschrijving2);
-		   lustrum_omschr2.setText(text2);
+		   lustrum_omschr2.setText(R.string.lustrum_text2);
 	   }
 		@Override
 		public boolean onOptionsItemSelected(MenuItem item) {
