@@ -77,6 +77,9 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
         <activity
+            android:name=".activities.LustrumActivity"
+            android:theme="@style/StyledIndicators" />
+        <activity
             android:name=".activities.InformatieActivity"
             android:theme="@style/StyledIndicators" />
         <activity

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    style="@style/scroller"
+    android:layout_width="wrap_content" >
+
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" 
+	    android:id="@+id/sponsor_layout"
+	    style="container_block">
+
+    <TextView
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:id="@+id/lustrum_omschrijving1" />
+    <ImageView
+	        android:id="@+id/lustrum_plaatje"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="top"
+	        android:layout_marginTop="5dp"
+	        android:contentDescription="Lustrum plaatje" />
+			
+	<TextView
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:id="@+id/lustrum_omschrijving2" />
+
+</LinearLayout>
+</ScrollView>
