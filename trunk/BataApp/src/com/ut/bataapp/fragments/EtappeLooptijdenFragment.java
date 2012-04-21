@@ -14,7 +14,9 @@ import com.ut.bataapp.Utils;
 import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.adapters.EtappeLooptijdAdapter;
+import com.ut.bataapp.adapters.KlassementAdapter;
 import com.ut.bataapp.api.api;
+import com.ut.bataapp.objects.KlassementItem;
 import com.ut.bataapp.objects.Looptijd;
 import com.ut.bataapp.objects.Response;
 import android.content.Context;
@@ -35,11 +37,25 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
 	private final int MENU_SORT_STAND = Menu.FIRST + 2;
 	TextView loading;
+	private char sortNaam = 'D';
+	private char sortStand = 'D';
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		inflater.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
 		View view = inflater.inflate(R.layout.listview_etappe_looptijden, null);
+		view.findViewById(R.id.etappe_looptijden_header_stand).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				sortStand(null);
+			}
+		});
+		view.findViewById(R.id.etappe_looptijden_header_team).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				sortNaam(null);
+			}
+		});
 		return view;
 	}
 
@@ -75,15 +91,10 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case MENU_SORT_NAAM:
-			sortList(looptijden.get(0), "naam");
-			sortList(looptijden.get(1), "naam");			
-			makeList();
+			sortNaam(null);
 			break;
 		case MENU_SORT_STAND:
-			sortList(looptijden.get(0), "stand");
-			sortList(looptijden.get(1), "stand");			
-			makeList();
-
+			sortStand(null);		
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -109,7 +120,8 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 				looptijden = response.getResponse();
-				makeList();
+				if(getView() != null) // Als tijdens laden ander tab wordt geopend
+					sortStand(null);
 			}
 		}
 	}
@@ -122,7 +134,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		View view = getView();
 		if(view != null){
 			
-			view.findViewById(R.id.loading).setVisibility(View.GONE);
+			
 			adapter_uni = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(0));
 			adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
 							
@@ -131,9 +143,80 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	        adapter.addSection("Algemeen klassement", adapter_alg);
 	        
 			setListAdapter(adapter);
+			adapter.notifyDataSetChanged();
 			
 		}
 		
+	}
+	
+	public void sortNaam(View v) {
+		resetArrows();
+		if(sortNaam == 'D') {
+			Collections.sort(looptijden.get(0),new Comparator<Looptijd>() {
+				public int compare(Looptijd arg0, Looptijd arg1) {
+					return arg0.getTeamNaam().compareTo(arg1.getTeamNaam());
+				}
+			});
+			Collections.sort(looptijden.get(1),new Comparator<Looptijd>() {
+				public int compare(Looptijd arg0, Looptijd arg1) {
+					return arg0.getTeamNaam().compareTo(arg1.getTeamNaam());
+				}
+			});
+			sortNaam = 'A';
+			sortStand = 'D';
+		} else {
+			Collections.sort(looptijden.get(0),new Comparator<Looptijd>() {
+				public int compare(Looptijd arg1, Looptijd arg0) {
+					return arg0.getTeamNaam().compareTo(arg1.getTeamNaam());
+				}
+			});
+			Collections.sort(looptijden.get(1),new Comparator<Looptijd>() {
+				public int compare(Looptijd arg1, Looptijd arg0) {
+					return arg0.getTeamNaam().compareTo(arg1.getTeamNaam());
+				}
+			});
+			sortNaam = 'D';
+			sortStand = 'D';
+		}
+
+		int i = this.getResources().getIdentifier("sort_"+sortNaam, "string", getActivity().getPackageName());
+		((TextView) getView().findViewById(R.id.etappe_looptijden_header_team)).setText(this.getText(R.string.etappe_looptijden_header_team) +" "+ getText(i));
+		makeList();
+	}
+	
+	public void sortStand(View v) {
+		resetArrows();
+		if(sortStand == 'D') {
+			Collections.sort(looptijden.get(0),new Comparator<Looptijd>() {
+				public int compare(Looptijd arg0, Looptijd arg1) {
+					return (arg0.getEtappeStand()<arg1.getEtappeStand() ? -1 : (arg0.getEtappeStand()==arg1.getEtappeStand() ? 0 : 1));
+				}
+			});
+			Collections.sort(looptijden.get(1),new Comparator<Looptijd>() {
+				public int compare(Looptijd arg0, Looptijd arg1) {
+					return (arg0.getEtappeStand()<arg1.getEtappeStand() ? -1 : (arg0.getEtappeStand()==arg1.getEtappeStand() ? 0 : 1));
+				}
+			});
+			sortStand = 'A';
+			sortNaam = 'D';
+		} else {
+			Collections.sort(looptijden.get(0),new Comparator<Looptijd>() {
+				public int compare(Looptijd arg1, Looptijd arg0) {
+					return (arg0.getEtappeStand()<arg1.getEtappeStand() ? -1 : (arg0.getEtappeStand()==arg1.getEtappeStand() ? 0 : 1));
+				}
+			});
+			Collections.sort(looptijden.get(1),new Comparator<Looptijd>() {
+				public int compare(Looptijd arg1, Looptijd arg0) {
+					return (arg0.getEtappeStand()<arg1.getEtappeStand() ? -1 : (arg0.getEtappeStand()==arg1.getEtappeStand() ? 0 : 1));
+				}
+			});
+			sortStand = 'D';
+			sortNaam = 'D';
+		}
+
+		int i = this.getResources().getIdentifier("sort_"+sortStand, "string", getActivity().getPackageName());
+		((TextView) getView().findViewById(R.id.etappe_looptijden_header_stand)).setText(this.getText(R.string.etappe_looptijden_header_stand) +" "+ getText(i));
+		makeList();
 	}
 	
 	
@@ -148,6 +231,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 					return 0;
 			}
 		});
+	}
+	
+	public void resetArrows() {
+		((TextView) getView().findViewById(R.id.etappe_looptijden_header_stand)).setText(this.getText(R.string.etappe_looptijden_header_stand));
+		((TextView) getView().findViewById(R.id.etappe_looptijden_header_team)).setText(this.getText(R.string.etappe_looptijden_header_team));
 	}
 
 }

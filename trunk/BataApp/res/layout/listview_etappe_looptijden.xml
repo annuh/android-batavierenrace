@@ -4,36 +4,27 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        style="@style/listview_header" >
+    <RelativeLayout style="@style/listview_header" >
 
         <TextView
-            android:id="@+id/etappe_looptijden_header_plaats"
+            android:id="@+id/etappe_looptijden_header_stand"
             style="@style/listview_header_text"
             android:layout_width="35dp"
-            android:text="#" />
+            android:text="@string/etappe_looptijden_header_stand" />
 
         <TextView
+            android:id="@+id/etappe_looptijden_header_team"
             style="@style/listview_header_text"
-            android:layout_toRightOf="@id/etappe_looptijden_header_plaats"
-            android:text="Team" />
+            android:layout_toRightOf="@id/etappe_looptijden_header_stand"
+            android:text="@string/etappe_looptijden_header_team" />
 
         <TextView
+            android:id="@+id/etappe_looptijden_header_tijd"
             style="@style/listview_header_text"
             android:layout_alignParentRight="true"
             android:gravity="center_vertical"
-            android:text="Tijd" />
-
+            android:text="@string/etappe_looptijden_header_tijd" />
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/loading"
-        android:layout_width="fill_parent"
-        android:layout_height="400dp"
-        android:layout_margin="20dp"
-        android:gravity="center_horizontal"
-        android:text="Bezig met laden..."
-        android:textSize="30dp" />
 
     <ListView
         android:id="@android:id/list"
@@ -43,8 +34,15 @@
 
     <TextView
         android:id="@android:id/empty"
+        style="@style/listview_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Leeg" />
+        android:text="@string/etappe_looptijden_laden" />
+
+    <TextView
+        android:id="@+id/listview_leeg"
+        style="@style/listview_status"
+        android:text="@string/etappe_looptijden_leeg"
+        android:visibility="gone" />
 
 </LinearLayout>

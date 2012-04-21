@@ -103,8 +103,15 @@
     <string name="etappe_recordtijd_jaar">Jaar</string>
     <string name="etappe_recordtijd_tijd">Tijd</string>
     <string name="etappe_recordtijd_snelheid">Snelheid</string>
-    <string name="etappes_geenetappes">Geen etappes gevonden..</string>
-    <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
+    
+    <string name="etappe_looptijden_header_stand">#</string>
+    <string name="etappe_looptijden_header_team">Team</string>
+    <string name="etappe_looptijden_header_tijd">Tijd</string>
+    <string name="etappe_looptijden_header_snelheid">Snelheid</string>
+    <string name="etappe_looptijden_header_foutcode">Code</string>
+    <string name="etappe_looptijden_laden">Looptijden worden geladen</string>
+    <string name="etappe_looptijden_leeg">Geen looptijden gevonden</string>
+   
     <string name="etappe_route_tekst_afstand">afstand</string>
     <string name="etappe_route_tekst_omschrijving">omschrijving</string>
     <string name="etappe_route_tekst_locatie">locatie</string>
@@ -133,6 +140,7 @@
     <string name="info_algemeen_watmoetjeweten_totslot">- Het gebruik van alcohol en/of drogerende middelen tijdens de race door lopers en autobestuurders is verboden.\n- in Duitsland: geldig paspoort en groene verzekeringskaart in het busje\n- Let op omroepen en errata\n- Slapen in sportcentrum: slaapbandje dragen\n- Geen open vuur\n- Parkeren op de aangegeven plaatsen</string>
     <string name="info_algemeen_slapen">In Enschede zijn twee slaapmogelijkheden:\n<b>Sportcentrum</b>\nHier zijn drie zalen waar deelnemers kunnen slapen. Hiervoor heb je van te voren een slaapbandje moeten kopen.\n\n<b>Camping</b>\nIn Enschede zijn drie campings:\n- Carilloncamping\n- Hockeycamping\n- Vlindercamping\nEnkele regels:\n\t o Plaats de tent binnen de lijnen\n\t o de Tent mag niet te groot zijn(max 6 personen)\n\t o het maken van open vuur is verboden\n\t o Deponeer afval in de daar voor bestemde afvalbakken\n\t o Zondagochtend 11 uur dien je het terrein verlaten te hebben</string>
     <string name="bezig_met_laden">Bezig met laden</string>
+     <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
 
     <!-- Lustrum -->
     <string name="lustrum_titel">Bata XL</string>
