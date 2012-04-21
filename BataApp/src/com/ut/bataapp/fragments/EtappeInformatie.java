@@ -51,7 +51,7 @@ public class EtappeInformatie extends SherlockFragment {
 		TextView etappeafstand = (TextView) view.findViewById(R.id.text_etappeafstand);
 		BigDecimal afst = new BigDecimal((etappe.getAfstand()));
 		afst = afst.divide(new BigDecimal(1000), 1, BigDecimal.ROUND_FLOOR);
-		etappeafstand.setText(String.format(formatkm, String.valueOf(etappe.getAfstand())));
+		etappeafstand.setText(String.format(formatkm, afst.toString()));
 
 		//ImageView hoogte = (ImageView) view.findViewById(R.id.image_hoogteverschil);
 

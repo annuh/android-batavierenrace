@@ -44,7 +44,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 	}
 
 	@Override
-	public void onCreate (Bundle savedInstanceState) {
+	public void onActivityCreated (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 	}
@@ -100,7 +100,8 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 
 		@Override  
 		protected Void doInBackground(Void... arg0) {
-			response = api.getUitslagenVanEtappe(((EtappeActivity) getActivity()).getEtappe().getId());
+			if(!isCancelled())
+				response = api.getUitslagenVanEtappe(((EtappeActivity) getActivity()).getEtappe().getId());
 			return null;
 		}
 

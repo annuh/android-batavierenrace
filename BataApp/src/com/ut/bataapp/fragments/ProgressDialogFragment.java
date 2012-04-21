@@ -19,8 +19,6 @@ public class ProgressDialogFragment extends SherlockDialogFragment {
 		return fragment;
 	}
 
-
-
 	@Override
 	public ProgressDialog onCreateDialog(Bundle savedInstanceState) {
 		String title = getArguments().getString("title");
@@ -37,4 +35,5 @@ public class ProgressDialogFragment extends SherlockDialogFragment {
 		});
 		return progressDialog;
 	}
+
 }

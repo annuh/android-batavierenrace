@@ -8,34 +8,32 @@
     <TextView
         android:id="@+id/etappe"
         style="@style/listview_text"
-        android:layout_width="35dp" />
+        android:layout_width="25dp" />
 
     <TextView
         android:id="@+id/tijd"
         style="@style/listview_text"
+        android:layout_width="80dp"
         android:layout_toRightOf="@id/etappe" />
 
     <TextView
         android:id="@+id/snelheid"
         style="@style/listview_text"
-        android:layout_alignParentRight="true" />
+        android:layout_toRightOf="@id/tijd" />
 
     <TextView
         android:id="@+id/etappe_klassement"
-        style="@style/listview_text"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
     <TextView
         android:id="@+id/cum_klassement"
-        style="@style/listview_text"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
     <TextView
         android:id="@+id/etappe_foutcode"
         style="@style/listview_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>
