@@ -14,7 +14,7 @@ import android.webkit.WebView;
 
 public class AfbeeldingActivity extends SherlockActivity {
 	
-	public static String[][] overzichtskaarten = {{"herstart_barchem.jpg", "Herstart Barchem"}, {"herstart_ulft.jpg", "Herstart Ulft"}, {"campus_enschede.jpg", "Campus Enschede"}, {"stad_enschede.jpg", "Enschede stad"}, {"stad_nijmegen.jpg", "Nijmegen stad"}};
+	public static String[][] overzichtskaarten = {{"herstart_barchem.jpg", "Herstart Barchem"}, {"herstart_ulft.jpg", "Herstart Ulft"}, {"campus_enschede.jpg", "Campus Enschede"}, {"stad_enschede.jpg", "Enschede stad"}, {"stad_nijmegen.jpg", "Start Nijmegen"}};
 	public static String[][] hoogteverschillen = {};
 	private Boolean[] loopKaartRotatie = {false,true,true,true,true,false,true,true,true,false,true,false,false,false,false,false,false,false,true,false,true,false,true,false};
 

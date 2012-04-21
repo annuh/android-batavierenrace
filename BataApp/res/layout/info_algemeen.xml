@@ -19,7 +19,7 @@
 			android:id="@+id/info_watmoetjeweten"
 			style="@style/nice_button" />
 		<Button 
-			android:text="Bus en startijden"
+			android:text="Bus- en starttijden"
 			android:id="@+id/info_bustijden"
 			style="@style/nice_button" />
 		<Button 
