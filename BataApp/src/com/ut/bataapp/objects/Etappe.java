@@ -1,5 +1,10 @@
 package com.ut.bataapp.objects;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import android.util.Log;
+
 public class Etappe {
 	private int id;
 	private String van;
@@ -69,12 +74,18 @@ public class Etappe {
 	public String getRecordJaar() {return record_jaar;}
 	public String getRecordTeam(){ return record_ploeg;}
 	public String getRecordSnelheid() {return record_snelheid;}
-	public String getRecordTijd() { return record_tijd;}
 	public String getOpenTijd(){ return this.opentijd;}
 	public String getUitersteStartTijd(){ return this.uitersteStarttijd;}
 	public String getLimietTijd(){ return this.limiettijd;}
 	public String getUniversteitsLimietTijd(){ return this.universteitsLimietstijd;}
-	
+	public String getRecordTijd() {
+		long millis = Long.parseLong(record_tijd);
+		String result = String.format("%02d:%02d:%02d",   
+				   TimeUnit.MILLISECONDS.toHours(millis),  
+				   TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),  
+				   TimeUnit.MILLISECONDS.toSeconds(millis) -  TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+		return result;
+		}
 	/*String formaat*/
 	public String toString(){
 		String statement;
