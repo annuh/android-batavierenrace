@@ -33,28 +33,28 @@ public class SponsorInformatieFragment extends SherlockFragment {
 		getSherlockActivity().getSupportActionBar().setTitle("Sponsor");     
 		View view = inflater.inflate(R.layout.sponsor_item, container, false);
 		
-		ImageView sponsor_plaatje = (ImageView) view.findViewById(R.id.sponsor_plaatje_3);
-		String link = getActivity().getPackageName() + ":drawable/" + sponsor.getAfbeeldingLink();		
-		int id = this.getResources().getIdentifier(link, null, null);
-		sponsor_plaatje.setImageResource(id);		
-		
 		TextView sponsor_titel = (TextView)  view.findViewById(R.id.sponsor_titel);
 		sponsor_titel.setText(sponsor.getNaam());
 
 		TextView sponsor_naam = (TextView)  view.findViewById(R.id.sponsor_naam);
-		sponsor_naam.setText(Html.fromHtml("<b>Naam:</b> " + sponsor.getNaam()));
+		sponsor_naam.setText(sponsor.getNaam());
 		
 		TextView sponsor_branche = (TextView)  view.findViewById(R.id.sponsor_branche);
-		sponsor_branche.setText(Html.fromHtml("<b>Branche:</b> " + sponsor.getBrache()));
+		sponsor_branche.setText(sponsor.getBrache());
 		
 		TextView sponsor_regio = (TextView)  view.findViewById(R.id.sponsor_regio);
-		sponsor_regio.setText(Html.fromHtml("<b>Regio:</b> " + sponsor.getRegio()));
+		sponsor_regio.setText(sponsor.getRegio());
 		
 		TextView sponsor_link = (TextView)  view.findViewById(R.id.sponsor_link);
-		sponsor_link.setText(Html.fromHtml("<b>Link:</b> " + sponsor.getLink()));
+		sponsor_link.setText(sponsor.getLink());
 
 		TextView sponsor_omschrijving = (TextView) view.findViewById(R.id.sponsor_omschrijving);
-		sponsor_omschrijving.setText(Html.fromHtml(sponsor.getOmschrijving()));
+		sponsor_omschrijving.setText(sponsor.getOmschrijving());
+		
+		ImageView sponsor_plaatje = (ImageView) view.findViewById(R.id.sponsor_plaatje_3);
+		String link = getActivity().getPackageName() + ":drawable/" + sponsor.getAfbeeldingLink();		
+		int id = this.getResources().getIdentifier(link, null, null);
+		sponsor_plaatje.setImageResource(id);
 		
 		return view;
 	}

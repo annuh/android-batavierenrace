@@ -19,25 +19,55 @@
 	        android:layout_width="fill_parent"
 			android:background = "@drawable/onder" />	    
 	    
-	    <TextView
-	        android:layout_height="wrap_content"
-	        android:layout_width="fill_parent"
-	        android:id="@+id/sponsor_naam" />
-	   	<TextView
-	   	    android:layout_height="wrap_content"
-	        android:layout_width="fill_parent"
-	        android:id="@+id/sponsor_branche" />
-	   	<TextView
-	   	    android:layout_height="wrap_content"
-	        android:layout_width="fill_parent"
-	        android:id="@+id/sponsor_regio" />
-	   	<TextView
-	   	    android:autoLink="web"
-	   	    android:layout_height="wrap_content"
-	        android:layout_width="fill_parent"
-	        android:id="@+id/sponsor_link" />
-	   		    
-	    <TextView
+	    <TableLayout 
+	        style="@style/table" >
+            <TableRow>
+                <TextView
+                    style="@style/table_left" 
+                    android:text="Naam"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/sponsor_naam" 
+                    style="@style/table_right"
+                    android:textSize="15sp" />
+            </TableRow>
+            <View style="@style/divider" />
+            <TableRow>
+                <TextView
+                    style="@style/table_left"
+                    android:text="Branche"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/sponsor_branche"
+                    style="@style/table_right"
+                    android:textSize="15sp" />
+            </TableRow>
+            <View style="@style/divider" />
+            <TableRow>
+                <TextView
+                    style="@style/table_left"
+                    android:text="Regio"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/sponsor_regio"
+                    style="@style/table_right"
+                    android:textSize="15sp" />
+            </TableRow>
+            <View style="@style/divider" />
+            <TableRow>
+                <TextView
+                    style="@style/table_left"
+                    android:text="Link"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/sponsor_link"
+                    android:autoLink="web"
+                    style="@style/table_right"
+                    android:textSize="15sp" />
+            </TableRow>            
+        </TableLayout>
+
+        <TextView
 	        android:layout_height="wrap_content"
 	        android:layout_width="fill_parent"
 	        android:text = "@string/sponsor_omschrijving_dik" />   
@@ -52,8 +82,8 @@
 	        
 	        <ImageView
 	        android:id="@+id/sponsor_plaatje_3"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
 	        android:layout_gravity="top"
 	        android:layout_marginTop="5dp"
 	        android:contentDescription="Sponsor plaatje" />

@@ -15,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 public class SponsorInformatieActivity extends SherlockFragmentActivity {
 	
@@ -36,10 +37,7 @@ public class SponsorInformatieActivity extends SherlockFragmentActivity {
 		mIndicator.setViewPager(mPager);
 		
 		
-		String page = "";
-		page = getIntent().getStringExtra("page");
-		int pageid = 0;
-		pageid = Integer.parseInt(page) -1;
+		int pageid = getIntent().getIntExtra("page", 0);
 		
 		mPager.setCurrentItem(pageid);
 		mIndicator.setCurrentItem(pageid);
