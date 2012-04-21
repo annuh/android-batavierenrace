@@ -104,6 +104,12 @@
     <string name="etappe_recordtijd_tijd">Tijd</string>
     <string name="etappe_recordtijd_snelheid">Snelheid</string>
     
+    <string name="etappe_routes_h1_kaart">Kaart</string>
+    <string name="etappe_routes_routebeschrijving_looproute">Routebeschrijving</string>
+    <string name="etappe_routes_h1_openenmaps">Open in Google Maps</string>
+    <string name="etappe_routes_looproute">Looproute</string>
+    <string name="etappe_routes_autoroute">Autoroute</string>
+    
     <string name="etappe_looptijden_header_stand">#</string>
     <string name="etappe_looptijden_header_team">Team</string>
     <string name="etappe_looptijden_header_tijd">Tijd</string>
