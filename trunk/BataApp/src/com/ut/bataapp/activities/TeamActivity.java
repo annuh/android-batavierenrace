@@ -142,6 +142,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 			Bundle info = new Bundle();
 			info.putString("index",mTeam.getKlassement());
 			info.putInt("init", mTeam.getLooptijden().get(mTeam.getLooptijden().size()-1).getCumulatieveStand());
+			info.putBoolean("inViewpager", true);
 			kf.setArguments(info);
 			fragments.add(kf);
 			titels.add(getString(R.string.team_titel_klassement));
@@ -230,6 +231,8 @@ public class TeamActivity extends SherlockFragmentActivity {
 			mPager.setAdapter(mAdapter);
 			mIndicator.notifyDataSetChanged();
 			mPager.setCurrentItem(currentItem, false);
+			Log.d("Pager", "NIET NULL");
 		}
+		Log.d("Pager", "NULL");
 	}
 }

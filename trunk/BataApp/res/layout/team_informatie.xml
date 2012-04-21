@@ -117,7 +117,13 @@
                     android:id="@+id/team_totaal_looptijd"
                     style="@style/table_right" />
             </TableRow>
+            
         </TableLayout>
+        
+        <TextView
+            android:text="@string/team_klassement_totetappe"
+            style="@style/container_block"/>
+        
     </LinearLayout>
 
 </ScrollView>

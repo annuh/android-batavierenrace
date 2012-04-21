@@ -1,13 +1,17 @@
 package com.ut.bataapp.fragments;
 
 import java.util.Collections;
+import android.support.v4.app.LoaderManager;
 import java.util.Comparator;
+import android.support.v4.content.Loader;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.os.SystemClock;
+import android.support.v4.content.AsyncTaskLoader;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -33,27 +37,31 @@ import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.KlassementItem;
 import com.ut.bataapp.objects.Response;
 
-public class KlassementFragment extends SherlockListFragment {
+public class KlassementFragment extends SherlockListFragment implements LoaderManager.LoaderCallbacks<Response<Klassement>> {
 
 	private final int MENU_SEARCH = Menu.FIRST + 10;
 	private final int MENU_SORT_NAAM = Menu.FIRST + 11;
 	private final int MENU_SORT_STAND = Menu.FIRST + 12;
 	private String filterText = "";
-	private String naam;
+	private static String naam;
 	private Klassement klassement;
 	private KlassementAdapter adapter = null;
 	private char sortNaam = 'D';
 	private char sortStand = 'D';
+	private boolean inViewpager = false;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 		setHasOptionsMenu(true);
 		naam = this.getArguments().getString("index");
-		new getKlassement().execute();
-		this.setListAdapter(null);
+		inViewpager = this.getArguments().getBoolean("inViewpager", false);
+		if(inViewpager)
+			this.setListAdapter(null);
+		this.getActivity().getSupportLoaderManager().initLoader(0, null, this);
+		//new getKlassement(getActivity().getApplicationContext()).execute();
 	}
-	
+
 	@Override
 	public void onResume(){
 		super.onResume();
@@ -75,14 +83,14 @@ public class KlassementFragment extends SherlockListFragment {
 				sortNaam(null);
 			}
 		});
-		
+
 		view.findViewById(R.id.klassement_header_tijd).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				sortStand(null);
 			}
 		});
-		
+
 		return view;
 	}
 
@@ -157,20 +165,27 @@ public class KlassementFragment extends SherlockListFragment {
 
 	private class getKlassement extends AsyncTask<Void, Void, Void> {
 		Response<Klassement> response;
-		private ProgressDialogFragment progressDialog;  
+		private ProgressDialogFragment progressDialog;
+		Context context;
+
+		public getKlassement(Context context) {
+			this.context = context;
+		}
 		protected void onPreExecute() {
-			//setListShown(false); 
-			//progressDialog = ProgressDialogFragment.newInstance(getString(R.string.laden_titel), getString(R.string.klassement_laden));
-			//progressDialog.show(getActivity().getSupportFragmentManager(), "");
-			/*progressDialog = ProgressDialog.show(getActivity().getApplicationContext(),  
-					getString(R.string.laden_titel), getString(R.string.klassement_laden), true);*/
-			/*progressDialog.setCancelable(true);
-			progressDialog.setOnCancelListener(new OnCancelListener() {
-				public void onCancel(DialogInterface dialog) {
-					cancel(true);
-					Utils.goHome(getActivity().getApplicationContext());
-				}
-			});*/
+			if(!inViewpager){
+				progressDialog = ProgressDialogFragment.newInstance(getString(R.string.laden_titel), getString(R.string.klassement_laden));
+				progressDialog.show(getActivity().getSupportFragmentManager(), "");
+				//progressDialog = ProgressDialog.show(getActivity().getApplicationContext(),  
+				//		getString(R.string.laden_titel), getString(R.string.klassement_laden), true);*/
+				progressDialog.setCancelable(true);
+				/*(progressDialog.setOnCancelListener(new OnCancelListener() {
+					public void onCancel(DialogInterface dialog) {
+						cancel(true);
+						Utils.goHome(getActivity().getApplicationContext());
+					}
+				});*/
+
+			}
 		}
 
 		@Override  
@@ -182,13 +197,14 @@ public class KlassementFragment extends SherlockListFragment {
 
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
+
+			if(Utils.checkResponse(context, response)) {
 				klassement = response.getResponse();
 				Log.d("Klassement", ""+klassement.getUitslag().size());
 				sortStand(null);
 				getListView().setSelection(getArguments().getInt("init") -1);
-				//if(progressDialog != null)
-				//	progressDialog.dismiss();
+				if(!inViewpager && progressDialog != null)
+					progressDialog.dismiss();
 				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 			}
 		}
@@ -253,4 +269,119 @@ public class KlassementFragment extends SherlockListFragment {
 		((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand));
 		((TextView) getView().findViewById(R.id.klassement_header_team)).setText(this.getText(R.string.klassement_header_team));
 	}
+
+	@Override
+	public void onDestroy(){
+		Log.d("KlassementFragment", "DESTROY");
+		super.onDestroy();
+	}
+
+	public static class AppListLoader extends AsyncTaskLoader<Response<Klassement>> {
+		Response<Klassement> response;
+		public AppListLoader(Context context) {
+			super(context);
+		}
+
+		@Override public Response<Klassement> loadInBackground() {
+			response = api.getKlassementByNaam(naam);
+			return response;
+		}
+
+		@Override public void deliverResult(Response<Klassement> response) {
+			if (isReset()) {
+				return;
+			}
+
+			this.response = response;
+			super.deliverResult(response);
+		}
+
+		@Override protected void onStartLoading() {
+			if (response != null) {
+				deliverResult(response);
+			}
+			if (takeContentChanged() || response == null) {
+				forceLoad();
+			}
+		}
+
+		@Override
+		protected void onStopLoading() {
+			// Attempt to cancel the current load task if possible.
+			cancelLoad();
+		}
+
+		@Override
+		protected void onReset() {
+			super.onReset();
+			// Ensure the loader is stopped
+			onStopLoading();
+			response = null;
+		}
+	}
+
+	//private ProgressDialog progressDialog;
+	private ProgressDialogFragment progressDialog;
+	@Override
+	public Loader<Response<Klassement>> onCreateLoader(int arg0, Bundle arg1) {
+		/*progressDialog = ProgressDialog.show(TeamActivity.this,  
+				"Bezig met laden", "Team wordt opgehaald...", true);
+		progressDialog.setCancelable(true);
+		progressDialog.setOnCancelListener(new OnCancelListener() {
+			public void onCancel(DialogInterface dialog) {
+				finish();
+			}
+		});*/
+		
+		if(!inViewpager){
+			progressDialog = ProgressDialogFragment.newInstance(getString(R.string.laden_titel), getString(R.string.klassement_laden));
+			progressDialog.show(getActivity().getSupportFragmentManager(), "");
+			//progressDialog = ProgressDialog.show(getActivity().getApplicationContext(),  
+			//		getString(R.string.laden_titel), getString(R.string.klassement_laden), true);*/
+			progressDialog.setCancelable(true);
+			/*(progressDialog.setOnCancelListener(new OnCancelListener() {
+				public void onCancel(DialogInterface dialog) {
+					cancel(true);
+					Utils.goHome(getActivity().getApplicationContext());
+				}
+			});*/
+
+		}
+		return new AppListLoader(getActivity().getApplicationContext());
+	}
+
+	@Override
+	public void onLoadFinished(Loader<Response<Klassement>> loader, Response<Klassement> response) {
+		//Log.d("Loader", "Klaar");
+		if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
+			klassement = response.getResponse();
+			Log.d("Klassement", ""+klassement.getUitslag().size());
+			sortStand(null);
+			getListView().setSelection(getArguments().getInt("init") -1);
+			if(!inViewpager && progressDialog != null)
+				handler.sendEmptyMessage(1);
+			getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));klassement = response.getResponse();
+			
+		}
+	}
+	
+	
+	private Handler handler = new Handler() {
+	    @Override
+	    public void handleMessage(Message msg) {
+	        if(msg.what == 1) {
+	            hideDialog();
+	        }
+	    }
+	};
+	
+	public void hideDialog(){
+		progressDialog.dismiss();
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Response<Klassement>> arg0) {                
+		//Utils.goHome(this);
+	}
+
 }
