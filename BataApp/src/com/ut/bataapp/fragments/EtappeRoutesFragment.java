@@ -31,7 +31,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
     	final String[] auto_maps = getResources().getStringArray(R.array.url_autoroutes);
     	
     	//Google maps lopers route
-    	ImageView lopers_map = (ImageView) view.findViewById(R.id.lopers_maps);
+    	/*ImageView lopers_map = (ImageView) view.findViewById(R.id.lopers_maps);
     	lopers_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +90,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
     			intent.putExtra("type","autoroute");
     			intent.putExtra("kaart",etappe.getId());
     			startActivity(intent);
-    			*/
+    			
     		}
     	});
 
@@ -105,7 +105,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
 				startActivity(intent);
 			}
 		});
-    	
+    	*/
     	return view;
     	
     }

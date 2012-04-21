@@ -1,237 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/scroller" >
-    
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >
-	
-	    <TextView
-	        android:text = "Looproute"
-	        style="@style/h1" />
-	    <TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-	    
-	    <LinearLayout 
-	        android:layout_height="wrap_content"
-	    	android:orientation="horizontal"
-	    	style="@style/container_block">
-	    	
-	        <LinearLayout 
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:orientation="vertical">
-	        
-		        <ImageView
-		            android:id="@+id/lopers_maps"
-		            android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/route_maps" >
-		        </ImageView>
-		        
-		        <TextView 
-		            android:layout_width="match_parent"
-		            android:layout_height="20dp"
-		            android:gravity="center"
-		            android:text="@string/route_maps" />
-	        
-	        </LinearLayout>
-	        
-	        <LinearLayout 
-	            android:layout_width="wrap_content"
-	            android:layout_height="match_parent"
-	            android:orientation="vertical">
-	        
-		        <ImageView
-		            android:id="@+id/lopers_image"
-		            android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/route_image" />
-		    		
-		       	<TextView 
-		            android:layout_width="match_parent"
-		            android:layout_height="20dp"
-		            android:gravity="center"
-		            android:text="@string/route_kaart" />
-		       	
-	        </LinearLayout>
-	        
-	        <LinearLayout
-	            android:layout_width="wrap_content"
-	            android:layout_height="match_parent"
-	            android:orientation="vertical" >
 
-	            <ImageView
-	                android:id="@+id/lopers_tekst"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content"
-	                android:layout_marginLeft="5dp"
-	                android:src="@drawable/route_tekst" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-	            <TextView 
-		            android:layout_width="match_parent"
-		            android:layout_height="20dp"
-		            android:gravity="center"
-		            android:text="@string/route_beschrijving" />
-	            
-	        </LinearLayout>
-	    
-	    </LinearLayout>
-	    
-	    <TextView
-	        android:text = "Autoroute"
-	        style="@style/h1" />
-	    <TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-	    
-	    <LinearLayout 
-	        android:layout_height="wrap_content"
-	    	android:orientation="horizontal"
-	    	style="@style/container_block">
-	        
-	        <LinearLayout 
-	            android:layout_width="wrap_content"
-	            android:layout_height="match_parent"
-	            android:orientation="vertical">
-	        
-		        <ImageView
-		            android:id="@+id/autos_maps"
-		            android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/route_maps" />
-		    		
-		       	<TextView 
-		            android:layout_width="match_parent"
-		            android:layout_height="20dp"
-		            android:gravity="center"
-		            android:text="@string/route_maps" />
-		       	
-	        </LinearLayout>
-	    	
-	        <LinearLayout 
-	            android:layout_width="wrap_content"
-	            android:layout_height="match_parent"
-	            android:orientation="vertical">
-	        
-		        <ImageView
-		            android:id="@+id/autos_image"
-		            android:layout_marginLeft="5dp"
-		            android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/route_image" />
-		        
-		        <TextView 
-			            android:layout_width="match_parent"
-			            android:layout_height="20dp"
-			            android:gravity="center"
-			            android:text="@string/route_kaart" />
-		       	
-	        </LinearLayout>
-	        
-	        <LinearLayout 
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:orientation="vertical">
-	        
-		        <ImageView
-		            android:id="@+id/autos_tekst"
-		            android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/route_tekst" >
-		        </ImageView>
-		        
-		        <TextView 
-		            android:layout_width="match_parent"
-		            android:layout_height="20dp"
-		            android:gravity="center"
-		            android:text="@string/route_beschrijving" />
-	        
-	        </LinearLayout>
-	        
-	    </LinearLayout>
-	    
-	    
-	    <TextView
-	        android:text = "Overslagroute"
-	        style="@style/h1" />
-	    <TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-	    
-	    <LinearLayout 
-	        android:layout_height="wrap_content"
-	    	android:orientation="horizontal"
-	    	style="@style/container_block">
-	        
-	        <LinearLayout 
-	            android:layout_width="wrap_content"
-	            android:layout_height="match_parent"
-	            android:orientation="vertical">
-	        
-		        <ImageView
-		            android:id="@+id/overslag_maps"
-		            android:layout_marginLeft="5dp"
-		            android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/route_maps" />
-		        
-		        <TextView 
-			            android:layout_width="match_parent"
-			            android:layout_height="20dp"
-			            android:gravity="center"
-			            android:text="@string/route_maps" />
-		       	
-	        </LinearLayout>
-	    	
-	        <LinearLayout 
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:orientation="vertical">
-	        
-		        <ImageView
-		            android:id="@+id/overslag_image"
-		            android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:src="@drawable/route_image" >
-		        </ImageView>
-		        
-		        <TextView 
-		            android:layout_width="match_parent"
-		            android:layout_height="20dp"
-		            android:gravity="center"
-		            android:text="@string/route_kaart" />
-	        
-	        </LinearLayout>
-	        
-	        <LinearLayout 
-	            android:layout_width="wrap_content"
-	            android:layout_height="match_parent"
-	            android:orientation="vertical">
-	        
-		        <ImageView
-		            android:id="@+id/overslag_tekst"
-		            android:layout_width="wrap_content"
-		    		android:layout_height="wrap_content"
-		    		android:layout_marginLeft="5dp"
-		    		android:src="@drawable/route_tekst" />
-		    		
-		       	<TextView 
-		            android:layout_width="match_parent"
-		            android:layout_height="20dp"
-		            android:gravity="center"
-		            android:text="@string/route_beschrijving" />
-		       	
-	        </LinearLayout>
-	      	        
-	        
-	    </LinearLayout>
-	    
-	    
-	</LinearLayout>
+        <TextView
+            style="@style/h1"
+            android:text="@string/etappe_routes_h1_kaart" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/onder" />
+        
+        <ImageView
+            />
+
+        <Button
+            style="@style/nice_button"
+            android:text="@string/etappe_routes_routebeschrijving_looproute" />
+
+        
+        <TextView
+            style="@style/h1"
+            android:text="@string/etappe_routes_h1_openenmaps" />
+
+        <Button
+            style="@style/nice_button"
+            android:text="@string/etappe_routes_looproute" />
+
+        <Button
+            style="@style/nice_button"
+            android:text="@string/etappe_routes_autoroute" />
+    </LinearLayout>
+
 </ScrollView>
