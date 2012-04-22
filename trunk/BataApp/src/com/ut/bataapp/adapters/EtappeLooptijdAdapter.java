@@ -8,17 +8,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.TextView;
 
 public class EtappeLooptijdAdapter extends ArrayAdapter<Looptijd> {
 
 	private final Context context;
 	private final ArrayList<Looptijd> values;
+	
+	private ArrayList<Looptijd> filteredItems;
+	private LooptijdFilter filter;
 
 	public EtappeLooptijdAdapter(Context context, ArrayList<Looptijd> values) {
 		super(context, R.layout.row_team_looptijd, values);
 		this.context = context;
-		this.values = values;
+		this.values = new ArrayList<Looptijd>();
+		this.values.addAll(values);
+		filteredItems = new ArrayList<Looptijd>();
+		filteredItems.addAll(values);
+		getFilter();
 	}
 
 	@Override
@@ -26,18 +34,76 @@ public class EtappeLooptijdAdapter extends ArrayAdapter<Looptijd> {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.row_etappe_looptijd, parent, false);
-		rowView.setId(values.get(position).getTeamStartnummer());
+		rowView.setId(filteredItems.get(position).getTeamStartnummer());
 
 		TextView plaats = (TextView) rowView.findViewById(R.id.etappe_looptijd_plaats);
-		plaats.setText(String.valueOf(values.get(position).getEtappeStand()));
+		plaats.setText(String.valueOf(filteredItems.get(position).getEtappeStand()));
 
 		TextView team = (TextView) rowView.findViewById(R.id.etappe_looptijd_team);
-		team.setText(values.get(position).getTeamNaam());
+		team.setText(filteredItems.get(position).getTeamNaam());
 
 		TextView tijd = (TextView) rowView.findViewById(R.id.etappe_looptijd_tijd);
-		tijd.setText(values.get(position).getTijd());
+		tijd.setText(filteredItems.get(position).getTijd());
+		
+		TextView foutcode = (TextView) rowView.findViewById(R.id.etappe_looptijd_code);
+		foutcode.setText(filteredItems.get(position).getFoutcode());
 
 		return rowView;
 	}
+	
+	@Override
+	public Filter getFilter() {
+		if (filter == null){
+			filter = new LooptijdFilter();
+		}
+		return filter;
+	}
+
+
+	private class LooptijdFilter extends Filter{
+
+		@Override
+		protected FilterResults performFiltering(CharSequence constraint) {
+
+			constraint = constraint.toString().toLowerCase();
+			FilterResults result = new FilterResults();
+			if(constraint != null && constraint.toString().length() > 0)
+			{
+				ArrayList<Looptijd> filteredItems = new ArrayList<Looptijd>();
+
+				for(int i = 0, l = values.size(); i < l; i++)
+				{
+					Looptijd m = values.get(i);
+					if(m.getTeamNaam().toLowerCase().contains(constraint) || String.valueOf(m.getTeamStartnummer()).contains(constraint))
+						filteredItems.add(m);
+				}
+				result.count = filteredItems.size();
+				result.values = filteredItems;
+			}
+			else
+			{
+				synchronized(this)
+				{
+					result.values = values;
+					result.count = values.size();
+				}
+			}
+			return result;
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		protected void publishResults(CharSequence constraint, FilterResults results) {
+			filteredItems = (ArrayList<Looptijd>)results.values;
+			notifyDataSetChanged();
+			clear();
+			for (int i = 0; i <filteredItems.size(); i++){
+				add(filteredItems.get(i));
+			}
+			notifyDataSetInvalidated();
+
+		}
+	}
+
 
 }

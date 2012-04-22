@@ -23,20 +23,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class EtappeLooptijdenFragment extends SherlockListFragment {
 
-	private ArrayList<ArrayList<Looptijd>> looptijden;
+	private ArrayList<ArrayList<Looptijd>> looptijden = new ArrayList<ArrayList<Looptijd>>();
+	private ArrayList<ArrayList<Looptijd>> looptijden_copy = new ArrayList<ArrayList<Looptijd>>();
 	private EtappeLooptijdAdapter adapter_uni = null;
 	private EtappeLooptijdAdapter adapter_alg = null;
-	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
-	private final int MENU_SORT_STAND = Menu.FIRST + 2;
+	private SeparatedListAdapter adapter = null;
+	private final int MENU_SEARCH = Menu.FIRST + 10;
+	private final int MENU_SORT_NAAM = Menu.FIRST + 11;
+	private final int MENU_SORT_STAND = Menu.FIRST + 12;
 	TextView loading;
+	private String filterText = "";
 	private char sortNaam = 'D';
 	private char sortStand = 'D';
 
@@ -64,7 +75,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 	}
-	
+
 	@Override
 	public void onResume(){
 		super.onResume();
@@ -78,6 +89,10 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 
 	@Override
 	public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
+		menu.add(0,MENU_SEARCH,Menu.NONE, R.string.ab_zoeken)
+		.setIcon(R.drawable.ic_action_search)
+		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+
 		SubMenu subMenu1 = menu.addSubMenu(R.string.ab_sorteren);
 		subMenu1.add(0,MENU_SORT_NAAM,Menu.NONE, "Naam");
 		subMenu1.add(0,MENU_SORT_STAND,Menu.NONE, "Uitslag");
@@ -93,10 +108,59 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		case MENU_SORT_NAAM:
 			sortNaam(null);
 			break;
+		case MENU_SEARCH:
+			item.setActionView(R.layout.search_box);
+			EditText filterEdit = (EditText) item.getActionView().findViewById(R.id.search_box);
+			filterEdit.setText(filterText);
+			filterEdit.addTextChangedListener(filterTextWatcher);
+			setKeyboardFocus(filterEdit);
+			break;
 		case MENU_SORT_STAND:
 			sortStand(null);		
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private TextWatcher filterTextWatcher = new TextWatcher() {
+
+		public void afterTextChanged(Editable s) {
+		}
+
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+		}
+
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {	
+	
+			filterText = s.toString();
+			ArrayList<ArrayList<Looptijd>> result = new ArrayList<ArrayList<Looptijd>>();
+			for(ArrayList<Looptijd> o : looptijden_copy) {
+				ArrayList<Looptijd> result1 = new ArrayList<Looptijd>();
+				for(Looptijd l: o) {
+					if(l.getTeamNaam().toLowerCase().contains(filterText.toLowerCase()) || String.valueOf(l.getTeamStartnummer()).contains(filterText.toLowerCase()) )
+							result1.add(l);
+				}
+				result.add(result1);
+			}
+			
+			looptijden = result;
+			adapter_alg.getFilter().filter(filterText);
+			adapter_uni.getFilter().filter(filterText);	
+			
+			makeList();
+			
+
+		}
+	};
+
+	public static void setKeyboardFocus(final EditText primaryTextField) {
+		(new Handler()).postDelayed(new Runnable() {
+			public void run() {
+				primaryTextField.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, 0, 0, 0));
+				primaryTextField.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP , 0, 0, 0));
+			}
+		}, 100);
 	}
 
 	@Override
@@ -120,35 +184,59 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 				looptijden = response.getResponse();
+				//looptijden_copy.addAll(looptijden);
+				looptijden_copy = copyArray(looptijden);
+				Collections.copy(looptijden_copy, looptijden);
 				if(getView() != null) // Als tijdens laden ander tab wordt geopend
 					sortStand(null);
 			}
 		}
 	}
 
+	public ArrayList<ArrayList<Looptijd>> copyArray(ArrayList<ArrayList<Looptijd>> list) {
+		ArrayList<ArrayList<Looptijd>> result = new ArrayList<ArrayList<Looptijd>>();
+		for(ArrayList<Looptijd> o : list) {
+			ArrayList<Looptijd> result1 = new ArrayList<Looptijd>();
+			for(Looptijd l: o) {
+				result1.add(l);
+			}
+			result.add(result1);
+		}
+		return result;
+	}
+	
+	
 	/**
 	 * Maakt de listview
 	 */
 	public void makeList() {
-		
+
 		View view = getView();
 		if(view != null){
+			getListView().setVisibility(View.GONE);
+			
+			//looptijden.clear();
 			
 			
+			//looptijden = copyArray(looptijden_copy);
+			
+			//looptijden = new ArrayList<ArrayList<Looptijd>>(looptijden_copy);
+			//Log.d("Looptijden alg",""+looptijden.get(1).size());
 			adapter_uni = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(0));
 			adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
-							
-			SeparatedListAdapter adapter = new SeparatedListAdapter(getActivity().getApplicationContext());
-	        adapter.addSection("Universiteitsklassement", adapter_uni);
-	        adapter.addSection("Algemeen klassement", adapter_alg);
-	        
+
+					
+			
+			adapter = new SeparatedListAdapter(getActivity().getApplicationContext());
+			adapter.addSection("Universiteitsklassement", adapter_uni);
+			adapter.addSection("Algemeen klassement", adapter_alg);
+
 			setListAdapter(adapter);
 			adapter.notifyDataSetChanged();
-			
+			getListView().setVisibility(View.VISIBLE);
 		}
-		
 	}
-	
+
 	public void sortNaam(View v) {
 		resetArrows();
 		if(sortNaam == 'D') {
@@ -183,7 +271,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		((TextView) getView().findViewById(R.id.etappe_looptijden_header_team)).setText(this.getText(R.string.etappe_looptijden_header_team) +" "+ getText(i));
 		makeList();
 	}
-	
+
 	public void sortStand(View v) {
 		resetArrows();
 		if(sortStand == 'D') {
@@ -218,8 +306,8 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 		((TextView) getView().findViewById(R.id.etappe_looptijden_header_stand)).setText(this.getText(R.string.etappe_looptijden_header_stand) +" "+ getText(i));
 		makeList();
 	}
-	
-	
+
+
 	public void sortList(ArrayList<Looptijd> list, final String sort) {
 		Collections.sort(list,new Comparator<Looptijd>() {
 			public int compare(Looptijd arg0, Looptijd arg1) {
@@ -232,7 +320,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 			}
 		});
 	}
-	
+
 	public void resetArrows() {
 		((TextView) getView().findViewById(R.id.etappe_looptijden_header_stand)).setText(this.getText(R.string.etappe_looptijden_header_stand));
 		((TextView) getView().findViewById(R.id.etappe_looptijden_header_team)).setText(this.getText(R.string.etappe_looptijden_header_team));

@@ -29,7 +29,6 @@ public class TeamAdapter extends ArrayAdapter<Team> {
 		filteredItems = new ArrayList<Team>();
 		filteredItems.addAll(values);
 		getFilter();
-
 	}
 
 	@Override

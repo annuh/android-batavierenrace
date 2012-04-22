@@ -16,14 +16,22 @@
             android:id="@+id/etappe_looptijden_header_team"
             style="@style/listview_header_text"
             android:layout_toRightOf="@id/etappe_looptijden_header_stand"
+            android:layout_toLeftOf="@id/etappe_looptijden_header_tijd"
             android:text="@string/etappe_looptijden_header_team" />
 
         <TextView
-            android:id="@+id/etappe_looptijden_header_tijd"
+            android:id="@+id/etappe_looptijden_header_foutcode"
             style="@style/listview_header_text"
             android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
+            android:text="@string/etappe_looptijden_header_foutcode" />
+        
+        <TextView
+            android:id="@+id/etappe_looptijden_header_tijd"
+            style="@style/listview_header_text"
+            android:layout_toLeftOf="@id/etappe_looptijden_header_foutcode"
             android:text="@string/etappe_looptijden_header_tijd" />
+        
+           
     </RelativeLayout>
 
     <ListView

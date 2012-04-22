@@ -141,6 +141,14 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
     </style>
+    
+    <style name="listview_row">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/listview_background</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">4dp</item>
+    </style>
 
     <style name="listview_text">
         <item name="android:textSize">18dp</item>
@@ -164,6 +172,8 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_marginRight">0dp</item>
         <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
         <item name="android:background">@drawable/batablauw</item>
     </style>
 
