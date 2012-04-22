@@ -80,11 +80,15 @@ public class Etappe {
 	public String getUniversteitsLimietTijd(){ return this.universteitsLimietstijd;}
 	public String getRecordTijd() {
 		long millis = Long.parseLong(record_tijd);
-		String result = String.format("%02d:%02d:%02d",   
-				   TimeUnit.MILLISECONDS.toHours(millis),  
-				   TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),  
-				   TimeUnit.MILLISECONDS.toSeconds(millis) -  TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-		return result;
+		int seconds = (int) (millis / 1000) % 60 ;
+		int minutes = (int) ((millis / (1000*60)) % 60);
+		int hours   = (int) ((millis / (1000*60*60)) % 24);
+		return hours+":"+minutes+":"+seconds;
+		//String result = String.format("%02d:%02d:%02d",   
+		//		   TimeUnit.MILLISECONDS.toHours(millis),  
+		//		   TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),  
+		//		   TimeUnit.MILLISECONDS.toSeconds(millis) -  TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
+		//return result;
 		}
 	/*String formaat*/
 	public String toString(){

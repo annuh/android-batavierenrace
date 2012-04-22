@@ -31,8 +31,8 @@
     <string name="uur">%s u</string>
 
     <!-- Sorteren -->
-    <string name="sort_D">\u2193</string>
-    <string name="sort_A">\u2191</string>
+    <string name="sort_D">\u2191</string>
+    <string name="sort_A">\u2193</string>
     <string name="sort_naam">Naam</string>
     <string name="sort_startnummer">Startnummer</string>
     <string name="sort_stand">Stand</string>

@@ -8,23 +8,23 @@
     <TextView
         android:id="@+id/etappe_looptijd_plaats"
         style="@style/listview_text"
-        android:layout_width="25dp"
+        android:layout_width="30dp"
         android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:id="@+id/etappe_looptijd_tijd"
-        style="@style/listview_text"
-        android:layout_alignParentRight="true" />
-
-    <TextView
-        android:id="@+id/etappe_looptijd_code"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
 
     <TextView
         android:id="@+id/etappe_looptijd_team"
         style="@style/listview_text"
         android:layout_toLeftOf="@id/etappe_looptijd_tijd"
         android:layout_toRightOf="@id/etappe_looptijd_plaats" />
+
+    <TextView
+        android:id="@+id/etappe_looptijd_tijd"
+        style="@style/listview_text"
+        android:layout_toLeftOf="@id/etappe_looptijd_code" />
+
+    <TextView
+        android:id="@+id/etappe_looptijd_code"
+        style="@style/listview_text"
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>
