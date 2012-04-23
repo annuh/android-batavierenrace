@@ -1,19 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    <PreferenceCategory android:title="Instellingen">
-        <EditTextPreference
-            android:title="Naam"
-            android:summary="Vul uw naam in" 
-            android:key="naam" />
-         <ListPreference
-             android:title="Update frequentie"
-			android:summary="Selecteer hoevaak nieuwe gegevens moeten worden opgehaald"
-			android:key="updatefrequentie"
-			android:defaultValue="5"
-			android:entries="@array/listArray"
-			android:entryValues="@array/listValues" />
-
+	<PreferenceCategory android:title="@string/pref_background_updater_title">
+		<CheckBoxPreference
+			android:title="@string/pref_background_update_title"
+			android:summaryOn="@string/pref_background_update_summary_on"
+			android:summaryOff="@string/pref_background_update_summary_off" 
+			android:defaultValue="@bool/pref_background_update_default" 
+			android:key="@string/pref_background_update"/> 
+		<ListPreference
+			android:title="@string/pref_background_update_interval_title"
+			android:summary="@string/pref_background_update_interval_summary"
+			android:key="@string/pref_background_update_interval"
+			android:dependency="@string/pref_background_update"
+			android:defaultValue="@string/pref_background_update_interval_default"
+			android:entries="@array/pref_background_update_interval_options_desc"
+			android:entryValues="@array/pref_background_update_interval_options" />
+		<CheckBoxPreference
+		    android:title="@string/pref_background_update_notify_title"
+		    android:summaryOn="@string/pref_background_update_notify_summary_on"
+		    android:summaryOff="@string/pref_background_update_notify_summary_off"
+            android:defaultValue="@bool/pref_background_update_notify_default"
+            android:key="@string/pref_background_update_notify"
+            android:dependency="@string/pref_background_update" />
+		<CheckBoxPreference
+		    android:title="@string/pref_background_update_notify_etappeuitslag_title"
+		    android:summaryOn="@string/pref_background_update_notify_etappeuitslag_summary_on"
+		    android:summaryOff="@string/pref_background_update_notify_etappeuitslag_summary_off"
+            android:defaultValue="@bool/pref_background_update_notify_etappeuitslag_default"
+            android:key="@string/pref_background_update_notify_etappeuitslag"
+            android:dependency="@string/pref_background_update_notify" />
+		<CheckBoxPreference
+		    android:title="@string/pref_background_update_sound_title"
+            android:defaultValue="@bool/pref_background_update_sound_default"
+            android:key="@string/pref_background_update_sound"
+            android:dependency="@string/pref_background_update_notify" />
+		<CheckBoxPreference
+		    android:title="@string/pref_background_update_vibrate_title"
+            android:defaultValue="@bool/pref_background_update_vibrate_default"
+            android:key="@string/pref_background_update_vibrate"
+            android:dependency="@string/pref_background_update_notify" />
+		<CheckBoxPreference
+		    android:title="@string/pref_background_update_flash_title"
+            android:defaultValue="@bool/pref_background_update_flash_default"
+            android:key="@string/pref_background_update_flash"
+            android:dependency="@string/pref_background_update_notify" />
     </PreferenceCategory>
-    
-
 </PreferenceScreen>

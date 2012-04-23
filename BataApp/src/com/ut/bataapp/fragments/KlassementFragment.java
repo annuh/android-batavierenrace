@@ -197,7 +197,6 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 
 		@Override  
 		protected void onPostExecute(Void result) {
-
 			if(Utils.checkResponse(context, response)) {
 				klassement = response.getResponse();
 				Log.d("Klassement", ""+klassement.getUitslag().size());

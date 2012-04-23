@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Background upater -->
+    <!-- Background updater -->
     <string name="pref_background_update">backgroundupdater</string>
     <string name="pref_background_update_interval">backgroundinterval</string>
     <string name="pref_background_update_notify">backgroundnotify</string>
@@ -8,9 +8,9 @@
     <string name="pref_background_update_vibrate">backgroundvibrate</string>
     <string name="pref_background_update_flash">backgroundflash</string>
     <string name="pref_background_update_notify_etappeuitslag">backgroundnotifyetappeuitslag</string>
-    
-    <integer name="pref_background_update_interval_default">1</integer>
+ 
     <bool name="pref_background_update_default">true</bool>
+    <string name="pref_background_update_interval_default">5</string>
     <bool name="pref_background_update_notify_default">true</bool>
     <bool name="pref_background_update_sound_default">true</bool>
     <bool name="pref_background_update_vibrate_default">true</bool>

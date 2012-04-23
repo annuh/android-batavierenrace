@@ -38,6 +38,8 @@ public class TeamActivity extends SherlockFragmentActivity {
 	public static final String TAB = "tabid";
 	public static final String ID = "index";
 	
+	public static final String OPEN_ACTION = "com.ut.bataapp.intent.action.OPEN_TEAM";
+	
 	private static final int MENU_FOLLOW = Menu.FIRST;
 	private static final int MENU_UNFOLLOW = Menu.FIRST + 1;
 
@@ -64,9 +66,9 @@ public class TeamActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mTeamID = ((savedInstanceState == null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("teamid"));
+		mTeamID = ((getIntent() != null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("teamid"));
 		Log.d("Teamid", "teamid: " + mTeamID);
-		new getTeam((savedInstanceState == null) ? getIntent().getIntExtra("tabid", 0) : savedInstanceState.getInt("tabid")).execute();		
+		new getTeam((getIntent() != null) ? getIntent().getIntExtra("tabid", 0) : savedInstanceState.getInt("tabid")).execute();		
 	}
 
 	@Override
