@@ -24,8 +24,8 @@
         <item name="absForceOverflow">true</item>
         <item name="homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
         <item name="android:homeAsUpIndicator">@drawable/abs__ic_ab_back_holo_light</item>
-        <item name="actionBarItemBackground">@drawable/ad_selectable_background</item>
-        <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item>
+        <item name="actionBarItemBackground">@drawable/actionbar_background</item>
+        <item name="android:actionBarItemBackground">@drawable/actionbar_background</item>
         <item name="android:listViewStyle">@style/MyListView</item>
     </style>
 
@@ -81,7 +81,7 @@
         <item name="android:background">@drawable/titel</item>
         <item name="android:paddingTop">5dip</item>
         <item name="android:paddingLeft">30dip</item>
-        <item name="android:paddingBottom">1dip</item>
+        <item name="android:paddingBottom">15dip</item>
     </style>
 
     <style name="info">

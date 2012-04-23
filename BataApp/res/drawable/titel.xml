@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-        <item>
-                <shape>    
-                    <solid
-                        android:color="@color/jaarkleur" />
-                </shape>
-        </item>
-        
-            
-        
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <shape>
+            <solid android:color="@color/jaarkleur" />
+        </shape>
+    </item>
+    <item>
+        <bitmap
+            android:filter="true"
+            android:gravity="fill_horizontal|bottom"
+            android:src="@drawable/h1_over" />
+    </item>
+
 </layer-list>

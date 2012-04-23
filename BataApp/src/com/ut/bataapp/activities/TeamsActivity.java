@@ -144,6 +144,7 @@ public class TeamsActivity extends SherlockListActivity  {
 				teams = response.getResponse();
 				sortStartnummer(null);
 				progressDialog.dismiss();
+				getListView().setEmptyView(findViewById(R.id.listview_leeg));
 				response = null;
 			}
 		}

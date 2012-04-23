@@ -18,8 +18,8 @@
         <TextView
             android:id="@+id/listview_header_tijd"
             style="@style/listview_header_text"
-            android:layout_toRightOf="@id/listview_header_etappenr"
             android:layout_width="80dp"
+            android:layout_toRightOf="@id/listview_header_etappenr"
             android:text="@string/team_looptijden_header_tijd" >
         </TextView>
 
@@ -28,7 +28,7 @@
             android:layout_toRightOf="@id/listview_header_tijd"
             android:text="@string/team_looptijden_header_snelheid" >
         </TextView>
-        
+
         <TextView
             style="@style/listview_header_text"
             android:layout_alignParentRight="true"
@@ -42,9 +42,11 @@
         android:layout_height="fill_parent" />
 
     <TextView
-        android:id="@android:id/empty"
+        android:id="@+id/listview_leeg"
+        style="@style/listview_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/team_looptijden_leeg" />
+        android:text="@string/team_looptijden_leeg"
+        android:visibility="gone" />
 
 </LinearLayout>

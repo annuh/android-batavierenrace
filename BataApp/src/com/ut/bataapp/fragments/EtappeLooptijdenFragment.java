@@ -145,8 +145,8 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 			}
 			
 			looptijden = result;
-			adapter_alg.getFilter().filter(filterText);
-			adapter_uni.getFilter().filter(filterText);	
+			//adapter_alg.getFilter().filter(filterText);
+			//adapter_uni.getFilter().filter(filterText);	
 			
 			makeList();
 			
@@ -186,7 +186,8 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 				looptijden = response.getResponse();
 				//looptijden_copy.addAll(looptijden);
 				looptijden_copy = copyArray(looptijden);
-				Collections.copy(looptijden_copy, looptijden);
+				//Collections.copy(looptijden_copy, looptijden);
+				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 				if(getView() != null) // Als tijdens laden ander tab wordt geopend
 					sortStand(null);
 			}
