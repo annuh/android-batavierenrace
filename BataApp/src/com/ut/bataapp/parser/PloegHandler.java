@@ -25,6 +25,7 @@ public class PloegHandler extends Handler{
 	private boolean klassement;
 	private boolean tijd;
 	private boolean etappe;
+	private boolean bronetappe;
 	
 	private boolean snelheid;
 	private boolean etappeStand;
@@ -35,6 +36,7 @@ public class PloegHandler extends Handler{
 	private String teamKlassement ="";
 	private int startNummer;
 	private int startGroep;
+	private int totBronEtappe;
 	private Looptijd looptijd;
 	private Team team;
 	
@@ -54,6 +56,7 @@ public class PloegHandler extends Handler{
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{
 		if(localName.equals("ploeg")) this.ploeg = true;
+		else if(localName.equals("bronetappe")) this.bronetappe = true;
 		else if(localName.equals("startnummer")) this.startnummer = true;
 		else if(localName.equals("naam")) this.naam = true;
 		else if(localName.equals("startgroep")) this.startgroep = true;
@@ -77,10 +80,11 @@ public class PloegHandler extends Handler{
 			team.setStartGroep(startGroep);
 			team.setStartnummer(startNummer);
 			team.setKlassementsnotering(noteringI);
-			team.setKlassementTotEtappe(totEtappeI);
+			team.setKlassementTotEtappe(totBronEtappe);
 			team.setKlassement(teamKlassement);
 			this.ploeg = false;
 		}
+		else if(localName.equals("bronetappe")) this.bronetappe = true;
 		else if(localName.equals("startnummer")) this.startnummer = false;
 		else if(localName.equals("naam")) this.naam = false;
 		else if(localName.equals("startgroep")) this.startgroep = false;
@@ -109,6 +113,7 @@ public class PloegHandler extends Handler{
 			looptijd.setTeamStartgroep(startGroep);
 			uitslag = false;
 		}
+		else if(bronetappe) this.totBronEtappe = Integer.parseInt(new String(ch,start,length));
 		else if(foutcode) looptijd.setFoutcode(new String(ch,start,length));
 		else if(klassement) team.setKlassement(new String(ch,start,length));
 		else if(tijd) looptijd.setTijd(new String(ch,start,length));
