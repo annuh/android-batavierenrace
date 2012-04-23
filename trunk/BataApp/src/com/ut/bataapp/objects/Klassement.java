@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Klassement {
 
 	String naam;
-	
+	int totEtappe = 0;
 	ArrayList<KlassementItem> uitslag;
 
 	/**
@@ -33,11 +33,12 @@ public class Klassement {
 
 	/*Setters*/
 	public void setNaam(String naam){this.naam = naam;}
-
+	public void setTotEtappe(int tot){this.totEtappe=tot;}
 	/*Getters*/
 	public String getNaam() {return naam;}
 	public ArrayList<KlassementItem> getUitslag(){return uitslag;}
-
+	public int getTotEtappe(){return totEtappe;}
+	
 	public String toString(){
 		return "klassement: "+getNaam();
 	}

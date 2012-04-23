@@ -18,6 +18,7 @@ public class KlassementHandler extends Handler{
 	private boolean klassnaam;
 	private boolean readNaam; //true als de klassnaam == naam anders false;
 	private boolean plaats;
+	private boolean bron;
 	private boolean positie;
 	private boolean teamnr;
 	private boolean teamnaam;
@@ -36,6 +37,7 @@ public class KlassementHandler extends Handler{
 	@Override
 	public void startElement(String nameSpaceURI, String localName, String qName, Attributes atts) throws SAXException{
 		if(localName.equals("naam")) klassnaam = true;
+		else if(localName.equals("bronetappe")) bron = true;
 		else if(localName.equals("plaats")) plaats = true;
 		else if(localName.equals("positie")) positie = true;
 		else if(localName.equals("teamnr")) teamnr = true;
@@ -52,6 +54,7 @@ public class KlassementHandler extends Handler{
 				klassement.addKlassementInfo(item);
 			}
 		}
+		else if(localName.equals("bronetappe")) bron = false;
 		else if(localName.equals("positie")) positie = false;
 		else if(localName.equals("teamnr")) teamnr = false;
 		else if(localName.equals("teamnaam")) teamnaam = false;
@@ -64,6 +67,9 @@ public class KlassementHandler extends Handler{
 		if(klassnaam){
 			if(new String(ch,start,length).equals(naam))readNaam = true;
 			else readNaam = false;	
+		}
+		else if(bron){
+			klassement.setTotEtappe(Integer.parseInt(new String(ch,start,length)));
 		}
 		if(readNaam){
 			if(plaats){
