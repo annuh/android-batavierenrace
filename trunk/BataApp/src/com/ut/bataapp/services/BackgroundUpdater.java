@@ -93,7 +93,7 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 				Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
 				intent.putExtra(TeamActivity.ID, id);
 				intent.putExtra(TeamActivity.TAB, tabId);
-				return PendingIntent.getActivity(BackgroundUpdater.this, 0, intent, 0);
+				return PendingIntent.getActivity(BackgroundUpdater.this, countRequestCode++, intent, 0);
 			}
 			
 			/* Voegt flags (volgens user's voorkeuren) toe aan notification.
@@ -217,30 +217,27 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 				Response<Team> response = api.getTeamByID(teamId);
 				if (response.getStatus() == Response.NOK_NO_DATA || response.getStatus() == Response.NOK_OLD_DATA)
 					scheduleRetry();	
-			    else {
-			    	scheduleNextUpdate();
-				    if (notifyOnChange && response.getStatus() == Response.OK_UPDATE) {
-						Team newOne = response.getResponse();
-						String teamNaam = newOne.getNaam();
-						int klassementsnotering = newOne.getKlassementsnotering(), klassementTotEtappe = newOne.getKlassementTotEtappe();
-						if (klassementsnotering != -1 && klassementTotEtappe != 0 && (old == null || klassementsnotering != old.getKlassementsnotering() || klassementTotEtappe != old.getKlassementTotEtappe()))
-							mKlassementNotification = createKlassementNotification(teamId, teamNaam, klassementsnotering, klassementTotEtappe);
-						if (prefs.getBoolean(res.getString(R.string.pref_background_update_notify_etappeuitslag), res.getBoolean(R.bool.pref_background_update_notify_etappeuitslag_default))) {
-							ArrayList<Looptijd> oudeLooptijden = (old == null ? new ArrayList<Looptijd>() : old.getLooptijden()),
-									            nieuweLooptijden = response.getResponse().getLooptijden();
-							ArrayList<Integer> gewijzigdeEtappes = new ArrayList<Integer>();
-							for (Looptijd nieuweLooptijd: nieuweLooptijden) {
-								Looptijd oudeLooptijd = getLooptijd(oudeLooptijden, nieuweLooptijd.getEtappe());
-								if (oudeLooptijd == null || !nieuweLooptijd.getTijd().equals(oudeLooptijd.getTijd()))
-									gewijzigdeEtappes.add(nieuweLooptijd.getEtappe());
-							}
-							if (gewijzigdeEtappes.size() == 1) {
-								Looptijd gewijzigd = getLooptijd(nieuweLooptijden, gewijzigdeEtappes.get(0));
-								mEtappeUitslagNotification = createEtappeUitslagNotification(teamId, teamNaam, gewijzigd.getEtappe(), gewijzigd.getTijd());
-							} else if (gewijzigdeEtappes.size() > 1)
-								mEtappeUitslagNotification = createEtappeUitslagenNotification(teamId, teamNaam, gewijzigdeEtappes);
+			    else if (notifyOnChange && response.getStatus() == Response.OK_UPDATE) {
+					Team newOne = response.getResponse();
+					String teamNaam = newOne.getNaam();
+					int klassementsnotering = newOne.getKlassementsnotering(), klassementTotEtappe = newOne.getKlassementTotEtappe();
+					if (klassementsnotering != -1 && klassementTotEtappe != 0 && (old == null || klassementsnotering != old.getKlassementsnotering() || klassementTotEtappe != old.getKlassementTotEtappe()))
+						mKlassementNotification = createKlassementNotification(teamId, teamNaam, klassementsnotering, klassementTotEtappe);
+					if (prefs.getBoolean(res.getString(R.string.pref_background_update_notify_etappeuitslag), res.getBoolean(R.bool.pref_background_update_notify_etappeuitslag_default))) {
+						ArrayList<Looptijd> oudeLooptijden = (old == null ? new ArrayList<Looptijd>() : old.getLooptijden()),
+								            nieuweLooptijden = response.getResponse().getLooptijden();
+						ArrayList<Integer> gewijzigdeEtappes = new ArrayList<Integer>();
+						for (Looptijd nieuweLooptijd: nieuweLooptijden) {
+							Looptijd oudeLooptijd = getLooptijd(oudeLooptijden, nieuweLooptijd.getEtappe());
+							if (oudeLooptijd == null || !nieuweLooptijd.getTijd().equals(oudeLooptijd.getTijd()))
+								gewijzigdeEtappes.add(nieuweLooptijd.getEtappe());
 						}
-				    }
+						if (gewijzigdeEtappes.size() == 1) {
+							Looptijd gewijzigd = getLooptijd(nieuweLooptijden, gewijzigdeEtappes.get(0));
+							mEtappeUitslagNotification = createEtappeUitslagNotification(teamId, teamNaam, gewijzigd.getEtappe(), gewijzigd.getTijd());
+						} else if (gewijzigdeEtappes.size() > 1)
+							mEtappeUitslagNotification = createEtappeUitslagenNotification(teamId, teamNaam, gewijzigdeEtappes);
+					}
 				}
 				
 				return teamId;
@@ -259,15 +256,18 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 		
 		/* Manager van status bar notificaties.
 		 * @invariant mNotificationManager != null 
-		 * */
+		 */
 		private NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-					
+		/* Tellertje voor verschillende request codes */
+		private int countRequestCode;	
+		
 		// -- HANDLER --
 		
 		@Override
 		public void handleMessage(Message msg) {
 			Log.d("bu", "Background update ongoing!");
 			mRetrying = false;
+			scheduleNextUpdate();
 			// start AsyncTask voor elk favoriet team:
 			SharedPreferences keyValues = getSharedPreferences(mRes.getString(R.string.pref_favorieten), Context.MODE_PRIVATE);
 			Map<String, ?> favoteams = keyValues.getAll();
@@ -323,7 +323,7 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 		    	long interval = Long.MIN_VALUE;
 		    	/*if (diff < 0)
 		    		interval = bataDag.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();*/
-		    	interval = Math.max(interval, mPrefs.getInt(mRes.getString(R.string.pref_background_update_interval), mRes.getInteger(R.integer.pref_background_update_interval_default)) * MILLIS_IN_MINUTE);
+		    	interval = Math.max(interval, Integer.parseInt(mPrefs.getString(mRes.getString(R.string.pref_background_update_interval), mRes.getString(R.string.pref_background_update_interval_default))) * MILLIS_IN_MINUTE);
 		    	mHandler.removeMessages(BACKGROUND_UPDATE);
 		    	mHandler.sendEmptyMessageDelayed(BACKGROUND_UPDATE, interval);
 		    	Log.d("bu", "Next background update scheduled at " + interval + "ms");

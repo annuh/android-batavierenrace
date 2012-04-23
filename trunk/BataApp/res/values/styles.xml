@@ -30,7 +30,7 @@
     </style>
 
     <style name="MyListView" parent="@android:style/Widget.ListView">
-        <item name="android:cacheColorHint">@color/batabruin</item>
+        <item name="android:cacheColorHint">#FFFFFF</item>
         <item name="android:fastScrollEnabled">true</item>
         <item name="android:background">#FFFFFF</item>
     </style>

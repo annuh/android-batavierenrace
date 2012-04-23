@@ -214,5 +214,38 @@
     <string name="notification_bu_etappeuitslag_content">Uitslag etappe %1$s: %2$s</string>
     <string name="notification_bu_etappeuitslagen_ticker">Nieuwe etappeuitslagen %s</string>
     <string name="notification_bu_etappeuitslagen_content">Nieuwe uitslag etappes %s</string>
-
+    
+    <!-- Instellingen -->
+    <string name="title_prefs">Instellingen</string>
+    <string name="pref_background_updater_title">Background updater</string>
+    <string name="pref_background_update_title">Download op achtergrond</string>
+    <string name="pref_background_update_summary_on">Uitslagen van favoriete teams worden op achtergrond gedownload</string>
+    <string name="pref_background_update_summary_off">Er worden geen uitslagen op achtergrond gedownload</string>
+    <string name="pref_background_update_interval_title">Updatefrequentie</string>
+    <string name="pref_background_update_interval_summary">Hoe vaak uitslagen favoriete teams worden gedownload</string>
+    <string-array name="pref_background_update_interval_options_desc">
+        <item>Elke 5 minuten</item>
+        <item>Elke 10 minuten</item>
+        <item>Elke 15 minuten</item>
+        <item>Elke 20 minuten</item>
+        <item>Elke 30 minuten</item>
+        <item>Elke 60 minuten</item>
+    </string-array>
+    <string-array name="pref_background_update_interval_options">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+    <string name="pref_background_update_notify_title">Notificatie bij nieuwe data</string>
+    <string name="pref_background_update_notify_summary_on">Toon notificatie bij nieuwe uitslagen favoriete teams</string>
+    <string name="pref_background_update_notify_summary_off">Toon geen notificatie bij nieuwe uitslagen favoriete teams</string>
+    <string name="pref_background_update_notify_etappeuitslag_title">Notificatie bij etappeuitslagen</string>
+    <string name="pref_background_update_notify_etappeuitslag_summary_on">Toon notificatie bij nieuwe klassement- en etappeuitslagen favoriete teams</string>
+    <string name="pref_background_update_notify_etappeuitslag_summary_off">Toon alleen notificatie bij nieuwe klassementsnoteringen favoriete teams</string>
+    <string name="pref_background_update_sound_title">Geluid bij notificatie</string>
+    <string name="pref_background_update_vibrate_title">Tril bij notificatie</string>
+    <string name="pref_background_update_flash_title">Knipperlicht bij notificatie</string>
 </resources>
