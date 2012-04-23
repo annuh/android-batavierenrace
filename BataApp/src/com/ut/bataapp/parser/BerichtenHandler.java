@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+
+import android.text.Html;
+import android.util.Log;
+
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Response;
 
@@ -12,6 +16,7 @@ public class BerichtenHandler extends Handler{
 	private boolean id;
 	private boolean titel;
 	private boolean bericht;
+	private boolean empty = false;
 	
 	private ArrayList<Bericht> berichten;
 	
@@ -48,7 +53,23 @@ public class BerichtenHandler extends Handler{
 		if(id) berichten.get(berichten.size()-1).setId(new String(ch,start,length));
 		else if(titel) berichten.get(berichten.size()-1).setTitel(new String(ch,start,length));
 		else if(bericht) {
-			berichten.get(berichten.size()-1).appendBericht(new String(ch,start,length));
+			String toev = new String(ch,start,length);
+			if(toev.contains("[b]")){
+				toev = toev.replaceAll("\\[b\\]", "<b>");
+				toev = toev.replaceAll("\\[/b\\]", "</b>");
+			}else if(toev.contains("[link=")){
+				toev = toev.replaceAll("\\[/link\\]", "</a>");
+				toev = toev.replaceAll("\\[link=", "<a href=");
+				toev = toev.replaceAll("]", ">");
+			}
+			Log.d("handler","toev: "+toev);
+			if(toev.length()==1 && !empty){
+				toev = "<br />";
+				empty = true;
+			}else{
+				empty = false;
+			}
+			berichten.get(berichten.size()-1).appendBericht(toev);
 		}
 	}
 	

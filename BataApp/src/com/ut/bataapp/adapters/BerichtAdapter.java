@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.ut.bataapp.R;
 import com.ut.bataapp.objects.Bericht;
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class BerichtAdapter extends ArrayAdapter<Bericht> {
 			colour = R.color.green;
 		}
 		codeView.setBackgroundResource(colour);
-		contentView.setText(bericht.getBericht());
+		contentView.setText(Html.fromHtml(bericht.getBericht()));
 
 		return rowView;
 	}
