@@ -62,7 +62,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			Utils.goHome(getApplicationContext());
-			break;
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

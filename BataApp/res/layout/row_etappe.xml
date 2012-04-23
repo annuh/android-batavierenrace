@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
-    android:background="@drawable/listview_background" >
+    android:background="@drawable/listview_background"
+    android:paddingRight="5dp" >
 
     <ImageView
         android:id="@+id/geslacht"
@@ -36,7 +37,6 @@
         android:layout_alignWithParentIfMissing="true"
         android:layout_toRightOf="@id/geslacht"
         android:gravity="center_vertical"
-        android:text="Etappe"
         android:textSize="20dp" />
 
     <TextView
@@ -48,7 +48,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignWithParentIfMissing="true"
         android:gravity="center_vertical"
-        android:text=""
         android:textSize="20dp" />
 
 </RelativeLayout>

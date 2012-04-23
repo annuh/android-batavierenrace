@@ -19,11 +19,6 @@
             <TextView
                 style="@style/h1"
                 android:text="Klassementen" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="10dp"
-                android:background="@drawable/onder" />
         </LinearLayout>
     </ScrollView>
 

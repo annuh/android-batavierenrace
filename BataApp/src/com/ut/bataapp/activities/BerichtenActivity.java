@@ -31,7 +31,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		setTitle("Berichten");
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.listview_berichten);

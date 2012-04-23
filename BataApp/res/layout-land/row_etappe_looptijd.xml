@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/listview_background"
-    android:orientation="horizontal" >
+    style="@style/listview_row" >
 
     <TextView
         android:id="@+id/etappe_looptijd_plaats"
         style="@style/listview_text"
-        android:layout_width="30dp"
+        android:layout_width="40dp"
         android:layout_alignParentLeft="true" />
 
     <TextView
@@ -25,6 +22,8 @@
     <TextView
         android:id="@+id/etappe_looptijd_code"
         style="@style/listview_text"
-        android:layout_alignParentRight="true" />
+        android:layout_width="55dp"
+        android:layout_alignParentRight="true"
+        android:gravity="right" />
 
 </RelativeLayout>
