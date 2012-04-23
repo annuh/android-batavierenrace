@@ -63,7 +63,7 @@ public class Team {
 	public void addLooptijd(Looptijd looptijd) {looptijden.add(looptijd);}
 	public void setKlassementsnotering(int klassementsnotering) { this.klassementsnotering = klassementsnotering; }
 	public void setKlassementTotEtappe(int totEtappe) { this.klassementTotEtappe = totEtappe; }
-	
+	public void appendNaam(String naam){this.naam = this.naam.concat(naam);}
 	/*Getters*/
 	public int getStartnummer(){return startnummer;}
 	public int getStartGroep(){return startgroep;}

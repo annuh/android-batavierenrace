@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-
 import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.objects.Response;
 
@@ -48,7 +47,9 @@ public class BerichtenHandler extends Handler{
 		}
 		if(id) berichten.get(berichten.size()-1).setId(new String(ch,start,length));
 		else if(titel) berichten.get(berichten.size()-1).setTitel(new String(ch,start,length));
-		else if(bericht) berichten.get(berichten.size()-1).setBericht(new String(ch,start,length));
+		else if(bericht) {
+			berichten.get(berichten.size()-1).appendBericht(new String(ch,start,length));
+		}
 	}
 	
 	@Override
