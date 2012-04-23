@@ -59,7 +59,7 @@ public class TeamHandler extends Handler{
 			ploeg = false;
 		}
 		if(startgroep) teams.get(teams.size()-1).setStartGroep(Integer.parseInt(new String(ch,start,length)));
-		else if(naam) teams.get(teams.size()-1).setNaam(new String(ch,start,length));
+		else if(naam) teams.get(teams.size()-1).appendNaam(new String(ch,start,length));
 		else if(startnummer) teams.get(teams.size()-1).setStartnummer(Integer.parseInt(new String(ch,start,length)));
 	}
 	

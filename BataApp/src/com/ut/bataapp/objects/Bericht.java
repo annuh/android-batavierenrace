@@ -27,9 +27,10 @@ public class Bericht {
 	
 	public void setId(String id){this.id = id;}
 	public void setTitel(String titel){this.titel = titel;}
-	public void setBericht(String bericht){this.bericht = bericht;}
 	public void setDatum(String datum){this.datum=datum;}
 	public void setCode(int code){this.code = code;}
+	public void setBericht(String bericht){this.bericht = bericht;}
+	public void appendBericht(String bericht){this.bericht = this.bericht.concat(bericht);}
 	
 	public String getId(){ return this.id; }
 	public int getCode(){ return this.code; }
