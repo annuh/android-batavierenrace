@@ -79,6 +79,7 @@ public class EtappesActivity extends SherlockListActivity  {
 				adapter = new EtappeAdapter(EtappesActivity.this, etappes);
 				setListAdapter(adapter);
 				progressDialog.dismiss();
+				getListView().setEmptyView(findViewById(R.id.listview_leeg));
 			}
 			
 		}

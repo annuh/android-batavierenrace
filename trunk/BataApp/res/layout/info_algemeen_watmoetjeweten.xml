@@ -4,60 +4,58 @@
     style="@style/scroller"
     android:layout_width="wrap_content" >
 
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" 
-	    android:id="@+id/scroller_info_overzichtskaarten1">
+    <LinearLayout
+        android:id="@+id/scroller_info_overzichtskaarten1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-	    <TextView
-			android:text = "Medische ondersteuning"
-			style="@style/h1" />
-	    <TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-	    
-	    <TextView
-			android:text = "@string/info_algemeen_watmoetjeweten_medischeondersteuning"
-			style="@style/container_block" />
-	        
-		<TextView
-			android:text = "Hesinname"
-			style="@style/h1" />
-		<TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-	    
-	    <TextView
-	        android:text = "@string/info_algemeen_watmoetjeweten_hesinname"
-	        style="@style/container_block" />
+        <TextView
+            style="@style/h1"
+            android:text="Medische ondersteuning" />
 
-		<TextView
-			android:text = "Gevonden voorwerpen"
-			style="@style/h1" />
-		<TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-		
-		<TextView
-		    android:text="@string/info_algemeen_watmoetjeweten_gevondenvoorwerpen" 
-		    style="@style/container_block" />
-		
-		<TextView
-			android:text = "Tot slot"
-			style="@style/h1" />
-		<TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-		
-		<TextView
-		    android:text = "@string/info_algemeen_watmoetjeweten_totslot"
-		    style="@style/container_block" />
-	   
-		
-	</LinearLayout>
+        <TextView
+            style="@style/container_block"
+            android:text="@string/info_algemeen_watmoetjeweten_medischeondersteuning" />
+
+        <TextView
+            style="@style/h1"
+            android:text="Hesinname" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/onder" />
+
+        <TextView
+            style="@style/container_block"
+            android:text="@string/info_algemeen_watmoetjeweten_hesinname" />
+
+        <TextView
+            style="@style/h1"
+            android:text="Gevonden voorwerpen" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/onder" />
+
+        <TextView
+            style="@style/container_block"
+            android:text="@string/info_algemeen_watmoetjeweten_gevondenvoorwerpen" />
+
+        <TextView
+            style="@style/h1"
+            android:text="Tot slot" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/onder" />
+
+        <TextView
+            style="@style/container_block"
+            android:text="@string/info_algemeen_watmoetjeweten_totslot" />
+    </LinearLayout>
+
 </ScrollView>

@@ -8,7 +8,7 @@
     </item>
     <item>
         <bitmap
-            android:filter="true"
+            android:antialias="true"
             android:gravity="fill_horizontal|bottom"
             android:src="@drawable/h1_over" />
     </item>

@@ -2,31 +2,31 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroller"
     style="@style/scroller" >
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" 
-	    android:id="@+id/scroller_info_overzichtskaarten1">
 
-	    <TextView
-			android:text = "Colofon"
-			style="@style/h1" />
-	    <TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-		<Button 
-			android:text="Contactgegevens"
-			android:id="@+id/info_contact"
-			style="@style/nice_button" />
-		<Button 
-			android:text="Colofon"
-			android:id="@+id/info_colofon"
-			style="@style/nice_button" />
-		<Button 
-			android:text="Disclaimer"
-			android:id="@+id/info_disclaimer"
-			style="@style/nice_button" />
-	   
-	</LinearLayout>
+    <LinearLayout
+        android:id="@+id/scroller_info_overzichtskaarten1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/h1"
+            android:text="Colofon" />
+
+        <Button
+            android:id="@+id/info_contact"
+            style="@style/nice_button"
+            android:text="Contactgegevens" />
+
+        <Button
+            android:id="@+id/info_colofon"
+            style="@style/nice_button"
+            android:text="Colofon" />
+
+        <Button
+            android:id="@+id/info_disclaimer"
+            style="@style/nice_button"
+            android:text="Disclaimer" />
+    </LinearLayout>
+
 </ScrollView>

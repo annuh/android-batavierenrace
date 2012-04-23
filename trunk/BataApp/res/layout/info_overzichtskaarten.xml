@@ -2,39 +2,42 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroller"
     style="@style/scroller" >
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" 
-	    android:id="@+id/scroller_info_overzichtskaarten1">
 
-	    <TextView
-			android:id="@+id/label_info"
-			android:text = "@string/team_h1_informatie"
-			style="@style/h1" />
-	    <TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-		<Button 
-			android:text="Herstart Barchem"
-			android:id="@+id/herstart_barchem"
-			style="@style/nice_button" />
-	   <Button
-	       android:id="@+id/herstart_ulft" 
-			android:text="Herstart Ulft"
-			style="@style/nice_button" />
-	   <Button 
-	       android:id="@+id/campus_enschede"
-			android:text="Campus Enschede"
-			style="@style/nice_button" />
-	   <Button 
-	       android:id="@+id/stad_enschede"
-			android:text="Stad Enschede"
-			style="@style/nice_button" />
-	   <Button 
-	       android:id="@+id/stad_nijmegen"
-			android:text="Start Nijmegen"
-			style="@style/nice_button" />
-	</LinearLayout>
+    <LinearLayout
+        android:id="@+id/scroller_info_overzichtskaarten1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/label_info"
+            style="@style/h1"
+            android:text="@string/team_h1_informatie" />
+
+        <Button
+            android:id="@+id/herstart_barchem"
+            style="@style/nice_button"
+            android:text="Herstart Barchem" />
+
+        <Button
+            android:id="@+id/herstart_ulft"
+            style="@style/nice_button"
+            android:text="Herstart Ulft" />
+
+        <Button
+            android:id="@+id/campus_enschede"
+            style="@style/nice_button"
+            android:text="Campus Enschede" />
+
+        <Button
+            android:id="@+id/stad_enschede"
+            style="@style/nice_button"
+            android:text="Stad Enschede" />
+
+        <Button
+            android:id="@+id/stad_nijmegen"
+            style="@style/nice_button"
+            android:text="Start Nijmegen" />
+    </LinearLayout>
+
 </ScrollView>

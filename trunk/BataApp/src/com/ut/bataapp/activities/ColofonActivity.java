@@ -23,7 +23,7 @@ public class ColofonActivity extends SherlockFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         setContentView(R.layout.simple_tabs);
 		
         mAdapter = new ColofonFragmentAdapter(getSupportFragmentManager());

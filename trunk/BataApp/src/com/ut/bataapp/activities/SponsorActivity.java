@@ -25,7 +25,7 @@ public class SponsorActivity extends SherlockFragmentActivity  {
 	   setTitle("Sponsor");
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.sponsor);
-	   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	   getSupportActionBar().setDisplayShowHomeEnabled(true);
 	   
 	   ArrayList<Sponsor> sponsors = Sponsor.getSponsors();	   	   
 	   ViewGroup c = (ViewGroup) findViewById(R.id.container_sponsor);

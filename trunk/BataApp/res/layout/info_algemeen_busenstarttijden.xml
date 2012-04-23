@@ -11,10 +11,7 @@
 	    <TextView
 			android:text = "Bustijden"
 			style="@style/h1" />
-	    <TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
+	   
 	    
 	    <TableLayout
 	        android:layout_width="match_parent"

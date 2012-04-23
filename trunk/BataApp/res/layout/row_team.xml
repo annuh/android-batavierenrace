@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="@drawable/listview_background">
+    style="@style/listview_row" >
 
     <TextView
         android:id="@+id/team_start"
-        android:layout_width="40dp"
         style="@style/listview_text"
+        android:layout_width="40dp"
         android:gravity="center_vertical" >
-
     </TextView>
+
     <TextView
         android:id="@+id/team_naam"
         style="@style/listview_text"

@@ -187,9 +187,10 @@ public class EtappeLooptijdenFragment extends SherlockListFragment {
 				//looptijden_copy.addAll(looptijden);
 				looptijden_copy = copyArray(looptijden);
 				//Collections.copy(looptijden_copy, looptijden);
-				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
+				
 				if(getView() != null) // Als tijdens laden ander tab wordt geopend
 					sortStand(null);
+				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 			}
 		}
 	}

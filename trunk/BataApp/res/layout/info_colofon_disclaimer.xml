@@ -2,21 +2,20 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroller"
     style="@style/scroller" >
-	<LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" 
-	    android:id="@+id/scroller_info_overzichtskaarten1">
 
-	    <TextView
-			android:text = "Disclaimer"
-			style="@style/h1" />
-	    <TextView
-	        android:layout_height="10dp"
-	        android:layout_width="fill_parent"
-			android:background = "@drawable/onder" />
-		<TextView
-			android:text="@string/disclamer"
-			style="@style/container_block" />
-	</LinearLayout>
+    <LinearLayout
+        android:id="@+id/scroller_info_overzichtskaarten1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/h1"
+            android:text="Disclaimer" />
+
+        <TextView
+            style="@style/container_block"
+            android:text="@string/disclamer" />
+    </LinearLayout>
+
 </ScrollView>

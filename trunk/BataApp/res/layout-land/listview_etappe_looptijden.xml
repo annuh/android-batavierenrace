@@ -9,29 +9,28 @@
         <TextView
             android:id="@+id/etappe_looptijden_header_stand"
             style="@style/listview_header_text"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:text="@string/etappe_looptijden_header_stand" />
 
         <TextView
             android:id="@+id/etappe_looptijden_header_team"
             style="@style/listview_header_text"
-            android:layout_toRightOf="@id/etappe_looptijden_header_stand"
             android:layout_toLeftOf="@id/etappe_looptijden_header_tijd"
+            android:layout_toRightOf="@id/etappe_looptijden_header_stand"
             android:text="@string/etappe_looptijden_header_team" />
 
         <TextView
             android:id="@+id/etappe_looptijden_header_foutcode"
             style="@style/listview_header_text"
+            android:layout_width="55dp"
             android:layout_alignParentRight="true"
             android:text="@string/etappe_looptijden_header_foutcode" />
-        
+
         <TextView
             android:id="@+id/etappe_looptijden_header_tijd"
             style="@style/listview_header_text"
             android:layout_toLeftOf="@id/etappe_looptijden_header_foutcode"
             android:text="@string/etappe_looptijden_header_tijd" />
-        
-           
     </RelativeLayout>
 
     <ListView
@@ -40,12 +39,26 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-    <TextView
+    <LinearLayout
         android:id="@android:id/empty"
-        style="@style/listview_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/etappe_looptijden_laden" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/listview_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/etappe_looptijden_laden" />
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Large.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/listview_leeg"

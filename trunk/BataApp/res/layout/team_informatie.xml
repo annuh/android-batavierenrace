@@ -11,11 +11,6 @@
             style="@style/h1"
             android:text="@string/team_h1_informatie" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/onder" />
-
         <TableLayout style="@style/table" >
 
             <TableRow
@@ -68,11 +63,6 @@
             style="@style/h1"
             android:text="@string/team_h1_klassement" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/onder" />
-
         <TableLayout style="@style/table" >
 
             <TableRow
@@ -117,13 +107,11 @@
                     android:id="@+id/team_totaal_looptijd"
                     style="@style/table_right" />
             </TableRow>
-            
         </TableLayout>
-        
+
         <TextView
-            android:text="@string/team_klassement_totetappe"
-            style="@style/container_block"/>
-        
+            style="@style/container_block"
+            android:text="@string/team_klassement_totetappe" />
     </LinearLayout>
 
 </ScrollView>

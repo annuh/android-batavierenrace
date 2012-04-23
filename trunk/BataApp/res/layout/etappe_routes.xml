@@ -10,10 +10,6 @@
         <TextView
             style="@style/h1"
             android:text="@string/etappe_routes_h1_kaart" />
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/onder" />
         
         <ImageView
             android:layout_width="fill_parent"

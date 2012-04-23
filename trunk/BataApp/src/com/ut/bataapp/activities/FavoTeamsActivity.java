@@ -24,7 +24,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.getSupportActionBar().setTitle(R.string.dashboard_favorieten);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		this.setContentView(R.layout.listview_favo);
 		registerForContextMenu(getListView());
 	}
