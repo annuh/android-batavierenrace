@@ -3,6 +3,7 @@
     style="@style/scroller" >
 
     <LinearLayout
+        android:id="@+id/etappe_route_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
@@ -18,6 +19,7 @@
 
         <Button
             style="@style/nice_button"
+            android:id="@+id/loper_tekst_routebeschijving"
             android:text="@string/etappe_routes_routebeschrijving_looproute" />
 
         
@@ -27,10 +29,12 @@
 
         <Button
             style="@style/nice_button"
+            android:id="@+id/loper_googlemaps_route"
             android:text="@string/etappe_routes_looproute" />
 
         <Button
             style="@style/nice_button"
+            android:id="@+id/auto_googlemaps_route"
             android:text="@string/etappe_routes_autoroute" />
     </LinearLayout>
 
