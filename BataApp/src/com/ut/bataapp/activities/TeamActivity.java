@@ -143,7 +143,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 			KlassementFragment kf = new KlassementFragment();
 			Bundle info = new Bundle();
 			info.putString("index",mTeam.getKlassement());
-			info.putInt("init", mTeam.getLooptijden().get(mTeam.getLooptijden().size()-1).getCumulatieveStand());
+			info.putInt("init", Integer.parseInt(mTeam.getCumKlassement()));
 			info.putBoolean("inViewpager", true);
 			kf.setArguments(info);
 			fragments.add(kf);
