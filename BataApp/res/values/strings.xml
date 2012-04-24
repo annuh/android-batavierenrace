@@ -30,6 +30,12 @@
     <string name="km">%s km</string>
     <string name="kmu">%s km/u</string>
     <string name="uur">%s u</string>
+    <string name="geen_data_titel">Helaas! Kan geen gegevens ophalen.</string>
+    <string name="geen_data_bericht">Controleer uw internetverbinding.</string>
+    <string name="geen_internet">Fout!</string>
+    <string name="ja">Ja</string>
+    <string name="nee">Nee</string>
+    <string name="ok">OK</string>
 
     <!-- Sorteren -->
     <string name="sort_D">\u2191</string>
@@ -40,6 +46,8 @@
 
     <!-- Favo teams -->
     <string name="favo_verwijderteam">Verwijder team</string>
+    <string name="favo_leeg_titel">U heeft geen favoriete teams!</string>
+    <string name="favo_leeg_bericht">Wilt u nu teams toevoegen?</string>
 
     <!-- Klassementen -->
     <string name="klassementen_laden">Klassementen worden geladen…</string>

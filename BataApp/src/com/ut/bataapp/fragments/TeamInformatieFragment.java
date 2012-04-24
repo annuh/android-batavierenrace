@@ -38,6 +38,9 @@ public class TeamInformatieFragment extends SherlockFragment {
 		TextView team_totaal_looptijd = (TextView) view.findViewById(R.id.team_totaal_looptijd);
 		team_totaal_looptijd.setText(team.getTotaalTijd());
 		
+		TextView team_totetappe = (TextView) view.findViewById(R.id.team_totetappe);
+		team_totetappe.setText(String.format(getString(R.string.team_klassement_totetappe), team.getKlassementTotEtappe()));
+		
 		return view;
 	}	
 }
