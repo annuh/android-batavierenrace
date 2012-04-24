@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/listview_row" >
+
+    <TextView
+        android:id="@+id/route_km"
+        style="@style/listview_text"
+        android:layout_alignParentTop="true"
+        android:width="35dp" />
+
+    <TextView
+        android:id="@+id/route_omschrijving"
+        style="@style/listview_text"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/route_km" />
+
+    <TextView
+        android:id="@+id/route_locatie"
+        style="@style/listview_text"
+        android:textStyle="italic"
+        android:layout_below="@id/route_omschrijving"
+        android:layout_toRightOf="@id/route_km" />
+
+</RelativeLayout>

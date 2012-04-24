@@ -2,6 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/viewport" >
 
+    <RelativeLayout style="@style/listview_header" >
+
+        <TextView
+            android:id="@+id/etappe_looptijden_header_stand"
+            style="@style/listview_header_text"
+            android:layout_width="40dp"
+            android:text="@string/etappe_route_tekst_afstand" />
+
+        <TextView
+            android:id="@+id/etappe_looptijden_header_team"
+            style="@style/listview_header_text"
+            android:layout_toRightOf="@id/etappe_looptijden_header_stand"
+            android:text="@string/etappe_route_tekst_omschrijving" />
+
+        <TextView
+            android:id="@+id/etappe_looptijden_header_tijd"
+            style="@style/listview_header_text"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="@string/etappe_route_tekst_locatie" />
+    </RelativeLayout>
+
     <ScrollView
         style="@style/scroller"
         android:layout_width="match_parent"
@@ -12,22 +34,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-            <RelativeLayout style="@style/listview_header" >
-
-                <TextView
-                    android:id="@+id/etappe_looptijden_header_stand"
-                    style="@style/listview_header_text"
-                    android:layout_width="40dp"
-                    android:text="@string/etappe_route_tekst_afstand" />
-
-                <TextView
-                    android:id="@+id/etappe_looptijden_header_team"
-                    style="@style/listview_header_text"
-                    android:layout_toRightOf="@id/etappe_looptijden_header_stand"
-                    android:text="@string/etappe_route_tekst_omschrijving" />
-
-            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/route_container"

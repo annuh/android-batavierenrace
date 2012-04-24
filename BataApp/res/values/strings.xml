@@ -32,7 +32,7 @@
     <string name="uur">%s u</string>
     <string name="geen_data_titel">Helaas! Kan geen gegevens ophalen.</string>
     <string name="geen_data_bericht">Controleer uw internetverbinding.</string>
-    <string name="geen_internet">Fout!</string>
+    <string name="geen_internet">Geen internetverbinding, mogelijk is de data verouderd.</string>
     <string name="ja">Ja</string>
     <string name="nee">Nee</string>
     <string name="ok">OK</string>
@@ -127,9 +127,9 @@
     <string name="etappe_looptijden_laden">Looptijden worden geladen</string>
     <string name="etappe_looptijden_leeg">Geen looptijden gevonden</string>
    
-    <string name="etappe_route_tekst_afstand">afstand</string>
-    <string name="etappe_route_tekst_omschrijving">omschrijving</string>
-    <string name="etappe_route_tekst_locatie">locatie</string>
+    <string name="etappe_route_tekst_afstand">Km.</string>
+    <string name="etappe_route_tekst_omschrijving">Omschrijving</string>
+    <string name="etappe_route_tekst_locatie">Locatie</string>
     <string name="route_kaart">Kaart</string>
     <string name="route_beschrijving">Beschrijving</string>
     <string name="route_maps">Maps</string>
