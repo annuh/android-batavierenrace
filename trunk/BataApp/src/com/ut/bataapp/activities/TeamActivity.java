@@ -38,8 +38,6 @@ public class TeamActivity extends SherlockFragmentActivity {
 	public static final String TAB = "tabid";
 	public static final String ID = "index";
 	
-	public static final String OPEN_ACTION = "com.ut.bataapp.intent.action.OPEN_TEAM";
-	
 	private static final int MENU_FOLLOW = Menu.FIRST;
 	private static final int MENU_UNFOLLOW = Menu.FIRST + 1;
 

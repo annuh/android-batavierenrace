@@ -4,14 +4,11 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:orientation="vertical" >
-
     <TextView
         style="@style/h1"
-        android:text="@string/buienverwachting" />
-
+        android:text="@string/weer_buienverwachting" />
     <WebView
-        android:id="@+id/webview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
-
+        android:id="@+id/weer_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

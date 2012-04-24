@@ -53,12 +53,8 @@
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".activities.TeamActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" >
-            <intent-filter>
-                <action android:name="com.ut.bataapp.intent.action.OPEN_TEAM" />
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
         </activity>
         <activity android:name=".activities.EtappeChartByTeam" />
         <activity android:name="org.achartengine.GraphicalActivity" />

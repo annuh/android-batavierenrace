@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="boundary1">15</integer>
-    <integer name="boundary2">20</integer>
-    <integer name="boundary3">25</integer>
+    <integer name="weer_boundary1">15</integer>
+    <integer name="weer_boundary2">20</integer>
+    <integer name="weer_boundary3">25</integer>
     <integer name="n_etappes">25</integer>
     <integer name="batadag_dag">28</integer>
     <integer name="batadag_maand">4</integer>

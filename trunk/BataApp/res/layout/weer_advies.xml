@@ -1,105 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroller"
     style="@style/scroller" >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
+        
         <TextView
-            style="@style/h1"
-            android:text="@string/huidigweer" />
-
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dip"
-            android:stretchColumns="0" >
-
-            <TableRow>
-
-                <TextView
-                    android:text="@string/plaats"
-                    android:textColor="@android:color/darker_gray" />
-
-                <TextView
-                    android:padding="3dip"
-                    android:text="@string/temperatuur"
-                    android:textColor="@android:color/darker_gray" />
-
-                <TextView
-                    android:text="@string/weericoon"
-                    android:textColor="@android:color/darker_gray" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView android:text="@string/nijmegen" />
-
-                <TextView
-                    android:id="@+id/nijmegen_huidig_temp"
-                    android:padding="3dip" />
-
-                <ImageView
-                    android:id="@+id/nijmegen_huidig_icoon"
-                    android:gravity="right" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView android:text="@string/ruurlo" />
-
-                <TextView
-                    android:id="@+id/ruurlo_huidig_temp"
-                    android:padding="3dip" />
-
-                <ImageView
-                    android:id="@+id/ruurlo_huidig_icoon"
-                    android:gravity="right" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView android:text="@string/enschede" />
-
-                <TextView
-                    android:id="@+id/enschede_huidig_temp"
-                    android:padding="3dip" />
-
-                <ImageView
-                    android:id="@+id/enschede_huidig_icoon"
-                    android:gravity="right" />
-            </TableRow>
-        </TableLayout>
-
+		    style="@style/h1_boven"
+		    android:text="@string/weer_huidigweer" />
+		<TextView
+		    style="@style/h1_onder"
+		    android:text="@string/weer_bron_google" />
+        <include layout="@layout/weer_advies_huidig" />
+        
         <TextView
-            style="@style/h1"
-            android:text="@string/advies" />
-+
-
+            style="@style/h1_boven"
+            android:text="@string/weer_advies" />
+        <TextView
+            style="@style/h1_onder"
+            android:text="@string/weer_bron_google" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dip" >
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/verwachte_max_temp" />
-
+                android:text="@string/weer_verwachte_max_temp" />
             <TextView
-                android:id="@+id/verwachte_max_temp"
+                android:id="@+id/weer_verwachte_max_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="3dip" />
+                android:paddingLeft="3dip"
+                android:paddingRight="5dip" />
         </LinearLayout>
-
+        <TextView	
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingLeft="10dip"
+			android:text="@string/weer_advies_organisatie" />
         <TextView
             android:id="@+id/weer_advies"
             style="@style/container_block" />
     </LinearLayout>
-
 </ScrollView>
