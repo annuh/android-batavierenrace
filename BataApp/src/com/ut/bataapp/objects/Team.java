@@ -78,7 +78,7 @@ public class Team {
 	}
 	
 	public String getCumKlassement() {
-		String cumKlassement = "";
+		String cumKlassement = String.valueOf(startnummer);
 		if(looptijden != null && looptijden.size() > 0 ) {
 			cumKlassement = String.valueOf(looptijden.get(looptijden.size()-1).getCumulatieveStand());
 		}
@@ -86,7 +86,7 @@ public class Team {
 	}
 	
 	public String getTotaalTijd() {
-		String totaaltijd = "";
+		String totaaltijd = "00:00:00";
 		if(looptijden != null && looptijden.size() > 0 ) {
 			totaaltijd = String.valueOf(looptijden.get(looptijden.size()-1).getCumtotaaltijd());
 		}

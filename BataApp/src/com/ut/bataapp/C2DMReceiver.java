@@ -63,9 +63,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 		String type = intent.getExtras().getString("title");
 		if (message != null) {
 			Log.d("C2DM", message);
-			
 			Utils.addBericht(getApplicationContext(), type, message);
-			
 			makeNotification(context, type, message);
 		}
 	}
@@ -73,7 +71,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	@SuppressWarnings("deprecation")
 	public void makeNotification(Context context, String type, String message) {
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-		Notification notification = new Notification(R.drawable.icon, "Message received", System.currentTimeMillis());
+		Notification notification = new Notification(R.drawable.icon, getString(R.string.notification_push_statusbar), System.currentTimeMillis());
 		
 		// Hide the notification after its selected
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
@@ -86,7 +84,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 		
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
 				tointent, 0);
-		notification.setLatestEventInfo(context, "Batavierenrace "+type,
+		notification.setLatestEventInfo(context, getString(R.string.notification_push_titel),
 				message, pendingIntent);
 		notificationManager.notify(0, notification);
 	}
@@ -152,7 +150,8 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 				HttpClient client = new DefaultHttpClient();
 				HttpGet request = new HttpGet();
 				String deviceId = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
-				request.setURI(new URI("http://batabericht.eu5.org/push_register.php?deviceid="+URLEncoder.encode(deviceId)+"&devicetoken="+URLEncoder.encode(deviceRegistrationID).toString()));
+				String get = "?deviceid="+URLEncoder.encode(deviceId)+"&devicetoken="+URLEncoder.encode(deviceRegistrationID).toString();
+				request.setURI(new URI(String.format(getString(R.string.url_push_register), get)));
 
 				HttpResponse response = client.execute(request);
 				in = new BufferedReader

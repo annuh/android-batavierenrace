@@ -42,11 +42,10 @@
         android:layout_height="fill_parent" />
 
     <TextView
-        android:id="@+id/listview_leeg"
+        android:id="@android:id/empty"
         style="@style/listview_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/team_looptijden_leeg"
-        android:visibility="gone" />
+        android:text="@string/team_looptijden_leeg" />
 
 </LinearLayout>

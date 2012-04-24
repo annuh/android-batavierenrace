@@ -36,19 +36,33 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-    <TextView
+    <LinearLayout
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/klassement_laden"
-        style="@style/listview_status" />
-    
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/listview_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/klassement_laden" />
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Large.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/listview_leeg"
+        style="@style/listview_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/klassement_leeg"
-        android:visibility="gone"
-        style="@style/listview_status" />
+        android:visibility="gone" />
 
 </LinearLayout>

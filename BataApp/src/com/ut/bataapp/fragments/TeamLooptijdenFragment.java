@@ -39,7 +39,7 @@ public class TeamLooptijdenFragment extends SherlockListFragment {
 		case MENU_FOUTCODES:
 			FragmentTransaction ft = getFragmentManager().beginTransaction();
 		    DialogFragment newFragment = new FoutcodesDialogFragment();
-		    newFragment.show(ft, "Foutcodes");			
+		    newFragment.show(ft, "Foutcodes");
 			break;
 		
 		}
