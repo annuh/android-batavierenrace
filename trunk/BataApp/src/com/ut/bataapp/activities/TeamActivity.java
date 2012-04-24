@@ -53,16 +53,6 @@ public class TeamActivity extends SherlockFragmentActivity {
 		return mTeam;
 	}
 
-	public String getKlassement() {
-		String r = mTeam.getLooptijden().get(0).getKlassement();
-		if(r.equals("A") || r.equals("Algemeen Klassement")){
-			return "Algemeen Klassement";
-		} else if(r.equals("U") || r.equals("Universiteit Klassement")){
-			return "Algemeen Klassement";
-		}
-		return r;
-	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

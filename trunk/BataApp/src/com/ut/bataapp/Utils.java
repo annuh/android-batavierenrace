@@ -24,9 +24,9 @@ public class Utils {
 	
 	public static void noData(final Context context){
 		new AlertDialog.Builder(context)
-     	 .setTitle("Fout!")
-     	 .setMessage("Controleer uw internetverbinding.")
-		   .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+     	 .setTitle(R.string.geen_data_titel)
+     	 .setMessage(R.string.geen_data_bericht)
+		   .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 		       public void onClick(DialogInterface dialog, int id) {
 		    	   Intent i = new Intent(context.getApplicationContext(), MainActivity.class);
 		           context.startActivity(i);
@@ -41,13 +41,13 @@ public class Utils {
 	}
 	
 	public static boolean checkResponse(Context context, Response<?> response) {
-		Log.d("Response code",String.valueOf(response.getStatus()));
+		Log.d("Check response",String.valueOf(response.getStatus()));
 		switch (response.getStatus()) {
 			case Response.NOK_NO_DATA:
 				Utils.noData(context);
 				return false;
 			case Response.NOK_OLD_DATA:
-				Toast.makeText(context, "Kan geen data ophalen, data is mogelijk verouderd", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, R.string.geen_internet, Toast.LENGTH_LONG).show();
 				return true;
 			case Response.OK_NO_UPDATE:
 				return true;
@@ -97,16 +97,16 @@ public class Utils {
 	
 	public static void noFavoTeams(final Context context) {
 		new AlertDialog.Builder(context)
-		.setTitle("U heeft geen favoriete teams!")
-		.setMessage("Wilt u nu teams toevoegen?")
+		.setTitle(R.string.favo_leeg_titel)
+		.setMessage(R.string.favo_leeg_bericht)
 		.setCancelable(false)
-		.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+		.setPositiveButton(R.string.ja, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				Intent i = new Intent(context, TeamsActivity.class);
 				context.startActivity(i);
 			}
 		})
-		.setNegativeButton("Nee", new DialogInterface.OnClickListener() {
+		.setNegativeButton(R.string.nee, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				Utils.goHome(context);
 			}

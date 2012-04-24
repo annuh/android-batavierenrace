@@ -111,7 +111,7 @@
 
         <TextView
             style="@style/container_block"
-            android:text="@string/team_klassement_totetappe" />
+            android:id="@+id/team_totetappe" />"
     </LinearLayout>
 
 </ScrollView>

@@ -48,6 +48,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	private char sortStand = 'D';
 	private boolean inViewpager = false;
 	private boolean firstLaunch = true;
+	private ProgressDialogFragment progressDialog;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -58,7 +59,6 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		if(!inViewpager)
 			this.getListView().getEmptyView().setVisibility(View.GONE);
 		this.getActivity().getSupportLoaderManager().initLoader(0, null, this);
-		//new getKlassement(getActivity().getApplicationContext()).execute();
 	}
 
 	@Override
@@ -84,7 +84,6 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 				sortStand(null);
 			}
 		});
-
 		return view;
 	}
 
@@ -119,13 +118,13 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			filterEdit.setText(filterText);
 			filterEdit.addTextChangedListener(filterTextWatcher);
 			setKeyboardFocus(filterEdit);
-			break;
+			return true;
 		case MENU_SORT_NAAM:
 			sortNaam(null);
-			break;
+			return true;
 		case MENU_SORT_STAND:
 			sortStand(null);
-			break;
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -152,15 +151,12 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	};
 
 	public void makeList() {
-		int i = this.getResources().getIdentifier("sort_"+sortStand, "string", this.getActivity().getPackageName());
-		((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand) +" "+ getText(i));
 		adapter = new KlassementAdapter(getActivity().getApplicationContext(), klassement.getUitslag());
 		setListAdapter(adapter);
 		adapter.notifyDataSetChanged();
 	}
-	
+
 	public void sortNaam(View v) {
-		//resetArrows();
 		if(sortNaam == 'D') {
 			Collections.sort( klassement.getUitslag(),new Comparator<KlassementItem>() {
 				public int compare(KlassementItem arg0, KlassementItem arg1) {
@@ -178,11 +174,13 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			sortNaam = 'D';
 			sortStand = 'D';
 		}
+		resetArrows();
+		int i = this.getResources().getIdentifier("sort_"+sortNaam, "string", this.getActivity().getPackageName());
+		((TextView) getView().findViewById(R.id.klassement_header_team)).setText(this.getText(R.string.klassement_header_team) +" "+ getText(i));
 		makeList();
 	}
 
 	public void sortStand(View v) {
-		//resetArrows();
 		if(sortStand == 'D') {
 			Collections.sort( klassement.getUitslag(),new Comparator<KlassementItem>() {
 				public int compare(KlassementItem arg0, KlassementItem arg1) {
@@ -201,6 +199,9 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			sortStand = 'D';
 			sortNaam = 'D';
 		}
+		resetArrows();
+		int i = this.getResources().getIdentifier("sort_"+sortStand, "string", this.getActivity().getPackageName());
+		((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand) +" "+ getText(i));
 		makeList();
 	}
 
@@ -209,15 +210,9 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		((TextView) getView().findViewById(R.id.klassement_header_team)).setText(this.getText(R.string.klassement_header_team));
 	}
 
-	@Override
-	public void onDestroy(){
-		Log.d("KlassementFragment", "DESTROY");
-		super.onDestroy();
-	}
-
-	public static class AppListLoader extends AsyncTaskLoader<Response<Klassement>> {
+	public static class KlassementLoader extends AsyncTaskLoader<Response<Klassement>> {
 		Response<Klassement> response;
-		public AppListLoader(Context context) {
+		public KlassementLoader(Context context) {
 			super(context);
 		}
 
@@ -261,7 +256,6 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		}
 	}
 
-	private ProgressDialogFragment progressDialog;
 	@Override
 	public Loader<Response<Klassement>> onCreateLoader(int arg0, Bundle arg1) {
 		if(!inViewpager){
@@ -269,7 +263,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			progressDialog.show(getActivity().getSupportFragmentManager(), "tag_laden");
 			progressDialog.setCancelable(true);
 		}
-		return new AppListLoader(getActivity().getApplicationContext());
+		return new KlassementLoader(getActivity().getApplicationContext());
 	}
 
 	@Override
@@ -281,8 +275,8 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 				sortStand(null);
 				firstLaunch=false;
 			}
-			else
-				makeList();
+			//else
+			//	makeList();
 			getListView().setSelection(getArguments().getInt("init") -1);
 			if(!inViewpager && progressDialog != null)
 				handler.sendEmptyMessage(1);
@@ -290,24 +284,24 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 		}
 	}
-	
-	
+
+
 	private Handler handler = new Handler() {
-	    @Override
-	    public void handleMessage(Message msg) {
-	        if(msg.what == 1) {
-	            hideDialog();
-	        }
-	    }
+		@Override
+		public void handleMessage(Message msg) {
+			if(msg.what == 1) {
+				hideDialog();
+			}
+		}
 	};
-	
+
 	public void hideDialog(){
 		progressDialog.dismiss();
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Response<Klassement>> arg0) {                
-		//Utils.goHome(this);
+		adapter = null;
 	}
 
 }
