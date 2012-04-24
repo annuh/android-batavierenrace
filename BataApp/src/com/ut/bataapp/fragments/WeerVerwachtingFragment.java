@@ -1,53 +1,44 @@
 package com.ut.bataapp.fragments;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.WeerActivity;
-import com.ut.bataapp.weer.WeerInfoVerwachting;
-import com.ut.bataapp.weer.WeerProvider;
+import com.ut.bataapp.weer.*;
 
-public class WeerVerwachtingFragment extends SherlockFragment {
-	private WeerActivity mWeerActivity;
-	
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.*;
+import android.widget.*;
+
+import com.actionbarsherlock.app.SherlockFragment;
+
+/**
+ * Fragment voor weergeven verwachting Batadag (per plaats en algemeen).
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Danny Bergsma
+ * @version 0.1
+ */
+public class WeerVerwachtingFragment extends SherlockFragment {	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.weer_verwachting, container, false);
-	}
-	
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		mWeerActivity = (WeerActivity) activity;
-	}
-	
-	@Override
-    public void onStart() {
-    	super.onStart();
-    	if (!mWeerActivity.refreshOngoing())
-    		updateView();
-    }
-	
-	public void updateView() {
-		if (getView() != null) { // onCreateView() geweest?
-    		WeerProvider weerProvider = mWeerActivity.getWeerProvider();
-	    	WeerInfoVerwachting nijmegen = weerProvider.getVerwachting(WeerProvider.NIJMEGEN),
-					            ruurlo = weerProvider.getVerwachting(WeerProvider.RUURLO),
-					            enschede = weerProvider.getVerwachting(WeerProvider.ENSCHEDE);
-			((TextView) getActivity().findViewById(R.id.nijmegen_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), nijmegen.getMaxTemp()));
-			((TextView) getActivity().findViewById(R.id.ruurlo_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), ruurlo.getMaxTemp()));
-			((TextView) getActivity().findViewById(R.id.enschede_verwacht_temp)).setText(String.format(getResources().getString(R.string.format_temp), enschede.getMaxTemp()));
-			((ImageView) getActivity().findViewById(R.id.nijmegen_verwacht_icoon)).setImageBitmap(nijmegen.getDesc());
-			((ImageView) getActivity().findViewById(R.id.ruurlo_verwacht_icoon)).setImageBitmap(ruurlo.getDesc());
-			((ImageView) getActivity().findViewById(R.id.enschede_verwacht_icoon)).setImageBitmap(enschede.getDesc());
-			((TextView) getActivity().findViewById(R.id.algemene_verwachting)).setText(weerProvider.getAlgemeneVerwachting());
+		Resources res = getResources();
+    	
+    	WeerProvider weerProvider = ((WeerActivity) getActivity()).getWeerProvider();
+    	boolean hasVerwachting = (weerProvider.getVerwachting(WeerProvider.ENSCHEDE) != null);
+    	View result = inflater.inflate((hasVerwachting ? R.layout.weer_verwachting : R.layout.weer_verwachting_na), container, false);
+		
+    	((TextView) result.findViewById(R.id.weer_algemene_verwachting)).setText(weerProvider.getAlgemeneVerwachting());
+    	if (hasVerwachting) {
+    		WeerInfoVerwachting nijmegen = weerProvider.getVerwachting(WeerProvider.NIJMEGEN),
+		                        ruurlo = weerProvider.getVerwachting(WeerProvider.RUURLO),
+		                        enschede = weerProvider.getVerwachting(WeerProvider.ENSCHEDE);
+			((TextView) result.findViewById(R.id.weer_nijmegen_verwacht_temp)).setText(String.format(res.getString(R.string.weer_format_temp), nijmegen.getMinTemp()));
+			((TextView) result.findViewById(R.id.weer_ruurlo_verwacht_temp)).setText(String.format(res.getString(R.string.weer_format_temp), ruurlo.getMaxTemp()));
+			((TextView) result.findViewById(R.id.weer_enschede_verwacht_temp)).setText(String.format(res.getString(R.string.weer_format_temp), enschede.getMaxTemp()));
+			((ImageView) result.findViewById(R.id.weer_nijmegen_verwacht_icoon)).setImageBitmap(nijmegen.getDesc());
+			((ImageView) result.findViewById(R.id.weer_ruurlo_verwacht_icoon)).setImageBitmap(ruurlo.getDesc());
+			((ImageView) result.findViewById(R.id.weer_enschede_verwacht_icoon)).setImageBitmap(enschede.getDesc());
     	}
-    }
+    	
+		return result;
+	}
 }

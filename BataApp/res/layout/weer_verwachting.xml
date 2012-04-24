@@ -1,86 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroller"
     style="@style/scroller" >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
+        
         <TextView
-            style="@style/h1"
-            android:text="@string/verwachtweer" />
-
+            style="@style/h1_boven"
+            android:text="@string/weer_verwachtweer" />
+        <TextView
+            style="@style/h1_onder"
+            android:text="@string/weer_bron_google" />
         <TableLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dip"
             android:stretchColumns="0" >
-
             <TableRow>
-
                 <TextView
-                    android:text="@string/plaats"
+                    android:text="@string/weer_plaats"
                     android:textColor="@android:color/darker_gray" />
-
                 <TextView
                     android:padding="3dip"
-                    android:text="@string/temperatuur"
+                    android:text="@string/weer_temperatuur"
                     android:textColor="@android:color/darker_gray" />
-
                 <TextView
-                    android:text="@string/weericoon"
+                    android:text="@string/weer_weericoon"
                     android:textColor="@android:color/darker_gray" />
             </TableRow>
-
             <TableRow>
-
-                <TextView android:text="@string/nijmegen" />
-
+                <TextView android:text="@string/weer_nijmegen_snachts" />
                 <TextView
-                    android:id="@+id/nijmegen_verwacht_temp"
+                    android:id="@+id/weer_nijmegen_verwacht_temp"
                     android:padding="3dip" />
-
                 <ImageView
-                    android:id="@+id/nijmegen_verwacht_icoon"
+                    android:id="@+id/weer_nijmegen_verwacht_icoon"
                     android:gravity="right" />
             </TableRow>
-
             <TableRow>
-
-                <TextView android:text="@string/ruurlo" />
-
+                <TextView android:text="@string/weer_ruurlo" />
                 <TextView
-                    android:id="@+id/ruurlo_verwacht_temp"
+                    android:id="@+id/weer_ruurlo_verwacht_temp"
                     android:padding="3dip" />
-
                 <ImageView
-                    android:id="@+id/ruurlo_verwacht_icoon"
+                    android:id="@+id/weer_ruurlo_verwacht_icoon"
                     android:gravity="right" />
             </TableRow>
-
             <TableRow>
-
-                <TextView android:text="@string/enschede" />
-
+                <TextView android:text="@string/weer_enschede" />
                 <TextView
-                    android:id="@+id/enschede_verwacht_temp"
+                    android:id="@+id/weer_enschede_verwacht_temp"
                     android:padding="3dip" />
-
                 <ImageView
-                    android:id="@+id/enschede_verwacht_icoon"
+                    android:id="@+id/weer_enschede_verwacht_icoon"
                     android:gravity="right" />
             </TableRow>
         </TableLayout>
-
+        
         <TextView
-            style="@style/h1"
-            android:text="@string/algemeneverwachting" />
-
+            style="@style/h1_boven"
+            android:text="@string/weer_algemeneverwachting" />
         <TextView
-            android:id="@+id/algemene_verwachting"
+            style="@style/h1_onder"
+            android:text="@string/weer_bron_knmi_buienradar" />
+        <TextView
+            android:id="@+id/weer_algemene_verwachting"
             style="@style/container_block" />
     </LinearLayout>
-
 </ScrollView>

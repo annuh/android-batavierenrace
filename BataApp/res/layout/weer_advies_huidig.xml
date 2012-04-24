@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip"
+    android:stretchColumns="0" >
+    <TableRow>
+        <TextView
+            android:text="@string/weer_plaats"
+            android:textColor="@android:color/darker_gray" />
+        <TextView
+            android:padding="3dip"
+            android:text="@string/weer_temperatuur"
+            android:textColor="@android:color/darker_gray" />
+        <TextView
+            android:text="@string/weer_weericoon"
+            android:textColor="@android:color/darker_gray" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/weer_nijmegen" />
+        <TextView
+            android:id="@+id/weer_nijmegen_huidig_temp"
+            android:padding="3dip" />
+        <ImageView
+            android:id="@+id/weer_nijmegen_huidig_icoon"
+            android:gravity="right" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/weer_ruurlo" />
+        <TextView
+            android:id="@+id/weer_ruurlo_huidig_temp"
+            android:padding="3dip" />
+        <ImageView
+            android:id="@+id/weer_ruurlo_huidig_icoon"
+            android:gravity="right" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/weer_enschede" />
+        <TextView
+            android:id="@+id/weer_enschede_huidig_temp"
+            android:padding="3dip" />
+        <ImageView
+            android:id="@+id/weer_enschede_huidig_icoon"
+            android:gravity="right" />
+    </TableRow>
+</TableLayout>

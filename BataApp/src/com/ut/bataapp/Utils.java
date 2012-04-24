@@ -21,7 +21,7 @@ public class Utils {
 	/* converterwaarden voor fahrenheit -> celsius */
 	public static final byte DIFF_CF = 32;
 	public static final float FACTOR_CF  = 1.8F;
-	
+		
 	public static void noData(final Context context){
 		new AlertDialog.Builder(context)
      	 .setTitle(R.string.geen_data_titel)

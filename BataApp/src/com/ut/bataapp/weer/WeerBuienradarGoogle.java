@@ -145,7 +145,7 @@ public class WeerBuienradarGoogle implements WeerProvider {
 						mHuidig[i] = huidig;
 					else
 						throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml));
-					if (diffDays <= MAX_DAYS_AHEAD) {
+					if (0 <= diffDays && diffDays <= MAX_DAYS_AHEAD) {
 						WeerInfoVerwachting verwachting = (WeerInfoVerwachting) parseGoogle(xml, tagGoogleVerwachting, tagGoogleVerwachtingMin, tagGoogleVerwachtingMax, tagGoogleVerwachtingIcon, attrGoogleData, urlPrefix, diffDays, true);
 						if (verwachting != null)
 							mVerwachting[i] = verwachting;

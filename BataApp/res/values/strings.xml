@@ -164,25 +164,31 @@
     <string name="lustrum_text2">Ter ere van het lustrum zal er tijdens de race een lustrumbus aanwezig zijn. \nDeze is te zien op de herstarts Ulft, Barchem en Enschede en enkele wisselpunten. \nEr zullen dan verschillende activiteiten plaatsvinden, waar leuke gadgets van de Batavierenrace te verdienen zijn.\n\n\n<b>Vereeuwig je boodschap aan de Batavierenrace en het Batavierenfeest in steen.</b></string>
 
     <!-- Weer -->
-    <string name="ophalen_weergegevens">Weergegevens worden opgehaald…</string>
-    <string name="advies1">Advies …15</string>
-    <string name="advies2">Advies 15–20</string>
-    <string name="advies3">Advies 20–25</string>
-    <string name="advies4">Advies >=25</string>
-    <string name="huidigweer">Huidige weersituatie</string>
-    <string name="nijmegen">Nijmegen</string>
-    <string name="ruurlo">Ruurlo</string>
-    <string name="enschede">Enschede</string>
-    <string name="plaats">Plaats</string>
-    <string name="temperatuur">Temp.</string>
-    <string name="weericoon">Weer</string>
-    <string name="advies">Advies</string>
-    <string name="verwachte_max_temp">Verwachte maximumtemperatuur: </string>
-    <string name="format_temp">%s°</string>
-    <string name="verwachtweer">Verwacht weer racedag</string>
-    <string name="algemeneverwachting">Algemene verwachting</string>
-    <string name="buienverwachting">Buien komende 2 uur</string>
-
+    <string name="weer_ophalen_weergegevens">Weergegevens worden opgehaald…</string>
+    <string name="weer_bron_google">bron: Google</string>
+    <string name="weer_bron_knmi_buienradar">bron: KNMI/Buienradar</string>
+    <string name="weer_plaats">Plaats</string>
+    <string name="weer_temperatuur">Temp.</string>
+    <string name="weer_weericoon">Weer</string>
+    <string name="weer_format_temp">%s°</string>
+    <string name="weer_huidigweer">Huidige weersituatie</string>
+    <string name="weer_nijmegen">Nijmegen</string>
+    <string name="weer_nijmegen_snachts">Nijmegen (\'s nachts)</string>
+    <string name="weer_ruurlo">Ruurlo</string>
+    <string name="weer_enschede">Enschede</string>
+    <string name="weer_advies">Advies</string>
+    <string name="weer_verwachte_max_temp">Verwachte maximumtemperatuur: </string>
+    <string name="weer_verwachte_max_temp_niet_bekend">Verwachte maximumtemperatuur is (nog) niet bekend, daarom kan nog geen advies worden gegeven.</string>
+    <string name="weer_advies_organisatie">Advies van organisatie op basis hiervan:</string>
+    <string name="weer_advies1">Advies …15</string>
+    <string name="weer_advies2">Advies 15–20</string>
+    <string name="weer_advies3">Advies 20–25</string>
+    <string name="weer_advies4">Advies >=25</string>
+    <string name="weer_verwachtweer">Verwacht weer racedag</string>
+    <string name="weer_verwachtweer_nog_niet_bekend">(Nog) niet bekend.</string>
+    <string name="weer_algemeneverwachting">Algemene verwachting</string>
+    <string name="weer_buienverwachting">Buien komende 2 uur</string>
+    
     <!-- BataRadio -->
     <string name="bataradio_live_header">Internetstream</string>
     <string name="bataradio_live_beschikbaar">De livestream is beschikbaar van 27 april 21.00 tot 28 april 19.00.</string>
