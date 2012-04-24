@@ -12,33 +12,6 @@
         <item>http://bigblade.snt.utwente.nl:8000/medium</item>
         <item>http://bigblade.snt.utwente.nl:8000/low</item>
     </string-array>
-    <string-array name="url_lopersroutes">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-    </string-array>
     <string-array name="url_autoroutes">
         <item></item>
         <item>http://g.co/maps/wmvfq</item>

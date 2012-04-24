@@ -26,11 +26,12 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		mId = (savedInstanceState==null?getIntent().getIntExtra("id",1):savedInstanceState.getInt("id"));
 		mType = (savedInstanceState==null?getIntent().getStringExtra("type"):savedInstanceState.getString("type"));
 		try {
-			route = new CSV().parse(this.getResources().getAssets().open("etappe"+mId+".txt"));
+			Log.d("tekst","1");
+			route = new CSV().parse(this.getResources().getAssets().open("lopersroutetekst/etappe"+mId+".txt"));
+			Log.d("tekst","2");
 			setContentView(R.layout.etappe_route_tekst);
 			this.setTitle(mType+"route "+mId);
 			Log.d("Routes",route.getVoorTabelTekst());
