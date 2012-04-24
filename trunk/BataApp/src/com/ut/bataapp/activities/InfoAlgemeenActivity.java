@@ -63,7 +63,7 @@ public class InfoAlgemeenActivity extends SherlockFragmentActivity {
 		public AlgemeenFragmentAdapter(FragmentManager fm) {
 			super(fm);
 			fragments.add(new LayoutFragment(R.layout.info_algemeen_watmoetjeweten));
-			titels.add("Wat moet je weten");
+			titels.add("Belangrijk");
 			fragments.add(new LayoutFragment(R.layout.info_algemeen_busenstarttijden));
 			titels.add("Tijden");
 			fragments.add(new LayoutFragment(R.layout.info_algemeen_slapen));
