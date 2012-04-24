@@ -23,11 +23,6 @@
             android:text="Hesinname" />
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/onder" />
-
-        <TextView
             style="@style/container_block"
             android:text="@string/info_algemeen_watmoetjeweten_hesinname" />
 
@@ -36,22 +31,12 @@
             android:text="Gevonden voorwerpen" />
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/onder" />
-
-        <TextView
             style="@style/container_block"
             android:text="@string/info_algemeen_watmoetjeweten_gevondenvoorwerpen" />
 
         <TextView
             style="@style/h1"
             android:text="Tot slot" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/onder" />
 
         <TextView
             style="@style/container_block"

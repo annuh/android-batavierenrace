@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +24,8 @@ import com.ut.bataapp.objects.Response;
 
 public class BerichtenActivity extends SherlockListActivity  {
 
-	private ArrayList<Bericht> pushberichten;
-	private ArrayList<Bericht> nieuwsberichten;
+	private ArrayList<Bericht> pushberichten = new ArrayList<Bericht>();
+	private ArrayList<Bericht> nieuwsberichten = new ArrayList<Bericht>();
 	private BerichtAdapter adapter_push = null;
 	private BerichtAdapter adapter_nieuws = null;
 
@@ -32,7 +33,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
-		setTitle("Berichten");
+		setTitle(R.string.ab_berichten);
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.listview_berichten);
 		new getBerichten().execute();
@@ -53,7 +54,14 @@ public class BerichtenActivity extends SherlockListActivity  {
 				Intent intent = new Intent(this, WeerActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
+				break;
 			}
+		} else {
+			String url = String.format(getString(R.string.url_nieuws), String.valueOf(nieuwsberichten.get(position - 2 - pushberichten.size() ).getId()));
+			Log.d("URL",url);
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			i.setData(Uri.parse(url));
+			startActivity(i);
 		}
 	}
 
@@ -110,7 +118,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 			if(Utils.checkResponse(BerichtenActivity.this, response)) {
 				nieuwsberichten = response.getResponse();
 				makeList();
-				
+				getListView().setEmptyView(findViewById(R.id.listview_leeg));
 				progressDialog.dismiss();
 
 			}

@@ -75,17 +75,17 @@
                     android:autoLink="web"
                     android:textSize="15sp" />
             </TableRow>
+
+            <View style="@style/divider" />
+
+            <TextView
+                style="@style/table_left"
+                android:text="@string/sponsor_omschrijving_dik" />
+
+            <TextView
+                android:id="@+id/sponsor_omschrijving"
+                style="@style/table_left" />
         </TableLayout>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sponsor_omschrijving_dik" />
-
-        <TextView
-            android:id="@+id/sponsor_omschrijving"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="fill_parent"

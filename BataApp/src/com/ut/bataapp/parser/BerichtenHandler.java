@@ -47,7 +47,7 @@ public class BerichtenHandler extends Handler{
 	@Override
 	public void characters(char ch[], int start, int length){
 		if(item){
-			berichten.add(new Bericht());
+			berichten.add(new Bericht(Bericht.NIEUWS));
 			item = false;
 		}
 		if(id) berichten.get(berichten.size()-1).setId(new String(ch,start,length));

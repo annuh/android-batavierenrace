@@ -47,7 +47,7 @@ public class BerichtAdapter extends ArrayAdapter<Bericht> {
 			colour = R.color.green;
 		}
 		codeView.setBackgroundResource(colour);
-		contentView.setMovementMethod(LinkMovementMethod.getInstance());
+		//contentView.setMovementMethod(LinkMovementMethod.getInstance());
 		contentView.setText(Html.fromHtml(bericht.getBericht()));
 
 		return rowView;

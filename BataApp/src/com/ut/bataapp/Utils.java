@@ -193,7 +193,8 @@ public class Utils {
 				code = Bericht.CUSTOM;
 			}
 			bericht.setCode(code);
-			bericht.setBericht(((String) entry.getValue()).substring(1));
+			bericht.setTitel(((String) entry.getValue()).substring(1));
+			bericht.setBericht(entry.getKey());
 			berichten.add(bericht);
 		}
 		return berichten;

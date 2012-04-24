@@ -5,15 +5,12 @@ import java.util.Calendar;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -46,7 +43,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.getSupportActionBar().setTitle("Batavierenrace");
+		this.getSupportActionBar().setTitle(R.string.app_titel);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		setupC2DM();
@@ -163,11 +160,11 @@ public class MainActivity extends SherlockFragmentActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0,MENU_MESSAGE,Menu.NONE,"Berichten")
+		menu.add(0,MENU_MESSAGE,Menu.NONE,R.string.ab_berichten)
 		.setIcon(R.drawable.ic_action_mail)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
-		menu.add(0,MENU_SETTINGS,Menu.NONE,"Instellingen")
+		menu.add(0,MENU_SETTINGS,Menu.NONE,R.string.ab_instellingen)
 		.setIcon(R.drawable.ic_action_settings)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
