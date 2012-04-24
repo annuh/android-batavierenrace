@@ -65,7 +65,7 @@
     <string name="team_startgroep">Startgroep:</string>
     <string name="team_h1_klassement">Klassement</string>
     <string name="team_klassement">Klassement</string>
-    <string name="team_klassement_totetappe">* Klassement is gebaseerd op laatst gesloten etappe</string>
+    <string name="team_klassement_totetappe">* Klassement is gebaseerd op etappe %s</string>
     <string name="team_cum_klassement">Cumulatief</string>
     <string name="team_totaal_looptijd">Looptijd</string>
     <string name="team_looptijden_header_etappe">#</string>
@@ -214,6 +214,10 @@
     <string name="notification_bu_etappeuitslag_content">Uitslag etappe %1$s: %2$s</string>
     <string name="notification_bu_etappeuitslagen_ticker">Nieuwe etappeuitslagen %s</string>
     <string name="notification_bu_etappeuitslagen_content">Nieuwe uitslag etappes %s</string>
+    
+    <!-- Push bericht -->
+    <string name="notification_push_statusbar">Nieuw bericht</string>
+    <string name="notification_push_titel">Batavierenrace nieuws</string>
     
     <!-- Instellingen -->
     <string name="title_prefs">Instellingen</string>

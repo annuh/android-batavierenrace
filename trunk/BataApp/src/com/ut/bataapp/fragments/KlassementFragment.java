@@ -6,7 +6,6 @@ import java.util.Comparator;
 import android.support.v4.content.Loader;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,7 +14,6 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -49,6 +47,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	private char sortNaam = 'D';
 	private char sortStand = 'D';
 	private boolean inViewpager = false;
+	private boolean firstLaunch = true;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -56,15 +55,10 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		setHasOptionsMenu(true);
 		naam = this.getArguments().getString("index");
 		inViewpager = this.getArguments().getBoolean("inViewpager", false);
-		if(inViewpager)
-			this.setListAdapter(null);
+		if(!inViewpager)
+			this.getListView().getEmptyView().setVisibility(View.GONE);
 		this.getActivity().getSupportLoaderManager().initLoader(0, null, this);
 		//new getKlassement(getActivity().getApplicationContext()).execute();
-	}
-
-	@Override
-	public void onResume(){
-		super.onResume();
 	}
 
 	@Override
@@ -147,70 +141,26 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 
 	private TextWatcher filterTextWatcher = new TextWatcher() {
 
-		public void afterTextChanged(Editable s) {
-		}
+		public void afterTextChanged(Editable s) { }
 
-		public void beforeTextChanged(CharSequence s, int start, int count,
-				int after) {
-		}
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
-		public void onTextChanged(CharSequence s, int start, int before,
-				int count) {
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
 			filterText= s.toString();
 			adapter.getFilter().filter(s);
 		}
-
 	};
 
-
-	private class getKlassement extends AsyncTask<Void, Void, Void> {
-		Response<Klassement> response;
-		private ProgressDialogFragment progressDialog;
-		Context context;
-
-		public getKlassement(Context context) {
-			this.context = context;
-		}
-		protected void onPreExecute() {
-			if(!inViewpager){
-				progressDialog = ProgressDialogFragment.newInstance(getString(R.string.laden_titel), getString(R.string.klassement_laden));
-				progressDialog.show(getActivity().getSupportFragmentManager(), "");
-				//progressDialog = ProgressDialog.show(getActivity().getApplicationContext(),  
-				//		getString(R.string.laden_titel), getString(R.string.klassement_laden), true);*/
-				progressDialog.setCancelable(true);
-				/*(progressDialog.setOnCancelListener(new OnCancelListener() {
-					public void onCancel(DialogInterface dialog) {
-						cancel(true);
-						Utils.goHome(getActivity().getApplicationContext());
-					}
-				});*/
-
-			}
-		}
-
-		@Override  
-		protected Void doInBackground(Void... arg0) {
-			if(!isCancelled())
-				response = api.getKlassementByNaam(naam);
-			return null;
-		}
-
-		@Override  
-		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(context, response)) {
-				klassement = response.getResponse();
-				Log.d("Klassement", ""+klassement.getUitslag().size());
-				sortStand(null);
-				getListView().setSelection(getArguments().getInt("init") -1);
-				if(!inViewpager && progressDialog != null)
-					progressDialog.dismiss();
-				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
-			}
-		}
+	public void makeList() {
+		int i = this.getResources().getIdentifier("sort_"+sortStand, "string", this.getActivity().getPackageName());
+		((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand) +" "+ getText(i));
+		adapter = new KlassementAdapter(getActivity().getApplicationContext(), klassement.getUitslag());
+		setListAdapter(adapter);
+		adapter.notifyDataSetChanged();
 	}
-
+	
 	public void sortNaam(View v) {
-		resetArrows();
+		//resetArrows();
 		if(sortNaam == 'D') {
 			Collections.sort( klassement.getUitslag(),new Comparator<KlassementItem>() {
 				public int compare(KlassementItem arg0, KlassementItem arg1) {
@@ -228,16 +178,11 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			sortNaam = 'D';
 			sortStand = 'D';
 		}
-
-		int i = this.getResources().getIdentifier("sort_"+sortNaam, "string", getActivity().getPackageName());
-		((TextView) getView().findViewById(R.id.klassement_header_team)).setText(this.getText(R.string.klassement_header_team) +" "+ getText(i));
-		adapter = new KlassementAdapter(getActivity().getApplicationContext(), klassement.getUitslag());
-		setListAdapter(adapter);
-		adapter.notifyDataSetChanged();
+		makeList();
 	}
 
 	public void sortStand(View v) {
-		resetArrows();
+		//resetArrows();
 		if(sortStand == 'D') {
 			Collections.sort( klassement.getUitslag(),new Comparator<KlassementItem>() {
 				public int compare(KlassementItem arg0, KlassementItem arg1) {
@@ -256,12 +201,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			sortStand = 'D';
 			sortNaam = 'D';
 		}
-
-		int i = this.getResources().getIdentifier("sort_"+sortStand, "string", this.getActivity().getPackageName());
-		((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand) +" "+ getText(i));
-		adapter = new KlassementAdapter(getActivity().getApplicationContext(), klassement.getUitslag());
-		setListAdapter(adapter);
-		adapter.notifyDataSetChanged();	
+		makeList();
 	}
 
 	public void resetArrows() {
@@ -281,21 +221,23 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			super(context);
 		}
 
-		@Override public Response<Klassement> loadInBackground() {
+		@Override
+		public Response<Klassement> loadInBackground() {
 			response = api.getKlassementByNaam(naam);
 			return response;
 		}
 
-		@Override public void deliverResult(Response<Klassement> response) {
+		@Override
+		public void deliverResult(Response<Klassement> response) {
 			if (isReset()) {
 				return;
 			}
-
 			this.response = response;
 			super.deliverResult(response);
 		}
 
-		@Override protected void onStartLoading() {
+		@Override
+		protected void onStartLoading() {
 			if (response != null) {
 				deliverResult(response);
 			}
@@ -319,48 +261,33 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		}
 	}
 
-	//private ProgressDialog progressDialog;
 	private ProgressDialogFragment progressDialog;
 	@Override
 	public Loader<Response<Klassement>> onCreateLoader(int arg0, Bundle arg1) {
-		/*progressDialog = ProgressDialog.show(TeamActivity.this,  
-				"Bezig met laden", "Team wordt opgehaald...", true);
-		progressDialog.setCancelable(true);
-		progressDialog.setOnCancelListener(new OnCancelListener() {
-			public void onCancel(DialogInterface dialog) {
-				finish();
-			}
-		});*/
-		
 		if(!inViewpager){
 			progressDialog = ProgressDialogFragment.newInstance(getString(R.string.laden_titel), getString(R.string.klassement_laden));
-			progressDialog.show(getActivity().getSupportFragmentManager(), "");
-			//progressDialog = ProgressDialog.show(getActivity().getApplicationContext(),  
-			//		getString(R.string.laden_titel), getString(R.string.klassement_laden), true);*/
+			progressDialog.show(getActivity().getSupportFragmentManager(), "tag_laden");
 			progressDialog.setCancelable(true);
-			/*(progressDialog.setOnCancelListener(new OnCancelListener() {
-				public void onCancel(DialogInterface dialog) {
-					cancel(true);
-					Utils.goHome(getActivity().getApplicationContext());
-				}
-			});*/
-
 		}
 		return new AppListLoader(getActivity().getApplicationContext());
 	}
 
 	@Override
 	public void onLoadFinished(Loader<Response<Klassement>> loader, Response<Klassement> response) {
-		//Log.d("Loader", "Klaar");
 		if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 			klassement = response.getResponse();
 			Log.d("Klassement", ""+klassement.getUitslag().size());
-			sortStand(null);
+			if(firstLaunch) {
+				sortStand(null);
+				firstLaunch=false;
+			}
+			else
+				makeList();
 			getListView().setSelection(getArguments().getInt("init") -1);
 			if(!inViewpager && progressDialog != null)
 				handler.sendEmptyMessage(1);
-			getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));klassement = response.getResponse();
-			
+			getListView().getEmptyView().setVisibility(View.GONE);
+			getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 		}
 	}
 	

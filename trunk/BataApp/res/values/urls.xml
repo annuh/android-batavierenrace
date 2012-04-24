@@ -69,4 +69,6 @@
     <string name="url_xml_klassement">klassement.xml</string>
     <string name="url_xml_etappeuitslag">etappeuitslag/%s.xml</string>
     <string name="url_xml_ploeguitslag">ploeguitslag/%s.xml</string>
+    <string name="url_nieuws">http://www.batavierenrace.nl/40/home/nieuws.html/5525/%s</string>
+    <string name="url_push_register">http://batabericht.eu5.org/push_register.php%s</string>
 </resources>
