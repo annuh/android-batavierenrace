@@ -38,29 +38,30 @@ public class EtappeRoutesFragment extends SherlockFragment {
 
     	
     	//Kaart lopers route
-    	ImageView lopers_kaart = new ImageView(this.getActivity());
-    	InputStream input = null;
     	try {
-			input = getResources().getAssets().open("lopersroutekaart/1.jpg");
+    		ImageView lopers_kaart = new ImageView(this.getActivity());
+    		InputStream input = null;
+    		int etappeNummer = etappe.getId();
+    		if(etappeNummer == 25) etappeNummer = 24;
+			input = getResources().getAssets().open("lopersroutekaart/loop"+etappeNummer+".jpg");
+
+	    	lopers_kaart.setImageDrawable(Drawable.createFromStream(input,null));
+	    	lopers_kaart.setAdjustViewBounds(true);
+	    	lopers_kaart.setMaxHeight(200);
+	    	lopers_kaart.setMaxWidth(350);
+	    	LinearLayout layout = (LinearLayout) view.findViewById(R.id.etappe_route_layout);
+	    	layout.addView(lopers_kaart,1);
+	    	lopers_kaart.setOnClickListener(new View.OnClickListener() {
+	            @Override
+	            public void onClick(View view) {
+	            	Intent intent = new Intent(getActivity(),AfbeeldingActivity.class);
+	            	intent.putExtra("type","lopersroutekaart");
+	            	intent.putExtra("kaart",etappe.getId());
+	            	startActivity(intent);
+	            }
+	        });
 		} catch (IOException e) {
 		}
-    	lopers_kaart.setImageDrawable(Drawable.createFromStream(input,null));
-    	lopers_kaart.setImageResource(R.drawable.kaartvanetappe);
-    	lopers_kaart.setAdjustViewBounds(true);
-    	lopers_kaart.setMaxHeight(200);
-    	lopers_kaart.setMaxWidth(200);
-    	LinearLayout layout = (LinearLayout) view.findViewById(R.id.etappe_route_layout);
-    	layout.addView(lopers_kaart,1);
-    	lopers_kaart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            	Intent intent = new Intent(getActivity(),AfbeeldingActivity.class);
-            	intent.putExtra("type","lopersroutekaart");
-            	intent.putExtra("kaart",1);
-            	startActivity(intent);
-            }
-        });
-    	
     	
     	//Tekst lopers route
     	Button lopers_tekst = (Button) view.findViewById(R.id.loper_tekst_routebeschijving);
