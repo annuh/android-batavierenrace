@@ -263,9 +263,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 
 
 		}
-		resetArrows();
-		int i = this.getResources().getIdentifier("sort_"+sortTeam, "string", this.getActivity().getPackageName());
-		((TextView) getView().findViewById(R.id.etappe_looptijden_header_team)).setText(this.getText(R.string.etappe_looptijden_header_team) +" "+ getText(i));
+		if(getView() != null){
+			resetArrows();
+			int i = this.getResources().getIdentifier("sort_"+sortTeam, "string", this.getActivity().getPackageName());
+			((TextView) getView().findViewById(R.id.etappe_looptijden_header_team)).setText(this.getText(R.string.etappe_looptijden_header_team) +" "+ getText(i));
+		}
 		makeList();
 	}
 
@@ -297,15 +299,18 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 			sortStand = 'D';
 			sortTeam = 'D';
 		}
-		resetArrows();
-		int i = this.getResources().getIdentifier("sort_"+sortStand, "string", this.getActivity().getPackageName());
-		((TextView) getView().findViewById(R.id.etappe_looptijden_header_stand)).setText(this.getText(R.string.etappe_looptijden_header_stand) +" "+ getText(i));
+		if(getView() != null){
+			resetArrows();
+			int i = this.getResources().getIdentifier("sort_"+sortStand, "string", this.getActivity().getPackageName());
+			((TextView) getView().findViewById(R.id.etappe_looptijden_header_stand)).setText(this.getText(R.string.etappe_looptijden_header_stand) +" "+ getText(i));
+		}
 		makeList();
 	}
 
 	public void resetArrows() {
 		((TextView) getView().findViewById(R.id.etappe_looptijden_header_stand)).setText(this.getText(R.string.etappe_looptijden_header_stand));
 		((TextView) getView().findViewById(R.id.etappe_looptijden_header_team)).setText(this.getText(R.string.etappe_looptijden_header_team));
+
 	}
 
 	@Override

@@ -25,7 +25,7 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 		super.onCreate(savedInstanceState);
 		setTitle(R.string.dashboard_klassement);
 		setContentView(R.layout.klassementen);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		new getKlassementen().execute(); 
 	}
 
