@@ -228,7 +228,10 @@
     <!-- Berichten -->
     <string name="berichten_laden">Berichten worden geladen…</string>
     <string name="berichten_leeg">Er zijn op dit moment geen berichten.</string>
-
+    <string name="kleurcode_geel"><b>De race is tijdelijk stilgelegd</b>\nDe situatie is te gevaarlijk, de race is tijdelijk stilgelegd. Je doet het volgende:\n\n<b>Op de lopersroute:</b>\n1. Let op je eigen veiligheid!\n2. Je doet mee op eigen risico!\n3. Schuil bij een onveilige situatie.\n4. Vind je het zelf (weer) veilig: doorlopen, je tijd wordt nog geregistreerd.\n\n<b>Op de autoroute / een wisselpunt / een herstart:</b>\n1. Let op je eigen veiligheid!\n2. Je doet mee op eigen risico!\n3. Eén persoon informeert bij het wisselpunt of bij de infobaliebus.\n4. Volg de instructies van de organisatie op.\n\n<b>Als jouw ploeg nog bij de start in Nijmegen is:</b>\n1. Volg de instructies van de organisatie op</string>
+    <string name="kleurcode_groen"><b>De race wordt herstart in...</b>\nDe situatie is weer veilig, de race wordt herstart. Je doet het volgende:\n1. Wacht op instructies van de organisatie naar welke locatie (wisselpunt of herstart) jouw ploeg moet.\n2. Ga naar die locatie.\n3. Volg op die locatie de instructies van de organisatie op.</string>
+    <string name="kleurcode_rood"><b>De race wordt definitief stopgezet</b>\nHet is niet meer mogelijk of wenselijk om de race af te maken.  Je doet het volgende:\n1. Verzamelen in Enschede\n2. Eten gaat altijd door\n3. Finish / feestactiviteiten: de organisatie beslist of, en in welke vorm, deze doorgaan.\n4. Overnachten is altijd mogelijk</string>
+    
     <!-- Foutcodes -->
     <string name="foutcode_a">Anders voortbewogen</string>
     <string name="foutcode_d">Diskwalificatie loper</string>
