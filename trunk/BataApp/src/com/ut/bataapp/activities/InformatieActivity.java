@@ -39,42 +39,42 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 public class InformatieActivity extends SherlockFragmentActivity {
-   
+
 	ViewPager mPager;
 	PageIndicator mIndicator;
 	FragmentPagerAdapter mAdapter;
-    
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle(R.string.dashboard_informatie);
-        setContentView(R.layout.simple_tabs);
-		
-        mAdapter = new InformatieFragmentAdapter(getSupportFragmentManager());
-		
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		setTitle(R.string.dashboard_informatie);
+		setContentView(R.layout.simple_tabs);
+
+		mAdapter = new InformatieFragmentAdapter(getSupportFragmentManager());
+
 		mPager = (ViewPager)findViewById(R.id.pager);
 		mPager.setAdapter(mAdapter);
-		
+
 		mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 		mIndicator.setViewPager(mPager);
-    }
-    
-    @Override
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home:
-				Utils.goHome(this);
+		case android.R.id.home:
+			Utils.goHome(this);
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
-    
-    class InformatieFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
-		
+
+	class InformatieFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 		ArrayList<String> titels = new ArrayList<String>();
-		
+
 		public InformatieFragmentAdapter(FragmentManager fm) {
 			super(fm);
 			fragments.add(new InfoAlgemeenFragment());
@@ -86,8 +86,8 @@ public class InformatieActivity extends SherlockFragmentActivity {
 			fragments.add(new InfoColofonFragment());
 			titels.add("Colofon");
 		}
-		
-		
+
+
 		@Override
 		public Fragment getItem(int position) {
 			return fragments.get(position);

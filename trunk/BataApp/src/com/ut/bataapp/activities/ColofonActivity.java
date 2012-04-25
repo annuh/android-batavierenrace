@@ -8,17 +8,24 @@ import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 import com.actionbarsherlock.R;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 public class ColofonActivity extends SherlockFragmentActivity {
    
+	public static final String TAB = "tabid";
+	
 	ViewPager mPager;
 	PageIndicator mIndicator;
-	FragmentPagerAdapter mAdapter;
+	ColofonFragmentAdapter mAdapter;
+	
+	
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,10 +41,13 @@ public class ColofonActivity extends SherlockFragmentActivity {
 		String page = "";
 		page = getIntent().getStringExtra("page");
 		int pageid = 0;
-		if(page.equals("contact")) { pageid = 0; }
-		else if(page.equals("colofon")) { pageid = 1; }
-		else if(page.equals("disclaimer")) { pageid = 2; }
-		
+		if(savedInstanceState != null)
+			pageid = savedInstanceState.getInt("tabid");
+		else {
+			if(page.equals("contact")) { pageid = 0; }
+			else if(page.equals("colofon")) { pageid = 1; }
+			else if(page.equals("disclaimer")) { pageid = 2; }
+		}
 		mPager.setCurrentItem(pageid);
 		mIndicator.setViewPager(mPager);
 		mIndicator.setCurrentItem(pageid);
@@ -92,5 +102,32 @@ public class ColofonActivity extends SherlockFragmentActivity {
 		public String getTitle(int position) {
 			return titels.get(position);
 		}
+		
+		public void deleteAll(FragmentManager fm) {
+			FragmentTransaction ft = fm.beginTransaction();
+			for (Fragment fragment: fragments)
+				ft.remove(fragment);
+			ft.commit();
+		}
+		
 	}
+    
+    @Override
+  	public void onConfigurationChanged(Configuration newConfig) {
+  		super.onConfigurationChanged(newConfig);
+  		if(mPager != null) {
+  			int currentItem = mPager.getCurrentItem(); // huidige tabbladindex  
+  			mAdapter.deleteAll(getSupportFragmentManager()); // cleanup van alle oude fragments
+  			mAdapter = new ColofonFragmentAdapter(getSupportFragmentManager());
+  			mPager.setAdapter(mAdapter);
+  			mIndicator.notifyDataSetChanged();
+  			mPager.setCurrentItem(currentItem, false);
+  		}
+  		Log.d("Pager", "NULL");
+  	}
+      
+  	@Override
+  	protected void onSaveInstanceState(Bundle outState) {
+  		outState.putInt("tabid", (mPager == null ? 0 : mPager.getCurrentItem()));
+  	}
 }
