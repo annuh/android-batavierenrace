@@ -10,6 +10,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.R;
 import com.ut.bataapp.Utils;
 
+import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
 
 public class AfbeeldingActivity extends SherlockActivity {
@@ -46,7 +47,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 			int kaart = getIntent().getIntExtra("kaart",0);
 			titel = type+" "+kaart;
 			if(kaart==25) kaart = 24;
-			locatie = (type+"/"+kaart+".jpg");
+			locatie = (type+"/loop"+kaart+".jpg");	
 		}
 		getSupportActionBar().setTitle(titel);
 		setContentView(R.layout.afbeelding);
@@ -54,7 +55,10 @@ public class AfbeeldingActivity extends SherlockActivity {
 		webview.getSettings().setLoadWithOverviewMode(true);
 		webview.getSettings().setUseWideViewPort(true);
 		webview.getSettings().setBuiltInZoomControls(true);
-		webview.loadUrl("file:///android_asset/" + locatie);
+		webview.loadUrl("file:///android_asset/" + locatie);	
+		if(type.equals("lopersroutekaart")){
+			webview.setMinimumWidth(LayoutParams.WRAP_CONTENT);
+		}
     }
 	
 	@Override
