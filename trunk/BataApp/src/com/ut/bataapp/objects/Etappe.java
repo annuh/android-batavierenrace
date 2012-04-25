@@ -1,10 +1,5 @@
 package com.ut.bataapp.objects;
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
-import android.util.Log;
-
 public class Etappe {
 	private int id;
 	private String van;
@@ -20,6 +15,9 @@ public class Etappe {
 	private String uitersteStarttijd = "";
 	private String limiettijd = "";
 	private String universteitsLimietstijd = "";
+	
+	public int[] minHeight = {0, 20, 6, 7, 8, 11, 6, 9, 10, 11, 11, 17, 15, 14, 15, 13, 12, 13, 11, 12, 14, 14, 20, 24, 26, 26};
+	public int[] maxHeight = {0, 32, 96, 14, 15, 17, 26, 16, 25, 18, 27, 21, 28, 20, 20, 27, 25, 22, 60, 20, 22, 26, 36, 47, 47, 47};
 	
 	/**
 	 * 
