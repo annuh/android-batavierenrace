@@ -202,10 +202,10 @@
     <string name="weer_verwachte_max_temp">Verwachte maximumtemperatuur: </string>
     <string name="weer_verwachte_max_temp_niet_bekend">Verwachte maximumtemperatuur is (nog) niet bekend, daarom kan nog geen advies worden gegeven.</string>
     <string name="weer_advies_organisatie">Advies van organisatie op basis hiervan:</string>
-    <string name="weer_advies1">Advies …15</string>
-    <string name="weer_advies2">Advies 15–20</string>
-    <string name="weer_advies3">Advies 20–25</string>
-    <string name="weer_advies4">Advies >=25</string>
+    <string name="weer_advies1">Het is koud weer, dus denk aan jezelf. Let vooral in de nacht en ochtend op dat je voldoende kleding aan hebt, want het kan onverwacht koud zijn. Zorg ook voor extra kleding na het lopen, zodat je het afkoelen kan tegengaan!</string>
+    <string name="weer_advies2">’s Nachts kan het onverwacht fris zijn, dus let er op dat je voldoende kleding aan hebt. Zorg ook voor extra kleding na het lopen, zodat je het afkoelen kan tegengaan! </string>
+    <string name="weer_advies3">Het wordt lekker weer vandaag! Zorg dat je voldoende drinkt, want vooral overdag kan het toch onverwacht warm zijn.</string>
+    <string name="weer_advies4">Gedurende de nacht zal het lekker loopweer zijn, maar vooral overdag wordt het heet. Voorkom hoe dan ook dat je last krijgt van oververhitting. Zorg dus voor gepaste loopkleding waarin je je lichaamswarmte kwijt kan en voor voldoende drinken.</string>
     <string name="weer_verwachtweer">Verwacht weer racedag</string>
     <string name="weer_verwachtweer_nog_niet_bekend">(Nog) niet bekend.</string>
     <string name="weer_algemeneverwachting">Algemene verwachting</string>
