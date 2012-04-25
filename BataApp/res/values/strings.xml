@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Welkom -->
+    <string name="welkom_title">Setupwizard</string>
+    <string name="welkom_favorieten_selecteren_header">Favorieten selecteren</string>
+    <string name="welkom_favorieten_selecteren_content1">Welkom in de Android-app van de 40ste editie van de Batavierenrace. Met deze app kun je de
+                                                         uitslagen van alle teams, alle klassementen en informatie over alle etappes bekijken. Daarnaast
+                                                         kun je luisteren naar BataRadio en weerinformatie bekijken.\n\nJe kunt ook favoriete teams selecteren. 
+                                                         Deze zijn dan niet alleen snel bereikbaar vanuit het hoofdmenu, ook word je dan automatisch op de hoogte 
+                                                         gesteld van nieuwe uitslagen van deze teams. Klik hieronder om favorieten te kiezen.</string>
+    <string name="welkom_favorieten_selecteren_button_tekst">Voeg favoriet toe</string>
+    <string name="welkom_favorieten_selecteren_content2">Je kunt ook favorieten toevoegen door via het teamoverzicht naar een team toe te gaan en dan op het
+                                                         stericoontje rechtsboven te klikken.</string>
+    <string name="welkom_instellingen_header">Automatische updates</string>
+    <string name="welkom_instellingen_content1">Standaard worden op de achtergrond de gegevens van al je favoriete teams regelmatig opgehaald. Wanneer
+                                                er nieuwe klassement- en etappeuitslagen zijn, word je hiervan via de Android-statusbalk en geluids-
+                                                en trilsignalen op de hoogte gesteld. Via de instellingen kun je dit aanpassen. Klik hieronder om de instellingen
+                                                te openen.</string>
+    <string name="welkom_instellingen_button_tekst">Open instellingen</string>
+    <string name="welkom_instellingen_content2">De instellingen zijn ook bereikbaar via de knop rechtsboven in het hoofdscherm.</string>                                                                  
+    <string name="welkom_button_vorige_tekst">Vorige</string>
+    <string name="welkom_button_volgende_tekst">Volgende</string>
+    <string name="welkom_button_voltooien_tekst">Voltooien</string>
+    
     <!-- Algemeen/Actionbar -->
     <string name="app_titel">Batavierenrace</string>
     <string name="alert_dialog_ok">OK</string>

@@ -1,17 +1,30 @@
 package com.ut.bataapp.weer;
 
-import com.ut.bataapp.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 
-import java.io.*;
-import java.net.*;
-import java.util.Calendar;
-
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
-import org.xml.sax.SAXException;
+import com.ut.bataapp.R;
+import com.ut.bataapp.Utils;
 
 /**
  * Weerprovider die gebruikmaakt van de gegevens van Buienradar en Google.
@@ -121,13 +134,14 @@ public class WeerBuienradarGoogle implements WeerProvider {
 		return result;
 	}
 	
-	public void refresh(Calendar datum) throws WeerException {
+	public void refresh(Date datum) throws WeerException {
 		try {
 			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			Document buienradar = documentBuilder.parse(mCtx.getResources().getString(R.string.url_xml_buienradar));
 			mAlgemeneVerwachting = parseAlgemeneVerwachting(buienradar);
 			if (mAlgemeneVerwachting != null) {
-				short diffDays = Utils.diffDays(datum);
+				
+				
 				String[] googleURLs = mCtx.getResources().getStringArray(R.array.url_xml_google);
 				String tagGoogleHuidig = mCtx.getResources().getString(R.string.tag_google_huidig),
 					   tagGoogleHuidigTemp = mCtx.getResources().getString(R.string.tag_google_huidig_temp),
@@ -136,10 +150,24 @@ public class WeerBuienradarGoogle implements WeerProvider {
 					   tagGoogleVerwachtingMin = mCtx.getResources().getString(R.string.tag_google_verwachting_min),
 					   tagGoogleVerwachtingMax = mCtx.getResources().getString(R.string.tag_google_verwachting_max),
 					   tagGoogleVerwachtingIcon = mCtx.getResources().getString(R.string.tag_google_verwachting_icon),
+					   tagGoogleHuidigeDatum = mCtx.getResources().getString(R.string.tag_google_huidige_datum),
 					   attrGoogleData = mCtx.getResources().getString(R.string.attr_google_data),
 					   urlPrefix = mCtx.getResources().getString(R.string.url_google_icon_prefix);
 				for (int i=0; i<TOTAL; i++) {
 					Document xml = documentBuilder.parse(googleURLs[i]);
+					
+					Date googleHuidig;
+					try {
+						String googleHuidigeDatum = ((Element) xml.getElementsByTagName(tagGoogleHuidigeDatum).item(0)).getAttribute(attrGoogleData);
+						DateFormat formatter = new SimpleDateFormat(mCtx.getResources().getString(R.string.format_google_huidige_datum));
+						googleHuidig = formatter.parse(googleHuidigeDatum);
+					} catch (ParseException e) {
+						throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml));
+					} catch (ArrayIndexOutOfBoundsException e) {
+						throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml));
+					}
+					short diffDays = Utils.diffDays(googleHuidig, datum);
+					
 					WeerInfoHuidig huidig = (WeerInfoHuidig) parseGoogle(xml, tagGoogleHuidig, tagGoogleHuidigTemp, tagGoogleHuidigTemp, tagGoogleHuidigIcon, attrGoogleData, urlPrefix, 0, false);
 					if (huidig != null)
 						mHuidig[i] = huidig;

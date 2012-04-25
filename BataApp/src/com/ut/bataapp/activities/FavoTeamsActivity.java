@@ -60,7 +60,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			Utils.goHome(this.getApplicationContext());
+			Utils.goHome(this);
 			break;
 		}
 

@@ -1,25 +1,35 @@
 package com.ut.bataapp.activities;
 
-import com.ut.bataapp.Utils;
-import com.ut.bataapp.fragments.*;
-import com.ut.bataapp.weer.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
-import android.os.*;
-import android.support.v4.app.*;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
-
-import com.viewpagerindicator.*;
-
-import java.util.*;
+import com.ut.bataapp.Utils;
+import com.ut.bataapp.fragments.WeerAdviesFragment;
+import com.ut.bataapp.fragments.WeerBuienradarFragment;
+import com.ut.bataapp.fragments.WeerVerwachtingFragment;
+import com.ut.bataapp.weer.WeerBuienradarGoogle;
+import com.ut.bataapp.weer.WeerException;
+import com.ut.bataapp.weer.WeerProvider;
+import com.viewpagerindicator.PageIndicator;
+import com.viewpagerindicator.TabPageIndicator;
+import com.viewpagerindicator.TitleProvider;
 
 /**
  * Activity voor het weergedeelte. Bevat drie tabbladen (fragments): advies, verwachting en buienradar. 
@@ -116,7 +126,7 @@ public class WeerActivity extends SherlockFragmentActivity {
      * @author Danny Bergsma
      * @version 0.1
      */
-    private class RefreshWeerProvider extends AsyncTask<Calendar, Void, WeerException> {  
+    private class RefreshWeerProvider extends AsyncTask<Date, Void, WeerException> {  
     	/* de ProgressDialog die getoond wordt tijdens ophalen */
     	private ProgressDialog mProgressDialog;
 		
@@ -128,12 +138,13 @@ public class WeerActivity extends SherlockFragmentActivity {
 			progressDialog.setOnCancelListener(new OnCancelListener() { 
 				public void onCancel(DialogInterface dialog) {
 					cancel(true);
-					Utils.goHome(WeerActivity.this);
+					setResult(RESULT_CANCELED);
+					finish();
 				}
 			});
 		}
 				
-		protected WeerException doInBackground(Calendar... arg) {
+		protected WeerException doInBackground(Date... arg) {
 			WeerException result = null;
 			if (!isCancelled())
 				try {
@@ -218,8 +229,9 @@ public class WeerActivity extends SherlockFragmentActivity {
     	Resources res = mRes;
     	Calendar bataDag = Calendar.getInstance();
     	bataDag.set(res.getInteger(R.integer.batadag_jaar), (res.getInteger(R.integer.batadag_maand)-1), res.getInteger(R.integer.batadag_dag));
+    	Date bata = bataDag.getTime();
     	mRefreshWeerProvider = new RefreshWeerProvider();
-    	mRefreshWeerProvider.execute(bataDag);
+    	mRefreshWeerProvider.execute(bata);
 	}
     
     /**
@@ -251,7 +263,7 @@ public class WeerActivity extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Utils.goHome(getApplicationContext());
+				Utils.goHome(this);
 				break;
 		}
 		return super.onOptionsItemSelected(item);

@@ -54,7 +54,7 @@ public class PreferencesActivity extends SherlockPreferenceActivity {
 				setResult(RESULT_OK);
 				finish();
 			} else
-				Utils.goHome(getApplicationContext());
+				Utils.goHome(this);
 			break;
 		}
 

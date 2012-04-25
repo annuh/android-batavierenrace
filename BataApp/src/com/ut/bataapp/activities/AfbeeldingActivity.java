@@ -63,7 +63,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Utils.goHome(getApplicationContext());
+				Utils.goHome(this);
 				break;
 		}
 		return super.onOptionsItemSelected(item);

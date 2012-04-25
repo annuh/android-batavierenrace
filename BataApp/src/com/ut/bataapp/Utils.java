@@ -2,11 +2,9 @@ package com.ut.bataapp;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
-import com.ut.bataapp.activities.TeamsActivity;
-import com.ut.bataapp.objects.Bericht;
-import com.ut.bataapp.objects.Response;
-import com.ut.bataapp.objects.Team;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,6 +12,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.ut.bataapp.activities.TeamsActivity;
+import com.ut.bataapp.objects.Bericht;
+import com.ut.bataapp.objects.Response;
+import com.ut.bataapp.objects.Team;
 
 public class Utils {
 	/* aantal milliseconden in een dag */
@@ -36,7 +39,7 @@ public class Utils {
 
 	public static void goHome(Context context) {
 		Intent intent = new Intent(context, MainActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		context.startActivity(intent);
 	}
 	
@@ -75,9 +78,13 @@ public class Utils {
 	
 	public static void addFavoTeam(Context context, Team team){
 		Log.d("FavoTeams", "ADD: "+String.valueOf(team.getStartGroep()));
+		addFavoTeam(context, team.getID(), team.getNaam());
+	}
+	
+	public static void addFavoTeam(Context context, int id, CharSequence naam){
 		SharedPreferences keyValues = context.getSharedPreferences("teams_follow", Context.MODE_PRIVATE);
 		SharedPreferences.Editor keyValuesEditor = keyValues.edit();
-		keyValuesEditor.putString(String.valueOf(team.getID()), team.getNaam());
+		keyValuesEditor.putString(String.valueOf(id), (String) naam);
 		keyValuesEditor.commit();		
 		Toast toast = Toast.makeText(context, "U volgt dit team nu.", Toast.LENGTH_SHORT);
 		toast.show();
@@ -103,6 +110,7 @@ public class Utils {
 		.setPositiveButton(R.string.ja, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				Intent i = new Intent(context, TeamsActivity.class);
+				i.putExtra(TeamsActivity.EXTRA_IN_SETUP, true);
 				context.startActivity(i);
 			}
 		})
@@ -137,16 +145,14 @@ public class Utils {
 	}
 	
 	/**
-	 * Geeft het aantal dagen terug dat ligt tussen nu en date. Is negatief wanneer date in het verleden ligt.
-	 * @param date datum waarvan bepaald moet worden over hoeveel dagen het de desbetreffende dag is
-	 * @require date != null
-	 * @return aantal dagen tussen nu en date
+	 * Geeft het aantal dagen terug dat ligt tussen date1 en date2. Is negatief wanneer date in het verleden ligt.
+	 * @param date1 eerste datum
+	 * @param date2 tweede datum
+	 * @require date1 != null && date2 != null
+	 * @return aantal dagen tussen date1 en date2
 	 */
-	public static short diffDays(Calendar date) {
-		Calendar now = Calendar.getInstance();
-	    clearTime(now);
-	    clearTime(date);
-		return (short) ((date.getTimeInMillis() - now.getTimeInMillis()) / MILLIS_IN_DAY);
+	public static short diffDays(Date date1, Date date2) {
+		return (short) ((date2.getTime() - date1.getTime()) / MILLIS_IN_DAY);
 	}
 	
 	/**

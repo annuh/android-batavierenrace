@@ -1,6 +1,6 @@
 package com.ut.bataapp.weer;
 
-import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Interface voor verstrekken van weergegevens: huidige weergegevens en verwachting voor plaatsen,
@@ -28,7 +28,7 @@ public interface WeerProvider {
 	 * @ensure hasData()
 	 * @throws WeerException wanneer de data niet vernieuwd kan worden, dan ook !hasData()
 	 */
-	public void refresh(Calendar datum) throws WeerException;
+	public void refresh(Date datum) throws WeerException;
 	
 	/**
 	 * Geeft de algemene (tekstuele) verwachting terug.

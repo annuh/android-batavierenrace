@@ -101,7 +101,7 @@ public class TeamActivity extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			Utils.goHome(getApplicationContext());
+			Utils.goHome(this);
 			break;
 		case MENU_FOLLOW:
 			Utils.addFavoTeam(getApplicationContext(), mTeam);

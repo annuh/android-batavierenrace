@@ -31,7 +31,11 @@ import com.ut.bataapp.objects.Response;
 import com.ut.bataapp.objects.Team;
 
 public class TeamsActivity extends SherlockListActivity  {
-
+	/** Extra-lookup key voor aangeven of deze activity wel/niet vanuit setup wordt gestart */
+	public static final String EXTRA_IN_SETUP = "inSetup";
+	/* savedInstanceState-lookup key voor aangeven of deze activity wel/niet vanuit setup wordt gestart */
+	private static final String INSTANCE_STATE_IN_SETUP = "inSetup";
+	
 	private final int MENU_SEARCH = Menu.FIRST;
 	private final int MENU_SORT_NAAM = Menu.FIRST + 1;
 	private final int MENU_SORT_START = Menu.FIRST + 2;
@@ -41,23 +45,40 @@ public class TeamsActivity extends SherlockListActivity  {
 	private char sortNaam = 'D';
 	private char sortStartnummer = 'D';
 	
+	/* geeft aan of deze activity gestart is vanuit setup */
+	private boolean mInSetup;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		setTitle("Teams");
 
+		mInSetup = (getIntent() == null ? savedInstanceState.getBoolean(INSTANCE_STATE_IN_SETUP) : getIntent().getBooleanExtra(EXTRA_IN_SETUP, false));
+		
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		this.getListView().setFastScrollEnabled(true);
 		this.setContentView(R.layout.listview_team);
 		new getTeams().execute();	   
 	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putBoolean(INSTANCE_STATE_IN_SETUP, mInSetup);
+	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
-		intent.putExtra("index", v.getId());
-		startActivity(intent);
+		if (mInSetup) {
+			TextView item = (TextView) v.findViewById(R.id.team_naam);
+			Utils.addFavoTeam(getApplicationContext(), v.getId(), item.getText());
+			setResult(RESULT_OK);
+			finish();
+		} else {
+			Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
+			intent.putExtra("index", v.getId());
+			startActivity(intent);
+		}
 	}
 
 	@Override
@@ -86,7 +107,11 @@ public class TeamsActivity extends SherlockListActivity  {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			Utils.goHome(getApplicationContext());
+			if (mInSetup) {
+				setResult(RESULT_OK);
+				finish();
+			} else
+				Utils.goHome(this);
 			break;
 		case MENU_SEARCH:
 			item.setActionView(R.layout.search_box);

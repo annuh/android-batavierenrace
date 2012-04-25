@@ -56,6 +56,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" >
         </activity>
+        <activity android:name=".activities.WelkomActivity"/>
         <activity android:name=".activities.EtappeChartByTeam" />
         <activity android:name="org.achartengine.GraphicalActivity" />
         <activity

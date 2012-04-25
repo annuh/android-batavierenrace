@@ -23,7 +23,8 @@ public class WeerVerwachtingFragment extends SherlockFragment {
 		Resources res = getResources();
     	
     	WeerProvider weerProvider = ((WeerActivity) getActivity()).getWeerProvider();
-    	boolean hasVerwachting = (weerProvider.getVerwachting(WeerProvider.ENSCHEDE) != null);
+    	boolean hasVerwachting = (weerProvider.getVerwachting(WeerProvider.ENSCHEDE) != null && weerProvider.getVerwachting(WeerProvider.RUURLO) != null &&
+    			                  weerProvider.getVerwachting(WeerProvider.NIJMEGEN) != null);
     	View result = inflater.inflate((hasVerwachting ? R.layout.weer_verwachting : R.layout.weer_verwachting_na), container, false);
 		
     	((TextView) result.findViewById(R.id.weer_algemene_verwachting)).setText(weerProvider.getAlgemeneVerwachting());
@@ -31,7 +32,7 @@ public class WeerVerwachtingFragment extends SherlockFragment {
     		WeerInfoVerwachting nijmegen = weerProvider.getVerwachting(WeerProvider.NIJMEGEN),
 		                        ruurlo = weerProvider.getVerwachting(WeerProvider.RUURLO),
 		                        enschede = weerProvider.getVerwachting(WeerProvider.ENSCHEDE);
-			((TextView) result.findViewById(R.id.weer_nijmegen_verwacht_temp)).setText(String.format(res.getString(R.string.weer_format_temp), nijmegen.getMinTemp()));
+    		((TextView) result.findViewById(R.id.weer_nijmegen_verwacht_temp)).setText(String.format(res.getString(R.string.weer_format_temp), nijmegen.getMinTemp()));
 			((TextView) result.findViewById(R.id.weer_ruurlo_verwacht_temp)).setText(String.format(res.getString(R.string.weer_format_temp), ruurlo.getMaxTemp()));
 			((TextView) result.findViewById(R.id.weer_enschede_verwacht_temp)).setText(String.format(res.getString(R.string.weer_format_temp), enschede.getMaxTemp()));
 			((ImageView) result.findViewById(R.id.weer_nijmegen_verwacht_icoon)).setImageBitmap(nijmegen.getDesc());

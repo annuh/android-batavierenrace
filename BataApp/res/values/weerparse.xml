@@ -9,4 +9,6 @@
     <string name="tag_google_huidig">current_conditions</string>
     <string name="tag_google_huidig_temp">temp_c</string>
     <string name="tag_google_huidig_icon">icon</string>
+    <string name="tag_google_huidige_datum">forecast_date</string>
+    <string name="format_google_huidige_datum">yyyy-MM-dd</string>
 </resources>
