@@ -9,10 +9,14 @@ import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.objects.Etappe;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class EtappeInformatie extends SherlockFragment {
@@ -28,6 +32,12 @@ public class EtappeInformatie extends SherlockFragment {
 		String formatkmu = getResources().getString(R.string.kmu);
 		String formatuur = getResources().getString(R.string.uur);
 		
+		Log.i("debugger", "" + etappe.getId());
+		
+		int id = etappe.getId();		
+		String imageLink = "hoogteverschil/" + id + ".jpg";
+		
+		
 		/**
 		 * Informatie
 		 */
@@ -42,18 +52,40 @@ public class EtappeInformatie extends SherlockFragment {
 
 		ImageView hoogteVerschil = (ImageView) view.findViewById(R.id.image_hoogteverschil);
 		try {
-			hoogteVerschil.setImageDrawable(Drawable.createFromStream(this.getActivity().getAssets().open("hoogteverschil/kaart1.png"), null));
+			hoogteVerschil.setImageDrawable(Drawable.createFromStream(this.getActivity().getAssets().open(imageLink), null));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		hoogteVerschil.setScaleType(ScaleType.FIT_XY);
+		hoogteVerschil.setMaxHeight(350);
+		hoogteVerschil.setMaxWidth(500);
+		
+		int maxHeight = 0;
+		int minHeight = 0;
+		
+		if(id>0 && id<=etappe.maxHeight.length){
+			maxHeight = etappe.maxHeight[id];
+		}
+		if(id>0 && id<=etappe.minHeight.length){
+			minHeight = etappe.minHeight[id];
+		}
+		float afstandFloat = (float)etappe.getAfstand()/(float)1000;
+		
+		String afstandString = afstandFloat + "";
+		
+		TextView minHeightView = (TextView) view.findViewById(R.id.hoogteVerschil_minHeight);
+		minHeightView.setText(minHeight + "m");
+		TextView maxHeightView = (TextView) view.findViewById(R.id.hoogteVerschil_maxHeight);
+		maxHeightView.setText(maxHeight + "m");
+		TextView afstandView = (TextView) view.findViewById(R.id.hoogteverschil_afstand);
+		afstandView.setText(afstandString + "km");		
+		
 		TextView etappeafstand = (TextView) view.findViewById(R.id.text_etappeafstand);
 		BigDecimal afst = new BigDecimal((etappe.getAfstand()));
 		afst = afst.divide(new BigDecimal(1000), 1, BigDecimal.ROUND_FLOOR);
 		etappeafstand.setText(String.format(formatkm, afst.toString()));
-
-		//ImageView hoogte = (ImageView) view.findViewById(R.id.image_hoogteverschil);
 
 		TextView etappegeslacht = (TextView) view.findViewById(R.id.text_etappegeslacht);
 		String geslacht = (etappe.getGeslacht() == 'H') ? "Man" : "Vrouw"; 	
