@@ -39,6 +39,33 @@
 		<item>http://g.co/maps/hhfka</item>
 		<item>http://g.co/maps/hhfka</item>
     </string-array>
+        <string-array name="url_lopersroutes">
+        <item>http://g.co/maps/p3aj9</item>
+        <item>http://g.co/maps/bfu3u</item>
+		<item>http://g.co/maps/85a4m</item>
+		<item>http://g.co/maps/ezudn</item>
+        <item>http://g.co/maps/aeycy</item>
+        <item>http://g.co/maps/32vfn</item>
+		<item>http://g.co/maps/w84ue</item>
+		<item>http://g.co/maps/ge4vw</item>
+        <item>http://g.co/maps/m8zqa</item>
+        <item>http://g.co/maps/4fzbb</item>
+		<item>http://g.co/maps/dgdv9</item>
+		<item>http://g.co/maps/zc8ag</item>
+        <item>http://g.co/maps/q98yt</item>
+        <item>http://g.co/maps/kxqys</item>
+		<item>http://g.co/maps/39n2y</item>
+		<item>http://g.co/maps/pp6wj</item>
+		<item>http://g.co/maps/phbw2</item>        
+		<item>http://g.co/maps/h9drc</item>
+        <item>http://g.co/maps/6ja47</item>
+		<item>http://g.co/maps/zwkwp</item>
+		<item>http://g.co/maps/mn2hz</item>
+        <item>http://g.co/maps/nnzyr</item>
+        <item>http://g.co/maps/qh538</item>
+		<item>http://g.co/maps/y789v</item>
+		<item>http://g.co/maps/y789v</item>
+    </string-array>
     <string name="url_xml_klassement">klassement.xml</string>
     <string name="url_xml_etappeuitslag">etappeuitslag/%s.xml</string>
     <string name="url_xml_ploeguitslag">ploeguitslag/%s.xml</string>

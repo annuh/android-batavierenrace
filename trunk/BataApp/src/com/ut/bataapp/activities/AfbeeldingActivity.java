@@ -16,7 +16,6 @@ public class AfbeeldingActivity extends SherlockActivity {
 	
 	public static String[][] overzichtskaarten = {{"herstart_barchem.jpg", "Herstart Barchem"}, {"herstart_ulft.jpg", "Herstart Ulft"}, {"campus_enschede.jpg", "Campus Enschede"}, {"stad_enschede.jpg", "Enschede stad"}, {"stad_nijmegen.jpg", "Start Nijmegen"}};
 	public static String[][] hoogteverschillen = {};
-	private Boolean[] loopKaartRotatie = {false,true,true,true,true,false,true,true,true,false,true,false,false,false,false,false,false,false,true,false,true,false,true,false};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,8 +46,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 			int kaart = getIntent().getIntExtra("kaart",0);
 			titel = type+" "+kaart;
 			if(kaart==25) kaart = 24;
-			locatie = (type+"/"+kaart+".jpg");	
-			if(loopKaartRotatie[kaart-1])this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+			locatie = (type+"/"+kaart+".jpg");
 		}
 		getSupportActionBar().setTitle(titel);
 		setContentView(R.layout.afbeelding);
