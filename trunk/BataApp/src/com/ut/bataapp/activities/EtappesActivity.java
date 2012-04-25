@@ -43,7 +43,7 @@ public class EtappesActivity extends SherlockListActivity  {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Utils.goHome(getApplicationContext());
+				Utils.goHome(this);
 				return true;
 		}
 		return super.onOptionsItemSelected(item);

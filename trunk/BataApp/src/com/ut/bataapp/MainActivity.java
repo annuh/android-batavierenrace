@@ -5,12 +5,15 @@ import java.util.Calendar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -27,6 +30,7 @@ import com.ut.bataapp.activities.SponsorActivity;
 import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.activities.TeamsActivity;
 import com.ut.bataapp.activities.WeerActivity;
+import com.ut.bataapp.activities.WelkomActivity;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.services.BackgroundUpdater;
 
@@ -37,14 +41,15 @@ public class MainActivity extends SherlockFragmentActivity {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		// workaround voor C2DM <-> AsyncTask bug:
 		try {
 			Class.forName("android.os.AsyncTask");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.getSupportActionBar().setTitle(R.string.app_titel);
-		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.main);
 		setupC2DM();
 		//register();
@@ -156,6 +161,20 @@ public class MainActivity extends SherlockFragmentActivity {
 		// starten background updater:
 		Intent startServiceIntent = new Intent(this, BackgroundUpdater.class);
 		startService(startServiceIntent);
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		String lookupKey = getResources().getString(R.string.pref_first_start);
+		if (prefs.getBoolean(lookupKey, true)) {
+			Intent intent = new Intent(this, WelkomActivity.class);
+			startActivity(intent);
+			SharedPreferences.Editor editor = prefs.edit();
+    		editor.putBoolean(lookupKey, false);
+    		editor.commit();
+		}
 	}
 
 	@Override
