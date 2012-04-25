@@ -78,6 +78,7 @@
     <string name="klassement_header_stand">#</string>
     <string name="klassement_header_team">Team</string>
     <string name="klassement_header_tijd">Tijd</string>
+    <string name="klassement_hint">Klassement is gebaseerd op etappe %s</string>
     <string name="klassement_leeg">Er zijn geen klassementen gevonden</string>
 
     <!-- Teams -->

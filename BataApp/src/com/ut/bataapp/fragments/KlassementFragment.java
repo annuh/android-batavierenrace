@@ -18,6 +18,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -84,6 +87,14 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 				sortStand(null);
 			}
 		});
+		
+		view.findViewById(R.id.listview_hint).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				closeHint(view);
+			}
+		});
+		
 		return view;
 	}
 
@@ -174,10 +185,12 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			sortNaam = 'D';
 			sortStand = 'D';
 		}
-		resetArrows();
-		int i = this.getResources().getIdentifier("sort_"+sortNaam, "string", this.getActivity().getPackageName());
-		((TextView) getView().findViewById(R.id.klassement_header_team)).setText(this.getText(R.string.klassement_header_team) +" "+ getText(i));
-		makeList();
+		if(getView() != null) {
+			resetArrows();
+			int i = this.getResources().getIdentifier("sort_"+sortNaam, "string", this.getActivity().getPackageName());
+			((TextView) getView().findViewById(R.id.klassement_header_team)).setText(this.getText(R.string.klassement_header_team) +" "+ getText(i));
+			makeList();
+		}
 	}
 
 	public void sortStand(View v) {
@@ -199,10 +212,13 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			sortStand = 'D';
 			sortNaam = 'D';
 		}
-		resetArrows();
-		int i = this.getResources().getIdentifier("sort_"+sortStand, "string", this.getActivity().getPackageName());
-		((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand) +" "+ getText(i));
-		makeList();
+		if(getView() != null) {
+			resetArrows();
+			int i = this.getResources().getIdentifier("sort_"+sortStand, "string", this.getActivity().getPackageName());
+			((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand) +" "+ getText(i));
+			makeList();
+		}
+		
 	}
 
 	public void resetArrows() {
@@ -280,6 +296,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			getListView().setSelection(getArguments().getInt("init") -1);
 			if(!inViewpager && progressDialog != null)
 				handler.sendEmptyMessage(1);
+			((TextView) getView().findViewById(R.id.listview_hint)).setText(String.format(getString(R.string.klassement_hint), String.valueOf(klassement.getTotEtappe())));
 			getListView().getEmptyView().setVisibility(View.GONE);
 			getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 		}
@@ -302,6 +319,22 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	@Override
 	public void onLoaderReset(Loader<Response<Klassement>> arg0) {                
 		adapter = null;
+	}
+	
+	public void closeHint(final View view) {
+		Animation animationSlideOutRight = AnimationUtils.loadAnimation(this.getActivity().getApplicationContext(),
+		         android.R.anim.slide_out_right);
+		animationSlideOutRight.setDuration(200);
+		animationSlideOutRight.setAnimationListener(new AnimationListener() {
+                    public void onAnimationStart(Animation anim) { };
+                    public void onAnimationRepeat(Animation anim) { };
+                    public void onAnimationEnd(Animation anim) {
+                    	view.setVisibility(View.GONE);
+                    };
+                });
+		view.setAnimation(animationSlideOutRight);
+		view.startAnimation(animationSlideOutRight);
+		
 	}
 
 }

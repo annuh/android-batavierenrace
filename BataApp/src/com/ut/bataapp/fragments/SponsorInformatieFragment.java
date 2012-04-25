@@ -1,17 +1,10 @@
 package com.ut.bataapp.fragments;
 
 import java.util.ArrayList;
-
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
-import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.objects.Sponsor;
-
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
