@@ -1,5 +1,8 @@
 package com.ut.bataapp.fragments;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.activities.AfbeeldingActivity;
 import com.ut.bataapp.activities.EtappeActivity;
@@ -7,6 +10,7 @@ import com.ut.bataapp.activities.EtappeRouteTekstActivity;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.R;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,22 +33,33 @@ public class EtappeRoutesFragment extends SherlockFragment {
     	View view = inflater.inflate(R.layout.etappe_routes, container, false);
     	
     	final String[] auto_maps = getResources().getStringArray(R.array.url_autoroutes);
+    	final String[] lopers_maps = getResources().getStringArray(R.array.url_lopersroutes);
     	
 
     	
     	//Kaart lopers route
     	ImageView lopers_kaart = new ImageView(this.getActivity());
+    	InputStream input = null;
+    	try {
+			input = getResources().getAssets().open("lopersroutekaart/1.jpg");
+		} catch (IOException e) {
+		}
+    	lopers_kaart.setImageDrawable(Drawable.createFromStream(input,null));
     	lopers_kaart.setImageResource(R.drawable.kaartvanetappe);
-    	lopers_kaart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
     	lopers_kaart.setAdjustViewBounds(true);
     	lopers_kaart.setMaxHeight(200);
     	lopers_kaart.setMaxWidth(200);
     	LinearLayout layout = (LinearLayout) view.findViewById(R.id.etappe_route_layout);
     	layout.addView(lopers_kaart,1);
+    	lopers_kaart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            	Intent intent = new Intent(getActivity(),AfbeeldingActivity.class);
+            	intent.putExtra("type","lopersroutekaart");
+            	intent.putExtra("kaart",1);
+            	startActivity(intent);
+            }
+        });
     	
     	
     	//Tekst lopers route
@@ -64,7 +79,10 @@ public class EtappeRoutesFragment extends SherlockFragment {
     	lopers_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            	Toast.makeText(getActivity(), "coming soon"+'\u2122', Toast.LENGTH_SHORT).show();
+            	Intent mapLopersroute = new Intent(Intent.ACTION_VIEW);
+            	Uri uri0 = Uri.parse(lopers_maps[etappe.getId()-1]);
+            	mapLopersroute.setData(uri0);
+            	startActivity(Intent.createChooser(mapLopersroute, "Lopersroute routebeschrijving"));
             }
         });
     	
