@@ -112,7 +112,7 @@ public class api {
 	 * @return
 	 */
 	public static Response<ArrayList<Team>> getTeams() {
-		TeamHandler th = new TeamHandler("ploegen.xml");
+		TeamHandler th = new TeamHandler("ploegoverzicht.xml");
 		th.parse(false);
 		return th.getParsedData();
 	}
