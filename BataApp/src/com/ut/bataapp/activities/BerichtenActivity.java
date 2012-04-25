@@ -41,20 +41,33 @@ public class BerichtenActivity extends SherlockListActivity  {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Log.d("Listview",""+position);
+		Log.d("Listview",""+position + ":" + pushberichten.size());
 		if(position <= pushberichten.size()) {
 			switch(pushberichten.get(position-1).getCode()) {
-			case Bericht.GEEL:
-				break;
-			case Bericht.GROEN:
-				break;
-			case Bericht.ROOD:
-				break;
-			case Bericht.WEER:
-				Intent intent = new Intent(this, WeerActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivity(intent);
-				break;
+				case Bericht.GEEL:{
+					Intent intent4 = new Intent(this, KleurcodesActivity.class);
+					intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivity(intent4);
+					break;
+				}
+				case Bericht.GROEN:{
+					Intent intent2 = new Intent(this, KleurcodesActivity.class);
+					intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivity(intent2);
+					break;
+				}
+				case Bericht.ROOD:{
+					Intent intent3 = new Intent(this, KleurcodesActivity.class);
+					intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivity(intent3);
+					break;
+				}
+				case Bericht.WEER:{
+					Intent intent = new Intent(this, WeerActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivity(intent);
+					break;
+				}
 			}
 		} else {
 			String url = String.format(getString(R.string.url_nieuws), String.valueOf(nieuwsberichten.get(position - 2 - pushberichten.size() ).getId()));
