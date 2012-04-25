@@ -87,7 +87,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
             }
         });
     	
-    	//Google maps auto route
+    	//Google maps auto route (To check etappe: 4,5,8,9,21)
 		Button autos_map = (Button) view.findViewById(R.id.auto_googlemaps_route);
     	autos_map.setOnClickListener(new View.OnClickListener() {
 			@Override
