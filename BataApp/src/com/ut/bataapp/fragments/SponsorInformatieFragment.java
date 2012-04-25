@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class SponsorInformatieFragment extends SherlockFragment {
@@ -44,10 +46,13 @@ public class SponsorInformatieFragment extends SherlockFragment {
 		TextView sponsor_omschrijving = (TextView) view.findViewById(R.id.sponsor_omschrijving);
 		sponsor_omschrijving.setText(sponsor.getOmschrijving());
 		
+		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(200, 200, 1);
+		
 		ImageView sponsor_plaatje = (ImageView) view.findViewById(R.id.sponsor_plaatje_3);
 		String link = getActivity().getPackageName() + ":drawable/" + sponsor.getAfbeeldingLink();		
 		int id = this.getResources().getIdentifier(link, null, null);
 		sponsor_plaatje.setImageResource(id);
+		sponsor_plaatje.setLayoutParams(layoutParams);
 		
 		return view;
 	}
