@@ -1,7 +1,5 @@
-Vertrek W.P. 20: Middendorp;;
-Open: 12:40;;
-Uiterste starttijd: 14:55 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 20: Middendorp;-
 -;Na het W.P. rechtsaf;Oude Haaksbergerweg
 1,4;Bretelerveldweg rechtdoor oversteken;Diepenheimseweg
 1,9;Zijstraat (Stegenhoekweg) rechtdoor;-
@@ -19,5 +17,3 @@ Afst;Omschrijving;Locatie
 8,2;Driesprong links aanhouden;Wissinkbrinkweg
 8,7;Het W.P. is voor de eerste kruising;-
 Aankomst W.P. 21: St. Isidorushoeve;;
-Open: 13:10;;
-Uiterste starttijd: 15:35 uur;;

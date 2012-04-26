@@ -1,7 +1,5 @@
-Vertrek W.P. 22: Grolsch;;
-Open: 13:55;;
-Uiterste starttijd: 16:20 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 22: Grolsch;-
 -;Na het W.P. weg vervolgen;-
 0,2;Einde Grolsch-terrein rechts en fietspad op;-
 0,5;Einde fietspad linksaf, blijf op fietspad;-
@@ -30,4 +28,3 @@ Afst;Omschrijving;Locatie
 6,9;Bij vijfsprong rechtdoor oversteken;Marktstraat
 7,3;W.P. bevindt zich op de Oude Markt;-
 Aankomst W.P. 23: Stad Enschede;;
-Open: 14:30 - 17:25 uur;;

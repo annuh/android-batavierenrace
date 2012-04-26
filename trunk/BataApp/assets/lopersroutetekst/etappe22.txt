@@ -1,7 +1,5 @@
-Vertrek W.P. 21: St. Isidorushoeve;;
-Open: 13:10;;
-Uiterste starttijd: 15:35 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 21: St. Isidorushoeve;-
 -;Na het W.P. rechtsaf;Schoolkaterdijk
 0,6;Einde weg linksaf;Albertsweg
 0,7;Linksaf fietspad op;-
@@ -30,5 +28,3 @@ Afst;Omschrijving;Locatie
 8,8;Linksaf door het hek van Grolsch;Nauwe doorgang!
 8,8;W.P. ligt na 30m op het Grolsch Terrein;-
 Aankomst W.P. 22: Grolsch;;
-Open: 13:55;;
-Uiterste starttijd: 16:20 uur;;

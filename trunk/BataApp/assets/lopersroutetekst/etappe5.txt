@@ -1,8 +1,6 @@
-Etappe 5;;
-Vertrek W.P. 4: Rindern;;
-Open: 01:50 uur;;
 Uiterste starttijd: 04:25 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 4: Rindern;-
 -;W.P. weg vervolgen;Spyckscher Baum
 1,0;Wardhausen binnenlopen;-
 1,7;Rechtsaf brug over;Am alten Rhein
@@ -12,5 +10,3 @@ Afst;Omschrijving;Locatie
 6,7;Zijstraat (Hurskampstraße) rechtdoor;-
 8,1;Linksaf weg oversteken W.P. is op de parkeerplaats;-
 Aankomst W.P. 5: Oraniendeich;;
-Open: 02:20 uur;;
-Uiterste starttijd: 05:00 uur;;

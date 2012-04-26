@@ -1,8 +1,5 @@
-Etappe 6;;
-Vertrek W.P. 5: Oraniendeich;;
-Open: 02:20 uur;;
-Uiterste starttijd: 05:00 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 5: Oraniendeich;-
 -;Na W.P. weg vervolgen;-
 0,1;Linksaf brug over;-
 1,4;Einde brugfietspad op fietspad, linkerzijde;Klever Straﬂe
@@ -16,5 +13,3 @@ Afst;Omschrijving;Locatie
 7,0;Rotonde rechtdoor;Ulenpasweg
 7,3;Na de kruising W.P. rechts van de weg;-
 Aankomst W.P. 6: 's Heerenberg;;
-Open: 02:50 uur;;
-Uiterste starttijd: 05:40 uur;;
