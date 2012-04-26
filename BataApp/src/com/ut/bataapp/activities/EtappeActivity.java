@@ -1,17 +1,23 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
+
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.Toast;
+
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -26,8 +32,9 @@ import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
-public class EtappeActivity extends SherlockFragmentActivity {
-
+public class EtappeActivity extends SherlockFragmentActivity implements OnPageChangeListener {
+	public static final int TAB_ALGEMEEN = 0, TAB_ROUTES = 1, TAB_LOOPTIJDEN = 2;
+	
 	ViewPager mPager;
 	PageIndicator mIndicator;
 	EtappeFragmentAdapter mAdapter;
@@ -145,6 +152,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 				mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 				mIndicator.setViewPager(mPager);
 				
+				mIndicator.setOnPageChangeListener(EtappeActivity.this);
 				
 				mPager.setCurrentItem(mTabId);
 				mIndicator.setCurrentItem(mTabId);
@@ -167,4 +175,28 @@ public class EtappeActivity extends SherlockFragmentActivity {
 		}
 	}
 	
+	// -- ONPAGECHANGELISTENER --
+
+	public void onPageScrollStateChanged(int arg0) {
+		// doe niets
+	}
+
+	public void onPageScrolled(int arg0, float arg1, int arg2) {
+		// doe niets
+	}
+
+	public void onPageSelected(int arg0) {
+		switch (mPager.getCurrentItem()) {
+		case TAB_LOOPTIJDEN:
+			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+			String lookupKey = getResources().getString(R.string.pref_etappe_looptijden_first_start);
+			if (prefs.getBoolean(lookupKey, true)) {
+				Toast.makeText(this, getResources().getString(R.string.team_looptijden_draai), Toast.LENGTH_LONG).show();
+				SharedPreferences.Editor editor = prefs.edit();
+	    		editor.putBoolean(lookupKey, false);
+	    		editor.commit();
+			}
+			break;
+		}
+	}
 }

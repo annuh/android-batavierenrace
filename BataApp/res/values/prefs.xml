@@ -6,6 +6,9 @@
     <!-- Teamlooptijden -->
     <string name="pref_team_looptijden_first_start">firststartlt</string>
     
+    <!-- Etappelooptijden -->
+    <string name="pref_etappe_looptijden_first_start">firststartlt2</string>
+    
     <!-- Background updater -->
     <string name="pref_background_update">backgroundupdater</string>
     <string name="pref_background_update_interval">backgroundinterval</string>
