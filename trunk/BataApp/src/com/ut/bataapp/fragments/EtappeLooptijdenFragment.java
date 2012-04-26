@@ -69,6 +69,20 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 				sortTeam(null);
 			}
 		});
+		view.findViewById(R.id.etappe_looptijden_header_snelheid).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				sortStand(null);
+			}
+		});
+		view.findViewById(R.id.etappe_looptijden_header_tijd).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				sortStand(null);
+			}
+		});
+		
+		
 		return view;
 	}
 

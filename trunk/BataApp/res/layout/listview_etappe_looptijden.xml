@@ -24,6 +24,11 @@
             android:layout_alignParentRight="true"
             android:gravity="center_vertical"
             android:text="@string/etappe_looptijden_header_tijd" />
+
+        <TextView
+            android:id="@+id/etappe_looptijden_header_snelheid"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
     </RelativeLayout>
 
     <ListView
@@ -49,8 +54,8 @@
             style="@android:style/Widget.ProgressBar.Large.Inverse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
     <TextView
