@@ -8,9 +8,138 @@
         <TextView
 			android:text="@string/bataradio_programmering_header" 
 			style="@style/h1"/>
-       
-        <TextView
-            android:text="@string/bataradio_programmering"
-            style="@style/container_block" />
+        <TableLayout style="@style/table" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row1_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row1_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row2_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row2_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row3_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row3_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row4_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row4_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row5_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row5_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row6_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row6_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row7_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row7_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row8_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row8_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row9_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row9_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row10_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row10_col2" />
+            </TableRow>
+            <View style="@style/divider" >
+            </View>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <TextView
+                    style="@style/table_left"
+                    android:text="@string/bataradio_programmering_row11_col1" />
+                <TextView
+                    style="@style/table_right"
+                    android:text="@string/bataradio_programmering_row11_col2" />
+            </TableRow>            
+        </TableLayout>
     </LinearLayout>
 </ScrollView>
