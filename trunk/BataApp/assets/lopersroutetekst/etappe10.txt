@@ -27,4 +27,7 @@ Afst;Omschrijving;Locatie
 9,6;Einde weg links;Dames Jolinkweg
 9,7;Eerste weg rechts;Breukelaarsweg
 10,0;W.P. is voor Kramp;-
+<<<<<<< .mine
+Aankomst W.P. 10: Breukelaarsweg;;=======
 Aankomst W.P. 10: Breukelaarsweg;;
+>>>>>>> .r307

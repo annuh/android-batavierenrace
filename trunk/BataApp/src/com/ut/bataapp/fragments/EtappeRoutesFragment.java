@@ -56,6 +56,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
 	            public void onClick(View view) {
 	            	Intent intent = new Intent(getActivity(),AfbeeldingActivity.class);
 	            	intent.putExtra("type","lopersroutekaart");
+	            	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	            	intent.putExtra("kaart",etappe.getId());
 	            	startActivity(intent);
 	            }
@@ -70,7 +71,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
 			public void onClick(View v) {
 				Intent intent = new Intent(getActivity(),EtappeRouteTekstActivity.class);
 				intent.putExtra("id",etappe.getId());
-				intent.putExtra("type", "Lopers");
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
 			}
 		});
