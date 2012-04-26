@@ -10,57 +10,147 @@
 
         <TextView
             style="@style/h1"
-            android:text="Bel 112" />
+            android:text="Levensbedreigend?" />
 
         <LinearLayout
-            android:id="@+id/bel_112"
+            android:id="@+id/calamiteit_levensbedreigend"
             style="@style/container_block"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:src="@drawable/icon_phone" />
-
-            <TextView
-                android:id="@+id/label_112"
-                android:layout_width="match_parent"
+            android:orientation="vertical">
+            
+            <LinearLayout 
+                android:id="@+id/bel_112"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="112"
-                android:textSize="20dp" />
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:gravity="center_vertical" >
+                 <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="1. Bel "
+	                android:textSize="20dp" />
+                <ImageView
+	                android:layout_width="40dp"
+	                android:layout_height="40dp"
+	                android:layout_margin="5dp"
+	                android:src="@drawable/icon_phone" />
+	            <TextView
+	                android:id="@+id/label_112"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_gravity="center_vertical"
+	                android:text="112"
+	                android:textSize="20dp" />
+            </LinearLayout>
+            <LinearLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center_vertical">
+                 <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="2. Informeer de organisatie via een medewerker of bel"
+	                android:textSize="20dp" />
+            </LinearLayout>
+            <LinearLayout 
+                android:id="@+id/bel_organisatie"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:clickable="true"
+                android:gravity="center_vertical|center_horizontal">
+                
+                <LinearLayout 
+	                android:layout_width="wrap_content"
+	                android:layout_height="40dp">
+	                <ImageView
+			        	android:layout_width="40dp"
+			            android:layout_height="40dp"
+			            android:layout_margin="5dp"
+			            android:src="@drawable/icon_phone" />
+			        <TextView
+			        	android:id="@+id/label_112"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:layout_gravity="center_vertical"
+			            android:text="053-489 5331"
+			            android:textSize="20dp" />
+		        </LinearLayout>
+            </LinearLayout>
+            <LinearLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true">
+                 <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="3. Laat het slachtoffer niet alleen."
+	                android:textSize="20dp"
+	                android:gravity="center_vertical" />
+            </LinearLayout>            
         </LinearLayout>
 
         <TextView
             style="@style/h1"
-            android:text="Infomeer de organisatie" />
-
+            android:text="Niet Levensbedrijgend" />
+		
         <LinearLayout
-            android:id="@+id/bel_organisatie"
+            android:id="@+id/calamiteit_levensbedreigend"
             style="@style/container_block"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:src="@drawable/icon_phone" />
-
-            <TextView
-                android:id="@+id/label_belorganisatie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="0031 - (0)53 - 4895331"
-                android:textSize="20dp" />
-        </LinearLayout>
+            android:orientation="vertical">
+	        <LinearLayout 
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:clickable="true"
+	            android:gravity="center_vertical">
+	            <TextView
+		        	android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="1. Informeer de organisatie via een medewerker of bel"
+		            android:textSize="20dp" />
+	       	</LinearLayout>
+	        <LinearLayout 	            
+	            android:layout_width="fill_parent"
+	            android:layout_height="50dp"
+	            android:clickable="true"
+	            android:gravity="center_vertical|center_horizontal">
+	            
+	            <LinearLayout
+	                android:id="@+id/bel_organisatie2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="40dp">
+	                <ImageView
+			        	android:layout_width="40dp"
+			            android:layout_height="40dp"
+			            android:layout_margin="5dp"
+			            android:src="@drawable/icon_phone" />
+			        <TextView
+			        	android:id="@+id/label_112"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:layout_gravity="center_vertical"
+			            android:text="053-489 5331"
+			            android:textSize="20dp" />                
+	            </LinearLayout>            
+	    	</LinearLayout>
+	        <LinearLayout 
+	        	android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:clickable="true">
+	            <TextView
+		        	android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="2. Laat het slachtoffer niet alleen."
+		            android:textSize="20dp"
+		            android:gravity="center_vertical" />
+	      	</LinearLayout>
+	   	</LinearLayout>  
     </LinearLayout>
 
 </ScrollView>
