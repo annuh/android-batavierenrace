@@ -34,7 +34,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 			if(kaart<0 || kaart>(overzichtskaarten.length - 1)){
 				kaart = 0;
 			}
-			locatie = overzichtskaarten[kaart][0];
+			locatie = "overzichtkaart/" + overzichtskaarten[kaart][0];
 			titel = overzichtskaarten[kaart][1];
 		} else if(type.equals("hoogteverschil")){
 			int kaart = getIntent().getIntExtra("hoogteverschil", 0);
