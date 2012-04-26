@@ -88,15 +88,13 @@ public class EtappeRoutesFragment extends SherlockFragment {
             }
         });
     	
-    	//Google maps auto route (To check etappe: 4,5,8,9,21)
+    	//Google maps auto route (To check etappe: 5,8,9,21)
 		Button autos_map = (Button) view.findViewById(R.id.auto_googlemaps_route);
     	autos_map.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				Intent mapAutoroute = new Intent(Intent.ACTION_VIEW);
 				if(!auto_maps[etappe.getId()-1].equals("")){
-					Log.d("Auto route","Etappe nummer: "+etappe.getId());
-					Log.d("Auto route","Link: "+auto_maps[etappe.getId()-1]);
 					Uri uri0 = Uri.parse(auto_maps[etappe.getId()-1]);
 					mapAutoroute.setData(uri0); 
 					startActivity(Intent.createChooser(mapAutoroute, "Autoroute routebeschrijving"));
