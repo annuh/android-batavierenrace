@@ -21,10 +21,4 @@ public class BataRadioProgrammeringFragment extends SherlockFragment {
 		inflater.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
 		return inflater.inflate(R.layout.bataradio_programmering, null);
 	}
-	
-	/*@Override
-    public void onSaveInstanceState(Bundle outState) { // workaround voor bug in FragmentManagerImpl.saveFragmentBasicState()
-        super.onSaveInstanceState(outState);
-        setUserVisibleHint(true);
-    }*/
 }
