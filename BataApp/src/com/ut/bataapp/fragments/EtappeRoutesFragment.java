@@ -93,16 +93,16 @@ public class EtappeRoutesFragment extends SherlockFragment {
 			@Override
 			public void onClick(View view) {
 				Intent mapAutoroute = new Intent(Intent.ACTION_VIEW);
-				if(auto_maps[etappe.getId()-1].equals("")){
-					Toast.makeText(getActivity(), "Van deze etappe is geen auto route", Toast.LENGTH_SHORT).show();
-				}else{
+				if(!auto_maps[etappe.getId()-1].equals("")){
+					Log.d("Auto route","Etappe nummer: "+etappe.getId());
+					Log.d("Auto route","Link: "+auto_maps[etappe.getId()-1]);
 					Uri uri0 = Uri.parse(auto_maps[etappe.getId()-1]);
 					mapAutoroute.setData(uri0); 
 					startActivity(Intent.createChooser(mapAutoroute, "Autoroute routebeschrijving"));
 				}
 			}
 		});
+    	if(auto_maps[etappe.getId()-1].equals("")) autos_map.setVisibility(View.GONE);
     	return view;
-    	
     }
 }
