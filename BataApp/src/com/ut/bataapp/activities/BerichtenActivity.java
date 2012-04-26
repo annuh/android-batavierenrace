@@ -32,10 +32,10 @@ public class BerichtenActivity extends SherlockListActivity  {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		getSupportActionBar().setDisplayShowHomeEnabled(true);
-		setTitle(R.string.ab_berichten);
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.listview_berichten);
+		setTitle(R.string.ab_berichten);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		new getBerichten().execute();
 	}
 
@@ -83,7 +83,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			Utils.goHome(this);
-			break;
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -99,9 +99,6 @@ public class BerichtenActivity extends SherlockListActivity  {
 		adapter.addSection("Nieuws", adapter_nieuws);
 
 		setListAdapter(adapter);
-
-
-
 	}
 
 	private class getBerichten extends AsyncTask<Void, Void, Void> {
@@ -133,7 +130,6 @@ public class BerichtenActivity extends SherlockListActivity  {
 				makeList();
 				getListView().setEmptyView(findViewById(R.id.listview_leeg));
 				progressDialog.dismiss();
-
 			}
 		}
 	}

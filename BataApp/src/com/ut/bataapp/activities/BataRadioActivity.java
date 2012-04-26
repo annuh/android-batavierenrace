@@ -91,23 +91,43 @@ public class BataRadioActivity extends SherlockFragmentActivity {
 			return mTitels.get(position);
 		}
 	}
+    
+    // -- CONSTANTEN --
 	
+ 	public static final String INSTANTE_STATE_TAB = "tabid";
+	
+ 	// -- INSTANTIEVARIABELEN --
+	
+ 	private ViewPager mPager;
+ 	
 	// -- LIFECYCLEMETHODEN --
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().setTitle(R.string.dashboard_bataradio);
         setContentView(R.layout.simple_tabs);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        setTitle(R.string.dashboard_bataradio);
         
         // opbouwen tabbladen:
         FragmentPagerAdapter mAdapter = new BataRadioFragmentAdapter(getSupportFragmentManager());
-		ViewPager mPager = (ViewPager) findViewById(R.id.pager);
+		mPager = (ViewPager) findViewById(R.id.pager);
 		mPager.setAdapter(mAdapter);
-		PageIndicator mIndicator = (TabPageIndicator) findViewById(R.id.indicator);
-		mIndicator.setViewPager(mPager);
+		PageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
+		indicator.setViewPager(mPager);
+		if (savedInstanceState != null) {
+			int tabId = savedInstanceState.getInt(INSTANTE_STATE_TAB);
+			mPager.setCurrentItem(tabId, false);
+			indicator.setCurrentItem(tabId);
+		}
     }
+	
+	@Override
+  	protected void onSaveInstanceState(Bundle outState) {
+    	// super niet aangeroepen: ViewPager/Adapter wordt in onCreate() weer opgebouwd
+  		outState.putInt(INSTANTE_STATE_TAB, (mPager == null ? 0 : mPager.getCurrentItem()));
+  	}
 	
 	// -- CALLBACKMETHODEN --
 	
@@ -116,7 +136,7 @@ public class BataRadioActivity extends SherlockFragmentActivity {
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Utils.goHome(this);
-				break;
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

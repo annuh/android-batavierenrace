@@ -5,12 +5,12 @@
     <TextView
         android:id="@+id/etappe"
         style="@style/listview_text"
-        android:layout_width="25dp" />
+        android:layout_width="30dp" />
 
     <TextView
         android:id="@+id/tijd"
         style="@style/listview_text"
-        android:layout_width="80dp"
+        android:layout_width="90dp"
         android:layout_toRightOf="@id/etappe" />
 
     <TextView

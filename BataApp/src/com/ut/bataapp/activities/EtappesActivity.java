@@ -25,10 +25,11 @@ public class EtappesActivity extends SherlockListActivity  {
 	
    @Override
    public void onCreate(Bundle savedInstanceState) {
-	   setTitle(R.string.dashboard_etappes);
 	   super.onCreate(savedInstanceState);
 	   this.getListView().setFastScrollEnabled(true);
 	   this.setContentView(R.layout.listview_etappes);
+	   getSupportActionBar().setHomeButtonEnabled(true);
+	   setTitle(R.string.dashboard_etappes);
 	   new getEtappes().execute();
    }
    

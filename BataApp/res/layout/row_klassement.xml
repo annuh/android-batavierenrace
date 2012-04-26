@@ -5,7 +5,7 @@
     <TextView  
         android:id="@+id/klassement_plaats"
 		style="@style/listview_text"
-		android:width="35dp"
+		android:width="40dp"
         android:layout_alignParentTop="true"/>
 
     <TextView
@@ -20,7 +20,4 @@
         android:layout_toLeftOf="@id/klassement_tijd"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/klassement_plaats" />
-    
-    
-
 </RelativeLayout>

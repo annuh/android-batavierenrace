@@ -32,19 +32,13 @@ public class PloegHandler extends Handler{
 	private boolean cumulatieveStand;
 	private boolean cumklassementtijd;
 
-	private String teamNaam;
+	private String teamNaam = "";
 	private String teamKlassement ="";
 	private int startNummer;
 	private int startGroep;
 	private int totBronEtappe;
 	private Looptijd looptijd;
 	private Team team;
-	
-	/* in afwachting van juiste XML-bestanden (voor testdoeleinden van notificaties background updater): */
-	private boolean notering;
-	private boolean totEtappe;
-	private int noteringI;
-	private int totEtappeI;
 	
 	public PloegHandler(String path){
 		super(path);
@@ -69,8 +63,6 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("etappe")) this.etappeStand = true;
 		else if(localName.equals("cumulatief")) this.cumulatieveStand = true;
 		else if(localName.equals("cumklassementstijd")) this.cumklassementtijd = true;
-		else if(localName.equals("positie")) this.notering = true;
-		else if(localName.equals("tot")) this.totEtappe = true;
 	}
 	
 	@Override
@@ -79,7 +71,6 @@ public class PloegHandler extends Handler{
 			team.setNaam(teamNaam);
 			team.setStartGroep(startGroep);
 			team.setStartnummer(startNummer);
-			team.setKlassementsnotering(noteringI);
 			team.setKlassementTotEtappe(totBronEtappe);
 			team.setKlassement(teamKlassement);
 			this.ploeg = false;
@@ -97,14 +88,12 @@ public class PloegHandler extends Handler{
 		else if(localName.equals("etappe")) this.etappeStand = false;
 		else if(localName.equals("cumulatief")) this.cumulatieveStand = false;
 		else if(localName.equals("cumklassementstijd")) this.cumklassementtijd = false;
-		else if(localName.equals("positie")) this.notering = false;
-		else if(localName.equals("tot")) this.totEtappe = false;
 	}
 
 	@Override
 	public void characters(char ch[], int start, int length){
 		if(startnummer) startNummer = Integer.parseInt(new String(ch,start,length));
-		else if(naam) teamNaam = new String(ch,start,length);
+		else if(naam) teamNaam = teamNaam.concat(new String(ch,start,length));
 		else if(startgroep) startGroep = Integer.parseInt(new String(ch,start,length));
 		else if(uitslag){
 			looptijd = new Looptijd();
@@ -122,8 +111,6 @@ public class PloegHandler extends Handler{
 		else if(etappeStand) looptijd.setEtappeStand(Integer.parseInt(new String(ch,start,length)));
 		else if(cumulatieveStand) looptijd.setCumulatieveStand(Integer.parseInt(new String(ch,start,length)));
 		else if(cumklassementtijd) looptijd.setCumtotaaltijd(new String(ch,start,length));
-		else if(notering) noteringI = Integer.parseInt(new String(ch,start,length));
-		else if(totEtappe) totEtappeI = Integer.parseInt(new String(ch,start,length));
 	}
 
 	@Override

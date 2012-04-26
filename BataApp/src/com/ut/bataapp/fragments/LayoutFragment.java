@@ -1,27 +1,21 @@
 package com.ut.bataapp.fragments;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 
-public class LayoutFragment extends SherlockFragment {
-	
-	private int layout;
+import com.actionbarsherlock.app.SherlockFragment;
+
+public class LayoutFragment extends SherlockFragment {	
+	private int mLayout;
 	
 	public LayoutFragment(int layout) {
-		this.layout = layout;
+		mLayout = layout;
 	}
-	
+			
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-    	setHasOptionsMenu(true);
-    	
-    	View view = inflater.inflate(layout, container, false);
-    	
+    	View view = inflater.inflate(mLayout, container, false);
     	return view;
     }
-
 }

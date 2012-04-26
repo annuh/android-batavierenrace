@@ -11,14 +11,14 @@
         <TextView
             android:id="@+id/listview_header_etappenr"
             style="@style/listview_header_text"
-            android:layout_width="25dp"
+            android:layout_width="30dp"
             android:text="@string/team_looptijden_header_etappe" >
         </TextView>
 
         <TextView
             android:id="@+id/listview_header_tijd"
             style="@style/listview_header_text"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_toRightOf="@id/listview_header_etappenr"
             android:text="@string/team_looptijden_header_tijd" >
         </TextView>

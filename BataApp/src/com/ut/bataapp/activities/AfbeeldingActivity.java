@@ -22,7 +22,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		
 		String type = getIntent().getStringExtra("type");
 		String locatie = "";
@@ -66,7 +66,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Utils.goHome(this);
-				break;
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

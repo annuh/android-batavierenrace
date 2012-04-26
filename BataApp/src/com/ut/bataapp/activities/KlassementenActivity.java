@@ -25,7 +25,7 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 		super.onCreate(savedInstanceState);
 		setTitle(R.string.dashboard_klassement);
 		setContentView(R.layout.klassementen);
-		getSupportActionBar().setDisplayShowHomeEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		new getKlassementen().execute(); 
 	}
 
@@ -34,13 +34,16 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Utils.goHome(this);
+				return true;
 			}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
 	private class getKlassementen extends AsyncTask<Void, Void, Void> {
 		Response<ArrayList<String>> response = null;
 		private ProgressDialog progressDialog;  
+		
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(KlassementenActivity.this,  
 					getString(R.string.laden_titel), getString(R.string.klassementen_laden), true);  
@@ -62,24 +65,21 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 
 		@Override  
 		protected void onPostExecute(Void result) {
-			if(Utils.checkResponse(KlassementenActivity.this, response)) {
+			if (Utils.checkResponse(KlassementenActivity.this, response)) {
 				ViewGroup c = (ViewGroup) findViewById(R.id.container_klassementen);
 				for(final String klassement: (ArrayList<String>) response.getResponse()) {
 					Button button = (Button) LayoutInflater.from(getBaseContext()).inflate(R.drawable.button, c, false);
 					button.setText(klassement);
 					button.setOnClickListener(new View.OnClickListener() {
 						public void onClick(View v) {
-							Intent intent = new Intent(getApplicationContext(), KlassementActivity.class);
+							Intent intent = new Intent(KlassementenActivity.this, KlassementActivity.class);
 							intent.putExtra("index", klassement);
-							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 							startActivity(intent);
 						}
 					});
 					c.addView(button);
 				}
 				progressDialog.dismiss();
-			} else {
-				Utils.goHome(KlassementenActivity.this);
 			}
 		}
 	}

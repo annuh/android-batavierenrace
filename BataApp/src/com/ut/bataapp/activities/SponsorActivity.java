@@ -25,7 +25,7 @@ public class SponsorActivity extends SherlockFragmentActivity  {
 	   setTitle("Sponsor");
 	   super.onCreate(savedInstanceState);
 	   setContentView(R.layout.sponsor);
-	   getSupportActionBar().setDisplayShowHomeEnabled(true);
+	   getSupportActionBar().setHomeButtonEnabled(true);
 	   
 	   ArrayList<Sponsor> sponsors = Sponsor.getSponsors();	   	   
 	   ViewGroup c = (ViewGroup) findViewById(R.id.container_sponsor);
@@ -51,15 +51,14 @@ public class SponsorActivity extends SherlockFragmentActivity  {
 	   
    }
    
-   
    @Override
    public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Utils.goHome(this);
+				return true;
 		}
 		
 		return super.onOptionsItemSelected(item);
 	}
-   
 }

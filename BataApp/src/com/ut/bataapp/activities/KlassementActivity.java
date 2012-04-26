@@ -8,20 +8,26 @@ import com.ut.bataapp.Utils;
 import com.ut.bataapp.fragments.KlassementFragment;
 
 public class KlassementActivity extends SherlockFragmentActivity  {
-
+	public static final String INSTANCE_STATE_INDEX = "index";
+	
+	private String mIndex;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    setTitle(getKlassementNaam());
-	    getSupportActionBar().setDisplayShowHomeEnabled(true);
+	    mIndex = ((savedInstanceState == null) ? getIntent().getStringExtra("index") : savedInstanceState.getString(INSTANCE_STATE_INDEX));
+	    setTitle(mIndex);
+	    getSupportActionBar().setHomeButtonEnabled(true);
 	    KlassementFragment klassement = new KlassementFragment();
-	    klassement.setArguments(getIntent().getExtras());
+	    Bundle args = new Bundle();
+	    args.putString("index", mIndex);
+	    klassement.setArguments(args);
 	    setContentView(R.layout.viewport);
 	    getSupportFragmentManager().beginTransaction().add(R.id.viewport_content, klassement).commit();
 	    
 	    //setContentView(R.layout.klassement_activity);
 	}
-	
+		
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -32,11 +38,9 @@ public class KlassementActivity extends SherlockFragmentActivity  {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	/**
-	 * Geeft naam van het klassement terug
-	 * @return
-	 */
-	public String getKlassementNaam() {
-		return this.getIntent().getStringExtra("index");
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		//super.onSaveInstanceState(outState);
+		outState.putString(INSTANCE_STATE_INDEX, mIndex);
 	}
 }

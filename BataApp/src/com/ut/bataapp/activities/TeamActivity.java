@@ -1,21 +1,30 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -31,7 +40,7 @@ import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
-public class TeamActivity extends SherlockFragmentActivity {
+public class TeamActivity extends SherlockFragmentActivity implements OnPageChangeListener {
 	public static final int ETAPPEUITSLAG_TAB = 1;
 	public static final int KLASSEMENT_TAB = 2;
 	
@@ -46,6 +55,9 @@ public class TeamActivity extends SherlockFragmentActivity {
 	private TeamFragmentAdapter mAdapter;
 	private Team mTeam;
 	private int mTeamID;
+	private getTeam mGetTeam;
+	private int mTabId;
+	private boolean mRestarted;
 
 	public Team getTeam(){
 		return mTeam;
@@ -54,15 +66,43 @@ public class TeamActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mTeamID = ((getIntent() != null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("teamid"));
-		Log.d("Teamid", "teamid: " + mTeamID);
-		new getTeam((getIntent() != null) ? getIntent().getIntExtra("tabid", 0) : savedInstanceState.getInt("tabid")).execute();		
+		mTeamID = ((savedInstanceState == null) ? getIntent().getIntExtra(ID, 0) : savedInstanceState.getInt(ID));
+		mTabId = ((savedInstanceState == null) ? getIntent().getIntExtra(TAB, 0) : savedInstanceState.getInt(TAB));
 	}
+
+	/**
+     * Callback-methode resumen activity.
+     */
+    @Override
+	protected void onResume() {
+    	super.onResume();
+    	mGetTeam = new getTeam(mTabId);
+		mGetTeam.execute();	
+	}
+	
+	/**
+     * Callback-methode pauseren activity. Alle fragments worden verwijderd.
+     */
+    @Override
+    protected void onPause() {
+    	super.onPause();
+    	if (mAdapter != null) {
+			mAdapter.deleteAll(getSupportFragmentManager());
+			mTabId = ((ViewPager) findViewById(R.id.pager)).getCurrentItem();
+		} else
+			mGetTeam.cancel(true);
+    }
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		outState.putInt("teamid", mTeamID);
-		outState.putInt("tabid", (mPager == null ? 0 : mPager.getCurrentItem()));
+		outState.putInt(ID, mTeamID);
+		outState.putInt(TAB, (mPager == null ? 0 : mPager.getCurrentItem()));
+	}
+	
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		mRestarted = true;
 	}
 
 	@Override
@@ -102,11 +142,10 @@ public class TeamActivity extends SherlockFragmentActivity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			Utils.goHome(this);
-			break;
+			return true;
 		case MENU_FOLLOW:
 			Utils.addFavoTeam(getApplicationContext(), mTeam);
 			invalidateOptionsMenu();
-
 			break;
 		case MENU_UNFOLLOW:
 			Utils.removeFavoteam(getApplicationContext(), mTeam.getID());
@@ -133,8 +172,10 @@ public class TeamActivity extends SherlockFragmentActivity {
 			info.putString("index",mTeam.getKlassement());
 			info.putInt("init", Integer.parseInt(mTeam.getCumKlassement()));
 			info.putBoolean("inViewpager", true);
+			info.putBoolean("restarted", mRestarted);
 			kf.setArguments(info);
 			fragments.add(kf);
+			mRestarted = false;
 			titels.add(getString(R.string.team_titel_klassement));
 		}
 
@@ -162,7 +203,6 @@ public class TeamActivity extends SherlockFragmentActivity {
 	}
 
 	private class getTeam extends AsyncTask<Void, Void, Void> {  
-
 		private ProgressDialog progressDialog;
 		Response<Team> response;
 		private int mTabId;
@@ -178,7 +218,8 @@ public class TeamActivity extends SherlockFragmentActivity {
 			progressDialog.setOnCancelListener(new OnCancelListener() {
 				public void onCancel(DialogInterface dialog) {
 					cancel(true);
-					Utils.goHome(TeamActivity.this);
+					setResult(RESULT_CANCELED);
+					finish();
 				}
 			});
 		}
@@ -189,22 +230,29 @@ public class TeamActivity extends SherlockFragmentActivity {
 				response = api.getTeamByID(mTeamID);
 			return null;
 		}
+		
+		@Override
+		protected void onCancelled() {
+			progressDialog.dismiss();
+		}
 
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(TeamActivity.this, response)) {
 				setContentView(R.layout.simple_tabs);
+				getSupportActionBar().setHomeButtonEnabled(true);
 				mTeam = response.getResponse();
 				mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());
 
 				mPager = (ViewPager)findViewById(R.id.pager);
 				mPager.setAdapter(mAdapter);
-
+				
 				mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 				mIndicator.setViewPager(mPager);
+				mIndicator.setOnPageChangeListener(TeamActivity.this);
 				invalidateOptionsMenu();
 				
-				mPager.setCurrentItem(mTabId);
+				mPager.setCurrentItem(mTabId, false);
 				mIndicator.setCurrentItem(mTabId);
 			}
 			progressDialog.dismiss();
@@ -224,5 +272,30 @@ public class TeamActivity extends SherlockFragmentActivity {
 			Log.d("Pager", "NIET NULL");
 		}
 		Log.d("Pager", "NULL");
+	}
+	
+	// -- ONPAGECHANGELISTENER --
+
+	public void onPageScrollStateChanged(int arg0) {
+		// doe niets
+	}
+
+	public void onPageScrolled(int arg0, float arg1, int arg2) {
+		// doe niets
+	}
+
+	public void onPageSelected(int arg0) {
+		switch (mPager.getCurrentItem()) {
+		case ETAPPEUITSLAG_TAB:
+			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+			String lookupKey = getResources().getString(R.string.pref_team_looptijden_first_start);
+			if (prefs.getBoolean(lookupKey, true)) {
+				Toast.makeText(this, getResources().getString(R.string.team_looptijden_draai), Toast.LENGTH_LONG).show();
+				SharedPreferences.Editor editor = prefs.edit();
+	    		editor.putBoolean(lookupKey, false);
+	    		editor.commit();
+			}
+			break;
+		}
 	}
 }

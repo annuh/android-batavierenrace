@@ -27,20 +27,44 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="13" />
+        android:targetSdkVersion="15" />
 
     <application
         android:hardwareAccelerated="true"
         android:icon="@drawable/icon"
         android:label="@string/app_titel"
         android:theme="@style/Theme.BataApp" >
-        <activity android:name="MainActivity" >
+        <activity 
+            android:name="MainActivity" 
+            android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.WelkomActivity"/>
+        <activity 
+            android:name=".activities.BerichtenActivity" 
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".activities.KleurcodesActivity"
+            android:theme="@style/StyledIndicators" />
+        <activity android:name=".activities.PreferencesActivity" />
         <activity android:name=".activities.FavoTeamsActivity" />
+        <activity
+            android:name=".activities.KlassementenActivity" 
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".activities.KlassementActivity" 
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".activities.TeamsActivity" 
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".activities.TeamActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@style/StyledIndicators" />
         <activity
             android:name=".activities.EtappesActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
@@ -48,52 +72,33 @@
             android:name=".activities.EtappeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
-        <activity
-            android:name=".activities.TeamsActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity
-            android:name=".activities.TeamActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/StyledIndicators" >
-        </activity>
-        <activity android:name=".activities.WelkomActivity"/>
-        <activity android:name=".activities.EtappeChartByTeam" />
-        <activity android:name="org.achartengine.GraphicalActivity" />
-        <activity
-            android:name=".activities.KlassementenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity
-            android:name=".activities.KlassementActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".activities.SponsorActivity" />
         <activity android:name=".activities.EtappeRouteTekstActivity" />
-
         <activity
-            android:name=".activities.BataRadioActivity"
-            android:launchMode="singleTop"
+            android:name=".activities.InformatieActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
         <activity
-            android:name=".activities.WeerActivity"
+            android:name=".activities.InfoAlgemeenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/StyledIndicators" />
+        <activity android:name=".activities.AfbeeldingActivity" />
+        <activity
+            android:name=".activities.ColofonActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
         <activity
             android:name=".activities.LustrumActivity"
             android:theme="@style/StyledIndicators" />
         <activity
-            android:name=".activities.InformatieActivity"
+            android:name=".activities.BataRadioActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
             android:theme="@style/StyledIndicators" />
         <activity
-            android:name=".activities.InfoAlgemeenActivity"
-            android:theme="@style/StyledIndicators" />
-        <activity
-            android:name=".activities.KleurcodesActivity"
-            android:theme="@style/StyledIndicators" />
-        <activity
-            android:name=".activities.ColofonActivity"
-            android:theme="@style/StyledIndicators" />
-        <activity android:name=".activities.AfbeeldingActivity" />
-        <activity android:name=".activities.PreferencesActivity" />
-        <activity android:name=".activities.BerichtenActivity" />
+            android:name=".activities.WeerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/StyledIndicators" />            
+        <activity android:name=".activities.SponsorActivity" />
         <activity
             android:name=".activities.SponsorInformatieActivity"
             android:theme="@style/StyledIndicators" />
@@ -105,24 +110,19 @@
         <receiver
             android:name="com.google.android.c2dm.C2DMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
-
             <!-- Receive actual messages -->
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" >
-                </action>
-
-                <category android:name="com.ut.bataapp" >
-                </category>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.ut.bataapp" />
             </intent-filter>
             <!-- Receive registration ids -->
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" >
-                </action>
-
-                <category android:name="com.ut.bataapp" >
-                </category>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.ut.bataapp" />
             </intent-filter>
         </receiver>
+        
+        <activity android:name=".activities.EtappeChartByTeam" />
+        <activity android:name="org.achartengine.GraphicalActivity" />
     </application>
-
 </manifest>

@@ -75,7 +75,8 @@ public class WelkomActivity extends SherlockFragmentActivity implements OnPageCh
     // -- CONSTANTEN --
     
     /* tabindices voor respectievelijk favorieten selecteren- en instellingenfragment */
-    private static final int TAB_INDEX_FAVORIETEN = 0, TAB_INDEX_INSTELLINGEN = 1;
+    private static final int TAB_INDEX_FAVORIETEN = 0, TAB_INDEX_INSTELLINGEN = 1;	
+  	public static final String INSTANTE_STATE_TAB = "tabid";
     
     // -- INSTANTIEVARIABELEN --
     
@@ -98,6 +99,7 @@ public class WelkomActivity extends SherlockFragmentActivity implements OnPageCh
         super.onCreate(savedInstanceState);
         setTitle(R.string.welkom_title);
         setContentView(R.layout.welkom);
+        getSupportActionBar().setHomeButtonEnabled(true);
         
         mVorige = (Button) findViewById(R.id.welkom_button_vorige);
         mVolgende = (Button) findViewById(R.id.welkom_button_volgende);
@@ -105,6 +107,9 @@ public class WelkomActivity extends SherlockFragmentActivity implements OnPageCh
         ViewPager pager = (mPager = (ViewPager) findViewById(R.id.welkom_pager));
         pager.setAdapter(new WelkomFragmentAdapter(getSupportFragmentManager()));
         pager.setOnPageChangeListener(this);
+        
+        if (savedInstanceState != null)
+			pager.setCurrentItem(savedInstanceState.getInt(INSTANTE_STATE_TAB), false);
         
         mVorige.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -125,6 +130,12 @@ public class WelkomActivity extends SherlockFragmentActivity implements OnPageCh
 			}
         });
     }
+	
+	@Override
+  	protected void onSaveInstanceState(Bundle outState) {
+    	// super niet aangeroepen: ViewPager/Adapter wordt in onCreate() weer opgebouwd
+  		outState.putInt(INSTANTE_STATE_TAB, (mPager == null ? 0 : mPager.getCurrentItem()));
+  	}
 		
 	// -- CALLBACKMETHODEN --
 	
@@ -133,7 +144,7 @@ public class WelkomActivity extends SherlockFragmentActivity implements OnPageCh
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Utils.goHome(this);
-				break;
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

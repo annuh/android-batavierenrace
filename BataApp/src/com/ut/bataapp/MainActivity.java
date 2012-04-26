@@ -51,6 +51,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 		
 		setContentView(R.layout.main);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		setupC2DM();
 		//register();
 		Button btn_routes = (Button) findViewById(R.id.dashboard_etappes);
@@ -157,10 +158,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			weergeven = "Tot volgend jaar!";
 		}
 		viewDagen.setText(weergeven);
-
-		// starten background updater:
-		Intent startServiceIntent = new Intent(this, BackgroundUpdater.class);
-		startService(startServiceIntent);
 	}
 	
 	@Override
@@ -175,6 +172,9 @@ public class MainActivity extends SherlockFragmentActivity {
     		editor.putBoolean(lookupKey, false);
     		editor.commit();
 		}
+		// starten background updater:
+		Intent startServiceIntent = new Intent(this, BackgroundUpdater.class);
+		startService(startServiceIntent);
 	}
 
 	@Override
