@@ -18,6 +18,9 @@
     <TextView
         android:id="@+id/route_locatie"
         style="@style/listview_text"
+        android:layout_width="140dp"
+        android:gravity="right"
+        android:textStyle="italic"
         android:layout_alignParentRight="true" />
 
 </RelativeLayout>
