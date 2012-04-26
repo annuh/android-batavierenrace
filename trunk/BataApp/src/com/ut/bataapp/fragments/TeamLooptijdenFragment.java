@@ -48,7 +48,7 @@ public class TeamLooptijdenFragment extends SherlockListFragment {
 	
 	@Override
 	public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
-		menu.add(0,MENU_FOUTCODES,Menu.NONE, R.string.ab_foutcodes)
+		menu.add(0,MENU_FOUTCODES,1, R.string.ab_foutcodes)
 		.setIcon(R.drawable.ic_action_foutcodes)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 	}

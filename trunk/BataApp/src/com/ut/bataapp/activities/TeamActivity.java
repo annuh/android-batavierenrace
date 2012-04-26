@@ -124,12 +124,12 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0,MENU_UNFOLLOW,Menu.NONE, R.string.ab_verwijderen)
+		menu.add(0,MENU_UNFOLLOW,2, R.string.ab_verwijderen)
 		.setIcon(R.drawable.ic_action_delete)
 		.setVisible(false)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
-		menu.add(0,MENU_FOLLOW,Menu.NONE, R.string.ab_volgen)
+		menu.add(0,MENU_FOLLOW,2, R.string.ab_volgen)
 		.setIcon(R.drawable.ic_action_star)
 		.setVisible(false)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
