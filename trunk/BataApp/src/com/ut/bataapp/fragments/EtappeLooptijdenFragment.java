@@ -361,7 +361,8 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 
 			//if(getView() != null) // Als tijdens laden ander tab wordt geopend
 			//	sortStand(null);
-			getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
+			if(getView() != null)
+				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 		}
 	}
 

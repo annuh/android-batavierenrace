@@ -69,6 +69,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			getActivity().getSupportLoaderManager().restartLoader(0, null, this);
 		else
 			getActivity().getSupportLoaderManager().initLoader(0, null, this);
+		
 	}
 	
 	@Override
@@ -308,12 +309,15 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			}
 			//else
 			//	makeList();
-			getListView().setSelection(getArguments().getInt("init") -1);
-			if(!inViewpager && progressDialog != null)
-				handler.sendEmptyMessage(1);
-			((TextView) getView().findViewById(R.id.listview_hint)).setText(String.format(getString(R.string.klassement_hint), String.valueOf(klassement.getTotEtappe())));
-			getListView().getEmptyView().setVisibility(View.GONE);
-			getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
+			if(getView() != null) {
+				getListView().setSelection(getArguments().getInt("init") -1);
+				if(!inViewpager && progressDialog != null)
+					handler.sendEmptyMessage(1);
+				((TextView) getView().findViewById(R.id.listview_hint)).setVisibility(View.VISIBLE);
+				((TextView) getView().findViewById(R.id.listview_hint)).setText(String.format(getString(R.string.klassement_hint), String.valueOf(klassement.getTotEtappe())));
+				getListView().getEmptyView().setVisibility(View.GONE);
+				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
+			}
 		}
 	}
 
@@ -334,6 +338,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	@Override
 	public void onLoaderReset(Loader<Response<Klassement>> arg0) {                
 		adapter = null;
+		Log.d("LOG", "BLaAAT");
 	}
 	
 	public void closeHint(final View view) {
