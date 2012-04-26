@@ -78,10 +78,10 @@ public class EtappeUitslagHandler extends Handler{
 		}
 		else if(foutcode) looptijd.setFoutcode(new String(ch,start,length));
 		else if(startnummer) looptijd.setTeamStartnummer(Integer.parseInt(new String(ch,start,length)));
-		else if(naam) looptijd.setTeamNaam(new String(ch,start,length));
+		else if(naam) looptijd.appendTeamNaam(new String(ch,start,length));
 		else if(klassement) looptijd.setKlassement(new String(ch,start,length));
 		else if(startgroep) looptijd.setTeamStartgroep(Integer.parseInt(new String(ch,start,length)));
-		else if(tijd) looptijd.setTijd(new String(ch,start,length));
+		else if(tijd) looptijd.appendTijd(new String(ch,start,length));
 		else if(etappeStand) looptijd.setEtappeStand(Integer.parseInt(new String(ch,start,length)));
 		else if(cumulatieveStand) looptijd.setCumulatieveStand(Integer.parseInt(new String(ch,start,length)));
 		else if(snelheid) looptijd.setSnelheid(new String(ch,start,length));
