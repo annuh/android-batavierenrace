@@ -75,7 +75,7 @@ public class PloegHandler extends Handler{
 			team.setKlassement(teamKlassement);
 			this.ploeg = false;
 		}
-		else if(localName.equals("bronetappe")) this.bronetappe = true;
+		else if(localName.equals("bronetappe")) this.bronetappe = false;
 		else if(localName.equals("startnummer")) this.startnummer = false;
 		else if(localName.equals("naam")) this.naam = false;
 		else if(localName.equals("startgroep")) this.startgroep = false;
