@@ -180,7 +180,6 @@ public class Utils {
 		ArrayList<Bericht> berichten = new ArrayList<Bericht>();
 
 		for (Map.Entry<String, ?> entry : pushberichten.entrySet()) {
-			Log.d("Bericht",(String)entry.getValue());
 			Bericht bericht = new Bericht();
 			bericht.setDatum(entry.getKey());
 			int code;

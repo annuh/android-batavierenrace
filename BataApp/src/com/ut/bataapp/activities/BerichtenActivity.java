@@ -24,12 +24,23 @@ import com.ut.bataapp.objects.Response;
 
 public class BerichtenActivity extends SherlockListActivity  {
 
+	/**
+	 * ArrayList die alle pushberichten bijhoudt.
+	 */
 	private ArrayList<Bericht> pushberichten = new ArrayList<Bericht>();
+	/**
+	 * ArrayList die alle nieuwsberichten (uit nieuws.xml) bijhoudt.
+	 */
 	private ArrayList<Bericht> nieuwsberichten = new ArrayList<Bericht>();
+	/**
+	 * Adapter voor de ListView voor pushberichten.
+	 */
 	private BerichtAdapter adapter_push = null;
+	/**
+	 * Adapter voor ListView voor nieuwsberichten
+	 */
 	private BerichtAdapter adapter_nieuws = null;
 
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,7 +52,6 @@ public class BerichtenActivity extends SherlockListActivity  {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Log.d("Listview",""+position + ":" + pushberichten.size());
 		if(position <= pushberichten.size()) {
 			switch(pushberichten.get(position-1).getCode()) {
 				case Bericht.GEEL:
@@ -94,17 +104,11 @@ public class BerichtenActivity extends SherlockListActivity  {
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Maakt de lijst met berichten
+	 */
 	public void makeList() {
 		pushberichten = Utils.getBerichten(this);
-		Bericht bericht1 = new Bericht();
-		bericht1.setBericht("Mooi weer");
-		bericht1.setCode(Bericht.GEEL);
-		
-		Bericht bericht2 = new Bericht();
-		bericht2.setBericht("Rood weer");
-		bericht2.setCode(Bericht.ROOD);
-		
-		pushberichten.add(bericht1);pushberichten.add(bericht2);
 		
 		adapter_push = new BerichtAdapter(this, pushberichten);
 		adapter_nieuws = new BerichtAdapter(this, nieuwsberichten);
@@ -116,6 +120,11 @@ public class BerichtenActivity extends SherlockListActivity  {
 		setListAdapter(adapter);
 	}
 
+	/**
+	 * Inner class die berichten van de API vraagt.
+	 * @author Anne
+	 *
+	 */
 	private class getBerichten extends AsyncTask<Void, Void, Void> {
 		Response<ArrayList<Bericht>> response;
 		private ProgressDialog progressDialog;  

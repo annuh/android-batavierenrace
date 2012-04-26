@@ -20,16 +20,18 @@
             android:text="@string/etappe_looptijden_header_team" />
 
         <TextView
-            android:id="@+id/etappe_looptijden_header_foutcode"
+            android:id="@+id/etappe_looptijden_header_snelheid"
             style="@style/listview_header_text"
-            android:layout_width="55dp"
-            android:layout_alignParentRight="true"
-            android:text="@string/etappe_looptijden_header_foutcode" />
+            android:layout_width="100dp"
+            android:layout_toLeftOf="@id/etappe_looptijden_header_tijd"
+            android:text="@string/etappe_looptijden_header_snelheid" />
 
         <TextView
             android:id="@+id/etappe_looptijden_header_tijd"
             style="@style/listview_header_text"
-            android:layout_toLeftOf="@id/etappe_looptijden_header_foutcode"
+            android:layout_width="100dp"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
             android:text="@string/etappe_looptijden_header_tijd" />
     </RelativeLayout>
 

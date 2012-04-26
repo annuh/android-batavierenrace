@@ -15,14 +15,15 @@
         android:layout_toRightOf="@id/etappe_looptijd_plaats" />
 
     <TextView
-        android:id="@+id/etappe_looptijd_tijd"
+        android:id="@+id/etappe_looptijd_snelheid"
         style="@style/listview_text"
-        android:layout_toLeftOf="@id/etappe_looptijd_code" />
+        android:layout_width="100dp"
+        android:layout_toLeftOf="@id/etappe_looptijd_tijd" />
 
     <TextView
-        android:id="@+id/etappe_looptijd_code"
+        android:id="@+id/etappe_looptijd_tijd"
         style="@style/listview_text"
-        android:layout_width="55dp"
+        android:layout_width="100dp"
         android:layout_alignParentRight="true"
         android:gravity="right" />
 

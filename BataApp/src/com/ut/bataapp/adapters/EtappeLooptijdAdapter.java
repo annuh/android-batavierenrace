@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import com.ut.bataapp.R;
 import com.ut.bataapp.objects.Looptijd;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,11 +43,12 @@ public class EtappeLooptijdAdapter extends ArrayAdapter<Looptijd> {
 		TextView team = (TextView) rowView.findViewById(R.id.etappe_looptijd_team);
 		team.setText(filteredItems.get(position).getTeamNaam());
 
+		String foutcode = (filteredItems.get(position).getFoutcode().equals("–")) ? "  " : filteredItems.get(position).getFoutcode();		
 		TextView tijd = (TextView) rowView.findViewById(R.id.etappe_looptijd_tijd);
-		tijd.setText(filteredItems.get(position).getTijd());
-		
-		TextView foutcode = (TextView) rowView.findViewById(R.id.etappe_looptijd_code);
-		foutcode.setText(filteredItems.get(position).getFoutcode());
+		tijd.setText(filteredItems.get(position).getTijd() + " " + foutcode);
+			
+		TextView snelheid = (TextView) rowView.findViewById(R.id.etappe_looptijd_snelheid);
+		snelheid.setText(String.format(context.getString(R.string.kmu), filteredItems.get(position).getSnelheid()));
 
 		return rowView;
 	}
