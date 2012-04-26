@@ -46,6 +46,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	private final int MENU_SEARCH = Menu.FIRST + 10;
 	private final int MENU_SORT_NAAM = Menu.FIRST + 11;
 	private final int MENU_SORT_STAND = Menu.FIRST + 12;
+	private final int MENU_UPDATE = Menu.FIRST + 13;
 	private String filterText = "";
 	private static String naam;
 	private Klassement klassement;
@@ -124,6 +125,11 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		subMenu1.getItem()
 		.setIcon(R.drawable.ic_action_sort)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		if(!inViewpager){
+			menu.add(0,MENU_UPDATE,Menu.NONE, R.string.ab_update)
+			.setIcon(R.drawable.ic_action_refresh)
+			.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		}
 	}
 
 	@Override
@@ -141,6 +147,9 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			return true;
 		case MENU_SORT_STAND:
 			sortStand(null);
+			return true;
+		case MENU_UPDATE:
+			getActivity().getSupportLoaderManager().restartLoader(0, null, this);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

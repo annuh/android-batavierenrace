@@ -14,4 +14,7 @@ Afst;Omschrijving;Locatie
 3.1;Kruising Heyendaalseweg rechtdoor;Pater Eijmardweg
 3.3;Einde weg links;Driehuizerweg
 3.6;Het W.P. is op deze weg;-
+<<<<<<< .mine
 Aankomst W.P. 1: Driehuizerweg;;
+=======
+Aankomst W.P. 1: Driehuizerweg;;>>>>>>> .r307

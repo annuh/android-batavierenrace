@@ -15,21 +15,20 @@ import com.ut.bataapp.parser.CSV;
 public class EtappeRouteTekstActivity extends SherlockActivity{
 
 	private int mId;
-	private String mType;
 	private EtappeRoute route;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mId = (savedInstanceState==null?getIntent().getIntExtra("id",1):savedInstanceState.getInt("id"));
-		mType = (savedInstanceState==null?getIntent().getStringExtra("type"):savedInstanceState.getString("type"));
+		
 		try {
 			setContentView(R.layout.etappe_route_tekst);
 			getSupportActionBar().setHomeButtonEnabled(true);
 			LinearLayout container = (LinearLayout) findViewById(R.id.route_container);
 			route = new CSV().parse(this.getResources().getAssets().open("lopersroutetekst/etappe"+mId+".txt"));
 		
-			this.setTitle(mType+"route "+mId);
+			this.setTitle("Looproute "+mId);
 			Log.d("Routes",route.getVoorTabelTekst());
 			
 			View item = this.getLayoutInflater().inflate(R.layout.row_route, container, false);
@@ -71,9 +70,8 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
+		//super.onSaveInstanceState(outState);
 		outState.putInt("id",mId);
-		outState.putString("type",mType);
 	}
 
 }

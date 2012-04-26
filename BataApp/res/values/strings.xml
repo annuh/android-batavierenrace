@@ -35,6 +35,7 @@
     <string name="ab_instellingen">Instellingen</string>
     <string name="ab_foutcodes">Foutcodes</string>
     <string name="ab_addfavoteam">Voeg een team toe</string>
+    <string name="ab_update">Update</string>
 
     <!-- Dashboard -->
     <string name="dashboard_favorieten">Favorieten</string>
