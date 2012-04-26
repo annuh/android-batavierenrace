@@ -152,11 +152,11 @@ public class BataRadioLiveFragment extends SherlockFragment implements OnClickLi
 		mActivity.unregisterReceiver(mReceiveBataRadioStoppedBroadcast);
 	}
 	
-	@Override
+	/*@Override
     public void onSaveInstanceState(Bundle outState) { // workaround voor bug in FragmentManagerImpl.saveFragmentBasicState()
         super.onSaveInstanceState(outState);
         setUserVisibleHint(true);
-    }
+    }*/
 	
 	// -- CALLBACKMETHODEN --
 	

@@ -55,7 +55,7 @@ public class TeamsActivity extends SherlockListActivity  {
 		mInSetup = (getIntent() == null ? savedInstanceState.getBoolean(INSTANCE_STATE_IN_SETUP) : getIntent().getBooleanExtra(EXTRA_IN_SETUP, false));
 		
 		super.onCreate(savedInstanceState);
-		getSupportActionBar().setDisplayShowHomeEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		this.getListView().setFastScrollEnabled(true);
 		this.setContentView(R.layout.listview_team);
 		new getTeams().execute();	   
@@ -112,7 +112,7 @@ public class TeamsActivity extends SherlockListActivity  {
 				finish();
 			} else
 				Utils.goHome(this);
-			break;
+			return true;
 		case MENU_SEARCH:
 			item.setActionView(R.layout.search_box);
 			EditText filterEdit = (EditText) item.getActionView().findViewById(R.id.search_box);

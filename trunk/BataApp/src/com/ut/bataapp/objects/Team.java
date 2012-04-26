@@ -24,7 +24,6 @@ public class Team {
 	private String naam = "";
 	private String klassement ="";
 	private int id = 0;
-	private int klassementsnotering = -1;
 	private int klassementTotEtappe = 0;
 	private ArrayList<Looptijd> looptijden = new ArrayList<Looptijd>();
 	
@@ -61,7 +60,6 @@ public class Team {
 	public void setStartGroep(int groep){this.startgroep = groep;}
 	public void setNaam(String naam){this.naam = naam;}
 	public void addLooptijd(Looptijd looptijd) {looptijden.add(looptijd);}
-	public void setKlassementsnotering(int klassementsnotering) { this.klassementsnotering = klassementsnotering; }
 	public void setKlassementTotEtappe(int totEtappe) { this.klassementTotEtappe = totEtappe; }
 	public void appendNaam(String naam){this.naam = this.naam.concat(naam);}
 	/*Getters*/
@@ -69,7 +67,6 @@ public class Team {
 	public int getStartGroep(){return startgroep;}
 	public String getNaam() {return naam;}
 	public ArrayList<Looptijd> getLooptijden(){return looptijden;}
-	public int getKlassementsnotering() {return klassementsnotering; }
 	public int getKlassementTotEtappe() {return klassementTotEtappe; }
 	
 	public int getID() {
@@ -79,17 +76,30 @@ public class Team {
 	
 	public String getCumKlassement() {
 		String cumKlassement = String.valueOf(startnummer);
-		if(looptijden != null && looptijden.size() > 0 ) {
-			cumKlassement = String.valueOf(looptijden.get(looptijden.size()-1).getCumulatieveStand());
+		if (looptijden != null) {
+			boolean found = false;
+			int i = 0;
+			while (!found && i < looptijden.size()) {
+				Looptijd looptijd = looptijden.get(i);
+				if (looptijd.getEtappe() == klassementTotEtappe) {
+					found = true;
+					cumKlassement = (looptijd.getCumulatieveStand() + "");
+				}
+				i++;
+			}
+				
 		}
 		return cumKlassement;
 	}
 	
+	public int getCumKlassementInt() {
+		return Integer.parseInt(getCumKlassement());
+	}
+	
 	public String getTotaalTijd() {
 		String totaaltijd = "00:00:00";
-		if(looptijden != null && looptijden.size() > 0 ) {
+		if (looptijden != null && looptijden.size() > 0 )
 			totaaltijd = String.valueOf(looptijden.get(looptijden.size()-1).getCumtotaaltijd());
-		}
 		return totaaltijd;
 	}
 	

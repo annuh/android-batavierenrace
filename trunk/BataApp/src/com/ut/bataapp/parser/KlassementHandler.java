@@ -3,14 +3,11 @@ package com.ut.bataapp.parser;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
-import android.util.Log;
-
 import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.KlassementItem;
 import com.ut.bataapp.objects.Response;
 
 public class KlassementHandler extends Handler{
-
 	private Klassement klassement;
 	private KlassementItem item = new KlassementItem();
 	private String naam;
@@ -78,9 +75,9 @@ public class KlassementHandler extends Handler{
 			}
 			if(positie)	item.setPlaats(Integer.parseInt(new String(ch,start,length)));
 			else if(teamnr) item.setTeamStartNummer(Integer.parseInt(new String(ch,start,length)));
-			else if(teamnaam) item.setTeamNaam(new String(ch,start,length));
+			else if(teamnaam) item.appendTeamNaam(new String(ch,start,length));
 			else if(startgroep) item.setTeamStartGroep(Integer.parseInt(new String(ch,start,length)));
-			else if(tijd) item.setTijd(new String(ch,start,length));
+			else if(tijd) item.appendTijd(new String(ch,start,length));
 		}
 	}
 	

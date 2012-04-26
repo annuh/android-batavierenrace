@@ -1,16 +1,18 @@
 package com.ut.bataapp.fragments;
 
 import java.util.Collections;
-import android.support.v4.app.LoaderManager;
 import java.util.Comparator;
-import android.support.v4.content.Loader;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,6 +26,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
@@ -61,9 +64,12 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		inViewpager = this.getArguments().getBoolean("inViewpager", false);
 		if(!inViewpager)
 			this.getListView().getEmptyView().setVisibility(View.GONE);
-		this.getActivity().getSupportLoaderManager().initLoader(0, null, this);
+		if (getArguments().getBoolean("restarted", false))
+			getActivity().getSupportLoaderManager().restartLoader(0, null, this);
+		else
+			getActivity().getSupportLoaderManager().initLoader(0, null, this);
 	}
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		inflater.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
@@ -336,5 +342,4 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		view.startAnimation(animationSlideOutRight);
 		
 	}
-
 }

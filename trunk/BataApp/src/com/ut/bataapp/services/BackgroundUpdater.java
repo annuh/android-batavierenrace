@@ -204,7 +204,8 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 				Resources res = mRes;
 				
 				int teamId = Integer.parseInt(favoEntry[0].getKey());
-				boolean notifyOnChange = prefs.getBoolean(res.getString(R.string.pref_background_update_notify), res.getBoolean(R.bool.pref_background_update_notify_default));
+				boolean notifyOnChange = (prefs.getBoolean(res.getString(R.string.pref_background_update_notify), res.getBoolean(R.bool.pref_background_update_notify_default))
+						                  && Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()));
 				
 				Team old = null;
 				if (notifyOnChange) {
@@ -220,8 +221,8 @@ public class BackgroundUpdater extends Service implements OnSharedPreferenceChan
 			    else if (notifyOnChange && response.getStatus() == Response.OK_UPDATE) {
 					Team newOne = response.getResponse();
 					String teamNaam = newOne.getNaam();
-					int klassementsnotering = newOne.getKlassementsnotering(), klassementTotEtappe = newOne.getKlassementTotEtappe();
-					if (klassementsnotering != -1 && klassementTotEtappe != 0 && (old == null || klassementsnotering != old.getKlassementsnotering() || klassementTotEtappe != old.getKlassementTotEtappe()))
+					int klassementsnotering = newOne.getCumKlassementInt(), klassementTotEtappe = newOne.getKlassementTotEtappe();
+					if (klassementTotEtappe > 0 && (old == null || klassementsnotering != old.getCumKlassementInt() || klassementTotEtappe != old.getKlassementTotEtappe()))
 						mKlassementNotification = createKlassementNotification(teamId, teamNaam, klassementsnotering, klassementTotEtappe);
 					if (prefs.getBoolean(res.getString(R.string.pref_background_update_notify_etappeuitslag), res.getBoolean(R.bool.pref_background_update_notify_etappeuitslag_default))) {
 						ArrayList<Looptijd> oudeLooptijden = (old == null ? new ArrayList<Looptijd>() : old.getLooptijden()),

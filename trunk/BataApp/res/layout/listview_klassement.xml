@@ -12,7 +12,7 @@
             android:layout_alignParentTop="true"
             android:clickable="true"
             android:text="@string/klassement_header_stand"
-            android:width="35dp" />
+            android:width="40dp" />
 
         <TextView
             android:id="@+id/klassement_header_team"
@@ -35,7 +35,6 @@
         android:id="@+id/listview_hint"
         style="@style/listview_hint"
         android:clickable="true"
-        android:layout_weight="1"
         android:text="" />
 
     <ListView

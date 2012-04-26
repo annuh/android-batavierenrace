@@ -165,6 +165,7 @@ public class WeerActivity extends SherlockFragmentActivity {
 	        if (result == null) {
 	        	// opbouwen tabbladen:
 	            setContentView(R.layout.simple_tabs);
+	            getSupportActionBar().setHomeButtonEnabled(true);
 	            mAdapter = new WeerFragmentAdapter(getSupportFragmentManager());
 				ViewPager pager = (ViewPager) findViewById(R.id.pager);
 				pager.setAdapter(mAdapter);
@@ -225,7 +226,7 @@ public class WeerActivity extends SherlockFragmentActivity {
      */
     @Override
 	protected void onResume() {
-    	super.onStart();
+    	super.onResume();
     	Resources res = mRes;
     	Calendar bataDag = Calendar.getInstance();
     	bataDag.set(res.getInteger(R.integer.batadag_jaar), (res.getInteger(R.integer.batadag_maand)-1), res.getInteger(R.integer.batadag_dag));
@@ -264,7 +265,7 @@ public class WeerActivity extends SherlockFragmentActivity {
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Utils.goHome(this);
-				break;
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

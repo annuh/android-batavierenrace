@@ -25,6 +25,7 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 		mType = (savedInstanceState==null?getIntent().getStringExtra("type"):savedInstanceState.getString("type"));
 		try {
 			setContentView(R.layout.etappe_route_tekst);
+			getSupportActionBar().setHomeButtonEnabled(true);
 			LinearLayout container = (LinearLayout) findViewById(R.id.route_container);
 			route = new CSV().parse(this.getResources().getAssets().open("lopersroutetekst/etappe"+mId+".txt"));
 		

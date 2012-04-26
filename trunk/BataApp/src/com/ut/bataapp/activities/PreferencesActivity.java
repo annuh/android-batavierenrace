@@ -35,6 +35,7 @@ public class PreferencesActivity extends SherlockPreferenceActivity {
 	    addPreferencesFromResource(R.xml.preferences);
 	    setContentView(R.layout.preferences_styles);
 	    setTitle(R.string.title_prefs);
+	    getSupportActionBar().setHomeButtonEnabled(true);
 	}
 	
 	@Override
@@ -55,7 +56,7 @@ public class PreferencesActivity extends SherlockPreferenceActivity {
 				finish();
 			} else
 				Utils.goHome(this);
-			break;
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);

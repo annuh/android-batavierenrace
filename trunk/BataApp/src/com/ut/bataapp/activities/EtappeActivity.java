@@ -138,6 +138,7 @@ public class EtappeActivity extends SherlockFragmentActivity {
 			if(Utils.checkResponse(EtappeActivity.this, response)) {
 				etappe = response.getResponse();
 				setContentView(R.layout.simple_tabs);
+				getSupportActionBar().setHomeButtonEnabled(true);
 				mAdapter = new EtappeFragmentAdapter(getSupportFragmentManager());
 				mPager = (ViewPager)findViewById(R.id.pager);
 				mPager.setAdapter(mAdapter);

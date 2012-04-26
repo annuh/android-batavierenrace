@@ -17,14 +17,13 @@ import com.ut.bataapp.adapters.TeamAdapter;
 import com.ut.bataapp.objects.Team;
 
 public class FavoTeamsActivity extends SherlockListActivity {
-
 	public final static int DELETE_FAVOTEAM = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.getSupportActionBar().setTitle(R.string.dashboard_favorieten);
-		getSupportActionBar().setDisplayShowHomeEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 		this.setContentView(R.layout.listview_favo);
 		registerForContextMenu(getListView());
 	}
@@ -40,7 +39,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 	 */
 	public void initLijst() {
 		ArrayList<Team> teams = Utils.getFavoTeams(FavoTeamsActivity.this);
-		if(teams.size() < 1) {
+		if(teams.size() == 0) {
 			Utils.noFavoTeams(FavoTeamsActivity.this);
 		} else {
 			TeamAdapter adapter = new TeamAdapter(FavoTeamsActivity.this, teams);
@@ -50,7 +49,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Intent intent = new Intent(getApplicationContext(), TeamActivity.class);
+		Intent intent = new Intent(this, TeamActivity.class);
 		intent.putExtra("index", v.getId());
 		startActivity(intent);
 	}
@@ -61,7 +60,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			Utils.goHome(this);
-			break;
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -77,7 +76,7 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		int id = info.targetView.getId();
 		switch (item.getItemId()) {
 		case DELETE_FAVOTEAM:
-			Utils.removeFavoteam(getApplicationContext(), (int) id);
+			Utils.removeFavoteam(this, id);
 			initLijst();
 			return true;
 		}
