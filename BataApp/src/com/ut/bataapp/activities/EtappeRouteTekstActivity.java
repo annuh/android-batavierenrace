@@ -51,6 +51,9 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 				route_km.setText(route.getTabel().get(i)[0]);
 				route_omschrijving.setText(route.getTabel().get(i)[1]);
 				route_locatie.setText(route.getTabel().get(i)[2]);
+				if(container.getOrientation()==LinearLayout.VERTICAL){
+					if(route.getTabel().get(i)[2].equals("-")) route_locatie.setVisibility(View.GONE);
+				}
 				container.addView(item);
 				container.addView(getLayoutInflater().inflate(R.drawable.divider, container, false));
 			}
