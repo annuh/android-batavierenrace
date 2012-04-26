@@ -63,7 +63,6 @@
         <activity
             android:name=".activities.TeamActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleTop"
             android:theme="@style/StyledIndicators" />
         <activity
             android:name=".activities.EtappesActivity"
