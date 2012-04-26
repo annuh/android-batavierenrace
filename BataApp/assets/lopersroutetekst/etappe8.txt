@@ -1,8 +1,5 @@
-Etappe 8;;
-Vertrek W.P. 7: Azewijn;;
-Open: 03:15 uur;;
-Uiterste starttijd: 06:25 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 7: Azewijn;-
 -;Na W.P. weg vervolgen;-
 0,5;Zijstraat (Hesterweg) rechtdoor;Hoofdstraat
 0,9;Zijstraat (Weteringsweg) rechtdoor;;-
@@ -24,5 +21,3 @@ Afst;Omschrijving;Locatie
 7,8;Brug over;-
 8,1;W.P. bij rotonde;-
 Aankomst W.P. 8: Marmelhorst;;
-Open: 03:45 uur;;
-Uiterste starttijd: 07:10 uur;;

@@ -1,7 +1,5 @@
-Vertrek W.P. 19: Noordijk;;
-Open: 12:00;;
-Uiterste starttijd: 14:35 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 19: Noordijk;-
 -;Na het W.P. rechtsaf;Markveldsedijk
 0,8;Bij kruising (Kipkersdijk) rechtdoor;-
 0,9;Bij zijstraat (Hornteweg) rechtdoor;-
@@ -16,5 +14,3 @@ Afst;Omschrijving;Locatie
 5,0;Brug over;Middendorperweg
 6,0;Het W.P.is voor het kruispunt;-
 Aankomst W.P. 20: Middendorp;;
-Open: 12:40;;
-Uiterste starttijd: 14:55 uur;;

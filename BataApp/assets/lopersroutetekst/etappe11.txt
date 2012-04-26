@@ -1,7 +1,5 @@
-Aankomst W.P. 10: Breukelaarsweg;;
-Open: 06:45 uur;;
-Uiterste starttijd: 09:05 uur;;
 Afst;Omschrijving;Locatie
+-;Aankomst W.P. 10: Breukelaarsweg;-
 -;Na het W.P. rechtsaf fietspad op;-
 0,1;Weg oversteken, rechts fietspad op;Aaltenseweg
 0,4;Tweede weg links;Kloosterstraat
@@ -11,7 +9,5 @@ Afst;Omschrijving;Locatie
 2,2;Eerste weg links;Lireweg
 2,6;Einde weg links;Frankenweg
 2,7;Einde weg rechts;Markenweg
-2,9;W.P. ligt voor “Waterkracht B.V.”;-
+2,9;W.P. ligt voor Waterkracht B.V.;-
 Aankomst W.P. 11: Zwarte Veen;;
-Open: 06:50 uur;;
-Uiterste starttijd: 09:20 uur;;

@@ -1,8 +1,5 @@
-Etappe 7;;
-Vertrek W.P. 6: 's Heerenberg;;
-Open: 02:50 uur;;
-Uiterste starttijd: 05:40 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 6: 's Heerenberg;-
 -;Na W.P. kruispunt rechtdoor;Links van de weg lopen!
 0,3;Zijweg rechtdoor;-
 0,5;Driesprong links aanhouden;Ulenpasweg
@@ -24,5 +21,3 @@ Afst;Omschrijving;Locatie
 6,6;Eerste weg linksaf;Hoofdstraat
 6,7;50m na bocht - W.P.;-
 Aankomst W.P. 7: Azewijn;;
-Open: 03:15 uur;;
-Uiterste starttijd: 06:25 uur;;

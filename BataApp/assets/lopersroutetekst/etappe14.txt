@@ -1,7 +1,5 @@
-Aankomst W.P. 13: Heelweg;;
-Open: 07:25 uur;;
-Uiterste starttijd: 10:10 uur;;
 Afst;Omschrijving;Locatie
+-Aankomst W.P. 13: Heelweg;-
 -;Na het W.P. rechtsaf;Heideweg
 0,7;Eerste weg linksaf (voor boerderij);Onverhard, Nicolaasweg
 1,1;Bij zijstraat rechtdoor;Verhard, Nicolaasweg
@@ -19,5 +17,3 @@ Afst;Omschrijving;Locatie
 7,2;Bij driesprong rechtsaf;Wolfersveenweg
 7,6;Het W.P. is voor de boerderij;-
 Aankomst W.P. 14: Wolfersveen;;
-Open: 07:50 uur;;
-Uiterste starttijd: 10:55 uur;;

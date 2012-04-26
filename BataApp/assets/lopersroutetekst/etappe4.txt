@@ -1,8 +1,5 @@
-Etappe 4;;
-Vertrek W.P. 3: Niel;;
-Open: 01:00 uur;;
-Uiterste starttijd: 03:25 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 3: Niel;-
 -;Na W.P. weg vervolgen;-
 0,6;Bruggetje over;Dingdung
 1,3;Zijweg rechtdoor;Dingdung
@@ -23,5 +20,3 @@ Afst;Omschrijving;Locatie
 9,0;Eerste rechtsaf;Spyckscher Baum
 9,1;W.P. in de bocht;-
 Aankomst W.P. 4: Rindern;;
-Open: 01:50 uur;;
-Uiterste starttijd: 04:25 uur;;

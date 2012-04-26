@@ -1,10 +1,8 @@
-Vertrek W.P. 18: Nettelhorst;;
-Open: 11:40;;
-Uiterste starttijd: 13:45 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 18: Nettelhorst;-
 -;Na het W.P. weg vervolgen;Slaapweg
 0,7;Bij kruising linksaf;Geesterse Broekweg
-0,8;Zijstraat (Altena’s Dijk) rechtdoor;Geesterse Broekweg
+0,8;Zijstraat (Altena's Dijk) rechtdoor;Geesterse Broekweg
 1,6;Kruising (Boerenesweg) rechtdoor;Kotte Bekke, onverhard
 2,2;Einde weg linksaf;Esweg
 2,5;Eerste weg rechtsaf;Oosterveldweg
@@ -21,5 +19,3 @@ Afst;Omschrijving;Locatie
 6,8;Driesprong links aanhouden;Mengersdijk
 7,2;W.P. vlak voor kruising;-
 Aankomst W.P. 19: Noordijk;;
-Open: 12:00;;
-Uiterste starttijd: 14:35 uur;;

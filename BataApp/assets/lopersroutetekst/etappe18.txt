@@ -1,6 +1,5 @@
-Vertrek W.P. 17: Barchem;;
-Herstarts: 11:10 - 12:40 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 17: Barchem;-
 -;Kruising schuin linksaf oversteken;Zwiepseweg
 0,2;Barchem uitgaan;-
 -;De fietsers voegen zich bij lopers;-
@@ -31,5 +30,3 @@ Afst;Omschrijving;Locatie
 8,7;Rechtdoor bij zijwegen (links verhad, rechts onverhard);-
 9,5;Kruising rechtsaf, W.P. is net na bocht;Slaapweg
 Aankomst W.P. 18: Nettelhorst;;
-Open: 11:40;;
-Uiterste starttijd: 13:45 uur;;

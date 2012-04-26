@@ -1,8 +1,5 @@
-Etappe 3;;
-Vertrek W.P. 2: Wylerbergmeer;;
-Open: 00:30 uur;;
-Uiterste starttijd: 02:40 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 2: Wylerbergmeer;-
 -;Weg vervolgen op fietspad;Let op: Paaltjes!
 0,1;Linksaf, rechterkant parkeerplaats blijven;-
 0,3;Einde parkeerplaats rechtsaf;-
@@ -22,5 +19,3 @@ Afst;Omschrijving;Locatie
 9,6;Voorrangsweg oversteken;-
 9,7;100m na kruising is het W.P.;-
 Aankomst W.P. 3: Niel;;
-Open: 01:00 uur;;
-Uiterste starttijd: 03:25 uur;;

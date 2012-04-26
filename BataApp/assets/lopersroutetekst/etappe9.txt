@@ -1,8 +1,5 @@
-Etappe 9;;
-Vertrek W.P. 8: Marmelhorst;;
-Open: 03:45 uur;;
-Uiterste starttijd: 07:10 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek W.P. 8: Marmelhorst;-
 -;Na W.P. fietspad op;-
 0,1;Rotonde linksaf, fietspad op;Terborgseweg
 0,9;Eerste zijstraat links;Dinxperloseweg
@@ -16,5 +13,3 @@ Afst;Omschrijving;Locatie
 4,4;Tweede brug het water oversteken;DRU terrein
 4,5;W.P. bevindt zich bij de DRU-Cultuurfabriek;-
 Vertrek herstart Ulft;;
-Start: 06:20 uur;;
-Uiterste starttijd: 07:50 uur;;

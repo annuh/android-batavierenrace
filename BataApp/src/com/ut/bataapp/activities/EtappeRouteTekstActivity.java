@@ -42,15 +42,12 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 			container.addView(item);
 			container.addView(getLayoutInflater().inflate(R.drawable.divider, container, false));
 			
-			//TextView voor = (TextView) findViewById(R.id.voor_tabel);
-			//voor.setText(route.getVoorTabelTekst());
-			//TableLayout table = (TableLayout) findViewById(R.id.route_tabel);
 			for(int i = 1; i < route.getTabel().size(); i++){
 				item = this.getLayoutInflater().inflate(R.layout.row_route, container, false);
 				TextView route_km = (TextView) item.findViewById(R.id.route_km);
 				route_omschrijving = (TextView) item.findViewById(R.id.route_omschrijving);
 				TextView route_locatie = (TextView) item.findViewById(R.id.route_locatie);
-				
+				Log.d("Tekst","Dit is de regel: "+route.getTabel().get(i)[1]);
 				route_km.setText(route.getTabel().get(i)[0]);
 				route_omschrijving.setText(route.getTabel().get(i)[1]);
 				route_locatie.setText(route.getTabel().get(i)[2]);
@@ -64,8 +61,6 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 			route_omschrijving = (TextView) item.findViewById(R.id.route_omschrijving);
 			route_omschrijving.setText(route.getNaTabelTekst());
 			container.addView(item);
-			//TextView na = (TextView) findViewById(R.id.na_tabel);
-			//na.setText(route.getNaTabelTekst());
 		}catch(IOException e){
 			e.printStackTrace();
 		}

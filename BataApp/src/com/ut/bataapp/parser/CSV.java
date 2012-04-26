@@ -12,13 +12,10 @@ public class CSV {
 	
 	public EtappeRoute parse(InputStream csv){
 	
-		Scanner scanner = new Scanner(csv);
-
+		Scanner scanner = new Scanner(csv,"ISO-8859-1");
 		String TekstVoorTabel = "";
 		boolean tabelBegonnen = false;
 		String newLine = "";
-		
-		scanner.nextLine();
 		
 		while(!tabelBegonnen){
 			

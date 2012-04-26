@@ -1,8 +1,5 @@
-Etappe 10;;
-Vertrek herstart Ulft;;
-Start: 06:20 uur;;
-Uiterste starttijd: 07:50 uur;;
 Afst;Omschrijving;Locatie
+-;Vertrek herstart Ulft;-
 -;Herstart bevindt zich op het DRU-Terrein;-
 0,2;Einde weg rechts de brug over;-
 0,3;Einde brug links, fietsers komen bij lopers;-
@@ -29,7 +26,5 @@ Afst;Omschrijving;Locatie
 9,2;Eerste weg rechts ;Aaltenseweg
 9,6;Einde weg links;Dames Jolinkweg
 9,7;Eerste weg rechts;Breukelaarsweg
-10,0;W.P. is voor “Kramp”;-
+10,0;W.P. is voor Kramp;-
 Aankomst W.P. 10: Breukelaarsweg;;
-Open: 06:45 uur;;
-Uiterste starttijd: 09:05 uur;;

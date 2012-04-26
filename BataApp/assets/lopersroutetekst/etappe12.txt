@@ -1,7 +1,5 @@
-Aankomst W.P. 11: Zwarte Veen;;
-Open: 06:50 uur;;
-Uiterste starttijd: 09:20 uur;;
 Afst;Omschrijving;Locatie
+-;Aankomst W.P. 11: Zwarte Veen;-
 -;Na het W.P. eerste rechts;Guldenweg
 0,5;Einde weg links;Kronenweg
 0,6;Einde weg rechts;Euroweg
@@ -13,5 +11,3 @@ Afst;Omschrijving;Locatie
 4,3;Einde weg links;Veenweg
 4,5;W.P. bevindt zich vlak voor kruising;-
 Aankomst W.P. 12:Zwarte Veen;;
-Open: 07:05 uur;;
-Uiterste starttijd: 09:45 uur;;
