@@ -45,7 +45,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 			titel = hoogteverschillen[kaart][1];
 		} else{
 			int kaart = getIntent().getIntExtra("kaart",0);
-			titel = type+" "+kaart;
+			titel = "Lopersroute etappe " + kaart;
 			if(kaart==25) kaart = 24;
 			locatie = (type+"/loop"+kaart+".jpg");	
 		}
@@ -56,7 +56,7 @@ public class AfbeeldingActivity extends SherlockActivity {
 		webview.getSettings().setUseWideViewPort(true);
 		webview.getSettings().setBuiltInZoomControls(true);
 		webview.loadUrl("file:///android_asset/" + locatie);	
-		if(type.equals("lopersroutekaart")){
+		if(type.equals("Lopersroutekaart")){
 			webview.setMinimumWidth(LayoutParams.WRAP_CONTENT);
 		}
     }
