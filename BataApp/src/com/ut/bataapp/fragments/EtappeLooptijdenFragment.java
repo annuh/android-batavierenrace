@@ -22,6 +22,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
@@ -45,6 +47,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 	private final int MENU_SEARCH = Menu.FIRST + 10;
 	private final int MENU_SORT_NAAM = Menu.FIRST + 11;
 	private final int MENU_SORT_STAND = Menu.FIRST + 12;
+	private final int MENU_FOUTCODES = Menu.FIRST + 2;
 	private String filterText = "";
 	private char sortTeam = 'D';
 	private char sortStand = 'D';
@@ -91,6 +94,10 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 		subMenu1.getItem()
 		.setIcon(R.drawable.ic_action_sort)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		
+		menu.add(0,MENU_FOUTCODES,Menu.NONE, R.string.ab_foutcodes)
+		.setIcon(R.drawable.ic_action_foutcodes)
+		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 	}
 
 	@Override
@@ -107,7 +114,13 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 			setKeyboardFocus(filterEdit);
 			break;
 		case MENU_SORT_STAND:
-			sortStand(null);		
+			sortStand(null);
+		case MENU_FOUTCODES:
+			FragmentTransaction ft = getFragmentManager().beginTransaction();
+		    DialogFragment newFragment = new FoutcodesDialogFragment();
+		    newFragment.show(ft, "Foutcodes");
+			break;		
+		
 		}
 		return super.onOptionsItemSelected(item);
 	}
