@@ -18,11 +18,11 @@
                                                 en trilsignalen op de hoogte gesteld. Via de instellingen kun je dit aanpassen. Klik hieronder om de instellingen
                                                 te openen.</string>
     <string name="welkom_instellingen_button_tekst">Open instellingen</string>
-    <string name="welkom_instellingen_content2">De instellingen zijn ook bereikbaar via de knop rechtsboven in het hoofdscherm.</string>                                                                  
+    <string name="welkom_instellingen_content2">De instellingen zijn ook bereikbaar via de knop rechtsboven in het hoofdscherm.</string>
     <string name="welkom_button_vorige_tekst">Vorige</string>
     <string name="welkom_button_volgende_tekst">Volgende</string>
     <string name="welkom_button_voltooien_tekst">Voltooien</string>
-    
+
     <!-- Algemeen/Actionbar -->
     <string name="app_titel">Batavierenrace</string>
     <string name="alert_dialog_ok">OK</string>
@@ -34,6 +34,7 @@
     <string name="ab_berichten">Berichten</string>
     <string name="ab_instellingen">Instellingen</string>
     <string name="ab_foutcodes">Foutcodes</string>
+    <string name="ab_addfavoteam">Voeg een team toe</string>
 
     <!-- Dashboard -->
     <string name="dashboard_favorieten">Favorieten</string>
@@ -136,13 +137,11 @@
     <string name="etappe_recordtijd_jaar">Jaar</string>
     <string name="etappe_recordtijd_tijd">Tijd</string>
     <string name="etappe_recordtijd_snelheid">Snelheid</string>
-    
     <string name="etappe_routes_h1_kaart">Kaart</string>
     <string name="etappe_routes_routebeschrijving_looproute">Routebeschrijving</string>
     <string name="etappe_routes_h1_openenmaps">Open in Google Maps</string>
     <string name="etappe_routes_looproute">Looproute</string>
     <string name="etappe_routes_autoroute">Autoroute</string>
-    
     <string name="etappe_looptijden_header_stand">#</string>
     <string name="etappe_looptijden_header_team">Team</string>
     <string name="etappe_looptijden_header_tijd">Tijd</string>
@@ -150,7 +149,6 @@
     <string name="etappe_looptijden_header_foutcode">Code</string>
     <string name="etappe_looptijden_laden">Looptijden worden geladen</string>
     <string name="etappe_looptijden_leeg">Geen looptijden gevonden</string>
-   
     <string name="etappe_route_tekst_afstand">Km.</string>
     <string name="etappe_route_tekst_omschrijving">Omschrijving</string>
     <string name="etappe_route_tekst_locatie">Locatie</string>
@@ -171,14 +169,13 @@
     <string name="colofon"><b>Deze applicatie is ontwikkeld door:</b>\n\n\tDanny Bergsma\n\tJochem Elsinga\n\tBas Janssen\n\tErik Pleijsier\n\tAnne van de Venis\n\nStudenten Informatica\nUniversiteit Twente\n\n<b>In samenwerking met:</b>\n\n\tStichting de Batavierenrace\n\t40e Organisatie Commissie\n\nApril 2012</string>
     <string name="disclamer">Aan deze applicatie kunnen geen rechten worden ontleend. Gegevens (informatie, uitslagen, routes, etc.) die via andere wegen ter uiting worden gebracht door organen van de Batavierenrace zijn leidend	boven de publicatie in deze applicatie. Verder is op deze applicatie ook het wedstrijd- en inschrijfregelement van toepassing. De volledige wedstrijd- en inschrijfregelementen zijn te vinden op www.batavierenrace.nl.\n\n Hieronder staan enkele belangrijke punten uit de regelementen herhaald:\n\n1) Iedere deelnemer neemt deel op eigen risico. De Stichting Batavierenrace kan niet aansprakelijk worden gesteld voor het zoek raken of de beschadiging van persoonlijke eigendommen, noch voor enig opgelopen persoonlijk letsel.\n\n 2)	Er bestaan voor de lopers en de volgauto"s aparte routes. De routes beschreven in het deelnemersboekje zijn leidend, ook boven de applicatie. Errata worden zoveel mogelijk meegenomen in de applicatie. De borden langs de lopersroute dienen slechts ter ondersteuning. Indien van de in het boekje en de errata beschreven route moet worden afgeweken, zal iemand van de organisatie dit aangeven.\n\n 3) De Wegenverkeerswet, het Reglement Verkeersregels en Verkeerstekens en de Straßenverkehrsordnung zijn tijdens de race onder alle omstandigheden van kracht. Werkende fietsverlichting is bijvoorbeeld ook verplicht.\n\n4) Het Wedstrijdsecretariaat draagt de verantwoordelijkheid voor de einduitslag. Het is bevoegd om bij constatering van een overtreding van het wedstrijdreglement straftijd toe te kennen. Het Wedstrijdsecretariaat is tevens verantwoordelijk voor de protestafhandeling.\n\n5) Protesten dienen zo snel mogelijk te worden ingediend bij het Wedstrijdsecretariaat. Dit kan tijdens de gehele race telefonisch en op gezette tijden in Enschede. De gepubliceerde uitslag tijdens en na de race is voorlopig, ook publicatie in de applicatie. Tot en met de eerstvolgende woensdag na de race is het mogelijk om via e-mail protesten in te dienen bij het Wedstrijdsecretariaat (protesten@batavierenrace.nl).</string>
     <string name="info_contact"><b>Stichting De Batavierenrace</b>\n\n<b>Batavierenrace Nijmegen</b>\nHeyendaalseweg 141\n6525 AJ Nijmegen\nE: nijmegen@batavierenrace.nl\nT: +31 (0)24-3615876\n\nBezoekadres:\nKamer N-1.260\nHeyendaalseweg 141\n6525 AJ Nijmegen\n\n<b>Batavierenrace Enschede</b>\nPostbus 217\n7500 AE Enschede\nE: enschede@batavierenrace.nl\nT: +31 (0)53-4893787\n\nBezoekadres:\nBastille, kamer 334\nDrienerlolaan 5\n7522 NB Enschede</string>
-  	<string name="informatie_algemeen_titel">Algemeen</string>
+    <string name="informatie_algemeen_titel">Algemeen</string>
     <string name="info_algemeen_watmoetjeweten_medischeondersteuning">In de race rijden zeven artsen mee. Zij zijn aanwezig bij iedere start, herstart en finish en kunnen via een medewerker opgeroepen worden. Als een arts naar je toe komt ben je verplicht te wachten. Op de campus is de zorg in handen van EHBO Enschede. Die kun je vinden op de hoek van de Carilloncamping en de Drienerlolaan.</string>
     <string name="info_algemeen_watmoetjeweten_hesinname">Je kunt je hes inleveren van 17.45 tot 19.30 in de Vrijhof op  het campus in Enschede.\n\n<b>Inleveren:</b>\n- De lopershes met chip\n- De fietsershes \n- De twee witte en blauwe startnummers met elk een chip.\n\nLever je dit op tijd in, dan krijg je €80 borg terug. Ben je te laat, dan krijg je €70 van je borg terug.</string>
     <string name="info_algemeen_watmoetjeweten_gevondenvoorwerpen">Tijdens de race gaan alle gevonden voorwerpen naar de infobalie op de herstarts. Na de race gaan alle spullen naar de infobalie in het Sportcentrum te Enschede.</string>
     <string name="info_algemeen_watmoetjeweten_totslot">- Het gebruik van alcohol en/of drogerende middelen tijdens de race door lopers en autobestuurders is verboden.\n- In Duitsland: geldig paspoort en groene verzekeringskaart in het busje\n- Let op omroepen en errata\n- Slapen in sportcentrum: slaapbandje dragen\n- Geen open vuur\n- Parkeren op de aangegeven plaatsen</string>
     <string name="info_algemeen_slapen">In Enschede zijn twee slaapmogelijkheden:\n<b>Sportcentrum</b>\nHier zijn drie zalen waar deelnemers kunnen slapen. Hiervoor heb je van te voren een slaapbandje moeten kopen.\n\n<b>Camping</b>\nIn Enschede zijn drie campings:\n\t- Carilloncamping\n\t- Hockeycamping\n\t- Vlindercamping\n\n<u>Enkele regels:</u>\n\t - Plaats de tent binnen de lijnen\n\t - De tent mag niet te groot zijn (max 6 personen)\n\t - Het maken van open vuur is verboden\n\t - Deponeer afval in de daar voor bestemde afvalbakken\n\t - Zondagochtend 11 uur dien je het terrein verlaten te hebben</string>
     <string name="informatie_colofon_titel">Colofon</string>
-    
     <string name="bezig_met_laden">Bezig met laden</string>
     <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
 
@@ -213,7 +210,7 @@
     <string name="weer_verwachtweer_nog_niet_bekend">(Nog) niet bekend.</string>
     <string name="weer_algemeneverwachting">Algemene verwachting</string>
     <string name="weer_buienverwachting">Buien komende 2 uur</string>
-    
+
     <!-- BataRadio -->
     <string name="bataradio_live_header">Internetstream</string>
     <string name="bataradio_live_beschikbaar">De livestream is beschikbaar van 27 april 21.00 tot 28 april 19.00.</string>
@@ -230,10 +227,20 @@
     <!-- Berichten -->
     <string name="berichten_laden">Berichten worden geladen…</string>
     <string name="berichten_leeg">Er zijn op dit moment geen berichten.</string>
-    <string name="kleurcode_geel"><b>De race is tijdelijk stilgelegd</b>\nDe situatie is te gevaarlijk, de race is tijdelijk stilgelegd. Je doet het volgende:\n\n<b>Op de lopersroute:</b>\n1. Let op je eigen veiligheid!\n2. Je doet mee op eigen risico!\n3. Schuil bij een onveilige situatie.\n4. Vind je het zelf (weer) veilig: doorlopen, je tijd wordt nog geregistreerd.\n\n<b>Op de autoroute / een wisselpunt / een herstart:</b>\n1. Let op je eigen veiligheid!\n2. Je doet mee op eigen risico!\n3. Eén persoon informeert bij het wisselpunt of bij de infobaliebus.\n4. Volg de instructies van de organisatie op.\n\n<b>Als jouw ploeg nog bij de start in Nijmegen is:</b>\n1. Volg de instructies van de organisatie op</string>
-    <string name="kleurcode_groen"><b>De race wordt herstart in...</b>\nDe situatie is weer veilig, de race wordt herstart. Je doet het volgende:\n1. Wacht op instructies van de organisatie naar welke locatie (wisselpunt of herstart) jouw ploeg moet.\n2. Ga naar die locatie.\n3. Volg op die locatie de instructies van de organisatie op.</string>
-    <string name="kleurcode_rood"><b>De race wordt definitief stopgezet</b>\nHet is niet meer mogelijk of wenselijk om de race af te maken.  Je doet het volgende:\n1. Verzamelen in Enschede\n2. Eten gaat altijd door\n3. Finish / feestactiviteiten: de organisatie beslist of, en in welke vorm, deze doorgaan.\n4. Overnachten is altijd mogelijk</string>
-    
+    <string name="kleurcode_geel_titel">Code geel</string>
+    <string name="kleurcode_geel_beschrijving">&lt;b>De race tijdelijk stilgelegd vanwege %s&lt;/b></string>
+    <string name="kleurcode_geel">De situatie is te gevaarlijk, de race is tijdelijk stilgelegd. Je doet het volgende:&lt;br />&lt;br />&lt;b>Op de lopersroute:&lt;/b>&lt;br />1. Let op je eigen veiligheid!&lt;br />2. Je doet mee op eigen risico!&lt;br />3. Schuil bij een onveilige situatie.&lt;br />4. Vind je het zelf (weer) veilig: doorlopen, je tijd wordt nog geregistreerd.&lt;br />&lt;br />&lt;b>Op de autoroute / een wisselpunt / een herstart:&lt;/b>&lt;br />1. Let op je eigen veiligheid!&lt;br />2. Je doet mee op eigen risico!&lt;br />3. Eén persoon informeert bij het wisselpunt of bij de infobaliebus.&lt;br />4. Volg de instructies van de organisatie op.&lt;br />&lt;br />&lt;b>Als jouw ploeg nog bij de start in Nijmegen is:&lt;/b>&lt;br />1. Volg de instructies van de organisatie op</string>
+    <string name="kleurcode_rood_titel">Code rood</string>
+    <string name="kleurcode_rood_beschrijving">&lt;b>De race wordt definitief stopgezet vanwege %s&lt;/b></string>
+    <string name="kleurcode_rood">Het is niet meer mogelijk of wenselijk om de race af te maken.  Je doet het volgende:&lt;br />1. Verzamelen in Enschede&lt;br />2. Eten gaat altijd door&lt;br />3. Finish / feestactiviteiten: de organisatie beslist of, en in welke vorm, deze doorgaan.&lt;br />4. Overnachten is altijd mogelijk</string>
+    <string name="kleurcode_groen_titel">Code groen</string>
+    <string name="kleurcode_groen_beschrijving">&lt;b>De race wordt herstart %s&lt;/b></string>
+    <string name="kleurcode_groen">De situatie is weer veilig, de race wordt herstart. Je doet het volgende:&lt;br />1. Wacht op instructies van de organisatie naar welke locatie (wisselpunt of herstart) jouw ploeg moet.&lt;br />2. Ga naar die locatie.&lt;br />3. Volg op die locatie de instructies van de organisatie op.</string>
+    <string name="kleurcode_totslot_titel">Tot slot</string>
+    <string name="kleurcode_totslot">1. Zorg dat alle mensen uit je ploeg op de hoogte zijn van dit calamiteitenschema en dat mededelingen ook aan iedereen worden doorgegeven.\n
+        							2. De race stilleggen / herstarten / stopzetten zorgt voor chaos. Het kan zijn dat de organisatie jullie busje in wil zetten om lopers en fietsers op te halen. We rekenen dan op je medewerking!\n
+        							3. Zorg dat je met je lopershesje in Enschede aankomt. Daar moet je het inleveren om de borg teruggestort te krijgen.</string>
+
     <!-- Foutcodes -->
     <string name="foutcode_a">Anders voortbewogen</string>
     <string name="foutcode_d">Diskwalificatie loper</string>
@@ -257,11 +264,11 @@
     <string name="notification_bu_etappeuitslag_content">Uitslag etappe %1$s: %2$s</string>
     <string name="notification_bu_etappeuitslagen_ticker">Nieuwe etappeuitslagen %s</string>
     <string name="notification_bu_etappeuitslagen_content">Nieuwe uitslag etappes %s</string>
-    
+
     <!-- Push bericht -->
     <string name="notification_push_statusbar">Nieuw bericht</string>
     <string name="notification_push_titel">Batavierenrace nieuws</string>
-    
+
     <!-- Instellingen -->
     <string name="title_prefs">Instellingen</string>
     <string name="pref_background_updater_title">Background updater</string>
@@ -270,6 +277,7 @@
     <string name="pref_background_update_summary_off">Er worden geen uitslagen op achtergrond gedownload</string>
     <string name="pref_background_update_interval_title">Updatefrequentie</string>
     <string name="pref_background_update_interval_summary">Hoe vaak uitslagen favoriete teams worden gedownload</string>
+
     <string-array name="pref_background_update_interval_options_desc">
         <item>Elke 5 minuten</item>
         <item>Elke 10 minuten</item>
@@ -286,6 +294,7 @@
         <item>30</item>
         <item>60</item>
     </string-array>
+
     <string name="pref_background_update_notify_title">Notificatie bij nieuwe data</string>
     <string name="pref_background_update_notify_summary_on">Toon notificatie bij nieuwe uitslagen favoriete teams</string>
     <string name="pref_background_update_notify_summary_off">Toon geen notificatie bij nieuwe uitslagen favoriete teams</string>
@@ -295,4 +304,5 @@
     <string name="pref_background_update_sound_title">Geluid bij notificatie</string>
     <string name="pref_background_update_vibrate_title">Tril bij notificatie</string>
     <string name="pref_background_update_flash_title">Knipperlicht bij notificatie</string>
+
 </resources>

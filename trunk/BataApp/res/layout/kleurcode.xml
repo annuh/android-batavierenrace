@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/viewport" >
+
+    <ScrollView
+        android:id="@+id/scroller"
+        style="@style/scroller"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container_sponsor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/kleurcode_titel"
+                style="@style/h1"
+                android:text="@string/kleurcode_geel_titel" />
+
+            <TextView
+                android:id="@+id/kleurcode_omschrijving"
+                style="@style/container_block"
+                android:text="@string/kleurcode_geel_beschrijving" />
+
+            <TextView
+                android:id="@+id/kleurcode_tekst"
+                style="@style/container_block"
+                android:text="@string/kleurcode_geel" />
+            
+            <TextView
+                style="@style/h1"
+                android:text="@string/kleurcode_totslot_titel" />
+            
+            <TextView
+                style="@style/container_block"
+                android:text="@string/kleurcode_totslot" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

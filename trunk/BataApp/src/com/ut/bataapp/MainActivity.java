@@ -243,8 +243,9 @@ public class MainActivity extends SherlockFragmentActivity {
 				Log.i("GenericNotifier", "Already registered. registrationId is " + registrationId);
 			}else{
 				Log.i("GenericNotifier", "No existing registrationId. Registering..");
-				C2DMessaging.register(this, "batabericht@gmail.com");
+				
 			}
+			C2DMessaging.register(this, "batabericht@gmail.com");
 		}
 
 	}
