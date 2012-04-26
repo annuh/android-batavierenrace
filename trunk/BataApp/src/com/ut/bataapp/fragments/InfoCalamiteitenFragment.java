@@ -50,6 +50,17 @@ public class InfoCalamiteitenFragment extends SherlockFragment {
     	                }
     	            }
     	        );
+    	LinearLayout call_org2 = (LinearLayout) view.findViewById(R.id.bel_organisatie2);
+    	call_org2.setOnClickListener(
+    	            new View.OnClickListener() {    
+    	                @Override
+    	                public void onClick(View v) {
+    	                	Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: 0031534895331"));
+    	                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    	                    startActivity(intent);
+    	                }
+    	            }
+    	        );
     	
     	
         return view;
