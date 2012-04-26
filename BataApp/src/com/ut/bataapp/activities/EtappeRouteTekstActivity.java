@@ -31,13 +31,24 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 		
 			this.setTitle(mType+"route "+mId);
 			Log.d("Routes",route.getVoorTabelTekst());
+			
+			View item = this.getLayoutInflater().inflate(R.layout.row_route, container, false);
+			TextView icon = (TextView) item.findViewById(R.id.route_km);
+			icon.setText(" ");
+			icon.setBackgroundResource(R.drawable.start);
+			TextView route_omschrijving = (TextView) item.findViewById(R.id.route_omschrijving);
+			route_omschrijving.setText(route.getTabel().get(0)[1]);
+			
+			container.addView(item);
+			container.addView(getLayoutInflater().inflate(R.drawable.divider, container, false));
+			
 			//TextView voor = (TextView) findViewById(R.id.voor_tabel);
 			//voor.setText(route.getVoorTabelTekst());
 			//TableLayout table = (TableLayout) findViewById(R.id.route_tabel);
-			for(int i = 0; i < route.getTabel().size(); i++){
-				View item = this.getLayoutInflater().inflate(R.layout.row_route, container, false);
+			for(int i = 1; i < route.getTabel().size(); i++){
+				item = this.getLayoutInflater().inflate(R.layout.row_route, container, false);
 				TextView route_km = (TextView) item.findViewById(R.id.route_km);
-				TextView route_omschrijving = (TextView) item.findViewById(R.id.route_omschrijving);
+				route_omschrijving = (TextView) item.findViewById(R.id.route_omschrijving);
 				TextView route_locatie = (TextView) item.findViewById(R.id.route_locatie);
 				
 				route_km.setText(route.getTabel().get(i)[0]);
@@ -46,8 +57,15 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 				container.addView(item);
 				container.addView(getLayoutInflater().inflate(R.drawable.divider, container, false));
 			}
-			TextView na = (TextView) findViewById(R.id.na_tabel);
-			na.setText(route.getNaTabelTekst());
+			item = this.getLayoutInflater().inflate(R.layout.row_route, container, false);
+			icon = (TextView) item.findViewById(R.id.route_km);
+			icon.setText(" ");
+			icon.setBackgroundResource(R.drawable.finish);
+			route_omschrijving = (TextView) item.findViewById(R.id.route_omschrijving);
+			route_omschrijving.setText(route.getNaTabelTekst());
+			container.addView(item);
+			//TextView na = (TextView) findViewById(R.id.na_tabel);
+			//na.setText(route.getNaTabelTekst());
 		}catch(IOException e){
 			e.printStackTrace();
 		}

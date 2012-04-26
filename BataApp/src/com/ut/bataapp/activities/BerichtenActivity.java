@@ -44,21 +44,26 @@ public class BerichtenActivity extends SherlockListActivity  {
 		Log.d("Listview",""+position + ":" + pushberichten.size());
 		if(position <= pushberichten.size()) {
 			switch(pushberichten.get(position-1).getCode()) {
-				case Bericht.GEEL:{
+				case Bericht.GEEL:
 					Intent intent4 = new Intent(this, KleurcodesActivity.class);
 					intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent4.putExtra("index", "geel");
+					intent4.putExtra("beschrijving", pushberichten.get(position-1).getBericht());
 					startActivity(intent4);
 					break;
-				}
 				case Bericht.GROEN:{
 					Intent intent2 = new Intent(this, KleurcodesActivity.class);
 					intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent2.putExtra("index", "groen");
+					intent2.putExtra("beschrijving", pushberichten.get(position-1).getBericht());
 					startActivity(intent2);
 					break;
 				}
 				case Bericht.ROOD:{
 					Intent intent3 = new Intent(this, KleurcodesActivity.class);
 					intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent3.putExtra("index", "rood");
+					intent3.putExtra("beschrijving", pushberichten.get(position-1).getBericht());
 					startActivity(intent3);
 					break;
 				}
@@ -91,6 +96,16 @@ public class BerichtenActivity extends SherlockListActivity  {
 
 	public void makeList() {
 		pushberichten = Utils.getBerichten(this);
+		Bericht bericht1 = new Bericht();
+		bericht1.setBericht("Mooi weer");
+		bericht1.setCode(Bericht.GEEL);
+		
+		Bericht bericht2 = new Bericht();
+		bericht2.setBericht("Rood weer");
+		bericht2.setCode(Bericht.ROOD);
+		
+		pushberichten.add(bericht1);pushberichten.add(bericht2);
+		
 		adapter_push = new BerichtAdapter(this, pushberichten);
 		adapter_nieuws = new BerichtAdapter(this, nieuwsberichten);
 

@@ -1,5 +1,6 @@
 package com.ut.bataapp;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -167,7 +168,8 @@ public class Utils {
 	public static void addBericht(Context context, String type, String bericht) {
 		SharedPreferences keyValues = context.getSharedPreferences("push_berichten", Context.MODE_PRIVATE);
 		SharedPreferences.Editor keyValuesEditor = keyValues.edit();
-		keyValuesEditor.putString(new java.util.Date().toString() , type+bericht);
+		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+		keyValuesEditor.putString(formatter.format(new java.util.Date()) , type+bericht);
 		keyValuesEditor.commit();
 	}
 	
@@ -182,24 +184,30 @@ public class Utils {
 			Bericht bericht = new Bericht();
 			bericht.setDatum(entry.getKey());
 			int code;
+			String titel = "";
 			switch(((String) entry.getValue()).charAt(0)) {
 			case 'y':
 				code = Bericht.GEEL;
+				titel = context.getString(R.string.kleurcode_geel_titel);
 				break;
 			case 'g':
 				code = Bericht.GROEN;
+				titel = context.getString(R.string.kleurcode_groen_titel);
 				break;
 			case 'r':
 				code = Bericht.ROOD;
+				titel = context.getString(R.string.kleurcode_rood_titel);
 				break;
 			case 'w':
 				code = Bericht.WEER;
+				titel = ((String) entry.getValue()).substring(1);
 				break;
 			default:
 				code = Bericht.CUSTOM;
+				titel = ((String) entry.getValue()).substring(1);
 			}
 			bericht.setCode(code);
-			bericht.setTitel(((String) entry.getValue()).substring(1));
+			bericht.setTitel(titel);
 			bericht.setBericht(entry.getKey());
 			berichten.add(bericht);
 		}

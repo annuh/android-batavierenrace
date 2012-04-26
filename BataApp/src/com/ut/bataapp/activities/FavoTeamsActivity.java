@@ -18,6 +18,7 @@ import com.ut.bataapp.objects.Team;
 
 public class FavoTeamsActivity extends SherlockListActivity {
 	public final static int DELETE_FAVOTEAM = 1;
+	private static final int MENU_ADDTEAM = Menu.FIRST;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,15 @@ public class FavoTeamsActivity extends SherlockListActivity {
 			setListAdapter(adapter);
 		}
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0,MENU_ADDTEAM,Menu.NONE, R.string.ab_addfavoteam)
+		.setIcon(R.drawable.ic_action_plus)
+		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		
+		return super.onCreateOptionsMenu(menu);
+	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
@@ -61,6 +71,10 @@ public class FavoTeamsActivity extends SherlockListActivity {
 		case android.R.id.home:
 			Utils.goHome(this);
 			return true;
+		case MENU_ADDTEAM:
+			Intent intent = new Intent(this, TeamsActivity.class);
+			intent.putExtra(TeamsActivity.EXTRA_IN_SETUP, true);
+			startActivity(intent);
 		}
 
 		return super.onOptionsItemSelected(item);

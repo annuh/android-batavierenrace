@@ -75,19 +75,17 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 		
 		// Hide the notification after its selected
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
-		notification.number += 1;
 		Intent tointent = new Intent(context, BerichtenActivity.class);
-		if(type.equals("w")) {
-			tointent = new Intent(context, WeerActivity.class);
-			type = type + " Weer-alert";
-		}
 		
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
 				tointent, 0);
 		notification.setLatestEventInfo(context, getString(R.string.notification_push_titel),
 				message, pendingIntent);
-		notificationManager.notify(0, notification);
+		
+		notificationManager.notify(nots, notification);
+		nots++;
 	}
+	int nots = 0;
 
 	/* (non-Javadoc)
 	 * @see com.google.android.c2dm.C2DMBaseReceiver#onRegistered(android.content.Context, java.lang.String)
