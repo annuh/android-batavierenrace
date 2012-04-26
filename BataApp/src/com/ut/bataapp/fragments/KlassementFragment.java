@@ -113,7 +113,7 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 
 	@Override
 	public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
-		menu.add(0,MENU_SEARCH,Menu.NONE, R.string.ab_zoeken)
+		menu.add(0,MENU_SEARCH,0, R.string.ab_zoeken)
 		.setIcon(R.drawable.ic_action_search)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
 
