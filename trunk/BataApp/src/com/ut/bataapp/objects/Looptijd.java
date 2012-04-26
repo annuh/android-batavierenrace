@@ -14,12 +14,12 @@ public class Looptijd {
 	//Waarde(s) voor als die niet in de XML staan
 	public static final int NULLINT = 999;
 	
-	private String teamnaam;
+	private String teamnaam = "";
 	private int teamStartnummer;
 	private int teamStartgroep;
 	private int etappe;
 	private String klassement;
-	private String tijd;
+	private String tijd = "";
 	private String foutcode = "–";
 	private String snelheid;
 	private int etappeStand = NULLINT; 
@@ -58,7 +58,8 @@ public class Looptijd {
 	public void setCumulatieveStand(int stand){this.cumulatieveStand = stand;}
 	public void setKlassement(String klassement){this.klassement = klassement;}
 	public void setCumtotaaltijd(String tijd){this.cumtotaaltijd = tijd;}
-	
+	public void appendTijd(String tijd){this.tijd = this.tijd.concat(tijd);}
+	public void appendTeamNaam(String teamNaam){this.teamnaam = this.teamnaam.concat(teamNaam);}
 	/*Getters*/
 	public String getTeamNaam(){return teamnaam;}
 	public int getTeamStartnummer(){return teamStartnummer;}
