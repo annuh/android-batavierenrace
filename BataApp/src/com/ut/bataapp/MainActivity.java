@@ -6,6 +6,7 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -142,22 +144,24 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 		});
 
-		// Aantal dagen
+		// aantal dagen tot Bata:
+		
+		Resources res = getResources();
 		Calendar nu = Calendar.getInstance();
-		Calendar batadag = Calendar.getInstance();
-		batadag.set(2012, 4-1, 28);
-		long dagenVerschil = (batadag.getTimeInMillis() - nu.getTimeInMillis())/ (24 * 60 * 60 * 1000);
-
-		TextView viewDagen = (TextView) findViewById(R.id.dashboard_time);
-		String weergeven = "";
-		if(dagenVerschil>0){
-			weergeven = "Het duurt nog " +dagenVerschil + " dagen!";
-		} else if(dagenVerschil==0){
-			weergeven = "Batavierenrace XL";
-		} else{
-			weergeven = "Tot volgend jaar!";
-		}
-		viewDagen.setText(weergeven);
+		Utils.clearTime(nu);
+		Calendar bataDag = Calendar.getInstance();
+    	bataDag.set(res.getInteger(R.integer.batadag_jaar), (res.getInteger(R.integer.batadag_maand)-1), res.getInteger(R.integer.batadag_dag));
+		short dagenVerschil = Utils.diffDays(nu.getTime(), bataDag.getTime());
+		String weergeven;
+    	if (dagenVerschil > 1)
+    		weergeven = String.format(res.getString(R.string.main_batadag_duurt_nog_dagen), dagenVerschil);
+    	else if (dagenVerschil == 1)
+    		weergeven = res.getString(R.string.main_batadag_duurt_nog_dag);
+    	else if (dagenVerschil == 0)
+    		weergeven = res.getString(R.string.main_batadag_vandaag);
+    	else
+    		weergeven = res.getString(R.string.main_batadag_geweest);
+    	((TextView) findViewById(R.id.dashboard_time)).setText(weergeven);
 	}
 	
 	@Override

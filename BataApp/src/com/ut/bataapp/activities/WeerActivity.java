@@ -230,9 +230,8 @@ public class WeerActivity extends SherlockFragmentActivity {
     	Resources res = mRes;
     	Calendar bataDag = Calendar.getInstance();
     	bataDag.set(res.getInteger(R.integer.batadag_jaar), (res.getInteger(R.integer.batadag_maand)-1), res.getInteger(R.integer.batadag_dag));
-    	Date bata = bataDag.getTime();
     	mRefreshWeerProvider = new RefreshWeerProvider();
-    	mRefreshWeerProvider.execute(bata);
+    	mRefreshWeerProvider.execute(bataDag.getTime());
 	}
     
     /**

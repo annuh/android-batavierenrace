@@ -1,17 +1,18 @@
 package com.ut.bataapp.fragments;
 
 import java.util.ArrayList;
-import com.actionbarsherlock.app.SherlockFragment;
-import com.ut.bataapp.R;
-import com.ut.bataapp.objects.Sponsor;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.actionbarsherlock.app.SherlockFragment;
+import com.ut.bataapp.R;
+import com.ut.bataapp.objects.Sponsor;
 
 public class SponsorInformatieFragment extends SherlockFragment {
 	
