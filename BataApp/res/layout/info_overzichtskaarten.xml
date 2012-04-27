@@ -11,7 +11,7 @@
         <TextView
             android:id="@+id/label_info"
             style="@style/h1"
-            android:text="@string/team_h1_informatie" />
+            android:text="Overzichtskaarten" />
         <Button
             android:id="@+id/stad_nijmegen"
             style="@style/nice_button"

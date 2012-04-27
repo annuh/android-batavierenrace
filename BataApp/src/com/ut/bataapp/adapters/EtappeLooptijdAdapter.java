@@ -47,8 +47,10 @@ public class EtappeLooptijdAdapter extends ArrayAdapter<Looptijd> {
 		TextView tijd = (TextView) rowView.findViewById(R.id.etappe_looptijd_tijd);
 		tijd.setText(filteredItems.get(position).getTijd() + " " + foutcode);
 			
-		TextView snelheid = (TextView) rowView.findViewById(R.id.etappe_looptijd_snelheid);
-		snelheid.setText(String.format(context.getString(R.string.kmu), filteredItems.get(position).getSnelheid()));
+		if(values.get(position).getSnelheid() != null && values.get(position).getSnelheid().length() > 0) {
+			TextView snelheid = (TextView) rowView.findViewById(R.id.etappe_looptijd_snelheid);
+			snelheid.setText(String.format(context.getString(R.string.kmu), filteredItems.get(position).getSnelheid()));
+		}
 
 		return rowView;
 	}

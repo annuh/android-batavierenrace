@@ -44,15 +44,41 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 	
 	private Etappe etappe = null;
 	private int etappe_id;
+	private int mTabId;
+	private getEtappe mGetEtappe;
+	private boolean mRestarted;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		etappe_id = ((savedInstanceState == null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("etappe_id"));
+		mTabId = ((savedInstanceState == null) ? getIntent().getIntExtra("tabid", 0) : savedInstanceState.getInt("tabid"));
 		setTitle("Etappe "+etappe_id);
-		new getEtappe((savedInstanceState == null) ? getIntent().getIntExtra("tabid", 0) : savedInstanceState.getInt("tabid")).execute();
 	}
+	
+	/**
+     * Callback-methode resumen activity.
+     */
+    @Override
+	protected void onResume() {
+    	super.onResume();
+    	mRestarted = true;
+    	mGetEtappe = new getEtappe(mTabId);
+		mGetEtappe.execute();	
+	}
+	
+	/**
+     * Callback-methode pauseren activity. Alle fragments worden verwijderd.
+     */
+    @Override
+    protected void onPause() {
+    	super.onPause();
+    	if (mAdapter != null) {
+			mAdapter.deleteAll(getSupportFragmentManager());
+			mTabId = ((ViewPager) findViewById(R.id.pager)).getCurrentItem();
+		} else
+			mGetEtappe.cancel(true);
+    }
 	
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -85,7 +111,12 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 			titels.add(getString(R.string.etappe_titel_informatie));
 			fragments.add(new EtappeRoutesFragment());
 			titels.add(getString(R.string.etappe_titel_routes));
-			fragments.add(new EtappeLooptijdenFragment());
+			EtappeLooptijdenFragment lf = new EtappeLooptijdenFragment();
+			Bundle info = new Bundle();		
+			info.putBoolean("restarted", mRestarted);
+			lf.setArguments(info);
+			fragments.add(lf);
+			mRestarted = false;
 			titels.add(getString(R.string.etappe_titel_looptijden));
 		}
 
@@ -128,7 +159,8 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 			progressDialog.setOnCancelListener(new OnCancelListener() {
 				public void onCancel(DialogInterface dialog) {
 					cancel(true);
-					Utils.goHome(EtappeActivity.this);
+					setResult(RESULT_CANCELED);
+					finish();
 				}
 			});
 		}
@@ -138,6 +170,11 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 			if(!isCancelled())
 				response = api.getEtappesByID(etappe_id,EtappeActivity.this);
 			return null;       
+		}
+		
+		@Override
+		protected void onCancelled() {
+			progressDialog.dismiss();
 		}
 
 		@Override  

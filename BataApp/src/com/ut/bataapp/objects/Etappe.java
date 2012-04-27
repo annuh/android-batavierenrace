@@ -77,11 +77,12 @@ public class Etappe {
 	public String getLimietTijd(){ return this.limiettijd;}
 	public String getUniversteitsLimietTijd(){ return this.universteitsLimietstijd;}
 	public String getRecordTijd() {
+		String format = String.format("%%0%dd", 2);  
 		long millis = Long.parseLong(record_tijd);
 		int seconds = (int) (millis / 1000) % 60 ;
 		int minutes = (int) ((millis / (1000*60)) % 60);
 		int hours   = (int) ((millis / (1000*60*60)) % 24);
-		return hours+":"+minutes+":"+seconds;
+		return String.format(format, hours)+ ":" + String.format(format, minutes) +":"+ String.format(format, seconds);
 		//String result = String.format("%02d:%02d:%02d",   
 		//		   TimeUnit.MILLISECONDS.toHours(millis),  
 		//		   TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),  

@@ -57,7 +57,7 @@
     <string name="laden_titel">Bezig met laden</string>
     <string name="km">%s km</string>
     <string name="kmu">%s km/u</string>
-    <string name="uur">%s u</string>
+    <string name="uur">%s</string>
     <string name="geen_data_titel">Helaas! Kan geen gegevens ophalen.</string>
     <string name="geen_data_bericht">Controleer uw internetverbinding.</string>
     <string name="geen_internet">Geen internetverbinding, mogelijk is de data verouderd.</string>
@@ -96,7 +96,7 @@
     <string name="team_titel_informatie">Informatie</string>
     <string name="team_titel_looptijden">Looptijden</string>
     <string name="team_titel_klassement">Klassement</string>
-    <string name="team_h1_informatie">Overzichtskaarten</string>
+    <string name="team_h1_informatie">Algemene informatie</string>
     <string name="team_looptijden">Tijd:</string>
     <string name="team_naam">Naam</string>
     <string name="team_startnummer">Startnummer</string>
@@ -124,7 +124,7 @@
     <string name="etappe_titel_informatie">Informatie</string>
     <string name="etappe_titel_routes">Routes</string>
     <string name="etappe_titel_looptijden">Looptijden</string>
-    <string name="etappe_informatie">Informatie</string>
+    <string name="etappe_informatie">Algemene informatie</string>
     <string name="etappe_informatie_nummer">Etappe</string>
     <string name="etappe_informatie_van">Van</string>
     <string name="etappe_informatie_naar">Naar</string>
@@ -134,15 +134,15 @@
     <string name="etappe_tijden">Tijden</string>
     <string name="etappe_tijden_opentijd">Openingstijd</string>
     <string name="etappe_tijden_sluittijd">Sluittijd</string>
-    <string name="etappe_tijden_limiettijd">Limiettijd</string>
-    <string name="etappe_tijden_unilimiettijd">Universiteits limiettijd</string>
+    <string name="etappe_tijden_limiettijd">Limiettijd (AK)</string>
+    <string name="etappe_tijden_unilimiettijd">Limiettijd (UK)</string>
     <string name="etappe_hoogteverschil">Hoogteverschil</string>
     <string name="etappe_recordtijd">Recordtijd</string>
     <string name="etappe_recordtijd_team">Teamnaam</string>
     <string name="etappe_recordtijd_jaar">Jaar</string>
     <string name="etappe_recordtijd_tijd">Tijd</string>
     <string name="etappe_recordtijd_snelheid">Snelheid</string>
-    <string name="etappe_routes_h1_kaart">Kaart</string>
+    <string name="etappe_routes_h1_kaart">Lopersroute</string>
     <string name="etappe_routes_routebeschrijving_looproute">Routebeschrijving</string>
     <string name="etappe_routes_h1_openenmaps">Open in Google Maps</string>
     <string name="etappe_routes_looproute">Looproute</string>

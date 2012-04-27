@@ -60,9 +60,9 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		setHasOptionsMenu(true);
 		naam = this.getArguments().getString("index");
 		inViewpager = this.getArguments().getBoolean("inViewpager", false);
+		setHasOptionsMenu(true);
 		if(!inViewpager)
 			this.getListView().getEmptyView().setVisibility(View.GONE);
 		if (getArguments().getBoolean("restarted", false))
@@ -355,5 +355,11 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		view.setAnimation(animationSlideOutRight);
 		view.startAnimation(animationSlideOutRight);
 		
+	}
+	
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		getActivity().getSupportLoaderManager().destroyLoader(0);
 	}
 }

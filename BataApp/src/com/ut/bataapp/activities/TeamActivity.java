@@ -76,6 +76,7 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
     @Override
 	protected void onResume() {
     	super.onResume();
+    	mRestarted = true;
     	mGetTeam = new getTeam(mTabId);
 		mGetTeam.execute();	
 	}
@@ -97,12 +98,6 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 	protected void onSaveInstanceState(Bundle outState) {
 		outState.putInt(ID, mTeamID);
 		outState.putInt(TAB, (mPager == null ? 0 : mPager.getCurrentItem()));
-	}
-	
-	@Override
-	protected void onRestart() {
-		super.onRestart();
-		mRestarted = true;
 	}
 
 	@Override
