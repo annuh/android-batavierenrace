@@ -11,7 +11,8 @@ public class ErrataActivity extends SherlockActivity  {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().setHomeButtonEnabled(true);
-		setContentView(R.layout.errata_layout);	   		
+		setContentView(R.layout.errata_layout);	   
+		setTitle("Errata");
 	}
 
 	@Override
