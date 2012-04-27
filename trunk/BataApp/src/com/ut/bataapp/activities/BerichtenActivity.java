@@ -58,14 +58,14 @@ public class BerichtenActivity extends SherlockListActivity  {
 					Intent intent4 = new Intent(this, KleurcodesActivity.class);
 					intent4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent4.putExtra("index", "geel");
-					intent4.putExtra("beschrijving", pushberichten.get(position-1).getBericht());
+					intent4.putExtra("beschrijving", pushberichten.get(position-1).getTitel());
 					startActivity(intent4);
 					break;
 				case Bericht.GROEN:{
 					Intent intent2 = new Intent(this, KleurcodesActivity.class);
 					intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent2.putExtra("index", "groen");
-					intent2.putExtra("beschrijving", pushberichten.get(position-1).getBericht());
+					intent2.putExtra("beschrijving", pushberichten.get(position-1).getTitel());
 					startActivity(intent2);
 					break;
 				}
@@ -73,7 +73,7 @@ public class BerichtenActivity extends SherlockListActivity  {
 					Intent intent3 = new Intent(this, KleurcodesActivity.class);
 					intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent3.putExtra("index", "rood");
-					intent3.putExtra("beschrijving", pushberichten.get(position-1).getBericht());
+					intent3.putExtra("beschrijving", pushberichten.get(position-1).getTitel());
 					startActivity(intent3);
 					break;
 				}
