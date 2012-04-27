@@ -8,7 +8,7 @@
     </string-array>
     <string name="url_google_icon_prefix">http://www.google.com</string>
     <string-array name="url_livestream">
-        <item>http://bigblade.snt.utwente.nl:8000/hi</item>
+        <item>http://bigblade.snt.utwente.nl:8000/live</item>
         <item>http://bigblade.snt.utwente.nl:8000/medium</item>
         <item>http://bigblade.snt.utwente.nl:8000/low</item>
     </string-array>
