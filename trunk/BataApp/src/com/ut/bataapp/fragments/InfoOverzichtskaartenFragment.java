@@ -14,10 +14,9 @@ import com.ut.bataapp.activities.*;
 public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	
 	public void openKaart(int kaart) {
-		Intent intent = new Intent(getActivity().getApplicationContext(), AfbeeldingActivity.class);
+		Intent intent = new Intent(getActivity(), AfbeeldingActivity.class);
 		intent.putExtra("type", "overzichtskaart");
 		intent.putExtra("kaart", kaart);
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
 
@@ -30,7 +29,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   herstart_barchem.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               openKaart(0);
+               openKaart(2);
            }
        });
 	   
@@ -46,7 +45,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   campus_enschede.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart(2);
+        	   openKaart(4);
            }
        });
 	   
@@ -62,7 +61,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   stad_nijmegen.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart(4);
+        	   openKaart(0);
            }
        });
 	   

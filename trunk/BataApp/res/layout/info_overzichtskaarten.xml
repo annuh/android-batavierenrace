@@ -8,36 +8,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
         <TextView
             android:id="@+id/label_info"
             style="@style/h1"
             android:text="@string/team_h1_informatie" />
-
+        <Button
+            android:id="@+id/stad_nijmegen"
+            style="@style/nice_button"
+            android:text="Start Nijmegen" />    
+        <Button
+            android:id="@+id/herstart_ulft"
+            style="@style/nice_button"
+            android:text="Herstart Ulft" />   
         <Button
             android:id="@+id/herstart_barchem"
             style="@style/nice_button"
             android:text="Herstart Barchem" />
-
-        <Button
-            android:id="@+id/herstart_ulft"
-            style="@style/nice_button"
-            android:text="Herstart Ulft" />
-
-        <Button
-            android:id="@+id/campus_enschede"
-            style="@style/nice_button"
-            android:text="Campus Enschede" />
-
         <Button
             android:id="@+id/stad_enschede"
             style="@style/nice_button"
             android:text="Stad Enschede" />
-
         <Button
-            android:id="@+id/stad_nijmegen"
+            android:id="@+id/campus_enschede"
             style="@style/nice_button"
-            android:text="Start Nijmegen" />
+            android:text="Campus Enschede" />
     </LinearLayout>
-
 </ScrollView>

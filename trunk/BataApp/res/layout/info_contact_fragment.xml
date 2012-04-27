@@ -10,7 +10,7 @@
 
         <TextView
             style="@style/h1"
-            android:text="Levensbedreigend?" />
+            android:text="Levensbedreigend" />
 
         <LinearLayout
             android:id="@+id/calamiteit_levensbedreigend"

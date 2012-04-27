@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/viewport" >
-
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scroller"
-        style="@style/scroller"
-        android:layout_width="wrap_content" >
-
+    style="@style/viewport">
+	<ScrollView
+    	style="@style/scroller"
+   	 	android:id="@+id/scroller">
         <LinearLayout
-            android:id="@+id/sponsor_layout"
-            
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
             <TextView
                 android:text="@string/lustrum_h1"
                 android:layout_width="fill_parent"
@@ -25,15 +18,16 @@
                 android:id="@+id/lustrum_omschrijving1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="0dip"
                 style="@style/container_block" />
 
             <ImageView
                 android:id="@+id/lustrum_plaatje"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_marginTop="5dp"
-                style="@style/container_block"
+                android:adjustViewBounds="true"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
                 android:contentDescription="Lustrum plaatje" />
 
             <TextView
@@ -43,5 +37,4 @@
                 style="@style/container_block" />
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

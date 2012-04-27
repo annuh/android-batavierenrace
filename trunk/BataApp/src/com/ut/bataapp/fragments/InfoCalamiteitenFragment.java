@@ -11,12 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-public class InfoCalamiteitenFragment extends SherlockFragment {
-        
-    public InfoCalamiteitenFragment() {
-        setRetainInstance(true);
-    }
-    
+public class InfoCalamiteitenFragment extends SherlockFragment {    
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
