@@ -131,18 +131,13 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	private void addNotificationParams(Notification notification) {
 		// optimalisatie:
 		Resources res = this.getResources();
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		
-		if (prefs.getBoolean(res.getString(R.string.pref_background_update_sound), res.getBoolean(R.bool.pref_background_update_sound_default)))
-			notification.defaults |= Notification.DEFAULT_SOUND;
-		if (prefs.getBoolean(res.getString(R.string.pref_background_update_vibrate), res.getBoolean(R.bool.pref_background_update_vibrate_default)))
-			notification.defaults |= Notification.DEFAULT_VIBRATE;
-		if (prefs.getBoolean(res.getString(R.string.pref_background_update_flash), res.getBoolean(R.bool.pref_background_update_flash_default))) {
-			notification.ledARGB = res.getColor(R.color.notification_flashing_color);
-			notification.ledOnMS = res.getInteger(R.integer.notification_flashing_on_ms);
-			notification.ledOffMS = res.getInteger(R.integer.notification_flashing_off_ms);
-			notification.flags |= Notification.FLAG_SHOW_LIGHTS;
-		}
+		notification.defaults |= Notification.DEFAULT_SOUND;
+		notification.defaults |= Notification.DEFAULT_VIBRATE;
+		notification.ledARGB = res.getColor(R.color.notification_flashing_color);
+		notification.ledOnMS = res.getInteger(R.integer.notification_flashing_on_ms);
+		notification.ledOffMS = res.getInteger(R.integer.notification_flashing_off_ms);
+		notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 		
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
 	}
