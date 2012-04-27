@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    style="@style/viewport">
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	    style="@style/scroller" >
+	
+	    <LinearLayout
+	        android:id="@+id/errata_layout"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+		    
+		    <TextView
+	    	    style="@style/h1"
+	        	android:text="Blz. 58, Algemeen etappe 1"/>
+	
+		    <TextView
+		        android:text="- Aanwijzing 1,0 Bij de 3e afslag rechtsaf, richting Kleve N325 moet zijn bij de 4e afslag"/>
+
+		    <TextView 
+		        style="@style/h1"
+		        android:text="Blz. 58, naar W.P. 3"/>
+		    
+		    <TextView
+		        android:text="De Route naar WP 3 vervalt omdat er een verplichte loper/fietserwissel geldt voor wisselpunt 3,
+		        omdat er hier niet geparkeerd mag worden. Dat betekent dat je na het verlaten van wisselpunt 2 de overslagroute volgt naar wisselpunt 4."/>
+		    
+		    <TextView 
+		        style="@style/h1"
+		    	android:text="Blz. 64 Herstart Ulft"/>
+		    <TableLayout style="@style/table">
+		        <TableRow
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content">
+		            
+		            <TextView
+		                style="@style/table_left"
+		                android:text="Afts."/>
+		            <TextView 
+		                style="@style/table_right"
+		                android:text="Route-aanwijzing"/>
+		            <View style="@style/divider"/>
+		        </TableRow>
+		           
+		    </TableLayout>
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>
