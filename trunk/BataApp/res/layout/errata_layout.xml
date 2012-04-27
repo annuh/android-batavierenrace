@@ -1,48 +1,656 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    style="@style/viewport">
-	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	    style="@style/scroller" >
-	
-	    <LinearLayout
-	        android:id="@+id/errata_layout"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:orientation="vertical" >
-		    
-		    <TextView
-	    	    style="@style/h1"
-	        	android:text="Blz. 58, Algemeen etappe 1"/>
-	
-		    <TextView
-		        android:text="- Aanwijzing 1,0 Bij de 3e afslag rechtsaf, richting Kleve N325 moet zijn bij de 4e afslag"/>
+<LinearLayout style="@style/viewport" >
 
-		    <TextView 
-		        style="@style/h1"
-		        android:text="Blz. 58, naar W.P. 3"/>
-		    
-		    <TextView
-		        android:text="De Route naar WP 3 vervalt omdat er een verplichte loper/fietserwissel geldt voor wisselpunt 3,
-		        omdat er hier niet geparkeerd mag worden. Dat betekent dat je na het verlaten van wisselpunt 2 de overslagroute volgt naar wisselpunt 4."/>
-		    
-		    <TextView 
-		        style="@style/h1"
-		    	android:text="Blz. 64 Herstart Ulft"/>
-		    <TableLayout style="@style/table">
-		        <TableRow
-		            android:layout_width="match_parent"
-		            android:layout_height="wrap_content">
-		            
-		            <TextView
-		                style="@style/table_left"
-		                android:text="Afts."/>
-		            <TextView 
-		                style="@style/table_right"
-		                android:text="Route-aanwijzing"/>
-		            <View style="@style/divider"/>
-		        </TableRow>
-		           
-		    </TableLayout>
-		</LinearLayout>
-	</ScrollView>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/scroller" >
+
+        <LinearLayout
+            android:id="@+id/errata_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/h1"
+                android:text="Blz. 58, Etappe 1" />
+
+            <TextView
+                style="@style/container_block"
+                android:text="Aanwijzing 1,0 Bij de 3e afslag rechtsaf, richting Kleve N325 moet zijn bij de 4e afslag" />
+
+            <TextView
+                style="@style/h1"
+                android:text="Blz. 58, naar W.P. 3" />
+
+            <TextView
+                style="@style/container_block"
+                android:text="De Route naar WP 3 vervalt omdat er een verplichte loper/fietserwissel geldt voor wisselpunt 3, omdat er hier niet geparkeerd mag worden. Dat betekent dat je na het verlaten van wisselpunt 2 de overslagroute volgt naar wisselpunt 4." />
+
+            <TextView
+                style="@style/h1"
+                android:text="Blz. 64 Herstart Ulft" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table1_rij1"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Afst."
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table1_rij1"
+                    android:text="Route aanwijzing" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Na de aanwijzing 0,5: Brug over en weg blijven volgen volg de volgende instructies" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table1_rij3"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,6"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table1_rij3"
+                    android:text="5e Afslag voor de Rabobank linksaf slaan" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table1_rij4"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,2"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table1_rij4"
+                    android:text="1e Weg rechtsaf" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table1_rij5"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,3"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table1_rij5"
+                    android:text="4e Weg rechtsaf, richting Varsseveld" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table1_rij6"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,6"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table1_rij6"
+                    android:text="Neemt de afslag richting Varsseveld" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Ga verder bij 0,2 Spoor over en op hoofdrijbaan blijven rijden" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/h1"
+                android:text="Blz. 66, naar W.P. 15 Huize Zelle" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table2_rij1"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Afst."
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table2_rij1"
+                    android:text="Route aanwijzing" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Volgen na aanwijzing W.P. 15: huize Zelle" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Etappe 16 +- 14,6 km" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table2_rij4"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="1,3"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table2_rij4"
+                    android:text="Bij driesprong rechts aanhouden" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table2_rij5"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,7"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table2_rij5"
+                    android:text="Einde weg linksaf" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table2_rij6"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="1,1"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table2_rij6"
+                    android:text="Einde weg rechtsaf" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table2_rij7"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,1"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table2_rij7"
+                    android:text="Na de brug links aanhouden" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table2_rij8"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="2,4"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table2_rij8"
+                    android:text="De weg naar rechts blijven volgen" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Ga verder met het algemene deel" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/h1"
+                android:text="Blz. 66, Overslaan W.P. 15" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table3_rij1"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Afst."
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table3_rij1"
+                    android:text="Route aanwijzing" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Volgen na laatste aanwijzing overslagroute: 0,5 Eerste weg rechtsaf" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table3_rij3"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,6"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table3_rij3"
+                    android:text="Weg links vervolgen, Kortstedeweg" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table3_rij4"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,6"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table3_rij4"
+                    android:text="1e weg linksaf, Schuttestraat" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table3_rij5"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="1,8"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table3_rij5"
+                    android:text="2e Weg rechtsaf slaan, schuttestraat" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Ga verder met het algemene deel" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/h1"
+                android:text="Blz. 66, Kaartje over het parkeren" />
+
+            <TextView
+                style="@style/container_block"
+                android:text="Je moet hier vanaf de autoroute gezien aan de linkerkant parkeren" />
+
+            <TextView
+                style="@style/h1"
+                android:text="Blz. 67, W.P. 16" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij1"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Afst."
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij1"
+                    android:text="Route aanwijzing" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Deze aanwijzingen zijn ter vervanging van aanwijzing: 0,6 Weg links vervolgen tot aan 2,5 Bij driesprong weg vervolgen" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij3"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,6"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij3"
+                    android:text="Einde weg rechtsaf" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij4"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,3"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij4"
+                    android:text="Passeer de spoorwegovergang" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij5"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,9"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij5"
+                    android:text="3e weg linksaf" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij6"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,4"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij6"
+                    android:text="Bij driesprong rechts aanhouden" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij7"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,0"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij7"
+                    android:text="Kruising met Enzerinckweg recht oversteken" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij8"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,6"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij8"
+                    android:text="Kruising met Wientjesvoortseweg rechtdoor" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij9"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,3"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij9"
+                    android:text="Kruising met Kamphuizerweg rechtdoor" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij10"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,3"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij10"
+                    android:text="Kruising met Reeoordweg rechtsaf" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    android:id="@+id/errata_table4_rij11"
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="0,7"
+                    android:width="40dp" />
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@id/errata_table4_rij11"
+                    android:text="Einde weg linksaf" />
+            </RelativeLayout>
+
+            <View style="@style/divider" />
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/listview_row" >
+
+                <TextView
+                    style="@style/listview_text"
+                    android:layout_alignParentTop="true"
+                    android:text="Verder gaan bij: 1,5 Bij vijfsprong Mosselseweg vervolgen van het algemene deel" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
