@@ -172,7 +172,7 @@
                     style="@style/listview_text"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@id/errata_table2_rij1"
-                    android:text="routeaanwijzing" />
+                    android:text="Routeaanwijzing" />
             </RelativeLayout>
 
             <View style="@style/divider" />
@@ -330,7 +330,7 @@
                     style="@style/listview_text"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@id/errata_table3_rij1"
-                    android:text="routeaanwijzing" />
+                    android:text="Routeaanwijzing" />
             </RelativeLayout>
 
             <View style="@style/divider" />
@@ -444,7 +444,7 @@
                     style="@style/listview_text"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@id/errata_table4_rij1"
-                    android:text="routeaanwijzing" />
+                    android:text="Routeaanwijzing" />
             </RelativeLayout>
 
             <View style="@style/divider" />
