@@ -12,6 +12,7 @@
         android:id="@+id/etappe_looptijd_foutcode"
         style="@style/listview_text"
         android:layout_alignParentRight="true"
+        android:gravity="right"
         android:width="15dp" />
 
     <TextView
