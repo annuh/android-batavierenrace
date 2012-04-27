@@ -271,7 +271,7 @@
     <!-- Foutcodes -->
     <string name="foutcode_a">Anders voortbewogen</string>
     <string name="foutcode_d">Diskwalificatie loper</string>
-    <string name="foutcode_h">Heer op damesetape</string>
+    <string name="foutcode_h">Heer op damesetappe</string>
     <string name="foutcode_i">Etappe ingekort</string>
     <string name="foutcode_l">Limiet overschreden</string>
     <string name="foutcode_m">Medische Uitsluiting</string>
