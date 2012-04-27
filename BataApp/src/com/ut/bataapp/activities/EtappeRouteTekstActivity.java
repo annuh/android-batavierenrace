@@ -29,7 +29,6 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 			route = new CSV().parse(this.getResources().getAssets().open("lopersroutetekst/etappe"+mId+".txt"));
 		
 			this.setTitle("Looproute "+mId);
-			Log.d("Routes",route.getVoorTabelTekst());
 			
 			View item = this.getLayoutInflater().inflate(R.layout.row_route, container, false);
 			TextView icon = (TextView) item.findViewById(R.id.route_km);
