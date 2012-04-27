@@ -1,12 +1,13 @@
 package com.ut.bataapp.activities;
 
-import com.ut.bataapp.Utils;
-import com.ut.bataapp.fragments.*;
+import java.util.ArrayList;
 
 import android.os.Bundle;
-import android.support.v4.app.*;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,8 +15,9 @@ import android.widget.Button;
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
-
-import java.util.ArrayList;
+import com.ut.bataapp.Utils;
+import com.ut.bataapp.fragments.WelkomFavorietenSelecterenFragment;
+import com.ut.bataapp.fragments.WelkomInstellingenFragment;
 
 /**
  * Activity voor welkomstscherm. Bevat twee tabbladen (fragments): favorieten selecteren en instellingen. 
@@ -23,7 +25,7 @@ import java.util.ArrayList;
  * @author Danny Bergsma
  * @version 0.1
  */
-public class WelkomActivity extends SherlockFragmentActivity implements OnPageChangeListener {
+public class WelkomActivity extends SherlockFragmentActivity {
     // -- INNER CLASSES --
 	
 	/* Adapterklasse voor fragments -> pager.
@@ -106,7 +108,21 @@ public class WelkomActivity extends SherlockFragmentActivity implements OnPageCh
         
         ViewPager pager = (mPager = (ViewPager) findViewById(R.id.welkom_pager));
         pager.setAdapter(new WelkomFragmentAdapter(getSupportFragmentManager()));
-        pager.setOnPageChangeListener(this);
+        pager.setOnPageChangeListener(new SimpleOnPageChangeListener() {
+        	@Override
+        	public void onPageSelected(int arg0) {
+        		switch (mPager.getCurrentItem()) {
+        		case TAB_INDEX_FAVORIETEN:
+        			mVorige.setVisibility(View.INVISIBLE);
+        			mVolgende.setText(R.string.welkom_button_volgende_tekst);
+        			break;
+        		case TAB_INDEX_INSTELLINGEN:
+        			mVorige.setVisibility(View.VISIBLE);
+        			mVolgende.setText(R.string.welkom_button_voltooien_tekst);
+        			break;
+        		}
+        	}
+        });
         
         if (savedInstanceState != null)
 			pager.setCurrentItem(savedInstanceState.getInt(INSTANTE_STATE_TAB), false);
@@ -147,28 +163,5 @@ public class WelkomActivity extends SherlockFragmentActivity implements OnPageCh
 				return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-    
-	// -- ONPAGECHANGELISTENER --
-
-	public void onPageScrollStateChanged(int arg0) {
-		// doe niets
-	}
-
-	public void onPageScrolled(int arg0, float arg1, int arg2) {
-		// doe niets
-	}
-
-	public void onPageSelected(int arg0) {
-		switch (mPager.getCurrentItem()) {
-		case TAB_INDEX_FAVORIETEN:
-			mVorige.setVisibility(View.INVISIBLE);
-			mVolgende.setText(R.string.welkom_button_volgende_tekst);
-			break;
-		case TAB_INDEX_INSTELLINGEN:
-			mVorige.setVisibility(View.VISIBLE);
-			mVolgende.setText(R.string.welkom_button_voltooien_tekst);
-			break;
-		}
-	}
+	}	
 }

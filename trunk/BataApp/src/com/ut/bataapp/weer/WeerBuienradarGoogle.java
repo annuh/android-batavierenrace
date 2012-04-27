@@ -19,9 +19,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
 import com.ut.bataapp.R;
 import com.ut.bataapp.Utils;
@@ -33,8 +33,12 @@ import com.ut.bataapp.Utils;
  * @version 0.1
  */
 public class WeerBuienradarGoogle implements WeerProvider {
+	// -- CONSTANTEN --
+	
 	/* maximaal aantal dagen verwachting */
 	private static final byte MAX_DAYS_AHEAD = 3;
+	
+	// -- INSTANTIEVARIABELEN --
 	
 	/* Huidige weersituatie van alle plaatsen.
 	 * @invariant mHuidig != null && mHuidig.length == TOTAL
@@ -53,10 +57,10 @@ public class WeerBuienradarGoogle implements WeerProvider {
 	
 	/* Geeft aan of deze weerprovider data heeft, dus of refresh() (succesvol) is aangeroepen. */
 	private boolean mHasData = false;
-	/* De te gebruiken context (voor getResources()).
-	 * @invariant mCtx != null
-	 */
-	private Context mCtx;
+	/* Referentie naar resources van app. @invariant mRes != null */
+	private Resources mRes;
+	
+	// -- CONSTRUCTORS --
 	
 	/**
 	 * Creeert een nieuwe WeerBuienradarGoogle
@@ -64,8 +68,10 @@ public class WeerBuienradarGoogle implements WeerProvider {
 	 * @require ctx != null  
 	 */
 	public WeerBuienradarGoogle(Context ctx) {
-		mCtx = ctx;
+		mRes = ctx.getResources();
 	}
+	
+	// -- HULPMETHODEN --
 	
 	/* Haalt de bitmap op van url en geeft deze terug. Kan null zijn, dan kan er geen bitmap worden opgehaald op url.
 	 * @param url locatie waarvandaan bitmap gedownload moet worden
@@ -91,7 +97,7 @@ public class WeerBuienradarGoogle implements WeerProvider {
 	 * @require buienradar != null
 	 */
 	private String parseAlgemeneVerwachting(Document buienradar) {
-		String tagVerwachtingTekst = mCtx.getResources().getString(R.string.tag_buienradar_verwachting_tekst);
+		String tagVerwachtingTekst = mRes.getString(R.string.tag_buienradar_verwachting_tekst);
 		NodeList nodeList = buienradar.getElementsByTagName(tagVerwachtingTekst);
 		return ((nodeList.getLength() > 0) ? nodeList.item(0).getTextContent(): null);
 	}
@@ -126,45 +132,43 @@ public class WeerBuienradarGoogle implements WeerProvider {
 			String iconURL = urlPrefix + elemGoogleDagIcon.getAttribute(attrData);
 			Bitmap bitmap = getBitmap(iconURL);
 			if (bitmap != null)
-				if (tagTemp1.equals(tagTemp2))
-					result = new WeerInfoHuidig(temp1, bitmap);
-				else
-					result = new WeerInfoVerwachting(temp1, temp2, bitmap);
-		} catch (ArrayIndexOutOfBoundsException e) {}
+				result = (tagTemp1.equals(tagTemp2) ? new WeerInfoHuidig(temp1, bitmap) : new WeerInfoVerwachting(temp1, temp2, bitmap));
+		} catch (NullPointerException e) {}
 		return result;
 	}
 	
+	// -- WEERPROVIDER --
+	
 	public void refresh(Date datum) throws WeerException {
+		Resources res = mRes; // optimalisatie
 		try {
 			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document buienradar = documentBuilder.parse(mCtx.getResources().getString(R.string.url_xml_buienradar));
+			Document buienradar = documentBuilder.parse(res.getString(R.string.url_xml_buienradar));
 			mAlgemeneVerwachting = parseAlgemeneVerwachting(buienradar);
 			if (mAlgemeneVerwachting != null) {
-				
-				
-				String[] googleURLs = mCtx.getResources().getStringArray(R.array.url_xml_google);
-				String tagGoogleHuidig = mCtx.getResources().getString(R.string.tag_google_huidig),
-					   tagGoogleHuidigTemp = mCtx.getResources().getString(R.string.tag_google_huidig_temp),
-					   tagGoogleHuidigIcon = mCtx.getResources().getString(R.string.tag_google_huidig_icon),
-					   tagGoogleVerwachting = mCtx.getResources().getString(R.string.tag_google_verwachting),
-					   tagGoogleVerwachtingMin = mCtx.getResources().getString(R.string.tag_google_verwachting_min),
-					   tagGoogleVerwachtingMax = mCtx.getResources().getString(R.string.tag_google_verwachting_max),
-					   tagGoogleVerwachtingIcon = mCtx.getResources().getString(R.string.tag_google_verwachting_icon),
-					   tagGoogleHuidigeDatum = mCtx.getResources().getString(R.string.tag_google_huidige_datum),
-					   attrGoogleData = mCtx.getResources().getString(R.string.attr_google_data),
-					   urlPrefix = mCtx.getResources().getString(R.string.url_google_icon_prefix);
+				String[] googleURLs = res.getStringArray(R.array.url_xml_google);
+				String tagGoogleHuidig = res.getString(R.string.tag_google_huidig),
+					   tagGoogleHuidigTemp = res.getString(R.string.tag_google_huidig_temp),
+					   tagGoogleHuidigIcon = res.getString(R.string.tag_google_huidig_icon),
+					   tagGoogleVerwachting = res.getString(R.string.tag_google_verwachting),
+					   tagGoogleVerwachtingMin = res.getString(R.string.tag_google_verwachting_min),
+					   tagGoogleVerwachtingMax = res.getString(R.string.tag_google_verwachting_max),
+					   tagGoogleVerwachtingIcon = res.getString(R.string.tag_google_verwachting_icon),
+					   tagGoogleHuidigeDatum = res.getString(R.string.tag_google_huidige_datum),
+					   attrGoogleData = res.getString(R.string.attr_google_data),
+					   urlPrefix = res.getString(R.string.url_google_icon_prefix);
 				for (int i=0; i<TOTAL; i++) {
 					Document xml = documentBuilder.parse(googleURLs[i]);
 					
 					Date googleHuidig;
 					try {
 						String googleHuidigeDatum = ((Element) xml.getElementsByTagName(tagGoogleHuidigeDatum).item(0)).getAttribute(attrGoogleData);
-						DateFormat formatter = new SimpleDateFormat(mCtx.getResources().getString(R.string.format_google_huidige_datum));
+						DateFormat formatter = new SimpleDateFormat(res.getString(R.string.format_google_huidige_datum));
 						googleHuidig = formatter.parse(googleHuidigeDatum);
 					} catch (ParseException e) {
-						throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml));
+						throw new WeerException(res.getString(R.string.error_cant_parse_xml));
 					} catch (ArrayIndexOutOfBoundsException e) {
-						throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml));
+						throw new WeerException(res.getString(R.string.error_cant_parse_xml));
 					}
 					short diffDays = Utils.diffDays(googleHuidig, datum);
 					
@@ -172,23 +176,25 @@ public class WeerBuienradarGoogle implements WeerProvider {
 					if (huidig != null)
 						mHuidig[i] = huidig;
 					else
-						throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml));
+						throw new WeerException(res.getString(R.string.error_cant_parse_xml));
 					if (0 <= diffDays && diffDays <= MAX_DAYS_AHEAD) {
 						WeerInfoVerwachting verwachting = (WeerInfoVerwachting) parseGoogle(xml, tagGoogleVerwachting, tagGoogleVerwachtingMin, tagGoogleVerwachtingMax, tagGoogleVerwachtingIcon, attrGoogleData, urlPrefix, diffDays, true);
 						if (verwachting != null)
 							mVerwachting[i] = verwachting;
 						else
-							throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml));
+							throw new WeerException(res.getString(R.string.error_cant_parse_xml));
 					}
 				}
 			}
 			mHasData = true;
 		} catch (ParserConfigurationException e) {
-			throw new WeerException(mCtx.getResources().getString(R.string.error_cant_start_parser) + e);
+			throw new WeerException(res.getString(R.string.error_cant_start_parser) + e);
 		} catch (SAXException e) {
-			throw new WeerException(mCtx.getResources().getString(R.string.error_cant_parse_xml) + e);
+			throw new WeerException(res.getString(R.string.error_cant_parse_xml) + e);
 		} catch (IOException e) {
-			throw new WeerException(mCtx.getResources().getString(R.string.error_cant_download_xml) + e);
+			throw new WeerException(res.getString(R.string.error_cant_download_xml) + e);
+		} catch (NullPointerException e) {
+			throw new WeerException(res.getString(R.string.error_cant_parse_xml) + e);
 		}
 	}
 	

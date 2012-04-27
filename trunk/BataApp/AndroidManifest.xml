@@ -100,6 +100,7 @@
         <activity android:name=".activities.SponsorActivity" />
         <activity
             android:name=".activities.SponsorInformatieActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
 
         <service android:name=".services.BackgroundUpdater" />

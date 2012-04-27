@@ -9,18 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.Utils;
-import com.ut.bataapp.activities.SponsorInformatieActivity.SponsorInformatieAdapter;
 import com.ut.bataapp.objects.Sponsor;
 
 public class SponsorActivity extends SherlockFragmentActivity  {
-	
-	 @Override
+	@Override
    public void onCreate(Bundle savedInstanceState) {
 	   setTitle("Sponsor");
 	   super.onCreate(savedInstanceState);
@@ -38,9 +35,7 @@ public class SponsorActivity extends SherlockFragmentActivity  {
 		   button.setText(sponsor.getNaam());
 		   button.setOnClickListener(new View.OnClickListener() {
 			   public void onClick(View v) {
-				   
-				   Intent intent = new Intent(getApplicationContext(), SponsorInformatieActivity.class);
-				   intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				   Intent intent = new Intent(SponsorActivity.this, SponsorInformatieActivity.class);
 		       	   intent.putExtra("page", j);
 				   startActivity(intent);
 			   }

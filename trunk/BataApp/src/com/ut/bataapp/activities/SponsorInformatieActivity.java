@@ -19,57 +19,22 @@ import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
 public class SponsorInformatieActivity extends SherlockFragmentActivity {
-	
-	ViewPager mPager;
-	PageIndicator mIndicator;
-	FragmentPagerAdapter mAdapter;
-    
-    @Override
-    public void onCreate(Bundle savedInstanceState) {    	
-    	super.onCreate(savedInstanceState);
-    	getSupportActionBar().setHomeButtonEnabled(true);
-        setContentView(R.layout.simple_tabs);
-		
-        mAdapter = new SponsorInformatieAdapter(getSupportFragmentManager());
-		mPager = (ViewPager)findViewById(R.id.pager);
-		mPager.setAdapter(mAdapter);
-		
-		mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
-		mIndicator.setViewPager(mPager);
-		
-		
-		int pageid = getIntent().getIntExtra("page", 0);
-		
-		mPager.setCurrentItem(pageid);
-		mIndicator.setCurrentItem(pageid);
-    }
-    
-    @Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home:
-				Utils.goHome(this);
-				return true;
-		}
-		
-		return super.onOptionsItemSelected(item);
-	}
+	// -- INNER CLASSES --
     
     class SponsorInformatieAdapter extends FragmentPagerAdapter implements TitleProvider {
-		
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 		ArrayList<String> titels = new ArrayList<String>();
 		
 		public SponsorInformatieAdapter(FragmentManager fm) {
 			super(fm);			
-						
-			for(int i = 0; i< 11; i++){
+			ArrayList<Sponsor> sponsors = Sponsor.getSponsors();
+			for(int i = 0; i< sponsors.size(); i++){
 				SponsorInformatieFragment spFrag = new SponsorInformatieFragment();
 				Bundle b = new Bundle();
 				b.putInt("page", i);
 				spFrag.setArguments(b);
 				fragments.add(spFrag);
-				titels.add((Sponsor.getSponsors().get(i)).getNaam());
+				titels.add(sponsors.get(i).getNaam());
 			}
 		}
 		
@@ -88,5 +53,50 @@ public class SponsorInformatieActivity extends SherlockFragmentActivity {
 		public String getTitle(int position) {
 			return titels.get(position);
 		}
+	}
+	
+	// -- CONSTANTEN --
+	
+	public static final String INSTANTE_STATE_TAB = "tabid";
+	
+	// -- INSTANTIEVARIABELEN --
+	
+	private ViewPager mPager;
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {    	
+    	super.onCreate(savedInstanceState);
+    	getSupportActionBar().setHomeButtonEnabled(true);
+        setContentView(R.layout.simple_tabs);
+		
+		mPager = (ViewPager)findViewById(R.id.pager);
+		mPager.setAdapter(new SponsorInformatieAdapter(getSupportFragmentManager()));
+		
+		PageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
+		indicator.setViewPager(mPager);
+		
+		int pageid = (savedInstanceState == null ? getIntent().getIntExtra("page", 0) : savedInstanceState.getInt(INSTANTE_STATE_TAB));
+		
+		mPager.setCurrentItem(pageid);
+		indicator.setCurrentItem(pageid);
+    }
+    
+    @Override
+  	protected void onSaveInstanceState(Bundle outState) {
+    	// super niet aangeroepen: ViewPager/Adapter wordt in onCreate() weer opgebouwd
+  		outState.putInt(INSTANTE_STATE_TAB, (mPager == null ? 0 : mPager.getCurrentItem()));
+  	}
+    
+    // -- CALLBACKMETHODEN --
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Utils.goHome(this);
+				return true;
+		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 }
