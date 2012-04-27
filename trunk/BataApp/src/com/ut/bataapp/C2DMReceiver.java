@@ -16,14 +16,19 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.provider.Settings.Secure;
 import android.util.Log;
 import android.widget.Toast;
 import com.google.android.c2dm.C2DMBaseReceiver;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.BerichtenActivity;
+import com.ut.bataapp.activities.KleurcodesActivity;
 import com.ut.bataapp.activities.WeerActivity;
+import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.services.C2DMConfig;
 
 /**
@@ -70,21 +75,79 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	
 	@SuppressWarnings("deprecation")
 	public void makeNotification(Context context, String type, String message) {
+		String titel = "";
+		Intent tointent = new Intent(context, BerichtenActivity.class);
+		tointent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		
+		
+		switch(type.charAt(0)) {
+		case 'y':
+			titel = context.getString(R.string.kleurcode_geel_titel);
+			tointent = new Intent(context, KleurcodesActivity.class);
+			tointent.putExtra("index", "geel");
+			tointent.putExtra("beschrijving", message);
+			break;
+		case 'g':
+			titel = context.getString(R.string.kleurcode_groen_titel);
+			tointent = new Intent(context, KleurcodesActivity.class);
+			tointent.putExtra("index", "groen");
+			tointent.putExtra("beschrijving", message);
+			break;
+		case 'r':
+			titel = context.getString(R.string.kleurcode_rood_titel);
+			tointent = new Intent(context, KleurcodesActivity.class);
+			tointent.putExtra("index", "rood");
+			tointent.putExtra("beschrijving", message);
+			break;
+		case 'w':
+			titel = context.getString(R.string.kleurcode_weer_titel);
+			tointent = new Intent(context, WeerActivity.class);
+			break;
+		default:
+			titel = message.substring(1);
+		}
+		
+		
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 		Notification notification = new Notification(R.drawable.icon, getString(R.string.notification_push_statusbar), System.currentTimeMillis());
 		
 		// Hide the notification after its selected
-		notification.flags |= Notification.FLAG_AUTO_CANCEL;
-		Intent tointent = new Intent(context, BerichtenActivity.class);
+		addNotificationParams(notification);
 		
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-				tointent, 0);
+				tointent, PendingIntent.FLAG_CANCEL_CURRENT);
 		notification.setLatestEventInfo(context, getString(R.string.notification_push_titel),
-				message, pendingIntent);
+				titel, pendingIntent);
 		
 		notificationManager.notify(nots, notification);
 		nots++;
 	}
+	
+	
+	/* Voegt flags (volgens user's voorkeuren) toe aan notification.
+	 * @param notification notificatie waaraan flags moeten worden toegevoegd
+	 * @require notification != null
+	 */
+	private void addNotificationParams(Notification notification) {
+		// optimalisatie:
+		Resources res = this.getResources();
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		
+		if (prefs.getBoolean(res.getString(R.string.pref_background_update_sound), res.getBoolean(R.bool.pref_background_update_sound_default)))
+			notification.defaults |= Notification.DEFAULT_SOUND;
+		if (prefs.getBoolean(res.getString(R.string.pref_background_update_vibrate), res.getBoolean(R.bool.pref_background_update_vibrate_default)))
+			notification.defaults |= Notification.DEFAULT_VIBRATE;
+		if (prefs.getBoolean(res.getString(R.string.pref_background_update_flash), res.getBoolean(R.bool.pref_background_update_flash_default))) {
+			notification.ledARGB = res.getColor(R.color.notification_flashing_color);
+			notification.ledOnMS = res.getInteger(R.integer.notification_flashing_on_ms);
+			notification.ledOffMS = res.getInteger(R.integer.notification_flashing_off_ms);
+			notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+		}
+		
+		notification.flags |= Notification.FLAG_AUTO_CANCEL;
+	}
+	
+	
 	int nots = 0;
 
 	/* (non-Javadoc)
@@ -110,33 +173,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 		super.onUnregistered(context);
 	}
 
-	/**
-	 * Register or unregister based on phone sync settings. Called on each
-	 * performSync by the SyncAdapter.
-	 *
-	 * @param context the context
-	 * @param autoSyncDesired the auto sync desired
-	 */
-	/*
-	public static void refreshAppC2DMRegistrationState(Context context,
-			boolean register) {
-		// Determine if there are any auto-syncable accounts. If there are, make
-		// sure we are
-		// registered with the C2DM servers. If not, unregister the application.
 
-		if (Build.VERSION.SDK_INT < 8) {
-			return;
-		} else {
-
-			if (register) {
-				C2DMessaging.register(context, C2DMConfig.C2DM_GOOGLE_ACCOUNT);
-			} else {
-				C2DMessaging.unregister(context);
-			}
-
-		}
-	}
-	 */	
 	private class registerServer extends AsyncTask<Void, Void, Void> {  		
 
 		@SuppressWarnings("deprecation")

@@ -26,6 +26,13 @@
             android:id="@+id/info_slapen"
             style="@style/nice_button"
             android:text="Slapen" />
+        
+          <Button
+            android:id="@+id/info_errata"
+            style="@style/nice_button"
+            android:text="Errata" />
+        
+        
     </LinearLayout>
 
 </ScrollView>
