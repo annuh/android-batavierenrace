@@ -9,9 +9,15 @@
         android:layout_alignParentLeft="true" />
 
     <TextView
+        android:id="@+id/etappe_looptijd_foutcode"
+        style="@style/listview_text"
+        android:layout_alignParentRight="true"
+        android:width="15dp" />
+
+    <TextView
         android:id="@+id/etappe_looptijd_tijd"
         style="@style/listview_text"
-        android:layout_alignParentRight="true" />
+        android:layout_toLeftOf="@id/etappe_looptijd_foutcode" />
 
     <TextView
         android:id="@+id/etappe_looptijd_snelheid"

@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/etappe_looptijd_team"
         style="@style/listview_text"
-        android:layout_toLeftOf="@id/etappe_looptijd_tijd"
+        android:layout_toLeftOf="@id/etappe_looptijd_snelheid"
         android:layout_toRightOf="@id/etappe_looptijd_plaats" />
 
     <TextView
@@ -24,6 +24,13 @@
         android:id="@+id/etappe_looptijd_tijd"
         style="@style/listview_text"
         android:layout_width="100dp"
+        android:gravity="right"
+        android:layout_toLeftOf="@id/etappe_looptijd_foutcode"  />
+    
+     <TextView
+        android:id="@+id/etappe_looptijd_foutcode"
+        style="@style/listview_text"
+        android:layout_width="15dp"
         android:layout_alignParentRight="true"
         android:gravity="right" />
 

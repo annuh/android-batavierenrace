@@ -104,7 +104,7 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 			tointent = new Intent(context, WeerActivity.class);
 			break;
 		default:
-			titel = message.substring(1);
+			titel = message;
 		}
 		
 		
