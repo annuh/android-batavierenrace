@@ -7,7 +7,7 @@
         <TextView
             android:id="@+id/etappe_route_header_stand"
             style="@style/listview_header_text"
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:text="@string/etappe_route_tekst_afstand" />
 
         <TextView

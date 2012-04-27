@@ -80,7 +80,9 @@
             android:name=".activities.InfoAlgemeenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
-        <activity android:name=".activities.AfbeeldingActivity" />
+        <activity 
+            android:name=".activities.AfbeeldingActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".activities.ColofonActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

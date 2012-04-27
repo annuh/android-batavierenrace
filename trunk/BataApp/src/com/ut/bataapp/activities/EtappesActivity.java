@@ -19,7 +19,6 @@ import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Response;
 
 public class EtappesActivity extends SherlockListActivity  {
-	
 	private ArrayList<Etappe> etappes = null;
 	private EtappeAdapter adapter = null;
 	

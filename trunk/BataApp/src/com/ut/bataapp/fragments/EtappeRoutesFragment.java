@@ -3,27 +3,24 @@ package com.ut.bataapp.fragments;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.actionbarsherlock.app.SherlockFragment;
-import com.ut.bataapp.activities.AfbeeldingActivity;
-import com.ut.bataapp.activities.EtappeActivity;
-import com.ut.bataapp.activities.EtappeRouteTekstActivity;
-import com.ut.bataapp.objects.Etappe;
-import com.ut.bataapp.R;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockFragment;
+import com.ut.bataapp.R;
+import com.ut.bataapp.activities.AfbeeldingActivity;
+import com.ut.bataapp.activities.EtappeActivity;
+import com.ut.bataapp.activities.EtappeRouteTekstActivity;
+import com.ut.bataapp.objects.Etappe;
 
 public class EtappeRoutesFragment extends SherlockFragment {
-    
 	private Etappe etappe;
 	
     @Override
@@ -34,23 +31,17 @@ public class EtappeRoutesFragment extends SherlockFragment {
     	
     	final String[] auto_maps = getResources().getStringArray(R.array.url_autoroutes);
     	final String[] lopers_maps = getResources().getStringArray(R.array.url_lopersroutes);
-    	
-
-    	
+    	    	
     	//Kaart lopers route
     	try {
-    		ImageView lopers_kaart = new ImageView(this.getActivity());
-    		InputStream input = null;
+    		ImageView lopers_kaart = (ImageView) view.findViewById(R.id.etappe_routes_lopersroute_kaart);
     		int etappeNummer = etappe.getId();
-    		if(etappeNummer == 25) etappeNummer = 24;
-			input = getResources().getAssets().open("lopersroutekaart/loop"+etappeNummer+".jpg");
+    		if (etappeNummer == 25) 
+    			etappeNummer = 24;
+			InputStream input = getResources().getAssets().open("lopersroutekaart/loop"+etappeNummer+".jpg");
 
 	    	lopers_kaart.setImageDrawable(Drawable.createFromStream(input,null));
-	    	lopers_kaart.setAdjustViewBounds(true);
-	    	lopers_kaart.setMaxHeight(200);
-	    	lopers_kaart.setMaxWidth(350);
-	    	LinearLayout layout = (LinearLayout) view.findViewById(R.id.etappe_route_layout);
-	    	layout.addView(lopers_kaart,1);
+
 	    	lopers_kaart.setOnClickListener(new View.OnClickListener() {
 	            @Override
 	            public void onClick(View view) {

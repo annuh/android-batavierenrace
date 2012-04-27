@@ -90,10 +90,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 	public void onActivityCreated (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
-		getActivity().getSupportLoaderManager().initLoader(0, null, this);
+		if (getArguments().getBoolean("restarted", false))
+			getActivity().getSupportLoaderManager().restartLoader(0, null, this);
+		else
+			getActivity().getSupportLoaderManager().initLoader(0, null, this);
 	}
-
-
 
 	@Override
 	public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
@@ -252,7 +253,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 			adapter_uni = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(0));
 			adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
 			adapter = new SeparatedListAdapter(getActivity().getApplicationContext());
-			adapter.addSection("Universiteits klassement", adapter_uni);
+			adapter.addSection("Universiteitsklassement", adapter_uni);
 			adapter.addSection("Algemeen klassement", adapter_alg);
 			setListAdapter(adapter);
 			adapter.notifyDataSetChanged();
@@ -370,5 +371,10 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 	public void onLoaderReset(Loader<Response<ArrayList<ArrayList<Looptijd>>>> arg0) {                
 		adapter = null;
 	}
-
+	
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		getActivity().getSupportLoaderManager().destroyLoader(0);
+	}
 }

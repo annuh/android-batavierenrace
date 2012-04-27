@@ -13,16 +13,18 @@
             android:text="@string/etappe_routes_h1_kaart" />
         
         <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="10dp"
-            />
+            android:id="@+id/etappe_routes_lopersroute_kaart"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxHeight="300dip" />
 
         <Button
             style="@style/nice_button"
             android:id="@+id/loper_tekst_routebeschijving"
             android:text="@string/etappe_routes_routebeschrijving_looproute" />
-
-        
+      
         <TextView
             style="@style/h1"
             android:text="@string/etappe_routes_h1_openenmaps" />
