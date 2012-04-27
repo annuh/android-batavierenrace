@@ -253,6 +253,7 @@
     <!-- Berichten -->
     <string name="berichten_laden">Berichten worden geladen…</string>
     <string name="berichten_leeg">Er zijn op dit moment geen berichten.</string>
+    <string name="kleurcode_weer_titel">Weer-alert</string>
     <string name="kleurcode_geel_titel">Code geel</string>
     <string name="kleurcode_geel_beschrijving">&lt;b>De race tijdelijk stilgelegd vanwege %s&lt;/b></string>
     <string name="kleurcode_geel">De situatie is te gevaarlijk, de race is tijdelijk stilgelegd. Je doet het volgende:&lt;br />&lt;br />&lt;b>Op de lopersroute:&lt;/b>&lt;br />1. Let op je eigen veiligheid!&lt;br />2. Je doet mee op eigen risico!&lt;br />3. Schuil bij een onveilige situatie.&lt;br />4. Vind je het zelf (weer) veilig: doorlopen, je tijd wordt nog geregistreerd.&lt;br />&lt;br />&lt;b>Op de autoroute / een wisselpunt / een herstart:&lt;/b>&lt;br />1. Let op je eigen veiligheid!&lt;br />2. Je doet mee op eigen risico!&lt;br />3. Eén persoon informeert bij het wisselpunt of bij de infobaliebus.&lt;br />4. Volg de instructies van de organisatie op.&lt;br />&lt;br />&lt;b>Als jouw ploeg nog bij de start in Nijmegen is:&lt;/b>&lt;br />1. Volg de instructies van de organisatie op</string>

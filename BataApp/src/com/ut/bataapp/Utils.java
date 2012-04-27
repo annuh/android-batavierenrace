@@ -168,8 +168,9 @@ public class Utils {
 	public static void addBericht(Context context, String type, String bericht) {
 		SharedPreferences keyValues = context.getSharedPreferences("push_berichten", Context.MODE_PRIVATE);
 		SharedPreferences.Editor keyValuesEditor = keyValues.edit();
-		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-		keyValuesEditor.putString(formatter.format(new java.util.Date()) , type+bericht);
+		//SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+		//keyValuesEditor.putString(formatter.format(new java.util.Date()) , type+bericht);
+		keyValuesEditor.putString(Long.toString(System.currentTimeMillis()) , type+bericht);
 		keyValuesEditor.commit();
 	}
 	
@@ -181,7 +182,11 @@ public class Utils {
 
 		for (Map.Entry<String, ?> entry : pushberichten.entrySet()) {
 			Bericht bericht = new Bericht();
-			bericht.setDatum(entry.getKey());
+			
+			SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
+			Date date123 = new Date(Long.parseLong(entry.getKey()));
+			bericht.setDatum(formatter.format(date123));
+			
 			int code;
 			String titel = "";
 			switch(((String) entry.getValue()).charAt(0)) {
@@ -207,10 +212,11 @@ public class Utils {
 			}
 			bericht.setCode(code);
 			bericht.setTitel(titel);
-			bericht.setBericht(entry.getKey());
+			bericht.setBericht((String) entry.getKey());
 			berichten.add(bericht);
 		}
 		return berichten;
 		
 	}
+	
 }
