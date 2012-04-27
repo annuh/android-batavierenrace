@@ -11,7 +11,6 @@
 	    <TextView
 			android:text = "Bustijden"
 			style="@style/h1" />
-	   
 	    
 	    <TableLayout style="@style/table" >
 	        <TableRow>
@@ -20,7 +19,7 @@
 	                android:text="Nijmegen–Ulft" />"
 	            <TextView
 	                style="@style/table_right"
-	                android:text="04:00 uur" />
+	                android:text="04:00" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
@@ -30,7 +29,7 @@
 	                android:text="Nijmegen–Barchem" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="09:30 uur" />
+	                android:text="09:30" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
@@ -40,7 +39,7 @@
 	                android:text="Ulft–Enschede" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="06:00-08:30 uur" />
+	                android:text="06:00-08:30" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
@@ -50,47 +49,47 @@
 	                android:text="Barchum–Enschede" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="10:45-13:15 uur" />
+	                android:text="10:45-13:15" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
 	        <TableRow>
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Enschede–Ulft" />
+	                android:text="Enschede–Ulft (1–4)" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="03:45 uur" />
+	                android:text="03:45" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
 	        <TableRow>
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Enschede–Ulft" />
+	                android:text="Enschede–Ulft (5–7)" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="04:45 uur" />
+	                android:text="04:45" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
 	        <TableRow>
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Enschede–Barchum" />
+	                android:text="Enschede–Barchum (1–4)" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="09:00 uur" />
+	                android:text="09:00" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
 	        <TableRow>
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Enschede–Barchum" />
+	                android:text="Enschede–Barchum (5–7)" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="09:30 uur" />
+	                android:text="09:30" />
 	        </TableRow>
 	    </TableLayout>
 	    
@@ -102,13 +101,16 @@
 	        <TableRow>
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Start" />
+	                android:text="Start"
+	                android:textStyle="bold" />
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Ploegen" />
+	                android:text="Ploegen" 
+	                android:textStyle="bold" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="Uur" />
+	                android:text="Tijdstip" 
+	                android:textStyle="bold" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
@@ -210,13 +212,16 @@
 	        <TableRow>
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Start" />
+	                android:text="Start"
+	                android:textStyle="bold" />
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Ploegen" />
+	                android:text="Ploegen" 
+	                android:textStyle="bold" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="Uur" />
+	                android:text="Tijdstip" 
+	                android:textStyle="bold" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
@@ -318,13 +323,16 @@
 	        <TableRow>
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Start" />
+	                android:text="Start"
+	                android:textStyle="bold" />
 	            <TextView
 	                style="@style/table_left"
-	                android:text="Ploegen" />
+	                android:text="Ploegen" 
+	                android:textStyle="bold" />
 	            <TextView
 	                style="@style/table_right"
-	                android:text="Uur" />
+	                android:text="Tijdstip" 
+	                android:textStyle="bold" />
 	        </TableRow>
 	        <View style="@style/divider" >
             </View>
@@ -416,6 +424,53 @@
 	            <TextView
 	                style="@style/table_right"
 	                android:text="12:40" />
+	        </TableRow>
+	    </TableLayout>
+	    
+		<TextView
+			android:text = "Herstarttijden Enschede"
+			style="@style/h1" />
+			
+		<TableLayout style="@style/table" >
+	        <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="Start"
+	                android:textStyle="bold" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="Ploegen" 
+	                android:textStyle="bold" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="Tijdstip" 
+	                android:textStyle="bold" />
+	        </TableRow>
+	        <View style="@style/divider" >
+            </View>
+	        <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="Dames" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="1 t/m 350" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="17:00" />
+	        </TableRow>
+	        <View style="@style/divider" >
+            </View>
+	         <TableRow>
+	            <TextView
+	                style="@style/table_left"
+	                android:text="Heren" />
+	            <TextView
+	                style="@style/table_left"
+	                android:text="1 t/m 350" />
+	            <TextView
+	                style="@style/table_right"
+	                android:text="17:30" />
 	        </TableRow>
 	    </TableLayout>
 	</LinearLayout>

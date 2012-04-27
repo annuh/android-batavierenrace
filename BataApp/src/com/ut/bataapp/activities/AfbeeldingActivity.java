@@ -1,21 +1,17 @@
 package com.ut.bataapp.activities;
 
-import java.util.ArrayList;
-
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.R;
-import com.ut.bataapp.Utils;
-
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
 
+import com.ut.bataapp.R;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
+import com.ut.bataapp.Utils;
+
 public class AfbeeldingActivity extends SherlockActivity {
 	
-	public static String[][] overzichtskaarten = {{"herstart_barchem.jpg", "Herstart Barchem"}, {"herstart_ulft.jpg", "Herstart Ulft"}, {"campus_enschede.jpg", "Campus Enschede"}, {"stad_enschede.jpg", "Enschede stad"}, {"stad_nijmegen.jpg", "Start Nijmegen"}};
+	public static String[][] overzichtskaarten = {{"stad_nijmegen.jpg", "Start Nijmegen"}, {"herstart_ulft.jpg", "Herstart Ulft"}, {"herstart_barchem.jpg", "Herstart Barchem"},  {"stad_enschede.jpg", "Stad Enschede"}, {"campus_enschede.jpg", "Campus Enschede"}};
 	public static String[][] hoogteverschillen = {};
 
 	@Override
@@ -56,10 +52,21 @@ public class AfbeeldingActivity extends SherlockActivity {
 		webview.getSettings().setUseWideViewPort(true);
 		webview.getSettings().setBuiltInZoomControls(true);
 		webview.loadUrl("file:///android_asset/" + locatie);	
-		if(type.equals("Lopersroutekaart")){
+		if(type.equals("Lopersroutekaart"))
 			webview.setMinimumWidth(LayoutParams.WRAP_CONTENT);
-		}
     }
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		((WebView) findViewById(R.id.webview)).onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		((WebView) findViewById(R.id.webview)).onResume();
+	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -70,5 +77,4 @@ public class AfbeeldingActivity extends SherlockActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
 }
