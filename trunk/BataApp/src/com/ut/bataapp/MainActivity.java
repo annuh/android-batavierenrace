@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
