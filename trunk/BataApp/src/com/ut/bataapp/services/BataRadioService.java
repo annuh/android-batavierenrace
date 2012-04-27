@@ -153,6 +153,7 @@ public class BataRadioService extends Service implements MediaPlayer.OnPreparedL
 	public void onDestroy() {
 		cleanup();
 		sendBroadcast(new Intent(BATARADIO_SERVICE_STOPPED));
+		((AudioManager) getSystemService(Context.AUDIO_SERVICE)).abandonAudioFocus(this);
 	}
 	
 	@Override
