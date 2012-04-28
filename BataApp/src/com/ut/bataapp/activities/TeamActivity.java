@@ -193,7 +193,7 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 			FragmentTransaction ft = fm.beginTransaction();
 			for (Fragment fragment: fragments)
 				ft.remove(fragment);
-			ft.commit();
+			ft.commitAllowingStateLoss();
 		}
 	}
 
