@@ -7,6 +7,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -139,7 +140,7 @@ public class WeerBuienradarGoogle implements WeerProvider {
 	
 	// -- WEERPROVIDER --
 	
-	public void refresh(Date datum) throws WeerException {
+	public void refresh(Calendar datum) throws WeerException {
 		Resources res = mRes; // optimalisatie
 		try {
 			DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -167,10 +168,10 @@ public class WeerBuienradarGoogle implements WeerProvider {
 						googleHuidig = formatter.parse(googleHuidigeDatum);
 					} catch (ParseException e) {
 						throw new WeerException(res.getString(R.string.error_cant_parse_xml));
-					} catch (ArrayIndexOutOfBoundsException e) {
-						throw new WeerException(res.getString(R.string.error_cant_parse_xml));
 					}
-					short diffDays = Utils.diffDays(googleHuidig, datum);
+					Calendar googleHuidigC = Calendar.getInstance();
+					googleHuidigC.setTime(googleHuidig);
+					short diffDays = Utils.diffDays(googleHuidigC, datum);
 					
 					WeerInfoHuidig huidig = (WeerInfoHuidig) parseGoogle(xml, tagGoogleHuidig, tagGoogleHuidigTemp, tagGoogleHuidigTemp, tagGoogleHuidigIcon, attrGoogleData, urlPrefix, 0, false);
 					if (huidig != null)

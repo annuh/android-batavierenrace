@@ -46,7 +46,7 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 	private int etappe_id;
 	private int mTabId;
 	private getEtappe mGetEtappe;
-	private boolean mRestarted;
+	private boolean mRestarted, mConfigChanged;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +62,11 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
     @Override
 	protected void onResume() {
     	super.onResume();
-    	mRestarted = true;
-    	mGetEtappe = new getEtappe(mTabId);
-		mGetEtappe.execute();	
+    	if (!mConfigChanged) {
+	    	mRestarted = true;
+	    	mGetEtappe = new getEtappe(mTabId);
+			mGetEtappe.execute();	
+    	}
 	}
 	
 	/**
@@ -73,6 +75,7 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
     @Override
     protected void onPause() {
     	super.onPause();
+    	mConfigChanged = false;
     	if (mAdapter != null) {
 			mAdapter.deleteAll(getSupportFragmentManager());
 			mTabId = ((ViewPager) findViewById(R.id.pager)).getCurrentItem();
@@ -203,6 +206,7 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		if(mPager != null) {
+			mConfigChanged = true;
 			int currentItem = mPager.getCurrentItem(); // huidige tabbladindex  
 			mAdapter.deleteAll(getSupportFragmentManager()); // cleanup van alle oude fragments
 			mAdapter = new EtappeFragmentAdapter(getSupportFragmentManager());
