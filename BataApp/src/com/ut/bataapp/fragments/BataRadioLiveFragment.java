@@ -33,7 +33,9 @@ public class BataRadioLiveFragment extends SherlockFragment implements OnClickLi
 	private class BataRadioStopped extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			mToggleButton.setChecked(false);
+			if (!mForceStop)
+				mToggleButton.setChecked(false);
+			mForceStop = false;
 		}
 	}
 	
@@ -57,6 +59,7 @@ public class BataRadioLiveFragment extends SherlockFragment implements OnClickLi
 	    		editor.commit();
 	    		// verander URL door oude service te stoppen en nieuwe (met nieuwe URL) te starten:
 		    	if (isMyServiceRunning()) {
+		    		mForceStop = true;
 		    		activity.stopService(new Intent(activity, BataRadioService.class));
 		    		startMP();
 		    	}
@@ -80,6 +83,8 @@ public class BataRadioLiveFragment extends SherlockFragment implements OnClickLi
 	private Resources mRes;
 	/* receiver voor broadcast van stoppen BataRadioService */
 	private BroadcastReceiver mReceiveBataRadioStoppedBroadcast;
+	/* geeft aan of stoppen service door activity zelf is gedaan in het kader van switchen naar andere stream */
+	private boolean mForceStop;
 	
 	// -- HULPMETHODEN --
 	

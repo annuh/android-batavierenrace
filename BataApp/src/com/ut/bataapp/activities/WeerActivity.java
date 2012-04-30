@@ -2,7 +2,6 @@ package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -17,7 +16,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
-import com.actionbarsherlock.R;
+import com.ut.bataapp.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.Utils;
@@ -126,7 +125,7 @@ public class WeerActivity extends SherlockFragmentActivity {
      * @author Danny Bergsma
      * @version 0.1
      */
-    private class RefreshWeerProvider extends AsyncTask<Date, Void, WeerException> {  
+    private class RefreshWeerProvider extends AsyncTask<Calendar, Void, WeerException> {  
     	/* de ProgressDialog die getoond wordt tijdens ophalen */
     	private ProgressDialog mProgressDialog;
 		
@@ -144,7 +143,7 @@ public class WeerActivity extends SherlockFragmentActivity {
 			});
 		}
 				
-		protected WeerException doInBackground(Date... arg) {
+		protected WeerException doInBackground(Calendar... arg) {
 			WeerException result = null;
 			if (!isCancelled())
 				try {
@@ -231,7 +230,7 @@ public class WeerActivity extends SherlockFragmentActivity {
     	Calendar bataDag = Calendar.getInstance();
     	bataDag.set(res.getInteger(R.integer.batadag_jaar), (res.getInteger(R.integer.batadag_maand)-1), res.getInteger(R.integer.batadag_dag));
     	mRefreshWeerProvider = new RefreshWeerProvider();
-    	mRefreshWeerProvider.execute(bataDag.getTime());
+    	mRefreshWeerProvider.execute(bataDag);
 	}
     
     /**

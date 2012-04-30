@@ -57,7 +57,7 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 	private int mTeamID;
 	private getTeam mGetTeam;
 	private int mTabId;
-	private boolean mRestarted;
+	private boolean mRestarted, mConfigChanged;
 
 	public Team getTeam(){
 		return mTeam;
@@ -76,9 +76,11 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
     @Override
 	protected void onResume() {
     	super.onResume();
-    	mRestarted = true;
-    	mGetTeam = new getTeam(mTabId);
-		mGetTeam.execute();	
+    	if (!mConfigChanged) {
+	    	mRestarted = true;
+	    	mGetTeam = new getTeam(mTabId);
+			mGetTeam.execute();	
+    	}
 	}
 	
 	/**
@@ -87,6 +89,7 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
     @Override
     protected void onPause() {
     	super.onPause();
+    	mConfigChanged = false;
     	if (mAdapter != null) {
 			mAdapter.deleteAll(getSupportFragmentManager());
 			mTabId = ((ViewPager) findViewById(R.id.pager)).getCurrentItem();
@@ -258,6 +261,7 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		if(mPager != null) {
+			mConfigChanged = true;
 			int currentItem = mPager.getCurrentItem(); // huidige tabbladindex  
 			mAdapter.deleteAll(getSupportFragmentManager()); // cleanup van alle oude fragments
 			mAdapter = new TeamFragmentAdapter(getSupportFragmentManager());

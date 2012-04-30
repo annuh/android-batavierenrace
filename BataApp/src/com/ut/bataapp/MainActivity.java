@@ -147,10 +147,9 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		Resources res = getResources();
 		Calendar nu = Calendar.getInstance();
-		Utils.clearTime(nu);
 		Calendar bataDag = Calendar.getInstance();
     	bataDag.set(res.getInteger(R.integer.batadag_jaar), (res.getInteger(R.integer.batadag_maand)-1), res.getInteger(R.integer.batadag_dag));
-		short dagenVerschil = Utils.diffDays(nu.getTime(), bataDag.getTime());
+		short dagenVerschil = Utils.diffDays(nu, bataDag);
 		String weergeven;
     	if (dagenVerschil > 1)
     		weergeven = String.format(res.getString(R.string.main_batadag_duurt_nog_dagen), dagenVerschil);

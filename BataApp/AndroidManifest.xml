@@ -80,6 +80,7 @@
             android:name=".activities.InfoAlgemeenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
+        <activity android:name=".activities.ErrataActivity"/>
         <activity 
             android:name=".activities.AfbeeldingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
@@ -104,8 +105,6 @@
             android:name=".activities.SponsorInformatieActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/StyledIndicators" />
-		<activity 
-		    android:name=".activities.ErrataActivity"/>
         <service android:name=".services.BackgroundUpdater" />
         <service android:name=".services.BataRadioService" />
         <service android:name=".C2DMReceiver" />

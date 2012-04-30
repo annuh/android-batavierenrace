@@ -156,8 +156,10 @@ public class Utils {
 	 * @require date1 != null && date2 != null
 	 * @return aantal dagen tussen date1 en date2
 	 */
-	public static short diffDays(Date date1, Date date2) {
-		return (short) ((date2.getTime() - date1.getTime()) / MILLIS_IN_DAY);
+	public static short diffDays(Calendar date1, Calendar date2) {
+		clearTime(date1);
+		clearTime(date2);
+		return (short) ((date2.getTimeInMillis() - date1.getTimeInMillis()) / MILLIS_IN_DAY);
 	}
 
 	/**
