@@ -35,8 +35,14 @@ import com.ut.bataapp.activities.WelkomActivity;
 import com.ut.bataapp.objects.Team;
 import com.ut.bataapp.services.BackgroundUpdater;
 
-public class MainActivity extends SherlockFragmentActivity {	
+public class MainActivity extends SherlockFragmentActivity {
+	/**
+	 * Constante voor id van de menuknop Instellingen
+	 */
 	private final int MENU_SETTINGS = Menu.FIRST;
+	/**
+	 * Constante voor id van de menuknop Berichten
+	 */
 	private final int MENU_MESSAGE = Menu.FIRST+1;
 
 	/** Called when the activity is first created. */
@@ -54,7 +60,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		setContentView(R.layout.main);
 		getSupportActionBar().setHomeButtonEnabled(true);
 		setupC2DM();
-		//register();
+		
+		// Klik op Etappes
 		Button btn_routes = (Button) findViewById(R.id.dashboard_etappes);
 		btn_routes.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -64,6 +71,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			}
 		});
 
+		// Klik op Favorieten, bij 1 team ga gelijk naar dat team
 		Button btn_favorieten = (Button) findViewById(R.id.dashboard_favorieten);
 		btn_favorieten.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -195,18 +203,16 @@ public class MainActivity extends SherlockFragmentActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-
 		case MENU_SETTINGS:
 			// Launch Preference activity
 			Intent i = new Intent(this, PreferencesActivity.class);
 			startActivity(i);
-			break;
-
+			return true;
 		case MENU_MESSAGE:
 			// Launch Messages activity
 			Intent j = new Intent(getApplicationContext(), BerichtenActivity.class);
 			startActivity(j);
-			break;
+			return true;
 
 		}
 		return true;
@@ -218,27 +224,10 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 	}
 
-	public void setupC2DM() {
-		/*Log.d("C2DM", "START");
-;	   SharedPreferences prefs = getSharedPreferences(C2DMessaging.PREFERENCE, Context.MODE_PRIVATE);
-	   if ((Build.VERSION.SDK_INT >= 8) && (C2DMessaging.shouldRegisterForPush(getApplicationContext()))) {
-		   Log.d("C2DM", "Moet registreren");
-			C2DMReceiver.refreshAppC2DMRegistrationState(getApplicationContext(), true);
-	   }
-
-	   if (prefs.contains("dm_registration")) {
-		   Log.d("C2DM", "Contains reg");
-		   return;
-	   } 	
-	   if (Build.VERSION.SDK_INT >= 8) {
-		   Log.d("C2DM", "Registeren");
-			Editor e = prefs.edit();
-			e.putString("dm_registration", "");
-			e.commit();
-			C2DMessaging.setRegisterForPush(getApplicationContext(), true);
-			C2DMReceiver.refreshAppC2DMRegistrationState(getApplicationContext(), true);
-		}
-	   Log.d("C2DM", "Goed fout");*/
+	/**
+	 * Methode die controleert of dit toestal al aangemeld voor de C2DM notificaties
+	 */
+	public void setupC2DM() {		
 		if (Build.VERSION.SDK_INT >= 8) {
 			String registrationId = C2DMessaging.getRegistrationId(this);
 			if(registrationId != null && !"".equals(registrationId)){

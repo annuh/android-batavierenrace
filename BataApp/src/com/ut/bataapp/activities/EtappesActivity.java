@@ -18,44 +18,60 @@ import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Etappe;
 import com.ut.bataapp.objects.Response;
 
+/**
+ * Activity voor het tonen van een overzicht van alle etappes.  
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class EtappesActivity extends SherlockListActivity  {
+	/** Lijst met alle etappes */
 	private ArrayList<Etappe> etappes = null;
+	/** Adapter waarin de gegevens worden opgeslagen */
 	private EtappeAdapter adapter = null;
-	
-   @Override
-   public void onCreate(Bundle savedInstanceState) {
-	   super.onCreate(savedInstanceState);
-	   this.getListView().setFastScrollEnabled(true);
-	   this.setContentView(R.layout.listview_etappes);
-	   getSupportActionBar().setHomeButtonEnabled(true);
-	   setTitle(R.string.dashboard_etappes);
-	   new getEtappes().execute();
-   }
-   
-   @Override
-   public void onListItemClick(ListView l, View v, int position, long id) {
-	   Intent intent = new Intent(getApplicationContext(), EtappeActivity.class);
-       intent.putExtra("index", v.getId());
-       startActivity(intent);
-   }
-   
-   @Override
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.getListView().setFastScrollEnabled(true);
+		this.setContentView(R.layout.listview_etappes);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		setTitle(R.string.dashboard_etappes);
+		new getEtappes().execute();
+	}
+
+	@Override
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		Intent intent = new Intent(getApplicationContext(), EtappeActivity.class);
+		intent.putExtra(EtappeActivity.ID, v.getId());
+		startActivity(intent);
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home:
-				Utils.goHome(this);
-				return true;
+		case android.R.id.home:
+			Utils.goHome(this);
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
-   private class getEtappes extends AsyncTask<Void, Void, Void> {  
+	/* Klasse voor het binnenhalen van alle etappes. Tijdens het laden wordt een spinner weergegeven, vervolgens worden de Etappes in een
+	 * ListView getoond.
+	 * @author Danny Bergsma
+	 * @version 0.1
+	 */
+	private class getEtappes extends AsyncTask<Void, Void, Void> {  
+		/** Spinner die wordt getoond tijdens het laden */
 		private ProgressDialog progressDialog;  
+		/** Het resultaat van de api-aanvraag */
 		Response<ArrayList<Etappe>> response;
-		
+
+		@Override
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(EtappesActivity.this,  
-			  getString(R.string.laden_titel), getString(R.string.etappes_laden), true);
+					getString(R.string.laden_titel), getString(R.string.etappes_laden), true);
 			progressDialog.setCancelable(true);
 			progressDialog.setOnCancelListener(new OnCancelListener() {
 				public void onCancel(DialogInterface dialog) {
@@ -64,14 +80,14 @@ public class EtappesActivity extends SherlockListActivity  {
 				}
 			});
 		}
-		
+
 		@Override
 		protected Void doInBackground(Void... arg0) { 
 			if(!isCancelled())
 				response = api.getEtappes();
 			return null;       
 		}
-		
+
 		@Override  
 		protected void onPostExecute(Void result) {
 			if(Utils.checkResponse(EtappesActivity.this, response)){
@@ -81,7 +97,7 @@ public class EtappesActivity extends SherlockListActivity  {
 				progressDialog.dismiss();
 				getListView().setEmptyView(findViewById(R.id.listview_leeg));
 			}
-			
+
 		}
 	}
 

@@ -18,6 +18,12 @@ import com.ut.bataapp.Utils;
 import com.ut.bataapp.api.api;
 import com.ut.bataapp.objects.Response;
 
+/**
+ * Activity waar een overzicht van alle klassementen wordt getoond.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class KlassementenActivity extends SherlockFragmentActivity  {
 
 	@Override
@@ -32,18 +38,27 @@ public class KlassementenActivity extends SherlockFragmentActivity  {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home:
-				Utils.goHome(this);
-				return true;
-			}
-		
+		case android.R.id.home:
+			Utils.goHome(this);
+			return true;
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
+	// Inner classes
+
+	/* Klasse voor het binnenhalen van alle klassementen. Tijdens het laden wordt een spinner weergegeven, vervolgens wordt voor elk klassement
+	 * een button gemaakt.
+	 * @author Anne van de Venis
+	 * @version 1.0
+	 */
 	private class getKlassementen extends AsyncTask<Void, Void, Void> {
+		/** Het resultaat van de api-aanvraag */
 		Response<ArrayList<String>> response = null;
+		/** Spinner die wordt getoond tijdens het laden */
 		private ProgressDialog progressDialog;  
-		
+
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(KlassementenActivity.this,  
 					getString(R.string.laden_titel), getString(R.string.klassementen_laden), true);  

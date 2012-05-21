@@ -9,6 +9,13 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.Utils;
 
+/**
+ * Activity waarin een afbeelding kan worden getoond. Het type van de afbeelding (overzichtskaart of hoogteverschil) wordt
+ * als een Bundle, met key "type", worden toegevoegd aan de Intent van deze Activity.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class AfbeeldingActivity extends SherlockActivity {
 	
 	public static String[][] overzichtskaarten = {{"stad_nijmegen.jpg", "Start Nijmegen"}, {"herstart_ulft.jpg", "Herstart Ulft"}, {"herstart_barchem.jpg", "Herstart Barchem"},  {"stad_enschede.jpg", "Stad Enschede"}, {"campus_enschede.jpg", "Campus Enschede"}};

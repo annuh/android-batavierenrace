@@ -40,6 +40,8 @@
     <string name="main_batadag_duurt_nog_dag">Het aftellen is begonnen!</string>
     <string name="main_batadag_vandaag">Batavierenrace XL gestart!</string>
     <string name="main_batadag_geweest">Tot volgend jaar!</string>
+    <string name="sorteren_naam">Naam</string>
+    <string name="sorteren_startnummer">Startnummer</string>
 
     <!-- Dashboard -->
     <string name="dashboard_favorieten">Favorieten</string>
@@ -90,6 +92,7 @@
     <!-- Teams -->
     <string name="teams_header_startnummer">#</string>
     <string name="teams_header_naam">Team</string>
+    <string name="teams_laden">Teams worden geladen…</string>
     <string name="teams_geenteams">Geen teams gevonden.</string>
     <!-- Team -->
     <string name="team_laden">Team wordt geladen…</string>
@@ -163,6 +166,10 @@
 
     <!-- Informatie -->
     <string name="informatie_titel">Informatie</string>
+    <string name="info_algemeen_titel">Algemeen</string>
+    <string name="info_calamiteiten_titel">Calamiteiten</string>
+    <string name="info_overzichtskaart_titel">Overzichtkaart</string>
+    <string name="info_colofon_titel">Colofon</string>
     <string name="informatie_eten_drinken_tijdens_de_race"></string>
     <string name="informatie_eten_drinken_tijdens_de_race_text">         Het wordt zeer sterk aangeraden om eten en drinken mee te nemen voor tijdens de race. 
          De mogelijkheden om tijdens de race ergens eten en drinken te kopen zijn zeer beperkt. 
@@ -174,21 +181,33 @@
     <string name="colofon"><b>Deze applicatie is ontwikkeld door:</b>\n\n\tDanny Bergsma\n\tJochem Elsinga\n\tBas Janssen\n\tErik Pleijsier\n\tAnne van de Venis\n\nStudenten Informatica\nUniversiteit Twente\n\n<b>In samenwerking met:</b>\n\n\tStichting de Batavierenrace\n\t40e Organisatiecommissie\n\nApril 2012</string>
     <string name="disclamer">Aan deze applicatie kunnen geen rechten worden ontleend. Gegevens (informatie, uitslagen, routes, etc.) die via andere wegen ter uiting worden gebracht door organen van de Batavierenrace zijn leidend	boven de publicatie in deze applicatie. Verder is op deze applicatie ook het wedstrijd- en inschrijfregelement van toepassing. De volledige wedstrijd- en inschrijfregelementen zijn te vinden op www.batavierenrace.nl.\n\n Hieronder staan enkele belangrijke punten uit de regelementen herhaald:\n\n1) Iedere deelnemer neemt deel op eigen risico. De Stichting Batavierenrace kan niet aansprakelijk worden gesteld voor het zoek raken of de beschadiging van persoonlijke eigendommen, noch voor enig opgelopen persoonlijk letsel.\n\n 2)	Er bestaan voor de lopers en de volgauto"s aparte routes. De routes beschreven in het deelnemersboekje zijn leidend, ook boven de applicatie. Errata worden zoveel mogelijk meegenomen in de applicatie. De borden langs de lopersroute dienen slechts ter ondersteuning. Indien van de in het boekje en de errata beschreven route moet worden afgeweken, zal iemand van de organisatie dit aangeven.\n\n 3) De Wegenverkeerswet, het Reglement Verkeersregels en Verkeerstekens en de Straßenverkehrsordnung zijn tijdens de race onder alle omstandigheden van kracht. Werkende fietsverlichting is bijvoorbeeld ook verplicht.\n\n4) Het Wedstrijdsecretariaat draagt de verantwoordelijkheid voor de einduitslag. Het is bevoegd om bij constatering van een overtreding van het wedstrijdreglement straftijd toe te kennen. Het Wedstrijdsecretariaat is tevens verantwoordelijk voor de protestafhandeling.\n\n5) Protesten dienen zo snel mogelijk te worden ingediend bij het Wedstrijdsecretariaat. Dit kan tijdens de gehele race telefonisch en op gezette tijden in Enschede. De gepubliceerde uitslag tijdens en na de race is voorlopig, ook publicatie in de applicatie. Tot en met de eerstvolgende woensdag na de race is het mogelijk om via e-mail protesten in te dienen bij het Wedstrijdsecretariaat (protesten@batavierenrace.nl).</string>
     <string name="info_contact"><b>Stichting De Batavierenrace</b>\n\n<b>Batavierenrace Nijmegen</b>\nHeyendaalseweg 141\n6525 AJ Nijmegen\nE: nijmegen@batavierenrace.nl\nT: +31 (0)24-3615876\n\nBezoekadres:\nKamer N-1.260\nHeyendaalseweg 141\n6525 AJ Nijmegen\n\n<b>Batavierenrace Enschede</b>\nPostbus 217\n7500 AE Enschede\nE: enschede@batavierenrace.nl\nT: +31 (0)53-4893787\n\nBezoekadres:\nBastille, kamer 334\nDrienerlolaan 5\n7522 NB Enschede</string>
-    <string name="informatie_algemeen_titel">Algemeen</string>
+
+    <!-- Informatie/Algemeen -->
+    <string name="info_algemeen_watmoetjeweten_titel">Belangrijk</string>
     <string name="info_algemeen_watmoetjeweten_medischeondersteuning">In de race rijden zeven artsen mee. Zij zijn aanwezig bij iedere start, herstart en finish en kunnen via een medewerker opgeroepen worden. Als een arts naar je toe komt, ben je verplicht te wachten. Op de campus is de zorg in handen van EHBO Enschede. Die kun je vinden op de hoek van de Carilloncamping en de Drienerlolaan.</string>
     <string name="info_algemeen_watmoetjeweten_hesinname">Je kunt je hes inleveren van 17.45 tot 19.30 in de Vrijhof op de campus in Enschede.\n\n<b>Inleveren:</b>\n- De lopershes met chip\n- De fietsershes \n- De twee witte en blauwe startnummers met elk een chip\n\nLever je dit op tijd in, dan krijg je €80 borg terug. Ben je te laat, dan krijg je €70 van je borg terug.</string>
     <string name="info_algemeen_watmoetjeweten_gevondenvoorwerpen">Tijdens de race gaan alle gevonden voorwerpen naar de infobalie op de herstarts. Na de race gaan alle spullen naar de infobalie in het Sportcentrum te Enschede.</string>
     <string name="info_algemeen_watmoetjeweten_totslot">- Het gebruik van alcohol en/of drogerende middelen tijdens de race door lopers en autobestuurders is verboden.\n- In Duitsland: geldig paspoort en groene verzekeringskaart in het busje\n- Let op omroepen en errata\n- Slapen in sportcentrum: slaapbandje dragen\n- Geen open vuur\n- Parkeren op de aangegeven plaatsen</string>
+    <string name="info_algemeen_busenstarttijden_titel">Tijden</string>
+    <string name="info_algemeen_slapen_titel">Slapen</string>
+    <!-- Informatie/Colofon -->
+    <string name="info_colofon_contactgegevens_titel">Contact</string>
+    <string name="info_colofon_colofon_titel">Colofon</string>
+    <string name="info_colofon_disclaimer_titel">Disclaimer</string>
     <string name="info_algemeen_slapen">In Enschede zijn twee slaapmogelijkheden:\n\n<b>Sportcentrum</b>\nHier zijn drie zalen waar deelnemers kunnen slapen. Hiervoor heb je van te voren een slaapbandje moeten kopen.\n\n<b>Camping</b>\nIn Enschede zijn drie campings:\n- Carilloncamping\n- Hockeycamping\n- Vlindercamping\n\n<u>Enkele regels:</u>\n- Plaats de tent binnen de lijnen\n- De tent mag niet te groot zijn (max 6 personen)\n- Het maken van open vuur is verboden\n- Deponeer afval in de daarvoor bestemde afvalbakken\n- Zondagochtend 11 uur dien je het terrein verlaten te hebben</string>
     <string name="informatie_colofon_titel">Colofon</string>
     <string name="bezig_met_laden">Bezig met laden</string>
-    <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
+    <string name="informatie_titel_errata">Errata</string>
 
     <!-- Lustrum -->
     <string name="lustrum_titel">Bata XL</string>
     <string name="lustrum_h1">Batavierenrace 40 jaar</string>
     <string name="lustrum_text1">1973: de eerste Batavierenrace vindt plaats \n1974: de Batavierenrace gaat van Nijmegen naar Enschede\n2012: de 40e Batavierenrace vindt plaats!</string>
     <string name="lustrum_text2">Ter ere van het lustrum zal er tijdens de race een lustrumbus aanwezig zijn. Deze is te zien op de herstarts Ulft, Barchem en Enschede en enkele wisselpunten. Er zullen dan verschillende activiteiten plaatsvinden, waar leuke gadgets van de Batavierenrace te verdienen zijn.\n\n<b>Vereeuwig je boodschap aan de Batavierenrace en het Batavierenfeest in steen.</b></string>
+
+    <!-- Sponsor -->
+    <string name="sponsor_titel"><b>Sponsor</b></string>
+    <string name="sponsor_omschrijving_dik"><b>Omschrijving</b></string>
 
     <!-- Weer -->
     <string name="weer_ophalen_weergegevens">Weergegevens worden opgehaald…</string>
@@ -252,6 +271,8 @@
 
     <!-- Berichten -->
     <string name="berichten_laden">Berichten worden geladen…</string>
+    <string name="berichten_pushberichten">Notificaties</string>
+    <string name="berichten_nieuwsberichten">Nieuws</string>
     <string name="berichten_leeg">Er zijn op dit moment geen berichten.</string>
     <string name="kleurcode_weer_titel">Weer-alert</string>
     <string name="kleurcode_geel_titel">Code geel</string>

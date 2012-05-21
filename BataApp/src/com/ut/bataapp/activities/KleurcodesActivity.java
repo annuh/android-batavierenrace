@@ -2,16 +2,18 @@ package com.ut.bataapp.activities;
 
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
-
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.Utils;
-import com.ut.bataapp.objects.Bericht;
 
+/**
+ * Activity voor het tonen van een kleurcode, te weten rood, geel en groen.  
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class KleurcodesActivity extends SherlockActivity  {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

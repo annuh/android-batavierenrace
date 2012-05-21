@@ -32,63 +32,86 @@ import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
+/**
+ * Activity waar alle informatie van 1 bepaalde etappe wordt getoond. De volgende fragments worden hier geladen:
+ * 	- Algemeen
+ *  - Routes
+ *  - Looptijden
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class EtappeActivity extends SherlockFragmentActivity implements OnPageChangeListener {
+	/** ID's van de tabbladen */
 	public static final int TAB_ALGEMEEN = 0, TAB_ROUTES = 1, TAB_LOOPTIJDEN = 2;
-	
+	/** Viewpager, nodig voor het wisselen tussen tabbladen door middel van 'swypen'. */
 	ViewPager mPager;
+	/** PageIndicator, nodig voor de fancy titels boven de tabbladen */
 	PageIndicator mIndicator;
+	/** Fragmentadapter, hierin worden de fragments geladen */
 	EtappeFragmentAdapter mAdapter;
-	
+
+	/** Variable voor de variabele naam van een fragment */
 	public static final String TAB = "tabid";
+	/** Variable voor de variabele naam van het etappe id */
 	public static final String ID = "index";
-	
+
+	/** De etappe waar info over wordt getoond. */
 	private Etappe etappe = null;
+	/** ID van de etappe die wordt weergegeven. */
 	private int etappe_id;
+	/** ID van  het tablad dat wordt getoond als de Activity wordt opgestart*/
 	private int mTabId;
+	/** De AsyncLoader waarin de gegevens opgehaald. */
 	private getEtappe mGetEtappe;
+	/** Variabelen om bij te houden uit welke staat deze Activity komt */
 	private boolean mRestarted, mConfigChanged;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		etappe_id = ((savedInstanceState == null) ? getIntent().getIntExtra("index", 0) : savedInstanceState.getInt("etappe_id"));
-		mTabId = ((savedInstanceState == null) ? getIntent().getIntExtra("tabid", 0) : savedInstanceState.getInt("tabid"));
+		etappe_id = ((savedInstanceState == null) ? getIntent().getIntExtra(ID, 0) : savedInstanceState.getInt(ID));
+		mTabId = ((savedInstanceState == null) ? getIntent().getIntExtra(TAB, 0) : savedInstanceState.getInt(TAB));
 		setTitle("Etappe "+etappe_id);
 	}
-	
+
 	/**
-     * Callback-methode resumen activity.
-     */
-    @Override
+	 * Callback-methode resumen activity.
+	 */
+	@Override
 	protected void onResume() {
-    	super.onResume();
-    	if (!mConfigChanged) {
-	    	mRestarted = true;
-	    	mGetEtappe = new getEtappe(mTabId);
+		super.onResume();
+		if (!mConfigChanged) {
+			mRestarted = true;
+			mGetEtappe = new getEtappe(mTabId);
 			mGetEtappe.execute();	
-    	}
+		}
 	}
-	
+
 	/**
-     * Callback-methode pauseren activity. Alle fragments worden verwijderd.
-     */
-    @Override
-    protected void onPause() {
-    	super.onPause();
-    	mConfigChanged = false;
-    	if (mAdapter != null) {
+	 * Callback-methode pauseren activity. Alle fragments worden verwijderd.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		mConfigChanged = false;
+		if (mAdapter != null) {
 			mAdapter.deleteAll(getSupportFragmentManager());
 			mTabId = ((ViewPager) findViewById(R.id.pager)).getCurrentItem();
 		} else
 			mGetEtappe.cancel(true);
-    }
-	
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		outState.putInt("etappe_id", etappe_id);
-		outState.putInt("tabid", (mPager == null ? 0 : mPager.getCurrentItem()));
 	}
 
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		outState.putInt(ID, etappe_id);
+		outState.putInt(TAB, (mPager == null ? 0 : mPager.getCurrentItem()));
+	}
+
+	/**
+	 * Methode die de etappe oplevert
+	 * @return Het team
+	 */
 	public Etappe getEtappe(){
 		return etappe;
 	}
@@ -137,7 +160,7 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 		public String getTitle(int position) {
 			return titels.get(position);
 		}
-		
+
 		public void deleteAll(FragmentManager fm) {
 			FragmentTransaction ft = fm.beginTransaction();
 			for (Fragment fragment: fragments)
@@ -146,15 +169,28 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 		}
 	}
 
-	private class getEtappe extends AsyncTask<Void, Void, Void> {  
+	/* Klasse voor het binnenhalen van een etappe. Tijdens het laden wordt een spinner weergegeven, vervolgens worden de Etappe in een
+	 * ListView getoond.
+	 * @author Anne van de Venis
+	 * @version 1.0
+	 */
+	private class getEtappe extends AsyncTask<Void, Void, Void> {
+		/** Spinner die wordt getoond tijdens het laden */
 		private ProgressDialog progressDialog;
+		/** Het resultaat van de api-aanvraag */
 		Response<Etappe> response;
+		/** ID van het tabblad dat geopend moet worden */
 		private int mTabId;
-		
+
+		/**
+		 * Constructor van deze AsyncTask
+		 * @param tabId ID van het tabblad dat geopend moet worden
+		 */
 		public getEtappe(int tabId) {
 			mTabId = tabId;
 		}
-		
+
+		@Override
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(EtappeActivity.this,  
 					getString(R.string.laden_titel), getString(R.string.etappe_laden), true);
@@ -174,7 +210,7 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 				response = api.getEtappesByID(etappe_id,EtappeActivity.this);
 			return null;       
 		}
-		
+
 		@Override
 		protected void onCancelled() {
 			progressDialog.dismiss();
@@ -191,17 +227,17 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 				mPager.setAdapter(mAdapter);
 				mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 				mIndicator.setViewPager(mPager);
-				
+
 				mIndicator.setOnPageChangeListener(EtappeActivity.this);
-				
+
 				mPager.setCurrentItem(mTabId);
 				mIndicator.setCurrentItem(mTabId);
 			}
 			progressDialog.dismiss();
-			
+
 		}
 	}
-	
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
@@ -215,7 +251,7 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 			mPager.setCurrentItem(currentItem, false);
 		}
 	}
-	
+
 	// -- ONPAGECHANGELISTENER --
 
 	public void onPageScrollStateChanged(int arg0) {
@@ -234,8 +270,8 @@ public class EtappeActivity extends SherlockFragmentActivity implements OnPageCh
 			if (prefs.getBoolean(lookupKey, true)) {
 				Toast.makeText(this, getResources().getString(R.string.team_looptijden_draai), Toast.LENGTH_LONG).show();
 				SharedPreferences.Editor editor = prefs.edit();
-	    		editor.putBoolean(lookupKey, false);
-	    		editor.commit();
+				editor.putBoolean(lookupKey, false);
+				editor.commit();
 			}
 			break;
 		}

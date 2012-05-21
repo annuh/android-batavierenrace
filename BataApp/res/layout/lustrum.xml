@@ -15,7 +15,7 @@
                 style="@style/h1" />
             
             <TextView
-                android:id="@+id/lustrum_omschrijving1"
+                android:text="@string/lustrum_text1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="0dip"
@@ -28,10 +28,11 @@
                 android:adjustViewBounds="true"
                 android:paddingLeft="10dip"
                 android:paddingRight="10dip"
-                android:contentDescription="Lustrum plaatje" />
+                android:contentDescription="Lustrum plaatje"
+                android:src="@drawable/lustrum" />
 
             <TextView
-                android:id="@+id/lustrum_omschrijving2"
+                android:text="@string/lustrum_text2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 style="@style/container_block" />

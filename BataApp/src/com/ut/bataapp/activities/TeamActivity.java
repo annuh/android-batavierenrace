@@ -1,17 +1,12 @@
 package com.ut.bataapp.activities;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -21,10 +16,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
-
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -40,25 +32,49 @@ import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
+/**
+ * Activity waar alle informatie van 1 bepaald team wordt getoond. De volgende fragments worden hier geladen:
+ * 	- Informatie
+ *  - Etappeuitslag
+ *  - Klassement
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class TeamActivity extends SherlockFragmentActivity implements OnPageChangeListener {
-	public static final int ETAPPEUITSLAG_TAB = 1;
-	public static final int KLASSEMENT_TAB = 2;
-	
+	/** ID's van de tabbladen */
+	public static final int ETAPPEUITSLAG_TAB = 1, KLASSEMENT_TAB = 2;
+	/** Variable voor de variabele naam van een fragment */
 	public static final String TAB = "tabid";
+	/** Variable voor de variabele naam van het team id */
 	public static final String ID = "index";
-	
+
+	/** ID van de knop bovenin om een team te volgen */
 	private static final int MENU_FOLLOW = Menu.FIRST;
+	/** ID van de knop bovenin om een team niet meer te volgen */
 	private static final int MENU_UNFOLLOW = Menu.FIRST + 1;
 
+	/** Viewpager, nodig voor het wisselen tussen tabbladen door middel van 'swypen'. */
 	private ViewPager mPager;
+	/** PageIndicator, nodig voor de fancy titels boven de tabbladen */
 	private PageIndicator mIndicator;
+	/** Fragmentadapter, hierin worden de fragments geladen */
 	private TeamFragmentAdapter mAdapter;
+	/** Het team-object van het team dat geladen wordt */
 	private Team mTeam;
+	/** ID van het team dat geladen wordt */
 	private int mTeamID;
+	/** AsyncTask waarin de gegevens worden ophaald */
 	private getTeam mGetTeam;
+	/** ID van het tabblad dat wordt geopenend als de Activity wordt gemaakt */
 	private int mTabId;
+	/** Variabelen om bij te houden uit welke staat deze Activity komt */
 	private boolean mRestarted, mConfigChanged;
 
+	/**
+	 * Methode die het team oplevert
+	 * @return Het team
+	 */
 	public Team getTeam(){
 		return mTeam;
 	}
@@ -71,31 +87,31 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 	}
 
 	/**
-     * Callback-methode resumen activity.
-     */
-    @Override
+	 * Callback-methode resumen activity.
+	 */
+	@Override
 	protected void onResume() {
-    	super.onResume();
-    	if (!mConfigChanged) {
-	    	mRestarted = true;
-	    	mGetTeam = new getTeam(mTabId);
+		super.onResume();
+		if (!mConfigChanged) {
+			mRestarted = true;
+			mGetTeam = new getTeam(mTabId);
 			mGetTeam.execute();	
-    	}
+		}
 	}
-	
+
 	/**
-     * Callback-methode pauseren activity. Alle fragments worden verwijderd.
-     */
-    @Override
-    protected void onPause() {
-    	super.onPause();
-    	mConfigChanged = false;
-    	if (mAdapter != null) {
+	 * Callback-methode pauseren activity. Alle fragments worden verwijderd.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		mConfigChanged = false;
+		if (mAdapter != null) {
 			mAdapter.deleteAll(getSupportFragmentManager());
 			mTabId = ((ViewPager) findViewById(R.id.pager)).getCurrentItem();
 		} else
 			mGetTeam.cancel(true);
-    }
+	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -154,6 +170,7 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 		return super.onOptionsItemSelected(item);
 	}
 
+	
 	class TeamFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 		ArrayList<String> titels = new ArrayList<String>();
@@ -164,7 +181,7 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 			titels.add(getString(R.string.team_titel_informatie));
 			fragments.add(new TeamLooptijdenFragment());
 			titels.add(getString(R.string.team_titel_looptijden));
-			Log.d("Klas", mTeam.getKlassement());
+
 			KlassementFragment kf = new KlassementFragment();
 			Bundle info = new Bundle();
 			info.putString("index",mTeam.getKlassement());
@@ -200,15 +217,28 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 		}
 	}
 
+	/* Klasse voor het binnenhalen van een team. Tijdens het laden wordt een spinner weergegeven, vervolgens wordt het team in een
+	 * ListView getoond.
+	 * @author Anne van de Venis
+	 * @version 1.0
+	 */
 	private class getTeam extends AsyncTask<Void, Void, Void> {  
+		/** Spinner die wordt getoond tijdens het laden */
 		private ProgressDialog progressDialog;
+		/** Het resultaat van de api-aanvraag */
 		Response<Team> response;
+		/** ID van het tabblad dat geopend moet worden */
 		private int mTabId;
-		
+
+		/**
+		 * Constructor van deze AsyncTask
+		 * @param tabId ID van het tabblad dat geopend moet worden
+		 */
 		public getTeam(int tabId) {
 			mTabId = tabId;
 		}
-		
+
+		@Override
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(TeamActivity.this,  
 					getString(R.string.laden_titel), getString(R.string.team_laden), true);
@@ -228,7 +258,7 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 				response = api.getTeamByID(mTeamID);
 			return null;
 		}
-		
+
 		@Override
 		protected void onCancelled() {
 			progressDialog.dismiss();
@@ -244,12 +274,12 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 
 				mPager = (ViewPager)findViewById(R.id.pager);
 				mPager.setAdapter(mAdapter);
-				
+
 				mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
 				mIndicator.setViewPager(mPager);
 				mIndicator.setOnPageChangeListener(TeamActivity.this);
 				invalidateOptionsMenu();
-				
+
 				mPager.setCurrentItem(mTabId, false);
 				mIndicator.setCurrentItem(mTabId);
 			}
@@ -268,11 +298,9 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 			mPager.setAdapter(mAdapter);
 			mIndicator.notifyDataSetChanged();
 			mPager.setCurrentItem(currentItem, false);
-			Log.d("Pager", "NIET NULL");
 		}
-		Log.d("Pager", "NULL");
 	}
-	
+
 	// -- ONPAGECHANGELISTENER --
 
 	public void onPageScrollStateChanged(int arg0) {
@@ -291,8 +319,8 @@ public class TeamActivity extends SherlockFragmentActivity implements OnPageChan
 			if (prefs.getBoolean(lookupKey, true)) {
 				Toast.makeText(this, getResources().getString(R.string.team_looptijden_draai), Toast.LENGTH_LONG).show();
 				SharedPreferences.Editor editor = prefs.edit();
-	    		editor.putBoolean(lookupKey, false);
-	    		editor.commit();
+				editor.putBoolean(lookupKey, false);
+				editor.commit();
 			}
 			break;
 		}

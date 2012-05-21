@@ -15,20 +15,37 @@ import com.viewpagerindicator.TitleProvider;
 
 import java.util.ArrayList;
 
+/**
+ * Activity voor het algemene informatie gedeelte.  
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class InfoAlgemeenActivity extends SherlockFragmentActivity {
     // -- INNER CLASSES --
+	
+	/* Adapterklasse voor fragments -> pager. In deze adapter worden de volgende tabbladen getoond:
+	 *  - Belangrijk
+	 *  - Bus- en starttijden
+	 *  - Slapen
+     * Onderdeel van ontwerpproject BataApp.
+     * @author Anne van de Venis
+     * @version 1.0
+     */
 	class AlgemeenFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+		/** Hier worden de Fragments opgeslagen die worden getoond. */
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+		/** Hier worden de titels van de Fragments opgeslagen. */
 		ArrayList<String> titels = new ArrayList<String>();
 		
 		public AlgemeenFragmentAdapter(FragmentManager fm) {
 			super(fm);
 			fragments.add(new LayoutFragment(R.layout.info_algemeen_watmoetjeweten));
-			titels.add("Belangrijk");
+			titels.add(getString(R.string.info_algemeen_watmoetjeweten_titel));
 			fragments.add(new LayoutFragment(R.layout.info_algemeen_busenstarttijden));
-			titels.add("Tijden");
+			titels.add(getString(R.string.info_algemeen_busenstarttijden_titel));
 			fragments.add(new LayoutFragment(R.layout.info_algemeen_slapen));
-			titels.add("Slapen");
+			titels.add(getString(R.string.info_algemeen_slapen_titel));
 		}
 		
 		@Override
@@ -62,7 +79,7 @@ public class InfoAlgemeenActivity extends SherlockFragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	setContentView(R.layout.simple_tabs);
-    	setTitle(R.string.informatie_algemeen_titel);
+    	setTitle(R.string.info_algemeen_titel);
     	getSupportActionBar().setHomeButtonEnabled(true);
     	mPager = (ViewPager) findViewById(R.id.pager);
 		mPager.setAdapter(new AlgemeenFragmentAdapter(getSupportFragmentManager()));
