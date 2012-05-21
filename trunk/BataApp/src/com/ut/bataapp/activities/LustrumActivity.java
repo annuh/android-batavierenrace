@@ -1,13 +1,17 @@
 package com.ut.bataapp.activities;
 
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.ut.bataapp.R;
 import com.ut.bataapp.Utils;
 
+/**
+ * Activity voor het tonen van informatie over de Batavierenrace XL.  
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class LustrumActivity extends SherlockFragmentActivity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -15,16 +19,6 @@ public class LustrumActivity extends SherlockFragmentActivity{
 		setTitle(R.string.lustrum_titel);
 		getSupportActionBar().setHomeButtonEnabled(true);
 		setContentView(R.layout.lustrum);
-
-		TextView lustrum_omschr1 = (TextView) findViewById(R.id.lustrum_omschrijving1);
-		lustrum_omschr1.setText(R.string.lustrum_text1);
-
-		ImageView lustrum_plaatje = (ImageView) findViewById(R.id.lustrum_plaatje);
-		int id = this.getResources().getIdentifier(getPackageName()+":drawable/lustrum", null, null);
-		lustrum_plaatje.setImageResource(id);
-
-		TextView lustrum_omschr2 = (TextView) findViewById(R.id.lustrum_omschrijving2);
-		lustrum_omschr2.setText(R.string.lustrum_text2);
 	}
 	
 	@Override

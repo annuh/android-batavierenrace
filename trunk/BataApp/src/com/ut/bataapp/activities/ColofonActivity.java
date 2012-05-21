@@ -14,9 +14,24 @@ import com.viewpagerindicator.*;
 
 import java.util.ArrayList;
 
+/**
+ * Activity voor het Colofon informatie gedeelte.  
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class ColofonActivity extends SherlockFragmentActivity {
+	
 	// -- INNER CLASSES --
 	
+	/* Adapterklasse voor fragments -> pager. In deze adapter worden de volgende tabbladen getoond:
+	 *  - Contactgegevens
+	 *  - Colofon
+	 *  - Disclaimer 
+     * Onderdeel van ontwerpproject BataApp.
+     * @author Anne van de Venis
+     * @version 1.0
+     */
 	class ColofonFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
 		ArrayList<String> titels = new ArrayList<String>();
@@ -24,11 +39,11 @@ public class ColofonActivity extends SherlockFragmentActivity {
 		public ColofonFragmentAdapter(FragmentManager fm) {
 			super(fm);
 			fragments.add(new LayoutFragment(R.layout.info_colofon_contactgegevens));
-			titels.add("Contact");
+			titels.add(getString(R.string.info_colofon_contactgegevens_titel));
 			fragments.add(new LayoutFragment(R.layout.info_colofon_colofon));
-			titels.add("Colofon");
+			titels.add(getString(R.string.info_colofon_colofon_titel));
 			fragments.add(new LayoutFragment(R.layout.info_colofon_disclaimer));
-			titels.add("Disclaimer");
+			titels.add(getString(R.string.info_colofon_disclaimer_titel));
 		}
 		
 		@Override
@@ -48,12 +63,10 @@ public class ColofonActivity extends SherlockFragmentActivity {
 	}
 	
 	// -- CONSTANTEN --
-	
 	public static final String EXTRA_TAB = "tabid", INSTANTE_STATE_TAB = "tabid";
 	public static final int TAB_CONTACT = 0, TAB_COLOFON = 1, TAB_DISCLAIMER = 2;
 	
 	// -- INSTANTIEVARIABELEN --
-	
 	private ViewPager mPager;
 	
 	// -- LIFECYCLEMETHODEN --

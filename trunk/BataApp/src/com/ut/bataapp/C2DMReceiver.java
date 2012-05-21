@@ -16,10 +16,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.provider.Settings.Secure;
 import android.util.Log;
 import android.widget.Toast;
@@ -28,7 +26,6 @@ import com.ut.bataapp.R;
 import com.ut.bataapp.activities.BerichtenActivity;
 import com.ut.bataapp.activities.KleurcodesActivity;
 import com.ut.bataapp.activities.WeerActivity;
-import com.ut.bataapp.objects.Bericht;
 import com.ut.bataapp.services.C2DMConfig;
 
 /**
@@ -40,8 +37,12 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 
 	/** The Constant TAG. */
 	static final String TAG = C2DMConfig.makeLogTag(C2DMReceiver.class);
+	/** Context van de Activity. */
 	Context context;
+	/** Uniek id van dit toestel */
 	String deviceRegistrationID;
+	/** Variable die bijhoudt hoeveel notificaties er zijn gemaakt, nodig voor unieke ids van de notificaties. */
+	int nots = 0;
 
 	/**
 	 * Instantiates a new c2 dm receiver.
@@ -72,14 +73,24 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 			makeNotification(context, type, message);
 		}
 	}
-	
+
 	@SuppressWarnings("deprecation")
+	/**
+	 * Methode die notificatie maakt.
+	 * @param context Context van actieve Activity
+	 * @param type Type van notficatie, mogelijk waarden:
+	 * 			y = code geel
+	 * 			g = code groen
+	 * 			r = code rood
+	 * 			w = weer alert
+				(Default) = Custom bericht
+	 * @param message
+	 */
 	public void makeNotification(Context context, String type, String message) {
 		String titel = "";
 		Intent tointent = new Intent(context, BerichtenActivity.class);
 		tointent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-		
-		
+
 		switch(type.charAt(0)) {
 		case 'y':
 			titel = context.getString(R.string.kleurcode_geel_titel);
@@ -106,24 +117,24 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 		default:
 			titel = message;
 		}
-		
-		
+
+
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 		Notification notification = new Notification(R.drawable.icon, getString(R.string.notification_push_statusbar), System.currentTimeMillis());
-		
+
 		// Hide the notification after its selected
 		addNotificationParams(notification);
-		
+
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
 				tointent, PendingIntent.FLAG_CANCEL_CURRENT);
 		notification.setLatestEventInfo(context, getString(R.string.notification_push_titel),
 				titel, pendingIntent);
-		
+
 		notificationManager.notify(nots, notification);
 		nots++;
 	}
-	
-	
+
+
 	/* Voegt flags (volgens user's voorkeuren) toe aan notification.
 	 * @param notification notificatie waaraan flags moeten worden toegevoegd
 	 * @require notification != null
@@ -131,30 +142,27 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 	private void addNotificationParams(Notification notification) {
 		// optimalisatie:
 		Resources res = this.getResources();
-		
+
 		notification.defaults |= Notification.DEFAULT_SOUND;
 		notification.defaults |= Notification.DEFAULT_VIBRATE;
 		notification.ledARGB = res.getColor(R.color.notification_flashing_color);
 		notification.ledOnMS = res.getInteger(R.integer.notification_flashing_on_ms);
 		notification.ledOffMS = res.getInteger(R.integer.notification_flashing_off_ms);
 		notification.flags |= Notification.FLAG_SHOW_LIGHTS;
-		
+
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
 	}
-	
-	
-	int nots = 0;
+
+
+
 
 	/* (non-Javadoc)
 	 * @see com.google.android.c2dm.C2DMBaseReceiver#onRegistered(android.content.Context, java.lang.String)
 	 */
 	@Override
 	public void onRegistrered(Context context, String registrationId) {
-		//super.onRegistrered(context, registrationId);
 		this.context = context;
 		this.deviceRegistrationID = registrationId;
-		//Log.e(TAG, ">>>>id recieved" + registrationId);
-		//Log.e(TAG, ">>>>device unique id " + deviceId);
 		new registerServer().execute();
 
 
@@ -168,7 +176,13 @@ public class C2DMReceiver extends C2DMBaseReceiver {
 		super.onUnregistered(context);
 	}
 
-
+	/**
+	 * Klasse die dit toestel registreerd bij de push-notificatie server. Deze methode wordt alleen aangeroepen
+	 * als het toestel nog niet geregisteerd is, of als de registratie verlopen is.
+	 * @author Anne vd Venis
+	 * @version 1.0
+	 *
+	 */
 	private class registerServer extends AsyncTask<Void, Void, Void> {  		
 
 		@SuppressWarnings("deprecation")

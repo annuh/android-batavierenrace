@@ -16,6 +16,10 @@ import com.ut.bataapp.Utils;
 import com.ut.bataapp.adapters.TeamAdapter;
 import com.ut.bataapp.objects.Team;
 
+/* Klasse waarin een lijst met favoriete teams van de gebruiker wordt getoond.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class FavoTeamsActivity extends SherlockListActivity {
 	public final static int DELETE_FAVOTEAM = 1;
 	private static final int MENU_ADDTEAM = Menu.FIRST;
@@ -36,7 +40,8 @@ public class FavoTeamsActivity extends SherlockListActivity {
 	}
 
 	/**
-	 * Bouwt de lijst met favorieten
+	 * Bouwt de lijst met favorieten. Deze lijst wordt in een adapter gezet en in de ListView geplaatst.
+	 * Als de gebruiker nog geen favoriete teams heeft wordt hier een melding van gegeven.
 	 */
 	public void initLijst() {
 		ArrayList<Team> teams = Utils.getFavoTeams(FavoTeamsActivity.this);

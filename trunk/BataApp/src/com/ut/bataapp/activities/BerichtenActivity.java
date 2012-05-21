@@ -105,7 +105,8 @@ public class BerichtenActivity extends SherlockListActivity  {
 	}
 
 	/**
-	 * Maakt de lijst met berichten
+	 * Maakt de lijst met berichten. Deze berichten worden in twee Adapters gezet, 1 voor de pushberichten en 1 voor de nieuwsberichten.
+	 * Deze twee ListViews worden gecombineerd in een SeperatedLIstAdapter.
 	 */
 	public void makeList() {
 		pushberichten = Utils.getBerichten(this);
@@ -114,20 +115,26 @@ public class BerichtenActivity extends SherlockListActivity  {
 		adapter_nieuws = new BerichtAdapter(this, nieuwsberichten);
 
 		SeparatedListAdapter adapter = new SeparatedListAdapter(this);
-		adapter.addSection("Notificaties", adapter_push);
-		adapter.addSection("Nieuws", adapter_nieuws);
+		adapter.addSection(getString(R.string.berichten_pushberichten), adapter_push);
+		adapter.addSection(getString(R.string.berichten_nieuwsberichten), adapter_nieuws);
 
 		setListAdapter(adapter);
 	}
 
 	/**
-	 * Inner class die berichten van de API vraagt.
+	 * Inner class die berichten van de API vraagt. Tijdens het laden wordt een spinner getoond. 
+	 * De berichten worden vervolgens getoond in de ListView.
 	 * @author Anne
+	 * @version 1.0
 	 *
 	 */
 	private class getBerichten extends AsyncTask<Void, Void, Void> {
+		/** Het resultaat van deze AsyncTask */
 		Response<ArrayList<Bericht>> response;
-		private ProgressDialog progressDialog;  
+		/** De spinner die getoond wordt tijdens het laden */
+		private ProgressDialog progressDialog; 
+		
+		@Override
 		protected void onPreExecute() {  
 			progressDialog = ProgressDialog.show(BerichtenActivity.this,  
 					getString(R.string.laden_titel), getString(R.string.berichten_laden), true);

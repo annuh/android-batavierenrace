@@ -19,23 +19,45 @@ import com.ut.bataapp.fragments.InfoOverzichtskaartenFragment;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
+/**
+ * Activity voor het informatie gedeelte. De volgende fragments worden hier geladen:
+ * 	- Algemeen
+ *  - Calamiteiten
+ *  - Overzichtskaart
+ *  - Colofon  
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne van de Venis
+ * @version 1.0
+ */
 public class InformatieActivity extends SherlockFragmentActivity {
+	
 	// -- INNER CLASSES --
 	
+	/* Adapterklasse voor fragments -> pager. In deze adapter worden de volgende tabbladen getoond:
+	 * 	- Algemeen
+	 *  - Calamiteiten
+	 *  - Overzichtskaart
+	 *  - Colofon  
+     * Onderdeel van ontwerpproject BataApp.
+     * @author Anne van de Venis
+     * @version 1.0
+     */
 	class InformatieFragmentAdapter extends FragmentPagerAdapter implements TitleProvider {
+		/** Hier worden de Fragments opgeslagen die worden getoond. */
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+		/** Hier worden de titels van de Fragments opgeslagen. */
 		ArrayList<String> titels = new ArrayList<String>();
 
 		public InformatieFragmentAdapter(FragmentManager fm) {
 			super(fm);
 			fragments.add(new InfoAlgemeenFragment());
-			titels.add("Algemeen");
+			titels.add(getString(R.string.info_algemeen_titel));
 			fragments.add(new InfoCalamiteitenFragment());
-			titels.add("Calamiteiten");
+			titels.add(getString(R.string.info_calamiteiten_titel));
 			fragments.add(new InfoOverzichtskaartenFragment());
-			titels.add("Overzichtkaart");
+			titels.add(getString(R.string.info_overzichtskaart_titel));
 			fragments.add(new InfoColofonFragment());
-			titels.add("Colofon");
+			titels.add(getString(R.string.info_colofon_titel));
 		}
 
 		@Override
