@@ -18,6 +18,12 @@ import com.viewpagerindicator.PageIndicator;
 import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
+/**
+ * Activity waar de sponsorinformatie weergegeven wordt.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Bas Janssen
+ * @version 1.0
+ */
 public class SponsorInformatieActivity extends SherlockFragmentActivity {
 	// -- INNER CLASSES --
 
