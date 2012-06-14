@@ -1,16 +1,10 @@
-/*
- * Versie: v2
- * Date: 08-03-12 13:05
- * By: Jochem Elsinga
- * Update: removed ID becuase a klassement doesnt have an id.
- * Update: Format of code
- * Update: Added id and naam setter
- */
-
 package com.ut.bataapp.objects;
 
 import java.util.ArrayList;
 
+/**
+ * Instanties van deze klasse representeren de klassementen in het systeem.
+ */
 public class Klassement {
 
 	String naam;
@@ -18,15 +12,19 @@ public class Klassement {
 	ArrayList<KlassementItem> uitslag;
 
 	/**
-	 * @param naam - Naam dit klassement
-	 * @param uitslag - Uitslag van dit klassement
+	 * Constructor
+	 * @param naam - Naam van dit klassement
+	 * @param uitslag - Uitslagen van dit klassement
 	 */
 	public Klassement(String naam, ArrayList<KlassementItem> uitslag) {
 		this.naam = naam;
 		this.uitslag = uitslag;
 	}
 
-	//LEGE CONSTRUCTOR!
+	/**
+	 * Constructor zonder parameters
+	 * Creert een leeg klassement object.
+	 */
 	public Klassement(){
 		this.uitslag = new ArrayList<KlassementItem>();
 	}
@@ -39,42 +37,15 @@ public class Klassement {
 	public ArrayList<KlassementItem> getUitslag(){return uitslag;}
 	public int getTotEtappe(){return totEtappe;}
 	
+	@Override
 	public String toString(){
 		return "klassement: "+getNaam();
 	}
 
 	/**
-	 * Voegt team toe aan dit klassement
-	 * @ensures team.getKlassement() == this
-	 * @param team
-	 * @param plaats
+	 * Voegt een klassementitem aan dit klassement toe
 	 */
 	public void addKlassementInfo(KlassementItem info){
 		uitslag.add(info);
-	}
-
-	
-	public class KlassementInfo{
-
-		int plaats;
-		String teamNaam;
-		String tijd;
-		int teamStartNummer;
-
-		public KlassementInfo(){}
-
-		public void setPlaats(int plaats) {this.plaats = plaats;}
-		public void setTeamNaam(String teamNaam){ this.teamNaam = teamNaam;}
-		public void setTijd(String tijd){ this.tijd = tijd;}
-		public void setTeamStartNummer(int teamStartNummer){ this.teamStartNummer = teamStartNummer;}
-
-		public int getPlaats() { return plaats; }
-		public String getTeamNaam(){ return teamNaam;}
-		public String getTijd(){ return tijd;}
-		public int getTeamStartNummer(){ return teamStartNummer;}
-
-		public String toString(){
-			return "KlassementInfo: "+getTeamNaam()+", "+getTeamStartNummer()+", "+getTijd();
-		}
 	}
 }
