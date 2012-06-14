@@ -10,20 +10,15 @@
 
 package com.ut.bataapp.objects;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
-import android.util.Log;
-
+/**
+ * Instanties van deze klasse representeren een bepaald team in het systeem.
+ */
 public class Team {
 	private int startnummer = 0;
 	private int startgroep = 0;
 	private String naam = "";
 	private String klassement ="";
-	private int id = 0;
 	private int klassementTotEtappe = 0;
 	private ArrayList<Looptijd> looptijden = new ArrayList<Looptijd>();
 	
@@ -39,20 +34,20 @@ public class Team {
 	}
 	
 	/**
-	 * Wordt gebruikt in FavoTeam
+	 * Constructor. Wordt gebruikt in FavoTeam
 	 * TODO: Samenvoegen met bovenstaande constructor?
 	 * @param naam
 	 * @param startnummer
 	 * @param id
 	 */
 	public Team(int id,String naam) {
-		this.id = id;
 		this.startnummer = id;
 		this.naam = naam;
-		
 	}
 	
-	/*lege constructor*/
+	/**
+	 * Default Constructor
+	 */
 	public Team(){}
 	
 	/*Setters*/
@@ -68,12 +63,19 @@ public class Team {
 	public String getNaam() {return naam;}
 	public ArrayList<Looptijd> getLooptijden(){return looptijden;}
 	public int getKlassementTotEtappe() {return klassementTotEtappe; }
-	
+	/**
+	 * Geeft het unieke ID van een Team terug. 
+	 * Geeft nu nog gewoon startnummer terug
+	 * TODO: UID uit xml halen
+	 * @return this.startnummer
+	 */
 	public int getID() {
-		// zolang uid nog niet uit XML te halen is:
 		return startnummer;
 	}
-	
+	/**
+	 * Geeft de cumelatieve stand van dit team in het klassement
+	 * @return String met de cummelatieve stand(getal)
+	 */
 	public String getCumKlassement() {
 		String cumKlassement = String.valueOf(startnummer);
 		if (looptijden != null) {
@@ -91,11 +93,17 @@ public class Team {
 		}
 		return cumKlassement;
 	}
-	
+	/**
+	 * Geeft integer waarde van de cumelatieve stand in het klassement
+	 * @return Integer.parseInt(getCumKlassement());
+	 */
 	public int getCumKlassementInt() {
 		return Integer.parseInt(getCumKlassement());
 	}
-	
+	/**
+	 * Geeft de totale looptijd van dit team terug
+	 * @return String met de totale looptijd van dit team
+	 */
 	public String getTotaalTijd() {
 		String totaaltijd = "00:00:00";
 		if (looptijden != null && looptijden.size() > 0 )
@@ -103,7 +111,7 @@ public class Team {
 		return totaaltijd;
 	}
 	
-	/*String formaat*/
+	@Override
 	public String toString(){
 		return "Team#: "+getStartnummer()+" group#: "+getStartGroep()+" naam: "+getNaam()+'\n';
 	}
@@ -113,8 +121,6 @@ public class Team {
 	}
 
 	public String getKlassement() {
-		if(klassement == null)
-			Log.d("Klassement","NULL");
 		if(klassement.equals("A")){
 			return "Algemeen";
 		}else if(klassement.equals("U")){

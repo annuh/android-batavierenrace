@@ -1,5 +1,8 @@
 package com.ut.bataapp.objects;
 
+/**
+ * Instanties van deze klasse representeren de etappes in het systeem. 
+ */
 public class Etappe {
 	private int id;
 	private String van;
@@ -20,7 +23,7 @@ public class Etappe {
 	public int[] maxHeight = {0, 32, 96, 14, 15, 17, 26, 16, 25, 18, 27, 21, 28, 20, 20, 27, 25, 22, 60, 20, 22, 26, 36, 47, 47, 47};
 	
 	/**
-	 * 
+	 * Constructor
 	 * @param id, nummer van de etappe
 	 * @param afstand, afstand van de etappe
 	 * @param geslacht, geslacht van de etappe
@@ -42,7 +45,10 @@ public class Etappe {
 		this.record_tijd = record_tijd;
 	}
 	
-	//Nog kleinere constuctor
+	/**
+	 * Kleine contructor met alleen id parameter
+	 * @param id, nummer van de etappe
+	 */
 	public Etappe(int id){
 		this.id = id;
 	}
@@ -83,13 +89,11 @@ public class Etappe {
 		int minutes = (int) ((millis / (1000*60)) % 60);
 		int hours   = (int) ((millis / (1000*60*60)) % 24);
 		return String.format(format, hours)+ ":" + String.format(format, minutes) +":"+ String.format(format, seconds);
-		//String result = String.format("%02d:%02d:%02d",   
-		//		   TimeUnit.MILLISECONDS.toHours(millis),  
-		//		   TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),  
-		//		   TimeUnit.MILLISECONDS.toSeconds(millis) -  TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-		//return result;
 		}
-	/*String formaat*/
+	
+	/**
+	 * String representatie van een etappe.
+	 */
 	public String toString(){
 		String statement;
 		if(van!=null) statement = "Etappe#: "+getId()+" geslacht: "+getGeslacht()+" van-naar: "+getVan()+"-"+getNaar()+" record jaar: "+getRecordJaar()+'\n';

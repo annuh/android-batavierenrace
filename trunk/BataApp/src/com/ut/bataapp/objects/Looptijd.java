@@ -8,7 +8,9 @@
  */
 
 package com.ut.bataapp.objects;
-
+/**
+ * Instanties van deze klasse representeren een looptijd van een bepaald team.
+ */
 public class Looptijd {
 
 	//Waarde(s) voor als die niet in de XML staan

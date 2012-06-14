@@ -1,5 +1,8 @@
 package com.ut.bataapp.objects;
-
+/**
+ * Deze klasse representeerd een response die gegeven kan worden door een parser
+ * @param <T> het type object dat de response bevat
+ */
 public class Response<T>{
 
 	public final static int OK_UPDATE = 1;
