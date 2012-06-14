@@ -20,15 +20,20 @@ import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.activities.EtappeRouteTekstActivity;
 import com.ut.bataapp.objects.Etappe;
 
+/**
+ * Klasse voor het representeren van een een EtappeRoutesFragment.
+ * Van een een bepaalde route wordt een overzichtskaart weergegeven met hieronder links naar een textuele looproutebeschrijving en links naar 
+ * Google Maps voor de looproute en autoroute.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class EtappeRoutesFragment extends SherlockFragment {
-	private Etappe etappe;
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	
-    	etappe = ((EtappeActivity) getActivity()).getEtappe();
+    	final Etappe etappe = ((EtappeActivity) getActivity()).getEtappe();
     	View view = inflater.inflate(R.layout.etappe_routes, container, false);
-    	
     	final String[] auto_maps = getResources().getStringArray(R.array.url_autoroutes);
     	final String[] lopers_maps = getResources().getStringArray(R.array.url_lopersroutes);
     	    	
@@ -73,7 +78,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
             	Intent mapLopersroute = new Intent(Intent.ACTION_VIEW);
             	Uri uri0 = Uri.parse(lopers_maps[etappe.getId()-1]);
             	mapLopersroute.setData(uri0);
-            	startActivity(Intent.createChooser(mapLopersroute, "Lopersroute routebeschrijving"));
+            	startActivity(Intent.createChooser(mapLopersroute, getString(R.string.etappe_routes_routebeschrijving_maps_looproute)));
             }
         });
     	
@@ -86,7 +91,7 @@ public class EtappeRoutesFragment extends SherlockFragment {
 				if(!auto_maps[etappe.getId()-1].equals("")){
 					Uri uri0 = Uri.parse(auto_maps[etappe.getId()-1]);
 					mapAutoroute.setData(uri0); 
-					startActivity(Intent.createChooser(mapAutoroute, "Autoroute routebeschrijving"));
+					startActivity(Intent.createChooser(mapAutoroute, getString(R.string.etappe_routes_routebeschrijving_maps_autoroute)));
 				}
 			}
 		});

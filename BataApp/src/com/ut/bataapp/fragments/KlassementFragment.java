@@ -2,20 +2,17 @@ package com.ut.bataapp.fragments;
 
 import java.util.Collections;
 import java.util.Comparator;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +23,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.actionbarsherlock.R;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
@@ -41,20 +37,41 @@ import com.ut.bataapp.objects.Klassement;
 import com.ut.bataapp.objects.KlassementItem;
 import com.ut.bataapp.objects.Response;
 
+/**
+ * Klasse voor het representeren van een een KlassementFragment.
+ * Alle klassementitems worden weergegeven op een lijst en gesorteerd op stand.
+ * De klassementitems zijn tevens te sorteren op naam en stand en zijn te updaten vanuit dit fragment.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class KlassementFragment extends SherlockListFragment implements LoaderManager.LoaderCallbacks<Response<Klassement>> {
 
+	/** ID van de menuknop om te zoeken op teamnaam of teamstartnummer */
 	private final int MENU_SEARCH = Menu.FIRST + 10;
+	/** ID van de menuknop om te sorteren op teamnaam */
 	private final int MENU_SORT_NAAM = Menu.FIRST + 11;
+	/** ID van de menuknop om te sorteren op stand */
 	private final int MENU_SORT_STAND = Menu.FIRST + 12;
+	/** ID van de menuknop om de gegevens te updaten */
 	private final int MENU_UPDATE = Menu.FIRST + 13;
+	/** String waarop de klassementitems gefilterd moeten worden */
 	private String filterText = "";
+	/** Naam van dit klassement */
 	private static String naam;
+	/** Het klassement waarvan de klassementitems worden weergegeven */
 	private Klassement klassement;
+	/** Adapter waarin de gegevens worden opgeslagen */
 	private KlassementAdapter adapter = null;
+	/** Sorteervolgorde van naam */
 	private char sortNaam = 'D';
+	/** Sorteervolgorde van stand */
 	private char sortStand = 'D';
+	/** Boolean om bij te houden of dit fragment worden geladen in een ViewPager */
 	private boolean inViewpager = false;
+	/** Boolean om bij te houden of dit fragment voor de eerste keer wordt geladen, nodig om alleen eerste keer te sorteren */
 	private boolean firstLaunch = true;
+	/** ProgressDialog dat wordt getoond als de gegevens worden opgehaald */
 	private ProgressDialogFragment progressDialog;
 
 	@Override
@@ -69,9 +86,9 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			getActivity().getSupportLoaderManager().restartLoader(0, null, this);
 		else
 			getActivity().getSupportLoaderManager().initLoader(0, null, this);
-		
+
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		inflater.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
@@ -95,14 +112,14 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 				sortStand(null);
 			}
 		});
-		
+
 		view.findViewById(R.id.listview_hint).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				closeHint(view);
 			}
 		});
-		
+
 		return view;
 	}
 
@@ -156,6 +173,10 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Deze methode zorgt ervoor dat het software toetsenbord wordt geopend en maakt een invoerveld actief. 
+	 * @param primaryTextField Het invoerveld dat actief moet worden gemaakt
+	 */
 	public static void setKeyboardFocus(final EditText primaryTextField) {
 		(new Handler()).postDelayed(new Runnable() {
 			public void run() {
@@ -177,12 +198,19 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		}
 	};
 
+	/**
+	 * Zet alle items uit klassement in een ListView
+	 */
 	public void makeList() {
 		adapter = new KlassementAdapter(getActivity().getApplicationContext(), klassement.getUitslag());
 		setListAdapter(adapter);
 		adapter.notifyDataSetChanged();
 	}
 
+	/**
+	 * Methode om de klassementitems te sorteren op teamnaam
+	 * @param v - View welke deze actie aanroept
+	 */
 	public void sortNaam(View v) {
 		if(sortNaam == 'D') {
 			Collections.sort( klassement.getUitslag(),new Comparator<KlassementItem>() {
@@ -209,6 +237,10 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		}
 	}
 
+	/**
+	 * Methode om de klassementitems te sorteren op teamstartnummer
+	 * @param v - View welke deze actie aanroept
+	 */
 	public void sortStand(View v) {
 		if(sortStand == 'D') {
 			Collections.sort( klassement.getUitslag(),new Comparator<KlassementItem>() {
@@ -234,14 +266,22 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 			((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand) +" "+ getText(i));
 			makeList();
 		}
-		
+
 	}
 
+	/**
+	 * Haalt de pijlen weg in de headers van de ListView.
+	 */
 	public void resetArrows() {
 		((TextView) getView().findViewById(R.id.klassement_header_stand)).setText(this.getText(R.string.klassement_header_stand));
 		((TextView) getView().findViewById(R.id.klassement_header_team)).setText(this.getText(R.string.klassement_header_team));
 	}
 
+	/**
+	 * Loader waarin het klassement wordt opgehaald.
+	 * @author Anne
+	 *
+	 */
 	public static class KlassementLoader extends AsyncTaskLoader<Response<Klassement>> {
 		Response<Klassement> response;
 		public KlassementLoader(Context context) {
@@ -302,13 +342,10 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	public void onLoadFinished(Loader<Response<Klassement>> loader, Response<Klassement> response) {
 		if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 			klassement = response.getResponse();
-			Log.d("Klassement", ""+klassement.getUitslag().size());
 			if(firstLaunch) {
 				sortStand(null);
 				firstLaunch=false;
 			}
-			//else
-			//	makeList();
 			if(getView() != null) {
 				getListView().setSelection(getArguments().getInt("init") -1);
 				if(!inViewpager && progressDialog != null)
@@ -321,7 +358,9 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		}
 	}
 
-
+	/**
+	 * 
+	 */
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -331,6 +370,9 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 		}
 	};
 
+	/**
+	 * Verwijderd het dialog waarin een spinner wordt weergegeven.
+	 */
 	public void hideDialog(){
 		progressDialog.dismiss();
 	}
@@ -338,25 +380,28 @@ public class KlassementFragment extends SherlockListFragment implements LoaderMa
 	@Override
 	public void onLoaderReset(Loader<Response<Klassement>> arg0) {                
 		adapter = null;
-		Log.d("LOG", "BLaAAT");
 	}
-	
+
+	/**
+	 * Verwijderd de hint de bovenin de layout wordt getoond.
+	 * @param view View die deze methode aanroept
+	 */
 	public void closeHint(final View view) {
 		Animation animationSlideOutRight = AnimationUtils.loadAnimation(this.getActivity().getApplicationContext(),
-		         android.R.anim.slide_out_right);
+				android.R.anim.slide_out_right);
 		animationSlideOutRight.setDuration(200);
 		animationSlideOutRight.setAnimationListener(new AnimationListener() {
-                    public void onAnimationStart(Animation anim) { };
-                    public void onAnimationRepeat(Animation anim) { };
-                    public void onAnimationEnd(Animation anim) {
-                    	view.setVisibility(View.GONE);
-                    };
-                });
+			public void onAnimationStart(Animation anim) { };
+			public void onAnimationRepeat(Animation anim) { };
+			public void onAnimationEnd(Animation anim) {
+				view.setVisibility(View.GONE);
+			};
+		});
 		view.setAnimation(animationSlideOutRight);
 		view.startAnimation(animationSlideOutRight);
-		
+
 	}
-	
+
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();

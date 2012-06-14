@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import com.ut.bataapp.R;
 import com.ut.bataapp.objects.Looptijd;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,30 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.TextView;
 
+/**
+ * Adapter voor Etappelooptijden. De teamnaam, plaats, tijd, snelheid en foutcode worden getoond.
+ * Looptijden zijn zoekbaar, op teamnaam en teamstartnummer 
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class EtappeLooptijdAdapter extends ArrayAdapter<Looptijd> {
 
+	/** Context waarin deze Adapter wordt aangeroepen */
 	private final Context context;
+	/** Lijst met alle looptijden, wordt gebruikt om filteredItems te herstellen */
 	private final ArrayList<Looptijd> values;
-	
+	/** Lijst met gefilterde looptijden die getoond worden */
 	private ArrayList<Looptijd> filteredItems;
+	/** Filter dat gebruikt wordt om te zoeken op teamnaam en teamstartnummer */
 	private LooptijdFilter filter;
 
+	/**
+	 * Constructor van EtappeLooptijdAdapter.
+	 * Alle looptijden worden gekopieerd naar values en filteredItems
+	 * @param context Context waarin deze Adapter wordt aangeroepen
+	 * @param values Lijst met alle looptijden
+	 */
 	public EtappeLooptijdAdapter(Context context, ArrayList<Looptijd> values) {
 		super(context, R.layout.row_team_looptijd, values);
 		this.context = context;
@@ -67,31 +82,31 @@ public class EtappeLooptijdAdapter extends ArrayAdapter<Looptijd> {
 		return filter;
 	}
 
-
+	/**
+	 * Inner class Filter. Deze filter maakt het mogelijk om te zoeken op teamnaam en startnummer, looptijden die hier niet
+	 * aan voldoen worden gefilterd.
+	 * @author Anne vd Venis
+	 * @version 1.0
+	 */
 	private class LooptijdFilter extends Filter{
 
 		@Override
 		protected FilterResults performFiltering(CharSequence constraint) {
-
 			constraint = constraint.toString().toLowerCase();
 			FilterResults result = new FilterResults();
-			if(constraint != null && constraint.toString().length() > 0)
-			{
+			if(constraint != null && constraint.toString().length() > 0) {
 				ArrayList<Looptijd> filteredItems = new ArrayList<Looptijd>();
-
-				for(int i = 0, l = values.size(); i < l; i++)
-				{
+				for(int i = 0, l = values.size(); i < l; i++) {
 					Looptijd m = values.get(i);
+					// Zoek op teamnaam of teamstartnummer
 					if(m.getTeamNaam().toLowerCase().contains(constraint) || String.valueOf(m.getTeamStartnummer()).contains(constraint))
 						filteredItems.add(m);
 				}
 				result.count = filteredItems.size();
 				result.values = filteredItems;
 			}
-			else
-			{
-				synchronized(this)
-				{
+			else {
+				synchronized(this) {
 					result.values = values;
 					result.count = values.size();
 				}

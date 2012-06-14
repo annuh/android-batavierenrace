@@ -11,8 +11,22 @@ import com.ut.bataapp.R;
 import com.ut.bataapp.activities.TeamActivity;
 import com.ut.bataapp.objects.Team;
 
+/**
+ * Klasse voor het representeren van een een TeamInformatieFragment.
+ * In dit fragment wordt de informatie van een bepaald Team getoond.
+ * De volgende informatie wordt getoond:
+ * - Teamnaam
+ * - Teamstartnummer
+ * - Team klassement
+ * - Cum. klassements stand
+ * - Totale looptijd van dit Team
+ * - Tot welke etappe het cum. klassement is gebaseerd
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class TeamInformatieFragment extends SherlockFragment {
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,19 +42,19 @@ public class TeamInformatieFragment extends SherlockFragment {
 
 		TextView team_startgroep = (TextView) view.findViewById(R.id.team_startgroep);
 		team_startgroep.setText(Integer.toString(team.getStartGroep()));
-		
+
 		TextView team_klassement = (TextView) view.findViewById(R.id.team_klassement);
 		team_klassement.setText(team.getKlassement());
-		
+
 		TextView team_cum_klassement = (TextView) view.findViewById(R.id.team_cum_klassement);
 		team_cum_klassement.setText(team.getCumKlassement()+"*");
 
 		TextView team_totaal_looptijd = (TextView) view.findViewById(R.id.team_totaal_looptijd);
 		team_totaal_looptijd.setText(team.getTotaalTijd());
-		
+
 		TextView team_totetappe = (TextView) view.findViewById(R.id.team_totetappe);
 		team_totetappe.setText(String.format(getString(R.string.team_klassement_totetappe), team.getKlassementTotEtappe()));
-		
+
 		return view;
 	}	
 }

@@ -13,11 +13,25 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Adapter voor etappes. Etappes worden getoond met een het etappenummer, afstand, startpunt en een afbeelding om aan te geven
+ * of het een heren of dames etappe is.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class EtappeAdapter extends ArrayAdapter<Etappe> {
 	
+	/** Context waarin deze Adapter wordt aangeroepen */
 	private final Context context;
+	/** Lijst met alle etappes die getoond worden */
 	private final ArrayList<Etappe> values;
 
+	/**
+	 * Constructor van EtappeAdapter
+	 * @param context De context waarin deze Adapter wordt aangeroepen
+	 * @param values De etappes die getoond moeten worden
+	 */
 	public EtappeAdapter(Context context, ArrayList<Etappe> values) {
 		super(context, R.layout.row_etappe, values);
 		this.context = context;
@@ -47,7 +61,7 @@ public class EtappeAdapter extends ArrayAdapter<Etappe> {
 		
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.geslacht);		
 		if(values.get(position).getGeslacht() == 'H') {
-			
+			//imageView.setImageResource(R.drawable.male);
 		} else {
 			imageView.setImageResource(R.drawable.female);
 		}

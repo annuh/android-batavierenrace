@@ -2,25 +2,27 @@ package com.ut.bataapp.fragments;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.objects.Etappe;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
+/**
+ * Klasse voor het representeren van een een EtappeInformatieFragment.
+ * Van een gegeven etappe worden algemen informatie, tijden, hoogteverschil en recordgegeven weergegeven.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class EtappeInformatie extends SherlockFragment {
-
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,8 +33,6 @@ public class EtappeInformatie extends SherlockFragment {
 		String formatkm = getResources().getString(R.string.km);
 		String formatkmu = getResources().getString(R.string.kmu);
 		String formatuur = getResources().getString(R.string.uur);
-		
-		Log.i("debugger", "" + etappe.getId());
 		
 		int id = etappe.getId();		
 		String imageLink = "hoogteverschil/" + id + ".jpg";
@@ -88,13 +88,15 @@ public class EtappeInformatie extends SherlockFragment {
 		etappeafstand.setText(String.format(formatkm, afst.toString()));
 
 		TextView etappegeslacht = (TextView) view.findViewById(R.id.text_etappegeslacht);
-		String geslacht = (etappe.getGeslacht() == 'H') ? "Man" : "Vrouw"; 	
+		String geslacht = (etappe.getGeslacht() == 'H') ? getString(R.string.etappe_informatie_geslacht_man) : getString(R.string.etappe_informatie_geslacht_vrouw); 	
 		etappegeslacht.setText(geslacht);
 
 		TextView etappeomschrijving = (TextView) view.findViewById(R.id.text_etappeomschrijving);
 		etappeomschrijving.setText(etappe.getOmschrijving());
 
-		// Tijden:
+		/**
+		 * Tijden
+		 */
 		TextView opentijd = (TextView) view.findViewById(R.id.text_etappe_opentijd);
 		opentijd.setText(etappe.getOpenTijd());
 

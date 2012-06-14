@@ -1,6 +1,5 @@
 package com.ut.bataapp.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockFragment;
@@ -11,11 +10,28 @@ import android.widget.Button;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.*;
 
+/**
+ * Klasse voor het representeren van een een InfoOverzichtskaartenFragment.
+ * In dit fragment staan links naar de overzichtskaarten van de Batavierenrac. 
+ * Er staan links naar de volgende overzichtskaarten:
+ * - Herstart Barchem
+ * - Herstart Ulft
+ * - Campus Enschede
+ * - Stad Enschede
+ * - Stad Nijmegen
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	
+	/**
+	 * Start AfbeeldingsActivity en toont een kaart.
+	 * @param kaart ID van de kaart die moet worden weergegeven
+	 */
 	public void openKaart(int kaart) {
 		Intent intent = new Intent(getActivity(), AfbeeldingActivity.class);
-		intent.putExtra("type", "overzichtskaart");
+		intent.putExtra(AfbeeldingActivity.TYPE, "overzichtskaart");
 		intent.putExtra("kaart", kaart);
 		startActivity(intent);
 	}
@@ -29,7 +45,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   herstart_barchem.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               openKaart(2);
+               openKaart(AfbeeldingActivity.ID_HERSTART_BARCHEM);
            }
        });
 	   
@@ -37,7 +53,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   herstart_ulft.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart(1);
+        	   openKaart(AfbeeldingActivity.ID_HERSTART_ULFT);
            }
        });
 	   
@@ -45,7 +61,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   campus_enschede.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart(4);
+        	   openKaart(AfbeeldingActivity.ID_CAMPUS_ENSCHEDE);
            }
        });
 	   
@@ -53,7 +69,7 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   stad_enschede.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart(3);
+        	   openKaart(AfbeeldingActivity.ID_STAD_ENSCHEDE);
            }
        });
 	   
@@ -61,16 +77,11 @@ public class InfoOverzichtskaartenFragment extends SherlockFragment {
 	   stad_nijmegen.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-        	   openKaart(0);
+        	   openKaart(AfbeeldingActivity.ID_STAD_NIJMEGEN);
            }
        });
 	   
 	   return view;
    }
 
-   public static final class OverridePendingTransition {
-       public static void invoke(Activity activity) {
-           activity.overridePendingTransition(0, 0);
-       }
-   }
 }
