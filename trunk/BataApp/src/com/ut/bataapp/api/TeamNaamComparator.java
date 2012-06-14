@@ -11,6 +11,9 @@ import java.util.Comparator;
 
 import com.ut.bataapp.objects.Team;
 
+/**
+ * Deze klasse zorgt dat Teams sorteerbaar zijn op naam in lijsten.
+ */
 public class TeamNaamComparator implements Comparator<Team>{
 
 	@Override
