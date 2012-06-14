@@ -16,28 +16,21 @@ import android.content.Context;
 import android.content.res.Resources.NotFoundException;
 
 import com.ut.bataapp.R;
-import com.ut.bataapp.objects.Bericht;
-import com.ut.bataapp.objects.Etappe;
-import com.ut.bataapp.objects.Klassement;
-import com.ut.bataapp.objects.Looptijd;
-import com.ut.bataapp.objects.Response;
-import com.ut.bataapp.objects.Team;
-import com.ut.bataapp.parser.BerichtenHandler;
-import com.ut.bataapp.parser.DetailedEtappeHandler;
-import com.ut.bataapp.parser.EtappeDataHandler;
-import com.ut.bataapp.parser.EtappeHandler;
-import com.ut.bataapp.parser.EtappeUitslagHandler;
-import com.ut.bataapp.parser.KlassementHandler;
-import com.ut.bataapp.parser.PloegHandler;
-import com.ut.bataapp.parser.TeamHandler;
+import com.ut.bataapp.objects.*;
+import com.ut.bataapp.parser.*;
 
+/**
+ * Deze klasse verzorgd de koppeling tussen de xml files en parsers en de gui.
+ * Vanuit de GUI kunnen methoden uit deze klasse aangeroepen worden om data uit de 
+ * xml files te parsen en terug te geven.
+ */
 public class api {
 		
 	//~~ PARSER AANROEPEN ~~\\
 	
 	/**
 	 * Haal van alle etappes basis informatie op.
-	 * @return 
+	 * @return Response object met een lijst met alle etappes
 	 */
 	public static Response<ArrayList<Etappe>> getEtappes() {
 		EtappeHandler eh = new EtappeHandler("etappes.xml");
@@ -48,7 +41,7 @@ public class api {
 	/**
 	 * Geeft uitgebreide info van 1 etappe
 	 * @param id - ID van de etappe
-	 * @return
+	 * @return Response object met de uitgebreide informatie over de etappe met de gegeven id
 	 */
 	public static Response<Etappe> getEtappesByID(int id,Context context) {
 		DetailedEtappeHandler deh = new DetailedEtappeHandler("etappes.xml",id);
@@ -82,7 +75,7 @@ public class api {
 	/**
 	 * Geeft lijst van uitslagen van een etappe
 	 * @param id - ID van etapp
-	 * @return
+	 * @return Response object met een lijst van uitslagen van de etappe met de gegeven id
 	*/
 	public static Response<ArrayList<ArrayList<Looptijd>>> getUitslagenVanEtappe(int id){
 		EtappeUitslagHandler euh = new EtappeUitslagHandler("etappeuitslag/"+id+".xml",id);
@@ -91,25 +84,8 @@ public class api {
 	}
 	
 	/**
-	 * Nieuw, laatste binnengekomen teams per etappe. Gesorteerd op binnenkomsttijd!
-	 * @param id
-	 * @return
-	 */
-	public static Response<ArrayList<Looptijd>> getLaatstBinnengekomenVanEtappe(int id) {
-		
-		ArrayList<Looptijd> laatste = new ArrayList<Looptijd>();
-		Looptijd l1 = new Looptijd();
-		l1.setSnelheid("14.3");
-		l1.setTeamNaam("Inter-Actief");
-		l1.setTeamStartnummer(34);
-		l1.setTijd("12:45");
-		laatste.add(l1);
-		return new Response<ArrayList<Looptijd>>(laatste, Response.OK_NO_UPDATE);
-	}
-	
-	/**
 	 * Geeft eem lijst van elk team met basis informatie op.
-	 * @return
+	 * @return Response object met de basisinformatie van alle teams
 	 */
 	public static Response<ArrayList<Team>> getTeams() {
 		TeamHandler th = new TeamHandler("ploegoverzicht.xml");
@@ -118,18 +94,18 @@ public class api {
 	}
 
 	/**
-	 * Detailleerde informatie van een team, inclusief looptijden van de lopers (uitslag)
+	 * Gedetailleerde informatie van een team, inclusief looptijden van de lopers (uitslag)
 	 * @param id van team
-	 * @return
+	 * @return	getTeamByID(id, false)
 	 */
 	public static Response<Team> getTeamByID(int id) {
 		return getTeamByID(id, false);
 	}
 	
 	/**
-	 * Detailleerde informatie van een team, inclusief looptijden van de lopers (uitslag)
+	 * Gedetailleerde informatie van een team, inclusief looptijden van de lopers (uitslag)
 	 * @param id van team
-	 * @return
+	 * @return Response object met de informatie van het team met de opgegeven id
 	 */
 	public static Response<Team> getTeamByID(int id, boolean surpressDownload) {
 		PloegHandler phHandler = new PloegHandler("ploeguitslag/"+id+".xml");
@@ -139,8 +115,8 @@ public class api {
 	
 	/**
 	 * Geeft een lijst met de namen van klassementen terug
-	 * HARDCODED
-	 * @return
+	 * TODO: Haal klassementen uit xml bestanden ipv hardcoded
+	 * @return Response object met lijst van klassementen
 	 */
 	public static Response<ArrayList<String>> getKlassementen(){
 		String kl1 = "Algemeen";
@@ -153,7 +129,7 @@ public class api {
 	/**
 	 * Geeft een lijst van KlassementItems
 	 * @param naam - Naam van het klassement
-	 * @return
+	 * @return	Response object met de geparste klassementen
 	 */
 	public static Response<Klassement> getKlassementByNaam(String naam) {
 		KlassementHandler kh = new KlassementHandler("klassement.xml",naam);
@@ -163,7 +139,7 @@ public class api {
 	
 	/**
 	 * Geeft een lijst met alle berichten terug
-	 * @return
+	 * @return Response object met de geparste berichten
 	 */
 	public static Response<ArrayList<Bericht>> getBerichten(){
 		BerichtenHandler bh = new BerichtenHandler("nieuws.xml");
