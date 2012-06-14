@@ -133,6 +133,9 @@
     <string name="etappe_informatie_naar">Naar</string>
     <string name="etappe_informatie_afstand">Afstand</string>
     <string name="etappe_informatie_geslacht">Geslacht</string>
+    <string name="etappe_informatie_geslacht">Geslacht</string>
+    <string name="etappe_informatie_geslacht_man">Man</string>
+    <string name="etappe_informatie_geslacht_vrouw">Vrouw</string>
     <string name="etappe_informatie_omschrijving">Omschrijving</string>
     <string name="etappe_tijden">Tijden</string>
     <string name="etappe_tijden_opentijd">Openingstijd</string>
@@ -147,9 +150,13 @@
     <string name="etappe_recordtijd_snelheid">Snelheid</string>
     <string name="etappe_routes_h1_kaart">Lopersroute</string>
     <string name="etappe_routes_routebeschrijving_looproute">Routebeschrijving</string>
+    <string name="etappe_routes_routebeschrijving_maps_looproute">Looproute routebeschrijving</string>
+    <string name="etappe_routes_routebeschrijving_maps_autoroute">Autoroute routebeschrijving</string>
     <string name="etappe_routes_h1_openenmaps">Open in Google Maps</string>
     <string name="etappe_routes_looproute">Looproute</string>
     <string name="etappe_routes_autoroute">Autoroute</string>
+    <string name="etappe_looptijden_header_universiteit">Universiteitsklassement</string>
+    <string name="etappe_looptijden_header_algemeen">Algemeen klassement</string>
     <string name="etappe_looptijden_header_stand">#</string>
     <string name="etappe_looptijden_header_team">Team</string>
     <string name="etappe_looptijden_header_tijd">Tijd</string>

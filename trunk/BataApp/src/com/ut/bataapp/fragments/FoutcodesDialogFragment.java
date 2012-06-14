@@ -8,6 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * Klasse voor het representeren van een een FoutcodesDialogFragment.
+ * In dit DialogFragment worden de foutcodes en afkortingen weergegeven.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class FoutcodesDialogFragment extends DialogFragment {
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

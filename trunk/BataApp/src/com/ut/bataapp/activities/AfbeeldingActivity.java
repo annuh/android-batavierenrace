@@ -18,16 +18,23 @@ import com.ut.bataapp.Utils;
  */
 public class AfbeeldingActivity extends SherlockActivity {
 	
+	public static final int
+		ID_STAD_NIJMEGEN = 0,
+		ID_HERSTART_ULFT = 1,
+		ID_HERSTART_BARCHEM = 2,
+		ID_STAD_ENSCHEDE = 3,
+		ID_CAMPUS_ENSCHEDE = 4;
+	public static final String TYPE = "type";
+	
 	public static String[][] overzichtskaarten = {{"stad_nijmegen.jpg", "Start Nijmegen"}, {"herstart_ulft.jpg", "Herstart Ulft"}, {"herstart_barchem.jpg", "Herstart Barchem"},  {"stad_enschede.jpg", "Stad Enschede"}, {"campus_enschede.jpg", "Campus Enschede"}};
 	public static String[][] hoogteverschillen = {};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().setHomeButtonEnabled(true);
 		
-		String type = getIntent().getStringExtra("type");
+		String type = getIntent().getStringExtra(TYPE);
 		String locatie = "";
 		String titel = "";
 		

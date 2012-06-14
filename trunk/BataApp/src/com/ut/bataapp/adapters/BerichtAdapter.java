@@ -1,12 +1,10 @@
 package com.ut.bataapp.adapters;
 
 import java.util.ArrayList;
-
 import com.ut.bataapp.R;
 import com.ut.bataapp.objects.Bericht;
 import android.content.Context;
 import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +12,24 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Adapter voor berichten. Berichten worden getoond met een kleurcode, titel en het bericht.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class BerichtAdapter extends ArrayAdapter<Bericht> {
 
+	/** Context waarin deze Adapter wordt aangeroepen */
 	private final Context context;
+	/** Lijst met alle berichten die getoond worden */
 	private final ArrayList<Bericht> berichten;
-
+	
+	/**
+	 * Constructor van BerichtAdapter
+	 * @param context Context waarin deze Adapter wordt aangeroepen
+	 * @param berichten Berichten die getoond gaan worden
+	 */
 	public BerichtAdapter(Context context, ArrayList<Bericht> berichten) {
 		super(context, R.layout.message_row, berichten);
 		this.context = context;
@@ -47,7 +58,6 @@ public class BerichtAdapter extends ArrayAdapter<Bericht> {
 			colour = R.color.green;
 		}
 		codeView.setBackgroundResource(colour);
-		//contentView.setMovementMethod(LinkMovementMethod.getInstance());
 		contentView.setText(Html.fromHtml(bericht.getBericht()));
 
 		return rowView;

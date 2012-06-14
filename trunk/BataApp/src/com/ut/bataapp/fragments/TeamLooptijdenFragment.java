@@ -16,7 +16,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.R;
 import com.ut.bataapp.activities.EtappeActivity;
 import com.ut.bataapp.activities.TeamActivity;
-import com.ut.bataapp.adapters.LooptijdAdapter;
+import com.ut.bataapp.adapters.TeamLooptijdAdapter;
 import com.ut.bataapp.objects.Team;
 
 public class TeamLooptijdenFragment extends SherlockListFragment {
@@ -27,7 +27,7 @@ public class TeamLooptijdenFragment extends SherlockListFragment {
 		Team team = ((TeamActivity) getActivity()).getTeam();
 		setHasOptionsMenu(true);
 		getSherlockActivity().getSupportActionBar().setTitle(team.getNaam());
-		setListAdapter(new LooptijdAdapter(this.getActivity().getApplicationContext(), team.getLooptijden()));
+		setListAdapter(new TeamLooptijdAdapter(this.getActivity().getApplicationContext(), team.getLooptijden()));
 		View view = inflater.inflate(R.layout.listview_team_looptijden, null); 
 		return view; 
 	}

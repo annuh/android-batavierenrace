@@ -2,19 +2,32 @@ package com.ut.bataapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ut.bataapp.R;
-import com.ut.bataapp.activities.AfbeeldingActivity;
 import com.ut.bataapp.activities.ErrataActivity;
 import com.ut.bataapp.activities.InfoAlgemeenActivity;
 
-public class InfoAlgemeenFragment extends SherlockFragment {	
+/**
+ * Klasse voor het representeren van een een InfoAlgemeenFragment.
+ * In dit fragment staan links naar de volgende fragments: 
+ * - Algemene informatie
+ * - Tijden
+ * - Slapen informatie
+ * - Wat moet je weten
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
+public class InfoAlgemeenFragment extends SherlockFragment {
+	
+	/**
+	 * In deze methode wordt InfoAlgemeenActivity gestart waar een bepaald tabblad standaard wordt weergegeven
+	 * @param tab Het ID van het tabblad uit InfoAlgemeenActivity dat standaard weergegeven wordt.
+	 */
 	public void openAlgemeen(int tab) {
 		Intent intent = new Intent(getActivity().getApplicationContext(), InfoAlgemeenActivity.class);
 		intent.putExtra(InfoAlgemeenActivity.EXTRA_TAB, tab);

@@ -11,12 +11,25 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class LooptijdAdapter extends ArrayAdapter<Looptijd> {
+/**
+ * Adapter voor teamlooptijden. Per looptijd is etappenummer, tijd, snelheid, etappe klassement, cum klassement en een evt. foutcode te zien.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
+public class TeamLooptijdAdapter extends ArrayAdapter<Looptijd> {
 
+	/** Context waarin deze Adapter wordt aangeroepen */
 	private final Context context;
+	/** Lijst met alle looptijden die getoond worden */
 	private final ArrayList<Looptijd> values;
 
-	public LooptijdAdapter(Context context, ArrayList<Looptijd> values) {
+	/**
+	 * Constructor van TeamLooptijdAdapter
+	 * @param context De context waarin deze Adapter wordt aangeroepen
+	 * @param values De looptijden die getoond moeten worden
+	 */
+	public TeamLooptijdAdapter(Context context, ArrayList<Looptijd> values) {
 		super(context, R.layout.row_team_looptijd, values);
 		this.context = context;
 		this.values = values;

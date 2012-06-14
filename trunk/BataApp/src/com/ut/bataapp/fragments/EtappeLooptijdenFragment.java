@@ -37,20 +37,43 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Klasse voor het representeren van een een EtappeLooptijdenFragment.
+ * Alle looptijden van een etappe worden in een lijst gezet en zijn zoekbaar op teamnaam en teamstartnummer.
+ * De looptijden zijn tevens te sorteren op naam en stand.
+ * Er kan ook een popup worden weergegeven met een overzicht van alle foutcodes en bijbehorende afkortingen.
+ * Onderdeel van ontwerpproject BataApp.
+ * @author Anne vd Venis
+ * @version 1.0
+ */
 public class EtappeLooptijdenFragment extends SherlockListFragment implements LoaderManager.LoaderCallbacks<Response<ArrayList<ArrayList<Looptijd>>>> {
 
+	/** Alle looptijden van deze etappe, worden gebruikt als kopie om looptijden_copy te herstellen */
 	private ArrayList<ArrayList<Looptijd>> looptijden = new ArrayList<ArrayList<Looptijd>>();
+	/** Alle looptijden van deze etappe die worden weergegeven */
 	private ArrayList<ArrayList<Looptijd>> looptijden_copy = new ArrayList<ArrayList<Looptijd>>();
+	/** Adapter voor de looptijden van het universiteitsklassement */
 	private EtappeLooptijdAdapter adapter_uni = null;
+	/** Adapter voor de looptijden van het algemeen klassement */
 	private EtappeLooptijdAdapter adapter_alg = null;
+	/** Gecombineerde adapter om zowel de looptijden van het universiteitsklassement en algemeen klassement weer te geven */
 	private SeparatedListAdapter adapter = null;
+	/** ID van de actionbar-zoekknop */
 	private final int MENU_SEARCH = Menu.FIRST + 10;
+	/** ID van de sorteer-op-teamnaam zoekknop */
 	private final int MENU_SORT_NAAM = Menu.FIRST + 11;
+	/** ID van de sorteer-op-stand zoekknop */
 	private final int MENU_SORT_STAND = Menu.FIRST + 12;
+	/** ID van de foutcodes menu knop */
 	private final int MENU_FOUTCODES = Menu.FIRST + 2;
+	/** Tekst waarop de looptijden gefilterd worden */
 	private String filterText = "";
+	/** Sorteervolgorde van teamnaam, D=decrease, A=ascend */
 	private char sortTeam = 'D';
+	/** Sorteervolgorde van stand van teams, D=decrease, A=ascend */
 	private char sortStand = 'D';
+	/** Variabele om bij te houden of dit fragment voor het eerst wordt geopend. Als dit fragment voor het eerst wordt
+	 * geopend, worden de teams gesorteerd op stand in deze etappe */
 	private boolean firstLaunch = true;
 
 	@Override
@@ -140,12 +163,14 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * Deze methode zorgt ervoor dat er de looptijden kan worden gezocht op naam en startnummer
+	 */
 	private TextWatcher filterTextWatcher = new TextWatcher() {
 
 		public void afterTextChanged(Editable s) { }
 
-		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-		}
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
 		public void onTextChanged(CharSequence s, int start, int before, int count) {	
 			filterText = s.toString();
@@ -160,11 +185,13 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 			}
 			looptijden = result;
 			makeList();
-
-
 		}
 	};
 
+	/**
+	 * Deze methode zorgt ervoor dat het software toetsenbord wordt geopend en maakt een invoerveld actief. 
+	 * @param primaryTextField Het invoerveld dat actief moet worden gemaakt
+	 */
 	public static void setKeyboardFocus(final EditText primaryTextField) {
 		(new Handler()).postDelayed(new Runnable() {
 			public void run() {
@@ -181,8 +208,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 		startActivity(intent);
 	}
 
-
-
+	/**
+	 * Kopieerd de inhoud van een arraylist naar een nieuwe arraylist.
+	 * @param list De lijst die gekopieerd moet worden
+	 * @return Een nieuwe lijst met dezelfde elementen als list
+	 */
 	public ArrayList<ArrayList<Looptijd>> copyArray(ArrayList<ArrayList<Looptijd>> list) {
 		ArrayList<ArrayList<Looptijd>> result = new ArrayList<ArrayList<Looptijd>>();
 		for(ArrayList<Looptijd> o : list) {
@@ -195,9 +225,23 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 		return result;
 	}
 
+	/**
+	 * Loader waarin de Etappelooptijden worden opgehaald
+	 * @author Anne vd Venis
+	 *
+	 */
 	public static class EtappeLooptijdenLoader extends AsyncTaskLoader<Response<ArrayList<ArrayList<Looptijd>>>> {
+		
+		/** Resultaat van de api aanvraag */
 		Response<ArrayList<ArrayList<Looptijd>>> response;
+		/** ID van de etappe waarvan de looptijden worden opgehaald. */
 		int etappeid;
+		
+		/**
+		 * Constructor van EtappeLooptijdenLoader
+		 * @param context Context waarin deze Loader wordt aangeroepen
+		 * @param etappeid ID van de etappe waarvan de looptijden worden opgehaald.
+		 */
 		public EtappeLooptijdenLoader(Context context, int etappeid) {
 			super(context);
 			this.etappeid = etappeid;
@@ -253,14 +297,19 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 			adapter_uni = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(0));
 			adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
 			adapter = new SeparatedListAdapter(getActivity().getApplicationContext());
-			adapter.addSection("Universiteitsklassement", adapter_uni);
-			adapter.addSection("Algemeen klassement", adapter_alg);
+			adapter.addSection(getString(R.string.etappe_looptijden_header_universiteit), adapter_uni);
+			adapter.addSection(getString(R.string.etappe_looptijden_header_universiteit), adapter_alg);
 			setListAdapter(adapter);
 			adapter.notifyDataSetChanged();
 			getListView().setVisibility(View.VISIBLE);
 		}
 	}
 
+	/**
+	 * Methode die de lijst sorteerd op teamnaam.
+	 * Als de lijst al van A-Z is gesorteerd, wordt de lijst nu op Z-A gesorteerd en vice versa.
+	 * @param v View waarvan de sorteerfunctie wordt aangeroepen
+	 */
 	public void sortTeam(View v) {
 		if(sortTeam == 'D') {
 			Collections.sort(looptijden.get(0),new Comparator<Looptijd>() {
@@ -299,6 +348,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 		makeList();
 	}
 
+	/**
+	 * Methode die de lijst sorteerd op stand binnen deze etappe.
+	 * Als de lijst al van LAAG-HOOG is gesorteerd, wordt de lijst nu op HOOG-LAAG gesorteerd en vice versa.
+	 * @param v View waarvan de sorteerfunctie wordt aangeroepen
+	 */
 	public void sortStand(View v) {
 		if(sortStand == 'D') {
 			Collections.sort(looptijden.get(0),new Comparator<Looptijd>() {
@@ -335,6 +389,9 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 		makeList();
 	}
 
+	/**
+	 * Methode die de sorteer-pijlen verwijderd uit de ListView header.
+	 */
 	public void resetArrows() {
 		((TextView) getView().findViewById(R.id.etappe_looptijden_header_stand)).setText(this.getText(R.string.etappe_looptijden_header_stand));
 		((TextView) getView().findViewById(R.id.etappe_looptijden_header_team)).setText(this.getText(R.string.etappe_looptijden_header_team));
@@ -350,18 +407,11 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 	public void onLoadFinished(Loader<Response<ArrayList<ArrayList<Looptijd>>>> loader, Response<ArrayList<ArrayList<Looptijd>>> response) {
 		if(Utils.checkResponse(getActivity().getApplicationContext(), response)) {
 			looptijden = response.getResponse();
-
 			looptijden_copy = copyArray(looptijden);
 			if(firstLaunch) {
 				sortStand(null);
 				firstLaunch=false;
 			}
-			//else
-			//	makeList();
-
-
-			//if(getView() != null) // Als tijdens laden ander tab wordt geopend
-			//	sortStand(null);
 			if(getView() != null)
 				getListView().setEmptyView(getView().findViewById(R.id.listview_leeg));
 		}
