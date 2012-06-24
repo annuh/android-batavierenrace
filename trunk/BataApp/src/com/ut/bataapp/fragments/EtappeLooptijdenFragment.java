@@ -298,7 +298,7 @@ public class EtappeLooptijdenFragment extends SherlockListFragment implements Lo
 			adapter_alg = new EtappeLooptijdAdapter(getActivity().getApplicationContext(), looptijden.get(1));
 			adapter = new SeparatedListAdapter(getActivity().getApplicationContext());
 			adapter.addSection(getString(R.string.etappe_looptijden_header_universiteit), adapter_uni);
-			adapter.addSection(getString(R.string.etappe_looptijden_header_universiteit), adapter_alg);
+			adapter.addSection(getString(R.string.etappe_looptijden_header_algemeen), adapter_alg);
 			setListAdapter(adapter);
 			adapter.notifyDataSetChanged();
 			getListView().setVisibility(View.VISIBLE);
