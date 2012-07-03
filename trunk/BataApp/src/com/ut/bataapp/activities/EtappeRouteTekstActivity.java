@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 import com.ut.bataapp.R;
+import com.ut.bataapp.Utils;
 import com.ut.bataapp.objects.EtappeRoute;
 import com.ut.bataapp.parser.CSV;
 
@@ -32,7 +34,7 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 			LinearLayout container = (LinearLayout) findViewById(R.id.route_container);
 			EtappeRoute route = new CSV().parse(this.getResources().getAssets().open("lopersroutetekst/etappe"+mId+".txt"));
 		
-			this.setTitle(getString(R.string.etappe_routes_looproute) + mId);
+			this.setTitle(getString(R.string.etappe_routes_looproute) + " " + mId);
 			
 			View item = this.getLayoutInflater().inflate(R.layout.row_route, container, false);
 			TextView icon = (TextView) item.findViewById(R.id.route_km);
@@ -75,4 +77,13 @@ public class EtappeRouteTekstActivity extends SherlockActivity{
 		outState.putInt("id",mId);
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			Utils.goHome(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }
